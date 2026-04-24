@@ -1,0 +1,90 @@
+{
+  "generated": "2026-04-23T20:39:56",
+  "signal": {
+    "date": "2026-04-23",
+    "regime": "GREEN",
+    "p_stress": 0.3746,
+    "action_required": false,
+    "weights": {
+      "SPY": 80.3,
+      "GLD": 19.7,
+      "BIL": 0.0,
+      "XOP": 0.0,
+      "KBE": 0.0
+    },
+    "signals": {
+      "ewma_z": 1.3491,
+      "rv_minus_z": -0.1426,
+      "oas_z": -0.6872
+    },
+    "vams": {
+      "winner": null,
+      "reason": "spy_absorbs",
+      "scores": {
+        "XOP": -0.86,
+        "KBE": -0.873
+      },
+      "trends": {
+        "XOP": "Deteriorating",
+        "KBE": "Deteriorating"
+      }
+    },
+    "trends": {
+      "agg": "Improving",
+      "mom": "Deteriorating",
+      "oas": "Deteriorating",
+      "rv": "Deteriorating"
+    }
+  },
+  "perf": {
+    "cagr": 14.39,
+    "cumulative_return": 204.38,
+    "max_drawdown": -11.54,
+    "sharpe": 1.343,
+    "sortino": 1.801,
+    "calmar": 2.721,
+    "mar": 1.247,
+    "omega": 1.262,
+    "beta": 0.2,
+    "ytd_return": 6.34,
+    "current_drawdown": -2.68,
+    "trades_per_year": 17.9,
+    "total_trades": 148,
+    "upside_capture_spy": 36.7,
+    "downside_capture_spy": 27.7,
+    "capture_ratio_spy": 1.328,
+    "upside_capture_bench": 86.5,
+    "downside_capture_bench": 76.8,
+    "capture_ratio_bench": 1.126,
+    "ytd_max_drawdown": -7.47,
+    "ytd_rebalances": 7,
+    "alpha_vs_60_40": 5.0
+  },
+  "cum_returns": {
+    "ytd": {
+      "aegis": 6.34,
+      "bench": 2.38,
+      "spy": 4.17
+    },
+    "y1": {
+      "aegis": 23.53,
+      "bench": 24.13,
+      "spy": 35.91
+    },
+    "y3": {
+      "aegis": 73.59,
+      "bench": 49.79,
+      "spy": 78.6
+    },
+    "y5": {
+      "aegis": 93.58,
+      "bench": 47.52,
+      "spy": 82.01
+    },
+    "itd": {
+      "aegis": 204.38,
+      "bench": 110.86,
+      "spy": 201.62
+    }
+  }
+}

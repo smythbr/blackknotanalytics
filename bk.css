@@ -1,0 +1,167 @@
+/* ═══════════════════════════════════════════════════════════════
+   BLACK KNOT ANALYTICS — Shared Stylesheet
+   bk.css — loaded by index.html and dashboard.html
+   Single source of truth for: tokens, reset, table CSS, utilities
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── BRAND TOKENS ────────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --black:       #000000;
+  --red:         #CC1010;
+  --red-dark:    #991010;
+  --white:       #FFFFFF;
+  --off-white:   #F2F2F0;
+  --grey:        #888884;
+  --light-grey:  #C8C8C4;
+  --card-bg:     #0D0D0D;
+  --card-border: rgba(204,16,16,0.18);
+  --line:        rgba(255,255,255,0.08);
+
+  /* Dashboard layout constants */
+  --sidebar-bg: #080808;
+  --sidebar-w:  240px;
+  --topbar-h:   64px;
+
+  /* Performance colours */
+  --green-pos:   #4ade80;
+  --red-neg:     #f87171;
+  --yellow-neu:  #fbbf24;
+
+  /* Typography — families */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Rajdhani', sans-serif;
+  --font-logo:    'Montserrat', 'Jost', 'Century Gothic', 'Futura', sans-serif;
+  --font-mono:    'Courier New', Courier, monospace;
+
+  /* Typography — scale
+     --fs-xs   12px  tiny pills, meta labels
+     --fs-sm   13px  eyebrows, table headers, status labels
+     --fs-md   14px  table data, sub-text, body labels
+     --fs-base 15px  body copy, descriptions
+     --fs-lg   17px  card names, FAQ questions
+     --fs-xl   20px  reserved H3
+     --fs-2xl  24px  small KPI values
+     --fs-3xl  32px  medium KPI values                          */
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.8125rem;
+  --fs-md:   0.875rem;
+  --fs-base: 0.9375rem;
+  --fs-lg:   1.0625rem;
+  --fs-xl:   1.25rem;
+  --fs-2xl:  1.5rem;
+  --fs-3xl:  2rem;
+}
+
+/* ─── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+html {
+  height:100%;
+  font-size:16px;
+  scroll-behavior:smooth;
+}
+
+body {
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-ui);
+  font-size:var(--fs-base);
+  line-height:1.6;
+  min-height:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+
+a   { text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+button { cursor:pointer; border:none; background:none; font-family:inherit; }
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────── */
+::-webkit-scrollbar       { width:3px; height:3px; }
+::-webkit-scrollbar-track { background:var(--black); }
+::-webkit-scrollbar-thumb { background:var(--red); }
+
+/* ─── SECTION EYEBROW ─────────────────────────────────────────── */
+/* Used as .section-eyebrow (index) and .db-section-eyebrow (dashboard) */
+.section-eyebrow,
+.db-section-eyebrow {
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--red);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:12px;
+}
+.section-eyebrow::before,
+.db-section-eyebrow::before {
+  content:''; flex-shrink:0;
+  width:20px; height:1px; background:var(--red);
+}
+
+/* ─── TABLE — GENERIC (index.html) ───────────────────────────── */
+table { width:100%; border-collapse:collapse; font-size:var(--fs-md); }
+thead tr { background:#0a0a0a; }
+
+th {
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey);
+  padding:12px 16px; text-align:right;
+  border-bottom:1px solid var(--line);
+  white-space:nowrap;
+}
+th:first-child { text-align:left; }
+th.col-aegis   { color:var(--white); }
+
+td {
+  padding:11px 16px;
+  font-size:var(--fs-md);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  color:var(--grey);
+  text-align:right;
+  white-space:nowrap;
+}
+td:first-child { text-align:left; color:var(--light-grey); }
+tr:last-child td { border-bottom:none; }
+tr:hover td      { background:rgba(255,255,255,0.015); }
+
+/* ─── BENCH-TABLE (dashboard.html) ───────────────────────────── */
+.bench-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); min-width:700px; }
+.bench-table thead tr { background:#0a0a0a; }
+.bench-table th {
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--grey);
+  padding:12px 16px; text-align:right;
+  border-bottom:1px solid var(--line);
+  white-space:nowrap;
+}
+.bench-table th:first-child  { text-align:left; }
+.bench-table th.col-aegis    { color:var(--white); }
+.bench-table td {
+  padding:11px 16px;
+  font-size:var(--fs-md); letter-spacing:0.04em;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  color:var(--grey);
+  text-align:right;
+  white-space:nowrap;
+}
+.bench-table td:first-child  { text-align:left; color:var(--light-grey); font-size:var(--fs-md); }
+.bench-table tr:last-child td { border-bottom:none; }
+.bench-table tr:hover td      { background:rgba(255,255,255,0.015); }
+
+/* Section header row inside bench-table */
+.bench-table-section {
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--white);
+}
+
+/* ─── TABLE UTILITY CLASSES ───────────────────────────────────── */
+.td-aegis { color:var(--white);     font-weight:600; }
+.td-pos   { color:var(--green-pos); font-weight:600; }
+.td-neg   { color:var(--red-neg);   font-weight:600; }
+.td-neu   { color:var(--yellow-neu);}
+.td-bench { color:var(--grey); }
