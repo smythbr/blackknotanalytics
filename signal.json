@@ -1,19 +1,19 @@
 {
-  "generated": "2026-04-24T10:10:20",
+  "generated": "2026-04-24T12:10:16",
   "signal": {
     "date": "2026-04-24",
     "regime": "GREEN",
-    "p_stress": 0.3733,
+    "p_stress": 0.3726,
     "action_required": false,
     "weights": {
-      "SPY": 80.3,
-      "GLD": 19.7,
+      "SPY": 80.33,
+      "GLD": 19.67,
       "BIL": 0.0,
       "XOP": 0.0,
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 1.5504,
+      "ewma_z": 1.621,
       "rv_minus_z": -0.1284,
       "oas_z": -0.5977
     },
@@ -21,8 +21,8 @@
       "winner": null,
       "reason": "spy_absorbs",
       "scores": {
-        "XOP": -0.972,
-        "KBE": -0.958
+        "XOP": -0.976,
+        "KBE": -0.966
       },
       "trends": {
         "XOP": "Deteriorating",
@@ -47,7 +47,7 @@
     "omega": 1.262,
     "beta": 0.2,
     "ytd_return": 6.34,
-    "current_drawdown": -1.51,
+    "current_drawdown": -0.74,
     "trades_per_year": 17.9,
     "total_trades": 148,
     "upside_capture_spy": 36.7,
@@ -64,27 +64,27 @@
     "ytd": {
       "aegis": 6.34,
       "bench": 2.38,
-      "spy": 4.89
+      "spy": 5.03
     },
     "y1": {
       "aegis": 24.56,
       "bench": 21.07,
-      "spy": 34.76
+      "spy": 34.93
     },
     "y3": {
       "aegis": 74.23,
       "bench": 49.88,
-      "spy": 79.65
+      "spy": 79.87
     },
     "y5": {
       "aegis": 93.58,
       "bench": 47.52,
-      "spy": 83.27
+      "spy": 83.5
     },
     "itd": {
       "aegis": 204.38,
       "bench": 110.86,
-      "spy": 203.71
+      "spy": 204.09
     }
   }
 }
