@@ -828,6 +828,26 @@
 </head>
 <body>
 
+<!-- ─── SUPABASE AUTH GUARD ────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Block rendering until we confirm the user is signed in
+  document.documentElement.style.visibility = 'hidden';
+  (async () => {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      window.location.replace('index.html');
+      return;
+    }
+    document.documentElement.style.visibility = 'visible';
+  })();
+</script>
+
+
 <!-- ─── TOP BAR ─────────────────────────────────────────── -->
 <div class="db-topbar">
   <div class="db-topbar-logo">
@@ -2225,8 +2245,12 @@ function toggleFaq(el) {
 }
 
 // ── Sign out ──────────────────────────────────────────────────
-function signOut() {
-  localStorage.removeItem('bka_session');
+async function signOut() {
+  try {
+    await sb.auth.signOut();
+  } catch (err) {
+    console.error('Sign out error:', err);
+  }
   window.location.href = 'index.html';
 }
 

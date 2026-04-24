@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- BLACK KNOT ANALYTICS — Email Verification Landing | verify.html -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Email Verified — Black Knot Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bk.css">
+<style>
+.verify-wrap {
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px 24px;
+}
+.verify-card {
+  max-width:480px; width:100%;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  padding:48px 40px;
+  text-align:center;
+}
+.verify-eyebrow {
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:16px;
+}
+.verify-title {
+  font-family:var(--font-display);
+  font-size:2.5rem; font-weight:600;
+  line-height:1.1;
+  margin-bottom:20px;
+  color:var(--white);
+}
+.verify-msg {
+  font-size:var(--fs-base);
+  color:var(--light-grey);
+  margin-bottom:32px;
+  line-height:1.6;
+}
+.verify-btn {
+  display:inline-block;
+  background:var(--red);
+  color:var(--white);
+  font-family:var(--font-ui);
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  padding:16px 32px;
+  border:none;
+  cursor:pointer;
+  transition:background 0.2s ease;
+  text-decoration:none;
+}
+.verify-btn:hover { background:var(--red-dark); }
+.verify-btn.secondary {
+  background:transparent;
+  color:var(--light-grey);
+  border:1px solid var(--line);
+  margin-left:12px;
+}
+.verify-btn.secondary:hover { border-color:var(--red); color:var(--white); }
+.verify-error { color:var(--red-neg); }
+</style>
+</head>
+<body>
+
+<div class="verify-wrap">
+  <div class="verify-card" id="card">
+    <div class="verify-eyebrow">Verifying...</div>
+    <h1 class="verify-title">One moment</h1>
+    <p class="verify-msg">Confirming your email address.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ════════════════════════════════════════════════════════
+// Supabase configuration — same credentials as index.html
+// ════════════════════════════════════════════════════════
+const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
+
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ── On load, check if session exists (Supabase auto-parses URL hash) ──
+(async () => {
+  const card = document.getElementById('card');
+
+  // Give Supabase a moment to parse the hash fragment in the URL
+  await new Promise(r => setTimeout(r, 400));
+
+  const { data: { session }, error } = await sb.auth.getSession();
+
+  if (error) {
+    card.innerHTML = `
+      <div class="verify-eyebrow verify-error">Verification Error</div>
+      <h1 class="verify-title">Something went wrong</h1>
+      <p class="verify-msg">${error.message || 'Unable to verify your email. The link may have expired.'}</p>
+      <a href="index.html" class="verify-btn">Back to Home</a>
+    `;
+    return;
+  }
+
+  if (session) {
+    card.innerHTML = `
+      <div class="verify-eyebrow">Email Verified</div>
+      <h1 class="verify-title">Welcome<br>to AEGIS</h1>
+      <p class="verify-msg">Your account is active and you're signed in. You now have access to the full performance dashboard.</p>
+      <a href="dashboard.html" class="verify-btn">Enter Dashboard</a>
+    `;
+  } else {
+    card.innerHTML = `
+      <div class="verify-eyebrow">Verification Link Expired</div>
+      <h1 class="verify-title">Please<br>sign in</h1>
+      <p class="verify-msg">Your email has been confirmed, but the session expired. Please sign in to continue.</p>
+      <a href="index.html" class="verify-btn">Go to Sign In</a>
+    `;
+  }
+})();
+</script>
+</body>
+</html>
