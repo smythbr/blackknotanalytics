@@ -1235,8 +1235,15 @@ footer {
         <input type="text" id="signupLastName" placeholder="Last name" required autocomplete="family-name">
         <input type="email" id="signupEmail" placeholder="Email address" required autocomplete="email">
         <input type="password" id="signupPassword" placeholder="Create password (min 8 characters)" required minlength="8" autocomplete="new-password">
-        <input type="text" id="signupAddress" placeholder="Address" required autocomplete="street-address">
-        <input type="tel" id="signupMobile" placeholder="Mobile (e.g. +14155551234)" required pattern="\+[1-9]\d{7,14}" autocomplete="tel">
+        <input type="password" id="signupPasswordConfirm" placeholder="Confirm password" required minlength="8" autocomplete="new-password">
+        <input type="text" id="signupStreet" placeholder="Street address" required autocomplete="street-address">
+        <input type="text" id="signupCity" placeholder="City" required autocomplete="address-level2">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <input type="text" id="signupProvince" placeholder="Province / State" required autocomplete="address-level1">
+          <input type="text" id="signupPostal" placeholder="Postal / ZIP code" required autocomplete="postal-code">
+        </div>
+        <input type="text" id="signupCountry" placeholder="Country" required autocomplete="country-name" value="Canada">
+        <input type="tel" id="signupMobile" placeholder="Mobile (e.g. 604 379 8835)" required autocomplete="tel">
         <button type="submit" id="signupBtn">Create Free Account</button>
       </form>
 
@@ -1300,11 +1307,29 @@ footer {
     <form class="modal-form" onsubmit="handleSignIn(event)">
       <input type="email" id="signinEmail" placeholder="Email address" required autocomplete="email">
       <input type="password" id="signinPassword" placeholder="Password" required autocomplete="current-password">
+      <p style="text-align:right; margin:-4px 0 0; font-size:0.8rem;"><a href="#" style="color:var(--red);" onclick="openForgotPassword(event)">Forgot password?</a></p>
       <button type="submit" id="signinBtn">Sign In</button>
     </form>
     <p class="modal-msg" id="signinMsg"></p>
     <p class="modal-footer">
       Need an account? <a href="#subscribe" onclick="closeSignIn(event)">Sign up — free</a>
+    </p>
+  </div>
+</div>
+
+<!-- ─── FORGOT PASSWORD MODAL ─────────────────────────────────── -->
+<div class="modal-overlay" id="forgotModal" onclick="closeForgotPassword(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeForgotPassword(event)" aria-label="Close">&times;</button>
+    <h2 class="modal-title">Reset Password</h2>
+    <p class="modal-sub">Enter your email and we'll send you a reset link.</p>
+    <form class="modal-form" onsubmit="handleForgotPassword(event)">
+      <input type="email" id="forgotEmail" placeholder="Email address" required autocomplete="email">
+      <button type="submit" id="forgotBtn">Send Reset Link</button>
+    </form>
+    <p class="modal-msg" id="forgotMsg"></p>
+    <p class="modal-footer">
+      <a href="#" onclick="openSignIn(event)">Back to Sign In</a>
     </p>
   </div>
 </div>
@@ -1399,6 +1424,21 @@ const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// ── Phone normalizer (accepts any format, returns E.164) ─────
+function normalizePhone(raw) {
+  // Strip everything except digits and leading +
+  let digits = raw.replace(/[^\d]/g, '');
+  // North American: 10 digits → prepend +1
+  if (digits.length === 10) return '+1' + digits;
+  // North American with country code: 11 digits starting with 1
+  if (digits.length === 11 && digits.startsWith('1')) return '+' + digits;
+  // Already has + prefix and looks international
+  if (raw.trim().startsWith('+') && digits.length >= 8) return '+' + digits;
+  // Fallback: just prepend + if we have enough digits
+  if (digits.length >= 8) return '+' + digits;
+  return null; // invalid
+}
+
 // ── Signup handler ───────────────────────────────────────────
 async function handleSignup(e) {
   e.preventDefault();
@@ -1410,8 +1450,31 @@ async function handleSignup(e) {
   const lastName  = document.getElementById('signupLastName').value.trim();
   const email     = document.getElementById('signupEmail').value.trim();
   const password  = document.getElementById('signupPassword').value;
-  const address   = document.getElementById('signupAddress').value.trim();
-  const mobile    = document.getElementById('signupMobile').value.trim();
+  const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+  const street   = document.getElementById('signupStreet').value.trim();
+  const city     = document.getElementById('signupCity').value.trim();
+  const province = document.getElementById('signupProvince').value.trim();
+  const postal   = document.getElementById('signupPostal').value.trim();
+  const country  = document.getElementById('signupCountry').value.trim();
+  const mobileRaw = document.getElementById('signupMobile').value.trim();
+
+  // ── Client-side validation ──────────────────────────────────
+  if (password !== passwordConfirm) {
+    msg.style.color = 'var(--red-neg)';
+    msg.textContent = 'Passwords do not match. Please try again.';
+    document.getElementById('signupPasswordConfirm').focus();
+    return;
+  }
+
+  const mobile = normalizePhone(mobileRaw);
+  if (!mobile) {
+    msg.style.color = 'var(--red-neg)';
+    msg.textContent = 'Please enter a valid phone number.';
+    document.getElementById('signupMobile').focus();
+    return;
+  }
+
+  const address = [street, city, province, postal, country].filter(Boolean).join(', ');
 
   btn.disabled = true;
   btn.textContent = 'Creating account...';
@@ -1487,8 +1550,50 @@ async function handleSignIn(e) {
 
 // Allow Escape key to close the sign-in modal
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeSignIn();
+  if (e.key === 'Escape') { closeSignIn(); closeForgotPassword(); }
 });
+
+// ── Forgot password modal controls ──────────────────────────
+function openForgotPassword(e) {
+  if (e) e.preventDefault();
+  closeSignIn();
+  document.getElementById('forgotModal').classList.add('open');
+  document.getElementById('forgotMsg').textContent = '';
+  document.getElementById('forgotMsg').className = 'modal-msg';
+  setTimeout(() => document.getElementById('forgotEmail').focus(), 50);
+}
+function closeForgotPassword(e) {
+  if (e && e.target !== document.getElementById('forgotModal')) return;
+  document.getElementById('forgotModal').classList.remove('open');
+}
+
+// ── Forgot password handler ──────────────────────────────────
+async function handleForgotPassword(e) {
+  e.preventDefault();
+  const btn = document.getElementById('forgotBtn');
+  const msg = document.getElementById('forgotMsg');
+  const email = document.getElementById('forgotEmail').value.trim();
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  msg.className = 'modal-msg';
+  msg.textContent = '';
+
+  try {
+    const { error } = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/reset-password.html'
+    });
+    if (error) throw error;
+    msg.className = 'modal-msg success';
+    msg.textContent = 'Reset link sent — check your inbox.';
+    btn.textContent = 'Sent ✓';
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Reset Link';
+    msg.className = 'modal-msg error';
+    msg.textContent = err.message || 'Something went wrong. Please try again.';
+  }
+}
 
 // ── Scroll animations ─────────────────────────────────────────
 const observer = new IntersectionObserver((entries) => {
