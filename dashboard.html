@@ -638,7 +638,22 @@
 
 /* Regime + action badges */
 .regime-label { font-size: var(--fs-sm); letter-spacing: 0.14em; }
-.regime-since { font-size: var(--fs-xs); color: var(--grey); letter-spacing: 0.08em; margin-top: 4px; }
+.rebal-badge {
+  display:flex; align-items:center; gap:12px;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  padding:14px 22px;
+}
+.rebal-days {
+  font-family:var(--font-display);
+  font-size:2rem; font-weight:300;
+  color:var(--white); line-height:1;
+}
+.rebal-label {
+  font-size:var(--fs-xs); font-weight:600;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--grey); line-height:1.5;
+}
 .action-badge { font-size: var(--fs-sm); letter-spacing: 0.14em; }
 .regime-chip  { font-size: var(--fs-xs); }
 
@@ -873,7 +888,7 @@
   <div class="db-nav-section">
     <div class="db-nav-heading">Portfolio</div>
     <div class="db-nav-link" onclick="navTo('construction')">
-      <div class="db-nav-dot"></div>Portfolio Construction
+      <div class="db-nav-dot"></div>Construction
     </div>
     <div class="db-nav-link" onclick="navTo('allocation')">
       <div class="db-nav-dot"></div>Asset Allocation
@@ -923,9 +938,12 @@
     <div class="regime-badge">
       <div class="regime-dot" id="dashRegimeDot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></div>
       <div class="regime-label" id="dashRegimeLabel">GREEN — PRISM</div>
-      <div class="regime-since" id="dashRegimeSince"></div>
     </div>
     <div class="action-badge action-hold" id="dashActionBadge">&#10003; No Action Required — Hold Allocation</div>
+    <div class="rebal-badge">
+      <div class="rebal-days" id="dashRebalDays">—</div>
+      <div class="rebal-label">days since last<br>portfolio rebalance</div>
+    </div>
   </div>
 
   <!-- Live Allocation Strip -->
