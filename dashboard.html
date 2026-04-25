@@ -637,6 +637,7 @@
 
 /* Regime + action badges */
 .regime-label { font-size: var(--fs-sm); letter-spacing: 0.14em; }
+.regime-since { font-size: var(--fs-xs); color: var(--grey); letter-spacing: 0.08em; margin-top: 4px; }
 .action-badge { font-size: var(--fs-sm); letter-spacing: 0.14em; }
 .regime-chip  { font-size: var(--fs-xs); }
 
@@ -921,6 +922,7 @@
     <div class="regime-badge">
       <div class="regime-dot" id="dashRegimeDot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></div>
       <div class="regime-label" id="dashRegimeLabel">GREEN — PRISM</div>
+      <div class="regime-since" id="dashRegimeSince"></div>
     </div>
     <div class="action-badge action-hold" id="dashActionBadge">&#10003; No Action Required — Hold Allocation</div>
   </div>
@@ -1232,6 +1234,7 @@
           <th></th>
           <th colspan="2" class="right group-header">Riders</th>
           <th></th>
+          <th></th>
         </tr>
         <tr>
           <th>Date</th>
@@ -1241,11 +1244,12 @@
           <th class="right">BIL</th>
           <th class="right">XOP</th>
           <th class="right">KBE</th>
+          <th class="right">Days</th>
           <th>Trigger</th>
         </tr>
       </thead>
       <tbody id="allocBody">
-        <tr><td colspan="8" style="text-align:center; color:var(--grey); padding:24px;">Loading...</td></tr>
+        <tr><td colspan="9" style="text-align:center; color:var(--grey); padding:24px;">Loading...</td></tr>
       </tbody>
     </table>
   </div>
@@ -2062,6 +2066,14 @@ async function loadSignal() {
     if (dot) { dot.style.background = colours[regime]; dot.style.boxShadow = '0 0 8px ' + colours[regime]; }
     const rl = document.getElementById('dashRegimeLabel');
     if (rl) rl.textContent = regime + ' — PRISM';
+    const rs = document.getElementById('dashRegimeSince');
+    if (rs && s.regime_days !== undefined && s.regime_since) {
+      const sinceDate = new Date(s.regime_since + 'T00:00:00');
+      const opts = { month: 'short', day: 'numeric' };
+      const sinceStr = sinceDate.toLocaleDateString('en-US', opts);
+      const d = s.regime_days;
+      rs.textContent = d + ' day' + (d === 1 ? '' : 's') + ' since ' + sinceStr;
+    }
 
     // Action badge
     const actionEl = document.getElementById('dashActionBadge');
@@ -2266,12 +2278,21 @@ async function loadAllocations() {
     if (!d.allocations || d.allocations.length === 0) { noData('No allocation history available'); return; }
 
     const regimeCls = { GREEN:'regime-green', YELLOW:'regime-yellow', RED:'regime-red' };
+    const today = new Date(); today.setHours(0,0,0,0);
     let html = '';
-    d.allocations.forEach(r => {
+    d.allocations.forEach((r, i) => {
       const xopPct = r.rider_ticker === 'XOP' ? Math.round(r.rider_pct || 0) : 0;
       const kbePct = r.rider_ticker === 'KBE' ? Math.round(r.rider_pct || 0) : 0;
       const regimePill = `<span class="regime-cell ${regimeCls[r.regime]||'regime-green'}">${r.regime||'—'}</span>`;
       const rowCls = r.is_rebalance ? ' class="rebalance"' : '';
+      // Days held: from this row's date to the prior row's date (or today for row 0)
+      let daysHeld = '—';
+      if (r.date) {
+        const rowDate = new Date(r.date + 'T00:00:00');
+        const endDate = i === 0 ? today : new Date(d.allocations[i-1].date + 'T00:00:00');
+        const diff = Math.round((endDate - rowDate) / 86400000);
+        if (diff >= 0) daysHeld = diff;
+      }
       html += `<tr${rowCls}>
         <td>${r.date||'—'}</td>
         <td>${regimePill}</td>
@@ -2280,6 +2301,7 @@ async function loadAllocations() {
         <td class="right">${Math.round(r.bil||0)}%</td>
         <td class="right">${xopPct}%</td>
         <td class="right">${kbePct}%</td>
+        <td class="right td-bench">${daysHeld}</td>
         <td>${r.trigger||'—'}</td>
       </tr>`;
     });
