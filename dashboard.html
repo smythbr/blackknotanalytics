@@ -742,6 +742,16 @@
   color: var(--light-grey);
 }
 
+/* Regime allocation matrix — font size + column widths */
+#construction .regime-matrix td,
+#construction .regime-matrix th { white-space:nowrap; }
+#construction .regime-matrix { font-size:var(--fs-base); }
+#construction .regime-matrix td { color:var(--white); }
+#construction .regime-matrix td:last-child,
+#construction .regime-matrix th:last-child {
+  width:100%; white-space:normal; text-align:left;
+}
+
 /* Item 10 + 11 + 12 + 13: construction restructure styling */
 #construction .asset-rationale {
   gap: 12px;
@@ -1125,7 +1135,7 @@
   <div style="margin-bottom:32px;">
     <div class="db-section-eyebrow" style="margin-bottom:12px;">Regime Allocation Matrix</div>
     <div style="overflow-x:auto;">
-    <table class="db-table" style="min-width:560px;">
+    <table class="db-table regime-matrix">
       <thead>
         <tr>
           <th>Market Regime</th>
