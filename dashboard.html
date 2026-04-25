@@ -1001,7 +1001,7 @@
     <div class="signal-card">
       <div class="signal-card-header">
         <div>
-          <div class="signal-card-name">Momentum</div>
+          <div class="signal-card-name">Market Momentum</div>
         </div>
         <div class="signal-card-status" id="momStatus"></div>
       </div>
@@ -2030,8 +2030,6 @@ function zToPct(z, invert = false) {
 
 // ── Signal status labels ──────────────────────────────────────
 function signalStatus(pct, trend, key) {
-  const state    = pct >= 55 ? 'Favourable' : pct >= 30 ? 'Cautionary' : 'Elevated';
-  const stateCol = pct >= 55 ? 'var(--green-pos)' : pct >= 30 ? 'var(--yellow-neu)' : 'var(--red-neg)';
   const improving = trend === 'Improving';
   let dirLabel;
   if (key === 'mom')      dirLabel = improving ? 'Accelerating' : 'Decelerating';
@@ -2039,21 +2037,15 @@ function signalStatus(pct, trend, key) {
   else                    dirLabel = improving ? 'Improving'    : 'Deteriorating';
   const arr    = improving ? '\u2191' : '\u2193';
   const dirCol = improving ? 'var(--green-pos)' : 'var(--red-neg)';
-  const label  = '<span style="color:' + stateCol + '">' + state + '</span>'
-               + '<span style="color:var(--grey)"> | </span>'
-               + '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
+  const label  = '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
   return { label, cls: '', html: true };
 }
 function vamsStatus(pct, trend) {
-  const state    = pct >= 55 ? 'Outperforming' : pct >= 30 ? 'Neutral' : 'Underperforming';
-  const stateCol = pct >= 55 ? 'var(--green-pos)' : pct >= 30 ? 'var(--yellow-neu)' : 'var(--red-neg)';
   const improving = trend === 'Improving';
-  const dirLabel = improving ? 'Improving' : 'Deteriorating';
-  const arr      = improving ? '\u2191' : '\u2193';
-  const dirCol   = improving ? 'var(--green-pos)' : 'var(--red-neg)';
-  const label    = '<span style="color:' + stateCol + '">' + state + '</span>'
-                 + '<span style="color:var(--grey)"> | </span>'
-                 + '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
+  const dirLabel  = improving ? 'Improving' : 'Deteriorating';
+  const arr       = improving ? '\u2191' : '\u2193';
+  const dirCol    = improving ? 'var(--green-pos)' : 'var(--red-neg)';
+  const label     = '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
   return { label, cls: '', html: true };
 }
 function setStatus(el, s) {
@@ -2128,12 +2120,12 @@ async function loadSignal() {
     if (winner) {
       if (riderBlock) riderBlock.className = 'alloc-block rider';
       if (riderTicker) { riderTicker.textContent = winner; riderTicker.style.color = ''; }
-      if (riderPct) { riderPct.textContent = f1(w[winner] || 0) + '%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; }
+      if (riderPct) { riderPct.textContent = f1(w[winner] || 0) + '%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; riderPct.style.color = ''; }
       if (riderLabel) riderLabel.textContent = 'Rider — Active';
     } else {
       if (riderBlock) riderBlock.className = 'alloc-block';
       if (riderTicker) { riderTicker.textContent = '—'; riderTicker.style.color = ''; }
-      if (riderPct) { riderPct.textContent = '0%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; }
+      if (riderPct) { riderPct.textContent = '0%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; riderPct.style.color = 'var(--white)'; }
       if (riderLabel) riderLabel.textContent = 'Rider';
     }
 
@@ -2165,18 +2157,10 @@ async function loadSignal() {
     // Status labels
     // Aggregate: state from regime, direction from 3-day p_stress trend
     const aggTrend    = prismTrend('agg', d);
-    const aggState    = regime === 'GREEN'  ? 'Favourable'
-                      : regime === 'YELLOW' ? 'Cautionary'
-                      : 'Elevated';
-    const aggStateCol = regime === 'GREEN'  ? 'var(--green-pos)'
-                      : regime === 'YELLOW' ? 'var(--yellow-neu)'
-                      : 'var(--red-neg)';
     const aggDir      = aggTrend || 'Deteriorating';
     const aggArr      = aggDir === 'Improving' ? '\u2191' : '\u2193';
     const aggDirCol   = aggDir === 'Improving' ? 'var(--green-pos)' : 'var(--red-neg)';
-    const aggLabel    = '<span style="color:' + aggStateCol + '">' + aggState + '</span>'
-                      + '<span style="color:var(--grey)"> | </span>'
-                      + '<span style="color:' + aggDirCol + '">' + aggDir + ' ' + aggArr + '</span>';
+    const aggLabel    = '<span style="color:' + aggDirCol + '">' + aggDir + ' ' + aggArr + '</span>';
     setStatus(document.getElementById('aggStatus'), { label: aggLabel, cls: '', html: true });
     setStatus(document.getElementById('momStatus'), signalStatus(pMom, prismTrend('mom', d), 'mom'));
     setStatus(document.getElementById('oasStatus'), signalStatus(pOas, prismTrend('oas', d), 'oas'));
