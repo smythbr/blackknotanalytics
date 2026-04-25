@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-24T19:21:37",
+  "generated": "2026-04-25T14:33:04",
   "signal": {
     "date": "2026-04-24",
     "regime": "GREEN",
@@ -9,8 +9,8 @@
     "p_stress": 0.3728,
     "action_required": false,
     "weights": {
-      "SPY": 80.93,
-      "GLD": 19.07,
+      "SPY": 80.0,
+      "GLD": 20.0,
       "BIL": 0.0,
       "XOP": 0.0,
       "KBE": 0.0
@@ -41,7 +41,7 @@
   },
   "perf": {
     "cagr": 14.47,
-    "cumulative_return": 206.38,
+    "cumulative_return": 206.39,
     "max_drawdown": -11.54,
     "sharpe": 1.35,
     "sortino": 1.811,
@@ -49,7 +49,7 @@
     "mar": 1.254,
     "omega": 1.263,
     "beta": 0.199,
-    "ytd_return": 7.03,
+    "ytd_return": 7.04,
     "current_drawdown": -0.77,
     "trades_per_year": 17.9,
     "total_trades": 148,
@@ -65,13 +65,13 @@
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 7.03,
+      "aegis": 7.04,
       "bench": 2.91,
       "spy": 4.98
     },
     "y1": {
       "aegis": 25.38,
-      "bench": 21.69,
+      "bench": 21.7,
       "spy": 34.87
     },
     "y3": {
@@ -81,11 +81,11 @@
     },
     "y5": {
       "aegis": 94.86,
-      "bench": 48.28,
+      "bench": 48.29,
       "spy": 83.42
     },
     "itd": {
-      "aegis": 206.38,
+      "aegis": 206.39,
       "bench": 111.95,
       "spy": 203.96
     }

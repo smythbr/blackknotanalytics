@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-24T19:21:37",
+  "generated": "2026-04-25T14:33:04",
   "allocations": [
     {
       "date": "2026-04-24",
       "regime": "GREEN",
-      "spy": 80.93,
-      "gld": 19.07,
+      "spy": 80.0,
+      "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
