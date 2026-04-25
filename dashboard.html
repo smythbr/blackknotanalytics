@@ -1935,49 +1935,97 @@
   <div class="db-section-title">Frequently Asked Questions</div>
   <div class="db-section-sub">Everything you need to understand AEGIS, act on the signal, and evaluate the evidence.</div>
 
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What exactly is AEGIS?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">AEGIS — Adaptive Evidence-Governed Investment System — is a systematic macro investment portfolio. It continuously monitors three independent market signals, synthesises them into a probabilistic stress measure, and adjusts allocation between three core ETFs (SPY, GLD, BIL) plus an optional alpha-generating rider. Every decision is rules-based. There is no discretion, no opinion, and no human override in the daily signal generation.</div>
-  </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">How do I act on the signal?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">The signal tells you exactly what allocation to hold: the percentage weight for SPY, GLD, BIL, and — where active — the VAMS rider. When the signal says "No Action Required," you hold your current allocation. When it says "Action Required," you rebalance to the new target weights. That is the entire implementation. One decision, made on average fewer than 18 times per year.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What is PRISM?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">PRISM (Probabilistic Regime and Integrated Stress Monitor) is the regime detection engine at the core of AEGIS. It monitors three structurally independent signals: SPY price momentum (21-day EWMA trend), HY credit spreads (OAS z-score), and realised downside volatility (RV- z-score). These three signals are combined using fixed weights into a single continuous stress probability. When this probability crosses defined thresholds, PRISM classifies the regime and AEGIS adjusts allocation accordingly.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What is VAMS and when is it active?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">VAMS (Volatility-Adjusted Momentum Signal) is the alpha-generating rider overlay. It is active exclusively when PRISM identifies a low-stress regime. VAMS evaluates two sector ETFs — XOP (energy) and KBE (regional banks) — using a volatility-adjusted 21-day momentum z-score. The sector with statistically significant excess return versus SPY is deployed as the tactical rider. If neither qualifies, SPY absorbs the rider allocation. VAMS is entirely dormant in elevated and high-stress regimes.</div>
+    <div class="faq-q" onclick="toggleFaq(this)">What is this service, and what does AEGIS do?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">BLACK KNOT ANALYTICS is an independent educational service built around AEGIS &mdash; a systematic, rules-based macro investment model designed for the sophisticated DIY investor. AEGIS monitors market conditions continuously, classifies the current market regime, and generates a daily signal specifying the portfolio allocation to hold across three core ETFs.<br><br>Every decision the system makes is evidence-driven and fully systematic. There is no discretion, no opinion, and no human override in the signal generation process. This is not a fund, an advisory service, or a managed account. It is an educational resource that publishes a research signal.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Why SPY, GLD, and BIL specifically?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">Each asset was chosen for a specific, non-redundant role. SPY provides clean, liquid equity beta at minimum cost. GLD provides genuine diversification across both inflationary and flight-to-safety environments — critically, without the duration risk of bonds. BIL provides pure capital preservation with near-zero interest rate and credit risk. This is a deliberate departure from the 60/40 model: bonds are replaced with T-bills specifically to eliminate the scenario where equities and bonds fall simultaneously, as occurred in 2022.</div>
+    <div class="faq-a">Each asset plays a specific, non-redundant role.<br><br>SPY provides broad, liquid equity exposure at minimal cost &mdash; the cleanest expression of the equity risk premium available to any investor.<br><br>GLD provides genuine diversification across both inflationary and risk-off environments. Unlike bonds, gold carries no duration risk. It does not decline alongside equities when interest rates rise &mdash; the failure mode that made traditional 60/40 portfolios so destructive in 2022.<br><br>BIL provides pure capital preservation while earning positive carry during defensive periods. Capital held in T-bills is not idle &mdash; it is positioned for decisive redeployment the moment conditions clear.<br><br>This three-asset structure deliberately replaces bonds with T-bills to eliminate the scenario where equities and bonds fall simultaneously. 2022 was the defining illustration of why that distinction matters.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">How many times per year will I need to rebalance?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">On average 17.9 times per year over the full backtest period — or roughly once every three weeks. Not every rebalance is a full regime change. Many are drift corrections or rider swaps within the same regime. The maximum number of rebalances in any single year in the backtest was below 30. Each rebalance is a simple ETF trade through your existing brokerage account.</div>
+    <div class="faq-q" onclick="toggleFaq(this)">How does the system generate its signals?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">AEGIS applies a proprietary multi-signal stress detection framework that synthesises several structurally independent market data streams into a single, continuous measure of market stress &mdash; an indicator of whether conditions favour risk-taking or capital preservation.<br><br>When stress is low &mdash; a Risk-On regime &mdash; the portfolio is fully deployed into risk assets. As stress rises toward Risk-Off, exposure is reduced systematically, shifting capital toward defensive positions. A tactical Rider overlay may further enhance returns during Risk-On conditions. When conditions deteriorate, the Rider goes dormant.<br><br>The specific signal inputs, weighting methodology, and tactical mechanics are proprietary. Operationally, what matters is straightforward: when the signal indicates a rebalance, you rebalance. When it says hold, you hold.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What do GIPS conformance and BarclayHedge CTA standards mean?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">GIPS (Global Investment Performance Standards) are a globally recognised set of performance reporting standards developed by the CFA Institute. BarclayHedge CTA standards are the performance reporting requirements applied to managed futures and systematic trading advisors. Conforming to both standards means the performance record was calculated and presented according to the same methodology used by institutional asset managers — no cherry-picking of time periods, no selective reporting, and full disclosure of methodology.</div>
+    <div class="faq-q" onclick="toggleFaq(this)">How do I act on the signal?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">The signal specifies exactly what allocation to hold &mdash; the target percentage weight for each asset in the portfolio. When the dashboard shows &ldquo;No Action Required,&rdquo; hold your current allocation. When it shows &ldquo;Action Required,&rdquo; rebalance to the new target weights.<br><br>Execution is a simple ETF trade through your existing brokerage account. One decision, made on average fewer than 18 times per year.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">How was the 15-year backtest validated?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">The backtest runs from January 2018 and uses a walk-forward methodology — parameters are fixed in advance, not optimised to fit past data. Performance was evaluated across 31 independent quality tests covering signal integrity, regime classification, statistical validity, portfolio asymmetry, and sub-period consistency. All 31 tests are currently passing. The backtest includes all known major stress events, and PRISM correctly classified every one.</div>
+    <div class="faq-q" onclick="toggleFaq(this)">Will I be automatically notified when a rebalance is required?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">Not currently. AEGIS does not send push notifications, email alerts, or SMS messages when the signal changes. Monitoring the dashboard is the subscriber&rsquo;s responsibility.<br><br>The practical approach is to make it part of your daily routine &mdash; a brief check at the start of each trading day takes seconds. The Today&rsquo;s Signal panel displays the current regime and whether any action is required. When the signal has changed, it will show &ldquo;Action Required&rdquo; alongside the updated target weights.<br><br>Regime-driven rebalances are not time-sensitive to the minute, but acting within the trading day is generally appropriate. A transition that occurs overnight will be visible from market open.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is a regime-driven rebalance?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">A regime-driven rebalance is triggered by the AEGIS signal. It occurs when the system&rsquo;s stress measure crosses a defined threshold, changing its classification of the current market environment &mdash; for example, from Risk-On to Neutral, or from Neutral to Risk-Off.<br><br>When the dashboard shows &ldquo;Action Required,&rdquo; that is a regime-driven rebalance. Acting on it promptly is the subscriber&rsquo;s core implementation task. These are the rebalances the service is built to deliver.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is a drift rebalance, and who is responsible for it?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">Over time, actual portfolio weights drift away from their targets as individual ETF prices move. After a sustained equity rally, for example, your SPY allocation may creep well above its target weight. A drift rebalance restores the portfolio to target &mdash; there is no change in the AEGIS regime classification driving it.<br><br>AEGIS does not generate drift rebalance alerts. Monitoring for drift and deciding when to correct it is the subscriber&rsquo;s responsibility. A common approach is to review allocation quarterly and rebalance when any individual position has drifted more than three to five percentage points from its target.<br><br>The system handles regime changes. You handle drift.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How often should I expect to rebalance?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">Regime-driven rebalances average fewer than 18 per year across the full evaluation period &mdash; roughly once every three weeks. Activity clusters around genuine stress events, so the system is quiet during sustained bull markets and more active during periods of real dislocation.<br><br>Drift rebalances are additional and depend on how closely you monitor your allocation. For most subscribers, a quarterly drift review is sufficient.<br><br>Every rebalance &mdash; regime-driven or drift-correcting &mdash; is a simple ETF trade through your existing broker.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How does the Rider work?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">The Rider is a tactical overlay that becomes active when AEGIS is in a Risk-On regime. It represents a portion of the total portfolio allocated not to SPY, but to a single sector ETF that the system has identified as delivering statistically meaningful, risk-adjusted outperformance relative to the broad market.<br><br>When the Rider is active, the Today&rsquo;s Signal panel will show the assigned sector ETF alongside the target weights for SPY, GLD, and BIL. When no sector candidate meets the required performance threshold, the Rider allocation reverts to SPY &mdash; you will see SPY absorb that weight in the displayed targets.<br><br>The Rider is completely dormant during Neutral and Risk-Off regimes.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Is the Rider always the same asset?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">No. The system evaluates a pool of candidate sector ETFs &mdash; currently XOP (energy) and KBE (regional banks) &mdash; and deploys whichever is delivering the strongest, most persistent risk-adjusted outperformance relative to the broader market under the current regime.<br><br>Once a Rider is deployed, it is not displaced by a challenger that merely performs marginally better. A meaningful performance gap must be established before a switch occurs. This prevents unnecessary churn and keeps transaction costs reasonable.<br><br>The Rider may therefore hold its position for extended periods, or rotate when the system detects a genuine, sustained shift in relative sector performance. When a switch occurs, the dashboard will show &ldquo;Action Required&rdquo; with updated target weights. The composition of the Rider pool is reviewed annually.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What should I expect when the signal goes Risk-Off?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">A Risk-Off signal means the system has detected elevated market stress and reduced equity exposure materially, shifting capital into defensive positions. The portfolio is designed to preserve capital during these periods, not pursue returns.<br><br>You should expect to participate less &mdash; or not at all &mdash; in equity market rallies while Risk-Off is active. That is the known, accepted cost of the strategy. The system has occasionally moved defensive in markets that continued higher. That is not a malfunction; it is the deliberate trade-off that makes deep-drawdown protection possible.<br><br>When conditions clear and the signal transitions back toward Risk-On, positions are rebuilt progressively. The single most important discipline is to follow the signal consistently &mdash; especially when doing so feels most difficult.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Will AEGIS outperform the market every year?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">No &mdash; and that is by design.<br><br>AEGIS is explicitly structured to prioritise capital protection over full upside capture. In years where markets rise strongly and stress remains low throughout, a simple buy-and-hold S&amp;P 500 position will likely outperform. 2019 and 2024 are examples from the evaluation period where AEGIS lagged SPY &mdash; in both cases, a measured posture limited participation in portions of the rally.<br><br>This is the honest cost of a drawdown-first strategy. It is paid back many times over in years like 2020 and 2022, where protecting capital during the decline preserved the base from which recovery compounds.<br><br>The system is not designed to win every year. It is designed to win over the full cycle.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How does the system&rsquo;s creator personally use AEGIS?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">AEGIS manages my entire personal investment portfolio &mdash; not a subset of it. I run no separate satellite allocation.<br><br>When building into a position &mdash; transitioning from Risk-Off back toward Risk-On, for example &mdash; I do not deploy the full target allocation in a single trade. I dollar-cost average into the position gradually, spreading entry across several transactions. This limits the risk of committing full capital at the wrong moment during a recovery that may not yet be confirmed.<br><br>When reducing risk &mdash; a shift toward Neutral or Risk-Off &mdash; I act quickly and decisively. The position is reduced in full, not partially. The asymmetry is intentional: gradual entry when rebuilding, fast exit when protecting.<br><br>This is how I personally implement the signal. Subscribers will make their own decisions about execution based on their circumstances.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What about taxes?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">Each regime-driven rebalance may constitute a taxable event in non-registered accounts, as positions are sold and capital gains may be realised.<br><br>AEGIS is most efficiently deployed inside tax-advantaged structures &mdash; RRSPs and TFSAs in Canada, IRAs and 401(k)s in the United States &mdash; where rebalancing events carry no immediate tax consequence and every dollar of return compounds without friction.<br><br>For taxable accounts, the relevant question is not tax deferral versus realisation in isolation. It is whether the capital preserved by moving defensively outweighs the tax cost of doing so. In a year like 2022, that comparison is unambiguous.<br><br>This platform does not provide tax advice. Consult a qualified tax professional for guidance specific to your situation, jurisdiction, and account structure.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Is this investment advice?<span class="faq-toggle">+</span></div>
-    <div class="faq-a">No. BLACK KNOT ANALYTICS is an independent educational resource. AEGIS is a systematic research model. The signal and all content on this platform is provided for educational purposes only. Nothing on this platform constitutes a recommendation to buy or sell any security. All investment decisions are the sole responsibility of the subscriber. BLACK KNOT ANALYTICS is not a registered investment advisor or portfolio manager.</div>
+    <div class="faq-a">No. BLACK KNOT ANALYTICS is an independent educational resource. AEGIS is a systematic research model, and everything on this platform &mdash; the signal, commentary, and performance data &mdash; is provided for educational purposes only.<br><br>Nothing here constitutes a recommendation to buy or sell any security. All investment decisions are the sole responsibility of the subscriber. BLACK KNOT ANALYTICS is not a registered investment advisor or portfolio manager.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How was performance validated?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">The AEGIS evaluation period runs from January 2018 to present, using a strict walk-forward methodology &mdash; parameters are fixed in advance and never optimised to fit past data. Performance reporting conforms to CFA Institute GIPS standards and BarclayHedge CTA methodology, consistent with the standards applied to institutional systematic strategies.<br><br>The backtest was subjected to 31 independent quality tests spanning signal integrity, regime classification accuracy, statistical validity, portfolio asymmetry, and sub-period consistency. All 31 are currently passing.<br><br>Every major market stress event across the full evaluation window is represented. There is no selective presentation of results.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What do GIPS conformance and BarclayHedge CTA standards mean?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">GIPS (Global Investment Performance Standards) are the globally recognised performance reporting standards developed by the CFA Institute. They govern how returns must be calculated, presented, and disclosed.<br><br>BarclayHedge CTA standards are the reporting requirements applied to managed futures and systematic trading advisors &mdash; the institutional benchmark against which strategies like AEGIS are assessed.<br><br>Conforming to both means the performance record was calculated using the same methodology required of institutional asset managers: no cherry-picked time periods, no selective presentation of results, full disclosure of methodology. It is the standard of accountability the institutional industry demands, applied to a retail implementation.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Who can I contact if I need help?<span class="faq-toggle">+</span></div>
+    <div class="faq-a">AEGIS is a self-directed educational service. There is no helpdesk, account manager, or advisor &mdash; and that is intentional. The signal requires no intermediary between the system and the subscriber.<br><br>The FAQ, the methodology overview, and the educational content throughout the dashboard are designed to answer the full range of operational questions: how to respond to a signal, how to handle drift, what the target weights represent in practice.</div>
+  </div>
+
   </div>
 
 </div>
