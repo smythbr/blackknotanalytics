@@ -1,15 +1,16 @@
 {
-  "generated": "2026-04-24T18:49:43",
+  "generated": "2026-04-24T19:21:37",
   "signal": {
     "date": "2026-04-24",
     "regime": "GREEN",
     "regime_since": "2026-04-17",
     "regime_days": 7,
+    "last_rebalance_date": "2026-04-17",
     "p_stress": 0.3728,
     "action_required": false,
     "weights": {
-      "SPY": 80.85,
-      "GLD": 19.15,
+      "SPY": 80.93,
+      "GLD": 19.07,
       "BIL": 0.0,
       "XOP": 0.0,
       "KBE": 0.0
@@ -75,7 +76,7 @@
     },
     "y3": {
       "aegis": 75.37,
-      "bench": 50.65,
+      "bench": 50.66,
       "spy": 79.8
     },
     "y5": {
@@ -85,7 +86,7 @@
     },
     "itd": {
       "aegis": 206.38,
-      "bench": 111.94,
+      "bench": 111.95,
       "spy": 203.96
     }
   }
