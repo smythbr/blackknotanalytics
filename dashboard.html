@@ -2350,7 +2350,7 @@ async function loadAllocations() {
     if (!tbody) return;
     if (!d.allocations || d.allocations.length === 0) { noData('No allocation history available'); return; }
 
-    const regimeCls = { GREEN:'regime-green', YELLOW:'regime-yellow', RED:'regime-red' };
+    const regimeCls = { 'Risk-On':'regime-green', 'Transition':'regime-yellow', 'Risk-Off':'regime-red' };
     const today = new Date(); today.setHours(0,0,0,0);
     let html = '';
     d.allocations.forEach((r, i) => {
