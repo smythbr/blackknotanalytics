@@ -392,6 +392,7 @@
   border:1px solid var(--card-border);
   border-top:2px solid var(--red);
   padding:16px 20px;
+  text-align:center;
 }
 .plc-label {
   font-size:var(--fs-sm); font-weight:700;
@@ -872,7 +873,7 @@
   <div class="db-nav-section">
     <div class="db-nav-heading">Portfolio</div>
     <div class="db-nav-link" onclick="navTo('construction')">
-      <div class="db-nav-dot"></div>Construction
+      <div class="db-nav-dot"></div>Portfolio Construction
     </div>
     <div class="db-nav-link" onclick="navTo('allocation')">
       <div class="db-nav-dot"></div>Asset Allocation
@@ -2066,13 +2067,12 @@ async function loadSignal() {
     if (dot) { dot.style.background = colours[regime]; dot.style.boxShadow = '0 0 8px ' + colours[regime]; }
     const rl = document.getElementById('dashRegimeLabel');
     if (rl) rl.textContent = regime + ' — PRISM';
-    const rs = document.getElementById('dashRegimeSince');
-    if (rs && s.regime_days !== undefined && s.regime_since) {
-      const sinceDate = new Date(s.regime_since + 'T00:00:00');
-      const opts = { month: 'short', day: 'numeric' };
-      const sinceStr = sinceDate.toLocaleDateString('en-US', opts);
-      const d = s.regime_days;
-      rs.textContent = d + ' day' + (d === 1 ? '' : 's') + ' since ' + sinceStr;
+    const rb = document.getElementById('dashRebalDays');
+    if (rb && s.last_rebalance_date) {
+      const rebalDate = new Date(s.last_rebalance_date + 'T00:00:00');
+      const today = new Date(); today.setHours(0,0,0,0);
+      const days = Math.round((today - rebalDate) / 86400000);
+      rb.textContent = days;
     }
 
     // Action badge
