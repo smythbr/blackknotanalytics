@@ -829,7 +829,7 @@
 .regime-cell.regime-red    { background: rgba(248, 113, 113, 0.12); color: var(--red-neg); }
 
 /* ─── FORMATTING BATCH ───────────────────────────────────────── */
-/* Construction — Stress Level (col 2) + Objective (col 7) */
+/* Construction — State (col 2) + Objective (col 7) */
 #construction .db-table td:nth-child(2) { text-align:left; }
 #construction .db-table td:nth-child(7) { text-align:left; }
 
@@ -1119,17 +1119,16 @@
 <div class="db-section" id="construction">
   <div class="db-section-eyebrow">Portfolio</div>
   <div class="db-section-title">Portfolio Construction</div>
-  <div class="db-section-sub">Three core assets form the permanent portfolio structure. A tactical alpha-generating rider is added in low-stress regimes. Every asset was selected for a specific, non-redundant role.</div>
+  <div class="db-section-sub">Three core assets form the permanent portfolio structure. A tactical alpha-generating rider is added in Risk-On regimes. Every asset was selected for a specific, non-redundant role.</div>
 
   <!-- Regime Allocation Matrix -->
   <div style="margin-bottom:32px;">
     <div class="db-section-eyebrow" style="margin-bottom:12px;">Regime Allocation Matrix</div>
     <div style="overflow-x:auto;">
-    <table class="db-table" style="min-width:600px;">
+    <table class="db-table" style="min-width:560px;">
       <thead>
         <tr>
-          <th>Regime</th>
-          <th>Stress Level</th>
+          <th>Market Regime</th>
           <th class="right">SPY</th>
           <th class="right">GLD</th>
           <th class="right">BIL</th>
@@ -1139,39 +1138,35 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="regime-chip green">GREEN</span></td>
-          <td style="color:var(--green-pos);">Low Stress — Growth</td>
-          <td class="right td-pos">60%</td>
-          <td class="right td-bench">20%</td>
-          <td class="right td-bench">0%</td>
-          <td class="right td-pos">20%</td>
+          <td><span style="color:var(--green-pos);">Risk-On</span><span style="color:var(--grey);"> | </span><span style="color:var(--grey);">Rider Active</span></td>
+          <td class="right">60%</td>
+          <td class="right">20%</td>
+          <td class="right">0%</td>
+          <td class="right">20%</td>
           <td style="color:var(--grey);">Maximise upside capture + alpha rider</td>
         </tr>
         <tr>
-          <td><span class="regime-chip green">GREEN</span></td>
-          <td style="color:var(--green-pos);">Low Stress — No Qualifier</td>
-          <td class="right td-pos">80%</td>
-          <td class="right td-bench">20%</td>
-          <td class="right td-bench">0%</td>
-          <td class="right td-bench">—</td>
+          <td><span style="color:var(--green-pos);">Risk-On</span><span style="color:var(--grey);"> | </span><span style="color:var(--grey);">Rider Inactive</span></td>
+          <td class="right">80%</td>
+          <td class="right">20%</td>
+          <td class="right">0%</td>
+          <td class="right">—</td>
           <td style="color:var(--grey);">Full equity exposure, SPY absorbs rider slot</td>
         </tr>
         <tr>
-          <td><span class="regime-chip yellow">YELLOW</span></td>
-          <td style="color:var(--yellow-neu);">Elevated — Transitional</td>
-          <td class="right td-neu">45%</td>
-          <td class="right td-bench">20%</td>
-          <td class="right td-neu">35%</td>
-          <td class="right td-bench">—</td>
+          <td style="color:var(--yellow-neu);">Transition</td>
+          <td class="right">45%</td>
+          <td class="right">20%</td>
+          <td class="right">35%</td>
+          <td class="right">—</td>
           <td style="color:var(--grey);">Balanced exposure, building capital defence</td>
         </tr>
         <tr>
-          <td><span class="regime-chip red">RED</span></td>
-          <td style="color:var(--red-neg);">High Stress — Preservation</td>
-          <td class="right td-bench">0%</td>
-          <td class="right td-bench">20%</td>
-          <td class="right td-neg">80%</td>
-          <td class="right td-bench">—</td>
+          <td style="color:var(--red-neg);">Risk-Off</td>
+          <td class="right">0%</td>
+          <td class="right">20%</td>
+          <td class="right">80%</td>
+          <td class="right">—</td>
           <td style="color:var(--grey);">Minimise drawdown, preserve capital</td>
         </tr>
       </tbody>
