@@ -933,14 +933,12 @@
   <div class="db-section-title">Today's Signal</div>
   <div class="db-section-sub" id="signalDateLine">Updated daily after market close. As of —</div>
 
-  <!-- Regime + Action Status -->
+  <!-- Action Status + Holding Period -->
   <div class="regime-display">
-    <div class="regime-badge">
-      <div class="regime-dot" id="dashRegimeDot" style="background:#22c55e; box-shadow:0 0 8px #22c55e;"></div>
-      <div class="regime-label" id="dashRegimeLabel">GREEN — PRISM</div>
+    <div class="action-badge action-hold" id="dashActionBadge" style="flex:0 0 65%;">
+      <span id="dashActionStatus">&#10003; No Action Required</span><span style="color:rgba(255,255,255,0.4);"> — </span><span id="dashActionInstruction" style="color:var(--white);">Hold Allocation</span>
     </div>
-    <div class="action-badge action-hold" id="dashActionBadge">&#10003; No Action Required — Hold Allocation</div>
-    <div class="rebal-badge">
+    <div class="rebal-badge" style="flex:1;">
       <div class="rebal-days" id="dashRebalDays">—</div>
       <div class="rebal-label">days since last<br>portfolio rebalance</div>
     </div>
@@ -2091,14 +2089,20 @@ async function loadSignal() {
     }
 
     // Action badge
-    const actionEl = document.getElementById('dashActionBadge');
+    const actionEl     = document.getElementById('dashActionBadge');
+    const actionStatus = document.getElementById('dashActionStatus');
+    const actionInstr  = document.getElementById('dashActionInstruction');
     if (actionEl && s.action_required !== undefined) {
       if (s.action_required) {
-        actionEl.textContent = '⚡ Action Required — Rebalance';
         actionEl.className = 'action-badge action-required';
+        if (actionStatus) actionStatus.textContent = '⚡ Action Required';
+        if (actionStatus) actionStatus.style.color = '';
+        if (actionInstr)  { actionInstr.textContent = 'Rebalance Now'; actionInstr.style.color = 'var(--white)'; }
       } else {
-        actionEl.textContent = '✓ No Action Required — Hold Allocation';
         actionEl.className = 'action-badge action-hold';
+        if (actionStatus) actionStatus.textContent = '✓ No Action Required';
+        if (actionStatus) actionStatus.style.color = '';
+        if (actionInstr)  { actionInstr.textContent = 'Hold Allocation'; actionInstr.style.color = 'var(--white)'; }
       }
     }
 
