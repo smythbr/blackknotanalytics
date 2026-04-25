@@ -963,10 +963,10 @@
       <div class="alloc-pct" id="allocBIL">0.0%</div>
       <div class="alloc-label">Money Market</div>
     </div>
-    <div class="alloc-block rider" id="riderBlock">
+    <div class="alloc-block" id="riderBlock">
       <div class="alloc-ticker" id="riderTicker">—</div>
-      <div class="alloc-pct" id="riderPct" style="font-size:1.1rem; padding-top:4px;">SPY absorbing</div>
-      <div class="alloc-label" id="riderLabel">VAMS Rider</div>
+      <div class="alloc-pct" id="riderPct">0%</div>
+      <div class="alloc-label" id="riderLabel">Rider</div>
     </div>
   </div>
 
@@ -977,8 +977,8 @@
     <div class="signal-card full-width">
       <div class="signal-card-header">
         <div>
-          <div class="signal-card-name">AGGREGATE TREND</div>
-          <div class="signal-card-desc">PRISM composite stress probability</div>
+          <div class="signal-card-name">PRISM Regime Signal</div>
+          <div class="signal-card-desc">Composite probability — drives portfolio allocation</div>
         </div>
         <div class="signal-card-status" id="aggStatus"></div>
       </div>
@@ -991,9 +991,9 @@
         <div class="sig-cursor" id="aggCursor" style="left:61.7%"></div>
       </div>
       <div class="sig-bar-labels">
-        <span>Elevated Stress</span>
-        <span>Transition</span>
-        <span>Low Stress</span>
+        <span style="color:#CC1010;">Risk-Off</span>
+        <span style="color:#D4A800;">Transition</span>
+        <span style="color:#00A846;">Risk-On</span>
       </div>
     </div>
 
@@ -1014,7 +1014,7 @@
         <div class="sig-cursor" id="momCursor" style="left:71.1%"></div>
       </div>
       <div class="sig-bar-labels">
-        <span>Weakening</span><span></span><span>Improving</span>
+        <span>Decelerating</span><span></span><span>Accelerating</span>
       </div>
     </div>
 
@@ -1056,7 +1056,7 @@
         <div class="sig-cursor" id="rvCursor" style="left:52.6%"></div>
       </div>
       <div class="sig-bar-labels">
-        <span>Spiking</span><span></span><span>Easing</span>
+        <span>Turbulent</span><span></span><span>Calm</span>
       </div>
     </div>
 
@@ -1083,7 +1083,7 @@
         <div class="sig-cursor" id="xopCursor" style="left:38.9%"></div>
       </div>
       <div class="sig-bar-labels">
-        <span>Underperforming</span><span></span><span>Qualifying</span>
+        <span>Underperforming</span><span></span><span>Outperforming</span>
       </div>
     </div>
 
@@ -1104,7 +1104,7 @@
         <div class="sig-cursor" id="kbeCursor" style="left:39.1%"></div>
       </div>
       <div class="sig-bar-labels">
-        <span>Underperforming</span><span></span><span>Qualifying</span>
+        <span>Underperforming</span><span></span><span>Outperforming</span>
       </div>
     </div>
 
@@ -2029,26 +2029,31 @@ function zToPct(z, invert = false) {
 }
 
 // ── Signal status labels ──────────────────────────────────────
-function signalStatus(pct, trend) {
+function signalStatus(pct, trend, key) {
   const state    = pct >= 55 ? 'Favourable' : pct >= 30 ? 'Cautionary' : 'Elevated';
   const stateCol = pct >= 55 ? 'var(--green-pos)' : pct >= 30 ? 'var(--yellow-neu)' : 'var(--red-neg)';
-  const dir      = trend || 'Deteriorating';
-  const arr      = dir === 'Improving' ? '\u2191' : '\u2193';
-  const dirCol   = dir === 'Improving' ? 'var(--green-pos)' : 'var(--red-neg)';
-  const label    = '<span style="color:' + stateCol + '">' + state + '</span>'
-                 + '<span style="color:var(--grey)"> | </span>'
-                 + '<span style="color:' + dirCol + '">' + dir + ' ' + arr + '</span>';
+  const improving = trend === 'Improving';
+  let dirLabel;
+  if (key === 'mom')      dirLabel = improving ? 'Accelerating' : 'Decelerating';
+  else if (key === 'oas') dirLabel = improving ? 'Tightening'   : 'Widening';
+  else                    dirLabel = improving ? 'Improving'    : 'Deteriorating';
+  const arr    = improving ? '\u2191' : '\u2193';
+  const dirCol = improving ? 'var(--green-pos)' : 'var(--red-neg)';
+  const label  = '<span style="color:' + stateCol + '">' + state + '</span>'
+               + '<span style="color:var(--grey)"> | </span>'
+               + '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
   return { label, cls: '', html: true };
 }
 function vamsStatus(pct, trend) {
-  const state    = pct >= 55 ? 'Qualified' : pct >= 30 ? 'Neutral' : 'Non-Qualifying';
+  const state    = pct >= 55 ? 'Outperforming' : pct >= 30 ? 'Neutral' : 'Underperforming';
   const stateCol = pct >= 55 ? 'var(--green-pos)' : pct >= 30 ? 'var(--yellow-neu)' : 'var(--red-neg)';
-  const dir      = trend || 'Deteriorating';
-  const arr      = dir === 'Improving' ? '\u2191' : '\u2193';
-  const dirCol   = dir === 'Improving' ? 'var(--green-pos)' : 'var(--red-neg)';
+  const improving = trend === 'Improving';
+  const dirLabel = improving ? 'Improving' : 'Deteriorating';
+  const arr      = improving ? '\u2191' : '\u2193';
+  const dirCol   = improving ? 'var(--green-pos)' : 'var(--red-neg)';
   const label    = '<span style="color:' + stateCol + '">' + state + '</span>'
                  + '<span style="color:var(--grey)"> | </span>'
-                 + '<span style="color:' + dirCol + '">' + dir + ' ' + arr + '</span>';
+                 + '<span style="color:' + dirCol + '">' + dirLabel + ' ' + arr + '</span>';
   return { label, cls: '', html: true };
 }
 function setStatus(el, s) {
@@ -2119,14 +2124,17 @@ async function loadSignal() {
     const riderTicker = document.getElementById('riderTicker');
     const riderPct = document.getElementById('riderPct');
     const riderLabel = document.getElementById('riderLabel');
+    const riderBlock = document.getElementById('riderBlock');
     if (winner) {
-      if (riderTicker) riderTicker.textContent = winner;
-      if (riderPct) { riderPct.textContent = f1(w[winner] || 0) + '%'; riderPct.style.fontSize = '2rem'; }
-      if (riderLabel) riderLabel.textContent = 'VAMS Rider — Active';
+      if (riderBlock) riderBlock.className = 'alloc-block rider';
+      if (riderTicker) { riderTicker.textContent = winner; riderTicker.style.color = ''; }
+      if (riderPct) { riderPct.textContent = f1(w[winner] || 0) + '%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; }
+      if (riderLabel) riderLabel.textContent = 'Rider — Active';
     } else {
-      if (riderTicker) riderTicker.textContent = '—';
-      if (riderPct) { riderPct.textContent = 'SPY absorbing'; riderPct.style.fontSize = '1.1rem'; riderPct.style.paddingTop = '4px'; }
-      if (riderLabel) riderLabel.textContent = 'VAMS Rider';
+      if (riderBlock) riderBlock.className = 'alloc-block';
+      if (riderTicker) { riderTicker.textContent = '—'; riderTicker.style.color = ''; }
+      if (riderPct) { riderPct.textContent = '0%'; riderPct.style.fontSize = '2rem'; riderPct.style.paddingTop = ''; }
+      if (riderLabel) riderLabel.textContent = 'Rider';
     }
 
     // Signal bars
@@ -2170,9 +2178,9 @@ async function loadSignal() {
                       + '<span style="color:var(--grey)"> | </span>'
                       + '<span style="color:' + aggDirCol + '">' + aggDir + ' ' + aggArr + '</span>';
     setStatus(document.getElementById('aggStatus'), { label: aggLabel, cls: '', html: true });
-    setStatus(document.getElementById('momStatus'), signalStatus(pMom, prismTrend('mom', d)));
-    setStatus(document.getElementById('oasStatus'), signalStatus(pOas, prismTrend('oas', d)));
-    setStatus(document.getElementById('rvStatus'), signalStatus(pRv, prismTrend('rv', d)));
+    setStatus(document.getElementById('momStatus'), signalStatus(pMom, prismTrend('mom', d), 'mom'));
+    setStatus(document.getElementById('oasStatus'), signalStatus(pOas, prismTrend('oas', d), 'oas'));
+    setStatus(document.getElementById('rvStatus'), signalStatus(pRv, prismTrend('rv', d), 'rv'));
     const xopTrend = s.vams?.trends?.XOP;
     const kbeTrend = s.vams?.trends?.KBE;
     setStatus(document.getElementById('xopStatus'), vamsStatus(pXop, xopTrend));
