@@ -923,6 +923,11 @@ body { overflow-x: hidden; }
   footer  { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
 }
 
+/* Hide Sign In button from nav on small screens — it moves into the dropdown menu */
+@media (max-width: 600px) {
+  .nav-login { display: none !important; }
+}
+
 
 .modal-overlay {
   position:fixed; inset:0; z-index:300;
@@ -1011,6 +1016,7 @@ body { overflow-x: hidden; }
   <a href="#about" onclick="toggleMenu()">About</a>
   <div class="menu-divider"></div>
   <a href="#subscribe" class="menu-subscriber-link" onclick="toggleMenu()">Subscribe — Free</a>
+  <a href="#" class="menu-subscriber-link" onclick="toggleMenu(); openSignIn(event);" style="color:var(--grey) !important;">Sign In</a>
 </div>
 
 <!-- ─── HERO ────────────────────────────────────────────────── -->
