@@ -2451,8 +2451,14 @@ if (defaultNav) defaultNav.classList.add('active');
 const sections = ['signal','construction','allocation','performance','quality','events','faq'];
 const navLinks = document.querySelectorAll('.db-nav-link');
 window.addEventListener('scroll', () => {
-  let current = sections[0];
-  sections.forEach(id => {
+  // Only run scroll spy when multiple sections are visible
+  const visibleSections = sections.filter(id => {
+    const el = document.getElementById(id);
+    return el && el.style.display !== 'none';
+  });
+  if (visibleSections.length <= 1) return; // single-section nav — skip
+  let current = visibleSections[0];
+  visibleSections.forEach(id => {
     const el = document.getElementById(id);
     if (el && window.scrollY >= el.offsetTop - 120) current = id;
   });
