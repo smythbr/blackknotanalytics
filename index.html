@@ -3,7 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AEGIS">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
 <title>AEGIS — Systematic Investment Portfolio | Black Knot Analytics</title>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -857,7 +863,67 @@ footer {
   .perf-headline { grid-template-columns:1fr; }
 }
 
-/* ─── SIGN IN MODAL ──────────────────────────────────────────── */
+/* ─── MOBILE / CROSS-BROWSER POLISH ─────────────────────────── */
+
+/* Suppress tap highlight flash on iOS/Android */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Prevent iOS from resizing fonts unexpectedly */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Safe area insets — iPhone notch, Dynamic Island, home indicator */
+nav {
+  padding-top: max(18px, env(safe-area-inset-top));
+  padding-left: max(48px, env(safe-area-inset-left));
+  padding-right: max(48px, env(safe-area-inset-right));
+}
+nav.scrolled {
+  padding-top: max(12px, env(safe-area-inset-top));
+}
+footer {
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+}
+.hero {
+  padding-top: max(120px, calc(80px + env(safe-area-inset-top)));
+}
+
+/* Prevent iOS input zoom — all inputs must be >= 16px */
+input, select, textarea, button {
+  font-size: max(16px, 1em);
+}
+/* Override for buttons where we want the designed size on desktop */
+@media (min-width: 769px) {
+  input, select, textarea { font-size: inherit; }
+  .modal-form button, .subscribe-form button,
+  .btn-primary, .btn-secondary, .nav-login { font-size: inherit; }
+}
+
+/* Minimum 44px touch targets for iOS/Android */
+.hamburger { width: 44px; height: 44px; padding: 10px; }
+.nav-login  { min-height: 44px; display: inline-flex; align-items: center; }
+.modal-close { width: 44px; height: 44px; top: 8px; right: 8px; }
+.menu-overlay a { min-height: 44px; display: flex; align-items: center; }
+
+/* Smooth scrolling — respects reduced-motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Prevent horizontal overflow on narrow screens */
+body { overflow-x: hidden; }
+
+/* Responsive nav safe area at mobile widths */
+@media (max-width: 768px) {
+  nav {
+    padding-left: max(24px, env(safe-area-inset-left));
+    padding-right: max(24px, env(safe-area-inset-right));
+  }
+  .hero  { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+  section { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+  footer  { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+}
+
+
 .modal-overlay {
   position:fixed; inset:0; z-index:300;
   background:rgba(0,0,0,0.85);
