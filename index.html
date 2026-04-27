@@ -63,7 +63,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400&family=Montserrat:wght@200;300;400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bk.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
 <style>
 
 /* ─── TRIQUETRA LOGO SVG ─────────────────────────────────────── */
@@ -1308,19 +1308,19 @@ body { overflow-x: hidden; }
       <p class="subscribe-sub">Access the full AEGIS signal and complete performance dashboard. Free. Always.</p>
 
       <form class="subscribe-form" onsubmit="handleSignup(event)" id="signupForm">
-        <input type="text" id="signupFirstName" placeholder="First name" required autocomplete="given-name">
-        <input type="text" id="signupLastName" placeholder="Last name" required autocomplete="family-name">
-        <input type="email" id="signupEmail" placeholder="Email address" required autocomplete="email">
-        <input type="password" id="signupPassword" placeholder="Create password (min 8 characters)" required minlength="8" autocomplete="new-password">
-        <input type="password" id="signupPasswordConfirm" placeholder="Confirm password" required minlength="8" autocomplete="new-password">
-        <input type="text" id="signupStreet" placeholder="Street address" required autocomplete="street-address">
-        <input type="text" id="signupCity" placeholder="City" required autocomplete="address-level2">
+        <input type="text"     id="signupFirstName"    placeholder="First name"                        required autocomplete="given-name"    aria-label="First name">
+        <input type="text"     id="signupLastName"     placeholder="Last name"                         required autocomplete="family-name"   aria-label="Last name">
+        <input type="email"    id="signupEmail"        placeholder="Email address"                     required autocomplete="email"         aria-label="Email address">
+        <input type="password" id="signupPassword"     placeholder="Create password (min 8 characters)" required minlength="8" autocomplete="new-password"     aria-label="Create password">
+        <input type="password" id="signupPasswordConfirm" placeholder="Confirm password"               required minlength="8" autocomplete="new-password"     aria-label="Confirm password">
+        <input type="text"     id="signupStreet"       placeholder="Street address"                    required autocomplete="street-address" aria-label="Street address">
+        <input type="text"     id="signupCity"         placeholder="City"                              required autocomplete="address-level2" aria-label="City">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-          <input type="text" id="signupProvince" placeholder="Province / State" required autocomplete="address-level1">
-          <input type="text" id="signupPostal" placeholder="Postal / ZIP code" required autocomplete="postal-code">
+          <input type="text"   id="signupProvince"     placeholder="Province / State"                  required autocomplete="address-level1" aria-label="Province or State">
+          <input type="text"   id="signupPostal"       placeholder="Postal / ZIP code"                 required autocomplete="postal-code"    aria-label="Postal or ZIP code">
         </div>
-        <input type="text" id="signupCountry" placeholder="Country" required autocomplete="country-name" value="Canada">
-        <input type="tel" id="signupMobile" placeholder="Mobile (e.g. 604 379 8835)" required autocomplete="tel">
+        <input type="text"     id="signupCountry"      placeholder="Country"                           required autocomplete="country-name"  aria-label="Country" value="Canada">
+        <input type="tel"      id="signupMobile"       placeholder="Mobile (e.g. 604 379 8835)"        required autocomplete="tel"           aria-label="Mobile phone number">
         <button type="submit" id="signupBtn">Create Free Account</button>
       </form>
 
@@ -1380,8 +1380,8 @@ body { overflow-x: hidden; }
     <h2 class="modal-title">Sign In</h2>
     <p class="modal-sub">Welcome back. Access your dashboard.</p>
     <form class="modal-form" onsubmit="handleSignIn(event)">
-      <input type="email" id="signinEmail" placeholder="Email address" required autocomplete="email">
-      <input type="password" id="signinPassword" placeholder="Password" required autocomplete="current-password">
+      <input type="email"    id="signinEmail"    placeholder="Email address" required autocomplete="email"            aria-label="Email address">
+      <input type="password" id="signinPassword" placeholder="Password"      required autocomplete="current-password" aria-label="Password">
       <p style="text-align:right; margin:-4px 0 0; font-size:0.8rem;"><a href="#" style="color:var(--red);" onclick="openForgotPassword(event)">Forgot password?</a></p>
       <button type="submit" id="signinBtn">Sign In</button>
     </form>
@@ -1399,7 +1399,7 @@ body { overflow-x: hidden; }
     <h2 class="modal-title">Reset Password</h2>
     <p class="modal-sub">Enter your email and we'll send you a reset link.</p>
     <form class="modal-form" onsubmit="handleForgotPassword(event)">
-      <input type="email" id="forgotEmail" placeholder="Email address" required autocomplete="email">
+      <input type="email" id="forgotEmail" placeholder="Email address" required autocomplete="email" aria-label="Email address">
       <button type="submit" id="forgotBtn">Send Reset Link</button>
     </form>
     <p class="modal-msg" id="forgotMsg"></p>
@@ -1531,8 +1531,7 @@ async function loadSignal() {
     }
 
   } catch(e) {
-    // signal.json not found — defaults already in HTML
-    console.log('signal.json not available, using defaults');
+    // signal.json not available — HTML defaults remain in place
   }
 }
 
@@ -1541,7 +1540,35 @@ async function loadSignal() {
 // ════════════════════════════════════════════════════════════
 const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: {
+    persistSession:     true,
+    autoRefreshToken:   true,
+    detectSessionInUrl: true
+  }
+});
+
+// ── Session-aware nav + paywall ───────────────────────────
+// If a valid session exists, swap "Sign In" → "Dashboard"
+// and remove the FAQ paywall without waiting for user action.
+(async () => {
+  try {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      localStorage.setItem('bka_session', 'true');
+      // Swap nav button
+      const navBtn = document.querySelector('.nav-login');
+      if (navBtn) {
+        navBtn.textContent = 'Dashboard';
+        navBtn.href = 'dashboard.html';
+        navBtn.onclick = null;
+      }
+      // Hide FAQ paywall
+      const paywall = document.getElementById('faqPaywall');
+      if (paywall) paywall.style.display = 'none';
+    }
+  } catch(e) { /* session check failed silently */ }
+})();
 
 // ── Phone normalizer (accepts any format, returns E.164) ─────
 function normalizePhone(raw) {
@@ -1656,6 +1683,7 @@ async function handleSignIn(e) {
   try {
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
     if (error) throw error;
+    localStorage.setItem('bka_session', 'true');
     msg.className = 'modal-msg success';
     msg.textContent = 'Success — redirecting...';
     setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);

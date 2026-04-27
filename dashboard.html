@@ -921,11 +921,17 @@
 <body>
 
 <!-- ─── SUPABASE AUTH GUARD ────────────────────────────────── -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
 <script>
   const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
-  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: {
+      persistSession:     true,
+      autoRefreshToken:   true,
+      detectSessionInUrl: true
+    }
+  });
 
   // Block rendering until we confirm the user is signed in
   document.documentElement.style.visibility = 'hidden';
@@ -2525,7 +2531,7 @@ async function loadSignal() {
     const annE2El = document.getElementById('dAnnYtdEdge2');
     if (annE2El) { annE2El.textContent = fCumEdge(ytdA, ytdS); annE2El.className = fCumEdgeClass(ytdA, ytdS); }
   } catch(e) {
-    console.log('signal.json not available, using defaults');
+    // signal.json not available — HTML defaults remain in place
   }
 }
 
@@ -2552,7 +2558,7 @@ async function signOut() {
   try {
     await sb.auth.signOut();
   } catch (err) {
-    console.error('Sign out error:', err);
+    // sign-out error — redirect anyway
   }
   window.location.href = 'index.html';
 }
@@ -2598,7 +2604,6 @@ async function loadAllocations() {
     });
     tbody.innerHTML = html;
   } catch(e) {
-    console.error('loadAllocations error:', e);
     noData('Unable to load allocation history');
   }
 }
@@ -2629,7 +2634,7 @@ async function loadEvents() {
       html += `<tr><td style="color:var(--grey);">${e.num}</td><td style="white-space:normal;min-width:200px;">${e.event}</td><td><span class="event-type-pill ${tC[e.type]||''}">${e.type}</span></td><td style="color:var(--grey);min-width:130px;">${e.period}</td><td class="right td-pos">${e.risk_on}%</td><td class="right td-bench">${e.neutral}%</td><td class="right td-neg">${e.risk_off}%</td><td><span class="accuracy-pill ${aC[e.accuracy]||''}">${e.accuracy}</span></td></tr>`;
     });
     tbody.innerHTML = html;
-  } catch(e) { console.log('events.json not available'); }
+  } catch(e) { /* events.json unavailable — table remains empty */ }
 }
 
 // ── Init ──────────────────────────────────────────────────────

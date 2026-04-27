@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
 <script>
 // ════════════════════════════════════════════════════════
 // Supabase configuration — same credentials as index.html
@@ -83,7 +83,13 @@
 const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
 
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: {
+    persistSession:     true,
+    autoRefreshToken:   true,
+    detectSessionInUrl: true
+  }
+});
 
 // ── On load, check if session exists (Supabase auto-parses URL hash) ──
 (async () => {
