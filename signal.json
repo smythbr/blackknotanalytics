@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-27T14:26:42",
+  "generated": "2026-04-27T14:41:16",
   "signal": {
     "date": "2026-04-27",
     "regime": "GREEN",
@@ -41,7 +41,7 @@
   },
   "perf": {
     "cagr": 14.46,
-    "cumulative_return": 206.37,
+    "cumulative_return": 206.38,
     "max_drawdown": -11.54,
     "sharpe": 1.35,
     "sortino": 1.81,
@@ -85,8 +85,8 @@
       "spy": 83.4
     },
     "itd": {
-      "aegis": 206.37,
-      "bench": 112.08,
+      "aegis": 206.38,
+      "bench": 112.09,
       "spy": 204.48
     }
   }
