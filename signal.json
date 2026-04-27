@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-27T15:58:54",
+  "generated": "2026-04-27T16:28:54",
   "signal": {
     "date": "2026-04-27",
     "regime": "GREEN",
@@ -89,5 +89,25 @@
       "bench": 110.97,
       "spy": 204.48
     }
+  },
+  "bench_kpis": {
+    "cagr": 9.42,
+    "max_drawdown": -22.14,
+    "sharpe": 0.823,
+    "sortino": 1.033,
+    "calmar": 1.263,
+    "mar": 0.426,
+    "omega": 1.166,
+    "beta": 0.606
+  },
+  "spy_kpis": {
+    "cagr": 14.25,
+    "max_drawdown": -32.05,
+    "sharpe": 0.769,
+    "sortino": 0.943,
+    "calmar": 1.086,
+    "mar": 0.445,
+    "omega": 1.162,
+    "beta": 1.0
   }
 }

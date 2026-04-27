@@ -1058,12 +1058,12 @@ body { overflow-x: hidden; }
       <div class="hero-kpi">
         <span class="val val-white" id="kpiMaxdd">−11.5%</span>
         <span class="label">Max Drawdown</span>
-        <span class="sub">vs −22.1% for 60/40</span>
+        <span class="sub" id="kpiMaxddBench">vs −22.1% for 60/40</span>
       </div>
       <div class="hero-kpi">
         <span class="val val-white" id="kpiSharpe">1.343</span>
         <span class="label">Sharpe Ratio</span>
-        <span class="sub">vs 0.821 for 60/40</span>
+        <span class="sub" id="kpiSharpeBench">vs 0.821 for 60/40</span>
       </div>
       <div class="hero-kpi">
         <span class="val" id="kpiAlpha">+5.0pp</span>
@@ -1227,13 +1227,13 @@ body { overflow-x: hidden; }
         <table>
           <thead><tr><th>Metric</th><th class="col-aegis">AEGIS</th><th>60/40</th><th>Edge</th></tr></thead>
           <tbody>
-            <tr><td>CAGR</td><td class="td-aegis" id="tCagr">14.4%</td><td class="td-bench">9.4%</td><td class="td-pos">+5.0pp</td></tr>
-            <tr><td>Sharpe</td><td class="td-aegis" id="tSharpe">1.343</td><td class="td-bench">0.821</td><td class="td-pos">+0.524</td></tr>
-            <tr><td>Sortino</td><td class="td-aegis" id="tSortino">1.801</td><td class="td-bench">1.025</td><td class="td-pos">+0.685</td></tr>
-            <tr><td>Max DD</td><td class="td-aegis" id="tMaxdd">−11.5%</td><td class="td-bench">−22.1%</td><td class="td-pos">+10.6pp</td></tr>
-            <tr><td>Calmar</td><td class="td-aegis" id="tCalmar">2.721</td><td class="td-bench">1.252</td><td class="td-pos">+1.433</td></tr>
-            <tr><td>Beta</td><td class="td-aegis" id="tBeta">0.200</td><td class="td-bench">0.309</td><td class="td-pos">−0.109</td></tr>
-            <tr><td>Omega</td><td class="td-aegis" id="tOmega">1.262</td><td class="td-bench">1.166</td><td class="td-pos">+0.096</td></tr>
+            <tr><td>CAGR</td><td class="td-aegis" id="tCagr">14.4%</td><td class="td-bench" id="tBenchCagr">9.4%</td><td class="td-pos" id="tEdgeCagr">+5.0pp</td></tr>
+            <tr><td>Sharpe</td><td class="td-aegis" id="tSharpe">1.343</td><td class="td-bench" id="tBenchSharpe">0.821</td><td class="td-pos" id="tEdgeSharpe">+0.524</td></tr>
+            <tr><td>Sortino</td><td class="td-aegis" id="tSortino">1.801</td><td class="td-bench" id="tBenchSortino">1.025</td><td class="td-pos" id="tEdgeSortino">+0.685</td></tr>
+            <tr><td>Max DD</td><td class="td-aegis" id="tMaxdd">−11.5%</td><td class="td-bench" id="tBenchMaxdd">−22.1%</td><td class="td-pos" id="tEdgeMaxdd">+10.6pp</td></tr>
+            <tr><td>Calmar</td><td class="td-aegis" id="tCalmar">2.721</td><td class="td-bench" id="tBenchCalmar">1.252</td><td class="td-pos" id="tEdgeCalmar">+1.433</td></tr>
+            <tr><td>Beta</td><td class="td-aegis" id="tBeta">0.200</td><td class="td-bench" id="tBenchBeta">0.309</td><td class="td-pos" id="tEdgeBeta">−0.109</td></tr>
+            <tr><td>Omega</td><td class="td-aegis" id="tOmega">1.262</td><td class="td-bench" id="tBenchOmega">1.166</td><td class="td-pos" id="tEdgeOmega">+0.096</td></tr>
           </tbody>
         </table>
       </div>
@@ -1243,7 +1243,7 @@ body { overflow-x: hidden; }
         <table>
           <thead><tr><th>Year</th><th class="col-aegis">AEGIS</th><th>60/40</th><th>Diff</th></tr></thead>
           <tbody id="annualReturns">
-            <tr><td>2026 YTD</td><td class="td-aegis td-pos" id="tYtd">+6.3%</td><td class="td-bench">+3.1%</td><td class="td-pos">+3.5pp</td></tr>
+            <tr><td>2026 YTD</td><td class="td-aegis td-pos" id="tYtd">+6.3%</td><td class="td-bench" id="tBenchYtd">+3.1%</td><td class="td-pos" id="tEdgeYtd">+3.5pp</td></tr>
             <tr><td>2025</td><td class="td-aegis td-pos">+21.7%</td><td class="td-bench">+9.1%</td><td class="td-pos">+12.6pp</td></tr>
             <tr><td>2024</td><td class="td-aegis td-pos">+15.2%</td><td class="td-bench">+10.4%</td><td class="td-pos">+4.8pp</td></tr>
             <tr><td>2023</td><td class="td-aegis td-pos">+25.7%</td><td class="td-bench">+14.2%</td><td class="td-pos">+11.5pp</td></tr>
@@ -1484,6 +1484,50 @@ async function loadSignal() {
       set('tMaxdd',         '−' + f1(Math.abs(p.max_drawdown || 11.5)) + '%');
       set('tBeta',          f3(p.beta        || 0.200));
       set('tOmega',         f3(p.omega       || 1.263));
+
+      // ── 60/40 benchmark columns — from bench_kpis ──────────────
+      const bk = d.bench_kpis || {};
+      const ci = d.cum_returns?.itd || {};
+      const f3s = v => v != null ? parseFloat(v).toFixed(3) : '—';
+      function ppEdge(a, b, lowerBetter = false) {
+        if (a == null || b == null) return '—';
+        const diff = a - b;
+        return (diff >= 0 ? '+' : '−') + Math.abs(diff).toFixed(1) + 'pp';
+      }
+      function ratEdge(a, b) {
+        if (a == null || b == null) return '—';
+        const diff = a - b;
+        return (diff >= 0 ? '+' : '−') + Math.abs(diff).toFixed(3);
+      }
+
+      // Hero KPI sub-labels
+      if (bk.cagr   != null) set('kpiCagrBench',  'vs ' + f1(bk.cagr)  + '% for 60/40');
+      if (bk.max_drawdown != null) set('kpiMaxddBench', 'vs −' + f1(Math.abs(bk.max_drawdown)) + '% for 60/40');
+      if (bk.sharpe != null) set('kpiSharpeBench', 'vs ' + f3s(bk.sharpe) + ' for 60/40');
+
+      // Performance table — 60/40 column
+      if (bk.cagr        != null) set('tBenchCagr',    f1(bk.cagr) + '%');
+      if (bk.sharpe      != null) set('tBenchSharpe',  f3s(bk.sharpe));
+      if (bk.sortino     != null) set('tBenchSortino', f3s(bk.sortino));
+      if (bk.max_drawdown!= null) set('tBenchMaxdd',   '−' + f1(Math.abs(bk.max_drawdown)) + '%');
+      if (bk.calmar      != null) set('tBenchCalmar',  f3s(bk.calmar));
+      if (bk.beta        != null) set('tBenchBeta',    f3s(bk.beta));
+      if (bk.omega       != null) set('tBenchOmega',   f3s(bk.omega));
+
+      // Performance table — Edge column
+      set('tEdgeCagr',    ppEdge(p.cagr,        bk.cagr));
+      set('tEdgeSharpe',  ratEdge(p.sharpe,      bk.sharpe));
+      set('tEdgeSortino', ratEdge(p.sortino,     bk.sortino));
+      set('tEdgeMaxdd',   ppEdge(p.max_drawdown, bk.max_drawdown, true));
+      set('tEdgeCalmar',  ratEdge(p.calmar,      bk.calmar));
+      set('tEdgeBeta',    ratEdge(p.beta,        bk.beta));
+      set('tEdgeOmega',   ratEdge(p.omega,       bk.omega));
+
+      // Annual Returns — 2026 YTD row
+      const ytdCr = d.cum_returns?.ytd || {};
+      if (ytdCr.bench != null) set('tBenchYtd', (ytdCr.bench >= 0 ? '+' : '') + f1(ytdCr.bench) + '%');
+      if (ytdCr.aegis != null && ytdCr.bench != null)
+        set('tEdgeYtd', ppEdge(ytdCr.aegis, ytdCr.bench));
     }
 
   } catch(e) {
