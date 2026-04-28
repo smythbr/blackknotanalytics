@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-28T02:10:40",
+  "generated": "2026-04-28T14:02:49",
   "allocations": [
     {
       "date": "2026-04-28",
@@ -9,7 +9,7 @@
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.3609,
+      "p_stress": 0.3633,
       "trigger": "Current",
       "is_rebalance": false
     },
