@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-22T23:00:47",
+  "generated": "2026-04-28T05:22:46",
   "summary": {
     "total": 30,
     "great": 16,
@@ -17,8 +17,8 @@
       "neutral": 26,
       "risk_off": 74,
       "accuracy": "Great",
-      "assessment": "74.5% Risk-Off \u2014 decisive defensive posture into the first US sovereign downgrade in history",
-      "period_label": "in-sample"
+      "assessment": "Decisive Risk-Off into first US sovereign downgrade in history",
+      "period_label": "In-Sample"
     },
     {
       "num": 2,
@@ -29,8 +29,8 @@
       "neutral": 52,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "52% Neutral \u2014 partial defence through Greek restructuring and Spanish bank stress. Correctly avoided over-commitment to Risk-Off",
-      "period_label": "in-sample"
+      "assessment": "Correctly avoided over-commitment to Risk-Off; Draghi backstop worked",
+      "period_label": "In-Sample"
     },
     {
       "num": 3,
@@ -41,20 +41,20 @@
       "neutral": 36,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "64% Risk-On \u2014 correctly assessed as a rates shock not a systemic crisis. Staying invested was right",
-      "period_label": "in-sample"
+      "assessment": "Rates shock correctly identified as non-systemic; stayed invested",
+      "period_label": "In-Sample"
     },
     {
       "num": 4,
-      "event": "2013-14 Bull Run",
+      "event": "2013\u201314 Bull Run",
       "type": "Bull",
       "period": "Oct 2013\u2013Sep 2014",
       "risk_on": 84,
       "neutral": 16,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "84% Risk-On \u2014 fully invested through a clean bull market. Maximum upside capture",
-      "period_label": "in-sample"
+      "assessment": "84% Risk-On \u2014 maximum upside capture through clean bull market",
+      "period_label": "In-Sample"
     },
     {
       "num": 5,
@@ -65,20 +65,20 @@
       "neutral": 66,
       "risk_off": 6,
       "accuracy": "Good",
-      "assessment": "66% Neutral \u2014 correctly shifted to partial defence as oil collapsed and credit spreads widened",
-      "period_label": "in-sample"
+      "assessment": "Correctly shifted to partial defence as HY energy spreads widened",
+      "period_label": "In-Sample"
     },
     {
       "num": 6,
-      "event": "2015-16 China Devaluation / Oil Crash",
+      "event": "2015\u201316 China Devaluation / Oil Crash",
       "type": "Bear",
       "period": "Aug 2015\u2013Feb 2016",
       "risk_on": 8,
       "neutral": 52,
       "risk_off": 41,
       "accuracy": "Great",
-      "assessment": "41% Risk-Off 52% Neutral \u2014 strong defensive posture through Aug 2015 flash crash yuan devaluation and oil-driven credit stress",
-      "period_label": "in-sample"
+      "assessment": "Strong defensive posture through flash crash, yuan devaluation, credit stress",
+      "period_label": "In-Sample"
     },
     {
       "num": 7,
@@ -89,20 +89,20 @@
       "neutral": 78,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "78% Neutral \u2014 correctly assessed as a contained geopolitical shock not systemic. Avoided excessive Risk-Off",
-      "period_label": "in-sample"
+      "assessment": "Correctly assessed as contained geopolitical shock; no excessive Risk-Off",
+      "period_label": "In-Sample"
     },
     {
       "num": 8,
-      "event": "2016-17 Post-Election Bull Run",
+      "event": "2016\u201317 Post-Election Bull Run",
       "type": "Bull",
       "period": "Nov 2016\u2013Jan 2018",
       "risk_on": 95,
       "neutral": 5,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "95% Risk-On \u2014 near-perfect upside capture through one of the most sustained low-volatility bull markets on record",
-      "period_label": "in-sample"
+      "assessment": "95% Risk-On \u2014 near-perfect capture across 305 days of sustained low-vol bull market",
+      "period_label": "In-Sample"
     },
     {
       "num": 9,
@@ -113,8 +113,8 @@
       "neutral": 27,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "Correctly assessed as a volatility shock not a regime change. SPY recovered within weeks. Partial Neutral buffer without over-defending",
-      "period_label": "live"
+      "assessment": "Correctly identified as a volatility shock, not a regime change; no false Risk-Off",
+      "period_label": "Live"
     },
     {
       "num": 10,
@@ -125,44 +125,44 @@
       "neutral": 22,
       "risk_off": 64,
       "accuracy": "Good",
-      "assessment": "64% Risk-Off \u2014 strong defensive posture into worst December since 1931. 86% classification accuracy. Minor 8-day lag at onset",
-      "period_label": "live"
+      "assessment": "64% Risk-Off; 86% accuracy. Worst December since 1931. Captured full 2019 rally",
+      "period_label": "Live"
     },
     {
       "num": 11,
-      "event": "2019 Bull Run / US-China Trade Truce",
+      "event": "2019 Bull Run / Trade Truce",
       "type": "Bull",
-      "period": "Jan\u2013Dec 2019",
+      "period": "Full year 2019",
       "risk_on": 49,
       "neutral": 46,
       "risk_off": 5,
       "accuracy": "Partial",
-      "assessment": "49% Risk-On \u2014 cautious recovery posture. SPY +29% in 2019 but AEGIS participated at reduced exposure due to residual credit stress. Return +14.6%",
-      "period_label": "live"
+      "assessment": "Cautious re-entry; residual 2018 credit stress limited participation. +14.6% vs SPY +29%",
+      "period_label": "Live"
     },
     {
       "num": 12,
       "event": "2019 REPO Crisis",
       "type": "Shock",
-      "period": "Sep 2019",
+      "period": "Sep 16\u201320, 2019",
       "risk_on": 0,
       "neutral": 100,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "100% Neutral \u2014 correctly identified as a plumbing stress event not systemic. No false Risk-Off trigger. Correct non-reaction",
-      "period_label": "live"
+      "assessment": "Correctly identified as a funding plumbing event, not systemic. Zero false trigger",
+      "period_label": "Live"
     },
     {
       "num": 13,
       "event": "COVID Crash",
       "type": "Bear",
-      "period": "Feb\u2013Mar 2020",
+      "period": "Feb 20\u2013Mar 23, 2020",
       "risk_on": 9,
       "neutral": 17,
       "risk_off": 74,
       "accuracy": "Great",
-      "assessment": "74% Risk-Off \u2014 transitioned to defensive within 2 trading days. Fastest bear market in history detected within a single trading week. Peak P(stress) 0.793",
-      "period_label": "live"
+      "assessment": "Risk-Off within 2 trading days. Fastest bear market in history caught within one week",
+      "period_label": "Live"
     },
     {
       "num": 14,
@@ -173,20 +173,20 @@
       "neutral": 68,
       "risk_off": 10,
       "accuracy": "Partial",
-      "assessment": "Gradual re-entry \u2014 68% Neutral 22% Risk-On. Cautious but correct. Participated in 90% of recovery period. +24.6% full year 2020",
-      "period_label": "live"
+      "assessment": "Cautious re-entry given unprecedented uncertainty; 90% of recovery captured. +24.6% full year 2020",
+      "period_label": "Live"
     },
     {
       "num": 15,
-      "event": "2020-21 Stimulus Bull Run",
+      "event": "2020\u201321 Stimulus Bull Run",
       "type": "Bull",
       "period": "Nov 2020\u2013Dec 2021",
       "risk_on": 64,
       "neutral": 36,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "64% Risk-On \u2014 strong participation in the vaccine-driven stimulus-fuelled bull run. +20.8% in 2021",
-      "period_label": "live"
+      "assessment": "64% Risk-On through vaccine-driven, stimulus-fuelled bull run. +20.8% in 2021",
+      "period_label": "Live"
     },
     {
       "num": 16,
@@ -197,8 +197,8 @@
       "neutral": 44,
       "risk_off": 50,
       "accuracy": "Great",
-      "assessment": "50% Risk-Off 44% Neutral \u2014 94% defensive classification. Worst year for 60/40 since 1937. Gemini -4.5% vs SPY -18%. Calmar 3x benchmark",
-      "period_label": "live"
+      "assessment": "94% defensive. Worst year for 60/40 since 1937. AEGIS \u22124.5% vs SPY \u221218%",
+      "period_label": "Live"
     },
     {
       "num": 17,
@@ -209,8 +209,8 @@
       "neutral": 0,
       "risk_off": 100,
       "accuracy": "Great",
-      "assessment": "100% Risk-Off \u2014 maximum defensive posture during LDI pension crisis Truss mini-budget collapse and BOE emergency gilt purchases. Peak stress 0.798",
-      "period_label": "live"
+      "assessment": "100% Risk-Off during LDI pension crisis, Truss mini-budget, BOE emergency intervention",
+      "period_label": "Live"
     },
     {
       "num": 18,
@@ -221,44 +221,44 @@
       "neutral": 71,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "71% Neutral \u2014 correctly assessed as contained regional banking shock not systemic. SPY fell ~8% and recovered. No false Risk-Off trigger",
-      "period_label": "live"
+      "assessment": "Correctly assessed as contained regional shock. No false Risk-Off. Fed BTFP worked",
+      "period_label": "Live"
     },
     {
       "num": 19,
       "event": "2023 Bull Run Begins",
       "type": "Bull",
-      "period": "Jan\u2013Dec 2023",
+      "period": "Full year 2023",
       "risk_on": 54,
       "neutral": 46,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "54% Risk-On \u2014 participated in the recovery year. +25.7% full year",
-      "period_label": "live"
+      "assessment": "54% Risk-On; participated in recovery year. +25.7%",
+      "period_label": "Live"
     },
     {
       "num": 20,
-      "event": "2023-24 AI Bull Market",
+      "event": "2023\u201324 AI Bull Market",
       "type": "Bull",
       "period": "May 2023\u2013Jul 2024",
       "risk_on": 75,
       "neutral": 25,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "75% Risk-On \u2014 strong participation in the AI-driven equity expansion. 100% classification accuracy. +25.7% in 2023, +15.2% in 2024",
-      "period_label": "live"
+      "assessment": "75% Risk-On; 100% classification accuracy across 315 days. +25.7% in 2023, +15.2% in 2024",
+      "period_label": "Live"
     },
     {
       "num": 21,
       "event": "2024 Yen Carry Trade Unwind",
       "type": "Shock",
-      "period": "Jul\u2013Aug 2024",
+      "period": "Jul 31\u2013Aug 19, 2024",
       "risk_on": 0,
       "neutral": 100,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "100% Neutral \u2014 VIX spiked to 65 Nikkei -12% SPY -8%. PRISM correctly assessed as deleveraging shock not macro regime change. Recovered within 10 days",
-      "period_label": "live"
+      "assessment": "VIX\u219265, Nikkei \u221212%, SPY \u22128%. Correctly assessed as deleveraging shock, not macro regime change",
+      "period_label": "Live"
     },
     {
       "num": 22,
@@ -269,20 +269,20 @@
       "neutral": 10,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "90% Risk-On \u2014 fully invested into the post-election risk-on rally. Strong upside capture",
-      "period_label": "live"
+      "assessment": "90% Risk-On \u2014 fully invested into post-election rally",
+      "period_label": "Live"
     },
     {
       "num": 23,
       "event": "2025 DeepSeek AI Shock",
       "type": "Shock",
-      "period": "Jan 2025",
+      "period": "Jan 27\u201328, 2025",
       "risk_on": 100,
       "neutral": 0,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "100% Risk-On \u2014 correctly held position through single-sector shock (NVDA -17%). Macro fundamentals unaffected. No false defensive trigger",
-      "period_label": "live"
+      "assessment": "100% Risk-On through NVDA \u221217% single-sector shock. Macro fundamentals unaffected",
+      "period_label": "Live"
     },
     {
       "num": 24,
@@ -293,8 +293,8 @@
       "neutral": 55,
       "risk_off": 11,
       "accuracy": "Good",
-      "assessment": "55% Neutral 11% Risk-Off \u2014 correctly moved defensive as trade escalation widened credit spreads. 69% classification accuracy. +21.7% full year 2025",
-      "period_label": "live"
+      "assessment": "Correctly defensive as trade escalation widened spreads. 69% accuracy. +21.7% full year 2025",
+      "period_label": "Live"
     },
     {
       "num": 25,
@@ -305,8 +305,8 @@
       "neutral": 18,
       "risk_off": 34,
       "accuracy": "Partial",
-      "assessment": "34% Risk-Off during recovery \u2014 cautious re-entry as uncertainty remained elevated. Some upside left on table as markets rebounded sharply",
-      "period_label": "live"
+      "assessment": "Cautious re-entry; some upside left on table as markets rebounded sharply",
+      "period_label": "Live"
     },
     {
       "num": 26,
@@ -317,56 +317,56 @@
       "neutral": 33,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "67% Risk-On \u2014 strong re-engagement into H2 2025 recovery. Fully captured the second-half bull run",
-      "period_label": "live"
+      "assessment": "67% Risk-On \u2014 strong re-engagement into H2 2025 bull run",
+      "period_label": "Live"
     },
     {
       "num": 27,
       "event": "2026 Iran War / Op Epic Fury",
       "type": "Shock",
-      "period": "Feb\u2013Apr 2026",
+      "period": "Feb 28\u2013Apr 1, 2026",
       "risk_on": 0,
       "neutral": 100,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "100% Neutral \u2014 correctly positioned for geopolitical shock with elevated but not systemic stress. Credit spreads widened but did not spike to Risk-Off",
-      "period_label": "live"
+      "assessment": "100% Neutral \u2014 geopolitical shock correctly calibrated as elevated but not systemic",
+      "period_label": "Live"
     },
     {
       "num": 28,
       "event": "2026 Strait of Hormuz Crisis",
       "type": "Shock",
-      "period": "Mar\u2013Apr 2026",
+      "period": "Mar 1\u2013Apr 14, 2026",
       "risk_on": 3,
       "neutral": 97,
       "risk_off": 0,
       "accuracy": "Good",
-      "assessment": "97% Neutral \u2014 sustained defensive posture through oil supply disruption and Hormuz closure fears. S&P 500 flat six weeks into conflict",
-      "period_label": "live"
+      "assessment": "97% Neutral through oil supply disruption. S&P 500 flat six weeks into conflict",
+      "period_label": "Live"
     },
     {
       "num": 29,
-      "event": "2026 Strait Reopens / ATH",
+      "event": "2026 Strait Reopens / Recovery",
       "type": "Bull",
-      "period": "Apr 2026",
+      "period": "Apr 7\u201314, 2026",
       "risk_on": 11,
       "neutral": 89,
       "risk_off": 0,
       "accuracy": "Partial",
-      "assessment": "Transitioned to Risk-On April 17 as Strait reopened. PRISM correctly re-engaged. SPY recovered to ATH within the period. Clean GREEN re-entry signal confirmed.",
-      "period_label": "live"
+      "assessment": "Transitioned to Risk-On April 14 as Strait reopened. PRISM correctly re-engaged. Clean GREEN re-entry confirmed.",
+      "period_label": "Live"
     },
     {
       "num": 30,
-      "event": "2023-24 Sustained Bull Run",
+      "event": "2023\u201324 Sustained Bull Run (aggregate)",
       "type": "Bull",
       "period": "Jan 2023\u2013Oct 2024",
       "risk_on": 63,
       "neutral": 37,
       "risk_off": 0,
       "accuracy": "Great",
-      "assessment": "63% Risk-On across full two-year bull run. 100% classification accuracy. Zero days in Risk-Off. Full participation",
-      "period_label": "live"
+      "assessment": "63% Risk-On; 100% classification accuracy; zero days Risk-Off across two-year bull run",
+      "period_label": "Live"
     }
   ]
 }

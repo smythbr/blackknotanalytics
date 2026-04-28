@@ -2598,7 +2598,7 @@ async function loadAllocations() {
         <td class="right">${Math.round(r.bil||0)}%</td>
         <td class="right">${xopPct}%</td>
         <td class="right">${kbePct}%</td>
-        <td class="right td-bench">${daysHeld}</td>
+        <td class="right td-bench">${r.trigger === 'Current' ? '—' : daysHeld}</td>
         <td>${r.trigger||'—'}</td>
       </tr>`;
     });
