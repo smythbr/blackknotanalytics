@@ -1593,7 +1593,7 @@
               <th>vs SPY</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="annualReturnsBody">
             <tr>
               <td>2026 YTD</td>
               <td class="aegis-col td-pos" id="dYtd">+6.6%</td>
@@ -2518,18 +2518,35 @@ async function loadSignal() {
       if (e2El) { e2El.textContent = fCumEdge(a, s); e2El.className = fCumEdgeClass(a, s); }
     });
 
-    // Annual Returns table — 2026 YTD row: sync from cum_returns.ytd
-    // The other years are historical and correctly hardcoded.
-    const ytdCr = cr.ytd || {};
-    const ytdA = ytdCr.aegis, ytdB = ytdCr.bench, ytdS = ytdCr.spy;
-    const annBnEl = document.getElementById('dAnnYtdBench');
-    if (annBnEl) annBnEl.textContent = fCumPct(ytdB);
-    const annE1El = document.getElementById('dAnnYtdEdge1');
-    if (annE1El) { annE1El.textContent = fCumEdge(ytdA, ytdB); annE1El.className = fCumEdgeClass(ytdA, ytdB); }
-    const annSpEl = document.getElementById('dAnnYtdSpy');
-    if (annSpEl) annSpEl.textContent = fCumPct(ytdS);
-    const annE2El = document.getElementById('dAnnYtdEdge2');
-    if (annE2El) { annE2El.textContent = fCumEdge(ytdA, ytdS); annE2El.className = fCumEdgeClass(ytdA, ytdS); }
+    // Annual Returns table — full rebuild from signal.annual_returns.
+    // Replaces hardcoded 2025-2018 rows AND syncs the YTD row.
+    // If signal.json unavailable, the hardcoded HTML defaults remain.
+    const _arData = d.annual_returns || {};
+    const _arBody = document.getElementById('annualReturnsBody');
+    if (_arBody && Object.keys(_arData).length > 0) {
+      const _ytdCr = (cr || {}).ytd || {};
+      const _years = Object.keys(_arData).sort((a, b) => Number(b) - Number(a));
+      const _rows  = _years.map(yr => {
+        const y    = _arData[yr];
+        const isY  = y.is_ytd;
+        const lbl  = isY ? yr + ' YTD' : yr;
+        const aR   = y.aegis;
+        const bR   = isY ? (_ytdCr.bench != null ? _ytdCr.bench : y.bench) : y.bench;
+        const sR   = isY ? (_ytdCr.spy   != null ? _ytdCr.spy   : null)    : null;
+        const fP = v => v == null ? '—' : (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(1) + '%';
+        const fE = (a, b) => { if (a==null||b==null) return '—'; const diff=a-b; return (diff>=0?'+':'')+diff.toFixed(1)+'pp'; };
+        const aCls  = aR==null ? '' : (aR>=0 ? 'td-pos' : 'td-neg');
+        const e1Cls = (aR!=null&&bR!=null) ? (aR>=bR ? 'edge-pos' : 'edge-neg') : '';
+        const e2Cls = (aR!=null&&sR!=null) ? (aR>=sR ? 'edge-pos' : 'edge-neg') : '';
+        return '<tr><td>'+lbl+'</td>'
+          +'<td class="aegis-col '+aCls+'">'+fP(aR)+'</td>'
+          +'<td class="td-bench">'+fP(bR)+'</td>'
+          +'<td class="'+e1Cls+'">'+fE(aR,bR)+'</td>'
+          +'<td class="td-bench">'+fP(sR)+'</td>'
+          +'<td class="'+e2Cls+'">'+fE(aR,sR)+'</td></tr>';
+      }).join('');
+      _arBody.innerHTML = _rows;
+    }
   } catch(e) {
     // signal.json not available — HTML defaults remain in place
   }

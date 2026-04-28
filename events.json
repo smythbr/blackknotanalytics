@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-28T05:51:22",
+  "generated": "2026-04-28T07:40:25",
   "summary": {
     "total": 30,
     "great": 16,
@@ -74,7 +74,7 @@
       "type": "Bear",
       "period": "Aug 2015\u2013Feb 2016",
       "risk_on": 8,
-      "neutral": 52,
+      "neutral": 51,
       "risk_off": 41,
       "accuracy": "Great",
       "assessment": "Strong defensive posture through flash crash, yuan devaluation, credit stress",

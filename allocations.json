@@ -1,15 +1,15 @@
 {
-  "generated": "2026-04-27T22:44:28",
+  "generated": "2026-04-28T01:29:09",
   "allocations": [
     {
-      "date": "2026-04-27",
+      "date": "2026-04-28",
       "regime": "Risk-On",
       "spy": 80.0,
       "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.3675,
+      "p_stress": 0.3609,
       "trigger": "Current",
       "is_rebalance": false
     },
