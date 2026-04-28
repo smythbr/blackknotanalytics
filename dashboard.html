@@ -2532,7 +2532,7 @@ async function loadSignal() {
         const lbl  = isY ? yr + ' YTD' : yr;
         const aR   = y.aegis;
         const bR   = isY ? (_ytdCr.bench != null ? _ytdCr.bench : y.bench) : y.bench;
-        const sR   = isY ? (_ytdCr.spy   != null ? _ytdCr.spy   : null)    : null;
+        const sR   = isY ? (_ytdCr.spy   != null ? _ytdCr.spy   : y.spy)   : (y.spy ?? null);
         const fP = v => v == null ? '—' : (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(1) + '%';
         const fE = (a, b) => { if (a==null||b==null) return '—'; const diff=a-b; return (diff>=0?'+':'')+diff.toFixed(1)+'pp'; };
         const aCls  = aR==null ? '' : (aR>=0 ? 'td-pos' : 'td-neg');
@@ -2546,6 +2546,17 @@ async function loadSignal() {
           +'<td class="'+e2Cls+'">'+fE(aR,sR)+'</td></tr>';
       }).join('');
       _arBody.innerHTML = _rows;
+    }
+    // ── Quality summary ──────────────────────────────────────────
+    const qd = d.quality || {};
+    const qEl = document.getElementById('qualityPassSummary');
+    if (qEl && qd.tests_passed != null && qd.tests_total != null) {
+      const allPass = qd.tests_passed === qd.tests_total;
+      const dt = qd.run_date ? ' as of ' + qd.run_date : '';
+      qEl.textContent = allPass
+        ? 'All ' + qd.tests_total + ' tests passing' + dt
+        : qd.tests_passed + '/' + qd.tests_total + ' tests passing' + dt;
+      qEl.style.color = allPass ? 'var(--green-pos)' : 'var(--red-neg)';
     }
   } catch(e) {
     // signal.json not available — HTML defaults remain in place

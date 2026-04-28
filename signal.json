@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-28T01:29:09",
+  "generated": "2026-04-28T02:10:40",
   "signal": {
     "date": "2026-04-28",
     "regime": "GREEN",
@@ -114,47 +114,71 @@
     "2018": {
       "aegis": -1.6,
       "bench": -3.0,
+      "spy": -5.1,
       "is_ytd": false
     },
     "2019": {
       "aegis": 14.6,
       "bench": 22.3,
+      "spy": 30.9,
       "is_ytd": false
     },
     "2020": {
       "aegis": 24.6,
       "bench": 13.8,
+      "spy": 18.2,
       "is_ytd": false
     },
     "2021": {
       "aegis": 20.8,
       "bench": 17.1,
+      "spy": 29.6,
       "is_ytd": false
     },
     "2022": {
       "aegis": -4.5,
       "bench": -16.3,
+      "spy": -18.7,
       "is_ytd": false
     },
     "2023": {
       "aegis": 25.7,
       "bench": 18.4,
+      "spy": 27.1,
       "is_ytd": false
     },
     "2024": {
       "aegis": 15.2,
       "bench": 15.9,
+      "spy": 25.4,
       "is_ytd": false
     },
     "2025": {
       "aegis": 21.7,
       "bench": 13.5,
+      "spy": 17.9,
       "is_ytd": false
     },
     "2026": {
       "aegis": 6.6,
       "bench": 2.6,
+      "spy": 4.1,
       "is_ytd": true
     }
+  },
+  "quality": {
+    "tests_passed": 31,
+    "tests_total": 31,
+    "run_date": "2026-04-28"
+  },
+  "kpi_pass_flags": {
+    "cagr": true,
+    "max_dd": true,
+    "sharpe": true,
+    "calmar": true,
+    "mar": true,
+    "beta": true,
+    "sortino": true,
+    "omega": true
   }
 }
