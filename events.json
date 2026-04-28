@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-28T05:22:46",
+  "generated": "2026-04-28T05:51:22",
   "summary": {
     "total": 30,
     "great": 16,
@@ -18,7 +18,7 @@
       "risk_off": 74,
       "accuracy": "Great",
       "assessment": "Decisive Risk-Off into first US sovereign downgrade in history",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 2,
@@ -30,7 +30,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "Correctly avoided over-commitment to Risk-Off; Draghi backstop worked",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 3,
@@ -42,7 +42,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "Rates shock correctly identified as non-systemic; stayed invested",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 4,
@@ -54,7 +54,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "84% Risk-On \u2014 maximum upside capture through clean bull market",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 5,
@@ -66,7 +66,7 @@
       "risk_off": 6,
       "accuracy": "Good",
       "assessment": "Correctly shifted to partial defence as HY energy spreads widened",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 6,
@@ -78,7 +78,7 @@
       "risk_off": 41,
       "accuracy": "Great",
       "assessment": "Strong defensive posture through flash crash, yuan devaluation, credit stress",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 7,
@@ -90,7 +90,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "Correctly assessed as contained geopolitical shock; no excessive Risk-Off",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 8,
@@ -102,7 +102,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "95% Risk-On \u2014 near-perfect capture across 305 days of sustained low-vol bull market",
-      "period_label": "In-Sample"
+      "period_label": "in-sample"
     },
     {
       "num": 9,
@@ -114,7 +114,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "Correctly identified as a volatility shock, not a regime change; no false Risk-Off",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 10,
@@ -126,7 +126,7 @@
       "risk_off": 64,
       "accuracy": "Good",
       "assessment": "64% Risk-Off; 86% accuracy. Worst December since 1931. Captured full 2019 rally",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 11,
@@ -138,7 +138,7 @@
       "risk_off": 5,
       "accuracy": "Partial",
       "assessment": "Cautious re-entry; residual 2018 credit stress limited participation. +14.6% vs SPY +29%",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 12,
@@ -150,7 +150,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "Correctly identified as a funding plumbing event, not systemic. Zero false trigger",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 13,
@@ -162,7 +162,7 @@
       "risk_off": 74,
       "accuracy": "Great",
       "assessment": "Risk-Off within 2 trading days. Fastest bear market in history caught within one week",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 14,
@@ -174,7 +174,7 @@
       "risk_off": 10,
       "accuracy": "Partial",
       "assessment": "Cautious re-entry given unprecedented uncertainty; 90% of recovery captured. +24.6% full year 2020",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 15,
@@ -186,7 +186,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "64% Risk-On through vaccine-driven, stimulus-fuelled bull run. +20.8% in 2021",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 16,
@@ -198,7 +198,7 @@
       "risk_off": 50,
       "accuracy": "Great",
       "assessment": "94% defensive. Worst year for 60/40 since 1937. AEGIS \u22124.5% vs SPY \u221218%",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 17,
@@ -210,7 +210,7 @@
       "risk_off": 100,
       "accuracy": "Great",
       "assessment": "100% Risk-Off during LDI pension crisis, Truss mini-budget, BOE emergency intervention",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 18,
@@ -222,7 +222,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "Correctly assessed as contained regional shock. No false Risk-Off. Fed BTFP worked",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 19,
@@ -234,7 +234,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "54% Risk-On; participated in recovery year. +25.7%",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 20,
@@ -246,7 +246,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "75% Risk-On; 100% classification accuracy across 315 days. +25.7% in 2023, +15.2% in 2024",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 21,
@@ -258,7 +258,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "VIX\u219265, Nikkei \u221212%, SPY \u22128%. Correctly assessed as deleveraging shock, not macro regime change",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 22,
@@ -270,7 +270,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "90% Risk-On \u2014 fully invested into post-election rally",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 23,
@@ -282,7 +282,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "100% Risk-On through NVDA \u221217% single-sector shock. Macro fundamentals unaffected",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 24,
@@ -294,7 +294,7 @@
       "risk_off": 11,
       "accuracy": "Good",
       "assessment": "Correctly defensive as trade escalation widened spreads. 69% accuracy. +21.7% full year 2025",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 25,
@@ -306,7 +306,7 @@
       "risk_off": 34,
       "accuracy": "Partial",
       "assessment": "Cautious re-entry; some upside left on table as markets rebounded sharply",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 26,
@@ -318,7 +318,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "67% Risk-On \u2014 strong re-engagement into H2 2025 bull run",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 27,
@@ -330,7 +330,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "100% Neutral \u2014 geopolitical shock correctly calibrated as elevated but not systemic",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 28,
@@ -342,7 +342,7 @@
       "risk_off": 0,
       "accuracy": "Good",
       "assessment": "97% Neutral through oil supply disruption. S&P 500 flat six weeks into conflict",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 29,
@@ -354,7 +354,7 @@
       "risk_off": 0,
       "accuracy": "Partial",
       "assessment": "Transitioned to Risk-On April 14 as Strait reopened. PRISM correctly re-engaged. Clean GREEN re-entry confirmed.",
-      "period_label": "Live"
+      "period_label": "live"
     },
     {
       "num": 30,
@@ -366,7 +366,7 @@
       "risk_off": 0,
       "accuracy": "Great",
       "assessment": "63% Risk-On; 100% classification accuracy; zero days Risk-Off across two-year bull run",
-      "period_label": "Live"
+      "period_label": "live"
     }
   ]
 }
