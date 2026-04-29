@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-29T15:20:10",
+  "generated": "2026-04-29T15:29:16",
   "signal": {
     "date": "2026-04-29",
     "regime": "GREEN",
@@ -40,22 +40,22 @@
     }
   },
   "perf": {
-    "cagr": 13.64,
-    "cumulative_return": 189.82,
+    "cagr": 13.61,
+    "cumulative_return": 189.3,
     "max_drawdown": -11.54,
-    "sharpe": 1.272,
-    "sortino": 1.71,
-    "calmar": 2.503,
-    "mar": 1.18,
+    "sharpe": 1.269,
+    "sortino": 1.707,
+    "calmar": 2.547,
+    "mar": 1.177,
     "omega": 1.248,
-    "beta": 0.199,
-    "ytd_return": 1.25,
+    "beta": 0.2,
+    "ytd_return": 1.07,
     "current_drawdown": -2.07,
-    "trades_per_year": 17.8,
+    "trades_per_year": 17.7,
     "total_trades": 148,
     "upside_capture_spy": 36.7,
-    "downside_capture_spy": 27.6,
-    "capture_ratio_spy": 1.327,
+    "downside_capture_spy": 27.9,
+    "capture_ratio_spy": 1.316,
     "upside_capture_bench": 86.5,
     "downside_capture_bench": 76.8,
     "capture_ratio_bench": 1.126,
@@ -65,38 +65,38 @@
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 1.25,
-      "bench": -0.4,
+      "aegis": 1.07,
+      "bench": -0.56,
       "spy": 4.63
     },
     "y1": {
-      "aegis": 18.56,
-      "bench": 16.33,
+      "aegis": 18.34,
+      "bench": 16.15,
       "spy": 30.66
     },
     "y3": {
-      "aegis": 66.56,
-      "bench": 45.6,
+      "aegis": 66.26,
+      "bench": 45.37,
       "spy": 77.78
     },
     "y5": {
-      "aegis": 82.09,
-      "bench": 42.21,
+      "aegis": 81.76,
+      "bench": 41.98,
       "spy": 81.37
     },
     "itd": {
-      "aegis": 189.82,
-      "bench": 105.13,
+      "aegis": 189.3,
+      "bench": 104.81,
       "spy": 202.95
     }
   },
   "bench_kpis": {
-    "cagr": 9.0,
+    "cagr": 8.97,
     "max_drawdown": -22.14,
-    "sharpe": 0.788,
-    "sortino": 0.99,
-    "calmar": 1.158,
-    "mar": 0.407,
+    "sharpe": 0.786,
+    "sortino": 0.988,
+    "calmar": 1.163,
+    "mar": 0.405,
     "omega": 1.159,
     "beta": 0.606
   },
@@ -160,8 +160,8 @@
       "is_ytd": false
     },
     "2026": {
-      "aegis": 1.2,
-      "bench": -0.4,
+      "aegis": 1.1,
+      "bench": -0.6,
       "spy": 4.1,
       "is_ytd": true
     }
