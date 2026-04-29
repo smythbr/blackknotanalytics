@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-28T14:43:35",
+  "generated": "2026-04-28T22:25:47",
   "signal": {
     "date": "2026-04-28",
     "regime": "GREEN",
@@ -65,38 +65,38 @@
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 3.11,
-      "bench": 0.89,
+      "aegis": 2.37,
+      "bench": 0.55,
       "spy": 4.65
     },
     "y1": {
-      "aegis": 20.93,
-      "bench": 18.45,
+      "aegis": 20.07,
+      "bench": 18.05,
       "spy": 30.73
     },
     "y3": {
-      "aegis": 69.61,
-      "bench": 47.48,
+      "aegis": 68.4,
+      "bench": 46.98,
       "spy": 77.81
     },
     "y5": {
-      "aegis": 86.28,
-      "bench": 44.45,
+      "aegis": 84.95,
+      "bench": 43.97,
       "spy": 82.56
     },
     "itd": {
-      "aegis": 195.14,
-      "bench": 107.79,
+      "aegis": 193.03,
+      "bench": 107.09,
       "spy": 203.0
     }
   },
   "bench_kpis": {
-    "cagr": 9.2,
+    "cagr": 9.15,
     "max_drawdown": -22.14,
-    "sharpe": 0.804,
-    "sortino": 1.01,
-    "calmar": 1.228,
-    "mar": 0.416,
+    "sharpe": 0.8,
+    "sortino": 1.005,
+    "calmar": 1.19,
+    "mar": 0.413,
     "omega": 1.162,
     "beta": 0.606
   },
@@ -160,8 +160,8 @@
       "is_ytd": false
     },
     "2026": {
-      "aegis": 3.1,
-      "bench": 0.9,
+      "aegis": 2.4,
+      "bench": 0.5,
       "spy": 4.1,
       "is_ytd": true
     }
