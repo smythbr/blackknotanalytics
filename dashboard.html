@@ -166,7 +166,7 @@ body { overflow-x:hidden; }
 }
 .trend-improving    { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
 .trend-deteriorating{ color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
-.gauge-placeholder-note { font-size:var(--fs-xs); color:var(--grey); font-style:italic; margin-top:10px; }
+.eidos-action-row { margin-top:16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 
 /* ─── PERFORMANCE TABLES ─────────────────────────────────── */
 .perf-table-block { margin-bottom:44px; }
@@ -549,7 +549,11 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
       <span class="gauge-label lbl-red">Risk-Off</span>
       <span class="gauge-label lbl-green">Risk-On</span>
     </div>
-    <div class="gauge-placeholder-note">Signal definition in progress.</div>
+    <div class="eidos-alloc-bars" id="eidosWeightBars"></div>
+    <div class="eidos-action-row">
+      <span id="eidosActionStatus" class="signal-badge hold">—</span>
+      <span id="eidosRebalNote" class="eidos-rebal-note"></span>
+    </div>
   </div>
 
   <div class="db-rule"></div>
@@ -902,10 +906,48 @@ function renderAegisAlloc(aegis) {
 // ════════════════════════════════════════════════════════
 function renderEidosSignal(perf) {
   const archetype = perf.signal.archetype_display || formatArchetype(perf.signal.archetype);
-  document.getElementById('eidosRegimeLabel').textContent = archetype + ' — drives portfolio allocation';
-  const regime = perf.signal.regime;
-  const pos = regime === 'risk-on' ? '72%' : regime === 'risk-off' ? '14%' : '50%';
+  const regime    = perf.signal.regime;
+  const weights   = perf.signal.weights || {};
+  const action    = perf.signal.action  || {};
+
+  // Regime label + gauge
+  document.getElementById('eidosRegimeLabel').textContent =
+    archetype + ' — ' + (regime === 'risk-on' ? 'Risk-On' : 'Risk-Off');
+  const pos = regime === 'risk-on' ? '72%' : '14%';
   setDot('eidosRegimeDot', pos);
+
+  // Weight bars — data-driven from signal.weights
+  const assets = [
+    { key: 'SPY', color: 'var(--color-spy)' },
+    { key: 'GLD', color: 'var(--color-gld)' },
+    { key: 'TLT', color: 'var(--color-tlt)' },
+    { key: 'BIL', color: 'var(--color-bil)' },
+  ];
+  const barsHtml = assets.map(({ key, color }) => {
+    const w = weights[key] || {};
+    const pct = Math.round((w.target_weight || 0) * 100);
+    return `<div class="eidos-bar-row">
+      <span class="eidos-bar-label">${key}</span>
+      <div class="eidos-bar-track">
+        <div class="eidos-bar-fill" style="width:${pct}%;background:${color};${pct===0?'opacity:0;':''}"></div>
+      </div>
+      <span class="eidos-bar-pct${pct === 0 ? ' zero' : ''}">${pct}%</span>
+    </div>`;
+  }).join('');
+  document.getElementById('eidosWeightBars').innerHTML = barsHtml;
+
+  // Action status badge
+  const badge = document.getElementById('eidosActionStatus');
+  const rebalReq = action.rebalance_required;
+  badge.textContent = rebalReq ? 'REBALANCE REQUIRED' : 'HOLD — NO ACTION';
+  badge.className   = 'signal-badge ' + (rebalReq ? 'action' : 'hold');
+
+  // Last rebalance note
+  const days = action.days_since_last_rebalance;
+  const date = action.last_rebalance_date || '—';
+  const type = action.last_rebalance_type  || '';
+  document.getElementById('eidosRebalNote').textContent =
+    `Last: ${date}${days != null ? ' · ' + days + 'd ago' : ''}${type ? ' · ' + type : ''}`;
 }
 
 // ════════════════════════════════════════════════════════

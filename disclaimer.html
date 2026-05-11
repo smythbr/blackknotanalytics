@@ -2,287 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Disclaimer for Black Knot Analytics — AEGIS and Eidos are systematic educational models. Not investment advice. Past performance does not guarantee future results.">
   <link rel="canonical" href="https://www.blackknotanalytics.com/disclaimer.html">
-  <title>Disclaimer — BLACK KNOT ANALYTICS</title>
+  <title>Disclaimer — Black Knot Analytics</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.blackknotanalytics.com/disclaimer.html">
+  <meta property="og:title"       content="Disclaimer — Black Knot Analytics">
+  <meta property="og:description" content="AEGIS and Eidos are systematic educational models. Not investment advice. Past performance does not guarantee future results.">
+  <meta property="og:site_name"   content="Black Knot Analytics">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black:    #000000;
-      --red:      #CC1010;
-      --white:    #FFFFFF;
-      --grey:     #888884;
-      --light-grey: #C8C8C4;
-      --line:     rgba(255,255,255,0.08);
-      --card-bg:  #0D0D0D;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-ui:  'Rajdhani', sans-serif;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--light-grey);
-      font-family: var(--font-ui);
-      font-size: 16px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .site-header {
-      background: rgba(0,0,0,0.95);
-      border-bottom: 1px solid var(--line);
-      padding: 0 48px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-    }
-    .brand {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      color: var(--white);
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-    .back-link {
-      font-family: var(--font-ui);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--grey);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--white); }
-
-    .page {
-      max-width: 720px;
-      margin: 72px auto 100px;
-      padding: 0 32px;
-    }
-
-    .page-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      font-weight: 300;
-      color: var(--white);
-      margin-bottom: 8px;
-      line-height: 1.1;
-    }
-    .page-meta {
-      font-family: var(--font-ui);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 48px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .notice {
-      background: var(--card-bg);
-      border: 1px solid rgba(204,16,16,0.2);
-      border-left: 3px solid var(--red);
-      padding: 20px 24px;
-      margin-bottom: 48px;
-    }
-    .notice p {
-      font-size: 0.9rem;
-      color: var(--light-grey);
-      margin: 0;
-      line-height: 1.7;
-    }
-    .notice strong { color: var(--white); }
-
-    .section { margin-bottom: 40px; }
-
-    h2 {
-      font-family: var(--font-ui);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h2::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--red);
-      flex-shrink: 0;
-    }
-
-    p { margin-bottom: 14px; color: var(--light-grey); font-size: 0.92rem; line-height: 1.8; }
-    p:last-child { margin-bottom: 0; }
-
-    ul { margin: 0 0 14px 20px; }
-    ul li { margin-bottom: 8px; color: var(--light-grey); font-size: 0.92rem; line-height: 1.7; }
-
-    strong { color: var(--white); font-weight: 600; }
-
-    a { color: var(--red); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .page-footer {
-      margin-top: 72px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-      font-family: var(--font-ui);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--grey);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .page-footer a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
-    .page-footer a:hover { color: var(--white); }
-
-    @media (max-width: 640px) {
-      .site-header { padding: 0 20px; }
-      .page { padding: 0 20px; margin-top: 40px; margin-bottom: 72px; }
-      .page-title { font-size: 2rem; }
-      .notice { padding: 16px 18px; }
-      h2 { font-size: 0.65rem; }
-    }
-
-    /* Safe-area (notched phones) */
-    .site-header {
-      padding-left:  max(48px, env(safe-area-inset-left));
-      padding-right: max(48px, env(safe-area-inset-right));
-      padding-top:   env(safe-area-inset-top);
-    }
-    @supports (padding-top: env(safe-area-inset-top)) {
-      .site-header { height: calc(64px + env(safe-area-inset-top)); align-items: flex-end; padding-bottom: 0; }
-    }
-
-    /* Touch targets */
-    .back-link { min-height: 44px; display: inline-flex; align-items: center; }
-    .brand     { min-height: 44px; display: inline-flex; align-items: center; }
-
-    /* Prevent iOS font inflation */
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-    * { -webkit-tap-highlight-color: transparent; }
-  </style>
+  <link rel="stylesheet" href="bk.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <a href="index.html" class="brand">Black Knot Analytics</a>
-    <a href="index.html" class="back-link">← Home</a>
+  <header class="legal-header">
+    <a href="index.html" class="legal-header-brand">
+      <img src="logo.png" alt="Black Knot Analytics">
+    </a>
+    <a href="index.html" class="legal-header-back">← Home</a>
   </header>
 
-  <main class="page">
+  <main class="legal-page">
 
-    <h1 class="page-title">Disclaimer</h1>
-    <p class="page-meta">Effective date: May 1, 2026 &nbsp;·&nbsp; BLACK KNOT ANALYTICS</p>
+    <h1 class="legal-page-title">Disclaimer</h1>
+    <p class="legal-page-meta">Effective: May 1, 2026 &nbsp;·&nbsp; Black Knot Analytics</p>
 
-    <div class="notice">
-      <p><strong>Not investment advice.</strong> BLACK KNOT ANALYTICS is an independent
-      educational resource. Nothing on this platform constitutes investment advice,
-      a recommendation, or a solicitation to buy or sell any security or financial
-      instrument. All investment decisions are the sole responsibility of the subscriber.</p>
+    <div class="legal-notice">
+      <p><strong>Not investment advice.</strong> BLACK KNOT ANALYTICS is an independent educational
+      resource. Nothing on this platform constitutes investment advice, a recommendation, or a
+      solicitation to buy or sell any security or financial instrument. All investment decisions
+      are the sole responsibility of the subscriber.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Educational purpose only</h2>
-      <p>The AEGIS and Eidos models, their signals, performance data, and all associated
-      content published on this platform are provided for educational and informational
-      purposes only. The models are designed to demonstrate systematic, rules-based
-      approaches to portfolio allocation. They are not managed investment products.</p>
+      <p>The AEGIS and Eidos models, their signals, performance data, and all associated content
+      published on this platform are provided for educational and informational purposes only. The
+      models are designed to demonstrate systematic, rules-based approaches to portfolio allocation.
+      They are not managed investment products.</p>
       <p>BLACK KNOT ANALYTICS is not a registered investment advisor, portfolio manager,
-      broker-dealer, or financial planner under the laws of any jurisdiction. No fiduciary
-      or advisory relationship of any kind exists between BLACK KNOT ANALYTICS and any
-      subscriber or visitor to this platform.</p>
+      broker-dealer, or financial planner under the laws of any jurisdiction. No fiduciary or
+      advisory relationship of any kind exists between BLACK KNOT ANALYTICS and any subscriber or
+      visitor to this platform.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Past performance</h2>
-      <p>Performance figures published on this platform are based on walk-forward backtests
-      conducted over historical data. <strong>Past performance does not guarantee, and
-      should not be taken as an indication of, future results.</strong> All backtested
-      performance is hypothetical — it does not represent actual trading results and does
-      not account for all costs, taxes, or other factors that would affect real-world
-      performance.</p>
-      <p>The walk-forward methodology used by BLACK KNOT ANALYTICS is designed to minimise
-      overfitting and curve-fitting. However, no backtest can fully replicate future market
-      conditions, and no model can guarantee positive returns or protect against loss.</p>
+      <p>Performance figures published on this platform are based on walk-forward backtests conducted
+      over historical data. <strong>Past performance does not guarantee, and should not be taken as
+      an indication of, future results.</strong> All backtested performance is hypothetical — it does
+      not represent actual trading results and does not account for all costs, taxes, or other factors
+      that would affect real-world performance.</p>
+      <p>The walk-forward methodology used by BLACK KNOT ANALYTICS is designed to minimise overfitting
+      and curve-fitting. However, no backtest can fully replicate future market conditions, and no
+      model can guarantee positive returns or protect against loss.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>No guarantee of accuracy</h2>
-      <p>While BLACK KNOT ANALYTICS makes reasonable efforts to ensure the accuracy and
-      timeliness of the information published on this platform, no warranty, express or
-      implied, is made with respect to its accuracy, completeness, or fitness for any
-      particular purpose. Signals, data, and commentary may contain errors and are subject
-      to change without notice.</p>
+      <p>While BLACK KNOT ANALYTICS makes reasonable efforts to ensure the accuracy and timeliness of
+      the information published on this platform, no warranty, express or implied, is made with respect
+      to its accuracy, completeness, or fitness for any particular purpose. Signals, data, and
+      commentary may contain errors and are subject to change without notice.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Independent decision-making</h2>
-      <p>Subscribers are solely responsible for their own investment decisions. Before
-      making any investment decision, subscribers should consider their own financial
-      situation, investment objectives, and risk tolerance, and should seek independent
-      financial, legal, and tax advice as appropriate. BLACK KNOT ANALYTICS does not know
-      your personal financial circumstances and cannot advise you on whether any particular
-      course of action is suitable for you.</p>
+      <p>Subscribers are solely responsible for their own investment decisions. Before making any
+      investment decision, subscribers should consider their own financial situation, investment
+      objectives, and risk tolerance, and should seek independent financial, legal, and tax advice
+      as appropriate. BLACK KNOT ANALYTICS does not know your personal financial circumstances and
+      cannot advise you on whether any particular course of action is suitable for you.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>No affiliations</h2>
-      <p>BLACK KNOT ANALYTICS is independent. We are not affiliated with, endorsed by,
-      sponsored by, or receiving compensation from any financial institution, ETF provider,
-      brokerage, or any other third party. Model allocations referencing specific ETFs do
-      not constitute a recommendation of those instruments or their issuers.</p>
+      <p>BLACK KNOT ANALYTICS is independent. We are not affiliated with, endorsed by, sponsored by,
+      or receiving compensation from any financial institution, ETF provider, brokerage, or any other
+      third party. Model allocations referencing specific ETFs do not constitute a recommendation of
+      those instruments or their issuers.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Limitation of liability</h2>
-      <p>To the fullest extent permitted by applicable law, BLACK KNOT ANALYTICS and its
-      founder accept no responsibility or liability for any investment outcome, financial
-      loss, or other consequence — direct or indirect — arising from a subscriber's or
-      visitor's use of, or reliance on, information published on this platform.</p>
+      <p>To the fullest extent permitted by applicable law, BLACK KNOT ANALYTICS and its founder accept
+      no responsibility or liability for any investment outcome, financial loss, or other consequence —
+      direct or indirect — arising from a subscriber's or visitor's use of, or reliance on, information
+      published on this platform.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Jurisdiction</h2>
-      <p>This disclaimer is governed by the laws of the Province of British Columbia and
-      the federal laws of Canada applicable therein.</p>
+      <p>This disclaimer is governed by the laws of the Province of British Columbia and the federal
+      laws of Canada applicable therein.</p>
     </div>
 
-    <div class="section">
+    <div class="legal-section">
       <h2>Contact</h2>
       <p>Questions may be directed to
       <a href="mailto:legal@blackknotanalytics.com">legal@blackknotanalytics.com</a>.</p>
     </div>
 
-    <div class="page-footer">
-      <span>© 2026 BLACK KNOT ANALYTICS. All rights reserved.</span>
+    <footer class="legal-footer">
+      <span>© 2026 Black Knot Analytics. All rights reserved.</span>
       <span>
         <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp;
         <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
         <a href="disclaimer.html">Disclaimer</a>
       </span>
-    </div>
+    </footer>
 
   </main>
 
