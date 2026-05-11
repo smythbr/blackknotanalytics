@@ -45,14 +45,14 @@
   --font-mono:    'Courier New', Courier, monospace;
 
   /* Typography — scale */
-  --fs-xs:   0.75rem;   /* 12px — pills, meta labels */
-  --fs-sm:   0.8125rem; /* 13px — eyebrows, table headers */
-  --fs-md:   0.875rem;  /* 14px — table data, body labels */
-  --fs-base: 0.9375rem; /* 15px — body copy */
-  --fs-lg:   1.0625rem; /* 17px — card names */
-  --fs-xl:   1.25rem;   /* 20px — H3 */
-  --fs-2xl:  1.5rem;    /* 24px — small KPI values */
-  --fs-3xl:  2rem;      /* 32px — medium KPI values */
+  --fs-xs:   0.8rem;    /* 12.8px — pills, meta labels */
+  --fs-sm:   0.875rem;  /* 14px   — eyebrows, table headers */
+  --fs-md:   0.9375rem; /* 15px   — table data, body labels */
+  --fs-base: 1rem;      /* 16px   — body copy */
+  --fs-lg:   1.125rem;  /* 18px   — card names */
+  --fs-xl:   1.25rem;   /* 20px   — H3 */
+  --fs-2xl:  1.5rem;    /* 24px   — small KPI values */
+  --fs-3xl:  2rem;      /* 32px   — medium KPI values */
 
   /* Spacing */
   --page-gutter:    48px;

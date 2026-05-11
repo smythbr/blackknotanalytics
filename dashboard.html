@@ -26,7 +26,7 @@ body { overflow-x:hidden; }
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
 }
-.db-nav-logo img { height:36px; width:auto; display:block; }
+.db-nav-logo img { height:40px; width:auto; display:block; }
 .db-nav-right { display:flex; align-items:center; gap:24px; }
 .db-nav-link {
   font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
@@ -100,12 +100,12 @@ body { overflow-x:hidden; }
 
 /* ─── TODAY'S SIGNAL PAGE ────────────────────────────────── */
 .signal-date { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.08em; margin-bottom:36px; }
-.signal-cards { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.signal-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .signal-card {
   background:var(--card-bg);
-  border:1px solid rgba(255,255,255,0.4);
-  border-right:3px solid var(--red);
-  padding:28px 28px 24px;
+  border:1px solid var(--card-border);
+  border-left:3px solid var(--red);
+  padding:32px 28px 28px;
 }
 .signal-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
 .signal-card-name { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--white); }
@@ -113,20 +113,20 @@ body { overflow-x:hidden; }
   font-size:var(--fs-xs); font-weight:700; letter-spacing:0.16em;
   text-transform:uppercase; padding:5px 12px; border:1px solid;
 }
-.signal-badge.hold   { color:var(--yellow-neu); border-color:rgba(251,191,36,0.35); background:rgba(251,191,36,0.06); }
-.signal-badge.action { color:var(--red-neg); border-color:rgba(248,113,113,0.35); background:rgba(248,113,113,0.08); }
-.signal-kpis { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:20px; }
-.signal-kpi { background:#0a0a0a; padding:14px 16px; }
-.signal-kpi-label { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:6px; }
-.signal-kpi-val { font-family:var(--font-display); font-size:1.9rem; font-weight:300; line-height:1; }
+.signal-badge.hold   { color:var(--green-pos);  border-color:rgba(74,222,128,0.35);  background:rgba(74,222,128,0.06); }
+.signal-badge.action { color:var(--yellow-neu); border-color:rgba(251,191,36,0.35); background:rgba(251,191,36,0.08); }
+.signal-kpis { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+.signal-kpi { background:#0a0a0a; padding:16px 18px; }
+.signal-kpi-label { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:8px; }
+.signal-kpi-val { font-family:var(--font-display); font-size:2.4rem; font-weight:300; line-height:1; }
 .signal-kpi-val.pos { color:var(--green-pos); }
 .signal-kpi-val.neg { color:var(--red-neg); }
 .signal-kpi-val.neu { color:var(--white); }
-.signal-alloc-label { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:12px; }
-.signal-alloc-row { display:flex; gap:2px; }
-.signal-alloc-block { flex:1; text-align:center; padding:10px 4px 8px; background:#0a0a0a; }
-.signal-alloc-ticker { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey); margin-bottom:4px; }
-.signal-alloc-pct { font-family:var(--font-display); font-size:1.15rem; font-weight:600; color:var(--white); }
+.signal-alloc-label { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:12px; }
+.signal-alloc-row { display:flex; gap:8px; }
+.signal-alloc-block { flex:1; text-align:center; padding:14px 8px 12px; background:#0a0a0a; }
+.signal-alloc-ticker { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey); margin-bottom:6px; }
+.signal-alloc-pct { font-family:var(--font-display); font-size:1.4rem; font-weight:600; color:var(--white); }
 .signal-alloc-pct.zero { color:#444; }
 
 /* ─── GAUGES ─────────────────────────────────────────────── */
@@ -205,9 +205,10 @@ body { overflow-x:hidden; }
 .td-neg   { color:var(--red-neg)   !important; font-weight:600; }
 
 /* ─── ALLOCATION TABLE ───────────────────────────────────── */
-.alloc-table-wrap { overflow-x:auto; }
+.alloc-table-wrap { overflow-x:auto; max-height:480px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
 .alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); min-width:520px; }
 .alloc-table thead tr { background:#0a0a0a; }
+.alloc-table thead th { position:sticky; top:0; z-index:2; background:#0a0a0a; }
 .alloc-table th {
   font-size:var(--fs-xs); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
   color:var(--grey); padding:11px 14px; text-align:right;
@@ -290,6 +291,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <img src="logo.png" alt="BLACK KNOT ANALYTICS">
   </a>
   <div class="db-nav-right">
+    <a href="index.html" class="db-nav-link">Home</a>
     <button class="db-nav-link active" data-page="today"  onclick="navTo('today')">Today's Signal</button>
     <button class="db-nav-link"        data-page="aegis"  onclick="navTo('aegis')">AEGIS</button>
     <button class="db-nav-link"        data-page="eidos"  onclick="navTo('eidos')">Eidos</button>
@@ -317,7 +319,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 <div id="page-today" class="db-page-section active">
 <div class="db-inner">
 
-  <div class="db-eyebrow">Daily Signal</div>
+  <div class="db-eyebrow">Dashboard</div>
   <div class="db-title">Today's Signal</div>
   <div class="signal-date" id="signalDateLine">Updated as at market close &nbsp;·&nbsp; —</div>
 
@@ -354,7 +356,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <!-- EIDOS -->
     <div class="signal-card">
       <div class="signal-card-header">
-        <span class="signal-card-name">Eidos</span>
+        <span class="signal-card-name">EIDOS</span>
         <span class="signal-badge hold" id="eidosBadge">Holding</span>
       </div>
       <div class="signal-kpis">
@@ -403,7 +405,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
   <div class="gauge-sub-grid">
     <div class="gauge-card">
-      <div class="gauge-title">Market Momentum</div>
+      <div class="gauge-title">Market Momentum <span class="trend-badge" id="momentumTrend">—</span></div>
       <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="momentumDot" style="left:50%"></div></div>
       <div class="gauge-labels">
         <span class="gauge-label lbl-red">Decelerating</span>
@@ -411,7 +413,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
       </div>
     </div>
     <div class="gauge-card">
-      <div class="gauge-title">Credit Risk</div>
+      <div class="gauge-title">Credit Risk <span class="trend-badge" id="creditTrend">—</span></div>
       <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="creditDot" style="left:50%"></div></div>
       <div class="gauge-labels">
         <span class="gauge-label lbl-red">Widening</span>
@@ -419,7 +421,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
       </div>
     </div>
     <div class="gauge-card">
-      <div class="gauge-title">Left Tail Risk</div>
+      <div class="gauge-title">Left Tail Risk <span class="trend-badge" id="tailTrend">—</span></div>
       <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="tailDot" style="left:50%"></div></div>
       <div class="gauge-labels">
         <span class="gauge-label lbl-red">Turbulent</span>
@@ -750,7 +752,7 @@ function renderToday(sig, perf) {
   document.getElementById('aegisYtd').textContent  = fmtPct(ytd, 2, true);
   document.getElementById('aegisYtd').className    = 'signal-kpi-val ' + pctCls(ytd);
   document.getElementById('aegisCagr').textContent = fmtPct(cagr, 2);
-  document.getElementById('aegisBadge').textContent = act ? 'Action Required' : 'Holding';
+  document.getElementById('aegisBadge').textContent = act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
   document.getElementById('aegisBadge').className   = 'signal-badge ' + (act ? 'action' : 'hold');
 
   function setW(id, val) {
@@ -776,7 +778,7 @@ function renderToday(sig, perf) {
   document.getElementById('eidosYtd').textContent  = fmtPct(aYtd, 2, true);
   document.getElementById('eidosYtd').className    = 'signal-kpi-val ' + pctCls(aYtd);
   document.getElementById('eidosCagr').textContent = fmtPct(aCagr, 2);
-  document.getElementById('eidosBadge').textContent = aAct ? 'Action Required' : 'Holding';
+  document.getElementById('eidosBadge').textContent = aAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
   document.getElementById('eidosBadge').className   = 'signal-badge ' + (aAct ? 'action' : 'hold');
 
   function setAW(id, key) {
@@ -806,6 +808,9 @@ function renderAegisSignal(sig) {
     el.textContent = t;
     el.className = 'trend-badge ' + (t === 'Improving' ? 'trend-improving' : 'trend-deteriorating');
   }
+  setTrend('momentumTrend', s.trends.mom);
+  setTrend('creditTrend',   s.trends.oas);
+  setTrend('tailTrend',     s.trends.rv);
   setTrend('xopTrend', s.vams.trends.XOP);
   setTrend('kbeTrend', s.vams.trends.KBE);
 }
