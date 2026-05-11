@@ -146,11 +146,8 @@ body { overflow-x:hidden; }
   position:absolute; top:50%; transform:translate(-50%,-50%);
   border:2px solid #111;
 }
-.gauge-labels { display:flex; justify-content:space-between; align-items:center; }
-.gauge-label { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--grey); }
-.gauge-label.lbl-red    { color:var(--red); }
-.gauge-label.lbl-yellow { color:var(--yellow-neu); }
-.gauge-label.lbl-green  { color:var(--green-pos); }
+.gauge-dir-row { display:flex; justify-content:flex-end; margin-bottom:6px; min-height:18px; }
+.gauge-dir { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
 .gauge-sub-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; margin-bottom:2px; }
 .vams-section { margin-top:28px; }
 .vams-eyebrow {
@@ -177,21 +174,21 @@ body { overflow-x:hidden; }
 }
 .perf-table-note { font-size:var(--fs-xs); color:var(--grey); font-style:italic; margin-bottom:14px; }
 .perf-table-wrap { overflow-x:auto; }
-.perf-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); min-width:360px; table-layout:fixed; }
+.perf-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:360px; table-layout:fixed; }
 .perf-table th:first-child, .perf-table td:first-child { width:52%; }
 .perf-table th:nth-child(2), .perf-table td:nth-child(2) { width:16%; }
 .perf-table th:nth-child(3), .perf-table td:nth-child(3) { width:16%; }
 .perf-table th:nth-child(4), .perf-table td:nth-child(4) { width:16%; }
 .perf-table thead tr { background:#0a0a0a; }
 .perf-table th {
-  font-size:var(--fs-xs); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--grey); padding:11px 14px; text-align:right;
+  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey); padding:12px 14px; text-align:right;
   border-bottom:1px solid rgba(255,255,255,0.15); white-space:nowrap;
 }
 .perf-table th:first-child { text-align:left; }
 .perf-table th.col-model { color:var(--white); }
 .perf-table td {
-  padding:10px 14px; font-size:var(--fs-md);
+  padding:11px 14px; font-size:var(--fs-base);
   border-bottom:1px solid rgba(255,255,255,0.04);
   color:var(--grey); text-align:right; white-space:nowrap;
 }
@@ -206,19 +203,19 @@ body { overflow-x:hidden; }
 
 /* ─── ALLOCATION TABLE ───────────────────────────────────── */
 .alloc-table-wrap { overflow-x:auto; max-height:480px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); min-width:520px; }
+.alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:520px; }
 .alloc-table thead tr { background:#0a0a0a; }
 .alloc-table thead th { position:sticky; top:0; z-index:2; background:#0a0a0a; }
 .alloc-table th {
-  font-size:var(--fs-xs); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--grey); padding:11px 14px; text-align:right;
+  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey); padding:12px 14px; text-align:right;
   border-bottom:1px solid rgba(255,255,255,0.15); white-space:nowrap;
 }
 .alloc-table th:first-child, .alloc-table th.th-left { text-align:left; }
 .alloc-table th.th-center { text-align:center; }
 .alloc-table th.th-group  { text-align:center; color:var(--white); }
 .alloc-table td {
-  padding:10px 14px; font-size:var(--fs-md);
+  padding:11px 14px; font-size:var(--fs-base);
   border-bottom:1px solid rgba(255,255,255,0.04);
   color:var(--grey); text-align:right; white-space:nowrap;
 }
@@ -391,42 +388,29 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <!-- SIGNAL -->
   <div class="db-eyebrow">Signal</div>
   <div class="db-title">AEGIS Signal</div>
-
+  <div style="margin-bottom:28px;"></div>
   <div class="gauge-card">
     <div class="gauge-title">PRISM Regime Signal</div>
     <div class="gauge-subtitle">Composite probability — drives portfolio allocation</div>
+    <div class="gauge-dir-row"><span class="gauge-dir" id="prismDir">—</span></div>
     <div class="gauge-track"><div class="gauge-dot" id="prismDot" style="left:50%"></div></div>
-    <div class="gauge-labels">
-      <span class="gauge-label lbl-red">Risk-Off</span>
-      <span class="gauge-label lbl-yellow">Transition</span>
-      <span class="gauge-label lbl-green">Risk-On</span>
-    </div>
   </div>
 
   <div class="gauge-sub-grid">
     <div class="gauge-card">
-      <div class="gauge-title">Market Momentum <span class="trend-badge" id="momentumTrend">—</span></div>
-      <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="momentumDot" style="left:50%"></div></div>
-      <div class="gauge-labels">
-        <span class="gauge-label lbl-red">Decelerating</span>
-        <span class="gauge-label lbl-green">Accelerating</span>
-      </div>
+      <div class="gauge-title">Market Momentum</div>
+      <div class="gauge-dir-row"><span class="gauge-dir" id="momentumDir">—</span></div>
+      <div class="gauge-track"><div class="gauge-dot" id="momentumDot" style="left:50%"></div></div>
     </div>
     <div class="gauge-card">
-      <div class="gauge-title">Credit Risk <span class="trend-badge" id="creditTrend">—</span></div>
-      <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="creditDot" style="left:50%"></div></div>
-      <div class="gauge-labels">
-        <span class="gauge-label lbl-red">Widening</span>
-        <span class="gauge-label lbl-green">Tightening</span>
-      </div>
+      <div class="gauge-title">Credit Risk</div>
+      <div class="gauge-dir-row"><span class="gauge-dir" id="creditDir">—</span></div>
+      <div class="gauge-track"><div class="gauge-dot" id="creditDot" style="left:50%"></div></div>
     </div>
     <div class="gauge-card">
-      <div class="gauge-title">Left Tail Risk <span class="trend-badge" id="tailTrend">—</span></div>
-      <div class="gauge-track" style="margin-top:16px;"><div class="gauge-dot" id="tailDot" style="left:50%"></div></div>
-      <div class="gauge-labels">
-        <span class="gauge-label lbl-red">Turbulent</span>
-        <span class="gauge-label lbl-green">Calm</span>
-      </div>
+      <div class="gauge-title">Left Tail Risk</div>
+      <div class="gauge-dir-row"><span class="gauge-dir" id="tailDir">—</span></div>
+      <div class="gauge-track"><div class="gauge-dot" id="tailDot" style="left:50%"></div></div>
     </div>
   </div>
 
@@ -434,22 +418,16 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="vams-eyebrow">VAMS Riders</div>
     <div class="vams-grid">
       <div class="gauge-card">
-        <div class="gauge-title">XOP <span class="trend-badge" id="xopTrend">—</span></div>
+        <div class="gauge-title">XOP</div>
         <div class="gauge-subtitle">Energy — Oil &amp; Gas Exploration</div>
+        <div class="gauge-dir-row"><span class="gauge-dir" id="xopDir">—</span></div>
         <div class="gauge-track"><div class="gauge-dot" id="xopDot" style="left:50%"></div></div>
-        <div class="gauge-labels">
-          <span class="gauge-label lbl-red">Underperforming</span>
-          <span class="gauge-label lbl-green">Outperforming</span>
-        </div>
       </div>
       <div class="gauge-card">
-        <div class="gauge-title">KBE <span class="trend-badge" id="kbeTrend">—</span></div>
+        <div class="gauge-title">KBE</div>
         <div class="gauge-subtitle">Financials — Regional Banks</div>
+        <div class="gauge-dir-row"><span class="gauge-dir" id="kbeDir">—</span></div>
         <div class="gauge-track"><div class="gauge-dot" id="kbeDot" style="left:50%"></div></div>
-        <div class="gauge-labels">
-          <span class="gauge-label lbl-red">Underperforming</span>
-          <span class="gauge-label lbl-green">Outperforming</span>
-        </div>
       </div>
     </div>
   </div>
@@ -541,8 +519,8 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
   <!-- SIGNAL -->
   <div class="db-eyebrow">Signal</div>
-  <div class="db-title">Eidos Signal</div>
-
+  <div class="db-title">EIDOS Signal</div>
+  <div style="margin-bottom:28px;"></div>
   <div class="gauge-card">
     <div class="gauge-title">Regime Signal</div>
     <div class="gauge-subtitle" id="eidosRegimeLabel">—</div>
@@ -795,6 +773,30 @@ function renderToday(sig, perf) {
 // ════════════════════════════════════════════════════════
 function renderAegisSignal(sig) {
   const s = sig.signal;
+
+  // Normalize a value to 0–1 for colour zone determination
+  function normPos(v, min, max) {
+    return Math.max(0, Math.min(1, (v - min) / (max - min)));
+  }
+
+  // Set a right-justified direction indicator above the bar
+  // Colour: green (>0.60), yellow (0.33–0.60), red (<0.33)
+  function setGaugeDir(id, pos, trend) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const color = pos > 0.60 ? 'var(--green-pos)' : pos < 0.33 ? 'var(--red-neg)' : 'var(--yellow-neu)';
+    const arrow = trend === 'Improving' ? ' ↑' : ' ↓';
+    el.textContent = (trend === 'Improving' ? 'Improving' : 'Deteriorating') + arrow;
+    el.style.color = color;
+  }
+
+  const prismPos = normPos(1 - s.p_stress,          0, 1);
+  const momPos   = normPos(s.signals.ewma_z,        -3, 3);
+  const credPos  = normPos(-s.signals.oas_z,        -3, 3);
+  const tailPos  = normPos(-s.signals.rv_minus_z,   -3, 3);
+  const xopPos   = normPos(s.vams.scores.XOP,       -2, 2);
+  const kbePos   = normPos(s.vams.scores.KBE,       -2, 2);
+
   setDot('prismDot',    gaugePos(1 - s.p_stress,        0, 1));
   setDot('momentumDot', gaugePos(s.signals.ewma_z,     -3, 3));
   setDot('creditDot',   gaugePos(-s.signals.oas_z,     -3, 3));
@@ -802,17 +804,12 @@ function renderAegisSignal(sig) {
   setDot('xopDot',      gaugePos(s.vams.scores.XOP,   -2, 2));
   setDot('kbeDot',      gaugePos(s.vams.scores.KBE,   -2, 2));
 
-  function setTrend(id, t) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.textContent = t;
-    el.className = 'trend-badge ' + (t === 'Improving' ? 'trend-improving' : 'trend-deteriorating');
-  }
-  setTrend('momentumTrend', s.trends.mom);
-  setTrend('creditTrend',   s.trends.oas);
-  setTrend('tailTrend',     s.trends.rv);
-  setTrend('xopTrend', s.vams.trends.XOP);
-  setTrend('kbeTrend', s.vams.trends.KBE);
+  setGaugeDir('prismDir',    prismPos, s.trends.agg);
+  setGaugeDir('momentumDir', momPos,   s.trends.mom);
+  setGaugeDir('creditDir',   credPos,  s.trends.oas);
+  setGaugeDir('tailDir',     tailPos,  s.trends.rv);
+  setGaugeDir('xopDir',      xopPos,   s.vams.trends.XOP);
+  setGaugeDir('kbeDir',      kbePos,   s.vams.trends.KBE);
 }
 
 // ════════════════════════════════════════════════════════
