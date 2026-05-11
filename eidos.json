@@ -1,0 +1,5774 @@
+{
+  "meta": {
+    "run_date": "2026-05-11",
+    "run_timestamp": "2026-05-11T14:49:28",
+    "performance_inception": "2018-01-01",
+    "model": "Regime 6",
+    "disclaimer": "For educational purposes only. Not investment advice."
+  },
+  "signal": {
+    "date": "2026-05-11",
+    "archetype": "post_crisis_recovery",
+    "archetype_display": "Post-Crisis Recovery",
+    "regime": "risk-on",
+    "regime_display": "Risk-On",
+    "weights": {
+      "SPY": {
+        "regime_weight": 0.5,
+        "vams_score": 1.0,
+        "target_weight": 0.5
+      },
+      "GLD": {
+        "regime_weight": 0.2,
+        "vams_score": 1.0,
+        "target_weight": 0.2
+      },
+      "TLT": {
+        "regime_weight": 0.0,
+        "vams_score": null,
+        "target_weight": 0.0
+      },
+      "BIL": {
+        "regime_weight": 0.3,
+        "vams_score": null,
+        "target_weight": 0.3
+      }
+    },
+    "action": {
+      "rebalance_required": false,
+      "trigger": null,
+      "archetype_before": null,
+      "archetype_after": null,
+      "weights_before": null,
+      "days_since_last_rebalance": 4,
+      "last_rebalance_date": "2026-05-07",
+      "last_rebalance_type": "regime_change"
+    }
+  },
+  "returns": {
+    "eidos": {
+      "ytd": 0.08941,
+      "2018": 0.11627,
+      "2019": 0.20955,
+      "2020": 0.35329,
+      "2021": 0.18444,
+      "2022": -0.01398,
+      "2023": 0.26776,
+      "2024": 0.21536,
+      "2025": 0.26821
+    },
+    "spy_bh": {
+      "ytd": 0.08711,
+      "2018": -0.04569,
+      "2019": 0.31224,
+      "2020": 0.18332,
+      "2021": 0.28729,
+      "2022": -0.18175,
+      "2023": 0.26176,
+      "2024": 0.24886,
+      "2025": 0.17719
+    },
+    "sixty_forty": {
+      "ytd": 0.05365,
+      "2018": -0.02605,
+      "2019": 0.22117,
+      "2020": 0.13989,
+      "2021": 0.16531,
+      "2022": -0.16114,
+      "2023": 0.17968,
+      "2024": 0.15456,
+      "2025": 0.13508
+    },
+    "alpha_vs_spy": {
+      "ytd": 0.0023,
+      "2018": 0.16196,
+      "2019": -0.10269,
+      "2020": 0.16997,
+      "2021": -0.10285,
+      "2022": 0.16777,
+      "2023": 0.006,
+      "2024": -0.0335,
+      "2025": 0.09102,
+      "wins": 5,
+      "losses": 3,
+      "win_rate": 0.625
+    },
+    "alpha_vs_6040": {
+      "ytd": 0.03576,
+      "2018": 0.14232,
+      "2019": -0.01162,
+      "2020": 0.2134,
+      "2021": 0.01913,
+      "2022": 0.14716,
+      "2023": 0.08808,
+      "2024": 0.0608,
+      "2025": 0.13313,
+      "wins": 7,
+      "losses": 1,
+      "win_rate": 0.875
+    }
+  },
+  "cagr_windows": {
+    "eidos": {
+      "ytd": 0.08941,
+      "1yr": 0.29542,
+      "3yr": 0.25658,
+      "5yr": 0.17787,
+      "itd": 0.19916
+    },
+    "spy_bh": {
+      "ytd": 0.08711,
+      "1yr": 0.32653,
+      "3yr": 0.23135,
+      "5yr": 0.13671,
+      "itd": 0.14751
+    },
+    "sixty_forty": {
+      "ytd": 0.05365,
+      "1yr": 0.21108,
+      "3yr": 0.15295,
+      "5yr": 0.08453,
+      "itd": 0.09674
+    }
+  },
+  "cum_returns": {
+    "eidos": {
+      "ytd": 8.94,
+      "1yr": 29.41,
+      "3yr": 97.69,
+      "5yr": 126.13,
+      "itd": 354.26
+    },
+    "spy_bh": {
+      "ytd": 8.71,
+      "1yr": 32.5,
+      "3yr": 86.09,
+      "5yr": 89.39,
+      "itd": 214.75
+    }
+  },
+  "risk": {
+    "eidos": {
+      "label": "eidos",
+      "itd": {
+        "cagr": 0.19916,
+        "volatility": 0.07402,
+        "sharpe": 2.1671,
+        "sortino": 2.1947,
+        "calmar": 4.3866,
+        "mar": 3.0735,
+        "beta": 0.1745,
+        "omega": 1.497,
+        "maxdd": -0.0648,
+        "maxdd_start": "2020-03-09",
+        "maxdd_end": "2020-03-19",
+        "maxdd_recovery": "2020-04-13",
+        "maxdd_episode_days": 10,
+        "maxdd_recovery_days": 25,
+        "maxdd_duration_days": 309,
+        "avg_drawdown": -0.01282,
+        "upside_capture": 0.1507,
+        "downside_capture": 0.3683,
+        "capture_ratio": 0.4093
+      },
+      "trailing_36m": {
+        "cagr": 0.25658,
+        "volatility": 0.07057,
+        "sharpe": 2.6341,
+        "sortino": 2.7135,
+        "beta": 0.1745,
+        "omega": 1.609,
+        "maxdd": -0.05849,
+        "maxdd_duration_days": 54,
+        "avg_drawdown": -0.00694,
+        "upside_capture": 0.272,
+        "downside_capture": 0.4456,
+        "capture_ratio": 0.6106
+      }
+    },
+    "spy_bh": {
+      "label": "spy_bh",
+      "itd": {
+        "cagr": 0.14751,
+        "volatility": 0.19312,
+        "sharpe": 0.5853,
+        "sortino": 0.5401,
+        "calmar": 1.2336,
+        "mar": 0.4375,
+        "beta": 1.0,
+        "omega": 1.1397,
+        "maxdd": -0.33717,
+        "maxdd_start": "2020-02-19",
+        "maxdd_end": "2020-03-23",
+        "maxdd_recovery": "2020-08-10",
+        "maxdd_episode_days": 33,
+        "maxdd_recovery_days": 140,
+        "maxdd_duration_days": 708,
+        "avg_drawdown": -0.05866,
+        "upside_capture": 1.0,
+        "downside_capture": 1.0,
+        "capture_ratio": 1.0
+      },
+      "trailing_36m": {
+        "cagr": 0.23135,
+        "volatility": 0.15088,
+        "sharpe": 1.0745,
+        "sortino": 1.0349,
+        "beta": 1.0,
+        "omega": 1.2391,
+        "maxdd": -0.18755,
+        "maxdd_duration_days": 126,
+        "avg_drawdown": -0.02576,
+        "upside_capture": 1.0,
+        "downside_capture": 1.0,
+        "capture_ratio": 1.0
+      }
+    },
+    "sixty_forty": {
+      "label": "sixty_forty",
+      "itd": {
+        "cagr": 0.09674,
+        "volatility": 0.11884,
+        "sharpe": 0.5684,
+        "sortino": 0.5307,
+        "calmar": 1.382,
+        "mar": 0.4607,
+        "beta": 0.693,
+        "omega": 1.1246,
+        "maxdd": -0.20999,
+        "maxdd_start": "2020-02-19",
+        "maxdd_end": "2020-03-23",
+        "maxdd_recovery": "2020-07-20",
+        "maxdd_episode_days": 33,
+        "maxdd_recovery_days": 119,
+        "maxdd_duration_days": 762,
+        "avg_drawdown": -0.04637,
+        "upside_capture": 0.3949,
+        "downside_capture": 0.8287,
+        "capture_ratio": 0.4765
+      },
+      "trailing_36m": {
+        "cagr": 0.15295,
+        "volatility": 0.09686,
+        "sharpe": 0.9923,
+        "sortino": 0.9844,
+        "beta": 0.693,
+        "omega": 1.2039,
+        "maxdd": -0.11067,
+        "maxdd_duration_days": 122,
+        "avg_drawdown": -0.01738,
+        "upside_capture": 0.474,
+        "downside_capture": 0.8181,
+        "capture_ratio": 0.5794
+      }
+    }
+  },
+  "annual_risk": {
+    "eidos": {
+      "2018": {
+        "volatility": 0.0474,
+        "sharpe": 2.04,
+        "sortino": 2.086,
+        "maxdd": -0.0391,
+        "beta": 0.061,
+        "omega": 1.46
+      },
+      "2019": {
+        "volatility": 0.0515,
+        "sharpe": 3.391,
+        "sortino": 3.826,
+        "maxdd": -0.0157,
+        "beta": 0.237,
+        "omega": 1.838
+      },
+      "2020": {
+        "volatility": 0.1064,
+        "sharpe": 2.799,
+        "sortino": 2.516,
+        "maxdd": -0.0648,
+        "beta": 0.078,
+        "omega": 1.632
+      },
+      "2021": {
+        "volatility": 0.0845,
+        "sharpe": 2.015,
+        "sortino": 2.165,
+        "maxdd": -0.0278,
+        "beta": 0.352,
+        "omega": 1.414
+      },
+      "2022": {
+        "volatility": 0.0723,
+        "sharpe": -0.416,
+        "sortino": -0.426,
+        "maxdd": -0.0581,
+        "beta": 0.097,
+        "omega": 0.925
+      },
+      "2023": {
+        "volatility": 0.0645,
+        "sharpe": 2.981,
+        "sortino": 3.422,
+        "maxdd": -0.0305,
+        "beta": 0.257,
+        "omega": 1.716
+      },
+      "2024": {
+        "volatility": 0.0806,
+        "sharpe": 1.794,
+        "sortino": 1.617,
+        "maxdd": -0.0585,
+        "beta": 0.557,
+        "omega": 1.379
+      },
+      "2025": {
+        "volatility": 0.0693,
+        "sharpe": 2.909,
+        "sortino": 3.203,
+        "maxdd": -0.0262,
+        "beta": 0.12,
+        "omega": 1.661
+      },
+      "ytd": {
+        "volatility": 0.0614,
+        "sharpe": 3.709,
+        "sortino": 4.441,
+        "maxdd": -0.0175,
+        "beta": 0.257,
+        "omega": 2.123
+      }
+    }
+  },
+  "regime_distribution": {
+    "cumulative": {
+      "energy_crisis": {
+        "days": 296,
+        "pct": 0.141
+      },
+      "inflation_cycle": {
+        "days": 21,
+        "pct": 0.01
+      },
+      "credit_crunch": {
+        "days": 244,
+        "pct": 0.1162
+      },
+      "demand_contraction": {
+        "days": 197,
+        "pct": 0.0938
+      },
+      "concentration_cycle": {
+        "days": 0,
+        "pct": 0.0
+      },
+      "post_crisis_recovery": {
+        "days": 414,
+        "pct": 0.1971
+      },
+      "policy_expansion": {
+        "days": 125,
+        "pct": 0.0595
+      },
+      "structural_expansion": {
+        "days": 803,
+        "pct": 0.3824
+      },
+      "total_risk_off": {
+        "days": 758,
+        "pct": 0.361
+      },
+      "total_risk_on": {
+        "days": 1342,
+        "pct": 0.639
+      }
+    },
+    "annual": {
+      "2018": {
+        "energy_crisis": {
+          "days": 34,
+          "pct": 0.1355
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 45,
+          "pct": 0.1793
+        },
+        "demand_contraction": {
+          "days": 28,
+          "pct": 0.1116
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 62,
+          "pct": 0.247
+        },
+        "policy_expansion": {
+          "days": 2,
+          "pct": 0.008
+        },
+        "structural_expansion": {
+          "days": 80,
+          "pct": 0.3187
+        },
+        "total_risk_off": {
+          "days": 107,
+          "pct": 0.4263
+        },
+        "total_risk_on": {
+          "days": 144,
+          "pct": 0.5737
+        }
+      },
+      "2019": {
+        "energy_crisis": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 22,
+          "pct": 0.0873
+        },
+        "demand_contraction": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 60,
+          "pct": 0.2381
+        },
+        "policy_expansion": {
+          "days": 60,
+          "pct": 0.2381
+        },
+        "structural_expansion": {
+          "days": 110,
+          "pct": 0.4365
+        },
+        "total_risk_off": {
+          "days": 22,
+          "pct": 0.0873
+        },
+        "total_risk_on": {
+          "days": 230,
+          "pct": 0.9127
+        }
+      },
+      "2020": {
+        "energy_crisis": {
+          "days": 81,
+          "pct": 0.3202
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 50,
+          "pct": 0.1976
+        },
+        "demand_contraction": {
+          "days": 7,
+          "pct": 0.0277
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 45,
+          "pct": 0.1779
+        },
+        "policy_expansion": {
+          "days": 60,
+          "pct": 0.2372
+        },
+        "structural_expansion": {
+          "days": 10,
+          "pct": 0.0395
+        },
+        "total_risk_off": {
+          "days": 138,
+          "pct": 0.5455
+        },
+        "total_risk_on": {
+          "days": 115,
+          "pct": 0.4545
+        }
+      },
+      "2021": {
+        "energy_crisis": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "demand_contraction": {
+          "days": 110,
+          "pct": 0.4365
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 42,
+          "pct": 0.1667
+        },
+        "policy_expansion": {
+          "days": 3,
+          "pct": 0.0119
+        },
+        "structural_expansion": {
+          "days": 97,
+          "pct": 0.3849
+        },
+        "total_risk_off": {
+          "days": 110,
+          "pct": 0.4365
+        },
+        "total_risk_on": {
+          "days": 142,
+          "pct": 0.5635
+        }
+      },
+      "2022": {
+        "energy_crisis": {
+          "days": 76,
+          "pct": 0.3028
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 82,
+          "pct": 0.3267
+        },
+        "demand_contraction": {
+          "days": 6,
+          "pct": 0.0239
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "policy_expansion": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "structural_expansion": {
+          "days": 87,
+          "pct": 0.3466
+        },
+        "total_risk_off": {
+          "days": 164,
+          "pct": 0.6534
+        },
+        "total_risk_on": {
+          "days": 87,
+          "pct": 0.3466
+        }
+      },
+      "2023": {
+        "energy_crisis": {
+          "days": 30,
+          "pct": 0.12
+        },
+        "inflation_cycle": {
+          "days": 20,
+          "pct": 0.08
+        },
+        "credit_crunch": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "demand_contraction": {
+          "days": 37,
+          "pct": 0.148
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 60,
+          "pct": 0.24
+        },
+        "policy_expansion": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "structural_expansion": {
+          "days": 103,
+          "pct": 0.412
+        },
+        "total_risk_off": {
+          "days": 87,
+          "pct": 0.348
+        },
+        "total_risk_on": {
+          "days": 163,
+          "pct": 0.652
+        }
+      },
+      "2024": {
+        "energy_crisis": {
+          "days": 43,
+          "pct": 0.1706
+        },
+        "inflation_cycle": {
+          "days": 1,
+          "pct": 0.004
+        },
+        "credit_crunch": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "demand_contraction": {
+          "days": 6,
+          "pct": 0.0238
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 82,
+          "pct": 0.3254
+        },
+        "policy_expansion": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "structural_expansion": {
+          "days": 120,
+          "pct": 0.4762
+        },
+        "total_risk_off": {
+          "days": 50,
+          "pct": 0.1984
+        },
+        "total_risk_on": {
+          "days": 202,
+          "pct": 0.8016
+        }
+      },
+      "2025": {
+        "energy_crisis": {
+          "days": 32,
+          "pct": 0.128
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 45,
+          "pct": 0.18
+        },
+        "demand_contraction": {
+          "days": 3,
+          "pct": 0.012
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 60,
+          "pct": 0.24
+        },
+        "policy_expansion": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "structural_expansion": {
+          "days": 110,
+          "pct": 0.44
+        },
+        "total_risk_off": {
+          "days": 80,
+          "pct": 0.32
+        },
+        "total_risk_on": {
+          "days": 170,
+          "pct": 0.68
+        }
+      },
+      "ytd": {
+        "energy_crisis": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "inflation_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "credit_crunch": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "demand_contraction": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "concentration_cycle": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "post_crisis_recovery": {
+          "days": 3,
+          "pct": 0.0337
+        },
+        "policy_expansion": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "structural_expansion": {
+          "days": 86,
+          "pct": 0.9663
+        },
+        "total_risk_off": {
+          "days": 0,
+          "pct": 0.0
+        },
+        "total_risk_on": {
+          "days": 89,
+          "pct": 1.0
+        }
+      }
+    }
+  },
+  "rebalancing": {
+    "cumulative": {
+      "regime": 47,
+      "vams": 147,
+      "total": 194
+    },
+    "annual": {
+      "2018": {
+        "regime": 7,
+        "vams": 14,
+        "total": 21
+      },
+      "2019": {
+        "regime": 4,
+        "vams": 20,
+        "total": 24
+      },
+      "2020": {
+        "regime": 6,
+        "vams": 9,
+        "total": 15
+      },
+      "2021": {
+        "regime": 4,
+        "vams": 21,
+        "total": 25
+      },
+      "2022": {
+        "regime": 5,
+        "vams": 38,
+        "total": 43
+      },
+      "2023": {
+        "regime": 7,
+        "vams": 17,
+        "total": 24
+      },
+      "2024": {
+        "regime": 7,
+        "vams": 11,
+        "total": 18
+      },
+      "2025": {
+        "regime": 6,
+        "vams": 7,
+        "total": 13
+      },
+      "ytd": {
+        "regime": 1,
+        "vams": 10,
+        "total": 11
+      }
+    },
+    "averages": {
+      "regime": 5.6,
+      "vams": 17.6,
+      "total": 23.2
+    },
+    "history": [
+      {
+        "date": "2026-05-07",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 22
+      },
+      {
+        "date": "2026-04-15",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 41
+      },
+      {
+        "date": "2026-03-05",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2026-03-04",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2026-03-03",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 14
+      },
+      {
+        "date": "2026-02-17",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2026-02-12",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2026-02-06",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2026-02-04",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2026-02-02",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2026-01-30",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 67
+      },
+      {
+        "date": "2025-11-24",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 11
+      },
+      {
+        "date": "2025-11-13",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 31
+      },
+      {
+        "date": "2025-10-13",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2025-10-10",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 42
+      },
+      {
+        "date": "2025-08-29",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 86
+      },
+      {
+        "date": "2025-06-04",
+        "type": "regime_change",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 65
+      },
+      {
+        "date": "2025-03-31",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 34
+      },
+      {
+        "date": "2025-02-25",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2025-02-21",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2025-02-18",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2025-02-11",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 20
+      },
+      {
+        "date": "2025-01-22",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 15
+      },
+      {
+        "date": "2025-01-07",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 15
+      },
+      {
+        "date": "2024-12-23",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2024-12-19",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 13
+      },
+      {
+        "date": "2024-12-06",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2024-12-04",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2024-12-02",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 14
+      },
+      {
+        "date": "2024-11-18",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2024-11-12",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2024-11-06",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2024-10-30",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 23
+      },
+      {
+        "date": "2024-10-07",
+        "type": "regime_change",
+        "archetype_before": "inflation_cycle",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2024-10-04",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "inflation_cycle",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 15
+      },
+      {
+        "date": "2024-09-19",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 42
+      },
+      {
+        "date": "2024-08-08",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2024-08-07",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 71
+      },
+      {
+        "date": "2024-05-28",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 13
+      },
+      {
+        "date": "2024-05-15",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 33
+      },
+      {
+        "date": "2024-04-12",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 42
+      },
+      {
+        "date": "2024-03-01",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 88
+      },
+      {
+        "date": "2023-12-04",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 14
+      },
+      {
+        "date": "2023-11-20",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 40
+      },
+      {
+        "date": "2023-10-11",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 20
+      },
+      {
+        "date": "2023-09-21",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2023-09-18",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2023-09-15",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 28
+      },
+      {
+        "date": "2023-08-18",
+        "type": "regime_change",
+        "archetype_before": "inflation_cycle",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 28
+      },
+      {
+        "date": "2023-07-21",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "inflation_cycle",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 51
+      },
+      {
+        "date": "2023-05-31",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2023-05-25",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2023-05-19",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2023-05-16",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 14
+      },
+      {
+        "date": "2023-05-02",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2023-04-27",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2023-04-24",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2023-04-18",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 15
+      },
+      {
+        "date": "2023-04-03",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 27
+      },
+      {
+        "date": "2023-03-07",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2023-03-02",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2023-02-24",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 24
+      },
+      {
+        "date": "2023-01-31",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2023-01-30",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2023-01-23",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2023-01-20",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 31
+      },
+      {
+        "date": "2022-12-20",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2022-12-16",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2022-12-12",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2022-12-06",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2022-11-30",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 37
+      },
+      {
+        "date": "2022-10-24",
+        "type": "regime_change",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2022-10-19",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-10-18",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-10-17",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2022-10-14",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2022-10-12",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2022-10-10",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2022-10-07",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2022-10-04",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-10-03",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2022-09-30",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2022-09-28",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2022-09-26",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2022-09-21",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-09-20",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-09-19",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2022-09-16",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2022-09-14",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-09-13",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.0,
+          "BIL": 0.925
+        },
+        "days_since_prior": 26
+      },
+      {
+        "date": "2022-08-18",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2022-08-12",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-08-11",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-08-10",
+        "type": "vams_flip",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.25,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 43
+      },
+      {
+        "date": "2022-06-28",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.25,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.075,
+          "TLT": 0.2,
+          "BIL": 0.725
+        },
+        "days_since_prior": 11
+      },
+      {
+        "date": "2022-06-17",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-06-16",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2022-06-10",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-06-09",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-06-08",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 8
+      },
+      {
+        "date": "2022-05-31",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 28
+      },
+      {
+        "date": "2022-05-03",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-05-02",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 24
+      },
+      {
+        "date": "2022-04-08",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 16
+      },
+      {
+        "date": "2022-03-23",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2022-03-22",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2022-03-16",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 16
+      },
+      {
+        "date": "2022-02-28",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 40
+      },
+      {
+        "date": "2022-01-19",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 44
+      },
+      {
+        "date": "2021-12-06",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-12-03",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2021-12-02",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2021-12-01",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 16
+      },
+      {
+        "date": "2021-11-15",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 19
+      },
+      {
+        "date": "2021-10-27",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 12
+      },
+      {
+        "date": "2021-10-15",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-10-12",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 14
+      },
+      {
+        "date": "2021-09-28",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 64
+      },
+      {
+        "date": "2021-07-26",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-07-23",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "days_since_prior": 9
+      },
+      {
+        "date": "2021-07-14",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2021-07-13",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2021-07-09",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2021-07-08",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2021-07-02",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-06-29",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.125,
+          "TLT": 0.5,
+          "BIL": 0.375
+        },
+        "days_since_prior": 19
+      },
+      {
+        "date": "2021-06-10",
+        "type": "regime_change",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-06-07",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 94
+      },
+      {
+        "date": "2021-03-05",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2021-03-03",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2021-03-01",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2021-02-25",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 24
+      },
+      {
+        "date": "2021-02-01",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2021-01-29",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 53
+      },
+      {
+        "date": "2020-12-07",
+        "type": "regime_change",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 33
+      },
+      {
+        "date": "2020-11-04",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2020-10-28",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 47
+      },
+      {
+        "date": "2020-09-11",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2020-09-08",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 18
+      },
+      {
+        "date": "2020-08-21",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 0.5,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2020-08-20",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 0.5,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.15,
+          "TLT": 0.0,
+          "BIL": 0.25
+        },
+        "days_since_prior": 49
+      },
+      {
+        "date": "2020-07-02",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 8
+      },
+      {
+        "date": "2020-06-24",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 37
+      },
+      {
+        "date": "2020-05-18",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 10
+      },
+      {
+        "date": "2020-05-08",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2020-05-07",
+        "type": "regime_change",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 71
+      },
+      {
+        "date": "2020-02-26",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2020-02-24",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 39
+      },
+      {
+        "date": "2020-01-16",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 80
+      },
+      {
+        "date": "2019-10-28",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2019-10-21",
+        "type": "regime_change",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 24
+      },
+      {
+        "date": "2019-09-27",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2019-09-23",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2019-09-20",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 25
+      },
+      {
+        "date": "2019-08-26",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2019-08-23",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2019-08-21",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2019-08-20",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2019-08-19",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2019-08-14",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2019-08-12",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2019-08-09",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2019-08-08",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 0.25,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2019-08-01",
+        "type": "vams_flip",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.25,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.15,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.85
+        },
+        "days_since_prior": 6
+      },
+      {
+        "date": "2019-07-26",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 37
+      },
+      {
+        "date": "2019-06-19",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 37
+      },
+      {
+        "date": "2019-05-13",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 12
+      },
+      {
+        "date": "2019-05-01",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 54
+      },
+      {
+        "date": "2019-03-08",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2019-03-07",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 21
+      },
+      {
+        "date": "2019-02-14",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 9
+      },
+      {
+        "date": "2019-02-05",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2019-02-04",
+        "type": "regime_change",
+        "archetype_before": "credit_crunch",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 102
+      },
+      {
+        "date": "2018-10-25",
+        "type": "regime_change",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "credit_crunch",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.2,
+          "BIL": 0.5
+        },
+        "days_since_prior": 22
+      },
+      {
+        "date": "2018-10-03",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 13
+      },
+      {
+        "date": "2018-09-20",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 0.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 2
+      },
+      {
+        "date": "2018-09-18",
+        "type": "vams_flip",
+        "archetype_before": "demand_contraction",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 0.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.0,
+          "BIL": 0.75
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2018-09-17",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "demand_contraction",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.25,
+          "TLT": 0.5,
+          "BIL": 0.25
+        },
+        "days_since_prior": 19
+      },
+      {
+        "date": "2018-08-29",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 54
+      },
+      {
+        "date": "2018-07-06",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 11
+      },
+      {
+        "date": "2018-06-25",
+        "type": "vams_flip",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.8
+        },
+        "days_since_prior": 20
+      },
+      {
+        "date": "2018-06-05",
+        "type": "regime_change",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "post_crisis_recovery",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 5
+      },
+      {
+        "date": "2018-05-31",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 7
+      },
+      {
+        "date": "2018-05-24",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 3
+      },
+      {
+        "date": "2018-05-21",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2018-05-17",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 8
+      },
+      {
+        "date": "2018-05-09",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2018-05-08",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 1
+      },
+      {
+        "date": "2018-05-07",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 46
+      },
+      {
+        "date": "2018-03-22",
+        "type": "vams_flip",
+        "archetype_before": "structural_expansion",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 1.0
+        },
+        "days_since_prior": 23
+      },
+      {
+        "date": "2018-02-27",
+        "type": "regime_change",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "structural_expansion",
+        "spy_score_before": 0.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "weights_after": {
+          "SPY": 0.7,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "days_since_prior": 25
+      },
+      {
+        "date": "2018-02-02",
+        "type": "vams_flip",
+        "archetype_before": "energy_crisis",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 0.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "weights_after": {
+          "SPY": 0.0,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.7
+        },
+        "days_since_prior": 25
+      },
+      {
+        "date": "2018-01-08",
+        "type": "regime_change",
+        "archetype_before": "policy_expansion",
+        "archetype_after": "energy_crisis",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.3,
+          "TLT": 0.0,
+          "BIL": 0.1
+        },
+        "days_since_prior": 4
+      },
+      {
+        "date": "2018-01-04",
+        "type": "regime_change",
+        "archetype_before": "post_crisis_recovery",
+        "archetype_after": "policy_expansion",
+        "spy_score_before": 1.0,
+        "spy_score_after": 1.0,
+        "gld_score_before": 1.0,
+        "gld_score_after": 1.0,
+        "tlt_score_before": 1.0,
+        "tlt_score_after": 1.0,
+        "weights_before": {
+          "SPY": 0.5,
+          "GLD": 0.2,
+          "TLT": 0.0,
+          "BIL": 0.3
+        },
+        "weights_after": {
+          "SPY": 0.6,
+          "GLD": 0.0,
+          "TLT": 0.0,
+          "BIL": 0.4
+        },
+        "days_since_prior": 87
+      }
+    ]
+  },
+  "attention": [
+    {
+      "ticker": "DCOILWTICO",
+      "issue": "stale",
+      "detail": "+7d"
+    },
+    {
+      "ticker": "AUDUSD=X",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "DXY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "EURUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GBPUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GC1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCHF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCNH",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDKRW",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "VIX",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "W1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    }
+  ]
+}
