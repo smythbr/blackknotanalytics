@@ -232,6 +232,8 @@ body { overflow-x:hidden; }
   padding:3px 8px; border:1px solid; text-align:center;
   white-space:nowrap;
 }
+.sz-aegis { min-width:110px; }
+.sz-eidos { min-width:185px; }
 .r-on   { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
 .r-off  { color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
 .r-trans{ color:var(--yellow-neu);border-color:rgba(251,191,36,0.3); }
@@ -290,7 +292,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <a href="index.html" class="db-nav-link">Home</a>
     <button class="db-nav-link active" data-page="today"  onclick="navTo('today')">Today's Signal</button>
     <button class="db-nav-link"        data-page="aegis"  onclick="navTo('aegis')">AEGIS</button>
-    <button class="db-nav-link"        data-page="eidos"  onclick="navTo('eidos')">Eidos</button>
+    <button class="db-nav-link"        data-page="eidos"  onclick="navTo('eidos')">EIDOS</button>
     <button class="db-nav-signout"                        onclick="signOut()">Sign Out</button>
     <button class="db-hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -302,7 +304,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 <div class="db-menu-overlay" id="dbMenuOverlay">
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
   <button onclick="navTo('aegis');toggleMenu();"               id="menuAegis">AEGIS</button>
-  <button onclick="navTo('eidos');toggleMenu();"               id="menuEidos">Eidos</button>
+  <button onclick="navTo('eidos');toggleMenu();"               id="menuEidos">EIDOS</button>
   <div class="menu-divider"></div>
   <button class="db-menu-signout" onclick="signOut()">Sign Out</button>
 </div>
@@ -706,10 +708,10 @@ function aegisPill(regime) {
   if (r.includes('risk-on') || r === 'green')               cls = 'r-on';
   else if (r.includes('risk-off') || r === 'red')           cls = 'r-off';
   else if (r.includes('transition') || r === 'yellow')      cls = 'r-trans';
-  return `<span class="regime-pill ${cls}">${regime}</span>`;
+  return `<span class="regime-pill sz-aegis ${cls}">${regime}</span>`;
 }
 function eidosPill(archetype) {
-  return `<span class="regime-pill r-arch">${formatArchetype(archetype)}</span>`;
+  return `<span class="regime-pill sz-eidos r-arch">${formatArchetype(archetype)}</span>`;
 }
 
 // ════════════════════════════════════════════════════════
