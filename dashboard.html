@@ -122,11 +122,11 @@ body { overflow-x:hidden; }
 .signal-kpi-val.pos { color:var(--green-pos); }
 .signal-kpi-val.neg { color:var(--red-neg); }
 .signal-kpi-val.neu { color:var(--white); }
-.signal-alloc-label { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:12px; }
+.signal-alloc-label { font-size:var(--fs-md); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:12px; }
 .signal-alloc-row { display:flex; gap:8px; }
 .signal-alloc-block { flex:1; text-align:center; padding:14px 8px 12px; background:#0a0a0a; }
-.signal-alloc-ticker { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey); margin-bottom:6px; }
-.signal-alloc-pct { font-family:var(--font-display); font-size:1.4rem; font-weight:600; color:var(--white); }
+.signal-alloc-ticker { font-size:var(--fs-md); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey); margin-bottom:6px; }
+.signal-alloc-pct { font-family:var(--font-display); font-size:1.6rem; font-weight:600; color:var(--white); }
 .signal-alloc-pct.zero { color:#444; }
 
 /* ─── GAUGES ─────────────────────────────────────────────── */
@@ -215,7 +215,7 @@ body { overflow-x:hidden; }
 .alloc-table th.th-center { text-align:center; }
 .alloc-table th.th-group  { text-align:center; color:var(--white); }
 .alloc-table td {
-  padding:11px 14px; font-size:var(--fs-base);
+  padding:8px 14px; font-size:var(--fs-base);
   border-bottom:1px solid rgba(255,255,255,0.04);
   color:var(--grey); text-align:right; white-space:nowrap;
 }
@@ -228,11 +228,10 @@ body { overflow-x:hidden; }
 /* ─── REGIME PILLS ───────────────────────────────────────── */
 .regime-pill {
   display:inline-block; font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.14em; text-transform:uppercase;
-  padding:3px 0; border:1px solid; text-align:center;
+  letter-spacing:0.12em; text-transform:uppercase;
+  padding:3px 8px; border:1px solid; text-align:center;
+  white-space:nowrap;
 }
-.regime-pill.sz-aegis { width:72px; }
-.regime-pill.sz-eidos { width:152px; }
 .r-on   { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
 .r-off  { color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
 .r-trans{ color:var(--yellow-neu);border-color:rgba(251,191,36,0.3); }
@@ -707,10 +706,10 @@ function aegisPill(regime) {
   if (r.includes('risk-on') || r === 'green')               cls = 'r-on';
   else if (r.includes('risk-off') || r === 'red')           cls = 'r-off';
   else if (r.includes('transition') || r === 'yellow')      cls = 'r-trans';
-  return `<span class="regime-pill sz-aegis ${cls}">${regime}</span>`;
+  return `<span class="regime-pill ${cls}">${regime}</span>`;
 }
 function eidosPill(archetype) {
-  return `<span class="regime-pill sz-eidos r-arch">${formatArchetype(archetype)}</span>`;
+  return `<span class="regime-pill r-arch">${formatArchetype(archetype)}</span>`;
 }
 
 // ════════════════════════════════════════════════════════

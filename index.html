@@ -484,7 +484,7 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
 @media (max-width:768px) {
   nav { padding:14px 24px; }
   nav.scrolled { padding:10px 24px; }
-  .hero { padding:60px 24px 48px; }
+  .hero { padding:40px 24px 48px; }
   section { padding:72px 24px; }
   footer { padding:56px 24px 32px; }
   .footer-top { grid-template-columns:1fr; gap:32px; }
@@ -517,7 +517,7 @@ nav {
 }
 nav.scrolled { padding-top: max(12px, env(safe-area-inset-top)); }
 footer { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
-.hero { padding-top: max(80px, calc(64px + env(safe-area-inset-top))); }
+.hero { padding-top: max(40px, calc(32px + env(safe-area-inset-top))); }
 input, select, textarea, button { font-size: max(16px, 1em); }
 @media (min-width: 769px) {
   input, select, textarea { font-size: inherit; }
@@ -563,6 +563,8 @@ body { overflow-x: hidden; }
   <a href="#about" onclick="toggleMenu()">About</a>
   <div class="menu-divider"></div>
   <a href="#subscribe" class="menu-subscriber-link" onclick="toggleMenu()">Subscribe</a>
+  <div class="menu-divider"></div>
+  <a href="#" id="menuSignIn" onclick="toggleMenu(); openSignIn(event)">Sign In</a>
 </div>
 
 <!-- ─── HERO ────────────────────────────────────────────────── -->
@@ -776,6 +778,12 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
         navBtn.textContent = 'Dashboard';
         navBtn.href = 'dashboard.html';
         navBtn.onclick = null;
+      }
+      const menuSignIn = document.getElementById('menuSignIn');
+      if (menuSignIn) {
+        menuSignIn.textContent = 'Dashboard';
+        menuSignIn.href = 'dashboard.html';
+        menuSignIn.onclick = null;
       }
     }
   } catch(e) { /* session check failed silently */ }
