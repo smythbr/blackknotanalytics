@@ -990,7 +990,6 @@ function renderEidosPerf(perf) {
   const rb  = perf.rebalancing;
   const ytdMdd = perf.annual_risk.eidos.ytd.maxdd * 100;
   const spyYtdMdd = (perf.annual_risk.spy_bh && perf.annual_risk.spy_bh.ytd) ? perf.annual_risk.spy_bh.ytd.maxdd * 100 : null;
-  const spyYtdMdd = perf.annual_risk.spy_bh?.ytd?.maxdd != null ? perf.annual_risk.spy_bh.ytd.maxdd * 100 : null;
 
   // Cumulative — pre-computed percentage values from backend (mirrors Aegis)
   const cr = perf.cum_returns;
