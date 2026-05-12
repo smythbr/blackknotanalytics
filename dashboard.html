@@ -991,7 +991,7 @@ function renderEidosPerf(perf) {
   const ytdMdd = perf.annual_risk.eidos.ytd.maxdd * 100;
 
   // Cumulative — pre-computed percentage values from backend (mirrors Aegis)
-  const cr = perf.cum_returns;
+  const cr = perf.cagr_windows;
   let html = [
     ['YTD',    cr.eidos.ytd,       cr.spy_bh.ytd,       true],
     ['1 Year', cr.eidos['1yr'],    cr.spy_bh['1yr'],    false],
