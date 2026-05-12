@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T14:49:28",
+    "run_timestamp": "2026-05-11T18:26:28",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -129,22 +129,6 @@
       "3yr": 0.15295,
       "5yr": 0.08453,
       "itd": 0.09674
-    }
-  },
-  "cum_returns": {
-    "eidos": {
-      "ytd": 8.94,
-      "1yr": 29.41,
-      "3yr": 97.69,
-      "5yr": 126.13,
-      "itd": 354.26
-    },
-    "spy_bh": {
-      "ytd": 8.71,
-      "1yr": 32.5,
-      "3yr": 86.09,
-      "5yr": 89.39,
-      "itd": 214.75
     }
   },
   "risk": {
@@ -5735,12 +5719,6 @@
       "cascade": false
     },
     {
-      "ticker": "USDCNH",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
       "ticker": "USDJPY",
       "issue": "restated",
       "detail": "historical adj_close updated",
@@ -5759,16 +5737,11 @@
       "cascade": false
     },
     {
-      "ticker": "VIX",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "W1",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
     }
-  ]
+  ],
+  "regime_stability": {}
 }
