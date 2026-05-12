@@ -949,10 +949,9 @@ function renderEidosSignal(perf) {
     document.getElementById('stabilityTrack').style.background = grad;
     document.getElementById('stabilityDot').style.left = rs.position + '%';
 
-    // Direction label coloured by stability level
-    const color = rs.stability === 'High'
-      ? 'var(--green-pos)' : rs.stability === 'Low'
-      ? 'var(--red-neg)' : 'var(--yellow-neu)';
+    // Direction label — green if dot in green zone, amber if in yellow zone
+    const inYellow = rs.position < yl || rs.position > (yl + yg);
+    const color = inYellow ? 'var(--yellow-neu)' : 'var(--green-pos)';
     const dirEl = document.getElementById('stabilityDir');
     dirEl.textContent = (rs.trend || '—') +
       (rs.trend === 'Improving' ? ' ↑' : rs.trend === 'Deteriorating' ? ' ↓' : '');
