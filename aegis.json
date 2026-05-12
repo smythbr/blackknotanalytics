@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-11T20:34:35",
+  "generated": "2026-05-11T20:43:54",
   "signal": {
     "date": "2026-05-11",
     "regime": "GREEN",
@@ -42,6 +42,7 @@
   "perf": {
     "cagr": 14.66,
     "cumulative_return": 213.62,
+    "volatility": 10.7,
     "max_drawdown": -11.54,
     "sharpe": 1.05,
     "sortino": 1.0,
@@ -53,9 +54,9 @@
     "current_drawdown": 0.0,
     "trades_per_year": 17.8,
     "total_trades": 148,
-    "upside_capture_spy": 17.4,
-    "downside_capture_spy": 50.2,
-    "capture_ratio_spy": 0.347,
+    "upside_capture_spy": 10.3,
+    "downside_capture_spy": 28.7,
+    "capture_ratio_spy": 0.358,
     "upside_capture_bench": 78.8,
     "downside_capture_bench": 86.9,
     "capture_ratio_bench": 0.907,
@@ -101,21 +102,12 @@
     "sortino": 0.544,
     "omega": 1.125,
     "beta": 0.536,
-    "upside_beta": 0.228,
-    "downside_beta": 0.27,
     "upside_capture_spy": 20.0,
     "downside_capture_spy": 61.3,
     "capture_ratio_spy": 0.326,
     "upside_capture_bench": null,
     "downside_capture_bench": null,
-    "capture_ratio_bench": null,
-    "benchmark_cagr": null,
-    "benchmark_vol": null,
-    "benchmark_max_dd": null,
-    "benchmark_sharpe": null,
-    "benchmark_calmar": null,
-    "benchmark_mar": null,
-    "benchmark_omega": null
+    "capture_ratio_bench": null
   },
   "spy_kpis": {
     "cagr": 14.75,
@@ -127,22 +119,7 @@
     "mar": 0.437,
     "sortino": 0.542,
     "omega": 1.14,
-    "beta": 1.0,
-    "upside_beta": 1.0,
-    "downside_beta": 1.0,
-    "upside_capture_spy": 100.0,
-    "downside_capture_spy": 100.0,
-    "capture_ratio_spy": 1.0,
-    "upside_capture_bench": null,
-    "downside_capture_bench": null,
-    "capture_ratio_bench": null,
-    "benchmark_cagr": null,
-    "benchmark_vol": null,
-    "benchmark_max_dd": null,
-    "benchmark_sharpe": null,
-    "benchmark_calmar": null,
-    "benchmark_mar": null,
-    "benchmark_omega": null
+    "beta": 1.0
   },
   "annual_returns": {
     "2018": {
