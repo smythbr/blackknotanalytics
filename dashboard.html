@@ -1087,11 +1087,11 @@ async function loadData() {
       fetch('eidos.json').then(r => r.json())
     ]);
     renderToday(aegis, eidos);
-    renderAegisSignal(aegis);
-    renderAegisPerf(aegis);
-    renderAegisAlloc(aegis);
-    renderEidosSignal(eidos);
-    renderEidosPerf(eidos);
+    try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
+    try { renderAegisPerf(aegis);   } catch(e) { console.error('renderAegisPerf:', e); }
+    try { renderAegisAlloc(aegis);  } catch(e) { console.error('renderAegisAlloc:', e); }
+    try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
+    try { renderEidosPerf(eidos);   } catch(e) { console.error('renderEidosPerf:', e); }
     renderEidosAlloc(eidos);
   } catch(err) {
     console.error('Data load error:', err);
