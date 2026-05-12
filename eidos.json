@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T18:26:28",
+    "run_timestamp": "2026-05-11T18:41:53",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5665,28 +5665,10 @@
       "detail": "+7d"
     },
     {
-      "ticker": "AUDUSD=X",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "DXY",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
-    },
-    {
-      "ticker": "EURUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
     },
     {
       "ticker": "GC1",
@@ -5701,47 +5683,22 @@
       "cascade": true
     },
     {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
       "ticker": "W1",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
     }
   ],
-  "regime_stability": {}
+  "regime_stability": {
+    "position": 78.3,
+    "stability": "High",
+    "trend": "Improving",
+    "adj_left": "credit_crunch",
+    "adj_right": "structural_expansion",
+    "adj_left_display": "Credit Crunch",
+    "adj_right_display": "Structural Expansion",
+    "zone_yellow_left": 50.0,
+    "zone_green": 50.0,
+    "zone_yellow_right": 0.0
+  }
 }
