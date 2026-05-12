@@ -1083,8 +1083,8 @@ function renderEidosAlloc(perf) {
 async function loadData() {
   try {
     const [aegis, eidos] = await Promise.all([
-      fetch('aegis.json').then(r => r.json()),
-      fetch('eidos.json').then(r => r.json())
+      fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
+      fetch('eidos.json?v=' + Date.now()).then(r => r.json())
     ]);
     renderToday(aegis, eidos);
     try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
