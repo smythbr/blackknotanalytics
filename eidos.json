@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T19:19:15",
+    "run_timestamp": "2026-05-11T19:22:57",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -133,18 +133,18 @@
   },
   "cum_returns": {
     "eidos": {
-      "ytd": 0.08941,
-      "1yr": 0.29409,
-      "3yr": 0.97695,
-      "5yr": 1.26129,
-      "itd": 3.54259
+      "ytd": 8.94,
+      "1yr": 29.41,
+      "3yr": 97.69,
+      "5yr": 126.13,
+      "itd": 354.26
     },
     "spy_bh": {
-      "ytd": 0.08711,
-      "1yr": 0.32504,
-      "3yr": 0.86087,
-      "5yr": 0.89395,
-      "itd": 2.14755
+      "ytd": 8.71,
+      "1yr": 32.5,
+      "3yr": 86.09,
+      "5yr": 89.39,
+      "itd": 214.75
     }
   },
   "risk": {
