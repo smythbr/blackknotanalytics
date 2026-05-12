@@ -16,14 +16,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="shortcut icon" href="/favicon.ico">
-<meta name="description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and EIDOS — institutional-grade models, free.">
+<meta name="description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and Eidos — institutional-grade models, free.">
 <link rel="canonical" href="https://www.blackknotanalytics.com/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.blackknotanalytics.com/">
 <meta property="og:title" content="Macro-Aware Systematic Investing | Black Knot Analytics">
-<meta property="og:description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and EIDOS — institutional-grade models, free.">
+<meta property="og:description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and Eidos — institutional-grade models, free.">
 <meta property="og:image" content="https://www.blackknotanalytics.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,7 +32,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Macro-Aware Systematic Investing | Black Knot Analytics">
-<meta name="twitter:description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and EIDOS — institutional-grade models, free.">
+<meta name="twitter:description" content="Macro-aware, systematic investment portfolios for the sophisticated DIY retail investor. AEGIS and Eidos — institutional-grade models, free.">
 <meta name="twitter:image" content="https://www.blackknotanalytics.com/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,7 +126,7 @@ nav.scrolled { padding:12px 48px; }
   min-height:100vh;
   display:flex; flex-direction:column; justify-content:center;
   position:relative; overflow:hidden;
-  padding:80px 48px 64px;
+  padding:120px 48px 80px;
 }
 .hero-bg {
   position:absolute; inset:0;
@@ -300,7 +300,7 @@ section { padding:100px 48px; position:relative; }
   font-family:var(--font-ui);
   font-size:var(--fs-xs);
   letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--grey);
+  color:rgba(255,255,255,0.75);
   text-align:center;
   margin-top:4px;
 }
@@ -484,7 +484,7 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
 @media (max-width:768px) {
   nav { padding:14px 24px; }
   nav.scrolled { padding:10px 24px; }
-  .hero { padding:28px 24px 36px; }
+  .hero { padding:100px 24px 64px; }
   section { padding:72px 24px; }
   footer { padding:56px 24px 32px; }
   .footer-top { grid-template-columns:1fr; gap:32px; }
@@ -517,7 +517,7 @@ nav {
 }
 nav.scrolled { padding-top: max(12px, env(safe-area-inset-top)); }
 footer { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
-.hero { padding-top: max(40px, calc(32px + env(safe-area-inset-top))); }
+.hero { padding-top: max(120px, calc(80px + env(safe-area-inset-top))); }
 input, select, textarea, button { font-size: max(16px, 1em); }
 @media (min-width: 769px) {
   input, select, textarea { font-size: inherit; }
@@ -547,7 +547,7 @@ body { overflow-x: hidden; }
 <!-- ─── NAVIGATION ──────────────────────────────────────────── -->
 <nav id="navbar">
   <a href="#home" class="nav-brand">
-    <img src="logo.png" alt="BLACK KNOT ANALYTICS" style="height:40px; width:auto; display:block;">
+    <img src="logo.png" alt="BLACK KNOT ANALYTICS" style="height:44px; width:auto; display:block;">
   </a>
   <div style="display:flex; align-items:center; gap:20px;">
     <a href="#" class="nav-login" onclick="openSignIn(event)">Sign In</a>
@@ -563,8 +563,6 @@ body { overflow-x: hidden; }
   <a href="#about" onclick="toggleMenu()">About</a>
   <div class="menu-divider"></div>
   <a href="#subscribe" class="menu-subscriber-link" onclick="toggleMenu()">Subscribe</a>
-  <div class="menu-divider"></div>
-  <a href="#" id="menuSignIn" onclick="toggleMenu(); setTimeout(function(){ openSignIn(); }, 150); return false;">Sign In</a>
 </div>
 
 <!-- ─── HERO ────────────────────────────────────────────────── -->
@@ -585,11 +583,11 @@ body { overflow-x: hidden; }
       Institutional-grade, <em>high-performance</em><br>investment portfolios. For the sophisticated DIY investor.
     </h1>
     <p class="hero-desc animate" style="animation-delay:0.25s">
-      AEGIS and EIDOS are macro-aware, systematic investment portfolios — built on the same academic and institutional principles and frameworks that drive industry leading investment strategies on global Wall Street.
+      AEGIS and Eidos are macro-aware, systematic investment portfolios — built on the same academic and institutional principles and frameworks that drive industry leading investment strategies on global Wall Street.
     </p>
     <div class="hero-actions animate" style="animation-delay:0.35s">
-      <a href="#subscribe" class="btn-model">Explore AEGIS</a>
-      <a href="#subscribe" class="btn-model">Explore EIDOS</a>
+      <a href="#subscribe" class="btn-model">Explore Aegis</a>
+      <a href="#subscribe" class="btn-model">Explore Eidos</a>
     </div>
   </div>
 
@@ -668,13 +666,13 @@ body { overflow-x: hidden; }
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="logo.png" alt="BLACK KNOT ANALYTICS" style="height:36px; width:auto; margin-bottom:12px; display:block;">
+        <img src="logo.png" alt="BLACK KNOT ANALYTICS" style="height:40px; width:auto; margin-bottom:12px; display:block;">
         <p class="footer-tagline">Institutional intelligence.<br>For every investor.<br>Independent. Transparent. Free.</p>
       </div>
       <div class="footer-col">
         <h5>Models</h5>
-        <a href="#aegis">AEGIS</a>
-        <a href="#eidos">EIDOS</a>
+        <a href="#aegis">Aegis</a>
+        <a href="#eidos">Eidos</a>
         <a href="#subscribe">Subscribe</a>
       </div>
       <div class="footer-col">
@@ -693,7 +691,7 @@ body { overflow-x: hidden; }
         <a href="disclaimer.html">Disclaimer</a>
       </div>
       <p class="footer-disclaimer">
-        BLACK KNOT ANALYTICS is an independent educational resource. Nothing on this platform constitutes investment advice or a solicitation to buy or sell any security. AEGIS and EIDOS are systematic educational models — past performance is not indicative of future results. All investment decisions are the sole responsibility of the subscriber. BLACK KNOT ANALYTICS is not a registered investment advisor, portfolio manager, or money manager. We are not affiliated with, endorsed by, or receiving compensation from any financial institution, ETF provider, or third party.
+        BLACK KNOT ANALYTICS is an independent educational resource. Nothing on this platform constitutes investment advice or a solicitation to buy or sell any security. AEGIS and Eidos are systematic educational models — past performance is not indicative of future results. All investment decisions are the sole responsibility of the subscriber. BLACK KNOT ANALYTICS is not a registered investment advisor, portfolio manager, or money manager. We are not affiliated with, endorsed by, or receiving compensation from any financial institution, ETF provider, or third party.
       </p>
     </div>
   </div>
@@ -778,12 +776,6 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
         navBtn.textContent = 'Dashboard';
         navBtn.href = 'dashboard.html';
         navBtn.onclick = null;
-      }
-      const menuSignIn = document.getElementById('menuSignIn');
-      if (menuSignIn) {
-        menuSignIn.textContent = 'Dashboard';
-        menuSignIn.href = 'dashboard.html';
-        menuSignIn.onclick = null;
       }
     }
   } catch(e) { /* session check failed silently */ }
