@@ -538,9 +538,10 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="gauge-track" id="stabilityTrack" style="background:transparent;">
       <div class="gauge-dot" id="stabilityDot" style="left:50%"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:6px;">
-      <span class="gauge-label" id="stabilityLeft" style="color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
-      <span class="gauge-label" id="stabilityRight" style="color:var(--yellow-neu);text-align:right;font-size:var(--fs-xs);">—</span>
+    <div style="position:relative;margin-top:6px;height:18px;">
+      <span class="gauge-label" id="stabilityLeft" style="position:absolute;left:0;color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
+      <span class="gauge-label" id="stabilityCentre" style="position:absolute;transform:translateX(-50%);color:var(--green-pos);font-size:var(--fs-xs);white-space:nowrap;">—</span>
+      <span class="gauge-label" id="stabilityRight" style="position:absolute;right:0;color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
     </div>
     <div class="eidos-action-row">
       <span id="eidosActionStatus" class="signal-badge hold">—</span>
@@ -957,9 +958,12 @@ function renderEidosSignal(perf) {
       (rs.trend === 'Improving' ? ' ↑' : rs.trend === 'Deteriorating' ? ' ↓' : '');
     dirEl.style.color = color;
 
-    // Adjacent regime axis labels
-    document.getElementById('stabilityLeft').textContent  = rs.adj_left_display  || '—';
-    document.getElementById('stabilityRight').textContent = rs.adj_right_display || '—';
+    // Adjacent regime axis labels — centre label positioned over green zone midpoint
+    const greenMid = yl + yg / 2;
+    document.getElementById('stabilityLeft').textContent    = rs.adj_left_display  || '—';
+    document.getElementById('stabilityCentre').textContent  = archetype;
+    document.getElementById('stabilityCentre').style.left   = greenMid + '%';
+    document.getElementById('stabilityRight').textContent   = rs.adj_right_display || '—';
   }
 
   // Action badge
