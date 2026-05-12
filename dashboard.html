@@ -165,6 +165,110 @@ body { overflow-x:hidden; }
 .trend-deteriorating{ color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
 .eidos-action-row { margin-top:16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 
+/* ─── EIDOS SIGNAL PANEL (new) ───────────────────────────── */
+.esig-card {
+  background:#111; border:1px solid rgba(255,255,255,0.12);
+  padding:24px 26px 22px;
+}
+.esig-regime-name {
+  font-family:var(--font-display);
+  font-size:2rem; font-weight:300; line-height:1.15;
+  color:var(--white); margin-bottom:4px;
+}
+.esig-regime-meta {
+  font-size:var(--fs-xs); color:var(--grey);
+  letter-spacing:0.1em; margin-bottom:26px;
+}
+.esig-section { margin-bottom:22px; }
+.esig-eyebrow {
+  font-size:var(--fs-xs); font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--grey); margin-bottom:12px;
+}
+
+.esig-risk-bar { position:relative; height:10px; margin-bottom:8px; }
+.esig-risk-track {
+  position:absolute; inset:0;
+  background:linear-gradient(to right,
+    var(--red) 0%, var(--red) 30%,
+    var(--yellow-neu) 30%, var(--yellow-neu) 70%,
+    var(--green-pos) 70%, var(--green-pos) 100%);
+}
+.esig-risk-ghost {
+  position:absolute; top:50%; width:8px; height:8px;
+  border-radius:50%; background:var(--white); opacity:0.35;
+  transform:translate(-50%,-50%); transition:left 0.4s ease;
+}
+.esig-risk-dot {
+  position:absolute; top:50%; width:14px; height:14px;
+  border-radius:50%; background:var(--white);
+  border:2px solid #111;
+  transform:translate(-50%,-50%); transition:left 0.4s ease;
+}
+.esig-risk-labels {
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:var(--fs-xs); font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--grey);
+}
+.esig-risk-labels .lab-off { color:var(--red); }
+.esig-risk-labels .lab-on  { color:var(--green-pos); }
+.esig-risk-labels .lab-val { color:var(--white); font-weight:600; letter-spacing:0.06em; }
+
+.esig-stab-row { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.esig-stab-track {
+  flex:1; height:6px; background:rgba(255,255,255,0.06); overflow:hidden;
+}
+.esig-stab-fill {
+  height:100%; background:var(--green-pos); width:0%;
+  transition:width 0.4s ease, background 0.2s;
+}
+.esig-stab-pct {
+  font-size:var(--fs-base); font-weight:600;
+  color:var(--white); min-width:42px; text-align:right;
+}
+.esig-stab-meta { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em; }
+.esig-stab-meta .dir-improving { color:var(--green-pos); }
+.esig-stab-meta .dir-weakening { color:var(--red-neg); }
+.esig-stab-meta .dir-stable    { color:var(--yellow-neu); }
+
+.esig-prev {
+  font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em;
+  padding:14px 0;
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  margin-bottom:22px;
+}
+.esig-prev strong { color:var(--light-grey); font-weight:600; }
+
+.esig-legend { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.esig-legend-head {
+  font-size:var(--fs-xs); font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  margin-bottom:10px;
+}
+.esig-legend-head-on  { color:var(--green-pos); }
+.esig-legend-head-off { color:var(--red); }
+.esig-legend-item {
+  font-size:var(--fs-xs); color:var(--grey);
+  letter-spacing:0.04em; line-height:1.95;
+  padding:1px 0;
+}
+.esig-legend-item.is-prev    { color:var(--light-grey); }
+.esig-legend-item.is-current { color:var(--white); font-weight:600; }
+.esig-abbrev {
+  display:inline-block; min-width:34px;
+  font-weight:700; letter-spacing:0.1em; opacity:0.65;
+}
+.esig-legend-item.is-current .esig-abbrev,
+.esig-legend-item.is-prev    .esig-abbrev { opacity:1; }
+
+@media (max-width:480px) {
+  .esig-card { padding:20px 18px 18px; }
+  .esig-regime-name { font-size:1.7rem; }
+  .esig-legend { grid-template-columns:1fr; gap:14px; }
+}
+
 /* ─── PERFORMANCE TABLES ─────────────────────────────────── */
 .perf-table-block { margin-bottom:44px; }
 .perf-table-heading {
@@ -531,18 +635,56 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <div class="db-eyebrow">EIDOS</div>
   <div class="db-title">EIDOS Signal</div>
   <div style="margin-bottom:28px;"></div>
-  <div class="gauge-card">
-    <div class="gauge-title">Regime Stability</div>
-    <div class="gauge-subtitle" id="eidosRegimeLabel">—</div>
-    <div class="gauge-dir-row"><span class="gauge-dir" id="stabilityDir">—</span></div>
-    <div class="gauge-track" id="stabilityTrack" style="background:transparent;">
-      <div class="gauge-dot" id="stabilityDot" style="left:50%"></div>
+  <div class="esig-card">
+
+    <div class="esig-regime-name" id="esigRegimeName">—</div>
+    <div class="esig-regime-meta" id="esigRegimeMeta">—</div>
+
+    <div class="esig-section">
+      <div class="esig-eyebrow">Risk Posture</div>
+      <div class="esig-risk-bar">
+        <div class="esig-risk-track"></div>
+        <div class="esig-risk-ghost" id="esigRiskGhost" style="left:50%"></div>
+        <div class="esig-risk-dot"   id="esigRiskDot"   style="left:50%"></div>
+      </div>
+      <div class="esig-risk-labels">
+        <span class="lab-off">Risk-Off</span>
+        <span class="lab-val" id="esigRiskValue">—</span>
+        <span class="lab-on">Risk-On</span>
+      </div>
     </div>
-    <div style="position:relative;margin-top:6px;height:18px;">
-      <span class="gauge-label" id="stabilityLeft" style="position:absolute;left:0;color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
-      <span class="gauge-label" id="stabilityCentre" style="position:absolute;transform:translateX(-50%);color:var(--green-pos);font-size:var(--fs-xs);white-space:nowrap;">—</span>
-      <span class="gauge-label" id="stabilityRight" style="position:absolute;right:0;color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
+
+    <div class="esig-section">
+      <div class="esig-eyebrow">Stability</div>
+      <div class="esig-stab-row">
+        <div class="esig-stab-track"><div class="esig-stab-fill" id="esigStabFill"></div></div>
+        <div class="esig-stab-pct" id="esigStabPct">—</div>
+      </div>
+      <div class="esig-stab-meta" id="esigStabMeta">—</div>
     </div>
+
+    <div class="esig-prev" id="esigPrev">Previous regime: —</div>
+
+    <div class="esig-section" style="margin-bottom:0;">
+      <div class="esig-eyebrow">Archetypes</div>
+      <div class="esig-legend">
+        <div>
+          <div class="esig-legend-head esig-legend-head-on">Risk-On</div>
+          <div class="esig-legend-item" data-arch="structural_expansion"><span class="esig-abbrev">SE</span>Structural Expansion</div>
+          <div class="esig-legend-item" data-arch="post_crisis_recovery"><span class="esig-abbrev">PCR</span>Post-Crisis Recovery</div>
+          <div class="esig-legend-item" data-arch="policy_expansion"><span class="esig-abbrev">PE</span>Policy Expansion</div>
+          <div class="esig-legend-item" data-arch="concentration_cycle"><span class="esig-abbrev">CON</span>Concentration Cycle</div>
+        </div>
+        <div>
+          <div class="esig-legend-head esig-legend-head-off">Risk-Off</div>
+          <div class="esig-legend-item" data-arch="credit_crunch"><span class="esig-abbrev">CC</span>Credit Crunch</div>
+          <div class="esig-legend-item" data-arch="demand_contraction"><span class="esig-abbrev">DC</span>Demand Contraction</div>
+          <div class="esig-legend-item" data-arch="energy_crisis"><span class="esig-abbrev">EC</span>Energy Crisis</div>
+          <div class="esig-legend-item" data-arch="inflation_cycle"><span class="esig-abbrev">IC</span>Inflation Cycle</div>
+        </div>
+      </div>
+    </div>
+
     <div class="eidos-action-row">
       <span id="eidosActionStatus" class="signal-badge hold">—</span>
       <span id="eidosRebalNote" class="eidos-rebal-note"></span>
@@ -919,54 +1061,101 @@ function renderAegisAlloc(aegis) {
 // ════════════════════════════════════════════════════════
 // RENDER — EIDOS SIGNAL
 // ════════════════════════════════════════════════════════
+const ARCHETYPE_ABBREV_MAP = {
+  energy_crisis        : 'EC',
+  inflation_cycle      : 'IC',
+  credit_crunch        : 'CC',
+  demand_contraction   : 'DC',
+  concentration_cycle  : 'CON',
+  post_crisis_recovery : 'PCR',
+  policy_expansion     : 'PE',
+  structural_expansion : 'SE',
+};
+
 function renderEidosSignal(perf) {
-  const archetype = perf.signal.archetype_display || formatArchetype(perf.signal.archetype);
-  const regime    = perf.signal.regime;
-  const action    = perf.signal.action || {};
-  const rs        = perf.regime_stability || {};
+  const sig      = perf.signal || {};
+  const action   = sig.action || {};
+  const rs       = perf.regime_stability || {};
+  const ctx      = perf.signal_context   || {};
+  const posture  = ctx.risk_posture;
+  const prev     = ctx.previous_regime;
+  const tenure   = ctx.tenure_days;
 
-  // Archetype label
-  document.getElementById('eidosRegimeLabel').textContent =
-    archetype + ' — ' + (regime === 'risk-on' ? 'Risk-On' : 'Risk-Off');
+  const archetype   = sig.archetype || '';
+  const archDisplay = sig.archetype_display || formatArchetype(archetype);
+  const regime      = sig.regime || '';
+  const abbr        = ARCHETYPE_ABBREV_MAP[archetype] || '';
 
-  // Stability bar — hard gradient stops matching AEGIS PRISM style
-  if (rs.position !== undefined) {
-    const yl = rs.zone_yellow_left  || 0;
-    const yg = rs.zone_green        || 100;
-    const yr = rs.zone_yellow_right || 0;
-    const p1 = yl;
-    const p2 = yl + yg;
-    // Build gradient: yellow | green | yellow (solid stops, no transparency)
-    let grad;
-    if (yl > 0 && yr > 0) {
-      grad = `linear-gradient(to right, var(--yellow-neu) 0%, var(--yellow-neu) ${p1}%, var(--green-pos) ${p1}%, var(--green-pos) ${p2}%, var(--yellow-neu) ${p2}%, var(--yellow-neu) 100%)`;
-    } else if (yl > 0) {
-      grad = `linear-gradient(to right, var(--yellow-neu) 0%, var(--yellow-neu) ${p1}%, var(--green-pos) ${p1}%, var(--green-pos) 100%)`;
-    } else if (yr > 0) {
-      grad = `linear-gradient(to right, var(--green-pos) 0%, var(--green-pos) ${p2}%, var(--yellow-neu) ${p2}%, var(--yellow-neu) 100%)`;
-    } else {
-      grad = `var(--green-pos)`;
-    }
-    document.getElementById('stabilityTrack').style.background = grad;
-    document.getElementById('stabilityDot').style.left = rs.position + '%';
+  // ── Headline: regime name + meta ──
+  document.getElementById('esigRegimeName').textContent = archDisplay;
+  const regimeLabel = (regime === 'risk-on') ? 'Risk-On'
+                    : (regime === 'risk-off') ? 'Risk-Off' : '';
+  const tenureStr   = (tenure != null) ? (tenure + ' days in regime') : '';
+  document.getElementById('esigRegimeMeta').textContent =
+    [abbr, regimeLabel, tenureStr].filter(Boolean).join(' · ') || '—';
 
-    // Direction label — green if dot in green zone, amber if in yellow zone
-    const inYellow = rs.position < yl || rs.position > (yl + yg);
-    const color = inYellow ? 'var(--yellow-neu)' : 'var(--green-pos)';
-    const dirEl = document.getElementById('stabilityDir');
-    dirEl.textContent = (rs.trend || '—') +
-      (rs.trend === 'Improving' ? ' ↑' : rs.trend === 'Deteriorating' ? ' ↓' : '');
-    dirEl.style.color = color;
-
-    // Adjacent regime axis labels — centre label positioned over green zone midpoint
-    const greenMid = yl + yg / 2;
-    document.getElementById('stabilityLeft').textContent    = rs.adj_left_display  || '—';
-    document.getElementById('stabilityCentre').textContent  = archetype;
-    document.getElementById('stabilityCentre').style.left   = greenMid + '%';
-    document.getElementById('stabilityRight').textContent   = rs.adj_right_display || '—';
+  // ── Risk posture bar ──
+  const dotEl   = document.getElementById('esigRiskDot');
+  const ghostEl = document.getElementById('esigRiskGhost');
+  const valEl   = document.getElementById('esigRiskValue');
+  if (posture && posture.pct_risk_now != null) {
+    dotEl.style.left   = posture.pct_risk_now + '%';
+    ghostEl.style.left = (posture.pct_risk_5d_ago != null ? posture.pct_risk_5d_ago : posture.pct_risk_now) + '%';
+    valEl.textContent  = Math.round(posture.pct_risk_now) + '% deployed · ' + (posture.direction || 'Steady');
+  } else {
+    dotEl.style.left   = '50%';
+    ghostEl.style.left = '50%';
+    valEl.textContent  = '—';
   }
 
-  // Action badge
+  // ── Stability bar ──
+  const fillEl = document.getElementById('esigStabFill');
+  const pctEl  = document.getElementById('esigStabPct');
+  const metaEl = document.getElementById('esigStabMeta');
+  if (rs.stability_pct != null) {
+    fillEl.style.width = rs.stability_pct + '%';
+    let fillColor = 'var(--green-pos)';
+    if (rs.stability === 'Low')      fillColor = 'var(--red)';
+    else if (rs.stability === 'Moderate') fillColor = 'var(--yellow-neu)';
+    fillEl.style.background = fillColor;
+    pctEl.textContent = Math.round(rs.stability_pct) + '%';
+
+    const dir = rs.stability_direction || 'Stable';
+    const dirClass = dir === 'Improving' ? 'dir-improving'
+                   : dir === 'Weakening' ? 'dir-weakening'
+                   : 'dir-stable';
+    const dirArrow = dir === 'Improving' ? ' ↑'
+                   : dir === 'Weakening' ? ' ↓' : '';
+    metaEl.innerHTML = (rs.stability || '—') + ' · ' +
+      '<span class="' + dirClass + '">' + dir + dirArrow + '</span>';
+  } else {
+    fillEl.style.width = '0%';
+    pctEl.textContent  = '—';
+    metaEl.textContent = '—';
+  }
+
+  // ── Previous regime ──
+  const prevEl = document.getElementById('esigPrev');
+  if (prev) {
+    const parts = [
+      '<strong>' + (prev.archetype_abbrev || prev.archetype) + '</strong> · ' + (prev.archetype_display || ''),
+      (prev.days_held != null)       ? ('held ' + prev.days_held + 'd') : null,
+      (prev.days_since_exit != null) ? ('exited ' + prev.days_since_exit + 'd ago') : null,
+    ].filter(Boolean).join(' · ');
+    prevEl.innerHTML = 'Previous regime: ' + parts;
+  } else {
+    prevEl.textContent = 'Previous regime: —';
+  }
+
+  // ── Legend states: bright = current, medium = previous, dim = other ──
+  document.querySelectorAll('.esig-legend-item').forEach(function(el) {
+    el.classList.remove('is-current', 'is-prev');
+    const a = el.dataset.arch;
+    if (a === archetype) el.classList.add('is-current');
+    else if (prev && a === prev.archetype) el.classList.add('is-prev');
+  });
+
+  // ── Action badge + rebal note (preserved from prior implementation) ──
   const rebalReq = action.rebalance_required;
   const badge = document.getElementById('eidosActionStatus');
   badge.textContent = rebalReq ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
@@ -976,7 +1165,7 @@ function renderEidosSignal(perf) {
   const date = action.last_rebalance_date || '—';
   const type = action.last_rebalance_type  || '';
   document.getElementById('eidosRebalNote').textContent =
-    `Last: ${date}${days != null ? ' · ' + days + 'd ago' : ''}${type ? ' · ' + type : ''}`;
+    'Last: ' + date + (days != null ? ' · ' + days + 'd ago' : '') + (type ? ' · ' + type : '');
 }
 
 // ════════════════════════════════════════════════════════

@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T22:35:06",
+    "run_date": "2026-05-12",
+    "run_timestamp": "2026-05-12T12:38:18",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-11",
+    "date": "2026-05-12",
     "archetype": "post_crisis_recovery",
     "archetype_display": "Post-Crisis Recovery",
     "regime": "risk-on",
@@ -40,7 +40,7 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 4,
+      "days_since_last_rebalance": 5,
       "last_rebalance_date": "2026-05-07",
       "last_rebalance_type": "regime_change"
     }
@@ -5762,8 +5762,11 @@
     }
   ],
   "regime_stability": {
-    "position": 78.3,
-    "stability": "Moderate",
+    "position": 82.3,
+    "stability": "Low",
+    "stability_pct": 3.0,
+    "stability_pct_5d_ago": 0.0,
+    "stability_direction": "Improving",
     "trend": "Improving",
     "adj_left": "credit_crunch",
     "adj_right": "structural_expansion",
@@ -5772,5 +5775,24 @@
     "zone_yellow_left": 50.0,
     "zone_green": 33.3,
     "zone_yellow_right": 16.7
+  },
+  "signal_context": {
+    "tenure_days": 5,
+    "previous_regime": {
+      "archetype": "structural_expansion",
+      "archetype_display": "Structural Expansion",
+      "archetype_abbrev": "SE",
+      "days_held": 164,
+      "days_since_exit": 5,
+      "exit_trigger": "ron_transition"
+    },
+    "risk_posture": {
+      "pct_risk_now": 70.0,
+      "pct_risk_5d_ago": 70.0,
+      "delta_pp": 0.0,
+      "direction": "Steady",
+      "zone_red_max": 30.0,
+      "zone_green_min": 70.0
+    }
   }
 }
