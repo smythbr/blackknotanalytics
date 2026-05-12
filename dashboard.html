@@ -186,34 +186,57 @@ body { overflow-x:hidden; }
   color:var(--grey); margin-bottom:12px;
 }
 
-.esig-risk-bar { position:relative; height:10px; margin-bottom:8px; }
-.esig-risk-track {
-  position:absolute; inset:0;
-  background:linear-gradient(to right,
-    var(--red) 0%, var(--red) 30%,
-    var(--yellow-neu) 30%, var(--yellow-neu) 70%,
-    var(--green-pos) 70%, var(--green-pos) 100%);
+.esig-cluster-labels {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:6px;
 }
-.esig-risk-ghost {
+.esig-cluster-label {
+  font-size:var(--fs-md); font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase;
+  transition:opacity 0.2s;
+}
+.esig-cluster-label-off { color:var(--red);       opacity:0.35; }
+.esig-cluster-label-on  { color:var(--green-pos); opacity:0.35; }
+.esig-cluster.active-on  .esig-cluster-label-on  { opacity:1; }
+.esig-cluster.active-off .esig-cluster-label-off { opacity:1; }
+.esig-cluster-bar { position:relative; height:18px; margin-bottom:10px; }
+.esig-cluster-off-zone {
+  position:absolute; left:0; top:0; width:50%; height:100%;
+  background:var(--red); opacity:0.30; transition:opacity 0.2s;
+}
+.esig-cluster-on-zone {
+  position:absolute; right:0; top:0; width:50%; height:100%;
+  background:var(--green-pos); opacity:0.30; transition:opacity 0.2s;
+}
+.esig-cluster.active-on  .esig-cluster-on-zone  { opacity:1; }
+.esig-cluster.active-off .esig-cluster-off-zone { opacity:1; }
+.esig-cluster-boundary {
+  position:absolute; left:50%; top:-4px; bottom:-4px;
+  width:1px; background:rgba(255,255,255,0.7);
+  transform:translateX(-0.5px);
+}
+.esig-cluster-ghost {
   position:absolute; top:50%; width:8px; height:8px;
-  border-radius:50%; background:var(--white); opacity:0.35;
-  transform:translate(-50%,-50%); transition:left 0.4s ease;
+  border-radius:50%; background:var(--white); opacity:0.40;
+  transform:translate(-50%,-50%);
+  transition:left 0.4s ease;
 }
-.esig-risk-dot {
-  position:absolute; top:50%; width:14px; height:14px;
+.esig-cluster-dot {
+  position:absolute; top:50%; width:16px; height:16px;
   border-radius:50%; background:var(--white);
   border:2px solid #111;
-  transform:translate(-50%,-50%); transition:left 0.4s ease;
+  transform:translate(-50%,-50%);
+  transition:left 0.4s ease; z-index:2;
 }
-.esig-risk-labels {
-  display:flex; justify-content:space-between; align-items:center;
-  font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.16em; text-transform:uppercase;
-  color:var(--grey);
+.esig-cluster-detail {
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-size:var(--fs-xs); color:var(--grey);
+  letter-spacing:0.06em;
 }
-.esig-risk-labels .lab-off { color:var(--red); }
-.esig-risk-labels .lab-on  { color:var(--green-pos); }
-.esig-risk-labels .lab-val { color:var(--white); font-weight:600; letter-spacing:0.06em; }
+.esig-cluster-detail .esig-cluster-pct { color:var(--white); font-weight:600; }
+.esig-cluster-detail .dir-strengthening { color:var(--green-pos); }
+.esig-cluster-detail .dir-weakening     { color:var(--red-neg); }
+.esig-cluster-detail .dir-steady        { color:var(--yellow-neu); }
 
 .esig-stab-row { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
 .esig-stab-track {
@@ -641,16 +664,23 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="esig-regime-meta" id="esigRegimeMeta">—</div>
 
     <div class="esig-section">
-      <div class="esig-eyebrow">Risk Posture</div>
-      <div class="esig-risk-bar">
-        <div class="esig-risk-track"></div>
-        <div class="esig-risk-ghost" id="esigRiskGhost" style="left:50%"></div>
-        <div class="esig-risk-dot"   id="esigRiskDot"   style="left:50%"></div>
-      </div>
-      <div class="esig-risk-labels">
-        <span class="lab-off">Risk-Off</span>
-        <span class="lab-val" id="esigRiskValue">—</span>
-        <span class="lab-on">Risk-On</span>
+      <div class="esig-eyebrow">Cluster</div>
+      <div class="esig-cluster" id="esigCluster">
+        <div class="esig-cluster-labels">
+          <span class="esig-cluster-label esig-cluster-label-off">Risk-Off</span>
+          <span class="esig-cluster-label esig-cluster-label-on">Risk-On</span>
+        </div>
+        <div class="esig-cluster-bar">
+          <div class="esig-cluster-off-zone"></div>
+          <div class="esig-cluster-on-zone"></div>
+          <div class="esig-cluster-boundary"></div>
+          <div class="esig-cluster-ghost" id="esigClusterGhost" style="left:50%"></div>
+          <div class="esig-cluster-dot"   id="esigClusterDot"   style="left:50%"></div>
+        </div>
+        <div class="esig-cluster-detail">
+          <span id="esigClusterPrimary">—</span>
+          <span id="esigClusterSecondary"></span>
+        </div>
       </div>
     </div>
 
@@ -1077,35 +1107,83 @@ function renderEidosSignal(perf) {
   const action   = sig.action || {};
   const rs       = perf.regime_stability || {};
   const ctx      = perf.signal_context   || {};
-  const posture  = ctx.risk_posture;
+  const cluster  = ctx.risk_cluster;
   const prev     = ctx.previous_regime;
   const tenure   = ctx.tenure_days;
 
   const archetype   = sig.archetype || '';
   const archDisplay = sig.archetype_display || formatArchetype(archetype);
-  const regime      = sig.regime || '';
   const abbr        = ARCHETYPE_ABBREV_MAP[archetype] || '';
 
   // ── Headline: regime name + meta ──
   document.getElementById('esigRegimeName').textContent = archDisplay;
-  const regimeLabel = (regime === 'risk-on') ? 'Risk-On'
-                    : (regime === 'risk-off') ? 'Risk-Off' : '';
   const tenureStr   = (tenure != null) ? (tenure + ' days in regime') : '';
+  const pctStr      = (cluster && cluster.pct_deployed != null)
+                      ? (Math.round(cluster.pct_deployed) + '% deployed') : '';
   document.getElementById('esigRegimeMeta').textContent =
-    [abbr, regimeLabel, tenureStr].filter(Boolean).join(' · ') || '—';
+    [abbr, tenureStr, pctStr].filter(Boolean).join(' · ') || '—';
 
-  // ── Risk posture bar ──
-  const dotEl   = document.getElementById('esigRiskDot');
-  const ghostEl = document.getElementById('esigRiskGhost');
-  const valEl   = document.getElementById('esigRiskValue');
-  if (posture && posture.pct_risk_now != null) {
-    dotEl.style.left   = posture.pct_risk_now + '%';
-    ghostEl.style.left = (posture.pct_risk_5d_ago != null ? posture.pct_risk_5d_ago : posture.pct_risk_now) + '%';
-    valEl.textContent  = Math.round(posture.pct_risk_now) + '% deployed · ' + (posture.direction || 'Steady');
+  // ── Risk cluster bar (binary boundary + decisiveness as distance from center) ──
+  const clusterEl = document.getElementById('esigCluster');
+  const dotEl     = document.getElementById('esigClusterDot');
+  const ghostEl   = document.getElementById('esigClusterGhost');
+  const primEl    = document.getElementById('esigClusterPrimary');
+  const secEl     = document.getElementById('esigClusterSecondary');
+
+  clusterEl.classList.remove('active-on', 'active-off');
+  if (cluster && cluster.cluster) {
+    clusterEl.classList.add(cluster.cluster === 'risk-on' ? 'active-on' : 'active-off');
+
+    const dec = cluster.decisiveness;
+    const decAgo = cluster.decisiveness_5d_ago;
+
+    if (dec != null) {
+      const isOn = cluster.cluster === 'risk-on';
+      const dotPct   = isOn ? 50 + (dec    / 2) : 50 - (dec    / 2);
+      dotEl.style.left = dotPct + '%';
+      if (decAgo != null) {
+        const ghostPct = isOn ? 50 + (decAgo / 2) : 50 - (decAgo / 2);
+        ghostEl.style.left   = ghostPct + '%';
+        ghostEl.style.display = '';
+      } else {
+        ghostEl.style.display = 'none';
+      }
+
+      // Categorical descriptor from continuous value
+      let descriptor;
+      if (dec >= 70)      descriptor = 'Decisive';
+      else if (dec >= 30) descriptor = 'Moderate';
+      else                descriptor = 'Borderline';
+
+      // Direction arrow
+      const dir = cluster.direction || 'Steady';
+      const dirClass = dir === 'Strengthening' ? 'dir-strengthening'
+                     : dir === 'Weakening'     ? 'dir-weakening'
+                     : 'dir-steady';
+      const dirArrow = dir === 'Strengthening' ? ' ↑'
+                     : dir === 'Weakening'     ? ' ↓' : '';
+
+      primEl.innerHTML = descriptor + ' · <span class="esig-cluster-pct">' +
+                         Math.round(dec) + '%</span> · <span class="' + dirClass + '">' +
+                         dir + dirArrow + '</span>';
+
+      // Closest threat only shown when decisiveness is below 70 (otherwise just noise)
+      if (dec < 70 && cluster.closest_threat_display) {
+        secEl.textContent = 'Closest: ' + cluster.closest_threat_display;
+      } else {
+        secEl.textContent = '';
+      }
+    } else {
+      dotEl.style.left = '50%';
+      ghostEl.style.display = 'none';
+      primEl.textContent = '—';
+      secEl.textContent  = '';
+    }
   } else {
-    dotEl.style.left   = '50%';
-    ghostEl.style.left = '50%';
-    valEl.textContent  = '—';
+    dotEl.style.left = '50%';
+    ghostEl.style.display = 'none';
+    primEl.textContent = '—';
+    secEl.textContent  = '';
   }
 
   // ── Stability bar ──
