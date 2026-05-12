@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T18:51:05",
+    "run_timestamp": "2026-05-11T18:53:55",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5681,11 +5681,17 @@
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
+    },
+    {
+      "ticker": "W1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
     }
   ],
   "regime_stability": {
     "position": 78.3,
-    "stability": "Low",
+    "stability": "Moderate",
     "trend": "Improving",
     "adj_left": "credit_crunch",
     "adj_right": "structural_expansion",
