@@ -297,6 +297,16 @@ section { padding:100px 48px; position:relative; }
   color:var(--white);
   text-align:center;
 }
+.founder-title {
+  position:relative; z-index:1;
+  font-family:var(--font-ui);
+  font-size:var(--fs-xs);
+  letter-spacing:0.14em; text-transform:uppercase;
+  color:#ffffff;
+  text-align:center;
+  margin-top:4px;
+}
+
 .founder-bio .bio-intro {
   font-family:var(--font-display);
   font-size:clamp(1rem,1.5vw,1.25rem);
@@ -554,6 +564,7 @@ body { overflow-x: hidden; }
   <a href="#home" onclick="toggleMenu()">Home</a>
   <a href="#about" onclick="toggleMenu()">About</a>
   <div class="menu-divider"></div>
+  <a href="#" id="menuAuthLink" onclick="toggleMenu(); openSignIn(event);">Sign In</a>
   <a href="#subscribe" class="menu-subscriber-link" onclick="toggleMenu()">Subscribe</a>
 </div>
 
@@ -768,6 +779,12 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
         navBtn.textContent = 'Dashboard';
         navBtn.href = 'dashboard.html';
         navBtn.onclick = null;
+      }
+      const menuBtn = document.getElementById('menuAuthLink');
+      if (menuBtn) {
+        menuBtn.textContent = 'Dashboard';
+        menuBtn.href = 'dashboard.html';
+        menuBtn.onclick = function() { toggleMenu(); };
       }
     }
   } catch(e) { /* session check failed silently */ }
