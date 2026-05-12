@@ -989,6 +989,8 @@ function renderEidosPerf(perf) {
   const rs  = perf.risk.spy_bh.itd;
   const rb  = perf.rebalancing;
   const ytdMdd = perf.annual_risk.eidos.ytd.maxdd * 100;
+  const spyYtdMdd = (perf.annual_risk.spy_bh && perf.annual_risk.spy_bh.ytd) ? perf.annual_risk.spy_bh.ytd.maxdd * 100 : null;
+  const spyYtdMdd = perf.annual_risk.spy_bh?.ytd?.maxdd != null ? perf.annual_risk.spy_bh.ytd.maxdd * 100 : null;
 
   // Cumulative — pre-computed percentage values from backend (mirrors Aegis)
   const cr = perf.cum_returns;
@@ -1022,7 +1024,7 @@ function renderEidosPerf(perf) {
     ['Sharpe Ratio',          r.sharpe,              rs.sharpe,       3, true],
     ['Sortino Ratio',         r.sortino,             rs.sortino,      3, true],
     ['Max Drawdown (ITD)',     r.maxdd*100,           rs.maxdd*100,    2, false],
-    ['Max Drawdown (YTD)',     ytdMdd,                null,            2, false],
+    ['Max Drawdown (YTD)',     ytdMdd,  spyYtdMdd, 2, false],
     ['Calmar Ratio (t3y)',     r.calmar,              rs.calmar,       3, true],
     ['MAR',                   r.mar,                 rs.mar,          3, true],
     ['Omega Ratio',           r.omega,               rs.omega,        3, true],
