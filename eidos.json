@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-11",
-    "run_timestamp": "2026-05-11T19:22:57",
+    "run_timestamp": "2026-05-11T21:52:38",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -336,6 +336,80 @@
         "maxdd": -0.0175,
         "beta": 0.257,
         "omega": 2.123
+      }
+    },
+    "spy_bh": {
+      "2018": {
+        "volatility": 0.1715,
+        "sharpe": -0.377,
+        "sortino": -0.335,
+        "maxdd": -0.1935,
+        "beta": 1.0,
+        "omega": 0.948
+      },
+      "2019": {
+        "volatility": 0.1253,
+        "sharpe": 2.011,
+        "sortino": 1.851,
+        "maxdd": -0.0662,
+        "beta": 1.0,
+        "omega": 1.445
+      },
+      "2020": {
+        "volatility": 0.3365,
+        "sharpe": 0.486,
+        "sortino": 0.421,
+        "maxdd": -0.3372,
+        "beta": 1.0,
+        "omega": 1.141
+      },
+      "2021": {
+        "volatility": 0.1299,
+        "sharpe": 1.952,
+        "sortino": 1.879,
+        "maxdd": -0.0511,
+        "beta": 1.0,
+        "omega": 1.398
+      },
+      "2022": {
+        "volatility": 0.2431,
+        "sharpe": -0.889,
+        "sortino": -0.91,
+        "maxdd": -0.245,
+        "beta": 1.0,
+        "omega": 0.884
+      },
+      "2023": {
+        "volatility": 0.1309,
+        "sharpe": 1.423,
+        "sortino": 1.436,
+        "maxdd": -0.0997,
+        "beta": 1.0,
+        "omega": 1.271
+      },
+      "2024": {
+        "volatility": 0.1258,
+        "sharpe": 1.364,
+        "sortino": 1.263,
+        "maxdd": -0.0841,
+        "beta": 1.0,
+        "omega": 1.277
+      },
+      "2025": {
+        "volatility": 0.1933,
+        "sharpe": 0.638,
+        "sortino": 0.614,
+        "maxdd": -0.1876,
+        "beta": 1.0,
+        "omega": 1.164
+      },
+      "ytd": {
+        "volatility": 0.1388,
+        "sharpe": 1.444,
+        "sortino": 1.494,
+        "maxdd": -0.0888,
+        "beta": 1.0,
+        "omega": 1.288
       }
     }
   },
@@ -5694,6 +5768,12 @@
     },
     {
       "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "MOVE",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
