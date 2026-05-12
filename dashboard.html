@@ -256,6 +256,15 @@ body { overflow-x:hidden; }
 }
 @media (max-width:480px) {
   .db-title { font-size:1.6rem; }
+  .db-inner { padding:24px 12px 48px; }
+  .perf-table { font-size:var(--fs-sm); min-width:0; }
+  .perf-table th { font-size:var(--fs-xs); padding:8px 6px; }
+  .perf-table td { font-size:var(--fs-sm); padding:8px 6px; }
+  .perf-table th:first-child, .perf-table td:first-child { width:42%; }
+  .perf-table th:nth-child(2), .perf-table td:nth-child(2) { width:19%; }
+  .perf-table th:nth-child(3), .perf-table td:nth-child(3) { width:19%; }
+  .perf-table th:nth-child(4), .perf-table td:nth-child(4) { width:20%; }
+  .perf-table-wrap { overflow-x:hidden; }
 }
 * { -webkit-tap-highlight-color:transparent; }
 html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
