@@ -535,12 +535,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="gauge-title">Regime Stability</div>
     <div class="gauge-subtitle" id="eidosRegimeLabel">—</div>
     <div class="gauge-dir-row"><span class="gauge-dir" id="stabilityDir">—</span></div>
-    <div class="gauge-track" id="stabilityTrack" style="overflow:hidden;background:transparent;">
-      <div id="stabilityZones" style="position:absolute;inset:0;display:flex;">
-        <div id="szLeft"  style="height:100%;background:rgba(251,191,36,0.28)"></div>
-        <div id="szGreen" style="height:100%;background:rgba(74,222,128,0.18)"></div>
-        <div id="szRight" style="height:100%;background:rgba(251,191,36,0.28)"></div>
-      </div>
+    <div class="gauge-track" id="stabilityTrack" style="background:transparent;">
       <div class="gauge-dot" id="stabilityDot" style="left:50%"></div>
     </div>
     <div style="display:flex;justify-content:space-between;margin-top:6px;">
@@ -933,14 +928,25 @@ function renderEidosSignal(perf) {
   document.getElementById('eidosRegimeLabel').textContent =
     archetype + ' — ' + (regime === 'risk-on' ? 'Risk-On' : 'Risk-Off');
 
-  // Stability bar — zone widths proportional to actual threshold gaps
+  // Stability bar — hard gradient stops matching AEGIS PRISM style
   if (rs.position !== undefined) {
     const yl = rs.zone_yellow_left  || 0;
     const yg = rs.zone_green        || 100;
     const yr = rs.zone_yellow_right || 0;
-    document.getElementById('szLeft').style.flex  = `0 0 ${yl}%`;
-    document.getElementById('szGreen').style.flex = `0 0 ${yg}%`;
-    document.getElementById('szRight').style.flex = `0 0 ${yr}%`;
+    const p1 = yl;
+    const p2 = yl + yg;
+    // Build gradient: yellow | green | yellow (solid stops, no transparency)
+    let grad;
+    if (yl > 0 && yr > 0) {
+      grad = `linear-gradient(to right, var(--yellow-neu) 0%, var(--yellow-neu) ${p1}%, var(--green-pos) ${p1}%, var(--green-pos) ${p2}%, var(--yellow-neu) ${p2}%, var(--yellow-neu) 100%)`;
+    } else if (yl > 0) {
+      grad = `linear-gradient(to right, var(--yellow-neu) 0%, var(--yellow-neu) ${p1}%, var(--green-pos) ${p1}%, var(--green-pos) 100%)`;
+    } else if (yr > 0) {
+      grad = `linear-gradient(to right, var(--green-pos) 0%, var(--green-pos) ${p2}%, var(--yellow-neu) ${p2}%, var(--yellow-neu) 100%)`;
+    } else {
+      grad = `var(--green-pos)`;
+    }
+    document.getElementById('stabilityTrack').style.background = grad;
     document.getElementById('stabilityDot').style.left = rs.position + '%';
 
     // Direction label coloured by stability level
