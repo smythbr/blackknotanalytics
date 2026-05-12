@@ -862,7 +862,7 @@ function renderAegisPerf(sig) {
     ['Sharpe Ratio',          p.sharpe,               sp.sharpe,        3, true],
     ['Sortino Ratio',         p.sortino,              sp.sortino,       3, true],
     ['Max Drawdown (ITD)',     p.max_drawdown,         sp.max_drawdown,  2, false],
-    ['Max Drawdown (YTD)',     p.ytd_max_drawdown,     null,             2, false],
+    ['Max Drawdown (YTD)',     p.ytd_max_drawdown,     sp.ytd_max_drawdown, 2, false],
     ['Calmar Ratio (t3y)',     p.calmar,               sp.calmar,        3, true],
     ['MAR',                   p.mar,                  sp.mar,           3, true],
     ['Omega Ratio',           p.omega,                sp.omega,         3, true],
@@ -883,10 +883,10 @@ function renderAegisPerf(sig) {
   document.getElementById('aegisRiskBody').innerHTML = html;
 
   // Ops
-  html = row(['Rebalances / Year (YTD)', c('—','td-model')]) +
-         row(['Rebalances / Year (ITD)', c(fmtNum(p.trades_per_year,1),'td-model')]) +
-         row(['Total Rebalances (YTD)',  c(p.ytd_rebalances,'td-model')]) +
-         row(['Total Rebalances (ITD)',  c(p.total_trades,'td-model')]);
+  html = 
+         row(['Rebalances / yr (ITD)', c(fmtNum(p.trades_per_year,1),'td-model')]) +
+         row(['Rebalances (YTD)',       c(p.ytd_rebalances,'td-model')]) +
+         row(['Rebalances (ITD)',       c(p.total_trades,'td-model')]);
   document.getElementById('aegisOpsBody').innerHTML = html;
 }
 
@@ -909,7 +909,7 @@ function renderAegisAlloc(aegis) {
       })()}">${a.regime}</span>`, 'td-center'),
       a.spy + '%', a.gld + '%', a.bil + '%',
       xop, kbe,
-      a.days_since_last_rebalance ?? '—',
+      a.days_since_prior ?? '—',
       c(a.trigger, 'td-left')
     ]);
   }).join('') || '<tr><td colspan="9" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
@@ -1043,10 +1043,10 @@ function renderEidosPerf(perf) {
   document.getElementById('eidosRiskBody').innerHTML = html;
 
   // Ops
-  html = row(['Rebalances / Year (YTD)', c('—','td-model')]) +
-         row(['Rebalances / Year (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
-         row(['Total Rebalances (YTD)',  c(rb.annual.ytd.total,'td-model')]) +
-         row(['Total Rebalances (ITD)',  c(rb.cumulative.total,'td-model')]);
+  html = 
+         row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
+         row(['Rebalances (YTD)',       c(rb.annual.ytd.total,'td-model')]) +
+         row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
   document.getElementById('eidosOpsBody').innerHTML = html;
 }
 
