@@ -202,14 +202,12 @@ body { overflow-x:hidden; }
 .esig-cluster-bar { position:relative; height:18px; margin-bottom:10px; }
 .esig-cluster-off-zone {
   position:absolute; left:0; top:0; width:50%; height:100%;
-  background:var(--red); opacity:0.30; transition:opacity 0.2s;
+  background:var(--red);
 }
 .esig-cluster-on-zone {
   position:absolute; right:0; top:0; width:50%; height:100%;
-  background:var(--green-pos); opacity:0.30; transition:opacity 0.2s;
+  background:var(--green-pos);
 }
-.esig-cluster.active-on  .esig-cluster-on-zone  { opacity:1; }
-.esig-cluster.active-off .esig-cluster-off-zone { opacity:1; }
 .esig-cluster-boundary {
   position:absolute; left:50%; top:-4px; bottom:-4px;
   width:1px; background:rgba(255,255,255,0.7);
@@ -228,6 +226,19 @@ body { overflow-x:hidden; }
   transform:translate(-50%,-50%);
   transition:left 0.4s ease; z-index:2;
 }
+.esig-cluster-bar-labels {
+  display:flex; justify-content:space-around;
+  font-size:var(--fs-xs); letter-spacing:0.08em;
+  margin-bottom:8px;
+}
+.esig-cluster-bar-label {
+  text-align:center; color:var(--grey);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  max-width:48%;
+}
+.esig-cluster-bar-label.is-active   { color:var(--light-grey); font-weight:600; }
+.esig-cluster-bar-label.is-inactive { color:var(--grey); }
+
 .esig-cluster-detail {
   display:flex; justify-content:space-between; align-items:baseline;
   font-size:var(--fs-xs); color:var(--grey);
@@ -676,6 +687,10 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <div class="esig-cluster-boundary"></div>
           <div class="esig-cluster-ghost" id="esigClusterGhost" style="left:50%"></div>
           <div class="esig-cluster-dot"   id="esigClusterDot"   style="left:50%"></div>
+        </div>
+        <div class="esig-cluster-bar-labels">
+          <span class="esig-cluster-bar-label" id="esigClusterLeftLabel">—</span>
+          <span class="esig-cluster-bar-label" id="esigClusterRightLabel">—</span>
         </div>
         <div class="esig-cluster-detail">
           <span id="esigClusterPrimary">—</span>
@@ -1131,8 +1146,27 @@ function renderEidosSignal(perf) {
   const secEl     = document.getElementById('esigClusterSecondary');
 
   clusterEl.classList.remove('active-on', 'active-off');
+  const leftLabelEl  = document.getElementById('esigClusterLeftLabel');
+  const rightLabelEl = document.getElementById('esigClusterRightLabel');
   if (cluster && cluster.cluster) {
     clusterEl.classList.add(cluster.cluster === 'risk-on' ? 'active-on' : 'active-off');
+
+    // Bar-half labels: current archetype under active side, closest threat under inactive side.
+    // For risk-off, closest_threat_display echoes the current archetype (since the only path
+    // back to risk-on is the archetype's own exit). In that case, show "Risk-On" as the
+    // generic destination on the inactive side rather than duplicating the active label.
+    const threatDisplay = cluster.closest_threat_display || '';
+    if (cluster.cluster === 'risk-on') {
+      leftLabelEl.textContent  = threatDisplay || '—';
+      rightLabelEl.textContent = archDisplay;
+      leftLabelEl.className    = 'esig-cluster-bar-label is-inactive';
+      rightLabelEl.className   = 'esig-cluster-bar-label is-active';
+    } else {
+      leftLabelEl.textContent  = archDisplay;
+      rightLabelEl.textContent = 'Risk-On';
+      leftLabelEl.className    = 'esig-cluster-bar-label is-active';
+      rightLabelEl.className   = 'esig-cluster-bar-label is-inactive';
+    }
 
     const dec = cluster.decisiveness;
     const decAgo = cluster.decisiveness_5d_ago;
