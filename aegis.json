@@ -1,12 +1,12 @@
 {
-  "generated": "2026-05-11T22:34:29",
+  "generated": "2026-05-12T13:29:54",
   "signal": {
-    "date": "2026-05-11",
+    "date": "2026-05-12",
     "regime": "GREEN",
     "regime_since": "2026-04-14",
-    "regime_days": 19,
+    "regime_days": 20,
     "last_rebalance_date": "2026-04-15",
-    "p_stress": 0.2858,
+    "p_stress": 0.2795,
     "action_required": false,
     "weights": {
       "SPY": 80.0,
@@ -16,16 +16,16 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 1.5678,
-      "rv_minus_z": -1.1436,
-      "oas_z": -0.8581
+      "ewma_z": 1.2739,
+      "rv_minus_z": -1.2125,
+      "oas_z": -0.9789
     },
     "vams": {
       "winner": null,
       "reason": "spy_absorbs",
       "scores": {
-        "XOP": -0.669,
-        "KBE": -1.316
+        "XOP": -0.546,
+        "KBE": -1.408
       },
       "trends": {
         "XOP": "Improving",
@@ -34,24 +34,24 @@
     },
     "trends": {
       "agg": "Improving",
-      "mom": "Improving",
-      "oas": "Deteriorating",
+      "mom": "Deteriorating",
+      "oas": "Improving",
       "rv": "Improving"
     }
   },
   "perf": {
-    "cagr": 14.66,
-    "cumulative_return": 213.62,
+    "cagr": 14.63,
+    "cumulative_return": 213.03,
     "volatility": 10.7,
     "max_drawdown": -11.54,
-    "sharpe": 1.05,
-    "sortino": 1.0,
-    "calmar": 3.036,
-    "mar": 1.275,
+    "sharpe": 1.047,
+    "sortino": 0.998,
+    "calmar": 2.986,
+    "mar": 1.272,
     "omega": 1.217,
-    "beta": 0.331,
-    "ytd_return": 9.56,
-    "current_drawdown": 0.0,
+    "beta": 0.325,
+    "ytd_return": 9.36,
+    "current_drawdown": -0.19,
     "trades_per_year": 17.8,
     "total_trades": 148,
     "upside_capture_spy": 10.3,
@@ -66,42 +66,42 @@
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 9.56,
-      "bench": 4.61,
-      "spy": 8.71
+      "aegis": 9.36,
+      "bench": 4.4,
+      "spy": 8.54
     },
     "y1": {
-      "aegis": 26.97,
-      "bench": 20.45,
-      "spy": 32.5
+      "aegis": 26.73,
+      "bench": 20.21,
+      "spy": 32.3
     },
     "y3": {
-      "aegis": 83.2,
-      "bench": 52.6,
-      "spy": 86.41
+      "aegis": 82.32,
+      "bench": 52.09,
+      "spy": 86.37
     },
     "y5": {
-      "aegis": 98.6,
-      "bench": 50.88,
-      "spy": 91.1
+      "aegis": 98.74,
+      "bench": 51.13,
+      "spy": 94.95
     },
     "itd": {
-      "aegis": 213.62,
-      "bench": 115.45,
-      "spy": 212.52
+      "aegis": 213.03,
+      "bench": 115.02,
+      "spy": 212.04
     }
   },
   "bench_kpis": {
-    "cagr": 9.65,
-    "cumulative_return": 115.45,
-    "volatility": 11.45,
+    "cagr": 9.62,
+    "cumulative_return": 115.02,
+    "volatility": 11.44,
     "max_drawdown": -22.14,
-    "sharpe": 0.588,
-    "calmar": 1.343,
-    "mar": 0.436,
-    "sortino": 0.544,
-    "omega": 1.125,
-    "beta": 0.536,
+    "sharpe": 0.586,
+    "calmar": 1.329,
+    "mar": 0.435,
+    "sortino": 0.542,
+    "omega": 1.124,
+    "beta": 0.616,
     "upside_capture_spy": 20.0,
     "downside_capture_spy": 61.3,
     "capture_ratio_spy": 0.326,
@@ -110,15 +110,15 @@
     "capture_ratio_bench": null
   },
   "spy_kpis": {
-    "cagr": 14.75,
-    "cumulative_return": 214.76,
+    "cagr": 14.72,
+    "cumulative_return": 214.27,
     "volatility": 19.31,
     "max_drawdown": -33.72,
-    "sharpe": 0.586,
+    "sharpe": 0.585,
     "calmar": 1.234,
     "mar": 0.437,
     "sortino": 0.542,
-    "omega": 1.14,
+    "omega": 1.139,
     "beta": 1.0,
     "ytd_max_drawdown": -8.88
   },
@@ -172,25 +172,25 @@
       "is_ytd": false
     },
     "2026": {
-      "aegis": 9.6,
-      "bench": 4.6,
-      "spy": 8.7,
+      "aegis": 9.4,
+      "bench": 4.4,
+      "spy": 8.5,
       "is_ytd": true
     }
   },
   "allocations": [
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "regime": "Risk-On",
       "spy": 80.0,
       "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.2858,
+      "p_stress": 0.2795,
       "trigger": "Current",
       "is_rebalance": false,
-      "days_since_prior": 26
+      "days_since_prior": 27
     },
     {
       "date": "2026-04-15",

@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T13:10:48",
+    "run_timestamp": "2026-05-12T13:30:40",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -58,7 +58,7 @@
       "2025": 0.26821
     },
     "spy_bh": {
-      "ytd": 0.08544,
+      "ytd": 0.08546,
       "2018": -0.04569,
       "2019": 0.31224,
       "2020": 0.18332,
@@ -69,7 +69,7 @@
       "2025": 0.17719
     },
     "sixty_forty": {
-      "ytd": 0.05153,
+      "ytd": 0.05148,
       "2018": -0.02605,
       "2019": 0.22117,
       "2020": 0.13989,
@@ -80,7 +80,7 @@
       "2025": 0.13508
     },
     "alpha_vs_spy": {
-      "ytd": 0.00232,
+      "ytd": 0.0023,
       "2018": 0.16196,
       "2019": -0.10269,
       "2020": 0.16997,
@@ -94,7 +94,7 @@
       "win_rate": 0.625
     },
     "alpha_vs_6040": {
-      "ytd": 0.03623,
+      "ytd": 0.03628,
       "2018": 0.14232,
       "2019": -0.01162,
       "2020": 0.2134,
@@ -117,18 +117,18 @@
       "itd": 0.19884
     },
     "spy_bh": {
-      "ytd": 0.08544,
-      "1yr": 0.32302,
-      "3yr": 0.23144,
+      "ytd": 0.08546,
+      "1yr": 0.32304,
+      "3yr": 0.23145,
       "5yr": 0.13841,
-      "itd": 0.14722
+      "itd": 0.14723
     },
     "sixty_forty": {
-      "ytd": 0.05153,
-      "1yr": 0.20773,
-      "3yr": 0.15213,
-      "5yr": 0.0855,
-      "itd": 0.09643
+      "ytd": 0.05148,
+      "1yr": 0.20767,
+      "3yr": 0.15211,
+      "5yr": 0.08549,
+      "itd": 0.09642
     }
   },
   "cum_returns": {
@@ -140,11 +140,11 @@
       "itd": 353.57
     },
     "spy_bh": {
-      "ytd": 8.54,
+      "ytd": 8.55,
       "1yr": 32.3,
       "3yr": 86.13,
       "5yr": 90.81,
-      "itd": 214.27
+      "itd": 214.28
     }
   },
   "risk": {
@@ -189,12 +189,12 @@
     "spy_bh": {
       "label": "spy_bh",
       "itd": {
-        "cagr": 0.14722,
+        "cagr": 0.14723,
         "volatility": 0.19308,
         "sharpe": 0.5841,
         "sortino": 0.5392,
-        "calmar": 1.234,
-        "mar": 0.4366,
+        "calmar": 1.2341,
+        "mar": 0.4367,
         "beta": 1.0,
         "omega": 1.1394,
         "maxdd": -0.33717,
@@ -210,7 +210,7 @@
         "capture_ratio": 1.0
       },
       "trailing_36m": {
-        "cagr": 0.23144,
+        "cagr": 0.23145,
         "volatility": 0.15088,
         "sharpe": 1.0763,
         "sortino": 1.0366,
@@ -227,13 +227,13 @@
     "sixty_forty": {
       "label": "sixty_forty",
       "itd": {
-        "cagr": 0.09643,
+        "cagr": 0.09642,
         "volatility": 0.11882,
         "sharpe": 0.5661,
-        "sortino": 0.5287,
-        "calmar": 1.3746,
+        "sortino": 0.5286,
+        "calmar": 1.3744,
         "mar": 0.4592,
-        "beta": 0.6928,
+        "beta": 0.6927,
         "omega": 1.1241,
         "maxdd": -0.20999,
         "maxdd_start": "2020-02-19",
@@ -248,12 +248,12 @@
         "capture_ratio": 0.4766
       },
       "trailing_36m": {
-        "cagr": 0.15213,
+        "cagr": 0.15211,
         "volatility": 0.09688,
-        "sharpe": 0.9868,
-        "sortino": 0.9788,
-        "beta": 0.6928,
-        "omega": 1.2027,
+        "sharpe": 0.9866,
+        "sortino": 0.9787,
+        "beta": 0.6927,
+        "omega": 1.2026,
         "maxdd": -0.11067,
         "maxdd_duration_days": 122,
         "avg_drawdown": -0.01743,
@@ -5755,7 +5755,205 @@
       "detail": "+8d"
     },
     {
+      "ticker": "AGG",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "AUDUSD=X",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "DBB",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "DBC",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "EEM",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "EWJ",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "EWZ",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GBPUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GC1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GLD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "HYG",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "IWM",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "JNK",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "KRE",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "OVX",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "RINF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "RSP",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "SPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "TIP",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCHF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCNH",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDKRW",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "VGK",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "VIX",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
       "ticker": "W1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "XLB",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "XLF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "XLI",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "XLP",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
