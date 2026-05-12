@@ -532,14 +532,21 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <div class="db-title">EIDOS Signal</div>
   <div style="margin-bottom:28px;"></div>
   <div class="gauge-card">
-    <div class="gauge-title">Regime Signal</div>
+    <div class="gauge-title">Regime Stability</div>
     <div class="gauge-subtitle" id="eidosRegimeLabel">—</div>
-    <div class="gauge-track"><div class="gauge-dot" id="eidosRegimeDot" style="left:50%"></div></div>
-    <div class="gauge-labels">
-      <span class="gauge-label lbl-red">Risk-Off</span>
-      <span class="gauge-label lbl-green">Risk-On</span>
+    <div class="gauge-dir-row"><span class="gauge-dir" id="stabilityDir">—</span></div>
+    <div class="gauge-track" id="stabilityTrack" style="overflow:hidden;">
+      <div id="stabilityZones" style="position:absolute;inset:0;display:flex;">
+        <div id="szLeft"  style="height:100%;background:rgba(251,191,36,0.28)"></div>
+        <div id="szGreen" style="height:100%;background:rgba(74,222,128,0.18)"></div>
+        <div id="szRight" style="height:100%;background:rgba(251,191,36,0.28)"></div>
+      </div>
+      <div class="gauge-dot" id="stabilityDot" style="left:50%"></div>
     </div>
-    <div class="eidos-alloc-bars" id="eidosWeightBars"></div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;">
+      <span class="gauge-label" id="stabilityLeft" style="color:var(--yellow-neu);font-size:var(--fs-xs);">—</span>
+      <span class="gauge-label" id="stabilityRight" style="color:var(--yellow-neu);text-align:right;font-size:var(--fs-xs);">—</span>
+    </div>
     <div class="eidos-action-row">
       <span id="eidosActionStatus" class="signal-badge hold">—</span>
       <span id="eidosRebalNote" class="eidos-rebal-note"></span>
@@ -919,42 +926,43 @@ function renderAegisAlloc(aegis) {
 function renderEidosSignal(perf) {
   const archetype = perf.signal.archetype_display || formatArchetype(perf.signal.archetype);
   const regime    = perf.signal.regime;
-  const weights   = perf.signal.weights || {};
-  const action    = perf.signal.action  || {};
+  const action    = perf.signal.action || {};
+  const rs        = perf.regime_stability || {};
 
-  // Regime label + gauge
+  // Archetype label
   document.getElementById('eidosRegimeLabel').textContent =
     archetype + ' — ' + (regime === 'risk-on' ? 'Risk-On' : 'Risk-Off');
-  const pos = regime === 'risk-on' ? '72%' : '14%';
-  setDot('eidosRegimeDot', pos);
 
-  // Weight bars — data-driven from signal.weights
-  const assets = [
-    { key: 'SPY', color: 'var(--color-spy)' },
-    { key: 'GLD', color: 'var(--color-gld)' },
-    { key: 'TLT', color: 'var(--color-tlt)' },
-    { key: 'BIL', color: 'var(--color-bil)' },
-  ];
-  const barsHtml = assets.map(({ key, color }) => {
-    const w = weights[key] || {};
-    const pct = Math.round((w.target_weight || 0) * 100);
-    return `<div class="eidos-bar-row">
-      <span class="eidos-bar-label">${key}</span>
-      <div class="eidos-bar-track">
-        <div class="eidos-bar-fill" style="width:${pct}%;background:${color};${pct===0?'opacity:0;':''}"></div>
-      </div>
-      <span class="eidos-bar-pct${pct === 0 ? ' zero' : ''}">${pct}%</span>
-    </div>`;
-  }).join('');
-  document.getElementById('eidosWeightBars').innerHTML = barsHtml;
+  // Stability bar — zone widths proportional to actual threshold gaps
+  if (rs.position !== undefined) {
+    const yl = rs.zone_yellow_left  || 0;
+    const yg = rs.zone_green        || 100;
+    const yr = rs.zone_yellow_right || 0;
+    document.getElementById('szLeft').style.flex  = `0 0 ${yl}%`;
+    document.getElementById('szGreen').style.flex = `0 0 ${yg}%`;
+    document.getElementById('szRight').style.flex = `0 0 ${yr}%`;
+    document.getElementById('stabilityDot').style.left = rs.position + '%';
 
-  // Action status badge
-  const badge = document.getElementById('eidosActionStatus');
+    // Direction label coloured by stability level
+    const color = rs.stability === 'High'
+      ? 'var(--green-pos)' : rs.stability === 'Low'
+      ? 'var(--red-neg)' : 'var(--yellow-neu)';
+    const dirEl = document.getElementById('stabilityDir');
+    dirEl.textContent = (rs.trend || '—') +
+      (rs.trend === 'Improving' ? ' ↑' : rs.trend === 'Deteriorating' ? ' ↓' : '');
+    dirEl.style.color = color;
+
+    // Adjacent regime axis labels
+    document.getElementById('stabilityLeft').textContent  = rs.adj_left_display  || '—';
+    document.getElementById('stabilityRight').textContent = rs.adj_right_display || '—';
+  }
+
+  // Action badge
   const rebalReq = action.rebalance_required;
-  badge.textContent = rebalReq ? 'REBALANCE REQUIRED' : 'HOLD — NO ACTION';
+  const badge = document.getElementById('eidosActionStatus');
+  badge.textContent = rebalReq ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
   badge.className   = 'signal-badge ' + (rebalReq ? 'action' : 'hold');
 
-  // Last rebalance note
   const days = action.days_since_last_rebalance;
   const date = action.last_rebalance_date || '—';
   const type = action.last_rebalance_type  || '';
