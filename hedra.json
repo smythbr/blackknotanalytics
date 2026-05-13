@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T21:21:43",
+    "run_timestamp": "2026-05-12T21:33:20",
     "performance_inception": "2018-01-01",
     "model": "Hedra",
     "disclaimer": "Replication of 42 Macro KISS Model Portfolio. Metrics computed by Black Knot Analytics using daily log returns vs USFR as RF; differs from 42 Macro's published convention."
@@ -353,7 +353,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 3
+        "days_since_prior": null
       },
       {
         "date": "2018-03-19",
@@ -372,7 +372,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 2
+        "days_since_prior": 3
       },
       {
         "date": "2018-03-21",
@@ -391,7 +391,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 6
+        "days_since_prior": 2
       },
       {
         "date": "2018-03-27",
@@ -410,7 +410,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 6
+        "days_since_prior": 6
       },
       {
         "date": "2018-04-02",
@@ -429,7 +429,7 @@
           "BITCOIN": 2.5,
           "CASH": 90.0
         },
-        "days_held": 8
+        "days_since_prior": 6
       },
       {
         "date": "2018-04-10",
@@ -448,7 +448,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 3
+        "days_since_prior": 8
       },
       {
         "date": "2018-04-13",
@@ -467,7 +467,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 5
+        "days_since_prior": 3
       },
       {
         "date": "2018-04-18",
@@ -486,7 +486,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 8
+        "days_since_prior": 5
       },
       {
         "date": "2018-04-26",
@@ -505,7 +505,7 @@
           "BITCOIN": 10.0,
           "CASH": 75.0
         },
-        "days_held": 8
+        "days_since_prior": 8
       },
       {
         "date": "2018-05-04",
@@ -524,7 +524,7 @@
           "BITCOIN": 10.0,
           "CASH": 90.0
         },
-        "days_held": 4
+        "days_since_prior": 8
       },
       {
         "date": "2018-05-08",
@@ -543,7 +543,7 @@
           "BITCOIN": 10.0,
           "CASH": 75.0
         },
-        "days_held": 2
+        "days_since_prior": 4
       },
       {
         "date": "2018-05-10",
@@ -562,7 +562,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 6
+        "days_since_prior": 2
       },
       {
         "date": "2018-05-16",
@@ -581,7 +581,7 @@
           "BITCOIN": 10.0,
           "CASH": 60.0
         },
-        "days_held": 9
+        "days_since_prior": 6
       },
       {
         "date": "2018-05-25",
@@ -600,7 +600,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 4
+        "days_since_prior": 9
       },
       {
         "date": "2018-05-29",
@@ -619,7 +619,7 @@
           "BITCOIN": 2.5,
           "CASH": 82.5
         },
-        "days_held": 2
+        "days_since_prior": 4
       },
       {
         "date": "2018-05-31",
@@ -638,7 +638,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 4
+        "days_since_prior": 2
       },
       {
         "date": "2018-06-04",
@@ -657,7 +657,7 @@
           "BITCOIN": 2.5,
           "CASH": 97.5
         },
-        "days_held": 1
+        "days_since_prior": 4
       },
       {
         "date": "2018-06-05",
@@ -676,7 +676,7 @@
           "BITCOIN": 2.5,
           "CASH": 82.5
         },
-        "days_held": 3
+        "days_since_prior": 1
       },
       {
         "date": "2018-06-08",
@@ -695,7 +695,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 3
+        "days_since_prior": 3
       },
       {
         "date": "2018-06-11",
@@ -714,7 +714,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 8
+        "days_since_prior": 3
       },
       {
         "date": "2018-06-19",
@@ -733,7 +733,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 3
+        "days_since_prior": 8
       },
       {
         "date": "2018-06-22",
@@ -752,7 +752,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 28
+        "days_since_prior": 3
       },
       {
         "date": "2018-07-20",
@@ -771,7 +771,7 @@
           "BITCOIN": 5.0,
           "CASH": 95.0
         },
-        "days_held": 5
+        "days_since_prior": 28
       },
       {
         "date": "2018-07-25",
@@ -790,7 +790,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 5
+        "days_since_prior": 5
       },
       {
         "date": "2018-07-30",
@@ -809,7 +809,7 @@
           "BITCOIN": 10.0,
           "CASH": 60.0
         },
-        "days_held": 9
+        "days_since_prior": 5
       },
       {
         "date": "2018-08-08",
@@ -828,7 +828,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 6
+        "days_since_prior": 9
       },
       {
         "date": "2018-08-14",
@@ -847,7 +847,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 8
+        "days_since_prior": 6
       },
       {
         "date": "2018-08-22",
@@ -866,7 +866,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 13
+        "days_since_prior": 8
       },
       {
         "date": "2018-09-04",
@@ -885,7 +885,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 2
+        "days_since_prior": 13
       },
       {
         "date": "2018-09-06",
@@ -904,7 +904,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 33
+        "days_since_prior": 2
       },
       {
         "date": "2018-10-09",
@@ -923,7 +923,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 59
+        "days_since_prior": 33
       },
       {
         "date": "2018-12-07",
@@ -942,7 +942,7 @@
           "BITCOIN": 0.0,
           "CASH": 92.5
         },
-        "days_held": 3
+        "days_since_prior": 59
       },
       {
         "date": "2018-12-10",
@@ -961,7 +961,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 14
+        "days_since_prior": 3
       },
       {
         "date": "2018-12-24",
@@ -980,7 +980,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 7
+        "days_since_prior": 14
       },
       {
         "date": "2018-12-31",
@@ -999,7 +999,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 2
+        "days_since_prior": 7
       },
       {
         "date": "2019-01-02",
@@ -1018,7 +1018,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 1
+        "days_since_prior": 2
       },
       {
         "date": "2019-01-03",
@@ -1037,7 +1037,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 1
+        "days_since_prior": 1
       },
       {
         "date": "2019-01-04",
@@ -1056,7 +1056,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 3
+        "days_since_prior": 1
       },
       {
         "date": "2019-01-07",
@@ -1075,7 +1075,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 3
+        "days_since_prior": 3
       },
       {
         "date": "2019-01-10",
@@ -1094,7 +1094,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 5
+        "days_since_prior": 3
       },
       {
         "date": "2019-01-15",
@@ -1113,7 +1113,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 1
+        "days_since_prior": 5
       },
       {
         "date": "2019-01-16",
@@ -1132,7 +1132,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 2
+        "days_since_prior": 1
       },
       {
         "date": "2019-01-18",
@@ -1151,7 +1151,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 13
+        "days_since_prior": 2
       },
       {
         "date": "2019-01-31",
@@ -1170,7 +1170,7 @@
           "BITCOIN": 0.0,
           "CASH": 55.0
         },
-        "days_held": 21
+        "days_since_prior": 13
       },
       {
         "date": "2019-02-21",
@@ -1189,7 +1189,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 11
+        "days_since_prior": 21
       },
       {
         "date": "2019-03-04",
@@ -1208,7 +1208,7 @@
           "BITCOIN": 0.0,
           "CASH": 40.0
         },
-        "days_held": 2
+        "days_since_prior": 11
       },
       {
         "date": "2019-03-06",
@@ -1227,7 +1227,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 12
+        "days_since_prior": 2
       },
       {
         "date": "2019-03-18",
@@ -1246,7 +1246,7 @@
           "BITCOIN": 0.0,
           "CASH": 40.0
         },
-        "days_held": 3
+        "days_since_prior": 12
       },
       {
         "date": "2019-03-21",
@@ -1265,7 +1265,7 @@
           "BITCOIN": 0.0,
           "CASH": 10.0
         },
-        "days_held": 12
+        "days_since_prior": 3
       },
       {
         "date": "2019-04-02",
@@ -1284,7 +1284,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 50
+        "days_since_prior": 12
       },
       {
         "date": "2019-05-22",
@@ -1303,7 +1303,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 6
+        "days_since_prior": 50
       },
       {
         "date": "2019-05-28",
@@ -1322,7 +1322,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 14
+        "days_since_prior": 6
       },
       {
         "date": "2019-06-11",
@@ -1341,7 +1341,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 13
+        "days_since_prior": 14
       },
       {
         "date": "2019-06-24",
@@ -1360,7 +1360,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 42
+        "days_since_prior": 13
       },
       {
         "date": "2019-08-05",
@@ -1379,7 +1379,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 2
+        "days_since_prior": 42
       },
       {
         "date": "2019-08-07",
@@ -1398,7 +1398,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 8
+        "days_since_prior": 2
       },
       {
         "date": "2019-08-15",
@@ -1417,7 +1417,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 7
+        "days_since_prior": 8
       },
       {
         "date": "2019-08-22",
@@ -1436,7 +1436,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 14
+        "days_since_prior": 7
       },
       {
         "date": "2019-09-05",
@@ -1455,7 +1455,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 5
+        "days_since_prior": 14
       },
       {
         "date": "2019-09-10",
@@ -1474,7 +1474,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 22
+        "days_since_prior": 5
       },
       {
         "date": "2019-10-02",
@@ -1493,7 +1493,7 @@
           "BITCOIN": 2.5,
           "CASH": 37.5
         },
-        "days_held": 1
+        "days_since_prior": 22
       },
       {
         "date": "2019-10-03",
@@ -1512,7 +1512,7 @@
           "BITCOIN": 2.5,
           "CASH": 52.5
         },
-        "days_held": 12
+        "days_since_prior": 1
       },
       {
         "date": "2019-10-15",
@@ -1531,7 +1531,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 15
+        "days_since_prior": 12
       },
       {
         "date": "2019-10-30",
@@ -1550,7 +1550,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 14
+        "days_since_prior": 15
       },
       {
         "date": "2019-11-13",
@@ -1569,7 +1569,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 33
+        "days_since_prior": 14
       },
       {
         "date": "2019-12-16",
@@ -1588,7 +1588,7 @@
           "BITCOIN": 0.0,
           "CASH": 10.0
         },
-        "days_held": 23
+        "days_since_prior": 33
       },
       {
         "date": "2020-01-08",
@@ -1607,7 +1607,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 5
+        "days_since_prior": 23
       },
       {
         "date": "2020-01-13",
@@ -1626,7 +1626,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 46
+        "days_since_prior": 5
       },
       {
         "date": "2020-02-28",
@@ -1645,7 +1645,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 13
+        "days_since_prior": 46
       },
       {
         "date": "2020-03-12",
@@ -1664,7 +1664,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 1
+        "days_since_prior": 13
       },
       {
         "date": "2020-03-13",
@@ -1683,7 +1683,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 3
+        "days_since_prior": 1
       },
       {
         "date": "2020-03-16",
@@ -1702,7 +1702,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 2
+        "days_since_prior": 3
       },
       {
         "date": "2020-03-18",
@@ -1721,7 +1721,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 5
+        "days_since_prior": 2
       },
       {
         "date": "2020-03-23",
@@ -1740,7 +1740,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 1
+        "days_since_prior": 5
       },
       {
         "date": "2020-03-24",
@@ -1759,7 +1759,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 3
+        "days_since_prior": 1
       },
       {
         "date": "2020-03-27",
@@ -1778,7 +1778,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 17
+        "days_since_prior": 3
       },
       {
         "date": "2020-04-13",
@@ -1797,7 +1797,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 2
+        "days_since_prior": 17
       },
       {
         "date": "2020-04-15",
@@ -1816,7 +1816,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 223
+        "days_since_prior": 2
       },
       {
         "date": "2020-11-24",
@@ -1835,7 +1835,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 27
+        "days_since_prior": 223
       },
       {
         "date": "2020-12-21",
@@ -1854,7 +1854,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 7
+        "days_since_prior": 27
       },
       {
         "date": "2020-12-28",
@@ -1873,7 +1873,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 1
+        "days_since_prior": 7
       },
       {
         "date": "2020-12-29",
@@ -1892,7 +1892,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 14
+        "days_since_prior": 1
       },
       {
         "date": "2021-01-12",
@@ -1911,7 +1911,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 83
+        "days_since_prior": 14
       },
       {
         "date": "2021-04-05",
@@ -1930,7 +1930,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 36
+        "days_since_prior": 83
       },
       {
         "date": "2021-05-11",
@@ -1949,7 +1949,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 14
+        "days_since_prior": 36
       },
       {
         "date": "2021-05-25",
@@ -1968,7 +1968,7 @@
           "BITCOIN": 5.0,
           "CASH": 20.0
         },
-        "days_held": 3
+        "days_since_prior": 14
       },
       {
         "date": "2021-05-28",
@@ -1987,7 +1987,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 6
+        "days_since_prior": 3
       },
       {
         "date": "2021-06-03",
@@ -2006,7 +2006,7 @@
           "BITCOIN": 5.0,
           "CASH": 20.0
         },
-        "days_held": 18
+        "days_since_prior": 6
       },
       {
         "date": "2021-06-21",
@@ -2025,7 +2025,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 24
+        "days_since_prior": 18
       },
       {
         "date": "2021-07-15",
@@ -2044,7 +2044,7 @@
           "BITCOIN": 5.0,
           "CASH": 20.0
         },
-        "days_held": 8
+        "days_since_prior": 24
       },
       {
         "date": "2021-07-23",
@@ -2063,7 +2063,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 5
+        "days_since_prior": 8
       },
       {
         "date": "2021-07-28",
@@ -2082,7 +2082,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 1
+        "days_since_prior": 5
       },
       {
         "date": "2021-07-29",
@@ -2101,7 +2101,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 5
+        "days_since_prior": 1
       },
       {
         "date": "2021-08-03",
@@ -2120,7 +2120,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 3
+        "days_since_prior": 5
       },
       {
         "date": "2021-08-06",
@@ -2139,7 +2139,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 3
+        "days_since_prior": 3
       },
       {
         "date": "2021-08-09",
@@ -2158,7 +2158,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 18
+        "days_since_prior": 3
       },
       {
         "date": "2021-08-27",
@@ -2177,7 +2177,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 14
+        "days_since_prior": 18
       },
       {
         "date": "2021-09-10",
@@ -2196,7 +2196,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 4
+        "days_since_prior": 14
       },
       {
         "date": "2021-09-14",
@@ -2215,7 +2215,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 2
+        "days_since_prior": 4
       },
       {
         "date": "2021-09-16",
@@ -2234,7 +2234,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 18
+        "days_since_prior": 2
       },
       {
         "date": "2021-10-04",
@@ -2253,7 +2253,7 @@
           "BITCOIN": 10.0,
           "CASH": 60.0
         },
-        "days_held": 9
+        "days_since_prior": 18
       },
       {
         "date": "2021-10-13",
@@ -2272,7 +2272,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 27
+        "days_since_prior": 9
       },
       {
         "date": "2021-11-09",
@@ -2291,7 +2291,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 10
+        "days_since_prior": 27
       },
       {
         "date": "2021-11-19",
@@ -2310,7 +2310,7 @@
           "BITCOIN": 5.0,
           "CASH": 72.5
         },
-        "days_held": 7
+        "days_since_prior": 10
       },
       {
         "date": "2021-11-26",
@@ -2329,7 +2329,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 5
+        "days_since_prior": 7
       },
       {
         "date": "2021-12-01",
@@ -2348,7 +2348,7 @@
           "BITCOIN": 5.0,
           "CASH": 95.0
         },
-        "days_held": 7
+        "days_since_prior": 5
       },
       {
         "date": "2021-12-08",
@@ -2367,7 +2367,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 19
+        "days_since_prior": 7
       },
       {
         "date": "2021-12-27",
@@ -2386,7 +2386,7 @@
           "BITCOIN": 5.0,
           "CASH": 72.5
         },
-        "days_held": 2
+        "days_since_prior": 19
       },
       {
         "date": "2021-12-29",
@@ -2405,7 +2405,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 5
+        "days_since_prior": 2
       },
       {
         "date": "2022-01-03",
@@ -2424,7 +2424,7 @@
           "BITCOIN": 0.0,
           "CASH": 55.0
         },
-        "days_held": 16
+        "days_since_prior": 5
       },
       {
         "date": "2022-01-19",
@@ -2443,7 +2443,7 @@
           "BITCOIN": 0.0,
           "CASH": 92.5
         },
-        "days_held": 22
+        "days_since_prior": 16
       },
       {
         "date": "2022-02-10",
@@ -2462,7 +2462,7 @@
           "BITCOIN": 5.0,
           "CASH": 87.5
         },
-        "days_held": 5
+        "days_since_prior": 22
       },
       {
         "date": "2022-02-15",
@@ -2481,7 +2481,7 @@
           "BITCOIN": 0.0,
           "CASH": 92.5
         },
-        "days_held": 41
+        "days_since_prior": 5
       },
       {
         "date": "2022-03-28",
@@ -2500,7 +2500,7 @@
           "BITCOIN": 5.0,
           "CASH": 87.5
         },
-        "days_held": 14
+        "days_since_prior": 41
       },
       {
         "date": "2022-04-11",
@@ -2519,7 +2519,7 @@
           "BITCOIN": 0.0,
           "CASH": 92.5
         },
-        "days_held": 31
+        "days_since_prior": 14
       },
       {
         "date": "2022-05-12",
@@ -2538,7 +2538,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 71
+        "days_since_prior": 31
       },
       {
         "date": "2022-07-22",
@@ -2557,7 +2557,7 @@
           "BITCOIN": 5.0,
           "CASH": 95.0
         },
-        "days_held": 4
+        "days_since_prior": 71
       },
       {
         "date": "2022-07-26",
@@ -2576,7 +2576,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 2
+        "days_since_prior": 4
       },
       {
         "date": "2022-07-28",
@@ -2595,7 +2595,7 @@
           "BITCOIN": 5.0,
           "CASH": 95.0
         },
-        "days_held": 15
+        "days_since_prior": 2
       },
       {
         "date": "2022-08-12",
@@ -2614,7 +2614,7 @@
           "BITCOIN": 5.0,
           "CASH": 80.0
         },
-        "days_held": 11
+        "days_since_prior": 15
       },
       {
         "date": "2022-08-23",
@@ -2633,7 +2633,7 @@
           "BITCOIN": 0.0,
           "CASH": 100.0
         },
-        "days_held": 84
+        "days_since_prior": 11
       },
       {
         "date": "2022-11-15",
@@ -2652,7 +2652,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 1
+        "days_since_prior": 84
       },
       {
         "date": "2022-11-16",
@@ -2671,7 +2671,7 @@
           "BITCOIN": 0.0,
           "CASH": 77.5
         },
-        "days_held": 6
+        "days_since_prior": 1
       },
       {
         "date": "2022-11-22",
@@ -2690,7 +2690,7 @@
           "BITCOIN": 0.0,
           "CASH": 85.0
         },
-        "days_held": 8
+        "days_since_prior": 6
       },
       {
         "date": "2022-11-30",
@@ -2709,7 +2709,7 @@
           "BITCOIN": 0.0,
           "CASH": 77.5
         },
-        "days_held": 6
+        "days_since_prior": 8
       },
       {
         "date": "2022-12-06",
@@ -2728,7 +2728,7 @@
           "BITCOIN": 0.0,
           "CASH": 25.0
         },
-        "days_held": 6
+        "days_since_prior": 6
       },
       {
         "date": "2022-12-12",
@@ -2747,7 +2747,7 @@
           "BITCOIN": 0.0,
           "CASH": 62.5
         },
-        "days_held": 1
+        "days_since_prior": 6
       },
       {
         "date": "2022-12-13",
@@ -2766,7 +2766,7 @@
           "BITCOIN": 0.0,
           "CASH": 25.0
         },
-        "days_held": 9
+        "days_since_prior": 1
       },
       {
         "date": "2022-12-22",
@@ -2785,7 +2785,7 @@
           "BITCOIN": 0.0,
           "CASH": 55.0
         },
-        "days_held": 8
+        "days_since_prior": 9
       },
       {
         "date": "2022-12-30",
@@ -2804,7 +2804,7 @@
           "BITCOIN": 0.0,
           "CASH": 77.5
         },
-        "days_held": 5
+        "days_since_prior": 8
       },
       {
         "date": "2023-01-04",
@@ -2823,7 +2823,7 @@
           "BITCOIN": 0.0,
           "CASH": 62.5
         },
-        "days_held": 1
+        "days_since_prior": 5
       },
       {
         "date": "2023-01-05",
@@ -2842,7 +2842,7 @@
           "BITCOIN": 0.0,
           "CASH": 77.5
         },
-        "days_held": 1
+        "days_since_prior": 1
       },
       {
         "date": "2023-01-06",
@@ -2861,7 +2861,7 @@
           "BITCOIN": 0.0,
           "CASH": 62.5
         },
-        "days_held": 5
+        "days_since_prior": 1
       },
       {
         "date": "2023-01-11",
@@ -2880,7 +2880,7 @@
           "BITCOIN": 0.0,
           "CASH": 25.0
         },
-        "days_held": 6
+        "days_since_prior": 5
       },
       {
         "date": "2023-01-17",
@@ -2899,7 +2899,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 56
+        "days_since_prior": 6
       },
       {
         "date": "2023-03-14",
@@ -2918,7 +2918,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 1
+        "days_since_prior": 56
       },
       {
         "date": "2023-03-15",
@@ -2937,7 +2937,7 @@
           "BITCOIN": 5.0,
           "CASH": 72.5
         },
-        "days_held": 5
+        "days_since_prior": 1
       },
       {
         "date": "2023-03-20",
@@ -2956,7 +2956,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 3
+        "days_since_prior": 5
       },
       {
         "date": "2023-03-23",
@@ -2975,7 +2975,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 21
+        "days_since_prior": 3
       },
       {
         "date": "2023-04-13",
@@ -2994,7 +2994,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 21
+        "days_since_prior": 21
       },
       {
         "date": "2023-05-04",
@@ -3013,7 +3013,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 26
+        "days_since_prior": 21
       },
       {
         "date": "2023-05-30",
@@ -3032,7 +3032,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 29
+        "days_since_prior": 26
       },
       {
         "date": "2023-06-28",
@@ -3051,7 +3051,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 14
+        "days_since_prior": 29
       },
       {
         "date": "2023-07-12",
@@ -3070,7 +3070,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 26
+        "days_since_prior": 14
       },
       {
         "date": "2023-08-07",
@@ -3089,7 +3089,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 15
+        "days_since_prior": 26
       },
       {
         "date": "2023-08-22",
@@ -3108,7 +3108,7 @@
           "BITCOIN": 5.0,
           "CASH": 35.0
         },
-        "days_held": 35
+        "days_since_prior": 15
       },
       {
         "date": "2023-09-26",
@@ -3127,7 +3127,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 13
+        "days_since_prior": 35
       },
       {
         "date": "2023-10-09",
@@ -3146,7 +3146,7 @@
           "BITCOIN": 2.5,
           "CASH": 82.5
         },
-        "days_held": 2
+        "days_since_prior": 13
       },
       {
         "date": "2023-10-11",
@@ -3165,7 +3165,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 8
+        "days_since_prior": 2
       },
       {
         "date": "2023-10-19",
@@ -3184,7 +3184,7 @@
           "BITCOIN": 10.0,
           "CASH": 60.0
         },
-        "days_held": 1
+        "days_since_prior": 8
       },
       {
         "date": "2023-10-20",
@@ -3203,7 +3203,7 @@
           "BITCOIN": 5.0,
           "CASH": 72.5
         },
-        "days_held": 14
+        "days_since_prior": 1
       },
       {
         "date": "2023-11-03",
@@ -3222,7 +3222,7 @@
           "BITCOIN": 10.0,
           "CASH": 45.0
         },
-        "days_held": 12
+        "days_since_prior": 14
       },
       {
         "date": "2023-11-15",
@@ -3241,7 +3241,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 22
+        "days_since_prior": 12
       },
       {
         "date": "2023-12-07",
@@ -3260,7 +3260,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 1
+        "days_since_prior": 22
       },
       {
         "date": "2023-12-08",
@@ -3279,7 +3279,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 6
+        "days_since_prior": 1
       },
       {
         "date": "2023-12-14",
@@ -3298,7 +3298,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 68
+        "days_since_prior": 6
       },
       {
         "date": "2024-02-20",
@@ -3317,7 +3317,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 14
+        "days_since_prior": 68
       },
       {
         "date": "2024-03-05",
@@ -3336,7 +3336,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 10
+        "days_since_prior": 14
       },
       {
         "date": "2024-03-15",
@@ -3355,7 +3355,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 11
+        "days_since_prior": 10
       },
       {
         "date": "2024-03-26",
@@ -3374,7 +3374,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 7
+        "days_since_prior": 11
       },
       {
         "date": "2024-04-02",
@@ -3393,7 +3393,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": 76
+        "days_since_prior": 7
       },
       {
         "date": "2024-06-17",
@@ -3412,7 +3412,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 22
+        "days_since_prior": 76
       },
       {
         "date": "2024-07-09",
@@ -3431,7 +3431,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 6
+        "days_since_prior": 22
       },
       {
         "date": "2024-07-15",
@@ -3450,7 +3450,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 22
+        "days_since_prior": 6
       },
       {
         "date": "2024-08-06",
@@ -3469,7 +3469,7 @@
           "BITCOIN": 2.5,
           "CASH": 52.5
         },
-        "days_held": 2
+        "days_since_prior": 22
       },
       {
         "date": "2024-08-08",
@@ -3488,7 +3488,7 @@
           "BITCOIN": 2.5,
           "CASH": 67.5
         },
-        "days_held": 4
+        "days_since_prior": 2
       },
       {
         "date": "2024-08-12",
@@ -3507,7 +3507,7 @@
           "BITCOIN": 2.5,
           "CASH": 52.5
         },
-        "days_held": 3
+        "days_since_prior": 4
       },
       {
         "date": "2024-08-15",
@@ -3526,7 +3526,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 42
+        "days_since_prior": 3
       },
       {
         "date": "2024-09-26",
@@ -3545,7 +3545,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 6
+        "days_since_prior": 42
       },
       {
         "date": "2024-10-02",
@@ -3564,7 +3564,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 14
+        "days_since_prior": 6
       },
       {
         "date": "2024-10-16",
@@ -3583,7 +3583,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 89
+        "days_since_prior": 14
       },
       {
         "date": "2025-01-13",
@@ -3602,7 +3602,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 4
+        "days_since_prior": 89
       },
       {
         "date": "2025-01-17",
@@ -3621,7 +3621,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 42
+        "days_since_prior": 4
       },
       {
         "date": "2025-02-28",
@@ -3640,7 +3640,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 4
+        "days_since_prior": 42
       },
       {
         "date": "2025-03-04",
@@ -3659,7 +3659,7 @@
           "BITCOIN": 2.5,
           "CASH": 37.5
         },
-        "days_held": 2
+        "days_since_prior": 4
       },
       {
         "date": "2025-03-06",
@@ -3678,7 +3678,7 @@
           "BITCOIN": 2.5,
           "CASH": 67.5
         },
-        "days_held": 1
+        "days_since_prior": 2
       },
       {
         "date": "2025-03-07",
@@ -3697,7 +3697,7 @@
           "BITCOIN": 2.5,
           "CASH": 82.5
         },
-        "days_held": 27
+        "days_since_prior": 1
       },
       {
         "date": "2025-04-03",
@@ -3716,7 +3716,7 @@
           "BITCOIN": 2.5,
           "CASH": 67.5
         },
-        "days_held": 5
+        "days_since_prior": 27
       },
       {
         "date": "2025-04-08",
@@ -3735,7 +3735,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 6
+        "days_since_prior": 5
       },
       {
         "date": "2025-04-14",
@@ -3754,7 +3754,7 @@
           "BITCOIN": 2.5,
           "CASH": 67.5
         },
-        "days_held": 10
+        "days_since_prior": 6
       },
       {
         "date": "2025-04-24",
@@ -3773,7 +3773,7 @@
           "BITCOIN": 5.0,
           "CASH": 65.0
         },
-        "days_held": 4
+        "days_since_prior": 10
       },
       {
         "date": "2025-04-28",
@@ -3792,7 +3792,7 @@
           "BITCOIN": 5.0,
           "CASH": 50.0
         },
-        "days_held": 17
+        "days_since_prior": 4
       },
       {
         "date": "2025-05-15",
@@ -3811,7 +3811,7 @@
           "BITCOIN": 10.0,
           "CASH": 30.0
         },
-        "days_held": 18
+        "days_since_prior": 17
       },
       {
         "date": "2025-06-02",
@@ -3830,7 +3830,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 119
+        "days_since_prior": 18
       },
       {
         "date": "2025-09-29",
@@ -3849,7 +3849,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 1
+        "days_since_prior": 119
       },
       {
         "date": "2025-09-30",
@@ -3868,7 +3868,7 @@
           "BITCOIN": 10.0,
           "CASH": 0.0
         },
-        "days_held": 17
+        "days_since_prior": 1
       },
       {
         "date": "2025-10-17",
@@ -3887,7 +3887,7 @@
           "BITCOIN": 5.0,
           "CASH": 5.0
         },
-        "days_held": 21
+        "days_since_prior": 17
       },
       {
         "date": "2025-11-07",
@@ -3906,7 +3906,7 @@
           "BITCOIN": 0.0,
           "CASH": 10.0
         },
-        "days_held": 14
+        "days_since_prior": 21
       },
       {
         "date": "2025-11-21",
@@ -3925,7 +3925,7 @@
           "BITCOIN": 0.0,
           "CASH": 40.0
         },
-        "days_held": 3
+        "days_since_prior": 14
       },
       {
         "date": "2025-11-24",
@@ -3944,7 +3944,7 @@
           "BITCOIN": 0.0,
           "CASH": 55.0
         },
-        "days_held": 2
+        "days_since_prior": 3
       },
       {
         "date": "2025-11-26",
@@ -3963,7 +3963,7 @@
           "BITCOIN": 0.0,
           "CASH": 10.0
         },
-        "days_held": 105
+        "days_since_prior": 2
       },
       {
         "date": "2026-03-11",
@@ -3982,7 +3982,7 @@
           "BITCOIN": 0.0,
           "CASH": 70.0
         },
-        "days_held": 6
+        "days_since_prior": 105
       },
       {
         "date": "2026-03-17",
@@ -4001,7 +4001,7 @@
           "BITCOIN": 2.5,
           "CASH": 75.0
         },
-        "days_held": 1
+        "days_since_prior": 6
       },
       {
         "date": "2026-03-18",
@@ -4020,7 +4020,7 @@
           "BITCOIN": 5.0,
           "CASH": 87.5
         },
-        "days_held": 5
+        "days_since_prior": 1
       },
       {
         "date": "2026-03-23",
@@ -4039,7 +4039,7 @@
           "BITCOIN": 0.0,
           "CASH": 92.5
         },
-        "days_held": 17
+        "days_since_prior": 5
       },
       {
         "date": "2026-04-09",
@@ -4058,7 +4058,7 @@
           "BITCOIN": 0.0,
           "CASH": 25.0
         },
-        "days_held": 11
+        "days_since_prior": 17
       },
       {
         "date": "2026-04-20",
@@ -4077,7 +4077,7 @@
           "BITCOIN": 10.0,
           "CASH": 15.0
         },
-        "days_held": null
+        "days_since_prior": 11
       }
     ]
   }
