@@ -13,7 +13,7 @@
   --red-dark:    #991010;
   --white:       #FFFFFF;
   --off-white:   #F2F2F0;
-  --grey:        #888884;
+  --grey:        #9C9C97;   /* readability: bumped from #888884 for ~6.5:1 contrast on black */
   --light-grey:  #C8C8C4;
   --card-bg:     #0D0D0D;
   --card-border: rgba(204,16,16,0.18);
@@ -254,6 +254,7 @@ tr:hover td     { background: rgba(255,255,255,0.015); }
   padding: 0 var(--page-gutter);
   position: sticky; top: 0; z-index: 10;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding-left:  max(var(--page-gutter), env(safe-area-inset-left));
   padding-right: max(var(--page-gutter), env(safe-area-inset-right));
   padding-top:   env(safe-area-inset-top);

@@ -48,6 +48,7 @@ nav {
   padding:18px 48px;
   background:rgba(0,0,0,0.92);
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
   transition:padding 0.3s ease;
 }
@@ -85,7 +86,7 @@ nav.scrolled { padding:12px 48px; }
 
 .nav-login {
   font-family:var(--font-ui);
-  font-size:0.7rem; font-weight:600;
+  font-size:var(--fs-sm); font-weight:600;
   letter-spacing:0.18em; text-transform:uppercase;
   color:var(--white);
   border:1px solid rgba(255,255,255,0.25);
@@ -110,7 +111,7 @@ nav.scrolled { padding:12px 48px; }
 .menu-overlay.open { opacity:1; pointer-events:all; transform:translateY(0); }
 .menu-overlay a {
   font-family:var(--font-ui);
-  font-size:0.7rem; font-weight:600;
+  font-size:var(--fs-sm); font-weight:600;
   letter-spacing:0.18em; text-transform:uppercase;
   color:#ffffff;
   padding:11px 22px;
@@ -189,7 +190,7 @@ nav.scrolled { padding:12px 48px; }
 .hero-actions { display:flex; flex-wrap:wrap; gap:16px; }
 .btn-primary {
   font-family:var(--font-ui);
-  font-size:0.72rem; font-weight:700;
+  font-size:var(--fs-sm); font-weight:700;
   letter-spacing:0.2em; text-transform:uppercase;
   background:var(--red); color:var(--white);
   padding:15px 32px; display:inline-block;
@@ -199,7 +200,7 @@ nav.scrolled { padding:12px 48px; }
 .btn-primary:hover { background:var(--red-dark); transform:translateY(-1px); }
 .btn-model {
   font-family:var(--font-ui);
-  font-size:0.72rem; font-weight:700;
+  font-size:var(--fs-sm); font-weight:700;
   letter-spacing:0.2em; text-transform:uppercase;
   background:#000; color:var(--white);
   padding:14px 32px; display:inline-block;
@@ -210,7 +211,7 @@ nav.scrolled { padding:12px 48px; }
 
 .btn-secondary {
   font-family:var(--font-ui);
-  font-size:0.72rem; font-weight:700;
+  font-size:var(--fs-sm); font-weight:700;
   letter-spacing:0.2em; text-transform:uppercase;
   background:transparent; color:var(--white);
   padding:14px 32px; display:inline-block;
@@ -222,9 +223,9 @@ nav.scrolled { padding:12px 48px; }
 .scroll-hint {
   position:absolute; bottom:40px; left:48px;
   font-family:var(--font-ui);
-  font-size:0.62rem; font-weight:600;
+  font-size:0.75rem; font-weight:600;
   letter-spacing:0.25em; text-transform:uppercase;
-  color:var(--grey); opacity:0.6;
+  color:var(--grey); opacity:0.75;
 }
 
 /* ─── SECTIONS ───────────────────────────────────────────────── */
@@ -251,7 +252,7 @@ section { padding:100px 48px; position:relative; }
 .section-title em { font-style:italic; color:var(--red); }
 
 .section-sub {
-  font-size:0.95rem; color:var(--light-grey);
+  font-size:var(--fs-md); color:var(--light-grey);
   line-height:1.8; max-width:640px;
   margin-bottom:32px;
 }
@@ -315,13 +316,13 @@ section { padding:100px 48px; position:relative; }
   max-width:700px; margin-bottom:28px;
 }
 .founder-bio p {
-  font-size:0.92rem; color:#ffffff;
+  font-size:var(--fs-base); color:#ffffff;
   line-height:1.8; max-width:640px;
   margin-bottom:16px;
 }
 .page-cta { margin-top:48px; }
 .page-cta a {
-  font-family:var(--font-ui); font-size:0.7rem; font-weight:700;
+  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:700;
   letter-spacing:0.2em; text-transform:uppercase;
   color:var(--white); background:var(--red);
   padding:15px 36px; display:inline-block;
@@ -352,7 +353,7 @@ section { padding:100px 48px; position:relative; }
 }
 .subscribe-title em { font-style:italic; color:var(--red); }
 .subscribe-sub {
-  font-size:0.9rem; color:#ffffff;
+  font-size:var(--fs-md); color:#ffffff;
   line-height:1.7; margin-bottom:32px;
 }
 .subscribe-form { display:flex; flex-direction:column; gap:12px; text-align:left; max-width:420px; margin:0 auto; }
@@ -374,7 +375,7 @@ section { padding:100px 48px; position:relative; }
 .subscribe-form button:hover { background:var(--red-dark); }
 .subscribe-form button:disabled { background:var(--grey); cursor:not-allowed; }
 .subscribe-disclaimer {
-  font-size:0.72rem; color:#ffffff;
+  font-size:0.82rem; color:#ffffff;
   line-height:1.6; margin-top:20px;
   max-width:420px; margin-left:auto; margin-right:auto;
 }
@@ -390,17 +391,17 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
   display:block; margin-bottom:16px;
 }
 .footer-brand .footer-tagline {
-  font-size:0.78rem; color:#ffffff;
+  font-size:var(--fs-md); color:#ffffff;
   line-height:1.8;
 }
 .footer-col h5 {
-  font-family:var(--font-ui); font-size:0.65rem; font-weight:700;
+  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:700;
   letter-spacing:0.25em; text-transform:uppercase;
   color:var(--white); margin-bottom:16px;
 }
 .footer-col a {
-  display:block; font-size:0.8rem;
-  color:var(--grey); margin-bottom:8px;
+  display:block; font-size:var(--fs-md);
+  color:var(--grey); margin-bottom:10px;
   transition:color 0.15s ease;
 }
 .footer-col a:hover { color:var(--white); }
@@ -410,13 +411,13 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
   gap:16px; padding-top:32px;
   border-top:1px solid var(--line);
 }
-.footer-copy { font-size:0.7rem; color:var(--grey); letter-spacing:0.06em; }
+.footer-copy { font-size:0.78rem; color:var(--grey); letter-spacing:0.06em; }
 .footer-legal { display:flex; gap:24px; }
-.footer-legal a { font-size:0.7rem; color:var(--grey); transition:color 0.15s ease; }
+.footer-legal a { font-size:0.78rem; color:var(--grey); transition:color 0.15s ease; }
 .footer-legal a:hover { color:var(--red); }
 .footer-disclaimer {
-  width:100%; font-size:0.68rem; color:rgba(136,136,132,0.5);
-  line-height:1.6; margin-top:16px;
+  width:100%; font-size:0.8rem; color:var(--grey);
+  line-height:1.7; margin-top:16px;
 }
 
 /* ─── FORM ROW ───────────────────────────────────────────────── */
@@ -433,6 +434,7 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
   position:fixed; inset:0; z-index:300;
   background:rgba(0,0,0,0.85);
   backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
   display:none; align-items:center; justify-content:center;
   padding:24px;
 }
@@ -476,10 +478,10 @@ footer { padding:72px 48px 40px; background:#000; border-top:1px solid var(--lin
 }
 .modal-form button:hover { background:var(--red-dark); }
 .modal-form button:disabled { background:var(--grey); cursor:not-allowed; }
-.modal-msg { margin-top:14px; font-size:0.85rem; min-height:1.2em; }
+.modal-msg { margin-top:14px; font-size:var(--fs-md); min-height:1.2em; }
 .modal-msg.success { color:var(--green-pos); }
 .modal-msg.error   { color:var(--red-neg); }
-.modal-footer { margin-top:16px; font-size:0.78rem; color:var(--grey); text-align:center; }
+.modal-footer { margin-top:16px; font-size:0.85rem; color:var(--grey); text-align:center; }
 .modal-footer a { color:var(--red); }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
@@ -651,13 +653,13 @@ body { overflow-x: hidden; }
         <button type="submit" id="signupBtn">Create an Account</button>
       </form>
 
-      <p id="signupMsg" style="margin-top:16px; font-size:0.85rem; min-height:1.2em; text-align:center;"></p>
+      <p id="signupMsg" style="margin-top:16px; font-size:var(--fs-md); min-height:1.2em; text-align:center;"></p>
 
       <p class="subscribe-disclaimer">
         By creating an account you agree to our <a href="terms.html" style="color:var(--red);">Terms of Use</a> and <a href="privacy.html" style="color:var(--red);">Privacy Policy</a>. BLACK KNOT ANALYTICS is an educational resource. Nothing on this platform constitutes investment advice.
       </p>
 
-      <p style="font-size:0.78rem; color:var(--grey); margin-top:16px; text-align:center;">
+      <p style="font-size:0.875rem; color:var(--grey); margin-top:16px; text-align:center;">
         Already a subscriber? <a href="#" style="color:var(--red);" onclick="openSignIn(event)">Sign in</a>
       </p>
     </div>
