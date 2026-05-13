@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T20:25:56",
+    "run_timestamp": "2026-05-12T23:36:12",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -43,6 +43,26 @@
       "days_since_last_rebalance": 5,
       "last_rebalance_date": "2026-05-07",
       "last_rebalance_type": "regime_change"
+    }
+  },
+  "signal_context": {
+    "tenure_days": 5,
+    "previous_regime": {
+      "archetype": "structural_expansion",
+      "archetype_display": "Structural Expansion",
+      "days_held": 163,
+      "days_since_exit": 6
+    },
+    "deployment": {
+      "pct_deployed": 70.0
+    },
+    "cluster": {
+      "cluster": "risk-on",
+      "pct_deployed": 70.0,
+      "decisiveness": 75.5,
+      "decisiveness_5d_ago": 60.0,
+      "raw_distance": 1.51,
+      "closest_threat": "energy_crisis"
     }
   },
   "returns": {
@@ -5732,24 +5752,6 @@
       "ticker": "DCOILWTICO",
       "issue": "stale",
       "detail": "+8d"
-    },
-    {
-      "ticker": "DXY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "GC1",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
     },
     {
       "ticker": "W1",
