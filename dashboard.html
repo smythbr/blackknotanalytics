@@ -234,10 +234,12 @@ body { overflow-x:hidden; }
   width:1px; background:rgba(255,255,255,0.7);
   transform:translateX(-0.5px);
 }
-.esig-cluster-ghost {
-  position:absolute; top:50%; width:8px; height:8px;
-  border-radius:50%; background:var(--white); opacity:0.40;
+.esig-cluster-arrow {
+  position:absolute; top:50%; width:14px; height:14px;
+  display:flex; align-items:center; justify-content:center;
   transform:translate(-50%,-50%);
+  font-size:14px; line-height:1; font-weight:700;
+  pointer-events:none; z-index:1;
   transition:left 0.4s ease;
 }
 .esig-cluster-dot {
@@ -265,10 +267,10 @@ body { overflow-x:hidden; }
   font-size:var(--fs-xs); color:var(--grey);
   letter-spacing:0.06em;
 }
-.esig-cluster-detail .esig-cluster-pct { color:var(--white); font-weight:600; }
-.esig-cluster-detail .dir-strengthening { color:var(--green-pos); }
-.esig-cluster-detail .dir-weakening     { color:var(--red-neg); }
-.esig-cluster-detail .dir-steady        { color:var(--yellow-neu); }
+.esig-cluster-detail .esig-cluster-pct  { color:var(--white); font-weight:600; }
+.esig-cluster-detail .dir-improving     { color:var(--green-pos); }
+.esig-cluster-detail .dir-deteriorating { color:var(--red-neg); }
+.esig-cluster-detail .dir-stable        { color:var(--yellow-neu); }
 
 .esig-prev {
   font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em;
@@ -554,24 +556,24 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="signal-card">
       <div class="signal-card-header">
         <span class="signal-card-name">HEDRA</span>
-        <span class="signal-badge hold" id="kissBadge">Holding</span>
+        <span class="signal-badge hold" id="hedraBadge">Holding</span>
       </div>
       <div class="signal-kpis">
         <div class="signal-kpi">
           <div class="signal-kpi-label">YTD Return</div>
-          <div class="signal-kpi-val pos" id="kissYtd">—</div>
+          <div class="signal-kpi-val pos" id="hedraYtd">—</div>
         </div>
         <div class="signal-kpi">
           <div class="signal-kpi-label">ITD CAGR</div>
-          <div class="signal-kpi-val pos" id="kissCagr">—</div>
+          <div class="signal-kpi-val pos" id="hedraCagr">—</div>
         </div>
       </div>
       <div class="signal-alloc-label">Current Weights</div>
       <div class="signal-alloc-row">
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">VT</div><div class="signal-alloc-pct" id="kissVT">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLDM</div><div class="signal-alloc-pct" id="kissGLDM">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">FBTC</div><div class="signal-alloc-pct" id="kissFBTC">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">USFR</div><div class="signal-alloc-pct" id="kissUSFR">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">VT</div><div class="signal-alloc-pct" id="hedraVT">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLDM</div><div class="signal-alloc-pct" id="hedraGLDM">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">FBTC</div><div class="signal-alloc-pct" id="hedraFBTC">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">USFR</div><div class="signal-alloc-pct" id="hedraUSFR">—</div></div>
       </div>
     </div>
 
@@ -737,7 +739,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <div class="esig-cluster-off-zone"></div>
           <div class="esig-cluster-on-zone"></div>
           <div class="esig-cluster-boundary"></div>
-          <div class="esig-cluster-ghost" id="esigClusterGhost" style="left:50%"></div>
+          <div class="esig-cluster-arrow" id="esigClusterArrow" style="display:none"></div>
           <div class="esig-cluster-dot"   id="esigClusterDot"   style="left:50%"></div>
         </div>
         <div class="esig-cluster-bar-labels">
@@ -861,14 +863,14 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <!-- SIGNAL -->
   <div class="db-eyebrow">Signal</div>
   <div class="db-title">HEDRA Signal</div>
-  <div class="db-sub">Hedra model portfolio — replication of 42 Macro KISS by Black Knot Analytics. Regime and VAMS signals published by Darius Dale.</div>
+  <div class="db-sub">Hedra model portfolio by Black Knot Analytics — based on 42 Macro Risk-Off Indicator framework. Regime and VAMS signals published by Darius Dale.</div>
 
   <div class="esig-card">
 
-    <div class="esig-regime-name" id="kissRegimeName">—</div>
-    <div class="esig-regime-meta" id="kissRegimeMeta">—</div>
+    <div class="esig-regime-name" id="hedraRegimeName">—</div>
+    <div class="esig-regime-meta" id="hedraRegimeMeta">—</div>
 
-    <div class="esig-prev" id="kissPrev">Previous regime: —</div>
+    <div class="esig-prev" id="hedraPrev">Previous regime: —</div>
 
     <div class="esig-section">
       <div class="esig-eyebrow">VAMS Signals</div>
@@ -882,13 +884,13 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
             <th>Target</th>
           </tr>
         </thead>
-        <tbody id="kissVamsBody"></tbody>
+        <tbody id="hedraVamsBody"></tbody>
       </table>
     </div>
 
     <div class="eidos-action-row">
-      <span id="kissActionStatus" class="signal-badge hold">—</span>
-      <span id="kissRebalNote" class="eidos-rebal-note"></span>
+      <span id="hedraActionStatus" class="signal-badge hold">—</span>
+      <span id="hedraRebalNote" class="eidos-rebal-note"></span>
     </div>
   </div>
 
@@ -904,7 +906,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="perf-table-wrap">
       <table class="perf-table">
         <thead><tr><th>Period</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="kissCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+        <tbody id="hedraCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -914,7 +916,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="perf-table-wrap">
       <table class="perf-table">
         <thead><tr><th>Year</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="kissAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+        <tbody id="hedraAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -925,7 +927,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="perf-table-wrap">
       <table class="perf-table">
         <thead><tr><th>Metric</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="kissRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+        <tbody id="hedraRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -935,7 +937,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <div class="perf-table-wrap">
       <table class="perf-table">
         <thead><tr><th>Metric</th><th class="col-model">Hedra</th></tr></thead>
-        <tbody id="kissOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
+        <tbody id="hedraOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -958,7 +960,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <th class="th-left">Trigger</th>
         </tr>
       </thead>
-      <tbody id="kissAllocBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody>
+      <tbody id="hedraAllocBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody>
     </table>
   </div>
 
@@ -1122,27 +1124,27 @@ function renderToday(sig, perf) {
   setAW('eidosTLT','TLT'); setAW('eidosBIL','BIL');
 
   // HEDRA
-  if (window._kissData) {
-    const ks  = window._kissData.signal;
+  if (window._hedraData) {
+    const ks  = window._hedraData.signal;
     const kw  = ks.weights;
-    const kct = window._kissData.cum_returns.hedra;
+    const kct = window._hedraData.cum_returns.hedra;
     const kAct = ks.action.rebalance_required;
 
-    document.getElementById('kissYtd').textContent  = fmtPct(kct.ytd, 2, true);
-    document.getElementById('kissYtd').className    = 'signal-kpi-val ' + pctCls(kct.ytd);
-    document.getElementById('kissCagr').textContent = fmtPct(kct.cagr_itd, 2);
-    document.getElementById('kissBadge').textContent = kAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-    document.getElementById('kissBadge').className   = 'signal-badge ' + (kAct ? 'action' : 'hold');
+    document.getElementById('hedraYtd').textContent  = fmtPct(kct.ytd, 2, true);
+    document.getElementById('hedraYtd').className    = 'signal-kpi-val ' + pctCls(kct.ytd);
+    document.getElementById('hedraCagr').textContent = fmtPct(kct.cagr_itd, 2);
+    document.getElementById('hedraBadge').textContent = kAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
+    document.getElementById('hedraBadge').className   = 'signal-badge ' + (kAct ? 'action' : 'hold');
 
     function setKW(id, asset) {
       const val = Math.round(kw[asset] ? kw[asset].target_weight : 0);
       document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
       document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
     }
-    setKW('kissVT',   'STOCKS');
-    setKW('kissGLDM', 'GOLD');
-    setKW('kissFBTC', 'BITCOIN');
-    setKW('kissUSFR', 'CASH');
+    setKW('hedraVT',   'STOCKS');
+    setKW('hedraGLDM', 'GOLD');
+    setKW('hedraFBTC', 'BITCOIN');
+    setKW('hedraUSFR', 'CASH');
   }
 }
 
@@ -1323,86 +1325,88 @@ function renderEidosSignal(perf) {
   document.getElementById('esigRegimeMeta').textContent =
     [abbr, tenureStr, pctStr].filter(Boolean).join(' · ') || '—';
 
-  // ── Risk cluster bar (binary boundary + decisiveness as distance from center) ──
+  // ── Risk cluster bar: dot distance from center = distance from flip ──
   const clusterEl = document.getElementById('esigCluster');
   const dotEl     = document.getElementById('esigClusterDot');
-  const ghostEl   = document.getElementById('esigClusterGhost');
+  const arrowEl   = document.getElementById('esigClusterArrow');
   const primEl    = document.getElementById('esigClusterPrimary');
   const secEl     = document.getElementById('esigClusterSecondary');
 
   clusterEl.classList.remove('active-on', 'active-off');
   const leftLabelEl  = document.getElementById('esigClusterLeftLabel');
   const rightLabelEl = document.getElementById('esigClusterRightLabel');
-  if (cluster && cluster.cluster) {
-    clusterEl.classList.add(cluster.cluster === 'risk-on' ? 'active-on' : 'active-off');
 
-    // Bar-half labels: current archetype under active side, closest threat under inactive side.
-    // For risk-off, closest_threat_display echoes the current archetype (since the only path
-    // back to risk-on is the archetype's own exit). In that case, show "Risk-On" as the
-    // generic destination on the inactive side rather than duplicating the active label.
-    const threatDisplay = cluster.closest_threat_display || '';
-    if (cluster.cluster === 'risk-on') {
-      leftLabelEl.textContent  = threatDisplay || '—';
+  if (cluster && cluster.cluster) {
+    const isOn = cluster.cluster === 'risk-on';
+    clusterEl.classList.add(isOn ? 'active-on' : 'active-off');
+
+    // Bar-half labels: active regime under active side, closest threat under inactive side
+    const threatDisplay = cluster.closest_threat_display || '—';
+    if (isOn) {
+      leftLabelEl.textContent  = threatDisplay;
       rightLabelEl.textContent = archDisplay;
       leftLabelEl.className    = 'esig-cluster-bar-label is-inactive';
       rightLabelEl.className   = 'esig-cluster-bar-label is-active';
     } else {
       leftLabelEl.textContent  = archDisplay;
-      rightLabelEl.textContent = 'Risk-On';
+      rightLabelEl.textContent = threatDisplay;
       leftLabelEl.className    = 'esig-cluster-bar-label is-active';
       rightLabelEl.className   = 'esig-cluster-bar-label is-inactive';
     }
 
-    const dec = cluster.decisiveness;
-    const decAgo = cluster.decisiveness_5d_ago;
+    const dist = cluster.distance;
+    const dir  = cluster.direction || 'Stable';
 
-    if (dec != null) {
-      const isOn = cluster.cluster === 'risk-on';
-      const dotPct   = isOn ? 50 + (dec    / 2) : 50 - (dec    / 2);
+    if (dist != null) {
+      // Dot position: 0 distance = center, 100 distance = far edge of active half
+      const dotPct = isOn ? 50 + (dist / 2) : 50 - (dist / 2);
       dotEl.style.left = dotPct + '%';
-      if (decAgo != null) {
-        const ghostPct = isOn ? 50 + (decAgo / 2) : 50 - (decAgo / 2);
-        ghostEl.style.left   = ghostPct + '%';
-        ghostEl.style.display = '';
+
+      // Direction arrow: position next to dot, point in direction of travel
+      // Improving = moving away from center (outward)
+      // Deteriorating = moving toward center (inward)
+      // Stable = hidden
+      if (dir === 'Improving' || dir === 'Deteriorating') {
+        let arrowChar, arrowOffset, arrowColor;
+        const movingOutward = (dir === 'Improving');
+        if (isOn) {
+          // Active side is right; outward = right, inward = left
+          arrowChar   = movingOutward ? '\u25B6' : '\u25C0';   // ▶ ◀
+          arrowOffset = movingOutward ? +3.5 : -3.5;            // % offset from dot
+          arrowColor  = movingOutward ? 'var(--green-pos)' : 'var(--red-neg)';
+        } else {
+          // Active side is left; outward = left, inward = right
+          arrowChar   = movingOutward ? '\u25C0' : '\u25B6';   // ◀ ▶
+          arrowOffset = movingOutward ? -3.5 : +3.5;
+          arrowColor  = movingOutward ? 'var(--green-pos)' : 'var(--red-neg)';
+        }
+        arrowEl.textContent     = arrowChar;
+        arrowEl.style.color     = arrowColor;
+        arrowEl.style.left      = (dotPct + arrowOffset) + '%';
+        arrowEl.style.display   = '';
       } else {
-        ghostEl.style.display = 'none';
+        arrowEl.style.display = 'none';
       }
 
-      // Categorical descriptor from continuous value
-      let descriptor;
-      if (dec >= 70)      descriptor = 'Decisive';
-      else if (dec >= 30) descriptor = 'Moderate';
-      else                descriptor = 'Borderline';
-
-      // Direction arrow
-      const dir = cluster.direction || 'Steady';
-      const dirClass = dir === 'Strengthening' ? 'dir-strengthening'
-                     : dir === 'Weakening'     ? 'dir-weakening'
-                     : 'dir-steady';
-      const dirArrow = dir === 'Strengthening' ? ' ↑'
-                     : dir === 'Weakening'     ? ' ↓' : '';
-
-      primEl.innerHTML = descriptor + ' · <span class="esig-cluster-pct">' +
-                         Math.round(dec) + '%</span> · <span class="' + dirClass + '">' +
-                         dir + dirArrow + '</span>';
-
-      // Closest threat only shown when decisiveness is below 70 (otherwise just noise)
-      if (dec < 70 && cluster.closest_threat_display) {
-        secEl.textContent = 'Closest: ' + cluster.closest_threat_display;
-      } else {
-        secEl.textContent = '';
-      }
+      // Detail line: numeric distance + direction descriptor
+      const dirClass = dir === 'Improving'     ? 'dir-improving'
+                     : dir === 'Deteriorating' ? 'dir-deteriorating'
+                     : 'dir-stable';
+      primEl.innerHTML = '<span class="esig-cluster-pct">' + Math.round(dist) +
+                         '</span> from flip · <span class="' + dirClass + '">' +
+                         dir + '</span>';
+      secEl.textContent = '';
     } else {
-      dotEl.style.left = '50%';
-      ghostEl.style.display = 'none';
-      primEl.textContent = '—';
-      secEl.textContent  = '';
+      dotEl.style.left      = '50%';
+      arrowEl.style.display = 'none';
+      primEl.textContent    = '—';
+      secEl.textContent     = '';
     }
   } else {
-    dotEl.style.left = '50%';
-    ghostEl.style.display = 'none';
-    primEl.textContent = '—';
-    secEl.textContent  = '';
+    dotEl.style.left      = '50%';
+    arrowEl.style.display = 'none';
+    primEl.textContent    = '—';
+    secEl.textContent     = '';
   }
 
   // ── Previous regime ──
@@ -1560,21 +1564,21 @@ function renderEidosAlloc(perf) {
 // ════════════════════════════════════════════════════════
 // RENDER — HEDRA SIGNAL
 // ════════════════════════════════════════════════════════
-function renderKissSignal(kiss) {
-  const sig = kiss.signal;
-  const ctx = kiss.signal_context || {};
+function renderHedraSignal(hedra) {
+  const sig = hedra.signal;
+  const ctx = hedra.signal_context || {};
   const w   = sig.weights;
 
-  document.getElementById('kissRegimeName').textContent = sig.regime_display || sig.regime;
+  document.getElementById('hedraRegimeName').textContent = sig.regime_display || sig.regime;
   const rr       = sig.risk_regime === 'risk-on' ? 'Risk-On' : 'Risk-Off';
   const tenure   = ctx.tenure_days != null ? ctx.tenure_days + ' days in regime' : '';
   const deployed = (ctx.deployment && ctx.deployment.pct_deployed != null)
                    ? Math.round(ctx.deployment.pct_deployed) + '% deployed' : '';
-  document.getElementById('kissRegimeMeta').textContent =
+  document.getElementById('hedraRegimeMeta').textContent =
     [sig.regime, rr, tenure, deployed].filter(Boolean).join(' · ');
 
   const prev   = ctx.previous_regime;
-  const prevEl = document.getElementById('kissPrev');
+  const prevEl = document.getElementById('hedraPrev');
   if (prev) {
     const parts = [
       '<strong>' + (prev.regime_display || prev.regime) + '</strong>',
@@ -1588,7 +1592,7 @@ function renderKissSignal(kiss) {
 
   const SIGNAL_COLOR = { Bullish: 'var(--green-pos)', Neutral: 'var(--yellow-neu)', Bearish: 'var(--red-neg)' };
   const ASSET_ORDER  = ['STOCKS','GOLD','BITCOIN','CASH'];
-  const tbody = document.getElementById('kissVamsBody');
+  const tbody = document.getElementById('hedraVamsBody');
   tbody.innerHTML = ASSET_ORDER.map(asset => {
     const aw  = w[asset] || {};
     const sc  = SIGNAL_COLOR[aw.vams_signal] || 'var(--white)';
@@ -1606,22 +1610,22 @@ function renderKissSignal(kiss) {
   }).join('');
 
   const act = sig.action || {};
-  document.getElementById('kissActionStatus').textContent = act.rebalance_required ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  document.getElementById('kissActionStatus').className   = 'signal-badge ' + (act.rebalance_required ? 'action' : 'hold');
+  document.getElementById('hedraActionStatus').textContent = act.rebalance_required ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
+  document.getElementById('hedraActionStatus').className   = 'signal-badge ' + (act.rebalance_required ? 'action' : 'hold');
   const ds = act.days_since_last_rebalance;
-  document.getElementById('kissRebalNote').textContent =
+  document.getElementById('hedraRebalNote').textContent =
     'Last: ' + (act.last_rebalance_date||'—') + (ds!=null?' · '+ds+'d ago':'') + (act.last_rebalance_type?' · '+act.last_rebalance_type:'');
 }
 
 // ════════════════════════════════════════════════════════
 // RENDER — HEDRA PERFORMANCE
 // ════════════════════════════════════════════════════════
-function renderKissPerf(kiss) {
-  const cr  = kiss.cum_returns;
-  const ret = kiss.returns;
-  const r   = kiss.risk.hedra;
-  const rs  = kiss.risk.spy_bh;
-  const rb  = kiss.rebalancing;
+function renderHedraPerf(hedra) {
+  const cr  = hedra.cum_returns;
+  const ret = hedra.returns;
+  const r   = hedra.risk.hedra;
+  const rs  = hedra.risk.spy_bh;
+  const rb  = hedra.rebalancing;
 
   // Cumulative
   let html = [
@@ -1636,7 +1640,7 @@ function renderKissPerf(kiss) {
   }).join('');
   const cagrE = edge(cr.hedra.cagr_itd, cr.spy_bh.cagr_itd);
   html += row(['ITD CAGR', c(fmtPct(cr.hedra.cagr_itd,2),'td-model '+pctCls(cr.hedra.cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById('kissCumulBody').innerHTML = html;
+  document.getElementById('hedraCumulBody').innerHTML = html;
 
   // Annual
   const yearOrder = ['ytd','2025','2024','2023','2022','2021','2020','2019','2018'];
@@ -1647,11 +1651,11 @@ function renderKissPerf(kiss) {
     const e = edge(m, b);
     return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
   }).filter(Boolean).join('');
-  document.getElementById('kissAnnualBody').innerHTML = html;
+  document.getElementById('hedraAnnualBody').innerHTML = html;
 
   // Risk metrics — matches Eidos/Aegis structure exactly
-  const ytdMdd    = (kiss.annual_risk && kiss.annual_risk.hedra && kiss.annual_risk.hedra.ytd) ? kiss.annual_risk.hedra.ytd.maxdd : null;
-  const spyYtdMdd = (kiss.annual_risk && kiss.annual_risk.spy_bh && kiss.annual_risk.spy_bh.ytd) ? kiss.annual_risk.spy_bh.ytd.maxdd : null;
+  const ytdMdd    = (hedra.annual_risk && hedra.annual_risk.hedra && hedra.annual_risk.hedra.ytd) ? hedra.annual_risk.hedra.ytd.maxdd : null;
+  const spyYtdMdd = (hedra.annual_risk && hedra.annual_risk.spy_bh && hedra.annual_risk.spy_bh.ytd) ? hedra.annual_risk.spy_bh.ytd.maxdd : null;
 
   const riskDefs = [
     ['Sharpe Ratio',       r.sharpe,           rs.sharpe,    3, true],
@@ -1675,23 +1679,23 @@ function renderKissPerf(kiss) {
     const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
     return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
   }).join('');
-  document.getElementById('kissRiskBody').innerHTML = html;
+  document.getElementById('hedraRiskBody').innerHTML = html;
 
   // Ops
   html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
          row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
          row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
-  document.getElementById('kissOpsBody').innerHTML = html;
+  document.getElementById('hedraOpsBody').innerHTML = html;
 }
 
 // ════════════════════════════════════════════════════════
 // RENDER — HEDRA ALLOCATION
 // ════════════════════════════════════════════════════════
-function renderKissAlloc(kiss) {
-  const sig = kiss.signal;
+function renderHedraAlloc(hedra) {
+  const sig = hedra.signal;
   const w   = sig.weights;
   const act = sig.action || {};
-  const rb  = kiss.rebalancing;
+  const rb  = hedra.rebalancing;
 
   // Pick the pill colour-class for the current regime using the same rule as historical rows
   const sigRegime  = sig.regime_display || sig.regime || '—';
@@ -1726,7 +1730,7 @@ function renderKissAlloc(kiss) {
     ]);
   }).join('') || '<tr><td colspan="8" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
 
-  document.getElementById('kissAllocBody').innerHTML = currentRow + histHtml;
+  document.getElementById('hedraAllocBody').innerHTML = currentRow + histHtml;
 }
 
 // ════════════════════════════════════════════════════════
@@ -1734,7 +1738,7 @@ function renderKissAlloc(kiss) {
 // ════════════════════════════════════════════════════════
 async function loadData() {
   try {
-    const [aegis, eidos, kiss] = await Promise.all([
+    const [aegis, eidos, hedra] = await Promise.all([
       fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
       fetch('eidos.json?v=' + Date.now()).then(r => r.json()),
       fetch('hedra.json?v='  + Date.now()).then(r => r.json()),
@@ -1751,7 +1755,7 @@ async function loadData() {
     }
 
     // Store Hedra data globally so renderToday can access it
-    window._kissData = kiss;
+    window._hedraData = hedra;
 
     renderToday(aegis, eidos);
     try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
@@ -1760,9 +1764,9 @@ async function loadData() {
     try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
     try { renderEidosPerf(eidos);   } catch(e) { console.error('renderEidosPerf:', e); }
     renderEidosAlloc(eidos);
-    try { renderKissSignal(kiss);   } catch(e) { console.error('renderKissSignal:', e); }
-    try { renderKissPerf(kiss);     } catch(e) { console.error('renderKissPerf:', e); }
-    try { renderKissAlloc(kiss);    } catch(e) { console.error('renderKissAlloc:', e); }
+    try { renderHedraSignal(hedra);   } catch(e) { console.error('renderHedraSignal:', e); }
+    try { renderHedraPerf(hedra);     } catch(e) { console.error('renderHedraPerf:', e); }
+    try { renderHedraAlloc(hedra);    } catch(e) { console.error('renderHedraAlloc:', e); }
   } catch(err) {
     console.error('Data load error:', err);
   }

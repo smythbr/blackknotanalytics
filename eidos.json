@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T01:22:35",
+    "run_timestamp": "2026-05-13T03:47:11",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5770,6 +5770,12 @@
       "cascade": true
     },
     {
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
       "ticker": "USDCAD",
       "issue": "restated",
       "detail": "historical adj_close updated",
@@ -5818,16 +5824,24 @@
       "cascade": false
     }
   ],
-  "regime_stability": {
-    "position": 82.3,
-    "stability": "Low",
-    "trend": "Improving",
-    "adj_left": "credit_crunch",
-    "adj_right": "structural_expansion",
-    "adj_left_display": "Credit Crunch",
-    "adj_right_display": "Structural Expansion",
-    "zone_yellow_left": 50.0,
-    "zone_green": 33.3,
-    "zone_yellow_right": 16.7
+  "signal_context": {
+    "tenure_days": 4,
+    "previous_regime": {
+      "archetype": "structural_expansion",
+      "archetype_display": "Structural Expansion",
+      "archetype_abbrev": "SE",
+      "days_held": 112,
+      "days_since_exit": 4
+    },
+    "risk_cluster": {
+      "cluster": "risk-on",
+      "pct_deployed": 70.0,
+      "distance": 75.4,
+      "distance_prev": 100.0,
+      "lookback_days": 3,
+      "direction": "Deteriorating",
+      "closest_threat": "energy_crisis",
+      "closest_threat_display": "Energy Crisis"
+    }
   }
 }
