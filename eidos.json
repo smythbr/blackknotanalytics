@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T23:40:18",
+    "run_timestamp": "2026-05-12T23:57:56",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5762,19 +5762,5 @@
       "detail": "historical adj_close updated",
       "cascade": false
     }
-  ],
-  "regime_stability": {
-    "position": 82.3,
-    "stability_pct": 82.3,
-    "stability": "Low",
-    "trend": "Improving",
-    "stability_direction": "Improving",
-    "adj_left": "credit_crunch",
-    "adj_right": "structural_expansion",
-    "adj_left_display": "Credit Crunch",
-    "adj_right_display": "Structural Expansion",
-    "zone_yellow_left": 50.0,
-    "zone_green": 33.3,
-    "zone_yellow_right": 16.7
-  }
+  ]
 }
