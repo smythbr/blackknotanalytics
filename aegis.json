@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-12T13:29:54",
+  "generated": "2026-05-13T00:12:22",
   "signal": {
     "date": "2026-05-12",
     "regime": "GREEN",
@@ -16,8 +16,8 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 1.2739,
-      "rv_minus_z": -1.2125,
+      "ewma_z": 1.2747,
+      "rv_minus_z": -1.2127,
       "oas_z": -0.9789
     },
     "vams": {
@@ -54,12 +54,12 @@
     "current_drawdown": -0.19,
     "trades_per_year": 17.8,
     "total_trades": 148,
-    "upside_capture_spy": 10.3,
-    "downside_capture_spy": 28.7,
-    "capture_ratio_spy": 0.358,
-    "upside_capture_bench": 78.8,
-    "downside_capture_bench": 86.9,
-    "capture_ratio_bench": 0.907,
+    "upside_capture_spy": null,
+    "downside_capture_spy": null,
+    "capture_ratio_spy": null,
+    "upside_capture_bench": null,
+    "downside_capture_bench": null,
+    "capture_ratio_bench": null,
     "ytd_max_drawdown": -7.47,
     "ytd_rebalances": 7,
     "alpha_vs_60_40": 5.0
@@ -68,7 +68,7 @@
     "ytd": {
       "aegis": 9.36,
       "bench": 4.4,
-      "spy": 8.54
+      "spy": 8.55
     },
     "y1": {
       "aegis": 26.73,
@@ -81,19 +81,19 @@
       "spy": 86.37
     },
     "y5": {
-      "aegis": 98.74,
-      "bench": 51.13,
+      "aegis": 98.75,
+      "bench": 51.14,
       "spy": 94.95
     },
     "itd": {
       "aegis": 213.03,
-      "bench": 115.02,
+      "bench": 115.03,
       "spy": 212.04
     }
   },
   "bench_kpis": {
     "cagr": 9.62,
-    "cumulative_return": 115.02,
+    "cumulative_return": 115.03,
     "volatility": 11.44,
     "max_drawdown": -22.14,
     "sharpe": 0.586,
@@ -102,16 +102,16 @@
     "sortino": 0.542,
     "omega": 1.124,
     "beta": 0.616,
-    "upside_capture_spy": 20.0,
-    "downside_capture_spy": 61.3,
-    "capture_ratio_spy": 0.326,
+    "upside_capture_spy": null,
+    "downside_capture_spy": null,
+    "capture_ratio_spy": null,
     "upside_capture_bench": null,
     "downside_capture_bench": null,
     "capture_ratio_bench": null
   },
   "spy_kpis": {
     "cagr": 14.72,
-    "cumulative_return": 214.27,
+    "cumulative_return": 214.28,
     "volatility": 19.31,
     "max_drawdown": -33.72,
     "sharpe": 0.585,

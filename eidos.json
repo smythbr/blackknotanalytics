@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T23:57:56",
+    "run_date": "2026-05-13",
+    "run_timestamp": "2026-05-13T00:13:06",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-12",
+    "date": "2026-05-13",
     "archetype": "post_crisis_recovery",
     "archetype_display": "Post-Crisis Recovery",
     "regime": "risk-on",
@@ -40,32 +40,9 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 5,
+      "days_since_last_rebalance": 6,
       "last_rebalance_date": "2026-05-07",
       "last_rebalance_type": "regime_change"
-    }
-  },
-  "signal_context": {
-    "tenure_days": 5,
-    "previous_regime": {
-      "archetype": "structural_expansion",
-      "archetype_display": "Structural Expansion",
-      "archetype_abbrev": "SE",
-      "days_held": 163,
-      "days_since_exit": 6
-    },
-    "deployment": {
-      "pct_deployed": 70.0
-    },
-    "risk_cluster": {
-      "cluster": "risk-on",
-      "pct_deployed": 70.0,
-      "decisiveness": 75.5,
-      "decisiveness_5d_ago": 60.0,
-      "direction": "Strengthening",
-      "raw_distance": 1.51,
-      "closest_threat": "energy_crisis",
-      "closest_threat_display": "Energy Crisis"
     }
   },
   "returns": {
@@ -169,9 +146,9 @@
         "maxdd_recovery_days": 25,
         "maxdd_duration_days": 309,
         "avg_drawdown": -1.28,
-        "upside_capture": 15.1,
-        "downside_capture": 36.8,
-        "capture_ratio": 0.4092
+        "upside_capture": 26.3,
+        "downside_capture": -9.2,
+        "capture_ratio": -2.8587
       },
       "trailing_36m": {
         "cagr": 25.68,
@@ -183,9 +160,9 @@
         "maxdd": -5.85,
         "maxdd_duration_days": 54,
         "avg_drawdown": -0.69,
-        "upside_capture": 27.2,
-        "downside_capture": 44.5,
-        "capture_ratio": 0.6111
+        "upside_capture": 51.0,
+        "downside_capture": -45.4,
+        "capture_ratio": -1.1233
       }
     },
     "spy_bh": {
@@ -245,9 +222,9 @@
         "maxdd_recovery_days": 119,
         "maxdd_duration_days": 762,
         "avg_drawdown": -4.63,
-        "upside_capture": 39.5,
-        "downside_capture": 82.9,
-        "capture_ratio": 0.4766
+        "upside_capture": 37.2,
+        "downside_capture": 80.3,
+        "capture_ratio": 0.4633
       },
       "trailing_36m": {
         "cagr": 15.21,
@@ -259,9 +236,9 @@
         "maxdd": -11.07,
         "maxdd_duration_days": 122,
         "avg_drawdown": -1.74,
-        "upside_capture": 47.4,
-        "downside_capture": 81.9,
-        "capture_ratio": 0.5789
+        "upside_capture": 59.3,
+        "downside_capture": 75.4,
+        "capture_ratio": 0.7865
       }
     }
   },
@@ -5757,10 +5734,94 @@
       "detail": "+8d"
     },
     {
+      "ticker": "AUDUSD=X",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "DXY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "EURUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GBPUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "GC1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCHF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCNH",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDKRW",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
       "ticker": "W1",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
     }
-  ]
+  ],
+  "regime_stability": {
+    "position": 82.3,
+    "stability": "Low",
+    "trend": "Improving",
+    "adj_left": "credit_crunch",
+    "adj_right": "structural_expansion",
+    "adj_left_display": "Credit Crunch",
+    "adj_right_display": "Structural Expansion",
+    "zone_yellow_left": 50.0,
+    "zone_green": 33.3,
+    "zone_yellow_right": 16.7
+  }
 }
