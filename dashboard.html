@@ -1636,6 +1636,7 @@ function renderKissPerf(kiss) {
     ['Omega',              r.omega,             rs.omega,          2, true ],
     ['Upside Capture',     r.upside_capture,    null,              1, false],
     ['Downside Capture',   r.downside_capture,  null,              1, false],
+    ['Capture Ratio',      r.upside_capture != null && r.downside_capture != null && r.downside_capture > 0 ? Math.round(r.upside_capture / r.downside_capture * 1000) / 1000 : null, null, 3, false],
   ];
   html = riskRows.map(([label, m, b, dec, isRatio]) => {
     const isMdd   = label.includes('Drawdown');
