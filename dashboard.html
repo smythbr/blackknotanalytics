@@ -1742,7 +1742,7 @@ function renderKissAlloc(kiss) {
       wb.GOLD    != null ? Math.round(wb.GOLD)    + '%' : '—',
       wb.BITCOIN != null ? Math.round(wb.BITCOIN) + '%' : '—',
       wb.CASH    != null ? Math.round(wb.CASH)    + '%' : '—',
-      e.days_held ?? '—',
+      e.days_since_prior ?? '—',
       c(trigger, 'td-left'),
     ]);
   }).join('') || '<tr><td colspan="8" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
