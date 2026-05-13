@@ -964,8 +964,8 @@ function renderToday(sig, perf) {
 
   // Eidos
   const aw  = perf.signal.weights;
-  const aYtd  = perf.returns.eidos.ytd * 100;
-  const aCagr = perf.cagr_windows.eidos.itd * 100;
+  const aYtd  = perf.returns.eidos.ytd;
+  const aCagr = perf.cum_returns.eidos.cagr_itd;
   const aAct  = perf.signal.action.rebalance_required;
 
   document.getElementById('eidosYtd').textContent  = fmtPct(aYtd, 2, true);
@@ -975,7 +975,7 @@ function renderToday(sig, perf) {
   document.getElementById('eidosBadge').className   = 'signal-badge ' + (aAct ? 'action' : 'hold');
 
   function setAW(id, key) {
-    const val = Math.round(aw[key].target_weight * 100);
+    const val = Math.round(aw[key].target_weight);
     document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
     document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
   }
@@ -1307,13 +1307,12 @@ function renderEidosSignal(perf) {
 // RENDER — EIDOS PERFORMANCE
 // ════════════════════════════════════════════════════════
 function renderEidosPerf(perf) {
-  const cw  = perf.cagr_windows;
   const ret = perf.returns;
   const r   = perf.risk.eidos.itd;
   const rs  = perf.risk.spy_bh.itd;
   const rb  = perf.rebalancing;
-  const ytdMdd = perf.annual_risk.eidos.ytd.maxdd * 100;
-  const spyYtdMdd = (perf.annual_risk.spy_bh && perf.annual_risk.spy_bh.ytd) ? perf.annual_risk.spy_bh.ytd.maxdd * 100 : null;
+  const ytdMdd = perf.annual_risk.eidos.ytd.maxdd;
+  const spyYtdMdd = (perf.annual_risk.spy_bh && perf.annual_risk.spy_bh.ytd) ? perf.annual_risk.spy_bh.ytd.maxdd : null;
 
   // Cumulative — pre-computed percentage values from backend (mirrors Aegis)
   const cr = perf.cum_returns;
@@ -1327,7 +1326,7 @@ function renderEidosPerf(perf) {
     const e = edge(m, b);
     return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
   }).join('');
-  const cagrM = cw.eidos.itd*100, cagrS = cw.spy_bh.itd*100;
+  const cagrM = cr.eidos.cagr_itd, cagrS = cr.spy_bh.cagr_itd;
   const cagrE = edge(cagrM, cagrS);
   html += row(['ITD CAGR', c(fmtPct(cagrM,2),'td-model '+pctCls(cagrM)), c(fmtPct(cagrS,2),pctCls(cagrS)), c(cagrE.val,cagrE.cls)], 'row-divider');
   document.getElementById('eidosCumulBody').innerHTML = html;
@@ -1336,7 +1335,7 @@ function renderEidosPerf(perf) {
   const yearOrder = ['ytd','2025','2024','2023','2022','2021','2020','2019','2018'];
   html = yearOrder.map(yr => {
     const label = yr === 'ytd' ? '2026 YTD' : yr;
-    const m = ret.eidos[yr]*100, b = ret.spy_bh[yr]*100;
+    const m = ret.eidos[yr], b = ret.spy_bh[yr];
     const e = edge(m, b);
     return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
   }).join('');
@@ -1346,13 +1345,13 @@ function renderEidosPerf(perf) {
   const riskDefs = [
     ['Sharpe Ratio',          r.sharpe,              rs.sharpe,       3, true],
     ['Sortino Ratio',         r.sortino,             rs.sortino,      3, true],
-    ['Max Drawdown (ITD)',     r.maxdd*100,           rs.maxdd*100,    2, false],
+    ['Max Drawdown (ITD)',     r.maxdd,           rs.maxdd,    2, false],
     ['Max Drawdown (YTD)',     ytdMdd,  spyYtdMdd, 2, false],
     ['Calmar Ratio (t3y)',     r.calmar,              rs.calmar,       3, true],
     ['MAR',                   r.mar,                 rs.mar,          3, true],
     ['Omega Ratio',           r.omega,               rs.omega,        3, true],
-    ['Upside Capture',        r.upside_capture*100,  null,            1, false],
-    ['Downside Capture',      r.downside_capture*100,null,            1, false],
+    ['Upside Capture',        r.upside_capture,  null,            1, false],
+    ['Downside Capture',      r.downside_capture,null,            1, false],
     ['Capture Ratio',         r.capture_ratio,       null,            3, false],
   ];
   html = riskDefs.map(([label, m, b, dec, isRatio]) => {
@@ -1396,10 +1395,10 @@ function renderEidosAlloc(perf) {
   const currentRow = `<tr class="is-current">` + [
     `<td class="td-left">Now</td>`,
     `<td class="td-center">${eidosPill(arch)}</td>`,
-    `<td>${sw.SPY && sw.SPY.target_weight != null ? Math.round(sw.SPY.target_weight*100)+'%' : '—'}</td>`,
-    `<td>${sw.GLD && sw.GLD.target_weight != null ? Math.round(sw.GLD.target_weight*100)+'%' : '—'}</td>`,
-    `<td>${sw.TLT && sw.TLT.target_weight != null ? Math.round(sw.TLT.target_weight*100)+'%' : '—'}</td>`,
-    `<td>${sw.BIL && sw.BIL.target_weight != null ? Math.round(sw.BIL.target_weight*100)+'%' : '—'}</td>`,
+    `<td>${sw.SPY && sw.SPY.target_weight != null ? Math.round(sw.SPY.target_weight)+'%' : '—'}</td>`,
+    `<td>${sw.GLD && sw.GLD.target_weight != null ? Math.round(sw.GLD.target_weight)+'%' : '—'}</td>`,
+    `<td>${sw.TLT && sw.TLT.target_weight != null ? Math.round(sw.TLT.target_weight)+'%' : '—'}</td>`,
+    `<td>${sw.BIL && sw.BIL.target_weight != null ? Math.round(sw.BIL.target_weight)+'%' : '—'}</td>`,
     `<td>${daysSinceLast != null ? daysSinceLast : '—'}</td>`,
     `<td class="td-left">Current</td>`
   ].join('') + `</tr>`;
@@ -1410,10 +1409,10 @@ function renderEidosAlloc(perf) {
     return row([
       fmtDate(e.date),
       c(eidosPill(e.archetype_after || e.archetype_before), 'td-center'),
-      w.SPY != null ? Math.round(w.SPY*100)+'%' : '—',
-      w.GLD != null ? Math.round(w.GLD*100)+'%' : '—',
-      w.TLT != null ? Math.round(w.TLT*100)+'%' : '—',
-      w.BIL != null ? Math.round(w.BIL*100)+'%' : '—',
+      w.SPY != null ? Math.round(w.SPY)+'%' : '—',
+      w.GLD != null ? Math.round(w.GLD)+'%' : '—',
+      w.TLT != null ? Math.round(w.TLT)+'%' : '—',
+      w.BIL != null ? Math.round(w.BIL)+'%' : '—',
       e.days_since_prior ?? '—',
       c(trigger, 'td-left')
     ]);
@@ -1431,6 +1430,18 @@ async function loadData() {
       fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
       fetch('eidos.json?v=' + Date.now()).then(r => r.json())
     ]);
+
+    // Normalize Aegis cum_returns keys from {y1,y3,y5} → {1yr,3yr,5yr}
+    // so all three models share the same key convention (1yr/3yr/5yr/itd).
+    if (aegis.cum_returns) {
+      Object.keys(aegis.cum_returns).forEach(k => {
+        const cr = aegis.cum_returns[k];
+        if (cr && cr.y1 !== undefined) {
+          cr['1yr'] = cr.y1; cr['3yr'] = cr.y3; cr['5yr'] = cr.y5;
+        }
+      });
+    }
+
     renderToday(aegis, eidos);
     try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
     try { renderAegisPerf(aegis);   } catch(e) { console.error('renderAegisPerf:', e); }
