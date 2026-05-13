@@ -1207,11 +1207,11 @@ function renderAegisPerf(sig) {
     ['Omega Ratio',           p.omega,                sp.omega,         3, true],
     ['Upside Capture',        p.upside_capture_spy,   null,             1, false],
     ['Downside Capture',      p.downside_capture_spy, null,             1, false],
-    ['Capture Ratio',         p.capture_ratio_spy,    null,             3, false],
+    ['Capture Ratio',         p.capture_ratio_spy,    null,             1, false],
   ];
   html = riskDefs.map(([label, m, b, dec, isRatio]) => {
     const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || (label.includes('Capture') && !label.includes('Ratio'));
+    const isPct = isMdd || label.includes('Capture');
     const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
     if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
     const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
@@ -1462,11 +1462,11 @@ function renderEidosPerf(perf) {
     ['Omega Ratio',           r.omega,               rs.omega,        3, true],
     ['Upside Capture',        r.upside_capture,  null,            1, false],
     ['Downside Capture',      r.downside_capture,null,            1, false],
-    ['Capture Ratio',         r.capture_ratio,       null,            3, false],
+    ['Capture Ratio',         r.capture_ratio,       null,            1, false],
   ];
   html = riskDefs.map(([label, m, b, dec, isRatio]) => {
     const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || (label.includes('Capture') && !label.includes('Ratio'));
+    const isPct = isMdd || label.includes('Capture');
     const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
     if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
     const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
@@ -1637,11 +1637,11 @@ function renderKissPerf(kiss) {
     ['Omega Ratio',        r.omega,            rs.omega,     3, true],
     ['Upside Capture',     r.upside_capture,   null,         1, false],
     ['Downside Capture',   r.downside_capture, null,         1, false],
-    ['Capture Ratio',      r.capture_ratio,    null,         3, false],
+    ['Capture Ratio',      r.capture_ratio,    null,         1, false],
   ];
   html = riskDefs.map(([label, m, b, dec, isRatio]) => {
     const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || (label.includes('Capture') && !label.includes('Ratio'));
+    const isPct = isMdd || label.includes('Capture');
     const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
     if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
     const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
