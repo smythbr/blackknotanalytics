@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T23:36:12",
+    "run_timestamp": "2026-05-12T23:40:18",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -50,19 +50,22 @@
     "previous_regime": {
       "archetype": "structural_expansion",
       "archetype_display": "Structural Expansion",
+      "archetype_abbrev": "SE",
       "days_held": 163,
       "days_since_exit": 6
     },
     "deployment": {
       "pct_deployed": 70.0
     },
-    "cluster": {
+    "risk_cluster": {
       "cluster": "risk-on",
       "pct_deployed": 70.0,
       "decisiveness": 75.5,
       "decisiveness_5d_ago": 60.0,
+      "direction": "Strengthening",
       "raw_distance": 1.51,
-      "closest_threat": "energy_crisis"
+      "closest_threat": "energy_crisis",
+      "closest_threat_display": "Energy Crisis"
     }
   },
   "returns": {
@@ -5762,8 +5765,10 @@
   ],
   "regime_stability": {
     "position": 82.3,
+    "stability_pct": 82.3,
     "stability": "Low",
     "trend": "Improving",
+    "stability_direction": "Improving",
     "adj_left": "credit_crunch",
     "adj_right": "structural_expansion",
     "adj_left_display": "Credit Crunch",
