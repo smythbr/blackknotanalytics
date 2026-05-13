@@ -235,12 +235,15 @@ body { overflow-x:hidden; }
   transform:translateX(-0.5px);
 }
 .esig-cluster-arrow {
-  position:absolute; top:50%; width:14px; height:14px;
+  position:absolute; top:50%;
   display:flex; align-items:center; justify-content:center;
   transform:translate(-50%,-50%);
-  font-size:14px; line-height:1; font-weight:700;
-  pointer-events:none; z-index:1;
+  font-size:18px; line-height:1; font-weight:700;
+  color:var(--white);
+  pointer-events:none; z-index:3;
+  text-shadow:0 0 3px rgba(0,0,0,0.85);
   transition:left 0.4s ease;
+  white-space:nowrap;
 }
 .esig-cluster-dot {
   position:absolute; top:50%; width:16px; height:16px;
@@ -1367,23 +1370,20 @@ function renderEidosSignal(perf) {
       // Deteriorating = moving toward center (inward)
       // Stable = hidden
       if (dir === 'Improving' || dir === 'Deteriorating') {
-        let arrowChar, arrowOffset, arrowColor;
+        let arrowChar, arrowOffset;
         const movingOutward = (dir === 'Improving');
         if (isOn) {
           // Active side is right; outward = right, inward = left
-          arrowChar   = movingOutward ? '\u25B6' : '\u25C0';   // ▶ ◀
-          arrowOffset = movingOutward ? +3.5 : -3.5;            // % offset from dot
-          arrowColor  = movingOutward ? 'var(--green-pos)' : 'var(--red-neg)';
+          arrowChar   = movingOutward ? '\u2192' : '\u2190';   // → ←
+          arrowOffset = movingOutward ? +4.5 : -4.5;
         } else {
           // Active side is left; outward = left, inward = right
-          arrowChar   = movingOutward ? '\u25C0' : '\u25B6';   // ◀ ▶
-          arrowOffset = movingOutward ? -3.5 : +3.5;
-          arrowColor  = movingOutward ? 'var(--green-pos)' : 'var(--red-neg)';
+          arrowChar   = movingOutward ? '\u2190' : '\u2192';   // ← →
+          arrowOffset = movingOutward ? -4.5 : +4.5;
         }
-        arrowEl.textContent     = arrowChar;
-        arrowEl.style.color     = arrowColor;
-        arrowEl.style.left      = (dotPct + arrowOffset) + '%';
-        arrowEl.style.display   = '';
+        arrowEl.textContent   = arrowChar;
+        arrowEl.style.left    = (dotPct + arrowOffset) + '%';
+        arrowEl.style.display = '';
       } else {
         arrowEl.style.display = 'none';
       }
