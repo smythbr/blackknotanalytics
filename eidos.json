@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T03:47:11",
+    "run_timestamp": "2026-05-13T12:37:07",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5729,93 +5729,16 @@
   },
   "attention": [
     {
-      "ticker": "DCOILWTICO",
-      "issue": "stale",
-      "detail": "+8d"
-    },
-    {
-      "ticker": "AUDUSD=X",
+      "ticker": "CL1",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
     },
     {
-      "ticker": "DXY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "EURUSD",
+      "ticker": "NG1",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GC1",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCNH",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "VIX",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
     },
     {
       "ticker": "W1",
@@ -5836,8 +5759,8 @@
     "risk_cluster": {
       "cluster": "risk-on",
       "pct_deployed": 70.0,
-      "distance": 75.4,
-      "distance_prev": 100.0,
+      "distance": 52.2,
+      "distance_prev": 89.7,
       "lookback_days": 3,
       "direction": "Deteriorating",
       "closest_threat": "energy_crisis",

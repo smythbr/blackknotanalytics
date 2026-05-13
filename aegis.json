@@ -1,12 +1,12 @@
 {
-  "generated": "2026-05-13T01:22:16",
+  "generated": "2026-05-13T12:33:36",
   "signal": {
     "date": "2026-05-13",
     "regime": "GREEN",
     "regime_since": "2026-04-14",
-    "regime_days": 21,
+    "regime_days": 29,
     "last_rebalance_date": "2026-04-15",
-    "p_stress": 0.2773,
+    "p_stress": 0.2754,
     "action_required": false,
     "weights": {
       "SPY": 80.0,
@@ -16,16 +16,16 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 1.1136,
+      "ewma_z": 1.4893,
       "rv_minus_z": -1.2048,
-      "oas_z": -0.9712
+      "oas_z": -0.7926
     },
     "vams": {
       "winner": null,
       "reason": "spy_absorbs",
       "scores": {
-        "XOP": -0.403,
-        "KBE": -1.404
+        "XOP": -0.426,
+        "KBE": -1.445
       },
       "trends": {
         "XOP": "Improving",
@@ -40,68 +40,68 @@
     }
   },
   "perf": {
-    "cagr": 14.62,
-    "cumulative_return": 213.03,
+    "cagr": 14.69,
+    "cumulative_return": 214.61,
     "volatility": 10.7,
     "max_drawdown": -11.54,
-    "sharpe": 1.047,
-    "sortino": 0.998,
-    "calmar": 2.984,
-    "mar": 1.271,
-    "omega": 1.217,
-    "beta": 0.481,
-    "ytd_return": 9.36,
-    "current_drawdown": -0.19,
+    "sharpe": 1.053,
+    "sortino": 1.003,
+    "calmar": 3.012,
+    "mar": 1.277,
+    "omega": 1.218,
+    "beta": 0.483,
+    "ytd_return": 9.91,
+    "current_drawdown": 0.0,
     "trades_per_year": 17.8,
     "total_trades": 148,
     "upside_capture_spy": 33.6,
     "downside_capture_spy": 50.6,
     "capture_ratio_spy": 66.4,
-    "upside_capture_bench": 100.5,
+    "upside_capture_bench": 100.4,
     "downside_capture_bench": 69.8,
-    "capture_ratio_bench": 143.983,
+    "capture_ratio_bench": 143.84,
     "ytd_max_drawdown": -7.47,
     "ytd_rebalances": 7,
     "alpha_vs_60_40": 5.0
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 9.36,
-      "bench": 4.4,
-      "spy": 8.55
+      "aegis": 9.91,
+      "bench": 5.0,
+      "spy": 9.28
     },
     "y1": {
-      "aegis": 26.01,
-      "bench": 18.58,
-      "spy": 28.07
+      "aegis": 26.64,
+      "bench": 19.25,
+      "spy": 28.94
     },
     "y3": {
-      "aegis": 82.32,
-      "bench": 52.09,
-      "spy": 86.37
+      "aegis": 83.24,
+      "bench": 52.96,
+      "spy": 87.63
     },
     "y5": {
-      "aegis": 99.92,
-      "bench": 52.14,
-      "spy": 92.64
+      "aegis": 100.92,
+      "bench": 53.01,
+      "spy": 93.94
     },
     "itd": {
-      "aegis": 213.03,
-      "bench": 115.03,
-      "spy": 212.04
+      "aegis": 214.61,
+      "bench": 116.25,
+      "spy": 214.15
     }
   },
   "bench_kpis": {
-    "cagr": 9.62,
-    "cumulative_return": 115.03,
+    "cagr": 9.69,
+    "cumulative_return": 116.25,
     "volatility": 11.44,
     "max_drawdown": -22.14,
-    "sharpe": 0.586,
-    "calmar": 1.314,
-    "mar": 0.434,
-    "sortino": 0.542,
-    "omega": 1.124,
-    "beta": 0.624,
+    "sharpe": 0.591,
+    "calmar": 1.333,
+    "mar": 0.438,
+    "sortino": 0.547,
+    "omega": 1.126,
+    "beta": 0.632,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
     "capture_ratio_spy": null,
@@ -110,15 +110,15 @@
     "capture_ratio_bench": null
   },
   "spy_kpis": {
-    "cagr": 14.72,
-    "cumulative_return": 214.28,
-    "volatility": 19.31,
+    "cagr": 14.81,
+    "cumulative_return": 216.4,
+    "volatility": 19.3,
     "max_drawdown": -33.72,
-    "sharpe": 0.585,
-    "calmar": 1.237,
-    "mar": 0.436,
-    "sortino": 0.542,
-    "omega": 1.139,
+    "sharpe": 0.588,
+    "calmar": 1.252,
+    "mar": 0.439,
+    "sortino": 0.545,
+    "omega": 1.14,
     "beta": 1.0,
     "ytd_max_drawdown": -8.88
   },
@@ -172,9 +172,9 @@
       "is_ytd": false
     },
     "2026": {
-      "aegis": 9.4,
-      "bench": 4.4,
-      "spy": 8.5,
+      "aegis": 9.9,
+      "bench": 5.0,
+      "spy": 9.3,
       "is_ytd": true
     }
   },
@@ -187,7 +187,7 @@
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.2773,
+      "p_stress": 0.2754,
       "trigger": "Current",
       "is_rebalance": false,
       "days_since_prior": 28
