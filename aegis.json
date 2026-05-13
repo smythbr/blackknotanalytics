@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T00:38:40",
+  "generated": "2026-05-13T01:22:16",
   "signal": {
     "date": "2026-05-13",
     "regime": "GREEN",
@@ -56,10 +56,10 @@
     "total_trades": 148,
     "upside_capture_spy": 33.6,
     "downside_capture_spy": 50.6,
-    "capture_ratio_spy": 0.664,
+    "capture_ratio_spy": 66.4,
     "upside_capture_bench": 100.5,
     "downside_capture_bench": 69.8,
-    "capture_ratio_bench": 1.44,
+    "capture_ratio_bench": 143.983,
     "ytd_max_drawdown": -7.47,
     "ytd_rebalances": 7,
     "alpha_vs_60_40": 5.0

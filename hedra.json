@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T01:15:40",
+    "run_timestamp": "2026-05-13T01:22:51",
     "performance_inception": "2018-01-01",
     "model": "Hedra",
     "disclaimer": "Replication of 42 Macro KISS Model Portfolio. Metrics computed by Black Knot Analytics using daily log returns vs USFR as RF; differs from 42 Macro's published convention."
@@ -159,7 +159,7 @@
       "omega": 1.2364,
       "upside_capture": 27.1,
       "downside_capture": 37.3,
-      "capture_ratio": 0.727
+      "capture_ratio": 72.7
     },
     "spy_bh": {
       "cagr": 14.69,
@@ -176,7 +176,7 @@
       "omega": 1.1376,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
-      "capture_ratio": 1.0
+      "capture_ratio": 100.0
     },
     "sixty_forty": {
       "cagr": 9.62,
@@ -193,7 +193,7 @@
       "omega": 1.1212,
       "upside_capture": 37.2,
       "downside_capture": 80.3,
-      "capture_ratio": 0.463
+      "capture_ratio": 46.3
     }
   },
   "annual_risk": {

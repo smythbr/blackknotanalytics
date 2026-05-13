@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T00:52:01",
+    "run_timestamp": "2026-05-13T01:22:35",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -148,7 +148,7 @@
         "avg_drawdown": -1.28,
         "upside_capture": 26.3,
         "downside_capture": -9.2,
-        "capture_ratio": -2.8587
+        "capture_ratio": -285.9
       },
       "trailing_36m": {
         "cagr": 25.68,
@@ -162,7 +162,7 @@
         "avg_drawdown": -0.69,
         "upside_capture": 51.0,
         "downside_capture": -45.4,
-        "capture_ratio": -1.1233
+        "capture_ratio": -112.3
       }
     },
     "spy_bh": {
@@ -186,7 +186,7 @@
         "avg_drawdown": -5.86,
         "upside_capture": 100.0,
         "downside_capture": 100.0,
-        "capture_ratio": 1.0
+        "capture_ratio": 100.0
       },
       "trailing_36m": {
         "cagr": 23.14,
@@ -200,7 +200,7 @@
         "avg_drawdown": -2.58,
         "upside_capture": 100.0,
         "downside_capture": 100.0,
-        "capture_ratio": 1.0
+        "capture_ratio": 100.0
       }
     },
     "sixty_forty": {
@@ -224,7 +224,7 @@
         "avg_drawdown": -4.63,
         "upside_capture": 37.2,
         "downside_capture": 80.3,
-        "capture_ratio": 0.4633
+        "capture_ratio": 46.3
       },
       "trailing_36m": {
         "cagr": 15.21,
@@ -238,7 +238,7 @@
         "avg_drawdown": -1.74,
         "upside_capture": 59.3,
         "downside_capture": 75.4,
-        "capture_ratio": 0.7865
+        "capture_ratio": 78.6
       }
     }
   },
@@ -5804,6 +5804,12 @@
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
+    },
+    {
+      "ticker": "VIX",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
     },
     {
       "ticker": "W1",
