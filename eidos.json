@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T13:30:40",
+    "run_timestamp": "2026-05-12T20:25:56",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -14,14 +14,14 @@
     "regime_display": "Risk-On",
     "weights": {
       "SPY": {
-        "regime_weight": 0.5,
+        "regime_weight": 50.0,
         "vams_score": 1.0,
-        "target_weight": 0.5
+        "target_weight": 50.0
       },
       "GLD": {
-        "regime_weight": 0.2,
+        "regime_weight": 20.0,
         "vams_score": 1.0,
-        "target_weight": 0.2
+        "target_weight": 20.0
       },
       "TLT": {
         "regime_weight": 0.0,
@@ -29,9 +29,9 @@
         "target_weight": 0.0
       },
       "BIL": {
-        "regime_weight": 0.3,
+        "regime_weight": 30.0,
         "vams_score": null,
-        "target_weight": 0.3
+        "target_weight": 30.0
       }
     },
     "action": {
@@ -47,88 +47,65 @@
   },
   "returns": {
     "eidos": {
-      "ytd": 0.08776,
-      "2018": 0.11627,
-      "2019": 0.20955,
-      "2020": 0.35329,
-      "2021": 0.18444,
-      "2022": -0.01398,
-      "2023": 0.26776,
-      "2024": 0.21536,
-      "2025": 0.26821
+      "ytd": 8.78,
+      "2018": 11.63,
+      "2019": 20.95,
+      "2020": 35.33,
+      "2021": 18.44,
+      "2022": -1.4,
+      "2023": 26.78,
+      "2024": 21.54,
+      "2025": 26.82
     },
     "spy_bh": {
-      "ytd": 0.08546,
-      "2018": -0.04569,
-      "2019": 0.31224,
-      "2020": 0.18332,
-      "2021": 0.28729,
-      "2022": -0.18175,
-      "2023": 0.26176,
-      "2024": 0.24886,
-      "2025": 0.17719
+      "ytd": 8.55,
+      "2018": -4.57,
+      "2019": 31.22,
+      "2020": 18.33,
+      "2021": 28.73,
+      "2022": -18.18,
+      "2023": 26.18,
+      "2024": 24.89,
+      "2025": 17.72
     },
     "sixty_forty": {
-      "ytd": 0.05148,
-      "2018": -0.02605,
-      "2019": 0.22117,
-      "2020": 0.13989,
-      "2021": 0.16531,
-      "2022": -0.16114,
-      "2023": 0.17968,
-      "2024": 0.15456,
-      "2025": 0.13508
+      "ytd": 5.15,
+      "2018": -2.61,
+      "2019": 22.12,
+      "2020": 13.99,
+      "2021": 16.53,
+      "2022": -16.11,
+      "2023": 17.97,
+      "2024": 15.46,
+      "2025": 13.51
     },
     "alpha_vs_spy": {
-      "ytd": 0.0023,
-      "2018": 0.16196,
-      "2019": -0.10269,
-      "2020": 0.16997,
-      "2021": -0.10285,
-      "2022": 0.16777,
-      "2023": 0.006,
-      "2024": -0.0335,
-      "2025": 0.09102,
+      "ytd": 0.23,
+      "2018": 16.2,
+      "2019": -10.27,
+      "2020": 17.0,
+      "2021": -10.29,
+      "2022": 16.78,
+      "2023": 0.6,
+      "2024": -3.35,
+      "2025": 9.1,
       "wins": 5,
       "losses": 3,
       "win_rate": 0.625
     },
     "alpha_vs_6040": {
-      "ytd": 0.03628,
-      "2018": 0.14232,
-      "2019": -0.01162,
-      "2020": 0.2134,
-      "2021": 0.01913,
-      "2022": 0.14716,
-      "2023": 0.08808,
-      "2024": 0.0608,
-      "2025": 0.13313,
+      "ytd": 3.63,
+      "2018": 14.24,
+      "2019": -1.17,
+      "2020": 21.34,
+      "2021": 1.91,
+      "2022": 14.71,
+      "2023": 8.81,
+      "2024": 6.08,
+      "2025": 13.31,
       "wins": 7,
       "losses": 1,
       "win_rate": 0.875
-    }
-  },
-  "cagr_windows": {
-    "eidos": {
-      "ytd": 0.08776,
-      "1yr": 0.29213,
-      "3yr": 0.25683,
-      "5yr": 0.17899,
-      "itd": 0.19884
-    },
-    "spy_bh": {
-      "ytd": 0.08546,
-      "1yr": 0.32304,
-      "3yr": 0.23145,
-      "5yr": 0.13841,
-      "itd": 0.14723
-    },
-    "sixty_forty": {
-      "ytd": 0.05148,
-      "1yr": 0.20767,
-      "3yr": 0.15211,
-      "5yr": 0.08549,
-      "itd": 0.09642
     }
   },
   "cum_returns": {
@@ -137,128 +114,130 @@
       "1yr": 29.21,
       "3yr": 97.81,
       "5yr": 127.21,
-      "itd": 353.57
+      "itd": 353.57,
+      "cagr_itd": 19.88
     },
     "spy_bh": {
       "ytd": 8.55,
       "1yr": 32.3,
       "3yr": 86.13,
       "5yr": 90.81,
-      "itd": 214.28
+      "itd": 214.28,
+      "cagr_itd": 14.72
     }
   },
   "risk": {
     "eidos": {
       "label": "eidos",
       "itd": {
-        "cagr": 0.19884,
-        "volatility": 0.07401,
+        "cagr": 19.88,
+        "volatility": 7.4,
         "sharpe": 2.1638,
         "sortino": 2.1919,
         "calmar": 4.391,
         "mar": 3.0685,
         "beta": 0.1738,
         "omega": 1.4961,
-        "maxdd": -0.0648,
+        "maxdd": -6.48,
         "maxdd_start": "2020-03-09",
         "maxdd_end": "2020-03-19",
         "maxdd_recovery": "2020-04-13",
         "maxdd_episode_days": 10,
         "maxdd_recovery_days": 25,
         "maxdd_duration_days": 309,
-        "avg_drawdown": -0.01281,
-        "upside_capture": 0.1507,
-        "downside_capture": 0.3684,
+        "avg_drawdown": -1.28,
+        "upside_capture": 15.1,
+        "downside_capture": 36.8,
         "capture_ratio": 0.4092
       },
       "trailing_36m": {
-        "cagr": 0.25683,
-        "volatility": 0.07056,
+        "cagr": 25.68,
+        "volatility": 7.06,
         "sharpe": 2.6403,
         "sortino": 2.7204,
         "beta": 0.1738,
         "omega": 1.611,
-        "maxdd": -0.05849,
+        "maxdd": -5.85,
         "maxdd_duration_days": 54,
-        "avg_drawdown": -0.00694,
-        "upside_capture": 0.272,
-        "downside_capture": 0.4452,
+        "avg_drawdown": -0.69,
+        "upside_capture": 27.2,
+        "downside_capture": 44.5,
         "capture_ratio": 0.6111
       }
     },
     "spy_bh": {
       "label": "spy_bh",
       "itd": {
-        "cagr": 0.14723,
-        "volatility": 0.19308,
+        "cagr": 14.72,
+        "volatility": 19.31,
         "sharpe": 0.5841,
         "sortino": 0.5392,
         "calmar": 1.2341,
         "mar": 0.4367,
         "beta": 1.0,
         "omega": 1.1394,
-        "maxdd": -0.33717,
+        "maxdd": -33.72,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
         "maxdd_recovery": "2020-08-10",
         "maxdd_episode_days": 33,
         "maxdd_recovery_days": 140,
         "maxdd_duration_days": 708,
-        "avg_drawdown": -0.05863,
-        "upside_capture": 1.0,
-        "downside_capture": 1.0,
+        "avg_drawdown": -5.86,
+        "upside_capture": 100.0,
+        "downside_capture": 100.0,
         "capture_ratio": 1.0
       },
       "trailing_36m": {
-        "cagr": 0.23145,
-        "volatility": 0.15088,
+        "cagr": 23.14,
+        "volatility": 15.09,
         "sharpe": 1.0763,
         "sortino": 1.0366,
         "beta": 1.0,
         "omega": 1.2396,
-        "maxdd": -0.18755,
+        "maxdd": -18.76,
         "maxdd_duration_days": 126,
-        "avg_drawdown": -0.02576,
-        "upside_capture": 1.0,
-        "downside_capture": 1.0,
+        "avg_drawdown": -2.58,
+        "upside_capture": 100.0,
+        "downside_capture": 100.0,
         "capture_ratio": 1.0
       }
     },
     "sixty_forty": {
       "label": "sixty_forty",
       "itd": {
-        "cagr": 0.09642,
-        "volatility": 0.11882,
+        "cagr": 9.64,
+        "volatility": 11.88,
         "sharpe": 0.5661,
         "sortino": 0.5286,
         "calmar": 1.3744,
         "mar": 0.4592,
         "beta": 0.6927,
         "omega": 1.1241,
-        "maxdd": -0.20999,
+        "maxdd": -21.0,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
         "maxdd_recovery": "2020-07-20",
         "maxdd_episode_days": 33,
         "maxdd_recovery_days": 119,
         "maxdd_duration_days": 762,
-        "avg_drawdown": -0.04635,
-        "upside_capture": 0.3949,
-        "downside_capture": 0.8287,
+        "avg_drawdown": -4.63,
+        "upside_capture": 39.5,
+        "downside_capture": 82.9,
         "capture_ratio": 0.4766
       },
       "trailing_36m": {
-        "cagr": 0.15211,
-        "volatility": 0.09688,
+        "cagr": 15.21,
+        "volatility": 9.69,
         "sharpe": 0.9866,
         "sortino": 0.9787,
         "beta": 0.6927,
         "omega": 1.2026,
-        "maxdd": -0.11067,
+        "maxdd": -11.07,
         "maxdd_duration_days": 122,
-        "avg_drawdown": -0.01743,
-        "upside_capture": 0.474,
-        "downside_capture": 0.8188,
+        "avg_drawdown": -1.74,
+        "upside_capture": 47.4,
+        "downside_capture": 81.9,
         "capture_ratio": 0.5789
       }
     }
@@ -266,148 +245,148 @@
   "annual_risk": {
     "eidos": {
       "2018": {
-        "volatility": 0.0474,
+        "volatility": 4.74,
         "sharpe": 2.04,
         "sortino": 2.086,
-        "maxdd": -0.0391,
+        "maxdd": -3.91,
         "beta": 0.061,
         "omega": 1.46
       },
       "2019": {
-        "volatility": 0.0515,
+        "volatility": 5.15,
         "sharpe": 3.391,
         "sortino": 3.826,
-        "maxdd": -0.0157,
+        "maxdd": -1.57,
         "beta": 0.237,
         "omega": 1.838
       },
       "2020": {
-        "volatility": 0.1064,
+        "volatility": 10.64,
         "sharpe": 2.799,
         "sortino": 2.516,
-        "maxdd": -0.0648,
+        "maxdd": -6.48,
         "beta": 0.078,
         "omega": 1.632
       },
       "2021": {
-        "volatility": 0.0845,
+        "volatility": 8.45,
         "sharpe": 2.015,
         "sortino": 2.165,
-        "maxdd": -0.0278,
+        "maxdd": -2.78,
         "beta": 0.352,
         "omega": 1.414
       },
       "2022": {
-        "volatility": 0.0723,
+        "volatility": 7.23,
         "sharpe": -0.416,
         "sortino": -0.426,
-        "maxdd": -0.0581,
+        "maxdd": -5.81,
         "beta": 0.097,
         "omega": 0.925
       },
       "2023": {
-        "volatility": 0.0645,
+        "volatility": 6.45,
         "sharpe": 2.981,
         "sortino": 3.422,
-        "maxdd": -0.0305,
+        "maxdd": -3.05,
         "beta": 0.257,
         "omega": 1.716
       },
       "2024": {
-        "volatility": 0.0806,
+        "volatility": 8.06,
         "sharpe": 1.794,
         "sortino": 1.617,
-        "maxdd": -0.0585,
+        "maxdd": -5.85,
         "beta": 0.557,
         "omega": 1.379
       },
       "2025": {
-        "volatility": 0.0693,
+        "volatility": 6.93,
         "sharpe": 2.909,
         "sortino": 3.203,
-        "maxdd": -0.0262,
+        "maxdd": -2.62,
         "beta": 0.12,
         "omega": 1.661
       },
       "ytd": {
-        "volatility": 0.0612,
+        "volatility": 6.12,
         "sharpe": 3.595,
         "sortino": 4.33,
-        "maxdd": -0.0175,
+        "maxdd": -1.75,
         "beta": 0.258,
         "omega": 2.072
       }
     },
     "spy_bh": {
       "2018": {
-        "volatility": 0.1715,
+        "volatility": 17.15,
         "sharpe": -0.377,
         "sortino": -0.335,
-        "maxdd": -0.1935,
+        "maxdd": -19.35,
         "beta": 1.0,
         "omega": 0.948
       },
       "2019": {
-        "volatility": 0.1253,
+        "volatility": 12.53,
         "sharpe": 2.011,
         "sortino": 1.851,
-        "maxdd": -0.0662,
+        "maxdd": -6.62,
         "beta": 1.0,
         "omega": 1.445
       },
       "2020": {
-        "volatility": 0.3365,
+        "volatility": 33.65,
         "sharpe": 0.486,
         "sortino": 0.421,
-        "maxdd": -0.3372,
+        "maxdd": -33.72,
         "beta": 1.0,
         "omega": 1.141
       },
       "2021": {
-        "volatility": 0.1299,
+        "volatility": 12.99,
         "sharpe": 1.952,
         "sortino": 1.879,
-        "maxdd": -0.0511,
+        "maxdd": -5.11,
         "beta": 1.0,
         "omega": 1.398
       },
       "2022": {
-        "volatility": 0.2431,
+        "volatility": 24.31,
         "sharpe": -0.889,
         "sortino": -0.91,
-        "maxdd": -0.245,
+        "maxdd": -24.5,
         "beta": 1.0,
         "omega": 0.884
       },
       "2023": {
-        "volatility": 0.1309,
+        "volatility": 13.09,
         "sharpe": 1.423,
         "sortino": 1.436,
-        "maxdd": -0.0997,
+        "maxdd": -9.97,
         "beta": 1.0,
         "omega": 1.271
       },
       "2024": {
-        "volatility": 0.1258,
+        "volatility": 12.58,
         "sharpe": 1.364,
         "sortino": 1.263,
-        "maxdd": -0.0841,
+        "maxdd": -8.41,
         "beta": 1.0,
         "omega": 1.277
       },
       "2025": {
-        "volatility": 0.1933,
+        "volatility": 19.33,
         "sharpe": 0.638,
         "sortino": 0.614,
-        "maxdd": -0.1876,
+        "maxdd": -18.76,
         "beta": 1.0,
         "omega": 1.164
       },
       "ytd": {
-        "volatility": 0.1381,
+        "volatility": 13.81,
         "sharpe": 1.403,
         "sortino": 1.46,
-        "maxdd": -0.0888,
+        "maxdd": -8.88,
         "beta": 1.0,
         "omega": 1.28
       }
@@ -417,19 +396,19 @@
     "cumulative": {
       "energy_crisis": {
         "days": 296,
-        "pct": 0.1409
+        "pct": 14.1
       },
       "inflation_cycle": {
         "days": 21,
-        "pct": 0.01
+        "pct": 1.0
       },
       "credit_crunch": {
         "days": 244,
-        "pct": 0.1161
+        "pct": 11.6
       },
       "demand_contraction": {
         "days": 197,
-        "pct": 0.0938
+        "pct": 9.4
       },
       "concentration_cycle": {
         "days": 0,
@@ -437,30 +416,30 @@
       },
       "post_crisis_recovery": {
         "days": 415,
-        "pct": 0.1975
+        "pct": 19.8
       },
       "policy_expansion": {
         "days": 125,
-        "pct": 0.0595
+        "pct": 5.9
       },
       "structural_expansion": {
         "days": 803,
-        "pct": 0.3822
+        "pct": 38.2
       },
       "total_risk_off": {
         "days": 758,
-        "pct": 0.3608
+        "pct": 36.1
       },
       "total_risk_on": {
         "days": 1343,
-        "pct": 0.6392
+        "pct": 63.9
       }
     },
     "annual": {
       "2018": {
         "energy_crisis": {
           "days": 34,
-          "pct": 0.1355
+          "pct": 13.5
         },
         "inflation_cycle": {
           "days": 0,
@@ -468,11 +447,11 @@
         },
         "credit_crunch": {
           "days": 45,
-          "pct": 0.1793
+          "pct": 17.9
         },
         "demand_contraction": {
           "days": 28,
-          "pct": 0.1116
+          "pct": 11.2
         },
         "concentration_cycle": {
           "days": 0,
@@ -480,23 +459,23 @@
         },
         "post_crisis_recovery": {
           "days": 62,
-          "pct": 0.247
+          "pct": 24.7
         },
         "policy_expansion": {
           "days": 2,
-          "pct": 0.008
+          "pct": 0.8
         },
         "structural_expansion": {
           "days": 80,
-          "pct": 0.3187
+          "pct": 31.9
         },
         "total_risk_off": {
           "days": 107,
-          "pct": 0.4263
+          "pct": 42.6
         },
         "total_risk_on": {
           "days": 144,
-          "pct": 0.5737
+          "pct": 57.4
         }
       },
       "2019": {
@@ -510,7 +489,7 @@
         },
         "credit_crunch": {
           "days": 22,
-          "pct": 0.0873
+          "pct": 8.7
         },
         "demand_contraction": {
           "days": 0,
@@ -522,29 +501,29 @@
         },
         "post_crisis_recovery": {
           "days": 60,
-          "pct": 0.2381
+          "pct": 23.8
         },
         "policy_expansion": {
           "days": 60,
-          "pct": 0.2381
+          "pct": 23.8
         },
         "structural_expansion": {
           "days": 110,
-          "pct": 0.4365
+          "pct": 43.7
         },
         "total_risk_off": {
           "days": 22,
-          "pct": 0.0873
+          "pct": 8.7
         },
         "total_risk_on": {
           "days": 230,
-          "pct": 0.9127
+          "pct": 91.3
         }
       },
       "2020": {
         "energy_crisis": {
           "days": 81,
-          "pct": 0.3202
+          "pct": 32.0
         },
         "inflation_cycle": {
           "days": 0,
@@ -552,11 +531,11 @@
         },
         "credit_crunch": {
           "days": 50,
-          "pct": 0.1976
+          "pct": 19.8
         },
         "demand_contraction": {
           "days": 7,
-          "pct": 0.0277
+          "pct": 2.8
         },
         "concentration_cycle": {
           "days": 0,
@@ -564,23 +543,23 @@
         },
         "post_crisis_recovery": {
           "days": 45,
-          "pct": 0.1779
+          "pct": 17.8
         },
         "policy_expansion": {
           "days": 60,
-          "pct": 0.2372
+          "pct": 23.7
         },
         "structural_expansion": {
           "days": 10,
-          "pct": 0.0395
+          "pct": 4.0
         },
         "total_risk_off": {
           "days": 138,
-          "pct": 0.5455
+          "pct": 54.5
         },
         "total_risk_on": {
           "days": 115,
-          "pct": 0.4545
+          "pct": 45.5
         }
       },
       "2021": {
@@ -598,7 +577,7 @@
         },
         "demand_contraction": {
           "days": 110,
-          "pct": 0.4365
+          "pct": 43.7
         },
         "concentration_cycle": {
           "days": 0,
@@ -606,29 +585,29 @@
         },
         "post_crisis_recovery": {
           "days": 42,
-          "pct": 0.1667
+          "pct": 16.7
         },
         "policy_expansion": {
           "days": 3,
-          "pct": 0.0119
+          "pct": 1.2
         },
         "structural_expansion": {
           "days": 97,
-          "pct": 0.3849
+          "pct": 38.5
         },
         "total_risk_off": {
           "days": 110,
-          "pct": 0.4365
+          "pct": 43.7
         },
         "total_risk_on": {
           "days": 142,
-          "pct": 0.5635
+          "pct": 56.3
         }
       },
       "2022": {
         "energy_crisis": {
           "days": 76,
-          "pct": 0.3028
+          "pct": 30.3
         },
         "inflation_cycle": {
           "days": 0,
@@ -636,11 +615,11 @@
         },
         "credit_crunch": {
           "days": 82,
-          "pct": 0.3267
+          "pct": 32.7
         },
         "demand_contraction": {
           "days": 6,
-          "pct": 0.0239
+          "pct": 2.4
         },
         "concentration_cycle": {
           "days": 0,
@@ -656,25 +635,25 @@
         },
         "structural_expansion": {
           "days": 87,
-          "pct": 0.3466
+          "pct": 34.7
         },
         "total_risk_off": {
           "days": 164,
-          "pct": 0.6534
+          "pct": 65.3
         },
         "total_risk_on": {
           "days": 87,
-          "pct": 0.3466
+          "pct": 34.7
         }
       },
       "2023": {
         "energy_crisis": {
           "days": 30,
-          "pct": 0.12
+          "pct": 12.0
         },
         "inflation_cycle": {
           "days": 20,
-          "pct": 0.08
+          "pct": 8.0
         },
         "credit_crunch": {
           "days": 0,
@@ -682,7 +661,7 @@
         },
         "demand_contraction": {
           "days": 37,
-          "pct": 0.148
+          "pct": 14.8
         },
         "concentration_cycle": {
           "days": 0,
@@ -690,7 +669,7 @@
         },
         "post_crisis_recovery": {
           "days": 60,
-          "pct": 0.24
+          "pct": 24.0
         },
         "policy_expansion": {
           "days": 0,
@@ -698,25 +677,25 @@
         },
         "structural_expansion": {
           "days": 103,
-          "pct": 0.412
+          "pct": 41.2
         },
         "total_risk_off": {
           "days": 87,
-          "pct": 0.348
+          "pct": 34.8
         },
         "total_risk_on": {
           "days": 163,
-          "pct": 0.652
+          "pct": 65.2
         }
       },
       "2024": {
         "energy_crisis": {
           "days": 43,
-          "pct": 0.1706
+          "pct": 17.1
         },
         "inflation_cycle": {
           "days": 1,
-          "pct": 0.004
+          "pct": 0.4
         },
         "credit_crunch": {
           "days": 0,
@@ -724,7 +703,7 @@
         },
         "demand_contraction": {
           "days": 6,
-          "pct": 0.0238
+          "pct": 2.4
         },
         "concentration_cycle": {
           "days": 0,
@@ -732,7 +711,7 @@
         },
         "post_crisis_recovery": {
           "days": 82,
-          "pct": 0.3254
+          "pct": 32.5
         },
         "policy_expansion": {
           "days": 0,
@@ -740,21 +719,21 @@
         },
         "structural_expansion": {
           "days": 120,
-          "pct": 0.4762
+          "pct": 47.6
         },
         "total_risk_off": {
           "days": 50,
-          "pct": 0.1984
+          "pct": 19.8
         },
         "total_risk_on": {
           "days": 202,
-          "pct": 0.8016
+          "pct": 80.2
         }
       },
       "2025": {
         "energy_crisis": {
           "days": 32,
-          "pct": 0.128
+          "pct": 12.8
         },
         "inflation_cycle": {
           "days": 0,
@@ -762,11 +741,11 @@
         },
         "credit_crunch": {
           "days": 45,
-          "pct": 0.18
+          "pct": 18.0
         },
         "demand_contraction": {
           "days": 3,
-          "pct": 0.012
+          "pct": 1.2
         },
         "concentration_cycle": {
           "days": 0,
@@ -774,7 +753,7 @@
         },
         "post_crisis_recovery": {
           "days": 60,
-          "pct": 0.24
+          "pct": 24.0
         },
         "policy_expansion": {
           "days": 0,
@@ -782,15 +761,15 @@
         },
         "structural_expansion": {
           "days": 110,
-          "pct": 0.44
+          "pct": 44.0
         },
         "total_risk_off": {
           "days": 80,
-          "pct": 0.32
+          "pct": 32.0
         },
         "total_risk_on": {
           "days": 170,
-          "pct": 0.68
+          "pct": 68.0
         }
       },
       "ytd": {
@@ -816,7 +795,7 @@
         },
         "post_crisis_recovery": {
           "days": 4,
-          "pct": 0.0444
+          "pct": 4.4
         },
         "policy_expansion": {
           "days": 0,
@@ -824,7 +803,7 @@
         },
         "structural_expansion": {
           "days": 86,
-          "pct": 0.9556
+          "pct": 95.6
         },
         "total_risk_off": {
           "days": 0,
@@ -832,7 +811,7 @@
         },
         "total_risk_on": {
           "days": 90,
-          "pct": 1.0
+          "pct": 100.0
         }
       }
     }
@@ -908,16 +887,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 22
       },
@@ -936,13 +915,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 41
       },
@@ -958,16 +937,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 1
       },
@@ -986,13 +965,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -1008,16 +987,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 14
       },
@@ -1036,13 +1015,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 5
       },
@@ -1058,16 +1037,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 6
       },
@@ -1086,13 +1065,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 2
       },
@@ -1108,16 +1087,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 2
       },
@@ -1136,13 +1115,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -1158,16 +1137,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 67
       },
@@ -1184,15 +1163,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 11
       },
@@ -1208,16 +1187,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 31
       },
@@ -1234,15 +1213,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -1258,16 +1237,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 42
       },
@@ -1283,16 +1262,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 86
       },
@@ -1309,15 +1288,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 65
       },
@@ -1336,13 +1315,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 34
       },
@@ -1359,15 +1338,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 4
       },
@@ -1383,16 +1362,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 3
       },
@@ -1409,15 +1388,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 7
       },
@@ -1433,16 +1412,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 20
       },
@@ -1459,15 +1438,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 15
       },
@@ -1484,15 +1463,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 15
       },
@@ -1509,15 +1488,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 4
       },
@@ -1533,16 +1512,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 13
       },
@@ -1558,16 +1537,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 2
       },
@@ -1584,15 +1563,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 2
       },
@@ -1608,16 +1587,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 14
       },
@@ -1633,16 +1612,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 6
       },
@@ -1658,16 +1637,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "days_since_prior": 6
       },
@@ -1684,15 +1663,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 7
       },
@@ -1708,16 +1687,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 23
       },
@@ -1734,15 +1713,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 3
       },
@@ -1758,16 +1737,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 15
       },
@@ -1783,16 +1762,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 42
       },
@@ -1811,13 +1790,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -1833,16 +1812,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 71
       },
@@ -1858,16 +1837,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 13
       },
@@ -1884,15 +1863,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 33
       },
@@ -1908,16 +1887,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 42
       },
@@ -1933,16 +1912,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 88
       },
@@ -1959,15 +1938,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 14
       },
@@ -1984,15 +1963,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 40
       },
@@ -2011,13 +1990,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 20
       },
@@ -2033,16 +2012,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 3
       },
@@ -2061,13 +2040,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -2083,16 +2062,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 28
       },
@@ -2109,15 +2088,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 28
       },
@@ -2133,16 +2112,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 51
       },
@@ -2158,16 +2137,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 6
       },
@@ -2184,15 +2163,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 6
       },
@@ -2208,16 +2187,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 3
       },
@@ -2234,15 +2213,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 14
       },
@@ -2258,16 +2237,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 5
       },
@@ -2284,15 +2263,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 3
       },
@@ -2308,16 +2287,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 6
       },
@@ -2333,16 +2312,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 15
       },
@@ -2359,15 +2338,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 27
       },
@@ -2383,16 +2362,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 5
       },
@@ -2409,15 +2388,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 6
       },
@@ -2433,16 +2412,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 24
       },
@@ -2459,15 +2438,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -2483,16 +2462,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 7
       },
@@ -2509,15 +2488,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -2533,16 +2512,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 31
       },
@@ -2561,13 +2540,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 4
       },
@@ -2583,16 +2562,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 4
       },
@@ -2611,13 +2590,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 6
       },
@@ -2633,16 +2612,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 6
       },
@@ -2661,13 +2640,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 37
       },
@@ -2684,15 +2663,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 5
       },
@@ -2709,15 +2688,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 1
       },
@@ -2734,15 +2713,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 1
       },
@@ -2759,15 +2738,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 3
       },
@@ -2784,15 +2763,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 2
       },
@@ -2809,15 +2788,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 2
       },
@@ -2834,15 +2813,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 3
       },
@@ -2859,15 +2838,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 3
       },
@@ -2884,15 +2863,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 1
       },
@@ -2909,15 +2888,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 3
       },
@@ -2934,15 +2913,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 2
       },
@@ -2959,15 +2938,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 2
       },
@@ -2984,15 +2963,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 5
       },
@@ -3009,15 +2988,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 1
       },
@@ -3034,15 +3013,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 1
       },
@@ -3059,15 +3038,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 3
       },
@@ -3084,15 +3063,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 2
       },
@@ -3109,15 +3088,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 1
       },
@@ -3134,15 +3113,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
+          "GLD": 7.5,
           "TLT": 0.0,
-          "BIL": 0.925
+          "BIL": 92.5
         },
         "days_since_prior": 26
       },
@@ -3159,15 +3138,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 6
       },
@@ -3184,15 +3163,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 1
       },
@@ -3209,15 +3188,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 1
       },
@@ -3234,15 +3213,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 43
       },
@@ -3259,15 +3238,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.075,
-          "TLT": 0.2,
-          "BIL": 0.725
+          "GLD": 7.5,
+          "TLT": 20.0,
+          "BIL": 72.5
         },
         "days_since_prior": 11
       },
@@ -3286,13 +3265,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 1
       },
@@ -3309,15 +3288,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 6
       },
@@ -3333,16 +3312,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 1
       },
@@ -3359,15 +3338,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 1
       },
@@ -3383,16 +3362,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 8
       },
@@ -3409,15 +3388,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 28
       },
@@ -3434,15 +3413,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 1
       },
@@ -3459,15 +3438,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.15,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 24
       },
@@ -3483,16 +3462,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 16
       },
@@ -3508,16 +3487,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 1
       },
@@ -3533,16 +3512,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "days_since_prior": 6
       },
@@ -3559,15 +3538,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 16
       },
@@ -3586,13 +3565,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 40
       },
@@ -3608,16 +3587,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 44
       },
@@ -3636,13 +3615,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -3658,16 +3637,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 1
       },
@@ -3686,13 +3665,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -3708,16 +3687,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 16
       },
@@ -3734,15 +3713,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 19
       },
@@ -3759,15 +3738,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 12
       },
@@ -3784,15 +3763,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 3
       },
@@ -3809,15 +3788,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 14
       },
@@ -3834,15 +3813,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 64
       },
@@ -3859,15 +3838,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 3
       },
@@ -3884,15 +3863,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "days_since_prior": 9
       },
@@ -3909,15 +3888,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 1
       },
@@ -3934,15 +3913,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "days_since_prior": 4
       },
@@ -3959,15 +3938,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 1
       },
@@ -3984,15 +3963,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "days_since_prior": 6
       },
@@ -4009,15 +3988,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 3
       },
@@ -4034,15 +4013,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.125,
-          "TLT": 0.5,
-          "BIL": 0.375
+          "GLD": 12.5,
+          "TLT": 50.0,
+          "BIL": 37.5
         },
         "days_since_prior": 19
       },
@@ -4058,16 +4037,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 3
       },
@@ -4083,16 +4062,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 94
       },
@@ -4109,15 +4088,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 2
       },
@@ -4133,16 +4112,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 2
       },
@@ -4159,15 +4138,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 4
       },
@@ -4183,16 +4162,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 24
       },
@@ -4209,15 +4188,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 3
       },
@@ -4233,16 +4212,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 53
       },
@@ -4258,16 +4237,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 33
       },
@@ -4283,16 +4262,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 7
       },
@@ -4308,16 +4287,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 47
       },
@@ -4334,15 +4313,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 3
       },
@@ -4358,16 +4337,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 18
       },
@@ -4383,16 +4362,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 1
       },
@@ -4408,16 +4387,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.15,
+          "SPY": 60.0,
+          "GLD": 15.0,
           "TLT": 0.0,
-          "BIL": 0.25
+          "BIL": 25.0
         },
         "days_since_prior": 49
       },
@@ -4434,15 +4413,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 8
       },
@@ -4458,16 +4437,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 37
       },
@@ -4484,15 +4463,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 10
       },
@@ -4509,15 +4488,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 1
       },
@@ -4534,15 +4513,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 71
       },
@@ -4559,15 +4538,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 2
       },
@@ -4583,16 +4562,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 39
       },
@@ -4608,16 +4587,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 80
       },
@@ -4636,13 +4615,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 7
       },
@@ -4658,16 +4637,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 24
       },
@@ -4683,16 +4662,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 4
       },
@@ -4708,16 +4687,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 3
       },
@@ -4733,16 +4712,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 25
       },
@@ -4758,16 +4737,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 3
       },
@@ -4783,16 +4762,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 2
       },
@@ -4808,16 +4787,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 1
       },
@@ -4833,16 +4812,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 1
       },
@@ -4858,16 +4837,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 5
       },
@@ -4883,16 +4862,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 2
       },
@@ -4908,16 +4887,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 3
       },
@@ -4933,16 +4912,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 1
       },
@@ -4958,16 +4937,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 7
       },
@@ -4983,16 +4962,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.15,
+          "SPY": 15.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.85
+          "BIL": 85.0
         },
         "days_since_prior": 6
       },
@@ -5008,16 +4987,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 37
       },
@@ -5034,15 +5013,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 37
       },
@@ -5058,16 +5037,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 12
       },
@@ -5083,16 +5062,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 54
       },
@@ -5111,13 +5090,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -5133,16 +5112,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 21
       },
@@ -5161,13 +5140,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 9
       },
@@ -5183,16 +5162,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 1
       },
@@ -5209,15 +5188,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 102
       },
@@ -5234,15 +5213,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
-          "TLT": 0.2,
-          "BIL": 0.5
+          "GLD": 30.0,
+          "TLT": 20.0,
+          "BIL": 50.0
         },
         "days_since_prior": 22
       },
@@ -5259,15 +5238,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 13
       },
@@ -5284,15 +5263,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 2
       },
@@ -5309,15 +5288,15 @@
         "tlt_score_after": 0.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
+          "GLD": 25.0,
           "TLT": 0.0,
-          "BIL": 0.75
+          "BIL": 75.0
         },
         "days_since_prior": 1
       },
@@ -5333,16 +5312,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.25,
-          "TLT": 0.5,
-          "BIL": 0.25
+          "GLD": 25.0,
+          "TLT": 50.0,
+          "BIL": 25.0
         },
         "days_since_prior": 19
       },
@@ -5358,16 +5337,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 54
       },
@@ -5384,15 +5363,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 11
       },
@@ -5408,16 +5387,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.2,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.8
+          "BIL": 80.0
         },
         "days_since_prior": 20
       },
@@ -5433,16 +5412,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 5
       },
@@ -5461,13 +5440,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 7
       },
@@ -5483,16 +5462,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 3
       },
@@ -5511,13 +5490,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 4
       },
@@ -5533,16 +5512,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 8
       },
@@ -5561,13 +5540,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 1
       },
@@ -5583,16 +5562,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 1
       },
@@ -5611,13 +5590,13 @@
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 46
       },
@@ -5633,16 +5612,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
           "SPY": 0.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 1.0
+          "BIL": 100.0
         },
         "days_since_prior": 23
       },
@@ -5659,15 +5638,15 @@
         "tlt_score_after": 1.0,
         "weights_before": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "weights_after": {
-          "SPY": 0.7,
+          "SPY": 70.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "days_since_prior": 25
       },
@@ -5683,16 +5662,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "weights_after": {
           "SPY": 0.0,
-          "GLD": 0.3,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.7
+          "BIL": 70.0
         },
         "days_since_prior": 25
       },
@@ -5708,16 +5687,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "weights_after": {
-          "SPY": 0.6,
-          "GLD": 0.3,
+          "SPY": 60.0,
+          "GLD": 30.0,
           "TLT": 0.0,
-          "BIL": 0.1
+          "BIL": 10.0
         },
         "days_since_prior": 4
       },
@@ -5733,16 +5712,16 @@
         "tlt_score_before": 1.0,
         "tlt_score_after": 1.0,
         "weights_before": {
-          "SPY": 0.5,
-          "GLD": 0.2,
+          "SPY": 50.0,
+          "GLD": 20.0,
           "TLT": 0.0,
-          "BIL": 0.3
+          "BIL": 30.0
         },
         "weights_after": {
-          "SPY": 0.6,
+          "SPY": 60.0,
           "GLD": 0.0,
           "TLT": 0.0,
-          "BIL": 0.4
+          "BIL": 40.0
         },
         "days_since_prior": 87
       }
@@ -5755,52 +5734,10 @@
       "detail": "+8d"
     },
     {
-      "ticker": "AGG",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "AUDUSD=X",
+      "ticker": "DXY",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
-    },
-    {
-      "ticker": "DBB",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "DBC",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "EEM",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "EWJ",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "EWZ",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
     },
     {
       "ticker": "GC1",
@@ -5809,121 +5746,7 @@
       "cascade": false
     },
     {
-      "ticker": "GLD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "HYG",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "IWM",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "JNK",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "KRE",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "OVX",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "RINF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "RSP",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "SPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "TIP",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCNH",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "VGK",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "VIX",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
@@ -5933,38 +5756,11 @@
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
-    },
-    {
-      "ticker": "XLB",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "XLF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "XLI",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "XLP",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
     }
   ],
   "regime_stability": {
     "position": 82.3,
     "stability": "Low",
-    "stability_pct": 3.0,
-    "stability_pct_5d_ago": 0.0,
-    "stability_direction": "Improving",
     "trend": "Improving",
     "adj_left": "credit_crunch",
     "adj_right": "structural_expansion",
@@ -5973,26 +5769,5 @@
     "zone_yellow_left": 50.0,
     "zone_green": 33.3,
     "zone_yellow_right": 16.7
-  },
-  "signal_context": {
-    "tenure_days": 5,
-    "previous_regime": {
-      "archetype": "structural_expansion",
-      "archetype_display": "Structural Expansion",
-      "archetype_abbrev": "SE",
-      "days_held": 164,
-      "days_since_exit": 5,
-      "exit_trigger": "ron_transition"
-    },
-    "risk_cluster": {
-      "cluster": "risk-on",
-      "cluster_display": "Risk-On",
-      "decisiveness": 75.5,
-      "decisiveness_5d_ago": 100.0,
-      "direction": "Weakening",
-      "closest_threat": "energy_crisis",
-      "closest_threat_display": "Energy Crisis",
-      "pct_deployed": 70.0
-    }
   }
 }
