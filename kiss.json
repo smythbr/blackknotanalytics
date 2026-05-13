@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-12",
-    "run_timestamp": "2026-05-12T20:28:16",
+    "run_timestamp": "2026-05-12T20:43:31",
     "performance_inception": "2018-01-01",
     "model": "KISS",
     "disclaimer": "Replication of 42 Macro KISS Model Portfolio. Metrics computed by Black Knot Analytics using daily log returns vs USFR as RF; differs from 42 Macro's published convention."
