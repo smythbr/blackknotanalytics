@@ -163,6 +163,21 @@ body { overflow-x:hidden; }
 }
 .trend-improving    { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
 .trend-deteriorating{ color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
+/* Current-state row — prepended to allocation tables, marks the live portfolio.
+   A subtle white left-border distinguishes it without breaking the table flow. */
+.alloc-table tr.is-current td {
+  background: rgba(255,255,255,0.025);
+  border-left: 2px solid var(--white);
+  color: var(--white);
+}
+.alloc-table tr.is-current td:not(:first-child) {
+  border-left: none;
+}
+.alloc-table tr.is-current td.td-model,
+.alloc-table tr.is-current td:nth-child(1) {
+  font-weight: 600;
+}
+
 .eidos-action-row { margin-top:16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 
 /* ─── EIDOS SIGNAL PANEL (new) ───────────────────────────── */
@@ -1081,24 +1096,32 @@ function renderAegisPerf(sig) {
 // RENDER — AEGIS ALLOCATION
 // ════════════════════════════════════════════════════════
 function renderAegisAlloc(aegis) {
-  const rows = (aegis.allocations || []).filter(a => a.is_rebalance);
+  // Backend produces a "Current" row at the head of the allocations list
+  // (is_rebalance: false, trigger: "Current"). Keep it; filter out only
+  // intermediate non-rebalance days. All historical rebalances are kept.
+  const rows = (aegis.allocations || []).filter(a => a.is_rebalance || a.trigger === 'Current');
   const html = rows.map(a => {
     const xop = a.rider_ticker === 'XOP' && a.rider_pct > 0 ? a.rider_pct + '%' : '—';
     const kbe = a.rider_ticker === 'KBE' && a.rider_pct > 0 ? a.rider_pct + '%' : '—';
-    return row([
-      fmtDate(a.date),
-      c(`<span class="regime-pill sz-aegis ${(()=>{
+    const isCurrent = a.trigger === 'Current';
+    const trClass   = isCurrent ? 'is-current' : '';
+    return `<tr class="${trClass}">` + [
+      `<td class="td-left">${isCurrent ? 'Now' : fmtDate(a.date)}</td>`,
+      `<td class="td-center">` + c(`<span class="regime-pill sz-aegis ${(()=>{
         const r=(a.regime||'').toLowerCase();
         if(r.includes('risk-on')||r==='green') return 'r-on';
         if(r.includes('risk-off')||r==='red')  return 'r-off';
         if(r.includes('transition')||r==='yellow') return 'r-trans';
         return 'r-arch';
-      })()}">${a.regime}</span>`, 'td-center'),
-      a.spy + '%', a.gld + '%', a.bil + '%',
-      xop, kbe,
-      a.days_since_prior ?? '—',
-      c(a.trigger, 'td-left')
-    ]);
+      })()}">${a.regime}</span>`, 'td-center') + `</td>`,
+      `<td>${a.spy + '%'}</td>`,
+      `<td>${a.gld + '%'}</td>`,
+      `<td>${a.bil + '%'}</td>`,
+      `<td>${xop}</td>`,
+      `<td>${kbe}</td>`,
+      `<td>${a.days_since_prior ?? '—'}</td>`,
+      `<td class="td-left">${a.trigger}</td>`
+    ].join('') + '</tr>';
   }).join('') || '<tr><td colspan="9" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
   document.getElementById('aegisAllocBody').innerHTML = html;
 }
@@ -1362,7 +1385,26 @@ function renderEidosAlloc(perf) {
       '<tr><td colspan="8" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
     return;
   }
-  const html = history.map(e => {
+
+  // Build synthesized "Current" row from signal — the live portfolio state.
+  // Mirrors the structure of historical rows so it slots in cleanly at the head.
+  const sig = perf.signal || {};
+  const sw  = sig.weights || {};
+  const act = sig.action  || {};
+  const arch = sig.archetype;
+  const daysSinceLast = act.days_since_last_rebalance;
+  const currentRow = `<tr class="is-current">` + [
+    `<td class="td-left">Now</td>`,
+    `<td class="td-center">${eidosPill(arch)}</td>`,
+    `<td>${sw.SPY && sw.SPY.target_weight != null ? Math.round(sw.SPY.target_weight*100)+'%' : '—'}</td>`,
+    `<td>${sw.GLD && sw.GLD.target_weight != null ? Math.round(sw.GLD.target_weight*100)+'%' : '—'}</td>`,
+    `<td>${sw.TLT && sw.TLT.target_weight != null ? Math.round(sw.TLT.target_weight*100)+'%' : '—'}</td>`,
+    `<td>${sw.BIL && sw.BIL.target_weight != null ? Math.round(sw.BIL.target_weight*100)+'%' : '—'}</td>`,
+    `<td>${daysSinceLast != null ? daysSinceLast : '—'}</td>`,
+    `<td class="td-left">Current</td>`
+  ].join('') + `</tr>`;
+
+  const historyRows = history.map(e => {
     const w = e.weights_after || {};
     const trigger = e.type === 'regime_change' ? 'Regime change' : 'VAMS change';
     return row([
@@ -1376,7 +1418,8 @@ function renderEidosAlloc(perf) {
       c(trigger, 'td-left')
     ]);
   }).join('');
-  document.getElementById('eidosAllocBody').innerHTML = html;
+
+  document.getElementById('eidosAllocBody').innerHTML = currentRow + historyRows;
 }
 
 // ════════════════════════════════════════════════════════
