@@ -264,23 +264,6 @@ body { overflow-x:hidden; }
 .esig-cluster-detail .dir-weakening     { color:var(--red-neg); }
 .esig-cluster-detail .dir-steady        { color:var(--yellow-neu); }
 
-.esig-stab-row { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
-.esig-stab-track {
-  flex:1; height:6px; background:rgba(255,255,255,0.06); overflow:hidden;
-}
-.esig-stab-fill {
-  height:100%; background:var(--green-pos); width:0%;
-  transition:width 0.4s ease, background 0.2s;
-}
-.esig-stab-pct {
-  font-size:var(--fs-base); font-weight:600;
-  color:var(--white); min-width:42px; text-align:right;
-}
-.esig-stab-meta { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em; }
-.esig-stab-meta .dir-improving { color:var(--green-pos); }
-.esig-stab-meta .dir-weakening { color:var(--red-neg); }
-.esig-stab-meta .dir-stable    { color:var(--yellow-neu); }
-
 .esig-prev {
   font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em;
   padding:14px 0;
@@ -739,15 +722,6 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <span id="esigClusterSecondary"></span>
         </div>
       </div>
-    </div>
-
-    <div class="esig-section">
-      <div class="esig-eyebrow">Stability</div>
-      <div class="esig-stab-row">
-        <div class="esig-stab-track"><div class="esig-stab-fill" id="esigStabFill"></div></div>
-        <div class="esig-stab-pct" id="esigStabPct">—</div>
-      </div>
-      <div class="esig-stab-meta" id="esigStabMeta">—</div>
     </div>
 
     <div class="esig-prev" id="esigPrev">Previous regime: —</div>
@@ -1306,7 +1280,6 @@ const ARCHETYPE_ABBREV_MAP = {
 function renderEidosSignal(perf) {
   const sig      = perf.signal || {};
   const action   = sig.action || {};
-  const rs       = perf.regime_stability || {};
   const ctx      = perf.signal_context   || {};
   const cluster  = ctx.risk_cluster;
   const prev     = ctx.previous_regime;
@@ -1404,32 +1377,6 @@ function renderEidosSignal(perf) {
     ghostEl.style.display = 'none';
     primEl.textContent = '—';
     secEl.textContent  = '';
-  }
-
-  // ── Stability bar ──
-  const fillEl = document.getElementById('esigStabFill');
-  const pctEl  = document.getElementById('esigStabPct');
-  const metaEl = document.getElementById('esigStabMeta');
-  if (rs.stability_pct != null) {
-    fillEl.style.width = rs.stability_pct + '%';
-    let fillColor = 'var(--green-pos)';
-    if (rs.stability === 'Low')      fillColor = 'var(--red)';
-    else if (rs.stability === 'Moderate') fillColor = 'var(--yellow-neu)';
-    fillEl.style.background = fillColor;
-    pctEl.textContent = Math.round(rs.stability_pct) + '%';
-
-    const dir = rs.stability_direction || 'Stable';
-    const dirClass = dir === 'Improving' ? 'dir-improving'
-                   : dir === 'Weakening' ? 'dir-weakening'
-                   : 'dir-stable';
-    const dirArrow = dir === 'Improving' ? ' ↑'
-                   : dir === 'Weakening' ? ' ↓' : '';
-    metaEl.innerHTML = (rs.stability || '—') + ' · ' +
-      '<span class="' + dirClass + '">' + dir + dirArrow + '</span>';
-  } else {
-    fillEl.style.width = '0%';
-    pctEl.textContent  = '—';
-    metaEl.textContent = '—';
   }
 
   // ── Previous regime ──
