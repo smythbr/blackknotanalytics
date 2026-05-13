@@ -1623,29 +1623,30 @@ function renderKissPerf(kiss) {
   }).filter(Boolean).join('');
   document.getElementById('kissAnnualBody').innerHTML = html;
 
-  // Risk metrics
-  const riskRows = [
-    ['CAGR (ITD)',          r.cagr,             rs.cagr,           2, false],
-    ['Volatility',          r.volatility,        rs.volatility,     2, false],
-    ['Sharpe',              r.sharpe,            rs.sharpe,         2, true ],
-    ['Sortino',             r.sortino,           rs.sortino,        2, true ],
-    ['Calmar (36mo)',       r.calmar,            rs.calmar,         2, true ],
-    ['MAR (ITD)',           r.mar,               rs.mar,            2, true ],
-    ['Max Drawdown (ITD)',  r.maxdd,             rs.maxdd,          2, false],
-    ['Beta vs SPY',        r.beta,              null,              2, false],
-    ['Omega',              r.omega,             rs.omega,          2, true ],
-    ['Upside Capture',     r.upside_capture,    null,              1, false],
-    ['Downside Capture',   r.downside_capture,  null,              1, false],
-    ['Capture Ratio',      r.upside_capture != null && r.downside_capture != null && r.downside_capture > 0 ? Math.round(r.upside_capture / r.downside_capture * 1000) / 1000 : null, null, 3, false],
+  // Risk metrics — matches Eidos/Aegis structure exactly
+  const ytdMdd    = (kiss.annual_risk && kiss.annual_risk.hedra && kiss.annual_risk.hedra.ytd) ? kiss.annual_risk.hedra.ytd.maxdd : null;
+  const spyYtdMdd = (kiss.annual_risk && kiss.annual_risk.spy_bh && kiss.annual_risk.spy_bh.ytd) ? kiss.annual_risk.spy_bh.ytd.maxdd : null;
+
+  const riskDefs = [
+    ['Sharpe Ratio',       r.sharpe,           rs.sharpe,    3, true],
+    ['Sortino Ratio',      r.sortino,          rs.sortino,   3, true],
+    ['Max Drawdown (ITD)', r.maxdd,            rs.maxdd,     2, false],
+    ['Max Drawdown (YTD)', ytdMdd,             spyYtdMdd,    2, false],
+    ['Calmar Ratio (t3y)', r.calmar,           rs.calmar,    3, true],
+    ['MAR',                r.mar,              rs.mar,       3, true],
+    ['Omega Ratio',        r.omega,            rs.omega,     3, true],
+    ['Upside Capture',     r.upside_capture,   null,         1, false],
+    ['Downside Capture',   r.downside_capture, null,         1, false],
+    ['Capture Ratio',      r.capture_ratio,    null,         3, false],
   ];
-  html = riskRows.map(([label, m, b, dec, isRatio]) => {
-    const isMdd   = label.includes('Drawdown');
-    const isPct   = label.includes('CAGR') || label.includes('Volatility') || label.includes('Capture') || isMdd;
-    const mFmt    = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
+  html = riskDefs.map(([label, m, b, dec, isRatio]) => {
+    const isMdd = label.includes('Drawdown');
+    const isPct = isMdd || (label.includes('Capture') && !label.includes('Ratio'));
+    const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
     if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
-    const bFmt    = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
-    const e       = edge(m, b, dec, isRatio);
-    const eCls    = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
+    const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
+    const e     = edge(m, b, dec, isRatio);
+    const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
     return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
   }).join('');
   document.getElementById('kissRiskBody').innerHTML = html;
