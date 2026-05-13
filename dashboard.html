@@ -455,6 +455,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     <button class="db-nav-link active" data-page="today"  onclick="navTo('today')">Today's Signal</button>
     <button class="db-nav-link"        data-page="aegis"  onclick="navTo('aegis')">AEGIS</button>
     <button class="db-nav-link"        data-page="eidos"  onclick="navTo('eidos')">EIDOS</button>
+    <button class="db-nav-link"        data-page="hedra"   onclick="navTo('hedra')">HEDRA</button>
     <button class="db-nav-signout"                        onclick="signOut()">Sign Out</button>
     <button class="db-hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -467,6 +468,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
   <button onclick="navTo('aegis');toggleMenu();"               id="menuAegis">AEGIS</button>
   <button onclick="navTo('eidos');toggleMenu();"               id="menuEidos">EIDOS</button>
+  <button onclick="navTo('hedra');toggleMenu();"                id="menuHedra">HEDRA</button>
   <div class="menu-divider"></div>
   <button class="db-menu-signout" onclick="signOut()">Sign Out</button>
 </div>
@@ -535,6 +537,31 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
         <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLD</div><div class="signal-alloc-pct" id="eidosGLD">—</div></div>
         <div class="signal-alloc-block"><div class="signal-alloc-ticker">TLT</div><div class="signal-alloc-pct" id="eidosTLT">—</div></div>
         <div class="signal-alloc-block"><div class="signal-alloc-ticker">BIL</div><div class="signal-alloc-pct" id="eidosBIL">—</div></div>
+      </div>
+    </div>
+
+    <!-- HEDRA -->
+    <div class="signal-card">
+      <div class="signal-card-header">
+        <span class="signal-card-name">HEDRA</span>
+        <span class="signal-badge hold" id="kissBadge">Holding</span>
+      </div>
+      <div class="signal-kpis">
+        <div class="signal-kpi">
+          <div class="signal-kpi-label">YTD Return</div>
+          <div class="signal-kpi-val pos" id="kissYtd">—</div>
+        </div>
+        <div class="signal-kpi">
+          <div class="signal-kpi-label">ITD CAGR</div>
+          <div class="signal-kpi-val pos" id="kissCagr">—</div>
+        </div>
+      </div>
+      <div class="signal-alloc-label">Current Weights</div>
+      <div class="signal-alloc-row">
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">VT</div><div class="signal-alloc-pct" id="kissVT">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLDM</div><div class="signal-alloc-pct" id="kissGLDM">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">FBTC</div><div class="signal-alloc-pct" id="kissFBTC">—</div></div>
+        <div class="signal-alloc-block"><div class="signal-alloc-ticker">USFR</div><div class="signal-alloc-pct" id="kissUSFR">—</div></div>
       </div>
     </div>
 
@@ -824,7 +851,119 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 </div>
 </div>
 
-</main>
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — HEDRA
+════════════════════════════════════════════════════════ -->
+<div id="page-hedra" class="db-page-section">
+<div class="db-inner">
+
+  <!-- SIGNAL -->
+  <div class="db-eyebrow">HEDRA</div>
+  <div class="db-title">Hedra Signal</div>
+  <div class="db-sub">Hedra model portfolio — replication of 42 Macro KISS — replication by Black Knot Analytics. Regime and VAMS signals published by Darius Dale.</div>
+  <div style="margin-bottom:28px;"></div>
+
+  <div class="esig-card">
+
+    <div class="esig-regime-name" id="kissRegimeName">—</div>
+    <div class="esig-regime-meta" id="kissRegimeMeta">—</div>
+
+    <div class="esig-prev" id="kissPrev">Previous regime: —</div>
+
+    <div class="esig-section">
+      <div class="esig-eyebrow">VAMS Signals</div>
+      <table style="width:100%; font-size:var(--fs-xs); border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="text-align:left; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Asset</th>
+            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Regime Wt</th>
+            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Signal</th>
+            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Scalar</th>
+            <th style="text-align:right; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Target</th>
+          </tr>
+        </thead>
+        <tbody id="kissVamsBody"></tbody>
+      </table>
+    </div>
+
+    <div class="eidos-action-row">
+      <span id="kissActionStatus" class="signal-badge hold">—</span>
+      <span id="kissRebalNote" class="eidos-rebal-note"></span>
+    </div>
+  </div>
+
+  <div class="db-rule"></div>
+
+  <!-- PERFORMANCE -->
+  <div class="db-eyebrow">Performance</div>
+  <div class="db-title">Returns &amp; KPIs</div>
+  <div class="db-sub">Hedra versus SPY. Inception: January 2018. Metrics computed using Black Knot Analytics convention (daily log returns, RF = USFR). Differs from 42 Macro published Sharpe (monthly, RF = 0).</div>
+
+  <div class="perf-table-block">
+    <div class="perf-table-heading">Cumulative Returns</div>
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead><tr><th>Period</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
+        <tbody id="kissCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="perf-table-block">
+    <div class="perf-table-heading">Annual Returns</div>
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead><tr><th>Year</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
+        <tbody id="kissAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="perf-table-block">
+    <div class="perf-table-heading">Risk Metrics</div>
+    <div class="perf-table-note">All metrics since inception (2018-01-01) unless noted.</div>
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead><tr><th>Metric</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
+        <tbody id="kissRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="perf-table-block">
+    <div class="perf-table-heading">Operational Metrics</div>
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead><tr><th>Metric</th><th class="col-model">Hedra</th></tr></thead>
+        <tbody id="kissOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="db-rule"></div>
+
+  <!-- ASSET ALLOCATION -->
+  <div class="db-eyebrow">Portfolio</div>
+  <div class="db-title">Asset Allocation</div>
+  <div class="db-sub">Historical portfolio states. One row per rebalancing event — identical consecutive allocations are consolidated.</div>
+
+  <div class="alloc-table-wrap">
+    <table class="alloc-table">
+      <thead>
+        <tr>
+          <th class="th-left">Date</th>
+          <th class="th-center">Regime</th>
+          <th>VT</th><th>GLDM</th><th>FBTC</th><th>USFR</th>
+          <th>Days</th>
+          <th class="th-left">Trigger</th>
+        </tr>
+      </thead>
+      <tbody id="kissAllocBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+</div>
+</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════
@@ -839,8 +978,8 @@ function navTo(page) {
   document.querySelectorAll('.db-nav-link').forEach(l => l.classList.remove('active'));
   const btn = document.querySelector(`.db-nav-link[data-page="${page}"]`);
   if (btn) btn.classList.add('active');
-  ['menuToday','menuAegis','menuEidos'].forEach(id => document.getElementById(id).classList.remove('active'));
-  const menuMap = { today:'menuToday', aegis:'menuAegis', eidos:'menuEidos' };
+  ['menuToday','menuAegis','menuEidos','menuHedra'].forEach(id => document.getElementById(id).classList.remove('active'));
+  const menuMap = { today:'menuToday', aegis:'menuAegis', eidos:'menuEidos', hedra:'menuHedra' };
   if (menuMap[page]) document.getElementById(menuMap[page]).classList.add('active');
   window.scrollTo(0,0);
 }
@@ -981,6 +1120,30 @@ function renderToday(sig, perf) {
   }
   setAW('eidosSPY','SPY'); setAW('eidosGLD','GLD');
   setAW('eidosTLT','TLT'); setAW('eidosBIL','BIL');
+
+  // HEDRA
+  if (window._kissData) {
+    const ks  = window._kissData.signal;
+    const kw  = ks.weights;
+    const kct = window._kissData.cum_returns.kiss;
+    const kAct = ks.action.rebalance_required;
+
+    document.getElementById('kissYtd').textContent  = fmtPct(kct.ytd, 2, true);
+    document.getElementById('kissYtd').className    = 'signal-kpi-val ' + pctCls(kct.ytd);
+    document.getElementById('kissCagr').textContent = fmtPct(kct.cagr_itd, 2);
+    document.getElementById('kissBadge').textContent = kAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
+    document.getElementById('kissBadge').className   = 'signal-badge ' + (kAct ? 'action' : 'hold');
+
+    function setKW(id, asset) {
+      const val = Math.round(kw[asset] ? kw[asset].target_weight : 0);
+      document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
+      document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
+    }
+    setKW('kissVT',   'STOCKS');
+    setKW('kissGLDM', 'GOLD');
+    setKW('kissFBTC', 'BITCOIN');
+    setKW('kissUSFR', 'CASH');
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -1422,17 +1585,183 @@ function renderEidosAlloc(perf) {
 }
 
 // ════════════════════════════════════════════════════════
+// RENDER — HEDRA SIGNAL
+// ════════════════════════════════════════════════════════
+function renderKissSignal(kiss) {
+  const sig = kiss.signal;
+  const ctx = kiss.signal_context || {};
+  const w   = sig.weights;
+
+  document.getElementById('kissRegimeName').textContent = sig.regime_display || sig.regime;
+  const rr       = sig.risk_regime === 'risk-on' ? 'Risk-On' : 'Risk-Off';
+  const tenure   = ctx.tenure_days != null ? ctx.tenure_days + ' days in regime' : '';
+  const deployed = (ctx.deployment && ctx.deployment.pct_deployed != null)
+                   ? Math.round(ctx.deployment.pct_deployed) + '% deployed' : '';
+  document.getElementById('kissRegimeMeta').textContent =
+    [sig.regime, rr, tenure, deployed].filter(Boolean).join(' · ');
+
+  const prev   = ctx.previous_regime;
+  const prevEl = document.getElementById('kissPrev');
+  if (prev) {
+    const parts = [
+      '<strong>' + (prev.regime_display || prev.regime) + '</strong>',
+      prev.days_held != null ? 'held ' + prev.days_held + 'd' : null,
+      prev.days_since_exit != null ? 'exited ' + prev.days_since_exit + 'd ago' : null,
+    ].filter(Boolean).join(' · ');
+    prevEl.innerHTML = 'Previous regime: ' + parts;
+  } else {
+    prevEl.textContent = 'Previous regime: —';
+  }
+
+  const SIGNAL_COLOR = { Bullish: 'var(--green-pos)', Neutral: 'var(--yellow-neu)', Bearish: 'var(--red-neg)' };
+  const ASSET_ORDER  = ['STOCKS','GOLD','BITCOIN','CASH'];
+  const tbody = document.getElementById('kissVamsBody');
+  tbody.innerHTML = ASSET_ORDER.map(asset => {
+    const aw  = w[asset] || {};
+    const sc  = SIGNAL_COLOR[aw.vams_signal] || 'var(--white)';
+    const rw  = aw.regime_weight != null ? Math.round(aw.regime_weight) + '%' : '—';
+    const scl = aw.vams_scalar   != null ? aw.vams_scalar.toFixed(1) + 'x' : '—';
+    const tw  = aw.target_weight != null ? Math.round(aw.target_weight) + '%' : '—';
+    const vs  = aw.vams_signal ? `<span style="color:${sc}">${aw.vams_signal}</span>` : '—';
+    return `<tr style="border-bottom:0.5px solid var(--border);">
+      <td style="padding:5px 0;color:var(--light-grey);">${aw.ticker || asset}</td>
+      <td style="text-align:center;padding:5px 0;color:var(--grey);">${rw}</td>
+      <td style="text-align:center;padding:5px 0;">${vs}</td>
+      <td style="text-align:center;padding:5px 0;color:var(--grey);">${scl}</td>
+      <td style="text-align:right;padding:5px 0;color:var(--white);font-weight:600;">${tw}</td>
+    </tr>`;
+  }).join('');
+
+  const act = sig.action || {};
+  document.getElementById('kissActionStatus').textContent = act.rebalance_required ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
+  document.getElementById('kissActionStatus').className   = 'signal-badge ' + (act.rebalance_required ? 'action' : 'hold');
+  const ds = act.days_since_last_rebalance;
+  document.getElementById('kissRebalNote').textContent =
+    'Last: ' + (act.last_rebalance_date||'—') + (ds!=null?' · '+ds+'d ago':'') + (act.last_rebalance_type?' · '+act.last_rebalance_type:'');
+}
+
+// ════════════════════════════════════════════════════════
+// RENDER — HEDRA PERFORMANCE
+// ════════════════════════════════════════════════════════
+function renderKissPerf(kiss) {
+  const cr  = kiss.cum_returns;
+  const ret = kiss.returns;
+  const r   = kiss.risk.hedra;
+  const rs  = kiss.risk.spy_bh;
+  const rb  = kiss.rebalancing;
+
+  // Cumulative
+  let html = [
+    ['YTD',    cr.hedra.ytd,    cr.spy_bh.ytd,    true],
+    ['1 Year', cr.hedra['1yr'], cr.spy_bh['1yr'],  false],
+    ['3 Year', cr.hedra['3yr'], cr.spy_bh['3yr'],  false],
+    ['5 Year', cr.hedra['5yr'], cr.spy_bh['5yr'],  false],
+    ['ITD',    cr.hedra.itd,    cr.spy_bh.itd,     false],
+  ].map(([period, m, b, isYtd]) => {
+    const e = edge(m, b);
+    return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
+  }).join('');
+  const cagrE = edge(cr.hedra.cagr_itd, cr.spy_bh.cagr_itd);
+  html += row(['ITD CAGR', c(fmtPct(cr.hedra.cagr_itd,2),'td-model '+pctCls(cr.hedra.cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
+  document.getElementById('kissCumulBody').innerHTML = html;
+
+  // Annual
+  const yearOrder = ['ytd','2025','2024','2023','2022','2021','2020','2019','2018'];
+  html = yearOrder.map(yr => {
+    const m = ret.hedra[yr], b = ret.spy_bh[yr];
+    if (m == null && b == null) return '';
+    const label = yr === 'ytd' ? '2026 YTD' : yr;
+    const e = edge(m, b);
+    return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
+  }).filter(Boolean).join('');
+  document.getElementById('kissAnnualBody').innerHTML = html;
+
+  // Risk metrics
+  const riskRows = [
+    ['CAGR (ITD)',          r.cagr,             rs.cagr,           2, false],
+    ['Volatility',          r.volatility,        rs.volatility,     2, false],
+    ['Sharpe',              r.sharpe,            rs.sharpe,         2, true ],
+    ['Sortino',             r.sortino,           rs.sortino,        2, true ],
+    ['Calmar (36mo)',       r.calmar,            rs.calmar,         2, true ],
+    ['MAR (ITD)',           r.mar,               rs.mar,            2, true ],
+    ['Max Drawdown (ITD)',  r.maxdd,             rs.maxdd,          2, false],
+    ['Beta vs SPY',        r.beta,              null,              2, false],
+    ['Omega',              r.omega,             rs.omega,          2, true ],
+    ['Upside Capture',     r.upside_capture,    null,              1, false],
+    ['Downside Capture',   r.downside_capture,  null,              1, false],
+  ];
+  html = riskRows.map(([label, m, b, dec, isRatio]) => {
+    const isMdd   = label.includes('Drawdown');
+    const isPct   = label.includes('CAGR') || label.includes('Volatility') || label.includes('Capture') || isMdd;
+    const mFmt    = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
+    if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
+    const bFmt    = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
+    const e       = edge(m, b, dec, isRatio);
+    const eCls    = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
+    return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
+  }).join('');
+  document.getElementById('kissRiskBody').innerHTML = html;
+
+  // Ops
+  html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
+         row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
+         row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
+  document.getElementById('kissOpsBody').innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════
+// RENDER — HEDRA ALLOCATION
+// ════════════════════════════════════════════════════════
+function renderKissAlloc(kiss) {
+  const sig = kiss.signal;
+  const w   = sig.weights;
+  const act = sig.action || {};
+  const rb  = kiss.rebalancing;
+
+  const currentRow = `<tr class="is-current">
+    <td class="td-left">Now</td>
+    <td class="td-center"><span class="regime-pill r-arch sz-aegis">${sig.regime_display || sig.regime}</span></td>
+    <td>${Math.round(w.STOCKS.target_weight)}%</td>
+    <td>${Math.round(w.GOLD.target_weight)}%</td>
+    <td>${Math.round(w.BITCOIN.target_weight)}%</td>
+    <td>${Math.round(w.CASH.target_weight)}%</td>
+    <td>${act.days_since_last_rebalance != null ? act.days_since_last_rebalance : '—'}</td>
+    <td class="td-left">Current</td>
+  </tr>`;
+
+  const history  = (rb.history || []).slice().reverse();
+  const histHtml = history.map(e => {
+    const wb      = e.weights_after || {};
+    const trigger = e.type === 'regime_change' ? 'Regime change' : 'VAMS change';
+    const regime  = e.regime_after || e.regime_before || '—';
+    const pillCls = (regime === 'Goldilocks' || regime === 'Reflation') ? 'r-on' : 'r-off';
+    return row([
+      fmtDate(e.date),
+      c(`<span class="regime-pill sz-aegis ${pillCls}">${regime}</span>`, 'td-center'),
+      wb.STOCKS  != null ? Math.round(wb.STOCKS)  + '%' : '—',
+      wb.GOLD    != null ? Math.round(wb.GOLD)    + '%' : '—',
+      wb.BITCOIN != null ? Math.round(wb.BITCOIN) + '%' : '—',
+      wb.CASH    != null ? Math.round(wb.CASH)    + '%' : '—',
+      e.days_since_prior ?? '—',
+      c(trigger, 'td-left'),
+    ]);
+  }).join('') || '<tr><td colspan="8" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
+
+  document.getElementById('kissAllocBody').innerHTML = currentRow + histHtml;
+}
+
+// ════════════════════════════════════════════════════════
 // DATA LOADING
 // ════════════════════════════════════════════════════════
 async function loadData() {
   try {
-    const [aegis, eidos] = await Promise.all([
+    const [aegis, eidos, kiss] = await Promise.all([
       fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
-      fetch('eidos.json?v=' + Date.now()).then(r => r.json())
+      fetch('eidos.json?v=' + Date.now()).then(r => r.json()),
+      fetch('hedra.json?v='  + Date.now()).then(r => r.json()),
     ]);
 
     // Normalize Aegis cum_returns keys from {y1,y3,y5} → {1yr,3yr,5yr}
-    // so all three models share the same key convention (1yr/3yr/5yr/itd).
     if (aegis.cum_returns) {
       Object.keys(aegis.cum_returns).forEach(k => {
         const cr = aegis.cum_returns[k];
@@ -1442,6 +1771,9 @@ async function loadData() {
       });
     }
 
+    // Store Hedra data globally so renderToday can access it
+    window._kissData = kiss;
+
     renderToday(aegis, eidos);
     try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
     try { renderAegisPerf(aegis);   } catch(e) { console.error('renderAegisPerf:', e); }
@@ -1449,6 +1781,9 @@ async function loadData() {
     try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
     try { renderEidosPerf(eidos);   } catch(e) { console.error('renderEidosPerf:', e); }
     renderEidosAlloc(eidos);
+    try { renderKissSignal(kiss);   } catch(e) { console.error('renderKissSignal:', e); }
+    try { renderKissPerf(kiss);     } catch(e) { console.error('renderKissPerf:', e); }
+    try { renderKissAlloc(kiss);    } catch(e) { console.error('renderKissAlloc:', e); }
   } catch(err) {
     console.error('Data load error:', err);
   }
