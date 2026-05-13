@@ -1125,7 +1125,7 @@ function renderToday(sig, perf) {
   if (window._kissData) {
     const ks  = window._kissData.signal;
     const kw  = ks.weights;
-    const kct = window._kissData.cum_returns.kiss;
+    const kct = window._kissData.cum_returns.hedra;
     const kAct = ks.action.rebalance_required;
 
     document.getElementById('kissYtd').textContent  = fmtPct(kct.ytd, 2, true);
