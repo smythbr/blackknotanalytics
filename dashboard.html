@@ -1270,13 +1270,13 @@ function renderAegisAlloc(aegis) {
     const trClass   = isCurrent ? 'is-current' : '';
     return `<tr class="${trClass}">` + [
       `<td class="td-left">${isCurrent ? 'Now' : fmtDate(a.date)}</td>`,
-      `<td class="td-center">` + c(`<span class="regime-pill sz-aegis ${(()=>{
+      `<td class="td-center"><span class="regime-pill sz-aegis ${(()=>{
         const r=(a.regime||'').toLowerCase();
         if(r.includes('risk-on')||r==='green') return 'r-on';
         if(r.includes('risk-off')||r==='red')  return 'r-off';
         if(r.includes('transition')||r==='yellow') return 'r-trans';
         return 'r-arch';
-      })()}">${a.regime}</span>`, 'td-center') + `</td>`,
+      })()}">${a.regime}</span></td>`,
       `<td>${a.spy + '%'}</td>`,
       `<td>${a.gld + '%'}</td>`,
       `<td>${a.bil + '%'}</td>`,
@@ -1693,9 +1693,13 @@ function renderKissAlloc(kiss) {
   const act = sig.action || {};
   const rb  = kiss.rebalancing;
 
+  // Pick the pill colour-class for the current regime using the same rule as historical rows
+  const sigRegime  = sig.regime_display || sig.regime || '—';
+  const sigPillCls = (sigRegime === 'Goldilocks' || sigRegime === 'Reflation') ? 'r-on' : 'r-off';
+
   const currentRow = `<tr class="is-current">
     <td class="td-left">Now</td>
-    <td class="td-center"><span class="regime-pill r-arch sz-aegis">${sig.regime_display || sig.regime}</span></td>
+    <td class="td-center"><span class="regime-pill sz-aegis ${sigPillCls}">${sigRegime}</span></td>
     <td>${Math.round(w.STOCKS.target_weight)}%</td>
     <td>${Math.round(w.GOLD.target_weight)}%</td>
     <td>${Math.round(w.BITCOIN.target_weight)}%</td>
