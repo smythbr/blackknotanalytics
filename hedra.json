@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T01:22:51",
+    "run_timestamp": "2026-05-13T13:17:17",
     "performance_inception": "2018-01-01",
     "model": "Hedra",
     "disclaimer": "Replication of 42 Macro KISS Model Portfolio. Metrics computed by Black Knot Analytics using daily log returns vs USFR as RF; differs from 42 Macro's published convention."
@@ -81,7 +81,7 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 8.55
+      "ytd": 9.15
     },
     "sixty_forty": {
       "2018": -2.61,
@@ -92,7 +92,7 @@
       "2023": 17.97,
       "2024": 15.46,
       "2025": 13.51,
-      "ytd": 5.15
+      "ytd": 5.53
     },
     "alpha_vs_spy": {
       "2018": -3.1,
@@ -103,7 +103,7 @@
       "2023": -14.16,
       "2024": -2.48,
       "2025": 8.9,
-      "ytd": 1.85
+      "ytd": 1.25
     },
     "alpha_vs_6040": {
       "2018": -5.06,
@@ -114,7 +114,7 @@
       "2023": -5.95,
       "2024": 6.95,
       "2025": 13.11,
-      "ytd": 5.25
+      "ytd": 4.87
     }
   },
   "cum_returns": {
@@ -127,20 +127,20 @@
       "cagr_itd": 14.47
     },
     "spy_bh": {
-      "ytd": 8.55,
-      "1yr": 32.3,
-      "3yr": 86.13,
-      "5yr": 90.81,
-      "itd": 214.28,
-      "cagr_itd": 14.69
+      "ytd": 9.15,
+      "1yr": 28.79,
+      "3yr": 87.42,
+      "5yr": 96.04,
+      "itd": 216.04,
+      "cagr_itd": 14.76
     },
     "sixty_forty": {
-      "ytd": 5.15,
-      "1yr": 20.77,
-      "3yr": 52.58,
-      "5yr": 50.51,
-      "itd": 115.43,
-      "cagr_itd": 9.62
+      "ytd": 5.53,
+      "1yr": 19.06,
+      "3yr": 53.59,
+      "5yr": 53.31,
+      "itd": 116.21,
+      "cagr_itd": 9.66
     }
   },
   "risk": {
@@ -155,45 +155,45 @@
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.4822,
+      "beta": 0.4807,
       "omega": 1.2364,
       "upside_capture": 27.1,
       "downside_capture": 37.3,
       "capture_ratio": 72.7
     },
     "spy_bh": {
-      "cagr": 14.69,
-      "volatility": 19.25,
-      "sharpe": 0.5758,
-      "sortino": 0.5327,
-      "calmar": 1.2262,
-      "mar": 0.4356,
+      "cagr": 14.76,
+      "volatility": 19.24,
+      "sharpe": 0.5791,
+      "sortino": 0.5356,
+      "calmar": 1.2438,
+      "mar": 0.4377,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.1376,
+      "omega": 1.1383,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
     },
     "sixty_forty": {
-      "cagr": 9.62,
+      "cagr": 9.66,
       "volatility": 11.86,
-      "sharpe": 0.553,
-      "sortino": 0.5174,
-      "calmar": 1.366,
-      "mar": 0.4581,
+      "sharpe": 0.5565,
+      "sortino": 0.5206,
+      "calmar": 1.3916,
+      "mar": 0.4602,
       "maxdd": -21.0,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-07-20",
-      "beta": 0.6927,
-      "omega": 1.1212,
-      "upside_capture": 37.2,
+      "beta": 0.6921,
+      "omega": 1.122,
+      "upside_capture": 37.1,
       "downside_capture": 80.3,
-      "capture_ratio": 46.3
+      "capture_ratio": 46.2
     }
   },
   "annual_risk": {
@@ -337,12 +337,12 @@
         "omega": 1.216
       },
       "ytd": {
-        "volatility": 13.83,
-        "sharpe": 1.378,
-        "sortino": 1.429,
+        "volatility": 13.77,
+        "sharpe": 1.48,
+        "sortino": 1.529,
         "maxdd": -8.88,
         "beta": 1.0,
-        "omega": 1.337
+        "omega": 1.359
       }
     }
   },
