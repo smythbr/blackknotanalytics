@@ -216,11 +216,11 @@ body { overflow-x:hidden; }
   letter-spacing:0.22em; text-transform:uppercase;
   transition:opacity 0.2s;
 }
-.esig-cluster-label-off { color:var(--red);       opacity:0.35; }
+.esig-cluster-label-off { color:var(--red-neg);   opacity:0.35; }
 .esig-cluster-label-on  { color:var(--green-pos); opacity:0.35; }
 .esig-cluster.active-on  .esig-cluster-label-on  { opacity:1; }
 .esig-cluster.active-off .esig-cluster-label-off { opacity:1; }
-.esig-cluster-bar { position:relative; height:18px; margin-bottom:10px; }
+.esig-cluster-bar { position:relative; height:10px; margin-bottom:10px; }
 .esig-cluster-off-zone {
   position:absolute; left:0; top:0; width:50%; height:100%;
   background:var(--red);
@@ -865,7 +865,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <!-- SIGNAL -->
   <div class="db-eyebrow">Signal</div>
   <div class="db-title">HEDRA Signal</div>
-  <div class="db-sub">Hedra model portfolio by Black Knot Analytics — based on 42 Macro Risk-Off Indicator framework. Regime and VAMS signals published by Darius Dale.</div>
+  <div class="db-sub">Hedra model is a macro-aware 4-state market regime based model, implementing a risk-management overlay and dynamic position sizing.</div>
 
   <div class="esig-card">
 
@@ -1392,7 +1392,7 @@ function renderEidosSignal(perf) {
                      : dir === 'Deteriorating' ? 'dir-deteriorating'
                      : 'dir-stable';
       primEl.innerHTML = '<span class="esig-cluster-pct">' + Math.round(dist) +
-                         '</span> from flip · <span class="' + dirClass + '">' +
+                         '%</span> from flip · <span class="' + dirClass + '">' +
                          dir + '</span>';
       secEl.textContent = '';
     } else {
