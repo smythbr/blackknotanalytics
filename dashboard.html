@@ -234,16 +234,6 @@ body { overflow-x:hidden; }
   width:1px; background:rgba(255,255,255,0.7);
   transform:translateX(-0.5px);
 }
-.esig-cluster-arrow {
-  position:absolute; top:50%;
-  display:flex; align-items:center; justify-content:center;
-  transform:translate(-50%,-50%);
-  font-size:24px; line-height:1; font-weight:900;
-  color:#000;
-  pointer-events:none; z-index:3;
-  transition:left 0.4s ease;
-  white-space:nowrap;
-}
 .esig-cluster-dot {
   position:absolute; top:50%; width:16px; height:16px;
   border-radius:50%; background:var(--white);
@@ -741,7 +731,6 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <div class="esig-cluster-off-zone"></div>
           <div class="esig-cluster-on-zone"></div>
           <div class="esig-cluster-boundary"></div>
-          <div class="esig-cluster-arrow" id="esigClusterArrow" style="display:none"></div>
           <div class="esig-cluster-dot"   id="esigClusterDot"   style="left:50%"></div>
         </div>
         <div class="esig-cluster-bar-labels">
@@ -1330,7 +1319,6 @@ function renderEidosSignal(perf) {
   // ── Risk cluster bar: dot distance from center = distance from flip ──
   const clusterEl = document.getElementById('esigCluster');
   const dotEl     = document.getElementById('esigClusterDot');
-  const arrowEl   = document.getElementById('esigClusterArrow');
   const primEl    = document.getElementById('esigClusterPrimary');
   const secEl     = document.getElementById('esigClusterSecondary');
 
@@ -1364,46 +1352,26 @@ function renderEidosSignal(perf) {
       const dotPct = isOn ? 50 + (dist / 2) : 50 - (dist / 2);
       dotEl.style.left = dotPct + '%';
 
-      // Direction arrow: position next to dot, point in direction of travel
-      // Improving = moving away from center (outward)
-      // Deteriorating = moving toward center (inward)
-      // Stable = hidden
-      if (dir === 'Improving' || dir === 'Deteriorating') {
-        let arrowChar, arrowOffset;
-        const movingOutward = (dir === 'Improving');
-        if (isOn) {
-          // Active side is right; outward = right, inward = left
-          arrowChar   = movingOutward ? '\u2192' : '\u2190';   // → ←
-          arrowOffset = movingOutward ? +4.5 : -4.5;
-        } else {
-          // Active side is left; outward = left, inward = right
-          arrowChar   = movingOutward ? '\u2190' : '\u2192';   // ← →
-          arrowOffset = movingOutward ? -4.5 : +4.5;
-        }
-        arrowEl.textContent   = arrowChar;
-        arrowEl.style.left    = (dotPct + arrowOffset) + '%';
-        arrowEl.style.display = '';
-      } else {
-        arrowEl.style.display = 'none';
-      }
-
-      // Detail line: numeric distance + direction descriptor
+      // Detail line: numeric distance + direction descriptor with arrow.
+      // Matches the Aegis gauge pattern: "WORD ↑" for Improving,
+      // "WORD ↓" for Deteriorating. Stable shows no arrow.
       const dirClass = dir === 'Improving'     ? 'dir-improving'
                      : dir === 'Deteriorating' ? 'dir-deteriorating'
                      : 'dir-stable';
+      const dirArrow = dir === 'Improving'     ? ' ↑'
+                     : dir === 'Deteriorating' ? ' ↓'
+                     : '';
       primEl.innerHTML = '<span class="esig-cluster-pct">' + Math.round(dist) +
                          '%</span> from flip · <span class="' + dirClass + '">' +
-                         dir + '</span>';
+                         dir + dirArrow + '</span>';
       secEl.textContent = '';
     } else {
       dotEl.style.left      = '50%';
-      arrowEl.style.display = 'none';
       primEl.textContent    = '—';
       secEl.textContent     = '';
     }
   } else {
     dotEl.style.left      = '50%';
-    arrowEl.style.display = 'none';
     primEl.textContent    = '—';
     secEl.textContent     = '';
   }
