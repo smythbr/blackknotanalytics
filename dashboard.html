@@ -67,7 +67,7 @@ body { overflow-x:hidden; }
 }
 .db-menu-overlay.open { opacity:1; pointer-events:all; transform:translateY(0); }
 .db-menu-overlay button {
-  font-family:var(--font-ui); font-size:0.7rem; font-weight:600;
+  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
   letter-spacing:0.18em; text-transform:uppercase; color:var(--grey);
   padding:11px 22px; min-height:44px; display:flex; align-items:center;
   background:none; border:none; cursor:pointer; text-align:left; width:100%;
@@ -196,9 +196,15 @@ body { overflow-x:hidden; }
 }
 .esig-section { margin-bottom:22px; }
 .esig-eyebrow {
-  font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.22em; text-transform:uppercase;
-  color:var(--grey); margin-bottom:12px;
+  font-size:var(--fs-sm); font-weight:700;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--red);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:14px;
+}
+.esig-eyebrow::before {
+  content:''; display:block;
+  width:20px; height:1px; background:var(--red);
 }
 
 .esig-cluster-labels {
@@ -361,6 +367,27 @@ body { overflow-x:hidden; }
 .alloc-table tr:last-child td { border-bottom:none; }
 .alloc-table tr:hover td { background:rgba(255,255,255,0.015); }
 
+/* ─── VAMS SIGNAL TABLE (HEDRA — inside esig-card) ──────── */
+.vams-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); margin-top:4px; }
+.vams-table th {
+  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey); padding:10px 8px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap;
+}
+.vams-table th:first-child { text-align:left; }
+.vams-table th:last-child  { text-align:right; }
+.vams-table td {
+  padding:10px 8px; font-size:var(--fs-md);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  text-align:center; color:var(--grey); white-space:nowrap;
+}
+.vams-table td:first-child { text-align:left; color:var(--light-grey); font-weight:600; }
+.vams-table td:last-child  { text-align:right; color:var(--white); font-weight:600; }
+.vams-table tr:last-child td { border-bottom:none; }
+@media (max-width:480px) {
+  .vams-table th, .vams-table td { padding:9px 4px; }
+}
+
 /* ─── REGIME PILLS ───────────────────────────────────────── */
 .regime-pill {
   display:inline-block; font-size:var(--fs-xs); font-weight:700;
@@ -393,9 +420,9 @@ body { overflow-x:hidden; }
 @media (max-width:480px) {
   .db-title { font-size:1.6rem; }
   .db-inner { padding:24px 12px 48px; }
-  .perf-table { font-size:var(--fs-sm); min-width:0; }
-  .perf-table th { font-size:var(--fs-xs); padding:8px 6px; }
-  .perf-table td { font-size:var(--fs-sm); padding:8px 6px; }
+  .perf-table { font-size:var(--fs-md); min-width:0; }
+  .perf-table th { font-size:var(--fs-sm); padding:8px 6px; }
+  .perf-table td { font-size:var(--fs-md); padding:8px 6px; }
   .perf-table th:first-child, .perf-table td:first-child { width:42%; }
   .perf-table th:nth-child(2), .perf-table td:nth-child(2) { width:19%; }
   .perf-table th:nth-child(3), .perf-table td:nth-child(3) { width:19%; }
@@ -691,7 +718,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 <div class="db-inner">
 
   <!-- SIGNAL -->
-  <div class="db-eyebrow">EIDOS</div>
+  <div class="db-eyebrow">Signal</div>
   <div class="db-title">EIDOS Signal</div>
   <div style="margin-bottom:28px;"></div>
   <div class="esig-card">
@@ -832,10 +859,9 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 <div class="db-inner">
 
   <!-- SIGNAL -->
-  <div class="db-eyebrow">HEDRA</div>
-  <div class="db-title">Hedra Signal</div>
-  <div class="db-sub">Hedra model portfolio — replication of 42 Macro KISS — replication by Black Knot Analytics. Regime and VAMS signals published by Darius Dale.</div>
-  <div style="margin-bottom:28px;"></div>
+  <div class="db-eyebrow">Signal</div>
+  <div class="db-title">HEDRA Signal</div>
+  <div class="db-sub">Hedra model portfolio — replication of 42 Macro KISS by Black Knot Analytics. Regime and VAMS signals published by Darius Dale.</div>
 
   <div class="esig-card">
 
@@ -846,14 +872,14 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
     <div class="esig-section">
       <div class="esig-eyebrow">VAMS Signals</div>
-      <table style="width:100%; font-size:var(--fs-xs); border-collapse:collapse;">
+      <table class="vams-table">
         <thead>
           <tr>
-            <th style="text-align:left; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Asset</th>
-            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Regime Wt</th>
-            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Signal</th>
-            <th style="text-align:center; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Scalar</th>
-            <th style="text-align:right; color:var(--grey); padding:4px 0; letter-spacing:0.08em; font-weight:700;">Target</th>
+            <th>Asset</th>
+            <th>Regime Wt</th>
+            <th>Signal</th>
+            <th>Scalar</th>
+            <th>Target</th>
           </tr>
         </thead>
         <tbody id="kissVamsBody"></tbody>
@@ -1569,13 +1595,13 @@ function renderKissSignal(kiss) {
     const rw  = aw.regime_weight != null ? Math.round(aw.regime_weight) + '%' : '—';
     const scl = aw.vams_scalar   != null ? aw.vams_scalar.toFixed(1) + 'x' : '—';
     const tw  = aw.target_weight != null ? Math.round(aw.target_weight) + '%' : '—';
-    const vs  = aw.vams_signal ? `<span style="color:${sc}">${aw.vams_signal}</span>` : '—';
-    return `<tr style="border-bottom:0.5px solid var(--border);">
-      <td style="padding:5px 0;color:var(--light-grey);">${aw.ticker || asset}</td>
-      <td style="text-align:center;padding:5px 0;color:var(--grey);">${rw}</td>
-      <td style="text-align:center;padding:5px 0;">${vs}</td>
-      <td style="text-align:center;padding:5px 0;color:var(--grey);">${scl}</td>
-      <td style="text-align:right;padding:5px 0;color:var(--white);font-weight:600;">${tw}</td>
+    const vs  = aw.vams_signal ? `<span style="color:${sc};font-weight:600;">${aw.vams_signal}</span>` : '—';
+    return `<tr>
+      <td>${aw.ticker || asset}</td>
+      <td>${rw}</td>
+      <td>${vs}</td>
+      <td>${scl}</td>
+      <td>${tw}</td>
     </tr>`;
   }).join('');
 
