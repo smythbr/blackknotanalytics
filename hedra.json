@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-13",
-    "run_timestamp": "2026-05-13T00:13:43",
+    "run_timestamp": "2026-05-13T00:52:38",
     "performance_inception": "2018-01-01",
     "model": "Hedra",
     "disclaimer": "Replication of 42 Macro KISS Model Portfolio. Metrics computed by Black Knot Analytics using daily log returns vs USFR as RF; differs from 42 Macro's published convention."
