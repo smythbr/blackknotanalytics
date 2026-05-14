@@ -858,11 +858,6 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
   <div class="esig-card">
 
-    <div class="esig-regime-name" id="hedraRegimeName">—</div>
-    <div class="esig-regime-meta" id="hedraRegimeMeta">—</div>
-
-    <div class="esig-prev" id="hedraPrev">Previous regime: —</div>
-
     <div class="eidos-action-row">
       <span id="hedraActionStatus" class="signal-badge hold">—</span>
     </div>
@@ -1493,30 +1488,6 @@ function renderEidosAlloc(perf) {
 // ════════════════════════════════════════════════════════
 function renderHedraSignal(hedra) {
   const sig = hedra.signal;
-  const ctx = hedra.signal_context || {};
-  const w   = sig.weights;
-
-  document.getElementById('hedraRegimeName').textContent = sig.regime_display || sig.regime;
-  const rr       = sig.risk_regime === 'risk-on' ? 'Risk-On' : 'Risk-Off';
-  const tenure   = ctx.tenure_days != null ? ctx.tenure_days + ' days in regime' : '';
-  const deployed = (ctx.deployment && ctx.deployment.pct_deployed != null)
-                   ? Math.round(ctx.deployment.pct_deployed) + '% deployed' : '';
-  document.getElementById('hedraRegimeMeta').textContent =
-    [sig.regime, rr, tenure, deployed].filter(Boolean).join(' · ');
-
-  const prev   = ctx.previous_regime;
-  const prevEl = document.getElementById('hedraPrev');
-  if (prev) {
-    const parts = [
-      '<strong>' + (prev.regime_display || prev.regime) + '</strong>',
-      prev.days_held != null ? 'held ' + prev.days_held + 'd' : null,
-      prev.days_since_exit != null ? 'exited ' + prev.days_since_exit + 'd ago' : null,
-    ].filter(Boolean).join(' · ');
-    prevEl.innerHTML = 'Previous regime: ' + parts;
-  } else {
-    prevEl.textContent = 'Previous regime: —';
-  }
-
   const act = sig.action || {};
   document.getElementById('hedraActionStatus').textContent = act.rebalance_required ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
   document.getElementById('hedraActionStatus').className   = 'signal-badge ' + (act.rebalance_required ? 'action' : 'hold');
