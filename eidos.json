@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-14",
-    "run_timestamp": "2026-05-14T19:27:29",
+    "run_timestamp": "2026-05-14T20:18:33",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5579,28 +5579,10 @@
   },
   "attention": [
     {
-      "ticker": "AUDUSD=X",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "DXY",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
-    },
-    {
-      "ticker": "EURUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
     },
     {
       "ticker": "GC1",
@@ -5615,79 +5597,7 @@
       "cascade": true
     },
     {
-      "ticker": "IWM",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "MOVE",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "RINF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "VIX",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "W1",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "XLF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "XLI",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
