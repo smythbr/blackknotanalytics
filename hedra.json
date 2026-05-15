@@ -39,7 +39,7 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 10.01
+      "ytd": 8.69
     }
   },
   "cum_returns": {
@@ -52,12 +52,12 @@
       "cagr_itd": 14.54
     },
     "spy_bh": {
-      "ytd": 10.01,
-      "1yr": 28.95,
-      "3yr": 88.9,
-      "5yr": 95.25,
-      "itd": 218.53,
-      "cagr_itd": 14.86
+      "ytd": 8.69,
+      "1yr": 27.24,
+      "3yr": 86.62,
+      "5yr": 89.98,
+      "itd": 214.7,
+      "cagr_itd": 14.69
     }
   },
   "risk": {
@@ -72,25 +72,25 @@
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.4811,
+      "beta": 0.4826,
       "omega": 1.2378,
       "upside_capture": 26.9,
       "downside_capture": 37.3,
       "capture_ratio": 72.1
     },
     "spy_bh": {
-      "cagr": 14.86,
+      "cagr": 14.69,
       "volatility": 19.24,
-      "sharpe": 0.5837,
-      "sortino": 0.5398,
-      "calmar": 1.2598,
-      "mar": 0.4407,
+      "sharpe": 0.5759,
+      "sortino": 0.5326,
+      "calmar": 1.232,
+      "mar": 0.4357,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.1393,
+      "omega": 1.1376,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
