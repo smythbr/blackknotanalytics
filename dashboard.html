@@ -1012,7 +1012,27 @@ function aegisPill(regime) {
   return `<span class="regime-pill sz-aegis ${cls}">${regime}</span>`;
 }
 function eidosPill(archetype) {
-  return `<span class="regime-pill sz-eidos r-arch">${formatArchetype(archetype)}</span>`;
+  // Map archetype → risk side, apply same r-on/r-off classes as Aegis pills.
+  // Source of truth: WEIGHTS dict in config.py (risk-on archetypes have SPY > 0
+  // as a baseline weight; risk-off have SPY = 0). Hard-coded here for the
+  // frontend since the JSON doesn't expose risk_cluster on history rows.
+  const RISK_ON = new Set([
+    'structural_expansion',
+    'post_crisis_recovery',
+    'policy_expansion',
+    'concentration_cycle',
+  ]);
+  const RISK_OFF = new Set([
+    'energy_crisis',
+    'inflation_cycle',
+    'credit_crunch',
+    'demand_contraction',
+  ]);
+  const a = (archetype || '').toLowerCase();
+  let cls = 'r-arch';
+  if      (RISK_ON.has(a))  cls = 'r-on';
+  else if (RISK_OFF.has(a)) cls = 'r-off';
+  return `<span class="regime-pill sz-eidos ${cls}">${formatArchetype(archetype)}</span>`;
 }
 
 // ════════════════════════════════════════════════════════
