@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-05-15",
-    "run_timestamp": "2026-05-15T13:33:49",
+    "run_date": "2026-05-16",
+    "run_timestamp": "2026-05-16T01:37:41",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-15",
+    "date": "2026-05-16",
     "archetype": "post_crisis_recovery",
     "archetype_display": "Post-Crisis Recovery",
     "regime": "risk-on",
@@ -40,7 +40,7 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 8,
+      "days_since_last_rebalance": 9,
       "last_rebalance_date": "2026-05-07",
       "last_rebalance_type": "regime_change"
     }
@@ -871,7 +871,7 @@
     },
     "averages": {
       "regime": 5.6,
-      "vams": 16.9,
+      "vams": 16.8,
       "total": 22.5
     },
     "history": [
@@ -5579,10 +5579,10 @@
   },
   "attention": [
     {
-      "ticker": "DXY",
+      "ticker": "EURUSD",
       "issue": "restated",
       "detail": "historical adj_close updated",
-      "cascade": true
+      "cascade": false
     },
     {
       "ticker": "GC1",
@@ -5591,19 +5591,37 @@
       "cascade": false
     },
     {
-      "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
       "ticker": "MOVE",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
     },
     {
-      "ticker": "RINF",
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCNH",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": false
@@ -5627,7 +5645,7 @@
     "risk_cluster": {
       "cluster": "risk-on",
       "pct_deployed": 70.0,
-      "distance": 26.7,
+      "distance": 13.3,
       "distance_prev": 83.2,
       "lookback_days": 5,
       "direction": "Deteriorating",

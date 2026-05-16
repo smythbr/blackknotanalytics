@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T13:33:12",
+  "generated": "2026-05-16T01:37:08",
   "signal": {
     "date": "2026-05-15",
     "regime": "GREEN",
@@ -41,7 +41,7 @@
   },
   "perf": {
     "cagr": 14.56,
-    "cumulative_return": 211.77,
+    "cumulative_return": 211.78,
     "volatility": 10.71,
     "max_drawdown": -11.54,
     "sharpe": 1.041,
@@ -51,7 +51,7 @@
     "omega": 1.215,
     "beta": 0.382,
     "ytd_return": 8.92,
-    "current_drawdown": -1.37,
+    "current_drawdown": -1.36,
     "trades_per_year": 17.7,
     "total_trades": 148,
     "upside_capture_spy": 33.4,
@@ -86,7 +86,7 @@
       "spy": 89.98
     },
     "itd": {
-      "aegis": 211.77,
+      "aegis": 211.78,
       "bench": 115.0,
       "spy": 212.46
     }
