@@ -1,12 +1,12 @@
 {
-  "generated": "2026-05-16T01:37:08",
+  "generated": "2026-05-18T14:48:03",
   "signal": {
-    "date": "2026-05-15",
+    "date": "2026-05-18",
     "regime": "GREEN",
     "regime_since": "2026-04-14",
-    "regime_days": 31,
+    "regime_days": 34,
     "last_rebalance_date": "2026-04-15",
-    "p_stress": 0.2778,
+    "p_stress": 0.2915,
     "action_required": false,
     "weights": {
       "SPY": 80.0,
@@ -16,16 +16,16 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 0.8055,
-      "rv_minus_z": -0.7906,
-      "oas_z": -1.1366
+      "ewma_z": 0.6448,
+      "rv_minus_z": -0.783,
+      "oas_z": -0.8904
     },
     "vams": {
       "winner": null,
       "reason": "spy_absorbs",
       "scores": {
-        "XOP": -0.207,
-        "KBE": -1.349
+        "XOP": -0.031,
+        "KBE": -1.295
       },
       "trends": {
         "XOP": "Improving",
@@ -35,23 +35,23 @@
     "trends": {
       "agg": "Deteriorating",
       "mom": "Deteriorating",
-      "oas": "Improving",
+      "oas": "Deteriorating",
       "rv": "Deteriorating"
     }
   },
   "perf": {
-    "cagr": 14.56,
-    "cumulative_return": 211.78,
+    "cagr": 14.54,
+    "cumulative_return": 211.71,
     "volatility": 10.71,
     "max_drawdown": -11.54,
-    "sharpe": 1.041,
-    "sortino": 0.991,
-    "calmar": 2.953,
-    "mar": 1.265,
+    "sharpe": 1.04,
+    "sortino": 0.99,
+    "calmar": 2.963,
+    "mar": 1.264,
     "omega": 1.215,
-    "beta": 0.382,
-    "ytd_return": 8.92,
-    "current_drawdown": -1.36,
+    "beta": 0.437,
+    "ytd_return": 8.9,
+    "current_drawdown": -1.39,
     "trades_per_year": 17.7,
     "total_trades": 148,
     "upside_capture_spy": 33.4,
@@ -62,46 +62,46 @@
     "capture_ratio_bench": 143.266,
     "ytd_max_drawdown": -7.47,
     "ytd_rebalances": 7,
-    "alpha_vs_60_40": 5.0
+    "alpha_vs_60_40": 4.9
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 8.92,
-      "bench": 4.39,
-      "spy": 8.69
+      "aegis": 8.9,
+      "bench": 4.34,
+      "spy": 8.61
     },
     "y1": {
-      "aegis": 25.27,
-      "bench": 17.89,
-      "spy": 27.24
+      "aegis": 24.98,
+      "bench": 17.11,
+      "spy": 25.74
     },
     "y3": {
-      "aegis": 82.14,
-      "bench": 52.75,
-      "spy": 85.98
+      "aegis": 79.81,
+      "bench": 52.5,
+      "spy": 83.09
     },
     "y5": {
-      "aegis": 97.38,
-      "bench": 50.55,
-      "spy": 89.98
+      "aegis": 96.07,
+      "bench": 49.93,
+      "spy": 91.98
     },
     "itd": {
-      "aegis": 211.78,
-      "bench": 115.0,
-      "spy": 212.46
+      "aegis": 211.71,
+      "bench": 114.89,
+      "spy": 212.24
     }
   },
   "bench_kpis": {
-    "cagr": 9.61,
-    "cumulative_return": 115.0,
+    "cagr": 9.6,
+    "cumulative_return": 114.89,
     "volatility": 11.44,
     "max_drawdown": -22.14,
     "sharpe": 0.584,
-    "calmar": 1.306,
-    "mar": 0.434,
-    "sortino": 0.541,
+    "calmar": 1.305,
+    "mar": 0.433,
+    "sortino": 0.54,
     "omega": 1.124,
-    "beta": 0.556,
+    "beta": 0.605,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
     "capture_ratio_spy": null,
@@ -110,13 +110,13 @@
     "capture_ratio_bench": null
   },
   "spy_kpis": {
-    "cagr": 14.72,
-    "cumulative_return": 214.7,
+    "cagr": 14.7,
+    "cumulative_return": 214.48,
     "volatility": 19.3,
     "max_drawdown": -33.72,
     "sharpe": 0.584,
-    "calmar": 1.236,
-    "mar": 0.437,
+    "calmar": 1.219,
+    "mar": 0.436,
     "sortino": 0.541,
     "omega": 1.139,
     "beta": 1.0,
@@ -173,24 +173,24 @@
     },
     "2026": {
       "aegis": 8.9,
-      "bench": 4.4,
-      "spy": 8.7,
+      "bench": 4.3,
+      "spy": 8.6,
       "is_ytd": true
     }
   },
   "allocations": [
     {
-      "date": "2026-05-15",
+      "date": "2026-05-18",
       "regime": "Risk-On",
       "spy": 80.0,
       "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.2778,
+      "p_stress": 0.2915,
       "trigger": "Current",
       "is_rebalance": false,
-      "days_since_prior": 30
+      "days_since_prior": 33
     },
     {
       "date": "2026-04-15",

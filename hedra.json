@@ -28,7 +28,7 @@
       "2023": 12.02,
       "2024": 22.41,
       "2025": 26.62,
-      "ytd": 9.22
+      "ytd": 9.03
     },
     "spy_bh": {
       "2018": -4.57,
@@ -39,58 +39,58 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 8.69
+      "ytd": 8.61
     }
   },
   "cum_returns": {
     "hedra": {
-      "ytd": 9.22,
-      "1yr": 30.5,
-      "3yr": 84.93,
-      "5yr": 85.33,
-      "itd": 206.11,
-      "cagr_itd": 14.34
+      "ytd": 9.03,
+      "1yr": 29.69,
+      "3yr": 84.22,
+      "5yr": 86.06,
+      "itd": 205.58,
+      "cagr_itd": 14.31
     },
     "spy_bh": {
-      "ytd": 8.69,
-      "1yr": 27.24,
-      "3yr": 86.62,
-      "5yr": 89.98,
-      "itd": 214.7,
-      "cagr_itd": 14.72
+      "ytd": 8.61,
+      "1yr": 25.74,
+      "3yr": 84.86,
+      "5yr": 90.33,
+      "itd": 214.48,
+      "cagr_itd": 14.7
     }
   },
   "risk": {
     "hedra": {
-      "cagr": 14.34,
+      "cagr": 14.31,
       "volatility": 10.15,
-      "sharpe": 1.0594,
-      "sortino": 1.0224,
-      "calmar": 3.0825,
-      "mar": 1.2121,
+      "sharpe": 1.0569,
+      "sortino": 1.0202,
+      "calmar": 3.0704,
+      "mar": 1.2095,
       "maxdd": -11.83,
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.479,
-      "omega": 1.2327,
+      "beta": 0.4825,
+      "omega": 1.2321,
       "upside_capture": 26.6,
       "downside_capture": 37.3,
       "capture_ratio": 71.3
     },
     "spy_bh": {
-      "cagr": 14.72,
+      "cagr": 14.7,
       "volatility": 19.24,
-      "sharpe": 0.5757,
-      "sortino": 0.5325,
-      "calmar": 1.2359,
-      "mar": 0.4365,
+      "sharpe": 0.575,
+      "sortino": 0.532,
+      "calmar": 1.2187,
+      "mar": 0.436,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.1375,
+      "omega": 1.1374,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
@@ -110,7 +110,7 @@
   },
   "rebalancing": {
     "averages": {
-      "total": 23.6
+      "total": 23.5
     },
     "annual": {
       "ytd": {
