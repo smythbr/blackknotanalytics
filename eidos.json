@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-05-18",
-    "run_timestamp": "2026-05-18T14:48:43",
+    "run_date": "2026-05-19",
+    "run_timestamp": "2026-05-19T16:50:00",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-18",
+    "date": "2026-05-19",
     "archetype": "post_crisis_recovery",
     "archetype_display": "Post-Crisis Recovery",
     "regime": "risk-on",
@@ -40,14 +40,14 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 11,
+      "days_since_last_rebalance": 12,
       "last_rebalance_date": "2026-05-07",
       "last_rebalance_type": "regime_change"
     }
   },
   "returns": {
     "eidos": {
-      "ytd": 7.33,
+      "ytd": 6.62,
       "2018": 10.88,
       "2019": 20.95,
       "2020": 35.33,
@@ -58,7 +58,7 @@
       "2025": 26.82
     },
     "spy_bh": {
-      "ytd": 8.61,
+      "ytd": 7.89,
       "2018": -4.57,
       "2019": 31.22,
       "2020": 18.33,
@@ -69,7 +69,7 @@
       "2025": 17.72
     },
     "sixty_forty": {
-      "ytd": 4.94,
+      "ytd": 4.35,
       "2018": -2.61,
       "2019": 22.12,
       "2020": 13.99,
@@ -80,7 +80,7 @@
       "2025": 13.51
     },
     "alpha_vs_spy": {
-      "ytd": -1.28,
+      "ytd": -1.27,
       "2018": 15.45,
       "2019": -10.27,
       "2020": 17.0,
@@ -94,7 +94,7 @@
       "win_rate": 0.5
     },
     "alpha_vs_6040": {
-      "ytd": 2.39,
+      "ytd": 2.27,
       "2018": 13.49,
       "2019": -1.17,
       "2020": 21.34,
@@ -110,34 +110,34 @@
   },
   "cum_returns": {
     "eidos": {
-      "ytd": 7.33,
-      "1yr": 29.26,
-      "3yr": 93.74,
-      "5yr": 121.75,
-      "itd": 340.71,
-      "cagr_itd": 19.43
+      "ytd": 6.62,
+      "1yr": 28.41,
+      "3yr": 92.09,
+      "5yr": 121.63,
+      "itd": 337.81,
+      "cagr_itd": 19.33
     },
     "spy_bh": {
-      "ytd": 8.61,
-      "1yr": 25.74,
-      "3yr": 84.86,
-      "5yr": 90.33,
-      "itd": 214.48,
-      "cagr_itd": 14.7
+      "ytd": 7.89,
+      "1yr": 24.9,
+      "3yr": 81.87,
+      "5yr": 90.71,
+      "itd": 212.38,
+      "cagr_itd": 14.6
     }
   },
   "risk": {
     "eidos": {
       "label": "eidos",
       "itd": {
-        "cagr": 19.43,
+        "cagr": 19.33,
         "volatility": 7.41,
-        "sharpe": 2.1097,
-        "sortino": 2.1313,
-        "calmar": 4.2416,
-        "mar": 2.9986,
-        "beta": 0.1906,
-        "omega": 1.4813,
+        "sharpe": 2.0967,
+        "sortino": 2.1175,
+        "calmar": 4.1806,
+        "mar": 2.9825,
+        "beta": 0.192,
+        "omega": 1.4776,
         "maxdd": -6.48,
         "maxdd_start": "2020-03-09",
         "maxdd_end": "2020-03-19",
@@ -151,31 +151,31 @@
         "capture_ratio": -353.4
       },
       "trailing_36m": {
-        "cagr": 24.81,
-        "volatility": 7.08,
-        "sharpe": 2.5294,
-        "sortino": 2.587,
-        "beta": 0.1906,
-        "omega": 1.5795,
+        "cagr": 24.45,
+        "volatility": 7.1,
+        "sharpe": 2.485,
+        "sortino": 2.5409,
+        "beta": 0.192,
+        "omega": 1.5663,
         "maxdd": -5.85,
         "maxdd_duration_days": 54,
         "avg_drawdown": -0.73,
-        "upside_capture": 50.7,
-        "downside_capture": -39.6,
-        "capture_ratio": -128.0
+        "upside_capture": 49.6,
+        "downside_capture": -43.4,
+        "capture_ratio": -114.3
       }
     },
     "spy_bh": {
       "label": "spy_bh",
       "itd": {
-        "cagr": 14.7,
-        "volatility": 19.3,
-        "sharpe": 0.5835,
-        "sortino": 0.5386,
-        "calmar": 1.219,
-        "mar": 0.436,
+        "cagr": 14.6,
+        "volatility": 19.29,
+        "sharpe": 0.579,
+        "sortino": 0.5346,
+        "calmar": 1.1834,
+        "mar": 0.4331,
         "beta": 1.0,
-        "omega": 1.1392,
+        "omega": 1.1382,
         "maxdd": -33.72,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
@@ -189,12 +189,12 @@
         "capture_ratio": 100.0
       },
       "trailing_36m": {
-        "cagr": 22.86,
+        "cagr": 22.19,
         "volatility": 15.09,
-        "sharpe": 1.0606,
-        "sortino": 1.0202,
+        "sharpe": 1.0253,
+        "sortino": 0.9869,
         "beta": 1.0,
-        "omega": 1.2359,
+        "omega": 1.2278,
         "maxdd": -18.76,
         "maxdd_duration_days": 126,
         "avg_drawdown": -2.58,
@@ -206,14 +206,14 @@
     "sixty_forty": {
       "label": "sixty_forty",
       "itd": {
-        "cagr": 9.6,
+        "cagr": 9.52,
         "volatility": 11.88,
-        "sharpe": 0.5628,
-        "sortino": 0.5254,
-        "calmar": 1.3677,
-        "mar": 0.457,
-        "beta": 0.692,
-        "omega": 1.1234,
+        "sharpe": 0.5567,
+        "sortino": 0.5198,
+        "calmar": 1.3339,
+        "mar": 0.4533,
+        "beta": 0.6917,
+        "omega": 1.1221,
         "maxdd": -21.0,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
@@ -227,18 +227,18 @@
         "capture_ratio": 46.2
       },
       "trailing_36m": {
-        "cagr": 15.14,
+        "cagr": 14.76,
         "volatility": 9.7,
-        "sharpe": 0.9789,
-        "sortino": 0.9695,
-        "beta": 0.692,
-        "omega": 1.201,
+        "sharpe": 0.946,
+        "sortino": 0.9375,
+        "beta": 0.6917,
+        "omega": 1.1939,
         "maxdd": -11.07,
         "maxdd_duration_days": 122,
-        "avg_drawdown": -1.74,
-        "upside_capture": 59.7,
-        "downside_capture": 75.4,
-        "capture_ratio": 79.2
+        "avg_drawdown": -1.75,
+        "upside_capture": 59.9,
+        "downside_capture": 75.0,
+        "capture_ratio": 79.9
       }
     }
   },
@@ -309,12 +309,12 @@
         "omega": 1.661
       },
       "ytd": {
-        "volatility": 6.29,
-        "sharpe": 2.688,
-        "sortino": 2.99,
+        "volatility": 6.38,
+        "sharpe": 2.309,
+        "sortino": 2.528,
         "maxdd": -1.75,
-        "beta": 0.27,
-        "omega": 1.726
+        "beta": 0.275,
+        "omega": 1.591
       }
     },
     "spy_bh": {
@@ -383,12 +383,12 @@
         "omega": 1.164
       },
       "ytd": {
-        "volatility": 13.75,
-        "sharpe": 1.353,
-        "sortino": 1.399,
+        "volatility": 13.73,
+        "sharpe": 1.207,
+        "sortino": 1.252,
         "maxdd": -8.88,
         "beta": 1.0,
-        "omega": 1.268
+        "omega": 1.237
       }
     }
   },
@@ -415,7 +415,7 @@
         "pct": 0.0
       },
       "post_crisis_recovery": {
-        "days": 419,
+        "days": 420,
         "pct": 19.9
       },
       "policy_expansion": {
@@ -431,7 +431,7 @@
         "pct": 36.0
       },
       "total_risk_on": {
-        "days": 1347,
+        "days": 1348,
         "pct": 64.0
       }
     },
@@ -794,8 +794,8 @@
           "pct": 0.0
         },
         "post_crisis_recovery": {
-          "days": 8,
-          "pct": 8.5
+          "days": 9,
+          "pct": 9.5
         },
         "policy_expansion": {
           "days": 0,
@@ -803,14 +803,14 @@
         },
         "structural_expansion": {
           "days": 86,
-          "pct": 91.5
+          "pct": 90.5
         },
         "total_risk_off": {
           "days": 0,
           "pct": 0.0
         },
         "total_risk_on": {
-          "days": 94,
+          "days": 95,
           "pct": 100.0
         }
       }
@@ -5581,22 +5581,17 @@
     {
       "ticker": "CL1",
       "issue": "stale",
-      "detail": "+7d"
-    },
-    {
-      "ticker": "NI225",
-      "issue": "stale",
-      "detail": "+3d"
+      "detail": "+8d"
     },
     {
       "ticker": "NG1",
       "issue": "stale",
-      "detail": "+7d"
+      "detail": "+8d"
     },
     {
       "ticker": "DCOILWTICO",
       "issue": "stale",
-      "detail": "+7d"
+      "detail": "+8d"
     },
     {
       "ticker": "AUDUSD=X",
@@ -5623,10 +5618,40 @@
       "cascade": false
     },
     {
+      "ticker": "GC1",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
       "ticker": "HG=F",
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
+    },
+    {
+      "ticker": "MOVE",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": true
+    },
+    {
+      "ticker": "RINF",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
     },
     {
       "ticker": "USDCHF",
@@ -5647,6 +5672,12 @@
       "cascade": false
     },
     {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated",
+      "cascade": false
+    },
+    {
       "ticker": "W1",
       "issue": "restated",
       "detail": "historical adj_close updated",
@@ -5654,19 +5685,19 @@
     }
   ],
   "signal_context": {
-    "tenure_days": 8,
+    "tenure_days": 9,
     "previous_regime": {
       "archetype": "structural_expansion",
       "archetype_display": "Structural Expansion",
       "archetype_abbrev": "SE",
       "days_held": 112,
-      "days_since_exit": 8
+      "days_since_exit": 9
     },
     "risk_cluster": {
       "cluster": "risk-on",
       "pct_deployed": 70.0,
-      "distance": 12.2,
-      "distance_prev": 73.5,
+      "distance": 46.4,
+      "distance_prev": 52.2,
       "lookback_days": 5,
       "direction": "Deteriorating",
       "closest_threat": "energy_crisis",
