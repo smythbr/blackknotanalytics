@@ -138,8 +138,15 @@ body { overflow-x:hidden; }
 .gauge-subtitle { font-size:var(--fs-xs); color:var(--grey); margin-bottom:18px; letter-spacing:0.06em; }
 .gauge-track {
   height:10px;
-  background:linear-gradient(to right, var(--red) 0%, var(--red) 37.5%, var(--yellow-neu) 37.5%, var(--yellow-neu) 50%, var(--green-pos) 50%, var(--green-pos) 100%);
+  background:linear-gradient(to right, var(--red) 0%, var(--red) 33%, var(--yellow-neu) 33%, var(--yellow-neu) 60%, var(--green-pos) 60%, var(--green-pos) 100%);
   position:relative; margin-bottom:10px;
+}
+.gauge-track.vams-track {
+  /* VAMS rider zones differ from PRISM:
+     z range [-2,+2] maps to bar [0%,100%].
+     Engagement threshold is z=0 → green starts at 50%.
+     Red/yellow boundary at z=-0.5 → 37.5%. */
+  background:linear-gradient(to right, var(--red) 0%, var(--red) 37.5%, var(--yellow-neu) 37.5%, var(--yellow-neu) 50%, var(--green-pos) 50%, var(--green-pos) 100%);
 }
 .gauge-dot {
   width:16px; height:16px; background:var(--white); border-radius:50%;
@@ -615,13 +622,13 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
         <div class="gauge-title">XOP</div>
         <div class="gauge-subtitle">Energy — Oil &amp; Gas Exploration</div>
         <div class="gauge-dir-row"><span class="gauge-dir" id="xopDir">—</span></div>
-        <div class="gauge-track"><div class="gauge-dot" id="xopDot" style="left:50%"></div></div>
+        <div class="gauge-track vams-track"><div class="gauge-dot" id="xopDot" style="left:50%"></div></div>
       </div>
       <div class="gauge-card">
         <div class="gauge-title">KBE</div>
         <div class="gauge-subtitle">Financials — Regional Banks</div>
         <div class="gauge-dir-row"><span class="gauge-dir" id="kbeDir">—</span></div>
-        <div class="gauge-track"><div class="gauge-dot" id="kbeDot" style="left:50%"></div></div>
+        <div class="gauge-track vams-track"><div class="gauge-dot" id="kbeDot" style="left:50%"></div></div>
       </div>
     </div>
   </div>
