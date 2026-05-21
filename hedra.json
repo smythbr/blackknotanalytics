@@ -15,7 +15,7 @@
       }
     },
     "action": {
-      "rebalance_required": true
+      "rebalance_required": false
     }
   },
   "returns": {
@@ -28,7 +28,7 @@
       "2023": 12.02,
       "2024": 22.41,
       "2025": 26.62,
-      "ytd": 9.5
+      "ytd": 9.73
     },
     "spy_bh": {
       "2018": -4.57,
@@ -39,58 +39,58 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 9.0
+      "ytd": 9.21
     }
   },
   "cum_returns": {
     "hedra": {
-      "ytd": 9.5,
-      "1yr": 29.47,
-      "3yr": 85.11,
-      "5yr": 90.5,
-      "itd": 206.89,
-      "cagr_itd": 14.35
+      "ytd": 9.73,
+      "1yr": 28.85,
+      "3yr": 85.5,
+      "5yr": 87.55,
+      "itd": 207.54,
+      "cagr_itd": 14.37
     },
     "spy_bh": {
-      "ytd": 9.0,
-      "1yr": 26.04,
-      "3yr": 84.01,
-      "5yr": 93.17,
-      "itd": 215.59,
-      "cagr_itd": 14.73
+      "ytd": 9.21,
+      "1yr": 26.72,
+      "3yr": 84.37,
+      "5yr": 91.49,
+      "itd": 216.21,
+      "cagr_itd": 14.75
     }
   },
   "risk": {
     "hedra": {
-      "cagr": 14.35,
+      "cagr": 14.37,
       "volatility": 10.15,
-      "sharpe": 1.0604,
-      "sortino": 1.024,
-      "calmar": 3.097,
-      "mar": 1.2132,
+      "sharpe": 1.0624,
+      "sortino": 1.0257,
+      "calmar": 3.1043,
+      "mar": 1.215,
       "maxdd": -11.83,
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.4841,
-      "omega": 1.2328,
-      "upside_capture": 26.6,
+      "beta": 0.484,
+      "omega": 1.2333,
+      "upside_capture": 26.7,
       "downside_capture": 37.3,
-      "capture_ratio": 71.3
+      "capture_ratio": 71.6
     },
     "spy_bh": {
-      "cagr": 14.73,
+      "cagr": 14.75,
       "volatility": 19.23,
-      "sharpe": 0.5768,
-      "sortino": 0.5337,
-      "calmar": 1.2085,
-      "mar": 0.437,
+      "sharpe": 0.5778,
+      "sortino": 0.5345,
+      "calmar": 1.2111,
+      "mar": 0.4376,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.1377,
+      "omega": 1.138,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
