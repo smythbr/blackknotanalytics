@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-05-20",
-    "run_timestamp": "2026-05-20T16:10:04",
+    "run_timestamp": "2026-05-20T20:26:54",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5620,18 +5620,6 @@
       "issue": "restated",
       "detail": "historical adj_close updated",
       "cascade": true
-    },
-    {
-      "ticker": "MOVE",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "RINF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
     },
     {
       "ticker": "W1",
