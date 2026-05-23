@@ -761,13 +761,13 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <div class="esig-legend-item" data-arch="structural_expansion"><span class="esig-abbrev">SE</span>Structural Expansion</div>
           <div class="esig-legend-item" data-arch="post_crisis_recovery"><span class="esig-abbrev">PCR</span>Post-Crisis Recovery</div>
           <div class="esig-legend-item" data-arch="policy_expansion"><span class="esig-abbrev">PE</span>Policy Expansion</div>
-          <div class="esig-legend-item" data-arch="concentration_cycle"><span class="esig-abbrev">CON</span>Concentration Cycle</div>
+          <div class="esig-legend-item" data-arch="energy_shock"><span class="esig-abbrev">ES</span>Energy Shock</div>
         </div>
         <div>
           <div class="esig-legend-head esig-legend-head-off">Risk-Off</div>
           <div class="esig-legend-item" data-arch="credit_crunch"><span class="esig-abbrev">CC</span>Credit Crunch</div>
           <div class="esig-legend-item" data-arch="demand_contraction"><span class="esig-abbrev">DC</span>Demand Contraction</div>
-          <div class="esig-legend-item" data-arch="energy_crisis"><span class="esig-abbrev">EC</span>Energy Crisis</div>
+          <div class="esig-legend-item" data-arch="concentration_cycle"><span class="esig-abbrev">CON</span>Market Narrowing</div>
           <div class="esig-legend-item" data-arch="inflation_cycle"><span class="esig-abbrev">IC</span>Inflation Cycle</div>
         </div>
       </div>
@@ -1027,10 +1027,10 @@ function eidosPill(archetype) {
     'structural_expansion',
     'post_crisis_recovery',
     'policy_expansion',
-    'concentration_cycle',
+    'energy_shock',
   ]);
   const RISK_OFF = new Set([
-    'energy_crisis',
+    'concentration_cycle',
     'inflation_cycle',
     'credit_crunch',
     'demand_contraction',
@@ -1268,7 +1268,7 @@ function renderAegisAlloc(aegis) {
 // RENDER — EIDOS SIGNAL
 // ════════════════════════════════════════════════════════
 const ARCHETYPE_ABBREV_MAP = {
-  energy_crisis        : 'EC',
+  energy_shock         : 'ES',
   inflation_cycle      : 'IC',
   credit_crunch        : 'CC',
   demand_contraction   : 'DC',
