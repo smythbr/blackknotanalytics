@@ -57,7 +57,7 @@
       "3yr": 85.1,
       "5yr": 92.4,
       "itd": 217.45,
-      "cagr_itd": 14.8
+      "cagr_itd": 9.97
     }
   },
   "risk": {
@@ -79,12 +79,12 @@
       "capture_ratio": 71.0
     },
     "spy_bh": {
-      "cagr": 14.8,
-      "volatility": 19.22,
-      "sharpe": 0.5799,
-      "sortino": 0.5364,
-      "calmar": 1.2179,
-      "mar": 0.4389,
+      "cagr": 9.97,
+      "volatility": 15.96,
+      "sharpe": 0.4812,
+      "sortino": 0.3694,
+      "calmar": 0.8114,
+      "mar": 0.2958,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
