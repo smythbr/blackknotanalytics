@@ -1,17 +1,17 @@
 {
   "meta": {
-    "run_date": "2026-05-22",
-    "run_timestamp": "2026-05-22T19:40:18",
+    "run_date": "2026-05-23",
+    "run_timestamp": "2026-05-23T11:28:37",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-22",
-    "archetype": "energy_crisis",
-    "archetype_display": "Energy Crisis",
-    "regime": "risk-off",
-    "regime_display": "Risk-Off",
+    "date": "2026-05-23",
+    "archetype": "energy_shock",
+    "archetype_display": "Energy Shock",
+    "regime": "risk-on",
+    "regime_display": "Risk-On",
     "weights": {
       "SPY": {
         "regime_weight": 60.0,
@@ -40,7 +40,7 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 4,
+      "days_since_last_rebalance": 5,
       "last_rebalance_date": "2026-05-18",
       "last_rebalance_type": "regime_change"
     }
@@ -394,7 +394,7 @@
   },
   "regime_distribution": {
     "cumulative": {
-      "energy_crisis": {
+      "energy_shock": {
         "days": 301,
         "pct": 14.3
       },
@@ -427,17 +427,17 @@
         "pct": 38.1
       },
       "total_risk_off": {
-        "days": 763,
-        "pct": 36.2
+        "days": 462,
+        "pct": 21.9
       },
       "total_risk_on": {
-        "days": 1346,
-        "pct": 63.8
+        "days": 1647,
+        "pct": 78.1
       }
     },
     "annual": {
       "2018": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 34,
           "pct": 13.5
         },
@@ -470,16 +470,16 @@
           "pct": 31.9
         },
         "total_risk_off": {
-          "days": 107,
-          "pct": 42.6
+          "days": 73,
+          "pct": 29.1
         },
         "total_risk_on": {
-          "days": 144,
-          "pct": 57.4
+          "days": 178,
+          "pct": 70.9
         }
       },
       "2019": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 0,
           "pct": 0.0
         },
@@ -521,7 +521,7 @@
         }
       },
       "2020": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 81,
           "pct": 32.0
         },
@@ -554,16 +554,16 @@
           "pct": 4.0
         },
         "total_risk_off": {
-          "days": 138,
-          "pct": 54.5
+          "days": 57,
+          "pct": 22.5
         },
         "total_risk_on": {
-          "days": 115,
-          "pct": 45.5
+          "days": 196,
+          "pct": 77.5
         }
       },
       "2021": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 0,
           "pct": 0.0
         },
@@ -605,7 +605,7 @@
         }
       },
       "2022": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 76,
           "pct": 30.3
         },
@@ -638,16 +638,16 @@
           "pct": 34.7
         },
         "total_risk_off": {
-          "days": 164,
-          "pct": 65.3
+          "days": 88,
+          "pct": 35.1
         },
         "total_risk_on": {
-          "days": 87,
-          "pct": 34.7
+          "days": 163,
+          "pct": 64.9
         }
       },
       "2023": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 30,
           "pct": 12.0
         },
@@ -680,16 +680,16 @@
           "pct": 41.2
         },
         "total_risk_off": {
-          "days": 87,
-          "pct": 34.8
+          "days": 57,
+          "pct": 22.8
         },
         "total_risk_on": {
-          "days": 163,
-          "pct": 65.2
+          "days": 193,
+          "pct": 77.2
         }
       },
       "2024": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 43,
           "pct": 17.1
         },
@@ -722,16 +722,16 @@
           "pct": 47.6
         },
         "total_risk_off": {
-          "days": 50,
-          "pct": 19.8
+          "days": 7,
+          "pct": 2.8
         },
         "total_risk_on": {
-          "days": 202,
-          "pct": 80.2
+          "days": 245,
+          "pct": 97.2
         }
       },
       "2025": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 32,
           "pct": 12.8
         },
@@ -764,16 +764,16 @@
           "pct": 44.0
         },
         "total_risk_off": {
-          "days": 80,
-          "pct": 32.0
+          "days": 48,
+          "pct": 19.2
         },
         "total_risk_on": {
-          "days": 170,
-          "pct": 68.0
+          "days": 202,
+          "pct": 80.8
         }
       },
       "ytd": {
-        "energy_crisis": {
+        "energy_shock": {
           "days": 5,
           "pct": 5.1
         },
@@ -806,12 +806,12 @@
           "pct": 87.8
         },
         "total_risk_off": {
-          "days": 5,
-          "pct": 5.1
+          "days": 0,
+          "pct": 0.0
         },
         "total_risk_on": {
-          "days": 93,
-          "pct": 94.9
+          "days": 98,
+          "pct": 100.0
         }
       }
     }
@@ -879,7 +879,7 @@
         "date": "2026-05-18",
         "type": "regime_change",
         "archetype_before": "post_crisis_recovery",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1253,7 +1253,7 @@
       {
         "date": "2025-02-25",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "structural_expansion",
         "spy_score_before": 0.0,
         "spy_score_after": 0.0,
@@ -1278,8 +1278,8 @@
       {
         "date": "2025-02-21",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -1303,8 +1303,8 @@
       {
         "date": "2025-02-18",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1328,8 +1328,8 @@
       {
         "date": "2025-02-11",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -1353,8 +1353,8 @@
       {
         "date": "2025-01-22",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1379,7 +1379,7 @@
         "date": "2025-01-07",
         "type": "regime_change",
         "archetype_before": "demand_contraction",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -1453,7 +1453,7 @@
       {
         "date": "2024-12-06",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "post_crisis_recovery",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
@@ -1478,8 +1478,8 @@
       {
         "date": "2024-12-04",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1503,8 +1503,8 @@
       {
         "date": "2024-12-02",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -1528,8 +1528,8 @@
       {
         "date": "2024-11-18",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 0.5,
@@ -1553,8 +1553,8 @@
       {
         "date": "2024-11-12",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1578,8 +1578,8 @@
       {
         "date": "2024-11-06",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -1603,8 +1603,8 @@
       {
         "date": "2024-10-30",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -1629,7 +1629,7 @@
         "date": "2024-10-07",
         "type": "regime_change",
         "archetype_before": "inflation_cycle",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -2003,7 +2003,7 @@
       {
         "date": "2023-05-31",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "structural_expansion",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
@@ -2028,8 +2028,8 @@
       {
         "date": "2023-05-25",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -2053,8 +2053,8 @@
       {
         "date": "2023-05-19",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -2078,8 +2078,8 @@
       {
         "date": "2023-05-16",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -2103,8 +2103,8 @@
       {
         "date": "2023-05-02",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -2128,8 +2128,8 @@
       {
         "date": "2023-04-27",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -2153,8 +2153,8 @@
       {
         "date": "2023-04-24",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -2179,7 +2179,7 @@
         "date": "2023-04-18",
         "type": "regime_change",
         "archetype_before": "post_crisis_recovery",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -3153,7 +3153,7 @@
       {
         "date": "2022-06-16",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "structural_expansion",
         "spy_score_before": 0.0,
         "spy_score_after": 0.0,
@@ -3178,8 +3178,8 @@
       {
         "date": "2022-06-10",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -3203,8 +3203,8 @@
       {
         "date": "2022-06-09",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -3228,8 +3228,8 @@
       {
         "date": "2022-06-08",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -3253,8 +3253,8 @@
       {
         "date": "2022-05-31",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -3278,8 +3278,8 @@
       {
         "date": "2022-05-03",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 0.0,
         "gld_score_before": 0.5,
@@ -3303,8 +3303,8 @@
       {
         "date": "2022-05-02",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -3328,8 +3328,8 @@
       {
         "date": "2022-04-08",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -3353,8 +3353,8 @@
       {
         "date": "2022-03-23",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 0.5,
@@ -3378,8 +3378,8 @@
       {
         "date": "2022-03-22",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -3403,8 +3403,8 @@
       {
         "date": "2022-03-16",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -3429,7 +3429,7 @@
         "date": "2022-02-28",
         "type": "regime_change",
         "archetype_before": "structural_expansion",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -4178,7 +4178,7 @@
       {
         "date": "2020-09-11",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "policy_expansion",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
@@ -4203,8 +4203,8 @@
       {
         "date": "2020-09-08",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -4228,8 +4228,8 @@
       {
         "date": "2020-08-21",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 0.5,
@@ -4253,8 +4253,8 @@
       {
         "date": "2020-08-20",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -4278,8 +4278,8 @@
       {
         "date": "2020-07-02",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -4303,8 +4303,8 @@
       {
         "date": "2020-06-24",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -4329,7 +4329,7 @@
         "date": "2020-05-18",
         "type": "regime_change",
         "archetype_before": "demand_contraction",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -5503,7 +5503,7 @@
       {
         "date": "2018-02-27",
         "type": "regime_change",
-        "archetype_before": "energy_crisis",
+        "archetype_before": "energy_shock",
         "archetype_after": "structural_expansion",
         "spy_score_before": 0.0,
         "spy_score_after": 1.0,
@@ -5528,8 +5528,8 @@
       {
         "date": "2018-02-02",
         "type": "vams_flip",
-        "archetype_before": "energy_crisis",
-        "archetype_after": "energy_crisis",
+        "archetype_before": "energy_shock",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 0.0,
         "gld_score_before": 1.0,
@@ -5554,7 +5554,7 @@
         "date": "2018-01-08",
         "type": "regime_change",
         "archetype_before": "policy_expansion",
-        "archetype_after": "energy_crisis",
+        "archetype_after": "energy_shock",
         "spy_score_before": 1.0,
         "spy_score_after": 1.0,
         "gld_score_before": 1.0,
@@ -5604,93 +5604,9 @@
   },
   "attention": [
     {
-      "ticker": "AUDUSD=X",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "DXY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "EURUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "GC1",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "MOVE",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": true
-    },
-    {
-      "ticker": "RINF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated",
-      "cascade": false
-    },
-    {
       "ticker": "W1",
       "issue": "restated",
-      "detail": "historical adj_close updated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": false
     }
   ],
@@ -5704,14 +5620,14 @@
       "days_since_exit": 5
     },
     "risk_cluster": {
-      "cluster": "risk-off",
+      "cluster": "risk-on",
       "pct_deployed": 90.0,
       "distance": 5.5,
       "distance_prev": 18.8,
       "lookback_days": 4,
       "direction": "Deteriorating",
       "closest_threat": "concentration_cycle",
-      "closest_threat_display": "Concentration Cycle"
+      "closest_threat_display": "Market Narrowing"
     }
   }
 }

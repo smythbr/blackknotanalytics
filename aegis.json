@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-22T19:39:51",
+  "generated": "2026-05-23T11:30:29",
   "signal": {
     "date": "2026-05-22",
     "regime": "GREEN",
@@ -40,15 +40,15 @@
     }
   },
   "perf": {
-    "cagr": 14.5,
-    "cumulative_return": 211.37,
+    "cagr": 14.51,
+    "cumulative_return": 211.39,
     "volatility": 10.7,
     "max_drawdown": -11.54,
-    "sharpe": 1.037,
-    "sortino": 0.987,
+    "sharpe": 1.04,
+    "sortino": 0.99,
     "calmar": 2.84,
     "mar": 1.26,
-    "omega": 1.214,
+    "omega": 1.215,
     "beta": 0.359,
     "ytd_return": 8.78,
     "current_drawdown": -1.49,
@@ -71,22 +71,22 @@
       "spy": 9.64
     },
     "y1": {
-      "aegis": 24.74,
+      "aegis": 24.75,
       "bench": 18.72,
       "spy": 29.39
     },
     "y3": {
-      "aegis": 78.52,
+      "aegis": 78.53,
       "bench": 53.04,
       "spy": 85.02
     },
     "y5": {
-      "aegis": 95.31,
+      "aegis": 95.32,
       "bench": 50.73,
       "spy": 92.4
     },
     "itd": {
-      "aegis": 211.37,
+      "aegis": 211.39,
       "bench": 116.56,
       "spy": 215.2
     }
@@ -96,11 +96,11 @@
     "cumulative_return": 116.56,
     "volatility": 11.44,
     "max_drawdown": -22.14,
-    "sharpe": 0.59,
+    "sharpe": 0.593,
     "calmar": 1.344,
     "mar": 0.437,
-    "sortino": 0.546,
-    "omega": 1.125,
+    "sortino": 0.549,
+    "omega": 1.126,
     "beta": 0.589,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
@@ -114,11 +114,11 @@
     "cumulative_return": 217.45,
     "volatility": 19.28,
     "max_drawdown": -33.72,
-    "sharpe": 0.589,
+    "sharpe": 0.59,
     "calmar": 1.218,
     "mar": 0.439,
-    "sortino": 0.545,
-    "omega": 1.14,
+    "sortino": 0.547,
+    "omega": 1.141,
     "beta": 1.0,
     "ytd_max_drawdown": -8.88
   },
