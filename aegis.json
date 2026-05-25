@@ -1,12 +1,12 @@
 {
-  "generated": "2026-05-23T11:51:08",
+  "generated": "2026-05-25T14:14:32",
   "signal": {
-    "date": "2026-05-22",
+    "date": "2026-05-25",
     "regime": "GREEN",
     "regime_since": "2026-04-14",
-    "regime_days": 38,
+    "regime_days": 41,
     "last_rebalance_date": "2026-05-19",
-    "p_stress": 0.3212,
+    "p_stress": 0.3229,
     "action_required": false,
     "weights": {
       "SPY": 60.0,
@@ -16,16 +16,16 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 0.7993,
-      "rv_minus_z": -0.8215,
-      "oas_z": -0.9885
+      "ewma_z": 0.6656,
+      "rv_minus_z": -0.8188,
+      "oas_z": -0.9841
     },
     "vams": {
       "winner": "XOP",
       "reason": "incumbent_holds",
       "scores": {
-        "XOP": 0.066,
-        "KBE": -1.016
+        "XOP": 0.06,
+        "KBE": -0.938
       },
       "trends": {
         "XOP": "Deteriorating",
@@ -34,22 +34,22 @@
     },
     "trends": {
       "agg": "Deteriorating",
-      "mom": "Improving",
-      "oas": "Improving",
+      "mom": "Deteriorating",
+      "oas": "Deteriorating",
       "rv": "Improving"
     }
   },
   "perf": {
-    "cagr": 14.51,
+    "cagr": 14.49,
     "cumulative_return": 211.39,
     "volatility": 10.7,
     "max_drawdown": -11.54,
     "sharpe": 1.037,
     "sortino": 0.987,
-    "calmar": 2.84,
+    "calmar": 2.902,
     "mar": 1.26,
     "omega": 1.214,
-    "beta": 0.442,
+    "beta": 0.416,
     "ytd_return": 8.79,
     "current_drawdown": -1.49,
     "trades_per_year": 17.7,
@@ -71,19 +71,19 @@
       "spy": 9.64
     },
     "y1": {
-      "aegis": 24.75,
-      "bench": 18.72,
-      "spy": 29.39
+      "aegis": 26.73,
+      "bench": 20.15,
+      "spy": 30.23
     },
     "y3": {
-      "aegis": 78.54,
-      "bench": 53.04,
-      "spy": 85.02
+      "aegis": 79.98,
+      "bench": 54.17,
+      "spy": 86.87
     },
     "y5": {
-      "aegis": 95.32,
-      "bench": 50.73,
-      "spy": 92.4
+      "aegis": 94.69,
+      "bench": 49.84,
+      "spy": 90.88
     },
     "itd": {
       "aegis": 211.39,
@@ -92,16 +92,16 @@
     }
   },
   "bench_kpis": {
-    "cagr": 9.68,
+    "cagr": 9.67,
     "cumulative_return": 116.56,
     "volatility": 11.44,
     "max_drawdown": -22.14,
     "sharpe": 0.59,
-    "calmar": 1.344,
+    "calmar": 1.338,
     "mar": 0.437,
     "sortino": 0.546,
     "omega": 1.125,
-    "beta": 0.589,
+    "beta": 0.56,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
     "capture_ratio_spy": null,
@@ -110,12 +110,12 @@
     "capture_ratio_bench": null
   },
   "spy_kpis": {
-    "cagr": 14.8,
+    "cagr": 14.79,
     "cumulative_return": 217.45,
     "volatility": 19.28,
     "max_drawdown": -33.72,
     "sharpe": 0.589,
-    "calmar": 1.218,
+    "calmar": 1.262,
     "mar": 0.439,
     "sortino": 0.545,
     "omega": 1.14,
@@ -180,17 +180,17 @@
   },
   "allocations": [
     {
-      "date": "2026-05-22",
+      "date": "2026-05-25",
       "regime": "Risk-On",
       "spy": 60.0,
       "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": "XOP",
       "rider_pct": 20.0,
-      "p_stress": 0.3212,
+      "p_stress": 0.3229,
       "trigger": "Current",
       "is_rebalance": false,
-      "days_since_prior": 3
+      "days_since_prior": 6
     },
     {
       "date": "2026-05-19",
