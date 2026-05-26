@@ -972,6 +972,7 @@ window.addEventListener('scroll', () => {
 
 async function signOut() {
   try { await sb.auth.signOut(); } catch(e) {}
+  window.location.replace('index.html');
   window.location.href = 'index.html';
 }
 
@@ -1636,7 +1637,7 @@ async function loadData() {
     try { renderAegisAlloc(aegis);  } catch(e) { console.error('renderAegisAlloc:', e); }
     try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
     try { renderEidosPerf(eidos);   } catch(e) { console.error('renderEidosPerf:', e); }
-    renderEidosAlloc(eidos);
+    try { renderEidosAlloc(eidos); } catch(e) { console.error('renderEidosAlloc:', e); }
     try { renderHedraSignal(hedra);   } catch(e) { console.error('renderHedraSignal:', e); }
     try { renderHedraPerf(hedra);     } catch(e) { console.error('renderHedraPerf:', e); }
   } catch(err) {
