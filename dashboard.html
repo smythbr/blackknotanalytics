@@ -767,7 +767,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
           <div class="esig-legend-head esig-legend-head-off">Risk-Off</div>
           <div class="esig-legend-item" data-arch="credit_crunch"><span class="esig-abbrev">CC</span>Credit Crunch</div>
           <div class="esig-legend-item" data-arch="demand_contraction"><span class="esig-abbrev">DC</span>Demand Contraction</div>
-          <div class="esig-legend-item" data-arch="concentration_cycle"><span class="esig-abbrev">CON</span>Market Narrowing</div>
+          <div class="esig-legend-item" data-arch="market_narrowing"><span class="esig-abbrev">MN</span>Market Narrowing</div>
           <div class="esig-legend-item" data-arch="inflation_cycle"><span class="esig-abbrev">IC</span>Inflation Cycle</div>
         </div>
       </div>
@@ -1030,7 +1030,7 @@ function eidosPill(archetype) {
     'energy_shock',
   ]);
   const RISK_OFF = new Set([
-    'concentration_cycle',
+    'market_narrowing',
     'inflation_cycle',
     'credit_crunch',
     'demand_contraction',
@@ -1272,7 +1272,7 @@ const ARCHETYPE_ABBREV_MAP = {
   inflation_cycle      : 'IC',
   credit_crunch        : 'CC',
   demand_contraction   : 'DC',
-  concentration_cycle  : 'CON',
+  market_narrowing    : 'MN',
   post_crisis_recovery : 'PCR',
   policy_expansion     : 'PE',
   structural_expansion : 'SE',
