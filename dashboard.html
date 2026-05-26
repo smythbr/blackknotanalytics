@@ -409,6 +409,20 @@ body { overflow-x:hidden; }
   letter-spacing:0.1em; text-align:center; padding:40px 0;
 }
 
+/* ─── DATA ERROR BANNER ──────────────────────────────────── */
+.data-error-banner {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-left: 3px solid var(--red-neg);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  font-size: var(--fs-sm);
+  color: var(--red-neg);
+  letter-spacing: 0.04em;
+  display: none;
+}
+.data-error-banner.visible { display: block; }
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:768px) {
   .db-nav { padding-left:20px; padding-right:20px; }
@@ -445,13 +459,13 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
   });
-  // ── AUTH GUARD — RE-ENABLE BEFORE DEPLOY ─────────────────
-  // document.documentElement.style.visibility = 'hidden';
-  // (async () => {
-  //   const { data:{ session } } = await sb.auth.getSession();
-  //   if (!session) { window.location.replace('index.html'); return; }
-  //   document.documentElement.style.visibility = 'visible';
-  // })();
+  // ── AUTH GUARD ────────────────────────────────────────────
+  document.documentElement.style.visibility = 'hidden';
+  (async () => {
+    const { data:{ session } } = await sb.auth.getSession();
+    if (!session) { window.location.replace('index.html'); return; }
+    document.documentElement.style.visibility = 'visible';
+  })();
 </script>
 
 <div class="db-wrap">
@@ -495,6 +509,7 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <div class="db-eyebrow">Dashboard</div>
   <div class="db-title">Today's Signal</div>
   <div class="signal-date" id="signalDateLine">Updated as at market close &nbsp;·&nbsp; —</div>
+  <div class="data-error-banner" id="dataErrorBanner"></div>
 
   <div class="signal-cards">
 
@@ -1626,6 +1641,12 @@ async function loadData() {
     try { renderHedraPerf(hedra);     } catch(e) { console.error('renderHedraPerf:', e); }
   } catch(err) {
     console.error('Data load error:', err);
+    const banner = document.getElementById('dataErrorBanner');
+    if (banner) {
+      banner.textContent = 'Unable to load model data. Please try refreshing the page. '
+        + 'If the problem persists, data may not yet be published for today.';
+      banner.classList.add('visible');
+    }
   }
 }
 
