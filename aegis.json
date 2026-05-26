@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-25T14:14:32",
+  "generated": "2026-05-25T19:57:08",
   "signal": {
     "date": "2026-05-25",
     "regime": "GREEN",
@@ -48,7 +48,7 @@
     "sortino": 0.987,
     "calmar": 2.902,
     "mar": 1.26,
-    "omega": 1.214,
+    "omega": 1.265,
     "beta": 0.416,
     "ytd_return": 8.79,
     "current_drawdown": -1.49,
@@ -100,7 +100,7 @@
     "calmar": 1.338,
     "mar": 0.437,
     "sortino": 0.546,
-    "omega": 1.125,
+    "omega": 1.171,
     "beta": 0.56,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
@@ -118,7 +118,7 @@
     "calmar": 1.262,
     "mar": 0.439,
     "sortino": 0.545,
-    "omega": 1.14,
+    "omega": 1.169,
     "beta": 1.0,
     "ytd_max_drawdown": -8.88
   },
