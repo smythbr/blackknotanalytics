@@ -1149,11 +1149,22 @@ function renderAegisSignal(sig) {
   }
 
   // Set a right-justified direction indicator above the bar
-  // Colour: green (>0.60), yellow (0.33–0.60), red (<0.33)
+  // Colour: green (>0.60), yellow (0.33–0.60), red (<0.33) — PRISM track zones
   function setGaugeDir(id, pos, trend) {
     const el = document.getElementById(id);
     if (!el) return;
     const color = pos > 0.60 ? 'var(--green-pos)' : pos < 0.33 ? 'var(--red-neg)' : 'var(--yellow-neu)';
+    const arrow = trend === 'Improving' ? ' ↑' : ' ↓';
+    el.textContent = (trend === 'Improving' ? 'Improving' : 'Deteriorating') + arrow;
+    el.style.color = color;
+  }
+
+  // VAMS track has different zone boundaries: red/yellow at 37.5%, yellow/green at 50%
+  // Label colour reflects dot position, not direction of travel.
+  function setVamsDir(id, pos, trend) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const color = pos > 0.50 ? 'var(--green-pos)' : pos < 0.375 ? 'var(--red-neg)' : 'var(--yellow-neu)';
     const arrow = trend === 'Improving' ? ' ↑' : ' ↓';
     el.textContent = (trend === 'Improving' ? 'Improving' : 'Deteriorating') + arrow;
     el.style.color = color;
@@ -1177,8 +1188,8 @@ function renderAegisSignal(sig) {
   setGaugeDir('momentumDir', momPos,   s.trends.mom);
   setGaugeDir('creditDir',   credPos,  s.trends.oas);
   setGaugeDir('tailDir',     tailPos,  s.trends.rv);
-  setGaugeDir('xopDir',      xopPos,   s.vams.trends.XOP);
-  setGaugeDir('kbeDir',      kbePos,   s.vams.trends.KBE);
+  setVamsDir('xopDir',      xopPos,   s.vams.trends.XOP);
+  setVamsDir('kbeDir',      kbePos,   s.vams.trends.KBE);
 }
 
 // ════════════════════════════════════════════════════════
