@@ -15,7 +15,7 @@
       }
     },
     "action": {
-      "rebalance_required": false
+      "rebalance_required": true
     }
   },
   "returns": {
@@ -28,7 +28,7 @@
       "2023": 12.02,
       "2024": 22.41,
       "2025": 26.62,
-      "ytd": 9.99
+      "ytd": 10.32
     },
     "spy_bh": {
       "2018": -4.57,
@@ -44,12 +44,12 @@
   },
   "cum_returns": {
     "hedra": {
-      "ytd": 9.99,
-      "1yr": 28.74,
-      "3yr": 86.52,
-      "5yr": 86.12,
-      "itd": 208.26,
-      "cagr_itd": 14.38
+      "ytd": 10.32,
+      "1yr": 29.14,
+      "3yr": 88.06,
+      "5yr": 87.14,
+      "itd": 209.21,
+      "cagr_itd": 14.43
     },
     "spy_bh": {
       "ytd": 10.34,
@@ -62,21 +62,21 @@
   },
   "risk": {
     "hedra": {
-      "cagr": 14.38,
+      "cagr": 14.43,
       "volatility": 10.15,
-      "sharpe": 1.0668,
-      "sortino": 1.0308,
-      "calmar": 3.1442,
-      "mar": 1.2159,
+      "sharpe": 1.0708,
+      "sortino": 1.0343,
+      "calmar": 3.1901,
+      "mar": 1.22,
       "maxdd": -11.83,
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.4796,
-      "omega": 1.2933,
-      "upside_capture": 26.4,
+      "beta": 0.479,
+      "omega": 1.2943,
+      "upside_capture": 26.6,
       "downside_capture": 37.3,
-      "capture_ratio": 70.8
+      "capture_ratio": 71.3
     },
     "spy_bh": {
       "cagr": 10.02,
@@ -110,15 +110,15 @@
   },
   "rebalancing": {
     "averages": {
-      "total": 23.7
+      "total": 23.6
     },
     "annual": {
       "ytd": {
-        "total": 8
+        "total": 7
       }
     },
     "cumulative": {
-      "total": 199
+      "total": 198
     }
   }
 }
