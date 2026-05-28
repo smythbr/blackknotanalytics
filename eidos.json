@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-05-27",
-    "run_timestamp": "2026-05-27T14:24:33",
+    "run_date": "2026-05-28",
+    "run_timestamp": "2026-05-28T08:12:05",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-05-27",
+    "date": "2026-05-28",
     "archetype": "energy_shock",
     "archetype_display": "Energy Shock",
     "regime": "risk-on",
@@ -35,17 +35,12 @@
       }
     },
     "action": {
-      "rebalance_required": true,
-      "trigger": "vams_flip",
-      "archetype_before": "energy_shock",
-      "archetype_after": "energy_shock",
-      "weights_before": {
-        "SPY": 0.6,
-        "GLD": 0.3,
-        "TLT": 0.0,
-        "BIL": 0.1
-      },
-      "days_since_last_rebalance": 0,
+      "rebalance_required": false,
+      "trigger": null,
+      "archetype_before": null,
+      "archetype_after": null,
+      "weights_before": null,
+      "days_since_last_rebalance": 1,
       "last_rebalance_date": "2026-05-27",
       "last_rebalance_type": "vams_flip"
     }
@@ -5647,66 +5642,6 @@
       "ticker": "DCOILWTICO",
       "issue": "stale",
       "detail": "+9d"
-    },
-    {
-      "ticker": "AUDUSD=X",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "DXY",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "GBPUSD",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDBRL",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCAD",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCHF",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDCNH",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDJPY",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDKRW",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "USDTRY",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
     },
     {
       "ticker": "W1",

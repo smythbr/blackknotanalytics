@@ -5,13 +5,13 @@
         "target_weight": 60.0
       },
       "B": {
-        "target_weight": 15.0
+        "target_weight": 0.0
       },
       "C": {
         "target_weight": 0.0
       },
       "D": {
-        "target_weight": 25.0
+        "target_weight": 40.0
       }
     },
     "action": {
