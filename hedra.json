@@ -28,7 +28,7 @@
       "2023": 12.02,
       "2024": 22.41,
       "2025": 26.62,
-      "ytd": 10.56
+      "ytd": 10.77
     },
     "spy_bh": {
       "2018": -4.57,
@@ -39,58 +39,58 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 11.24
+      "ytd": 11.54
     }
   },
   "cum_returns": {
     "hedra": {
-      "ytd": 10.56,
-      "1yr": 29.97,
-      "3yr": 87.49,
-      "5yr": 87.42,
-      "itd": 209.86,
-      "cagr_itd": 14.44
+      "ytd": 10.77,
+      "1yr": 30.45,
+      "3yr": 89.02,
+      "5yr": 87.79,
+      "itd": 210.47,
+      "cagr_itd": 14.46
     },
     "spy_bh": {
-      "ytd": 11.24,
-      "1yr": 30.19,
-      "3yr": 87.16,
-      "5yr": 92.83,
-      "itd": 222.07,
-      "cagr_itd": 10.09
+      "ytd": 11.54,
+      "1yr": 30.17,
+      "3yr": 88.64,
+      "5yr": 93.35,
+      "itd": 222.95,
+      "cagr_itd": 10.11
     }
   },
   "risk": {
     "hedra": {
-      "cagr": 14.44,
+      "cagr": 14.46,
       "volatility": 10.14,
-      "sharpe": 1.0721,
-      "sortino": 1.0354,
-      "calmar": 3.1637,
-      "mar": 1.2206,
+      "sharpe": 1.0737,
+      "sortino": 1.0367,
+      "calmar": 3.2138,
+      "mar": 1.2223,
       "maxdd": -11.83,
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
-      "beta": 0.4784,
-      "omega": 1.2946,
+      "beta": 0.4752,
+      "omega": 1.2951,
       "upside_capture": 26.4,
       "downside_capture": 37.3,
       "capture_ratio": 70.8
     },
     "spy_bh": {
-      "cagr": 10.09,
+      "cagr": 10.11,
       "volatility": 15.95,
-      "sharpe": 0.4896,
-      "sortino": 0.3757,
-      "calmar": 0.8296,
-      "mar": 0.2992,
+      "sharpe": 0.4907,
+      "sortino": 0.3765,
+      "calmar": 0.8425,
+      "mar": 0.2999,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.1705,
+      "omega": 1.1709,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
