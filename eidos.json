@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-06-02",
-    "run_timestamp": "2026-06-02T13:17:14",
+    "run_timestamp": "2026-06-02T13:58:18",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
@@ -5654,13 +5654,7 @@
   },
   "attention": [
     {
-      "ticker": "AGG",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "BIL",
+      "ticker": "AUDUSD=X",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": true
@@ -5672,7 +5666,13 @@
       "cascade": true
     },
     {
-      "ticker": "EMB",
+      "ticker": "EURUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "GBPUSD",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": false
@@ -5690,34 +5690,16 @@
       "cascade": true
     },
     {
-      "ticker": "HYG",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "IEF",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "JNK",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "LQD",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
       "ticker": "MOVE",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": true
+    },
+    {
+      "ticker": "OVX",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
     },
     {
       "ticker": "RINF",
@@ -5726,19 +5708,49 @@
       "cascade": false
     },
     {
-      "ticker": "SHY",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "TIP",
+      "ticker": "USDBRL",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": false
     },
     {
-      "ticker": "TLT",
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCHF",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCNH",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDKRW",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "VIX",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": true
