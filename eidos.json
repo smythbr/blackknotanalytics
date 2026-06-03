@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-06-02",
-    "run_timestamp": "2026-06-02T13:58:18",
+    "run_date": "2026-06-03",
+    "run_timestamp": "2026-06-03T10:22:05",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-06-02",
+    "date": "2026-06-03",
     "archetype": "energy_shock",
     "archetype_display": "Energy Shock",
     "regime": "risk-on",
@@ -40,7 +40,7 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 5,
+      "days_since_last_rebalance": 6,
       "last_rebalance_date": "2026-05-28",
       "last_rebalance_type": "vams_flip"
     }
@@ -5696,12 +5696,6 @@
       "cascade": true
     },
     {
-      "ticker": "OVX",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
       "ticker": "RINF",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
@@ -5726,12 +5720,6 @@
       "cascade": false
     },
     {
-      "ticker": "USDCNH",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
       "ticker": "USDJPY",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
@@ -5748,12 +5736,6 @@
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": false
-    },
-    {
-      "ticker": "VIX",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
     },
     {
       "ticker": "W1",
