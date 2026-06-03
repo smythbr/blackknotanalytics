@@ -28,7 +28,7 @@
       "2023": 12.02,
       "2024": 22.41,
       "2025": 26.62,
-      "ytd": 11.09
+      "ytd": 10.51
     },
     "spy_bh": {
       "2018": -4.57,
@@ -39,58 +39,58 @@
       "2023": 26.18,
       "2024": 24.89,
       "2025": 17.72,
-      "ytd": 11.69
+      "ytd": 10.89
     }
   },
   "cum_returns": {
     "hedra": {
-      "ytd": 11.09,
-      "1yr": 30.82,
-      "3yr": 88.2,
-      "5yr": 88.11,
-      "itd": 211.35,
-      "cagr_itd": 14.49
+      "ytd": 10.51,
+      "1yr": 28.85,
+      "3yr": 85.58,
+      "5yr": 86.51,
+      "itd": 209.73,
+      "cagr_itd": 14.41
     },
     "spy_bh": {
-      "ytd": 11.69,
-      "1yr": 30.35,
-      "3yr": 87.12,
-      "5yr": 93.79,
-      "itd": 223.38,
-      "cagr_itd": 10.12
+      "ytd": 10.89,
+      "1yr": 28.69,
+      "3yr": 83.13,
+      "5yr": 92.1,
+      "itd": 221.07,
+      "cagr_itd": 10.05
     }
   },
   "risk": {
     "hedra": {
-      "cagr": 14.49,
+      "cagr": 14.41,
       "volatility": 10.14,
-      "sharpe": 1.0767,
-      "sortino": 1.0394,
-      "calmar": 3.1895,
-      "mar": 1.2249,
+      "sharpe": 1.0699,
+      "sortino": 1.033,
+      "calmar": 3.1112,
+      "mar": 1.2183,
       "maxdd": -11.83,
       "maxdd_start": "2020-02-18",
       "maxdd_trough": "2020-03-19",
       "maxdd_recovery": "2020-05-18",
       "beta": 0.4715,
-      "omega": 1.2958,
+      "omega": 1.2942,
       "upside_capture": 26.4,
       "downside_capture": 37.3,
       "capture_ratio": 70.8
     },
     "spy_bh": {
-      "cagr": 10.12,
+      "cagr": 10.05,
       "volatility": 15.94,
-      "sharpe": 0.4913,
-      "sortino": 0.3769,
-      "calmar": 0.8309,
-      "mar": 0.3001,
+      "sharpe": 0.4874,
+      "sortino": 0.374,
+      "calmar": 0.8003,
+      "mar": 0.2981,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",
       "maxdd_recovery": "2020-08-10",
       "beta": 1.0,
-      "omega": 1.171,
+      "omega": 1.17,
       "upside_capture": 100.0,
       "downside_capture": 100.0,
       "capture_ratio": 100.0
