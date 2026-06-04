@@ -1,13 +1,13 @@
 {
   "meta": {
-    "run_date": "2026-06-03",
-    "run_timestamp": "2026-06-03T13:18:26",
+    "run_date": "2026-06-04",
+    "run_timestamp": "2026-06-04T14:03:23",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice."
   },
   "signal": {
-    "date": "2026-06-03",
+    "date": "2026-06-04",
     "archetype": "energy_shock",
     "archetype_display": "Energy Shock",
     "regime": "risk-on",
@@ -40,14 +40,14 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 6,
+      "days_since_last_rebalance": 7,
       "last_rebalance_date": "2026-05-28",
       "last_rebalance_type": "vams_flip"
     }
   },
   "returns": {
     "eidos": {
-      "ytd": 8.08,
+      "ytd": 8.6,
       "2018": 10.88,
       "2019": 20.95,
       "2020": 35.33,
@@ -58,7 +58,7 @@
       "2025": 26.82
     },
     "spy_bh": {
-      "ytd": 10.89,
+      "ytd": 11.33,
       "2018": -4.57,
       "2019": 31.22,
       "2020": 18.33,
@@ -69,7 +69,7 @@
       "2025": 17.72
     },
     "sixty_forty": {
-      "ytd": 6.5,
+      "ytd": 6.83,
       "2018": -2.61,
       "2019": 22.12,
       "2020": 13.99,
@@ -80,7 +80,7 @@
       "2025": 13.51
     },
     "alpha_vs_spy": {
-      "ytd": -2.81,
+      "ytd": -2.73,
       "2018": 15.45,
       "2019": -10.27,
       "2020": 17.0,
@@ -94,7 +94,7 @@
       "win_rate": 0.5
     },
     "alpha_vs_6040": {
-      "ytd": 1.58,
+      "ytd": 1.77,
       "2018": 13.49,
       "2019": -1.17,
       "2020": 21.34,
@@ -110,34 +110,34 @@
   },
   "cum_returns": {
     "eidos": {
-      "ytd": 8.08,
-      "1yr": 28.03,
-      "3yr": 89.57,
-      "5yr": 121.51,
-      "itd": 343.8,
-      "cagr_itd": 19.42
+      "ytd": 8.6,
+      "1yr": 29.03,
+      "3yr": 90.49,
+      "5yr": 123.16,
+      "itd": 345.95,
+      "cagr_itd": 19.48
     },
     "spy_bh": {
-      "ytd": 10.89,
-      "1yr": 28.69,
-      "3yr": 83.13,
-      "5yr": 92.1,
-      "itd": 221.07,
-      "cagr_itd": 14.9
+      "ytd": 11.33,
+      "1yr": 28.47,
+      "3yr": 83.85,
+      "5yr": 93.57,
+      "itd": 222.33,
+      "cagr_itd": 14.95
     }
   },
   "risk": {
     "eidos": {
       "label": "eidos",
       "itd": {
-        "cagr": 19.42,
+        "cagr": 19.48,
         "volatility": 7.42,
-        "sharpe": 2.1099,
-        "sortino": 2.13,
-        "calmar": 4.0867,
-        "mar": 2.9969,
-        "beta": 0.1877,
-        "omega": 1.5715,
+        "sharpe": 2.117,
+        "sortino": 2.1371,
+        "calmar": 4.115,
+        "mar": 3.0059,
+        "beta": 0.1846,
+        "omega": 1.5734,
         "maxdd": -6.48,
         "maxdd_start": "2020-03-09",
         "maxdd_end": "2020-03-19",
@@ -146,36 +146,36 @@
         "maxdd_recovery_days": 25,
         "maxdd_duration_days": 309,
         "avg_drawdown": -1.29,
-        "upside_capture": 25.7,
-        "downside_capture": -6.1,
-        "capture_ratio": -421.3
+        "upside_capture": 25.5,
+        "downside_capture": -7.3,
+        "capture_ratio": -349.3
       },
       "trailing_36m": {
-        "cagr": 23.9,
+        "cagr": 24.07,
         "volatility": 7.11,
-        "sharpe": 2.4339,
-        "sortino": 2.4765,
-        "beta": 0.1877,
-        "omega": 1.7333,
+        "sharpe": 2.4543,
+        "sortino": 2.4971,
+        "beta": 0.1846,
+        "omega": 1.7389,
         "maxdd": -5.85,
         "maxdd_duration_days": 54,
         "avg_drawdown": -0.74,
-        "upside_capture": 49.6,
-        "downside_capture": -35.7,
-        "capture_ratio": -138.9
+        "upside_capture": 49.1,
+        "downside_capture": -39.6,
+        "capture_ratio": -124.0
       }
     },
     "spy_bh": {
       "label": "spy_bh",
       "itd": {
-        "cagr": 14.9,
-        "volatility": 19.26,
-        "sharpe": 0.5953,
-        "sortino": 0.5491,
-        "calmar": 1.1985,
-        "mar": 0.442,
+        "cagr": 14.95,
+        "volatility": 19.25,
+        "sharpe": 0.5976,
+        "sortino": 0.5511,
+        "calmar": 1.2053,
+        "mar": 0.4434,
         "beta": 1.0,
-        "omega": 1.17,
+        "omega": 1.1705,
         "maxdd": -33.72,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
@@ -189,15 +189,15 @@
         "capture_ratio": 100.0
       },
       "trailing_36m": {
-        "cagr": 22.48,
-        "volatility": 15.04,
-        "sharpe": 1.0519,
-        "sortino": 1.0087,
+        "cagr": 22.61,
+        "volatility": 15.03,
+        "sharpe": 1.0599,
+        "sortino": 1.0157,
         "beta": 1.0,
-        "omega": 1.3046,
+        "omega": 1.3065,
         "maxdd": -18.76,
         "maxdd_duration_days": 126,
-        "avg_drawdown": -2.58,
+        "avg_drawdown": -2.57,
         "upside_capture": 100.0,
         "downside_capture": 100.0,
         "capture_ratio": 100.0
@@ -206,14 +206,14 @@
     "sixty_forty": {
       "label": "sixty_forty",
       "itd": {
-        "cagr": 9.74,
-        "volatility": 11.86,
-        "sharpe": 0.577,
-        "sortino": 0.5381,
-        "calmar": 1.36,
-        "mar": 0.4637,
-        "beta": 0.6945,
-        "omega": 1.1706,
+        "cagr": 9.77,
+        "volatility": 11.85,
+        "sharpe": 0.5799,
+        "sortino": 0.5407,
+        "calmar": 1.3687,
+        "mar": 0.4654,
+        "beta": 0.6943,
+        "omega": 1.1712,
         "maxdd": -21.0,
         "maxdd_start": "2020-02-19",
         "maxdd_end": "2020-03-23",
@@ -223,22 +223,22 @@
         "maxdd_duration_days": 762,
         "avg_drawdown": -4.62,
         "upside_capture": 36.9,
-        "downside_capture": 80.4,
-        "capture_ratio": 45.9
+        "downside_capture": 80.3,
+        "capture_ratio": 46.0
       },
       "trailing_36m": {
-        "cagr": 15.05,
+        "cagr": 15.15,
         "volatility": 9.68,
-        "sharpe": 0.9856,
-        "sortino": 0.9714,
-        "beta": 0.6945,
-        "omega": 1.3058,
+        "sharpe": 0.9954,
+        "sortino": 0.9806,
+        "beta": 0.6943,
+        "omega": 1.3079,
         "maxdd": -11.07,
         "maxdd_duration_days": 122,
         "avg_drawdown": -1.75,
         "upside_capture": 60.4,
-        "downside_capture": 75.6,
-        "capture_ratio": 79.9
+        "downside_capture": 75.4,
+        "capture_ratio": 80.1
       }
     }
   },
@@ -310,11 +310,11 @@
       },
       "ytd": {
         "volatility": 6.61,
-        "sharpe": 2.59,
-        "sortino": 2.796,
+        "sharpe": 2.754,
+        "sortino": 2.974,
         "maxdd": -1.91,
-        "beta": 0.297,
-        "omega": 1.801
+        "beta": 0.298,
+        "omega": 1.852
       }
     },
     "spy_bh": {
@@ -383,19 +383,19 @@
         "omega": 1.216
       },
       "ytd": {
-        "volatility": 13.26,
-        "sharpe": 1.651,
-        "sortino": 1.678,
+        "volatility": 13.2,
+        "sharpe": 1.713,
+        "sortino": 1.734,
         "maxdd": -8.88,
         "beta": 1.0,
-        "omega": 1.382
+        "omega": 1.396
       }
     }
   },
   "regime_distribution": {
     "cumulative": {
       "energy_shock": {
-        "days": 308,
+        "days": 309,
         "pct": 14.6
       },
       "inflation_cycle": {
@@ -416,7 +416,7 @@
       },
       "post_crisis_recovery": {
         "days": 418,
-        "pct": 19.8
+        "pct": 19.7
       },
       "policy_expansion": {
         "days": 125,
@@ -431,7 +431,7 @@
         "pct": 21.8
       },
       "total_risk_on": {
-        "days": 1654,
+        "days": 1655,
         "pct": 78.2
       }
     },
@@ -774,8 +774,8 @@
       },
       "ytd": {
         "energy_shock": {
-          "days": 12,
-          "pct": 11.4
+          "days": 13,
+          "pct": 12.3
         },
         "inflation_cycle": {
           "days": 0,
@@ -795,7 +795,7 @@
         },
         "post_crisis_recovery": {
           "days": 7,
-          "pct": 6.7
+          "pct": 6.6
         },
         "policy_expansion": {
           "days": 0,
@@ -803,14 +803,14 @@
         },
         "structural_expansion": {
           "days": 86,
-          "pct": 81.9
+          "pct": 81.1
         },
         "total_risk_off": {
           "days": 0,
           "pct": 0.0
         },
         "total_risk_on": {
-          "days": 105,
+          "days": 106,
           "pct": 100.0
         }
       }
@@ -5654,6 +5654,114 @@
   },
   "attention": [
     {
+      "ticker": "AUDUSD=X",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "DXY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "EURUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "GBPUSD",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "GC1",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "IWM",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "KRE",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "MOVE",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "RINF",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "SPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "USDBRL",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCAD",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDCHF",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDJPY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDKRW",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "USDTRY",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": false
+    },
+    {
+      "ticker": "VIX",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
       "ticker": "W1",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
@@ -5661,21 +5769,21 @@
     }
   ],
   "signal_context": {
-    "tenure_days": 12,
+    "tenure_days": 13,
     "previous_regime": {
       "archetype": "post_crisis_recovery",
       "archetype_display": "Post-Crisis Recovery",
       "archetype_abbrev": "PCR",
       "days_held": 7,
-      "days_since_exit": 12
+      "days_since_exit": 13
     },
     "risk_cluster": {
       "cluster": "risk-on",
       "pct_deployed": 90.0,
-      "distance": 10.4,
-      "distance_prev": 13.9,
+      "distance": 24.2,
+      "distance_prev": 0.0,
       "lookback_days": 5,
-      "direction": "Deteriorating",
+      "direction": "Improving",
       "closest_threat": "market_narrowing",
       "closest_threat_display": "Market Narrowing"
     }
