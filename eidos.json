@@ -1,7 +1,7 @@
 {
   "meta": {
     "run_date": "2026-06-05",
-    "run_timestamp": "2026-06-05T11:57:20",
+    "run_timestamp": "2026-06-05T12:23:28",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
     "disclaimer": "For educational purposes only. Not investment advice.",
@@ -111,80 +111,46 @@
   },
   "risk": {
     "eidos": {
-      "label": "eidos",
-      "itd": {
-        "cagr": 19.48,
-        "volatility": 7.33,
-        "sharpe": 2.1316,
-        "sortino": 3.2478,
-        "calmar": 4.115,
-        "mar": 3.0059,
-        "beta": 0.1846,
-        "omega": 1.5734,
-        "maxdd": -6.48,
-        "maxdd_start": "2020-03-09",
-        "maxdd_trough": "2020-03-19",
-        "maxdd_recovery": "2020-04-13",
-        "maxdd_episode_days": 10,
-        "maxdd_recovery_days": 25,
-        "maxdd_duration_days": 309,
-        "avg_drawdown": -1.29,
-        "upside_capture": 25.5,
-        "downside_capture": -7.3,
-        "capture_ratio": -349.3
-      },
-      "trailing_36m": {
-        "cagr": 24.07,
-        "volatility": 7.04,
-        "sharpe": 2.4671,
-        "sortino": 3.8048,
-        "beta": 0.1846,
-        "omega": 1.7389,
-        "maxdd": -5.85,
-        "maxdd_duration_days": 54,
-        "avg_drawdown": -0.74,
-        "upside_capture": 49.1,
-        "downside_capture": -39.6,
-        "capture_ratio": -124.0
-      }
+      "cagr": 19.48,
+      "volatility": 7.33,
+      "sharpe": 2.1316,
+      "sortino": 3.2478,
+      "calmar": 4.115,
+      "mar": 3.0059,
+      "maxdd": -6.48,
+      "maxdd_start": "2020-03-09",
+      "maxdd_trough": "2020-03-19",
+      "maxdd_recovery": "2020-04-13",
+      "maxdd_episode_days": 10,
+      "maxdd_recovery_days": 25,
+      "maxdd_duration_days": 309,
+      "avg_drawdown": -1.29,
+      "beta": 0.1846,
+      "omega": 1.5734,
+      "upside_capture": 25.5,
+      "downside_capture": -7.3,
+      "capture_ratio": -349.3
     },
     "spy_bh": {
-      "label": "spy_bh",
-      "itd": {
-        "cagr": 14.95,
-        "volatility": 19.19,
-        "sharpe": 0.6946,
-        "sortino": 0.9735,
-        "calmar": 1.2053,
-        "mar": 0.4434,
-        "beta": 1.0,
-        "omega": 1.1705,
-        "maxdd": -33.72,
-        "maxdd_start": "2020-02-19",
-        "maxdd_trough": "2020-03-23",
-        "maxdd_recovery": "2020-08-10",
-        "maxdd_episode_days": 33,
-        "maxdd_recovery_days": 140,
-        "maxdd_duration_days": 708,
-        "avg_drawdown": -5.84,
-        "upside_capture": 100.0,
-        "downside_capture": 100.0,
-        "capture_ratio": 100.0
-      },
-      "trailing_36m": {
-        "cagr": 22.61,
-        "volatility": 15.08,
-        "sharpe": 1.1299,
-        "sortino": 1.6726,
-        "beta": 1.0,
-        "omega": 1.3065,
-        "maxdd": -18.76,
-        "maxdd_duration_days": 126,
-        "avg_drawdown": -2.57,
-        "upside_capture": 100.0,
-        "downside_capture": 100.0,
-        "capture_ratio": 100.0
-      }
+      "cagr": 14.95,
+      "volatility": 19.19,
+      "sharpe": 0.6946,
+      "sortino": 0.9735,
+      "calmar": 1.2053,
+      "mar": 0.4434,
+      "maxdd": -33.72,
+      "maxdd_start": "2020-02-19",
+      "maxdd_trough": "2020-03-23",
+      "maxdd_recovery": "2020-08-10",
+      "maxdd_episode_days": 33,
+      "maxdd_recovery_days": 140,
+      "maxdd_duration_days": 708,
+      "avg_drawdown": -5.84,
+      "beta": 1.0,
+      "omega": 1.1705,
+      "upside_capture": 100.0,
+      "downside_capture": 100.0,
+      "capture_ratio": 100.0
     }
   },
   "annual_risk": {
@@ -5598,30 +5564,6 @@
     ]
   },
   "attention": [
-    {
-      "ticker": "DXY",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "GC1",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": false
-    },
-    {
-      "ticker": "HG=F",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
-    {
-      "ticker": "MOVE",
-      "issue": "restated",
-      "detail": "historical adj_close updated \u2014 logged to data_revisions",
-      "cascade": true
-    },
     {
       "ticker": "W1",
       "issue": "restated",
