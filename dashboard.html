@@ -1422,53 +1422,59 @@ function renderEidosSignal(perf) {
 // ════════════════════════════════════════════════════════
 // RENDER — EIDOS PERFORMANCE
 // ════════════════════════════════════════════════════════
-function renderEidosPerf(perf) {
-  const ret = perf.returns;
-  const r   = perf.risk.eidos.itd;
-  const rs  = perf.risk.spy_bh.itd;
-  const rb  = perf.rebalancing;
-  const ytdMdd = perf.annual_risk.eidos.ytd.maxdd;
-  const spyYtdMdd = (perf.annual_risk.spy_bh && perf.annual_risk.spy_bh.ytd) ? perf.annual_risk.spy_bh.ytd.maxdd : null;
+function renderPerf(app, data) {
+  // Canonical renderer for series-major apps (eidos, hedra). Reads the
+  // shared schema: cum_returns.<app>/.spy_bh, returns.<app>/.spy_bh,
+  // risk.<app>/.spy_bh (flat), annual_risk.<app>/.spy_bh, rebalancing.
+  const ret = data.returns;
+  const r   = data.risk[app];      // flat risk block
+  const rs  = data.risk.spy_bh;
+  const rb  = data.rebalancing;
+  const ar  = data.annual_risk || {};
+  const ytdMdd    = (ar[app]    && ar[app].ytd)    ? ar[app].ytd.maxdd    : null;
+  const spyYtdMdd = (ar.spy_bh  && ar.spy_bh.ytd)  ? ar.spy_bh.ytd.maxdd  : null;
 
-  // Cumulative — pre-computed percentage values from backend (mirrors Aegis)
-  const cr = perf.cum_returns;
+  // Cumulative — pre-computed percentage values from backend
+  const cr = data.cum_returns;
   let html = [
-    ['YTD',    cr.eidos.ytd,       cr.spy_bh.ytd,       true],
-    ['1 Year', cr.eidos['1yr'],    cr.spy_bh['1yr'],    false],
-    ['3 Year', cr.eidos['3yr'],    cr.spy_bh['3yr'],    false],
-    ['5 Year', cr.eidos['5yr'],    cr.spy_bh['5yr'],    false],
-    ['ITD',    cr.eidos.itd,       cr.spy_bh.itd,       false],
+    ['YTD',    cr[app].ytd,    cr.spy_bh.ytd,    true],
+    ['1 Year', cr[app]['1yr'], cr.spy_bh['1yr'], false],
+    ['3 Year', cr[app]['3yr'], cr.spy_bh['3yr'], false],
+    ['5 Year', cr[app]['5yr'], cr.spy_bh['5yr'], false],
+    ['ITD',    cr[app].itd,    cr.spy_bh.itd,    false],
   ].map(([period, m, b, isYtd]) => {
     const e = edge(m, b);
     return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
   }).join('');
-  const cagrM = cr.eidos.cagr_itd, cagrS = cr.spy_bh.cagr_itd;
-  const cagrE = edge(cagrM, cagrS);
-  html += row(['ITD CAGR', c(fmtPct(cagrM,2),'td-model '+pctCls(cagrM)), c(fmtPct(cagrS,2),pctCls(cagrS)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById('eidosCumulBody').innerHTML = html;
+  const cagrE = edge(cr[app].cagr_itd, cr.spy_bh.cagr_itd);
+  html += row(['ITD CAGR', c(fmtPct(cr[app].cagr_itd,2),'td-model '+pctCls(cr[app].cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
+  document.getElementById(app+'CumulBody').innerHTML = html;
 
-  // Annual
-  const yearOrder = ['ytd','2025','2024','2023','2022','2021','2020','2019','2018'];
+  // Annual — derive years dynamically (no hardcoded list)
+  const years = Object.keys(ret[app]).filter(k => k !== 'ytd').sort().reverse();
+  const yearOrder = ['ytd', ...years];
+  const curYear = new Date().getFullYear();
   html = yearOrder.map(yr => {
-    const label = yr === 'ytd' ? '2026 YTD' : yr;
-    const m = ret.eidos[yr], b = ret.spy_bh[yr];
+    const m = ret[app][yr], b = ret.spy_bh[yr];
+    if (m == null && b == null) return '';
+    const label = yr === 'ytd' ? (curYear + ' YTD') : yr;
     const e = edge(m, b);
     return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
-  }).join('');
-  document.getElementById('eidosAnnualBody').innerHTML = html;
+  }).filter(Boolean).join('');
+  document.getElementById(app+'AnnualBody').innerHTML = html;
 
   // Risk
   const riskDefs = [
-    ['Sharpe Ratio',          r.sharpe,              rs.sharpe,       3, true],
-    ['Sortino Ratio',         r.sortino,             rs.sortino,      3, true],
-    ['Max Drawdown (ITD)',     r.maxdd,           rs.maxdd,    2, false],
-    ['Max Drawdown (YTD)',     ytdMdd,  spyYtdMdd, 2, false],
-    ['Calmar Ratio (t3y)',     r.calmar,              rs.calmar,       3, true],
-    ['MAR',                   r.mar,                 rs.mar,          3, true],
-    ['Omega Ratio',           r.omega,               rs.omega,        3, true],
-    ['Upside Capture',        r.upside_capture,  null,            1, false],
-    ['Downside Capture',      r.downside_capture,null,            1, false],
-    ['Capture Ratio',         r.capture_ratio,       null,            1, false],
+    ['Sharpe Ratio',       r.sharpe,           rs.sharpe,    3, true],
+    ['Sortino Ratio',      r.sortino,          rs.sortino,   3, true],
+    ['Max Drawdown (ITD)', r.maxdd,            rs.maxdd,     2, false],
+    ['Max Drawdown (YTD)', ytdMdd,             spyYtdMdd,    2, false],
+    ['Calmar Ratio (t3y)', r.calmar,           rs.calmar,    3, true],
+    ['MAR',                r.mar,              rs.mar,       3, true],
+    ['Omega Ratio',        r.omega,            rs.omega,     3, true],
+    ['Upside Capture',     r.upside_capture,   null,         1, false],
+    ['Downside Capture',   r.downside_capture, null,         1, false],
+    ['Capture Ratio',      r.capture_ratio,    null,         1, false],
   ];
   html = riskDefs.map(([label, m, b, dec, isRatio]) => {
     const isMdd = label.includes('Drawdown');
@@ -1480,14 +1486,13 @@ function renderEidosPerf(perf) {
     const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
     return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
   }).join('');
-  document.getElementById('eidosRiskBody').innerHTML = html;
+  document.getElementById(app+'RiskBody').innerHTML = html;
 
   // Ops
-  html = 
-         row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
-         row(['Rebalances (YTD)',       c(rb.annual.ytd.total,'td-model')]) +
+  html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
+         row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
          row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
-  document.getElementById('eidosOpsBody').innerHTML = html;
+  document.getElementById(app+'OpsBody').innerHTML = html;
 }
 
 // ════════════════════════════════════════════════════════
@@ -1548,75 +1553,8 @@ function renderHedraSignal(hedra) {
 }
 
 // ════════════════════════════════════════════════════════
-// RENDER — HEDRA PERFORMANCE
+// RENDER — HEDRA PERFORMANCE  (uses shared renderPerf('hedra', …))
 // ════════════════════════════════════════════════════════
-function renderHedraPerf(hedra) {
-  const cr  = hedra.cum_returns;
-  const ret = hedra.returns;
-  const r   = hedra.risk.hedra;
-  const rs  = hedra.risk.spy_bh;
-  const rb  = hedra.rebalancing;
-
-  // Cumulative
-  let html = [
-    ['YTD',    cr.hedra.ytd,    cr.spy_bh.ytd,    true],
-    ['1 Year', cr.hedra['1yr'], cr.spy_bh['1yr'],  false],
-    ['3 Year', cr.hedra['3yr'], cr.spy_bh['3yr'],  false],
-    ['5 Year', cr.hedra['5yr'], cr.spy_bh['5yr'],  false],
-    ['ITD',    cr.hedra.itd,    cr.spy_bh.itd,     false],
-  ].map(([period, m, b, isYtd]) => {
-    const e = edge(m, b);
-    return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
-  }).join('');
-  const cagrE = edge(cr.hedra.cagr_itd, cr.spy_bh.cagr_itd);
-  html += row(['ITD CAGR', c(fmtPct(cr.hedra.cagr_itd,2),'td-model '+pctCls(cr.hedra.cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById('hedraCumulBody').innerHTML = html;
-
-  // Annual
-  const yearOrder = ['ytd','2025','2024','2023','2022','2021','2020','2019','2018'];
-  html = yearOrder.map(yr => {
-    const m = ret.hedra[yr], b = ret.spy_bh[yr];
-    if (m == null && b == null) return '';
-    const label = yr === 'ytd' ? '2026 YTD' : yr;
-    const e = edge(m, b);
-    return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
-  }).filter(Boolean).join('');
-  document.getElementById('hedraAnnualBody').innerHTML = html;
-
-  // Risk metrics — matches Eidos/Aegis structure exactly
-  const ytdMdd    = (hedra.annual_risk && hedra.annual_risk.hedra && hedra.annual_risk.hedra.ytd) ? hedra.annual_risk.hedra.ytd.maxdd : null;
-  const spyYtdMdd = (hedra.annual_risk && hedra.annual_risk.spy_bh && hedra.annual_risk.spy_bh.ytd) ? hedra.annual_risk.spy_bh.ytd.maxdd : null;
-
-  const riskDefs = [
-    ['Sharpe Ratio',       r.sharpe,           rs.sharpe,    3, true],
-    ['Sortino Ratio',      r.sortino,          rs.sortino,   3, true],
-    ['Max Drawdown (ITD)', r.maxdd,            rs.maxdd,     2, false],
-    ['Max Drawdown (YTD)', ytdMdd,             spyYtdMdd,    2, false],
-    ['Calmar Ratio (t3y)', r.calmar,           rs.calmar,    3, true],
-    ['MAR',                r.mar,              rs.mar,       3, true],
-    ['Omega Ratio',        r.omega,            rs.omega,     3, true],
-    ['Upside Capture',     r.upside_capture,   null,         1, false],
-    ['Downside Capture',   r.downside_capture, null,         1, false],
-    ['Capture Ratio',      r.capture_ratio,    null,         1, false],
-  ];
-  html = riskDefs.map(([label, m, b, dec, isRatio]) => {
-    const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || label.includes('Capture');
-    const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
-    if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
-    const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
-    const e     = edge(m, b, dec, isRatio);
-    const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
-    return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
-  }).join('');
-  document.getElementById('hedraRiskBody').innerHTML = html;
-
-  // Ops
-  html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
-         row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
-         row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
-  document.getElementById('hedraOpsBody').innerHTML = html;
-}
 
 // ════════════════════════════════════════════════════════
 // DATA LOADING
@@ -1647,10 +1585,10 @@ async function loadData() {
     try { renderAegisPerf(aegis);   } catch(e) { console.error('renderAegisPerf:', e); }
     try { renderAegisAlloc(aegis);  } catch(e) { console.error('renderAegisAlloc:', e); }
     try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
-    try { renderEidosPerf(eidos);   } catch(e) { console.error('renderEidosPerf:', e); }
+    try { renderPerf('eidos', eidos);   } catch(e) { console.error('renderPerf eidos:', e); }
     try { renderEidosAlloc(eidos); } catch(e) { console.error('renderEidosAlloc:', e); }
     try { renderHedraSignal(hedra);   } catch(e) { console.error('renderHedraSignal:', e); }
-    try { renderHedraPerf(hedra);     } catch(e) { console.error('renderHedraPerf:', e); }
+    try { renderPerf('hedra', hedra);     } catch(e) { console.error('renderPerf hedra:', e); }
   } catch(err) {
     console.error('Data load error:', err);
     const banner = document.getElementById('dataErrorBanner');
