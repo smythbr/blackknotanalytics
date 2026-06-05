@@ -1,12 +1,12 @@
 {
-  "generated": "2026-06-05T00:38:27",
+  "generated": "2026-06-05T13:53:35",
   "signal": {
-    "date": "2026-06-04",
+    "date": "2026-06-05",
     "regime": "GREEN",
     "regime_since": "2026-04-14",
-    "regime_days": 51,
+    "regime_days": 52,
     "last_rebalance_date": "2026-05-27",
-    "p_stress": 0.3187,
+    "p_stress": 0.3853,
     "action_required": false,
     "weights": {
       "SPY": 80.0,
@@ -16,16 +16,16 @@
       "KBE": 0.0
     },
     "signals": {
-      "ewma_z": 0.4863,
-      "rv_minus_z": -0.7551,
-      "oas_z": -1.1098
+      "ewma_z": -1.1624,
+      "rv_minus_z": 1.0746,
+      "oas_z": -1.166
     },
     "vams": {
       "winner": null,
       "reason": "spy_absorbs",
       "scores": {
-        "XOP": -0.443,
-        "KBE": -0.767
+        "XOP": -0.412,
+        "KBE": -0.581
       },
       "trends": {
         "XOP": "Improving",
@@ -35,73 +35,73 @@
     "trends": {
       "agg": "Deteriorating",
       "mom": "Deteriorating",
-      "oas": "Deteriorating",
+      "oas": "Improving",
       "rv": "Deteriorating"
     }
   },
   "perf": {
-    "cagr": 14.38,
-    "cumulative_return": 210.0,
-    "volatility": 10.69,
+    "cagr": 13.99,
+    "cumulative_return": 201.31,
+    "volatility": 10.74,
     "max_drawdown": -11.54,
-    "sharpe": 1.027,
-    "sortino": 1.474,
-    "calmar": 2.762,
-    "mar": 1.247,
-    "omega": 1.263,
-    "beta": 0.578,
-    "ytd_return": 8.3,
-    "current_drawdown": -1.7,
+    "sharpe": 0.991,
+    "sortino": 1.416,
+    "calmar": 2.607,
+    "mar": 1.213,
+    "omega": 1.255,
+    "beta": 0.545,
+    "ytd_return": 5.26,
+    "current_drawdown": -4.45,
     "trades_per_year": 17.9,
     "total_trades": 150,
-    "upside_capture_spy": 32.3,
-    "downside_capture_spy": 50.6,
-    "capture_ratio_spy": 63.8,
+    "upside_capture_spy": 32.4,
+    "downside_capture_spy": 52.6,
+    "capture_ratio_spy": 61.6,
     "upside_capture_bench": 97.4,
-    "downside_capture_bench": 69.9,
-    "capture_ratio_bench": 139.342,
+    "downside_capture_bench": 71.8,
+    "capture_ratio_bench": 135.655,
     "ytd_max_drawdown": -7.47,
     "ytd_rebalances": 9,
-    "alpha_vs_60_40": 4.6
+    "alpha_vs_60_40": 4.5
   },
   "cum_returns": {
     "ytd": {
-      "aegis": 8.3,
-      "bench": 6.2,
-      "spy": 11.33
+      "aegis": 5.26,
+      "bench": 4.2,
+      "spy": 8.45
     },
     "y1": {
-      "aegis": 23.61,
-      "bench": 19.07,
-      "spy": 28.47
+      "aegis": 19.16,
+      "bench": 16.21,
+      "spy": 25.18
     },
     "y3": {
-      "aegis": 75.5,
-      "bench": 52.86,
-      "spy": 83.85
+      "aegis": 69.17,
+      "bench": 49.55,
+      "spy": 79.45
     },
     "y5": {
-      "aegis": 93.61,
-      "bench": 51.25,
-      "spy": 91.81
+      "aegis": 88.19,
+      "bench": 48.4,
+      "spy": 86.86
     },
     "itd": {
-      "aegis": 210.0,
-      "bench": 118.73,
-      "spy": 220.04
+      "aegis": 201.31,
+      "bench": 114.61,
+      "spy": 211.78
     }
   },
   "bench_kpis": {
-    "cagr": 9.77,
-    "cumulative_return": 118.73,
-    "volatility": 11.41,
+    "cagr": 9.52,
+    "cumulative_return": 114.61,
+    "volatility": 11.43,
     "max_drawdown": -22.14,
-    "sharpe": 0.599,
-    "calmar": 1.343,
-    "mar": 0.441,
-    "sortino": 0.822,
-    "omega": 1.173,
-    "beta": 0.669,
+    "sharpe": 0.577,
+    "calmar": 1.294,
+    "mar": 0.43,
+    "sortino": 0.792,
+    "omega": 1.168,
+    "beta": 0.667,
     "upside_capture_spy": null,
     "downside_capture_spy": null,
     "capture_ratio_spy": null,
@@ -110,15 +110,15 @@
     "capture_ratio_bench": null
   },
   "spy_kpis": {
-    "cagr": 14.91,
-    "cumulative_return": 222.33,
-    "volatility": 19.25,
+    "cagr": 14.55,
+    "cumulative_return": 214.01,
+    "volatility": 19.27,
     "max_drawdown": -33.72,
-    "sharpe": 0.596,
-    "calmar": 1.201,
-    "mar": 0.442,
-    "sortino": 0.821,
-    "omega": 1.17,
+    "sharpe": 0.579,
+    "calmar": 1.143,
+    "mar": 0.432,
+    "sortino": 0.796,
+    "omega": 1.167,
     "beta": 1.0,
     "ytd_max_drawdown": -8.88
   },
@@ -172,25 +172,25 @@
       "is_ytd": false
     },
     "2026": {
-      "aegis": 8.3,
-      "bench": 6.2,
-      "spy": 11.3,
+      "aegis": 5.3,
+      "bench": 4.2,
+      "spy": 8.5,
       "is_ytd": true
     }
   },
   "allocations": [
     {
-      "date": "2026-06-04",
+      "date": "2026-06-05",
       "regime": "Risk-On",
       "spy": 80.0,
       "gld": 20.0,
       "bil": 0.0,
       "rider_ticker": null,
       "rider_pct": 0.0,
-      "p_stress": 0.3187,
+      "p_stress": 0.3853,
       "trigger": "Current",
       "is_rebalance": false,
-      "days_since_prior": 8
+      "days_since_prior": 9
     },
     {
       "date": "2026-05-27",
