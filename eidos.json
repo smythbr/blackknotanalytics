@@ -1,13 +1,21 @@
 {
   "meta": {
-    "run_date": "2026-06-04",
-    "run_timestamp": "2026-06-04T20:58:55",
+    "run_date": "2026-06-05",
+    "run_timestamp": "2026-06-05T11:57:20",
     "performance_inception": "2018-01-01",
     "model": "Regime 6",
-    "disclaimer": "For educational purposes only. Not investment advice."
+    "disclaimer": "For educational purposes only. Not investment advice.",
+    "period_start": "2018-01-01",
+    "period_end": "2026-06-04",
+    "inception": "2018-01-01",
+    "return_basis": "daily simple total return, geometrically linked",
+    "annualisation": "252 trading days (x-root-252 for risk)",
+    "risk_free": "short-dated US Treasury bill (daily)",
+    "benchmark": "SPY total return (buy & hold)",
+    "fees": "gross of fees and transaction costs"
   },
   "signal": {
-    "date": "2026-06-04",
+    "date": "2026-06-05",
     "archetype": "energy_shock",
     "archetype_display": "Energy Shock",
     "regime": "risk-on",
@@ -40,7 +48,7 @@
       "archetype_before": null,
       "archetype_after": null,
       "weights_before": null,
-      "days_since_last_rebalance": 7,
+      "days_since_last_rebalance": 8,
       "last_rebalance_date": "2026-05-28",
       "last_rebalance_type": "vams_flip"
     }
@@ -68,17 +76,6 @@
       "2024": 24.89,
       "2025": 17.72
     },
-    "sixty_forty": {
-      "ytd": 6.83,
-      "2018": -2.61,
-      "2019": 22.12,
-      "2020": 13.99,
-      "2021": 16.53,
-      "2022": -16.11,
-      "2023": 17.97,
-      "2024": 15.46,
-      "2025": 13.51
-    },
     "alpha_vs_spy": {
       "ytd": -2.73,
       "2018": 15.45,
@@ -92,20 +89,6 @@
       "wins": 4,
       "losses": 4,
       "win_rate": 0.5
-    },
-    "alpha_vs_6040": {
-      "ytd": 1.77,
-      "2018": 13.49,
-      "2019": -1.17,
-      "2020": 21.34,
-      "2021": 1.91,
-      "2022": 14.71,
-      "2023": 7.72,
-      "2024": 6.08,
-      "2025": 13.31,
-      "wins": 7,
-      "losses": 1,
-      "win_rate": 0.875
     }
   },
   "cum_returns": {
@@ -131,16 +114,16 @@
       "label": "eidos",
       "itd": {
         "cagr": 19.48,
-        "volatility": 7.42,
-        "sharpe": 2.117,
-        "sortino": 2.1371,
+        "volatility": 7.33,
+        "sharpe": 2.1316,
+        "sortino": 3.2478,
         "calmar": 4.115,
         "mar": 3.0059,
         "beta": 0.1846,
         "omega": 1.5734,
         "maxdd": -6.48,
         "maxdd_start": "2020-03-09",
-        "maxdd_end": "2020-03-19",
+        "maxdd_trough": "2020-03-19",
         "maxdd_recovery": "2020-04-13",
         "maxdd_episode_days": 10,
         "maxdd_recovery_days": 25,
@@ -152,9 +135,9 @@
       },
       "trailing_36m": {
         "cagr": 24.07,
-        "volatility": 7.11,
-        "sharpe": 2.4543,
-        "sortino": 2.4971,
+        "volatility": 7.04,
+        "sharpe": 2.4671,
+        "sortino": 3.8048,
         "beta": 0.1846,
         "omega": 1.7389,
         "maxdd": -5.85,
@@ -169,16 +152,16 @@
       "label": "spy_bh",
       "itd": {
         "cagr": 14.95,
-        "volatility": 19.25,
-        "sharpe": 0.5976,
-        "sortino": 0.5511,
+        "volatility": 19.19,
+        "sharpe": 0.6946,
+        "sortino": 0.9735,
         "calmar": 1.2053,
         "mar": 0.4434,
         "beta": 1.0,
         "omega": 1.1705,
         "maxdd": -33.72,
         "maxdd_start": "2020-02-19",
-        "maxdd_end": "2020-03-23",
+        "maxdd_trough": "2020-03-23",
         "maxdd_recovery": "2020-08-10",
         "maxdd_episode_days": 33,
         "maxdd_recovery_days": 140,
@@ -190,9 +173,9 @@
       },
       "trailing_36m": {
         "cagr": 22.61,
-        "volatility": 15.03,
-        "sharpe": 1.0599,
-        "sortino": 1.0157,
+        "volatility": 15.08,
+        "sharpe": 1.1299,
+        "sortino": 1.6726,
         "beta": 1.0,
         "omega": 1.3065,
         "maxdd": -18.76,
@@ -202,116 +185,78 @@
         "downside_capture": 100.0,
         "capture_ratio": 100.0
       }
-    },
-    "sixty_forty": {
-      "label": "sixty_forty",
-      "itd": {
-        "cagr": 9.77,
-        "volatility": 11.85,
-        "sharpe": 0.5799,
-        "sortino": 0.5407,
-        "calmar": 1.3687,
-        "mar": 0.4654,
-        "beta": 0.6943,
-        "omega": 1.1712,
-        "maxdd": -21.0,
-        "maxdd_start": "2020-02-19",
-        "maxdd_end": "2020-03-23",
-        "maxdd_recovery": "2020-07-20",
-        "maxdd_episode_days": 33,
-        "maxdd_recovery_days": 119,
-        "maxdd_duration_days": 762,
-        "avg_drawdown": -4.62,
-        "upside_capture": 36.9,
-        "downside_capture": 80.3,
-        "capture_ratio": 46.0
-      },
-      "trailing_36m": {
-        "cagr": 15.15,
-        "volatility": 9.68,
-        "sharpe": 0.9954,
-        "sortino": 0.9806,
-        "beta": 0.6943,
-        "omega": 1.3079,
-        "maxdd": -11.07,
-        "maxdd_duration_days": 122,
-        "avg_drawdown": -1.75,
-        "upside_capture": 60.4,
-        "downside_capture": 75.4,
-        "capture_ratio": 80.1
-      }
     }
   },
   "annual_risk": {
     "eidos": {
       "2018": {
-        "volatility": 4.7,
-        "sharpe": 1.914,
-        "sortino": 1.942,
+        "volatility": 4.61,
+        "sharpe": 1.898,
+        "sortino": 2.942,
         "maxdd": -3.91,
         "beta": 0.058,
         "omega": 1.525
       },
       "2019": {
-        "volatility": 5.15,
-        "sharpe": 3.391,
-        "sortino": 3.826,
+        "volatility": 5.09,
+        "sharpe": 3.373,
+        "sortino": 5.851,
         "maxdd": -1.57,
         "beta": 0.237,
         "omega": 1.972
       },
       "2020": {
-        "volatility": 10.64,
-        "sharpe": 2.799,
-        "sortino": 2.516,
+        "volatility": 10.61,
+        "sharpe": 2.861,
+        "sortino": 4.14,
         "maxdd": -6.48,
         "beta": 0.078,
         "omega": 1.641
       },
       "2021": {
         "volatility": 8.45,
-        "sharpe": 2.015,
-        "sortino": 2.165,
+        "sharpe": 2.057,
+        "sortino": 3.26,
         "maxdd": -2.78,
         "beta": 0.352,
         "omega": 1.411
       },
       "2022": {
-        "volatility": 7.23,
-        "sharpe": -0.416,
-        "sortino": -0.426,
+        "volatility": 7.0,
+        "sharpe": -0.368,
+        "sortino": -0.518,
         "maxdd": -5.81,
         "beta": 0.097,
         "omega": 0.966
       },
       "2023": {
-        "volatility": 6.51,
-        "sharpe": 2.815,
-        "sortino": 3.182,
+        "volatility": 6.5,
+        "sharpe": 2.833,
+        "sortino": 4.812,
         "maxdd": -3.05,
         "beta": 0.264,
         "omega": 1.894
       },
       "2024": {
-        "volatility": 8.06,
-        "sharpe": 1.794,
-        "sortino": 1.617,
+        "volatility": 8.05,
+        "sharpe": 1.837,
+        "sortino": 2.641,
         "maxdd": -5.85,
         "beta": 0.557,
         "omega": 1.535
       },
       "2025": {
-        "volatility": 6.93,
-        "sharpe": 2.909,
-        "sortino": 3.203,
+        "volatility": 6.88,
+        "sharpe": 2.918,
+        "sortino": 4.765,
         "maxdd": -2.62,
         "beta": 0.12,
         "omega": 1.841
       },
       "ytd": {
-        "volatility": 6.61,
-        "sharpe": 2.754,
-        "sortino": 2.974,
+        "volatility": 6.36,
+        "sharpe": 2.678,
+        "sortino": 4.245,
         "maxdd": -1.91,
         "beta": 0.298,
         "omega": 1.852
@@ -319,73 +264,73 @@
     },
     "spy_bh": {
       "2018": {
-        "volatility": 17.15,
-        "sharpe": -0.377,
-        "sortino": -0.335,
+        "volatility": 17.04,
+        "sharpe": -0.292,
+        "sortino": -0.384,
         "maxdd": -19.35,
         "beta": 1.0,
         "omega": 0.966
       },
       "2019": {
-        "volatility": 12.53,
-        "sharpe": 2.011,
-        "sortino": 1.851,
+        "volatility": 12.51,
+        "sharpe": 2.078,
+        "sortino": 3.002,
         "maxdd": -6.62,
         "beta": 1.0,
         "omega": 1.485
       },
       "2020": {
-        "volatility": 33.65,
-        "sharpe": 0.486,
-        "sortino": 0.421,
+        "volatility": 33.4,
+        "sharpe": 0.658,
+        "sortino": 0.899,
         "maxdd": -33.72,
         "beta": 1.0,
         "omega": 1.143
       },
       "2021": {
         "volatility": 12.99,
-        "sharpe": 1.952,
-        "sortino": 1.879,
+        "sharpe": 2.018,
+        "sortino": 3.018,
         "maxdd": -5.11,
         "beta": 1.0,
         "omega": 1.396
       },
       "2022": {
-        "volatility": 24.31,
-        "sharpe": -0.889,
-        "sortino": -0.91,
+        "volatility": 24.24,
+        "sharpe": -0.767,
+        "sortino": -1.058,
         "maxdd": -24.5,
         "beta": 1.0,
         "omega": 0.892
       },
       "2023": {
-        "volatility": 13.09,
-        "sharpe": 1.423,
-        "sortino": 1.436,
+        "volatility": 13.08,
+        "sharpe": 1.485,
+        "sortino": 2.26,
         "maxdd": -9.97,
         "beta": 1.0,
         "omega": 1.349
       },
       "2024": {
-        "volatility": 12.58,
-        "sharpe": 1.364,
-        "sortino": 1.263,
+        "volatility": 12.57,
+        "sharpe": 1.429,
+        "sortino": 2.036,
         "maxdd": -8.41,
         "beta": 1.0,
         "omega": 1.368
       },
       "2025": {
-        "volatility": 19.33,
-        "sharpe": 0.638,
-        "sortino": 0.614,
+        "volatility": 19.49,
+        "sharpe": 0.729,
+        "sortino": 1.094,
         "maxdd": -18.76,
         "beta": 1.0,
         "omega": 1.216
       },
       "ytd": {
-        "volatility": 13.2,
-        "sharpe": 1.713,
-        "sortino": 1.734,
+        "volatility": 13.22,
+        "sharpe": 1.777,
+        "sortino": 2.723,
         "maxdd": -8.88,
         "beta": 1.0,
         "omega": 1.396
@@ -5667,6 +5612,12 @@
     },
     {
       "ticker": "HG=F",
+      "issue": "restated",
+      "detail": "historical adj_close updated \u2014 logged to data_revisions",
+      "cascade": true
+    },
+    {
+      "ticker": "MOVE",
       "issue": "restated",
       "detail": "historical adj_close updated \u2014 logged to data_revisions",
       "cascade": true
