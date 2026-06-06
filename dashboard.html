@@ -121,7 +121,7 @@ function renderCard(data) {
     `<div class="signal-kpi"><div class="signal-kpi-label">${k.label}</div>
       <div class="signal-kpi-val ${valCls(k.value)}">${fmtPct(k.value)}</div></div>`).join('');
   const alloc = (c.weights || []).map(w =>
-    `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${w.label}</div>
+    `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${w.label === 'Fixed Income' ? 'FI' : w.label}</div>
       <div class="signal-alloc-pct ${w.pct === 0 ? 'zero' : ''}">${w.pct == null ? '—' : Math.round(w.pct) + '%'}</div></div>`).join('');
   return `<div class="signal-card clickable" onclick="navTo('${m.id}')">
     <div class="signal-card-header">
@@ -147,15 +147,15 @@ function blkSignal(b, data) {
         <div class="signal-alloc-pct ${pct === 0 ? 'zero' : ''}">${pct == null ? '—' : Math.round(pct) + '%'}</div></div>`;
     }).join('');
     const act = (b.action || {}).rebalance_required;
-    inner = `<div class="signal-status ${act ? 'action' : ''}">${act ? 'Action Required' : 'Holding'}</div>
-      <div class="signal-alloc-row">${strip}</div>`;
+    const statusLine = act ? `<div class="signal-status action">Action Required</div>` : '';
+    inner = `${statusLine}<div class="signal-alloc-row">${strip}</div>`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Signal</div>
     <div class="signal-panel">${inner}</div></div>`;
 }
 
 function perfBlock(heading, headLabel, modelId, mObj, sObj, rows, ratioKeys) {
-  const head = `<tr><th>${headLabel}</th><th class="col-model">${modelId.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+  const head = `<tr><th>${headLabel}</th><th class="col-model">${modelId.toUpperCase()}</th><th>SPY</th></tr>`;
   const body = rows.map(([label, key]) => {
     const isRatio = ratioKeys && ratioKeys.indexOf(key) !== -1;
     const mv = mObj ? mObj[key] : null, sv = sObj ? sObj[key] : null;
@@ -183,7 +183,7 @@ function blkPerformance(b, data) {
     ]);
     if (am) {
       const years = Object.keys(am).filter(k => /^\d{4}$/.test(k)).sort();
-      const head = `<tr><th>Year</th><th class="col-model">${id.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+      const head = `<tr><th>Year</th><th class="col-model">${id.toUpperCase()}</th><th>SPY</th></tr>`;
       const rowsArr = years.concat(am.ytd !== undefined ? ['ytd'] : []);
       const body = rowsArr.map(y => {
         const label = y === 'ytd' ? 'YTD' : y;
@@ -201,7 +201,7 @@ function blkPerformance(b, data) {
       ['Beta','beta'], ['Omega','omega'], ['Upside Capture','upside_capture'], ['Downside Capture','downside_capture'],
     ], ['sharpe','sortino','calmar','mar','beta','omega']);
   } else {
-    inner = `<div class="perf-table-note">Performance is published once the signal is live.</div>`;
+    inner = `<div class="signal-panel"><div class="signal-pending">Performance is published once the signal is live.</div></div>`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Performance</div>${inner}</div>`;
 }
@@ -210,7 +210,7 @@ function blkAllocation(b, data) {
   const rows = b.rows || [];
   let inner;
   if (!rows.length) {
-    inner = `<div class="perf-table-note">Allocation detail is published once the signal is live.</div>`;
+    inner = `<div class="signal-panel"><div class="signal-pending">Allocation detail is published once the signal is live.</div></div>`;
   } else {
     const cols = b.columns || [];
     const head = '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>';
