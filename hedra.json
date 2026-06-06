@@ -10,20 +10,7 @@
     "fees": "gross of fees and transaction costs"
   },
   "signal": {
-    "weights": {
-      "A": {
-        "target_weight": 60.0
-      },
-      "B": {
-        "target_weight": 0.0
-      },
-      "C": {
-        "target_weight": 0.0
-      },
-      "D": {
-        "target_weight": 40.0
-      }
-    },
+    "date": "2026-06-05",
     "action": {
       "rebalance_required": false
     }
@@ -63,8 +50,8 @@
     },
     "spy_bh": {
       "ytd": 8.45,
-      "1yr": 25.18,
-      "3yr": 79.11,
+      "1yr": 25.79,
+      "3yr": 79.45,
       "5yr": 86.86,
       "itd": 214.01,
       "cagr_itd": 9.82
@@ -86,7 +73,7 @@
       "maxdd_recovery_days": 60,
       "maxdd_duration_days": 611,
       "avg_drawdown": -4.09,
-      "beta": 0.4799,
+      "beta": 0.4794,
       "omega": 1.2891,
       "upside_capture": 26.4,
       "downside_capture": 38.8,
@@ -95,10 +82,10 @@
     "spy_bh": {
       "cagr": 9.82,
       "volatility": 15.94,
-      "sharpe": 0.5581,
-      "sortino": 0.7816,
-      "calmar": 0.7636,
-      "mar": 0.2913,
+      "sharpe": 0.558,
+      "sortino": 0.7815,
+      "calmar": 0.7663,
+      "mar": 0.2912,
       "maxdd": -33.72,
       "maxdd_start": "2020-02-19",
       "maxdd_trough": "2020-03-23",

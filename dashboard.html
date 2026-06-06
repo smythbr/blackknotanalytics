@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v3.0 -->
+<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v5.0
+     Architecture:
+       • One model live (Hedra); second model drops in via the MODELS registry.
+       • The JSON is a strict VIEW-MODEL: it contains only what this page renders.
+         No weights, no holdings, no internal state — nothing that isn't displayed.
+       • Hedra publishes exactly: Action status + performance. Never allocations.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,448 +16,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bk.css">
-<style>
-
-/* ─── LAYOUT ─────────────────────────────────────────────── */
-body { overflow-x:hidden; }
-.db-wrap { min-height:100vh; display:flex; flex-direction:column; }
-
-/* ─── NAVIGATION ─────────────────────────────────────────── */
-.db-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:max(18px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) 18px max(28px,env(safe-area-inset-left));
-  background:rgba(0,0,0,0.95);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-}
-.db-nav-logo img { height:40px; width:auto; display:block; }
-.db-nav-right { display:flex; align-items:center; gap:24px; }
-.db-nav-link {
-  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
-  letter-spacing:0.15em; text-transform:uppercase;
-  color:var(--grey); cursor:pointer; padding:6px 0;
-  background:none; border:none; transition:color 0.15s;
-}
-.db-nav-link:hover { color:var(--white); }
-.db-nav-link.active { color:var(--white); }
-.db-nav-signout {
-  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
-  letter-spacing:0.15em; text-transform:uppercase;
-  color:var(--red); cursor:pointer; background:none; border:none;
-  transition:opacity 0.15s;
-}
-.db-nav-signout:hover { opacity:0.75; }
-.db-hamburger {
-  display:flex; flex-direction:column; justify-content:center;
-  gap:5px; width:44px; height:44px; padding:10px;
-  cursor:pointer; background:none; border:none;
-}
-.db-hamburger span {
-  display:block; height:1.5px; background:var(--white);
-  transition:all 0.3s ease; transform-origin:center;
-}
-.db-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
-.db-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-.db-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-
-/* ─── MENU OVERLAY ───────────────────────────────────────── */
-.db-menu-overlay {
-  position:fixed; top:68px; right:16px; z-index:199;
-  background:#0e0e0e; border:1px solid rgba(255,255,255,0.08);
-  display:flex; flex-direction:column; min-width:200px; padding:6px 0;
-  opacity:0; pointer-events:none; transform:translateY(-6px);
-  transition:opacity 0.18s ease, transform 0.18s ease;
-  box-shadow:0 12px 40px rgba(0,0,0,0.7);
-}
-.db-menu-overlay.open { opacity:1; pointer-events:all; transform:translateY(0); }
-.db-menu-overlay button {
-  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
-  letter-spacing:0.18em; text-transform:uppercase; color:var(--grey);
-  padding:11px 22px; min-height:44px; display:flex; align-items:center;
-  background:none; border:none; cursor:pointer; text-align:left; width:100%;
-  transition:color 0.15s, background 0.15s;
-}
-.db-menu-overlay button:hover { color:var(--white); background:rgba(255,255,255,0.04); }
-.db-menu-overlay button.active { color:var(--white); }
-.menu-divider { height:1px; background:rgba(204,16,16,0.35); margin:4px 0; }
-.db-menu-signout { color:var(--red) !important; }
-
-/* ─── PAGE LAYOUT ────────────────────────────────────────── */
-.db-page { padding-top:calc(72px + env(safe-area-inset-top)); flex:1; }
-.db-page-section { display:none; }
-.db-page-section.active { display:block; }
-.db-inner { max-width:1100px; margin:0 auto; padding:48px 28px 80px; }
-
-/* ─── SECTION CHROME ─────────────────────────────────────── */
-.db-eyebrow {
-  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.28em;
-  text-transform:uppercase; color:var(--red);
-  display:flex; align-items:center; gap:10px; margin-bottom:8px;
-}
-.db-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--red); }
-.db-title {
-  font-family:var(--font-display); font-size:clamp(1.6rem,2.5vw,2.2rem);
-  font-weight:300; color:var(--white); line-height:1.1; margin-bottom:8px;
-}
-.db-sub { font-size:var(--fs-md); color:var(--grey); line-height:1.7; margin-bottom:36px; max-width:680px; }
-.db-rule { height:1px; background:var(--line); margin:52px 0; }
-
-/* ─── TODAY'S SIGNAL PAGE ────────────────────────────────── */
-.signal-date { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.08em; margin-bottom:36px; }
-.signal-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.signal-card {
-  background:var(--card-bg);
-  border:1px solid var(--card-border);
-  border-left:3px solid var(--red);
-  padding:32px 28px 28px;
-}
-.signal-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-.signal-card-name { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--white); }
-.signal-badge {
-  font-size:var(--fs-xs); font-weight:700; letter-spacing:0.16em;
-  text-transform:uppercase; padding:5px 12px; border:1px solid;
-}
-.signal-badge.hold   { color:var(--green-pos);  border-color:rgba(74,222,128,0.35);  background:rgba(74,222,128,0.06); }
-.signal-badge.action { color:var(--yellow-neu); border-color:rgba(251,191,36,0.35); background:rgba(251,191,36,0.08); }
-.signal-kpis { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
-.signal-kpi { background:#0a0a0a; padding:16px 18px; }
-.signal-kpi-label { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:8px; }
-.signal-kpi-val { font-family:var(--font-display); font-size:2.4rem; font-weight:300; line-height:1; }
-.signal-kpi-val.pos { color:var(--green-pos); }
-.signal-kpi-val.neg { color:var(--red-neg); }
-.signal-kpi-val.neu { color:var(--white); }
-.signal-alloc-label { font-size:var(--fs-md); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--grey); margin-bottom:12px; }
-.signal-alloc-row { display:flex; gap:8px; }
-.signal-alloc-block { flex:1; text-align:center; padding:14px 8px 12px; background:#0a0a0a; }
-.signal-alloc-ticker { font-size:var(--fs-md); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey); margin-bottom:6px; }
-.signal-alloc-pct { font-family:var(--font-display); font-size:1.6rem; font-weight:600; color:var(--white); }
-.signal-alloc-pct.zero { color:#444; }
-
-/* ─── GAUGES ─────────────────────────────────────────────── */
-.gauge-card {
-  background:#111; border:1px solid rgba(255,255,255,0.12);
-  padding:22px 26px 20px; margin-bottom:2px;
-}
-.gauge-title { font-size:var(--fs-sm); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--white); margin-bottom:4px; }
-.gauge-subtitle { font-size:var(--fs-xs); color:var(--grey); margin-bottom:18px; letter-spacing:0.06em; }
-.gauge-track {
-  height:10px;
-  background:linear-gradient(to right, var(--red) 0%, var(--red) 33%, var(--yellow-neu) 33%, var(--yellow-neu) 60%, var(--green-pos) 60%, var(--green-pos) 100%);
-  position:relative; margin-bottom:10px;
-}
-.gauge-track.vams-track {
-  /* VAMS rider zones differ from PRISM:
-     z range [-2,+2] maps to bar [0%,100%].
-     Engagement threshold is z=0 → green starts at 50%.
-     Red/yellow boundary at z=-0.5 → 37.5%. */
-  background:linear-gradient(to right, var(--red) 0%, var(--red) 37.5%, var(--yellow-neu) 37.5%, var(--yellow-neu) 50%, var(--green-pos) 50%, var(--green-pos) 100%);
-}
-.gauge-dot {
-  width:16px; height:16px; background:var(--white); border-radius:50%;
-  position:absolute; top:50%; transform:translate(-50%,-50%);
-  border:2px solid #111;
-}
-.gauge-dir-row { display:flex; justify-content:flex-end; margin-bottom:6px; min-height:18px; }
-.gauge-dir { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
-.gauge-sub-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; margin-bottom:2px; }
-.vams-section { margin-top:28px; }
-.vams-eyebrow {
-  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.28em; text-transform:uppercase;
-  color:var(--red); display:flex; align-items:center; gap:10px; margin-bottom:14px;
-}
-.vams-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--red); }
-.vams-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-.trend-badge {
-  display:inline-block; font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.12em; text-transform:uppercase;
-  padding:2px 8px; border:1px solid; margin-left:8px;
-}
-.trend-improving    { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
-.trend-deteriorating{ color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
-/* Current-state row — prepended to allocation tables, marks the live portfolio.
-   A subtle white left-border distinguishes it without breaking the table flow. */
-.alloc-table tr.is-current td {
-  background: rgba(255,255,255,0.025);
-  border-left: 2px solid var(--white);
-  color: var(--white);
-}
-.alloc-table tr.is-current td:not(:first-child) {
-  border-left: none;
-}
-.alloc-table tr.is-current td.td-model,
-.alloc-table tr.is-current td:nth-child(1) {
-  font-weight: 600;
-}
-
-.eidos-action-row { margin-top:16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-
-/* ─── EIDOS SIGNAL PANEL (new) ───────────────────────────── */
-.esig-card {
-  background:#111; border:1px solid rgba(255,255,255,0.12);
-  padding:24px 26px 22px;
-}
-.esig-regime-name {
-  font-family:var(--font-display);
-  font-size:2rem; font-weight:300; line-height:1.15;
-  color:var(--white); margin-bottom:4px;
-}
-.esig-regime-meta {
-  font-size:var(--fs-xs); color:var(--grey);
-  letter-spacing:0.1em; margin-bottom:26px;
-}
-.esig-section { margin-bottom:22px; }
-.esig-eyebrow {
-  font-size:var(--fs-sm); font-weight:700;
-  letter-spacing:0.28em; text-transform:uppercase;
-  color:var(--red);
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:14px;
-}
-.esig-eyebrow::before {
-  content:''; display:block;
-  width:20px; height:1px; background:var(--red);
-}
-
-.esig-cluster-labels {
-  display:flex; justify-content:space-between; align-items:baseline;
-  margin-bottom:6px;
-}
-.esig-cluster-label {
-  font-size:var(--fs-md); font-weight:700;
-  letter-spacing:0.22em; text-transform:uppercase;
-  transition:opacity 0.2s;
-}
-.esig-cluster-label-off { color:var(--red-neg);   opacity:0.35; }
-.esig-cluster-label-on  { color:var(--green-pos); opacity:0.35; }
-.esig-cluster.active-on  .esig-cluster-label-on  { opacity:1; }
-.esig-cluster.active-off .esig-cluster-label-off { opacity:1; }
-.esig-cluster-bar { position:relative; height:10px; margin-bottom:10px; }
-.esig-cluster-off-zone {
-  position:absolute; left:0; top:0; width:50%; height:100%;
-  background:var(--red);
-}
-.esig-cluster-on-zone {
-  position:absolute; right:0; top:0; width:50%; height:100%;
-  background:var(--green-pos);
-}
-.esig-cluster-boundary {
-  position:absolute; left:50%; top:-4px; bottom:-4px;
-  width:1px; background:rgba(255,255,255,0.7);
-  transform:translateX(-0.5px);
-}
-.esig-cluster-dot {
-  position:absolute; top:50%; width:16px; height:16px;
-  border-radius:50%; background:var(--white);
-  border:2px solid #111;
-  transform:translate(-50%,-50%);
-  transition:left 0.4s ease; z-index:2;
-}
-.esig-cluster-bar-labels {
-  display:flex; justify-content:space-around;
-  font-size:var(--fs-xs); letter-spacing:0.08em;
-  margin-bottom:8px;
-}
-.esig-cluster-bar-label {
-  text-align:center; color:var(--grey);
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  max-width:48%;
-}
-.esig-cluster-bar-label.is-active   { color:var(--light-grey); font-weight:600; }
-.esig-cluster-bar-label.is-inactive { color:var(--grey); }
-
-.esig-cluster-detail {
-  display:flex; justify-content:space-between; align-items:baseline;
-  font-size:var(--fs-xs); color:var(--grey);
-  letter-spacing:0.06em;
-}
-.esig-cluster-detail .esig-cluster-pct  { color:var(--white); font-weight:600; }
-.esig-cluster-detail .dir-improving     { color:var(--green-pos); }
-.esig-cluster-detail .dir-deteriorating { color:var(--red-neg); }
-.esig-cluster-detail .dir-stable        { color:var(--yellow-neu); }
-
-.esig-prev {
-  font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.06em;
-  padding:14px 0;
-  border-top:1px solid rgba(255,255,255,0.06);
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  margin-bottom:22px;
-}
-.esig-prev strong { color:var(--light-grey); font-weight:600; }
-
-.esig-legend { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.esig-legend-head {
-  font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.18em; text-transform:uppercase;
-  margin-bottom:10px;
-}
-.esig-legend-head-on  { color:var(--green-pos); }
-.esig-legend-head-off { color:var(--red); }
-.esig-legend-item {
-  font-size:var(--fs-xs); color:var(--grey);
-  letter-spacing:0.04em; line-height:1.95;
-  padding:1px 0;
-}
-.esig-legend-item.is-prev    { color:var(--light-grey); }
-.esig-legend-item.is-current { color:var(--white); font-weight:600; }
-.esig-abbrev {
-  display:inline-block; min-width:34px;
-  font-weight:700; letter-spacing:0.1em; opacity:0.65;
-}
-.esig-legend-item.is-current .esig-abbrev,
-.esig-legend-item.is-prev    .esig-abbrev { opacity:1; }
-
-@media (max-width:480px) {
-  .esig-card { padding:20px 18px 18px; }
-  .esig-regime-name { font-size:1.7rem; }
-  .esig-legend { grid-template-columns:1fr; gap:14px; }
-}
-
-/* ─── PERFORMANCE TABLES ─────────────────────────────────── */
-.perf-table-block { margin-bottom:44px; }
-.perf-table-heading {
-  font-size:var(--fs-xs); font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
-  color:var(--white); margin-bottom:14px; padding-bottom:10px;
-  border-bottom:1px solid rgba(204,16,16,0.3);
-}
-.perf-table-note { font-size:var(--fs-xs); color:var(--grey); font-style:italic; margin-bottom:14px; }
-.perf-table-wrap { overflow-x:auto; }
-.perf-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:360px; table-layout:fixed; }
-.perf-table th:first-child, .perf-table td:first-child { width:52%; }
-.perf-table th:nth-child(2), .perf-table td:nth-child(2) { width:16%; }
-.perf-table th:nth-child(3), .perf-table td:nth-child(3) { width:16%; }
-.perf-table th:nth-child(4), .perf-table td:nth-child(4) { width:16%; }
-.perf-table thead tr { background:#0a0a0a; }
-.perf-table th {
-  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--grey); padding:12px 14px; text-align:right;
-  border-bottom:1px solid rgba(255,255,255,0.15); white-space:nowrap;
-}
-.perf-table th:first-child { text-align:left; }
-.perf-table th.col-model { color:var(--white); }
-.perf-table td {
-  padding:11px 14px; font-size:var(--fs-base);
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  color:var(--grey); text-align:right; white-space:nowrap;
-}
-.perf-table td:first-child { text-align:left; color:var(--light-grey); }
-.perf-table tr:last-child td { border-bottom:none; }
-.perf-table tr:hover td { background:rgba(255,255,255,0.015); }
-.perf-table .row-ytd td { background:rgba(255,255,255,0.025); }
-.perf-table .row-divider td { border-top:1px solid rgba(255,255,255,0.08); padding-top:14px; }
-.td-model { color:var(--white) !important; font-weight:600; }
-.td-pos   { color:var(--green-pos) !important; font-weight:600; }
-.td-neg   { color:var(--red-neg)   !important; font-weight:600; }
-
-/* ─── ALLOCATION TABLE ───────────────────────────────────── */
-.alloc-table-wrap { overflow-x:auto; max-height:480px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:520px; }
-.alloc-table thead tr { background:#0a0a0a; }
-.alloc-table thead th { position:sticky; top:0; z-index:2; background:#0a0a0a; }
-.alloc-table th {
-  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--grey); padding:12px 14px; text-align:right;
-  border-bottom:1px solid rgba(255,255,255,0.15); white-space:nowrap;
-}
-.alloc-table th:first-child, .alloc-table th.th-left { text-align:left; }
-.alloc-table th.th-center { text-align:center; }
-.alloc-table th.th-group  { text-align:center; color:var(--white); }
-.alloc-table td {
-  padding:8px 14px; font-size:var(--fs-base);
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  color:var(--grey); text-align:right; white-space:nowrap;
-}
-.alloc-table td:first-child { text-align:left; color:var(--light-grey); }
-.alloc-table td.td-center { text-align:center; }
-.alloc-table td.td-left   { text-align:left; color:var(--light-grey); }
-.alloc-table tr:last-child td { border-bottom:none; }
-.alloc-table tr:hover td { background:rgba(255,255,255,0.015); }
-
-/* ─── VAMS SIGNAL TABLE (HEDRA — inside esig-card) ──────── */
-.vams-table { width:100%; border-collapse:collapse; font-size:var(--fs-md); margin-top:4px; }
-.vams-table th {
-  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--grey); padding:10px 8px; text-align:center;
-  border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap;
-}
-.vams-table th:first-child { text-align:left; }
-.vams-table th:last-child  { text-align:right; }
-.vams-table td {
-  padding:10px 8px; font-size:var(--fs-md);
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  text-align:center; color:var(--grey); white-space:nowrap;
-}
-.vams-table td:first-child { text-align:left; color:var(--light-grey); font-weight:600; }
-.vams-table td:last-child  { text-align:right; color:var(--white); font-weight:600; }
-.vams-table tr:last-child td { border-bottom:none; }
-@media (max-width:480px) {
-  .vams-table th, .vams-table td { padding:9px 4px; }
-}
-
-/* ─── REGIME PILLS ───────────────────────────────────────── */
-.regime-pill {
-  display:inline-block; font-size:var(--fs-xs); font-weight:700;
-  letter-spacing:0.12em; text-transform:uppercase;
-  padding:3px 8px; border:1px solid; text-align:center;
-  white-space:nowrap;
-}
-.sz-aegis { min-width:110px; }
-.sz-eidos { min-width:185px; }
-.r-on   { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
-.r-off  { color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
-.r-trans{ color:var(--yellow-neu);border-color:rgba(251,191,36,0.3); }
-.r-arch { color:var(--light-grey);border-color:rgba(200,200,196,0.3); }
-
-/* ─── LOADING ────────────────────────────────────────────── */
-.loading {
-  font-size:var(--fs-sm); color:var(--grey);
-  letter-spacing:0.1em; text-align:center; padding:40px 0;
-}
-
-/* ─── DATA ERROR BANNER ──────────────────────────────────── */
-.data-error-banner {
-  background: rgba(248,113,113,0.08);
-  border: 1px solid rgba(248,113,113,0.3);
-  border-left: 3px solid var(--red-neg);
-  padding: 16px 20px;
-  margin-bottom: 28px;
-  font-size: var(--fs-sm);
-  color: var(--red-neg);
-  letter-spacing: 0.04em;
-  display: none;
-}
-.data-error-banner.visible { display: block; }
-
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width:768px) {
-  .db-nav { padding-left:20px; padding-right:20px; }
-  .db-inner { padding:36px 20px 64px; }
-  .db-nav-link, .db-nav-signout { display:none; }
-  .signal-cards { grid-template-columns:1fr; }
-  .gauge-sub-grid { grid-template-columns:1fr; }
-  .vams-grid { grid-template-columns:1fr; }
-}
-@media (max-width:480px) {
-  .db-title { font-size:1.6rem; }
-  .db-inner { padding:24px 12px 48px; }
-  .perf-table { font-size:var(--fs-md); min-width:0; }
-  .perf-table th { font-size:var(--fs-sm); padding:8px 6px; }
-  .perf-table td { font-size:var(--fs-md); padding:8px 6px; }
-  .perf-table th:first-child, .perf-table td:first-child { width:42%; }
-  .perf-table th:nth-child(2), .perf-table td:nth-child(2) { width:19%; }
-  .perf-table th:nth-child(3), .perf-table td:nth-child(3) { width:19%; }
-  .perf-table th:nth-child(4), .perf-table td:nth-child(4) { width:20%; }
-  .perf-table-wrap { overflow-x:hidden; }
-}
-* { -webkit-tap-highlight-color:transparent; }
-html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
-
-</style>
 </head>
 <body>
 
-<!-- ─── SUPABASE ────────────────────────────────────────── -->
+<!-- ─── SUPABASE + AUTH GUARD ───────────────────────────────── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
 <script>
   const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
@@ -459,7 +27,6 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
   });
-  // ── AUTH GUARD ────────────────────────────────────────────
   document.documentElement.style.visibility = 'hidden';
   (async () => {
     const { data:{ session } } = await sb.auth.getSession();
@@ -475,419 +42,64 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   <a href="index.html" class="db-nav-logo">
     <img src="logo.png" alt="BLACK KNOT ANALYTICS">
   </a>
-  <div class="db-nav-right">
+  <div class="db-nav-right" id="dbNavRight">
     <a href="index.html" class="db-nav-link">Home</a>
-    <button class="db-nav-link active" data-page="today"  onclick="navTo('today')">Today's Signal</button>
-    <button class="db-nav-link"        data-page="aegis"  onclick="navTo('aegis')">AEGIS</button>
-    <button class="db-nav-link"        data-page="eidos"  onclick="navTo('eidos')">EIDOS</button>
-    <button class="db-nav-link"        data-page="hedra"   onclick="navTo('hedra')">HEDRA</button>
-    <button class="db-nav-signout"                        onclick="signOut()">Sign Out</button>
-    <button class="db-hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="db-nav-link active" data-page="today" onclick="navTo('today')">Today's Signal</button>
+    <!-- model nav links injected here by JS (from MODELS registry) -->
+    <button class="db-nav-signout" onclick="signOut()">Sign Out</button>
+    <button class="hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ─── MENU OVERLAY ──────────────────────────────────────── -->
-<div class="db-menu-overlay" id="dbMenuOverlay">
+<!-- ─── MENU OVERLAY (mobile) ─────────────────────────────── -->
+<div class="menu-overlay" id="dbMenuOverlay">
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
-  <button onclick="navTo('aegis');toggleMenu();"               id="menuAegis">AEGIS</button>
-  <button onclick="navTo('eidos');toggleMenu();"               id="menuEidos">EIDOS</button>
-  <button onclick="navTo('hedra');toggleMenu();"                id="menuHedra">HEDRA</button>
+  <!-- model menu links injected here by JS -->
   <div class="menu-divider"></div>
-  <button class="db-menu-signout" onclick="signOut()">Sign Out</button>
+  <button class="menu-accent" onclick="signOut()">Sign Out</button>
 </div>
 
 <main class="db-page">
 
 <!-- ════════════════════════════════════════════════════════
-     PAGE 1 — TODAY'S SIGNAL
+     PAGE 1 — TODAY'S SIGNAL  (model cards generated from registry)
 ════════════════════════════════════════════════════════ -->
 <div id="page-today" class="db-page-section active">
 <div class="db-inner">
-
   <div class="db-eyebrow">Dashboard</div>
   <div class="db-title">Today's Signal</div>
   <div class="signal-date" id="signalDateLine">Updated as at market close &nbsp;·&nbsp; —</div>
   <div class="data-error-banner" id="dataErrorBanner"></div>
 
-  <div class="signal-cards">
-
-    <!-- AEGIS -->
-    <div class="signal-card">
-      <div class="signal-card-header">
-        <span class="signal-card-name">AEGIS</span>
-        <span class="signal-badge hold" id="aegisBadge">Holding</span>
-      </div>
-      <div class="signal-kpis">
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">YTD Return</div>
-          <div class="signal-kpi-val pos" id="aegisYtd">—</div>
-        </div>
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">ITD CAGR</div>
-          <div class="signal-kpi-val pos" id="aegisCagr">—</div>
-        </div>
-      </div>
-      <div class="signal-alloc-label">Current Weights</div>
-      <div class="signal-alloc-row">
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">SPY</div><div class="signal-alloc-pct" id="aegisSPY">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLD</div><div class="signal-alloc-pct" id="aegisGLD">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">BIL</div><div class="signal-alloc-pct" id="aegisBIL">—</div></div>
-        <div class="signal-alloc-block">
-          <div class="signal-alloc-ticker" id="aegisRiderTicker">Rider</div>
-          <div class="signal-alloc-pct zero" id="aegisRider">—</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EIDOS -->
-    <div class="signal-card">
-      <div class="signal-card-header">
-        <span class="signal-card-name">EIDOS</span>
-        <span class="signal-badge hold" id="eidosBadge">Holding</span>
-      </div>
-      <div class="signal-kpis">
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">YTD Return</div>
-          <div class="signal-kpi-val pos" id="eidosYtd">—</div>
-        </div>
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">ITD CAGR</div>
-          <div class="signal-kpi-val pos" id="eidosCagr">—</div>
-        </div>
-      </div>
-      <div class="signal-alloc-label">Current Weights</div>
-      <div class="signal-alloc-row">
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">SPY</div><div class="signal-alloc-pct" id="eidosSPY">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">GLD</div><div class="signal-alloc-pct" id="eidosGLD">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">TLT</div><div class="signal-alloc-pct" id="eidosTLT">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">BIL</div><div class="signal-alloc-pct" id="eidosBIL">—</div></div>
-      </div>
-    </div>
-
-    <!-- HEDRA -->
-    <div class="signal-card">
-      <div class="signal-card-header">
-        <span class="signal-card-name">HEDRA</span>
-        <span class="signal-badge hold" id="hedraBadge">Holding</span>
-      </div>
-      <div class="signal-kpis">
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">YTD Return</div>
-          <div class="signal-kpi-val pos" id="hedraYtd">—</div>
-        </div>
-        <div class="signal-kpi">
-          <div class="signal-kpi-label">ITD CAGR</div>
-          <div class="signal-kpi-val pos" id="hedraCagr">—</div>
-        </div>
-      </div>
-      <div class="signal-alloc-label">Current Weights</div>
-      <div class="signal-alloc-row">
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">A</div><div class="signal-alloc-pct" id="hedraA">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">B</div><div class="signal-alloc-pct" id="hedraB">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">C</div><div class="signal-alloc-pct" id="hedraC">—</div></div>
-        <div class="signal-alloc-block"><div class="signal-alloc-ticker">D</div><div class="signal-alloc-pct" id="hedraD">—</div></div>
-      </div>
-    </div>
-
+  <div class="signal-cards" id="signalCards">
+    <!-- model cards + placeholder injected by JS -->
   </div>
 </div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════
-     PAGE 2 — AEGIS
-════════════════════════════════════════════════════════ -->
-<div id="page-aegis" class="db-page-section">
-<div class="db-inner">
-
-  <!-- SIGNAL -->
-  <div class="db-eyebrow">Signal</div>
-  <div class="db-title">AEGIS Signal</div>
-  <div style="margin-bottom:28px;"></div>
-  <div class="gauge-card">
-    <div class="gauge-title">PRISM Regime Signal</div>
-    <div class="gauge-subtitle">Composite probability — drives portfolio allocation</div>
-    <div class="gauge-dir-row"><span class="gauge-dir" id="prismDir">—</span></div>
-    <div class="gauge-track"><div class="gauge-dot" id="prismDot" style="left:50%"></div></div>
-  </div>
-
-  <div class="gauge-sub-grid">
-    <div class="gauge-card">
-      <div class="gauge-title">Market Momentum</div>
-      <div class="gauge-dir-row"><span class="gauge-dir" id="momentumDir">—</span></div>
-      <div class="gauge-track"><div class="gauge-dot" id="momentumDot" style="left:50%"></div></div>
-    </div>
-    <div class="gauge-card">
-      <div class="gauge-title">Credit Risk</div>
-      <div class="gauge-dir-row"><span class="gauge-dir" id="creditDir">—</span></div>
-      <div class="gauge-track"><div class="gauge-dot" id="creditDot" style="left:50%"></div></div>
-    </div>
-    <div class="gauge-card">
-      <div class="gauge-title">Left Tail Risk</div>
-      <div class="gauge-dir-row"><span class="gauge-dir" id="tailDir">—</span></div>
-      <div class="gauge-track"><div class="gauge-dot" id="tailDot" style="left:50%"></div></div>
-    </div>
-  </div>
-
-  <div class="vams-section">
-    <div class="vams-eyebrow">VAMS Riders</div>
-    <div class="vams-grid">
-      <div class="gauge-card">
-        <div class="gauge-title">XOP</div>
-        <div class="gauge-subtitle">Energy — Oil &amp; Gas Exploration</div>
-        <div class="gauge-dir-row"><span class="gauge-dir" id="xopDir">—</span></div>
-        <div class="gauge-track vams-track"><div class="gauge-dot" id="xopDot" style="left:50%"></div></div>
-      </div>
-      <div class="gauge-card">
-        <div class="gauge-title">KBE</div>
-        <div class="gauge-subtitle">Financials — Regional Banks</div>
-        <div class="gauge-dir-row"><span class="gauge-dir" id="kbeDir">—</span></div>
-        <div class="gauge-track vams-track"><div class="gauge-dot" id="kbeDot" style="left:50%"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="db-rule"></div>
-
-  <!-- PERFORMANCE -->
-  <div class="db-eyebrow">Performance</div>
-  <div class="db-title">Returns &amp; KPIs</div>
-  <div class="db-sub">AEGIS versus SPY. Inception: January 2018. Calculations conform to GIPS and BarclayHedge CTA reporting standards.</div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Cumulative Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Period</th><th class="col-model">AEGIS</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="aegisCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Annual Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Year</th><th class="col-model">AEGIS</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="aegisAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Risk Metrics</div>
-    <div class="perf-table-note">All metrics ITD unless noted.</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">AEGIS</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="aegisRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Operational Metrics</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">AEGIS</th></tr></thead>
-        <tbody id="aegisOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="db-rule"></div>
-
-  <!-- ASSET ALLOCATION -->
-  <div class="db-eyebrow">Portfolio</div>
-  <div class="db-title">Asset Allocation</div>
-  <div class="db-sub">Historical portfolio states. One row per rebalancing event — identical consecutive allocations are consolidated.</div>
-
-  <div class="alloc-table-wrap">
-    <table class="alloc-table">
-      <thead>
-        <tr>
-          <th></th><th></th><th></th><th></th><th></th>
-          <th colspan="2" class="th-group">Rider</th>
-          <th></th><th></th>
-        </tr>
-        <tr>
-          <th class="th-left">Date</th>
-          <th class="th-center">Regime</th>
-          <th>SPY</th><th>GLD</th><th>BIL</th>
-          <th>XOP</th><th>KBE</th>
-          <th>Days</th>
-          <th class="th-left">Trigger</th>
-        </tr>
-      </thead>
-      <tbody id="aegisAllocBody"><tr><td colspan="9" class="loading">Loading…</td></tr></tbody>
-    </table>
-  </div>
-
-</div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 3 — EIDOS
-════════════════════════════════════════════════════════ -->
-<div id="page-eidos" class="db-page-section">
-<div class="db-inner">
-
-  <!-- SIGNAL -->
-  <div class="db-eyebrow">Signal</div>
-  <div class="db-title">EIDOS Signal</div>
-  <div style="margin-bottom:28px;"></div>
-  <div class="esig-card">
-
-    <div class="esig-regime-name" id="esigRegimeName">—</div>
-    <div class="esig-regime-meta" id="esigRegimeMeta">—</div>
-
-    <div class="esig-section">
-      <div class="esig-eyebrow">Cluster</div>
-      <div class="esig-cluster" id="esigCluster">
-        <div class="esig-cluster-labels">
-          <span class="esig-cluster-label esig-cluster-label-off">Risk-Off</span>
-          <span class="esig-cluster-label esig-cluster-label-on">Risk-On</span>
-        </div>
-        <div class="esig-cluster-bar">
-          <div class="esig-cluster-off-zone"></div>
-          <div class="esig-cluster-on-zone"></div>
-          <div class="esig-cluster-boundary"></div>
-          <div class="esig-cluster-dot"   id="esigClusterDot"   style="left:50%"></div>
-        </div>
-        <div class="esig-cluster-bar-labels">
-          <span class="esig-cluster-bar-label" id="esigClusterLeftLabel">—</span>
-          <span class="esig-cluster-bar-label" id="esigClusterRightLabel">—</span>
-        </div>
-        <div class="esig-cluster-detail">
-          <span id="esigClusterPrimary">—</span>
-          <span id="esigClusterSecondary"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="esig-prev" id="esigPrev">Previous regime: —</div>
-
-    <div class="esig-section" style="margin-bottom:0;">
-      <div class="esig-eyebrow">Archetypes</div>
-      <div class="esig-legend">
-        <div>
-          <div class="esig-legend-head esig-legend-head-on">Risk-On</div>
-          <div class="esig-legend-item" data-arch="structural_expansion"><span class="esig-abbrev">SE</span>Structural Expansion</div>
-          <div class="esig-legend-item" data-arch="post_crisis_recovery"><span class="esig-abbrev">PCR</span>Post-Crisis Recovery</div>
-          <div class="esig-legend-item" data-arch="policy_expansion"><span class="esig-abbrev">PE</span>Policy Expansion</div>
-          <div class="esig-legend-item" data-arch="energy_shock"><span class="esig-abbrev">ES</span>Energy Shock</div>
-        </div>
-        <div>
-          <div class="esig-legend-head esig-legend-head-off">Risk-Off</div>
-          <div class="esig-legend-item" data-arch="credit_crunch"><span class="esig-abbrev">CC</span>Credit Crunch</div>
-          <div class="esig-legend-item" data-arch="demand_contraction"><span class="esig-abbrev">DC</span>Demand Contraction</div>
-          <div class="esig-legend-item" data-arch="market_narrowing"><span class="esig-abbrev">MN</span>Market Narrowing</div>
-          <div class="esig-legend-item" data-arch="inflation_cycle"><span class="esig-abbrev">IC</span>Inflation Cycle</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="eidos-action-row">
-      <span id="eidosActionStatus" class="signal-badge hold">—</span>
-      <span id="eidosRebalNote" class="eidos-rebal-note"></span>
-    </div>
-  </div>
-
-  <div class="db-rule"></div>
-
-  <!-- PERFORMANCE -->
-  <div class="db-eyebrow">Performance</div>
-  <div class="db-title">Returns &amp; KPIs</div>
-  <div class="db-sub">Eidos versus SPY. Inception: January 2018. Calculations conform to GIPS and BarclayHedge CTA reporting standards.</div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Cumulative Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Period</th><th class="col-model">Eidos</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="eidosCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Annual Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Year</th><th class="col-model">Eidos</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="eidosAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Risk Metrics</div>
-    <div class="perf-table-note">All metrics ITD unless noted.</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">Eidos</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="eidosRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Operational Metrics</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">Eidos</th></tr></thead>
-        <tbody id="eidosOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="db-rule"></div>
-
-  <!-- ASSET ALLOCATION -->
-  <div class="db-eyebrow">Portfolio</div>
-  <div class="db-title">Asset Allocation</div>
-  <div class="db-sub">Historical portfolio states. One row per rebalancing event — identical consecutive allocations are consolidated.</div>
-
-  <div class="alloc-table-wrap">
-    <table class="alloc-table">
-      <thead>
-        <tr>
-          <th class="th-left">Date</th>
-          <th class="th-center">Regime</th>
-          <th>SPY</th><th>GLD</th><th>TLT</th><th>BIL</th>
-          <th>Days</th>
-          <th class="th-left">Trigger</th>
-        </tr>
-      </thead>
-      <tbody id="eidosAllocBody"><tr><td colspan="8" class="loading">Loading…</td></tr></tbody>
-    </table>
-  </div>
-
-</div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 4 — HEDRA
+     PAGE 2 — HEDRA  (model detail page)
+     To add model #2: copy this whole block, change the four id
+     prefixes (hedra→<key>), the page id, the titles, then add a
+     registry entry + a nav button. The render layer is generic.
 ════════════════════════════════════════════════════════ -->
 <div id="page-hedra" class="db-page-section">
 <div class="db-inner">
 
-  <!-- SIGNAL -->
   <div class="db-eyebrow">Signal</div>
   <div class="db-title">HEDRA Signal</div>
-  <div class="db-sub">Hedra model is a macro-aware 4-state market regime based benchmark.</div>
+  <div class="db-sub">Hedra is a macro-aware, systematic market-regime model.</div>
 
-  <div class="esig-card">
-
-    <div class="eidos-action-row">
+  <div class="signal-panel">
+    <div class="action-row">
       <span id="hedraActionStatus" class="signal-badge hold">—</span>
     </div>
   </div>
 
   <div class="db-rule"></div>
 
-  <!-- PERFORMANCE -->
   <div class="db-eyebrow">Performance</div>
   <div class="db-title">Returns &amp; KPIs</div>
 
@@ -934,6 +146,8 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
 </div>
 </div>
+
+</main>
 </div>
 
 <!-- ════════════════════════════════════════════════════════
@@ -941,16 +155,57 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 ════════════════════════════════════════════════════════ -->
 <script>
 
+// ════════════════════════════════════════════════════════
+// MODEL REGISTRY — the only place models are declared.
+//   key   : the model's key inside its JSON (data.cum_returns[key] …)
+//           and the id-prefix used on its detail page (`${key}CumulBody`).
+//   file  : the published view-model JSON for this model.
+//   label : display name.
+//   page  : the page-section id (`page-${page}`) and nav data-page.
+// To add a model: add an entry here, copy its detail-page block in the
+// HTML above (changing id prefixes), and add a nav button. Nothing else.
+// ════════════════════════════════════════════════════════
+const MODELS = [
+  { key: 'hedra', file: 'hedra.json', label: 'Hedra', page: 'hedra' },
+];
+
+// ── Build nav + menu links from the registry ──────────────
+(function buildNav() {
+  const nav  = document.getElementById('dbNavRight');
+  const menu = document.getElementById('dbMenuOverlay');
+  const signoutBtn = nav.querySelector('.db-nav-signout');
+  const menuDivider = menu.querySelector('.menu-divider');
+  MODELS.forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'db-nav-link';
+    b.setAttribute('data-page', m.page);
+    b.textContent = m.label.toUpperCase();
+    b.onclick = () => navTo(m.page);
+    nav.insertBefore(b, signoutBtn);
+
+    const mb = document.createElement('button');
+    mb.id = 'menu-' + m.page;
+    mb.textContent = m.label.toUpperCase();
+    mb.onclick = () => { navTo(m.page); toggleMenu(); };
+    menu.insertBefore(mb, menuDivider);
+  });
+})();
+
 // ── NAV ──────────────────────────────────────────────────
 function navTo(page) {
   document.querySelectorAll('.db-page-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+  const target = document.getElementById('page-' + page);
+  if (target) target.classList.add('active');
+
   document.querySelectorAll('.db-nav-link').forEach(l => l.classList.remove('active'));
   const btn = document.querySelector(`.db-nav-link[data-page="${page}"]`);
   if (btn) btn.classList.add('active');
-  ['menuToday','menuAegis','menuEidos','menuHedra'].forEach(id => document.getElementById(id).classList.remove('active'));
-  const menuMap = { today:'menuToday', aegis:'menuAegis', eidos:'menuEidos', hedra:'menuHedra' };
-  if (menuMap[page]) document.getElementById(menuMap[page]).classList.add('active');
+
+  document.querySelectorAll('.menu-overlay button').forEach(b => b.classList.remove('active'));
+  const menuId = page === 'today' ? 'menuToday' : 'menu-' + page;
+  const menuBtn = document.getElementById(menuId);
+  if (menuBtn) menuBtn.classList.add('active');
+
   window.scrollTo(0,0);
 }
 
@@ -978,10 +233,6 @@ async function signOut() {
 
 // ── HELPERS ───────────────────────────────────────────────
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function fmtDate(d) {
-  const p = d.split('-');
-  return `${parseInt(p[2])} ${months[parseInt(p[1])-1]} ${p[0]}`;
-}
 function fmtLongDate(d) {
   const dt = new Date(d + 'T12:00:00');
   return dt.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
@@ -1005,463 +256,122 @@ function edge(m, b, dec=1, isRatio=false) {
   const val = (diff >= 0 ? '+' : '') + diff.toFixed(dec) + (isRatio ? '' : 'pp');
   return { val, cls: diff >= 0 ? 'td-pos' : 'td-neg' };
 }
-function formatArchetype(s) {
-  if (!s) return '—';
-  return s.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-}
-function gaugePos(v, min, max) {
-  return Math.min(97, Math.max(3, (v - min) / (max - min) * 100)).toFixed(1) + '%';
-}
-function setDot(id, pos) {
-  const el = document.getElementById(id);
-  if (el) el.style.left = pos;
-}
 function row(cells, cls='') {
-  const tds = cells.map(c => {
-    if (c && typeof c === 'object') return `<td class="${c.cls||''}">${c.v}</td>`;
-    return `<td>${c ?? '—'}</td>`;
+  const tds = cells.map(cell => {
+    if (cell && typeof cell === 'object') return `<td class="${cell.cls||''}">${cell.v}</td>`;
+    return `<td>${cell ?? '—'}</td>`;
   }).join('');
   return `<tr class="${cls}">${tds}</tr>`;
 }
 function c(v, cls='') { return { v, cls }; }
 
-// ── AEGIS REGIME PILL ─────────────────────────────────────
-function aegisPill(regime) {
-  const r = (regime || '').toLowerCase();
-  let cls = 'r-arch';
-  if (r.includes('risk-on') || r === 'green')               cls = 'r-on';
-  else if (r.includes('risk-off') || r === 'red')           cls = 'r-off';
-  else if (r.includes('transition') || r === 'yellow')      cls = 'r-trans';
-  return `<span class="regime-pill sz-aegis ${cls}">${regime}</span>`;
-}
-function eidosPill(archetype) {
-  // Map archetype → risk side, apply same r-on/r-off classes as Aegis pills.
-  // Source of truth: WEIGHTS dict in config.py (risk-on archetypes have SPY > 0
-  // as a baseline weight; risk-off have SPY = 0). Hard-coded here for the
-  // frontend since the JSON doesn't expose risk_cluster on history rows.
-  const RISK_ON = new Set([
-    'structural_expansion',
-    'post_crisis_recovery',
-    'policy_expansion',
-    'energy_shock',
-  ]);
-  const RISK_OFF = new Set([
-    'market_narrowing',
-    'inflation_cycle',
-    'credit_crunch',
-    'demand_contraction',
-  ]);
-  const a = (archetype || '').toLowerCase();
-  let cls = 'r-arch';
-  if      (RISK_ON.has(a))  cls = 'r-on';
-  else if (RISK_OFF.has(a)) cls = 'r-off';
-  return `<span class="regime-pill sz-eidos ${cls}">${formatArchetype(archetype)}</span>`;
-}
-
 // ════════════════════════════════════════════════════════
-// RENDER — TODAY'S SIGNAL
+// RENDER — TODAY'S SIGNAL  (status + performance only; no weights)
 // ════════════════════════════════════════════════════════
-function renderToday(sig, perf) {
-  // Date
-  document.getElementById('signalDateLine').innerHTML =
-    `Updated as at market close &nbsp;·&nbsp; ${fmtLongDate(sig.signal.date)}`;
+function renderCards(loaded) {
+  const wrap = document.getElementById('signalCards');
+  let html = '';
 
-  // AEGIS
-  const ytd  = sig.perf.ytd_return;
-  const cagr = sig.perf.cagr;
-  const w    = sig.signal.weights;
-  const act  = sig.signal.action_required;
-
-  document.getElementById('aegisYtd').textContent  = fmtPct(ytd, 2, true);
-  document.getElementById('aegisYtd').className    = 'signal-kpi-val ' + pctCls(ytd);
-  document.getElementById('aegisCagr').textContent = fmtPct(cagr, 2);
-  document.getElementById('aegisBadge').textContent = act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  document.getElementById('aegisBadge').className   = 'signal-badge ' + (act ? 'action' : 'hold');
-
-  function setW(id, val) {
-    document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
-    document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
-  }
-  setW('aegisSPY', w.SPY);
-  setW('aegisGLD', w.GLD);
-  setW('aegisBIL', w.BIL);
-
-  const winner = sig.signal.vams.winner;
-  const riderPct = winner ? (w[winner] || 0) : 0;
-  document.getElementById('aegisRiderTicker').textContent = winner || 'Rider';
-  document.getElementById('aegisRider').textContent       = riderPct > 0 ? riderPct + '%' : '—';
-  document.getElementById('aegisRider').className         = 'signal-alloc-pct' + (riderPct === 0 ? ' zero' : '');
-
-  // Eidos
-  const aw  = perf.signal.weights;
-  const aYtd  = perf.returns.eidos.ytd;
-  const aCagr = perf.cum_returns.eidos.cagr_itd;
-  const aAct  = perf.signal.action.rebalance_required;
-
-  document.getElementById('eidosYtd').textContent  = fmtPct(aYtd, 2, true);
-  document.getElementById('eidosYtd').className    = 'signal-kpi-val ' + pctCls(aYtd);
-  document.getElementById('eidosCagr').textContent = fmtPct(aCagr, 2);
-  document.getElementById('eidosBadge').textContent = aAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  document.getElementById('eidosBadge').className   = 'signal-badge ' + (aAct ? 'action' : 'hold');
-
-  function setAW(id, key) {
-    const val = Math.round(aw[key].target_weight);
-    document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
-    document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
-  }
-  setAW('eidosSPY','SPY'); setAW('eidosGLD','GLD');
-  setAW('eidosTLT','TLT'); setAW('eidosBIL','BIL');
-
-  // HEDRA
-  if (window._hedraData) {
-    const ks  = window._hedraData.signal;
-    const kw  = ks.weights;
-    const kct = window._hedraData.cum_returns.hedra;
-    const kAct = ks.action.rebalance_required;
-
-    document.getElementById('hedraYtd').textContent  = fmtPct(kct.ytd, 2, true);
-    document.getElementById('hedraYtd').className    = 'signal-kpi-val ' + pctCls(kct.ytd);
-    document.getElementById('hedraCagr').textContent = fmtPct(kct.cagr_itd, 2);
-    document.getElementById('hedraBadge').textContent = kAct ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-    document.getElementById('hedraBadge').className   = 'signal-badge ' + (kAct ? 'action' : 'hold');
-
-    function setKW(id, asset) {
-      const val = Math.round(kw[asset] ? kw[asset].target_weight : 0);
-      document.getElementById(id).textContent = val === 0 ? '0%' : val + '%';
-      document.getElementById(id).className   = 'signal-alloc-pct' + (val === 0 ? ' zero' : '');
-    }
-    setKW('hedraA', 'A');
-    setKW('hedraB', 'B');
-    setKW('hedraC', 'C');
-    setKW('hedraD', 'D');
-  }
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — AEGIS SIGNAL GAUGES
-// ════════════════════════════════════════════════════════
-function renderAegisSignal(sig) {
-  const s = sig.signal;
-
-  // Normalize a value to 0–1 for colour zone determination
-  function normPos(v, min, max) {
-    return Math.max(0, Math.min(1, (v - min) / (max - min)));
-  }
-
-  // Set a right-justified direction indicator above the bar
-  // Colour: green (>0.60), yellow (0.33–0.60), red (<0.33) — PRISM track zones
-  function setGaugeDir(id, pos, trend) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const color = pos > 0.60 ? 'var(--green-pos)' : pos < 0.33 ? 'var(--red-neg)' : 'var(--yellow-neu)';
-    const arrow = trend === 'Improving' ? ' ↑' : ' ↓';
-    el.textContent = (trend === 'Improving' ? 'Improving' : 'Deteriorating') + arrow;
-    el.style.color = color;
-  }
-
-  // VAMS track has different zone boundaries: red/yellow at 37.5%, yellow/green at 50%
-  // Label colour reflects dot position, not direction of travel.
-  function setVamsDir(id, pos, trend) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const color = pos > 0.50 ? 'var(--green-pos)' : pos < 0.375 ? 'var(--red-neg)' : 'var(--yellow-neu)';
-    const arrow = trend === 'Improving' ? ' ↑' : ' ↓';
-    el.textContent = (trend === 'Improving' ? 'Improving' : 'Deteriorating') + arrow;
-    el.style.color = color;
-  }
-
-  const prismPos = normPos(1 - s.p_stress,          0, 1);
-  const momPos   = normPos(s.signals.ewma_z,        -3, 3);
-  const credPos  = normPos(-s.signals.oas_z,        -3, 3);
-  const tailPos  = normPos(-s.signals.rv_minus_z,   -3, 3);
-  const xopPos   = normPos(s.vams.scores.XOP,       -2, 2);
-  const kbePos   = normPos(s.vams.scores.KBE,       -2, 2);
-
-  setDot('prismDot',    gaugePos(1 - s.p_stress,        0, 1));
-  setDot('momentumDot', gaugePos(s.signals.ewma_z,     -3, 3));
-  setDot('creditDot',   gaugePos(-s.signals.oas_z,     -3, 3));
-  setDot('tailDot',     gaugePos(-s.signals.rv_minus_z,-3, 3));
-  setDot('xopDot',      gaugePos(s.vams.scores.XOP,   -2, 2));
-  setDot('kbeDot',      gaugePos(s.vams.scores.KBE,   -2, 2));
-
-  setGaugeDir('prismDir',    prismPos, s.trends.agg);
-  setGaugeDir('momentumDir', momPos,   s.trends.mom);
-  setGaugeDir('creditDir',   credPos,  s.trends.oas);
-  setGaugeDir('tailDir',     tailPos,  s.trends.rv);
-  setVamsDir('xopDir',      xopPos,   s.vams.trends.XOP);
-  setVamsDir('kbeDir',      kbePos,   s.vams.trends.KBE);
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — AEGIS PERFORMANCE
-// ════════════════════════════════════════════════════════
-function renderAegisPerf(sig) {
-  const p  = sig.perf;
-  const cr = sig.cum_returns;
-  const sp = sig.spy_kpis;
-  const ar = sig.annual_returns;
-
-  // Cumulative
-  let html = [
-    ['YTD',    cr.ytd.aegis, cr.ytd.spy,  true],
-    ['1 Year', cr.y1.aegis,  cr.y1.spy,   false],
-    ['3 Year', cr.y3.aegis,  cr.y3.spy,   false],
-    ['5 Year', cr.y5.aegis,  cr.y5.spy,   false],
-    ['ITD',    cr.itd.aegis, cr.itd.spy,  false],
-  ].map(([period, m, b, isYtd]) => {
-    const e = edge(m, b);
-    return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
-  }).join('');
-  const cagrE = edge(p.cagr, sp.cagr);
-  html += row(['ITD CAGR', c(fmtPct(p.cagr,2),'td-model '+pctCls(p.cagr)), c(fmtPct(sp.cagr,2),pctCls(sp.cagr)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById('aegisCumulBody').innerHTML = html;
-
-  // Annual
-  html = Object.entries(ar).reverse().map(([yr,v]) => {
-    const label = v.is_ytd ? yr + ' YTD' : yr;
-    const e = edge(v.aegis, v.spy);
-    return row([label, c(fmtPct(v.aegis,1,true),'td-model '+pctCls(v.aegis)), c(fmtPct(v.spy,1,true),pctCls(v.spy)), c(e.val,e.cls)], v.is_ytd?'row-ytd':'');
-  }).join('');
-  document.getElementById('aegisAnnualBody').innerHTML = html;
-
-  // Risk
-  const riskDefs = [
-    ['Sharpe Ratio',          p.sharpe,               sp.sharpe,        3, true],
-    ['Sortino Ratio',         p.sortino,              sp.sortino,       3, true],
-    ['Max Drawdown (ITD)',     p.max_drawdown,         sp.max_drawdown,  2, false],
-    ['Max Drawdown (YTD)',     p.ytd_max_drawdown,     sp.ytd_max_drawdown, 2, false],
-    ['Calmar Ratio (t3y)',     p.calmar,               sp.calmar,        3, true],
-    ['MAR',                   p.mar,                  sp.mar,           3, true],
-    ['Omega Ratio',           p.omega,                sp.omega,         3, true],
-    ['Upside Capture',        p.upside_capture_spy,   null,             1, false],
-    ['Downside Capture',      p.downside_capture_spy, null,             1, false],
-    ['Capture Ratio',         p.capture_ratio_spy,    null,             1, false],
-  ];
-  html = riskDefs.map(([label, m, b, dec, isRatio]) => {
-    const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || label.includes('Capture');
-    const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
-    if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
-    const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
-    const e     = edge(m, b, dec, isRatio);
-    const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
-    return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
-  }).join('');
-  document.getElementById('aegisRiskBody').innerHTML = html;
-
-  // Ops
-  html = 
-         row(['Rebalances / yr (ITD)', c(fmtNum(p.trades_per_year,1),'td-model')]) +
-         row(['Rebalances (YTD)',       c(p.ytd_rebalances,'td-model')]) +
-         row(['Rebalances (ITD)',       c(p.total_trades,'td-model')]);
-  document.getElementById('aegisOpsBody').innerHTML = html;
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — AEGIS ALLOCATION
-// ════════════════════════════════════════════════════════
-function renderAegisAlloc(aegis) {
-  // Backend produces a "Current" row at the head of the allocations list
-  // (is_rebalance: false, trigger: "Current"). Keep it; filter out only
-  // intermediate non-rebalance days. All historical rebalances are kept.
-  const rows = (aegis.allocations || []).filter(a => a.is_rebalance || a.trigger === 'Current');
-  const html = rows.map(a => {
-    const xop = a.rider_ticker === 'XOP' && a.rider_pct > 0 ? a.rider_pct + '%' : '—';
-    const kbe = a.rider_ticker === 'KBE' && a.rider_pct > 0 ? a.rider_pct + '%' : '—';
-    const isCurrent = a.trigger === 'Current';
-    const trClass   = isCurrent ? 'is-current' : '';
-    return `<tr class="${trClass}">` + [
-      `<td class="td-left">${isCurrent ? 'Now' : fmtDate(a.date)}</td>`,
-      `<td class="td-center"><span class="regime-pill sz-aegis ${(()=>{
-        const r=(a.regime||'').toLowerCase();
-        if(r.includes('risk-on')||r==='green') return 'r-on';
-        if(r.includes('risk-off')||r==='red')  return 'r-off';
-        if(r.includes('transition')||r==='yellow') return 'r-trans';
-        return 'r-arch';
-      })()}">${a.regime}</span></td>`,
-      `<td>${a.spy + '%'}</td>`,
-      `<td>${a.gld + '%'}</td>`,
-      `<td>${a.bil + '%'}</td>`,
-      `<td>${xop}</td>`,
-      `<td>${kbe}</td>`,
-      `<td>${a.days_since_prior ?? '—'}</td>`,
-      `<td class="td-left">${a.trigger}</td>`
-    ].join('') + '</tr>';
-  }).join('') || '<tr><td colspan="9" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
-  document.getElementById('aegisAllocBody').innerHTML = html;
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — EIDOS SIGNAL
-// ════════════════════════════════════════════════════════
-const ARCHETYPE_ABBREV_MAP = {
-  energy_shock         : 'ES',
-  inflation_cycle      : 'IC',
-  credit_crunch        : 'CC',
-  demand_contraction   : 'DC',
-  market_narrowing    : 'MN',
-  post_crisis_recovery : 'PCR',
-  policy_expansion     : 'PE',
-  structural_expansion : 'SE',
-};
-
-function renderEidosSignal(perf) {
-  const sig      = perf.signal || {};
-  const action   = sig.action || {};
-  const ctx      = perf.signal_context   || {};
-  const cluster  = ctx.risk_cluster;
-  const prev     = ctx.previous_regime;
-  const tenure   = ctx.tenure_days;
-
-  const archetype   = sig.archetype || '';
-  const archDisplay = sig.archetype_display || formatArchetype(archetype);
-  const abbr        = ARCHETYPE_ABBREV_MAP[archetype] || '';
-
-  // ── Headline: regime name + meta ──
-  document.getElementById('esigRegimeName').textContent = archDisplay;
-  const tenureStr   = (tenure != null) ? (tenure + ' days in regime') : '';
-  const pctStr      = (cluster && cluster.pct_deployed != null)
-                      ? (Math.round(cluster.pct_deployed) + '% deployed') : '';
-  document.getElementById('esigRegimeMeta').textContent =
-    [abbr, tenureStr, pctStr].filter(Boolean).join(' · ') || '—';
-
-  // ── Risk cluster bar: dot distance from center = distance from flip ──
-  const clusterEl = document.getElementById('esigCluster');
-  const dotEl     = document.getElementById('esigClusterDot');
-  const primEl    = document.getElementById('esigClusterPrimary');
-  const secEl     = document.getElementById('esigClusterSecondary');
-
-  clusterEl.classList.remove('active-on', 'active-off');
-  const leftLabelEl  = document.getElementById('esigClusterLeftLabel');
-  const rightLabelEl = document.getElementById('esigClusterRightLabel');
-
-  if (cluster && cluster.cluster) {
-    const isOn = cluster.cluster === 'risk-on';
-    clusterEl.classList.add(isOn ? 'active-on' : 'active-off');
-
-    // Bar-half labels: active regime under active side, closest threat under inactive side
-    const threatDisplay = cluster.closest_threat_display || '—';
-    if (isOn) {
-      leftLabelEl.textContent  = threatDisplay;
-      rightLabelEl.textContent = archDisplay;
-      leftLabelEl.className    = 'esig-cluster-bar-label is-inactive';
-      rightLabelEl.className   = 'esig-cluster-bar-label is-active';
-    } else {
-      leftLabelEl.textContent  = archDisplay;
-      rightLabelEl.textContent = threatDisplay;
-      leftLabelEl.className    = 'esig-cluster-bar-label is-active';
-      rightLabelEl.className   = 'esig-cluster-bar-label is-inactive';
-    }
-
-    const dist = cluster.distance;
-    const dir  = cluster.direction || 'Stable';
-
-    if (dist != null) {
-      // Dot position: 0 distance = center, 100 distance = far edge of active half
-      const dotPct = isOn ? 50 + (dist / 2) : 50 - (dist / 2);
-      dotEl.style.left = dotPct + '%';
-
-      // Detail line: numeric distance + direction descriptor with arrow.
-      // Matches the Aegis gauge pattern: "WORD ↑" for Improving,
-      // "WORD ↓" for Deteriorating. Stable shows no arrow.
-      const dirClass = dir === 'Improving'     ? 'dir-improving'
-                     : dir === 'Deteriorating' ? 'dir-deteriorating'
-                     : 'dir-stable';
-      const dirArrow = dir === 'Improving'     ? ' ↑'
-                     : dir === 'Deteriorating' ? ' ↓'
-                     : '';
-      primEl.innerHTML = '<span class="esig-cluster-pct">' + Math.round(dist) +
-                         '%</span> from flip · <span class="' + dirClass + '">' +
-                         dir + dirArrow + '</span>';
-      secEl.textContent = '';
-    } else {
-      dotEl.style.left      = '50%';
-      primEl.textContent    = '—';
-      secEl.textContent     = '';
-    }
-  } else {
-    dotEl.style.left      = '50%';
-    primEl.textContent    = '—';
-    secEl.textContent     = '';
-  }
-
-  // ── Previous regime ──
-  const prevEl = document.getElementById('esigPrev');
-  if (prev) {
-    const parts = [
-      '<strong>' + (prev.archetype_abbrev || prev.archetype) + '</strong> · ' + (prev.archetype_display || ''),
-      (prev.days_held != null)       ? ('held ' + prev.days_held + 'd') : null,
-      (prev.days_since_exit != null) ? ('exited ' + prev.days_since_exit + 'd ago') : null,
-    ].filter(Boolean).join(' · ');
-    prevEl.innerHTML = 'Previous regime: ' + parts;
-  } else {
-    prevEl.textContent = 'Previous regime: —';
-  }
-
-  // ── Legend states: bright = current, medium = previous, dim = other ──
-  document.querySelectorAll('.esig-legend-item').forEach(function(el) {
-    el.classList.remove('is-current', 'is-prev');
-    const a = el.dataset.arch;
-    if (a === archetype) el.classList.add('is-current');
-    else if (prev && a === prev.archetype) el.classList.add('is-prev');
+  loaded.forEach(({ model, data }) => {
+    const cr  = (data.cum_returns && data.cum_returns[model.key]) || {};
+    const act = (data.signal && data.signal.action) ? data.signal.action.rebalance_required : false;
+    html += `
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-card-name">${model.label.toUpperCase()}</span>
+          <span class="signal-badge ${act ? 'action' : 'hold'}">${act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED'}</span>
+        </div>
+        <div class="signal-kpis">
+          <div class="signal-kpi">
+            <div class="signal-kpi-label">YTD Return</div>
+            <div class="signal-kpi-val ${pctCls(cr.ytd)}">${fmtPct(cr.ytd, 2, true)}</div>
+          </div>
+          <div class="signal-kpi">
+            <div class="signal-kpi-label">ITD CAGR</div>
+            <div class="signal-kpi-val ${pctCls(cr.cagr_itd)}">${fmtPct(cr.cagr_itd, 2)}</div>
+          </div>
+        </div>
+      </div>`;
   });
 
-  // ── Action badge + rebal note (preserved from prior implementation) ──
-  const rebalReq = action.rebalance_required;
-  const badge = document.getElementById('eidosActionStatus');
-  badge.textContent = rebalReq ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  badge.className   = 'signal-badge ' + (rebalReq ? 'action' : 'hold');
+  // Coming-soon placeholder for the next model
+  html += `
+    <div class="signal-card is-placeholder">
+      <div class="signal-card-header">
+        <span class="signal-card-name">New Model</span>
+        <span class="signal-badge hold">Coming Soon</span>
+      </div>
+      <div class="placeholder-body">
+        <div>
+          <div class="placeholder-tag">In Development</div>
+          <div class="placeholder-note">A new model will appear here.</div>
+        </div>
+      </div>
+    </div>`;
 
-  const days = action.days_since_last_rebalance;
-  const date = action.last_rebalance_date || '—';
-  const type = action.last_rebalance_type  || '';
-  document.getElementById('eidosRebalNote').textContent =
-    'Last: ' + date + (days != null ? ' · ' + days + 'd ago' : '') + (type ? ' · ' + type : '');
+  wrap.innerHTML = html;
+
+  // Date line — from the first model that published one
+  const dated = loaded.find(x => x.data.signal && x.data.signal.date);
+  if (dated) {
+    document.getElementById('signalDateLine').innerHTML =
+      `Updated as at market close &nbsp;·&nbsp; ${fmtLongDate(dated.data.signal.date)}`;
+  }
 }
 
 // ════════════════════════════════════════════════════════
-// RENDER — EIDOS PERFORMANCE
+// RENDER — MODEL SIGNAL  (action status on the detail page)
 // ════════════════════════════════════════════════════════
-function renderPerf(app, data) {
-  // Canonical renderer for series-major apps (eidos, hedra). Reads the
-  // shared schema: cum_returns.<app>/.spy_bh, returns.<app>/.spy_bh,
-  // risk.<app>/.spy_bh (flat), annual_risk.<app>/.spy_bh, rebalancing.
+function renderModelSignal(model, data) {
+  const act = (data.signal && data.signal.action) ? data.signal.action.rebalance_required : false;
+  const el = document.getElementById(model.key + 'ActionStatus');
+  if (!el) return;
+  el.textContent = act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
+  el.className   = 'signal-badge ' + (act ? 'action' : 'hold');
+}
+
+// ════════════════════════════════════════════════════════
+// RENDER — PERFORMANCE  (shared; reads the view-model schema)
+//   cum_returns[key]/.spy_bh, returns[key]/.spy_bh,
+//   risk[key]/.spy_bh, annual_risk, rebalancing
+// ════════════════════════════════════════════════════════
+function renderPerf(key, data) {
   const ret = data.returns;
-  const r   = data.risk[app];      // flat risk block
+  const r   = data.risk[key];
   const rs  = data.risk.spy_bh;
   const rb  = data.rebalancing;
   const ar  = data.annual_risk || {};
-  const ytdMdd    = (ar[app]    && ar[app].ytd)    ? ar[app].ytd.maxdd    : null;
+  const ytdMdd    = (ar[key]    && ar[key].ytd)    ? ar[key].ytd.maxdd    : null;
   const spyYtdMdd = (ar.spy_bh  && ar.spy_bh.ytd)  ? ar.spy_bh.ytd.maxdd  : null;
 
-  // Cumulative — pre-computed percentage values from backend
+  // Cumulative
   const cr = data.cum_returns;
   let html = [
-    ['YTD',    cr[app].ytd,    cr.spy_bh.ytd,    true],
-    ['1 Year', cr[app]['1yr'], cr.spy_bh['1yr'], false],
-    ['3 Year', cr[app]['3yr'], cr.spy_bh['3yr'], false],
-    ['5 Year', cr[app]['5yr'], cr.spy_bh['5yr'], false],
-    ['ITD',    cr[app].itd,    cr.spy_bh.itd,    false],
+    ['YTD',    cr[key].ytd,    cr.spy_bh.ytd,    true],
+    ['1 Year', cr[key]['1yr'], cr.spy_bh['1yr'], false],
+    ['3 Year', cr[key]['3yr'], cr.spy_bh['3yr'], false],
+    ['5 Year', cr[key]['5yr'], cr.spy_bh['5yr'], false],
+    ['ITD',    cr[key].itd,    cr.spy_bh.itd,    false],
   ].map(([period, m, b, isYtd]) => {
     const e = edge(m, b);
     return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
   }).join('');
-  const cagrE = edge(cr[app].cagr_itd, cr.spy_bh.cagr_itd);
-  html += row(['ITD CAGR', c(fmtPct(cr[app].cagr_itd,2),'td-model '+pctCls(cr[app].cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById(app+'CumulBody').innerHTML = html;
+  const cagrE = edge(cr[key].cagr_itd, cr.spy_bh.cagr_itd);
+  html += row(['ITD CAGR', c(fmtPct(cr[key].cagr_itd,2),'td-model '+pctCls(cr[key].cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
+  document.getElementById(key+'CumulBody').innerHTML = html;
 
-  // Annual — derive years dynamically (no hardcoded list)
-  const years = Object.keys(ret[app]).filter(k => k !== 'ytd').sort().reverse();
+  // Annual
+  const years = Object.keys(ret[key]).filter(k => k !== 'ytd').sort().reverse();
   const yearOrder = ['ytd', ...years];
   const curYear = new Date().getFullYear();
   html = yearOrder.map(yr => {
-    const m = ret[app][yr], b = ret.spy_bh[yr];
+    const m = ret[key][yr], b = ret.spy_bh[yr];
     if (m == null && b == null) return '';
     const label = yr === 'ytd' ? (curYear + ' YTD') : yr;
     const e = edge(m, b);
     return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
   }).filter(Boolean).join('');
-  document.getElementById(app+'AnnualBody').innerHTML = html;
+  document.getElementById(key+'AnnualBody').innerHTML = html;
 
   // Risk
   const riskDefs = [
@@ -1486,109 +396,31 @@ function renderPerf(app, data) {
     const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
     return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
   }).join('');
-  document.getElementById(app+'RiskBody').innerHTML = html;
+  document.getElementById(key+'RiskBody').innerHTML = html;
 
   // Ops
   html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
          row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
          row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
-  document.getElementById(app+'OpsBody').innerHTML = html;
+  document.getElementById(key+'OpsBody').innerHTML = html;
 }
 
 // ════════════════════════════════════════════════════════
-// RENDER — EIDOS ALLOCATION
-// ════════════════════════════════════════════════════════
-function renderEidosAlloc(perf) {
-  const history = perf.rebalancing.history;
-  if (!history || !history.length) {
-    document.getElementById('eidosAllocBody').innerHTML =
-      '<tr><td colspan="8" style="text-align:center;color:var(--grey);padding:24px;">No data</td></tr>';
-    return;
-  }
-
-  // Build synthesized "Current" row from signal — the live portfolio state.
-  // Mirrors the structure of historical rows so it slots in cleanly at the head.
-  const sig = perf.signal || {};
-  const sw  = sig.weights || {};
-  const act = sig.action  || {};
-  const arch = sig.archetype;
-  const daysSinceLast = act.days_since_last_rebalance;
-  const currentRow = `<tr class="is-current">` + [
-    `<td class="td-left">Now</td>`,
-    `<td class="td-center">${eidosPill(arch)}</td>`,
-    `<td>${sw.SPY && sw.SPY.target_weight != null ? Math.round(sw.SPY.target_weight)+'%' : '—'}</td>`,
-    `<td>${sw.GLD && sw.GLD.target_weight != null ? Math.round(sw.GLD.target_weight)+'%' : '—'}</td>`,
-    `<td>${sw.TLT && sw.TLT.target_weight != null ? Math.round(sw.TLT.target_weight)+'%' : '—'}</td>`,
-    `<td>${sw.BIL && sw.BIL.target_weight != null ? Math.round(sw.BIL.target_weight)+'%' : '—'}</td>`,
-    `<td>${daysSinceLast != null ? daysSinceLast : '—'}</td>`,
-    `<td class="td-left">Current</td>`
-  ].join('') + `</tr>`;
-
-  const historyRows = history.map(e => {
-    const w = e.weights_after || {};
-    const trigger = e.type === 'regime_change' ? 'Regime change' : 'VAMS change';
-    return row([
-      fmtDate(e.date),
-      c(eidosPill(e.archetype_after || e.archetype_before), 'td-center'),
-      w.SPY != null ? Math.round(w.SPY)+'%' : '—',
-      w.GLD != null ? Math.round(w.GLD)+'%' : '—',
-      w.TLT != null ? Math.round(w.TLT)+'%' : '—',
-      w.BIL != null ? Math.round(w.BIL)+'%' : '—',
-      e.days_since_prior ?? '—',
-      c(trigger, 'td-left')
-    ]);
-  }).join('');
-
-  document.getElementById('eidosAllocBody').innerHTML = currentRow + historyRows;
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — HEDRA SIGNAL
-// ════════════════════════════════════════════════════════
-function renderHedraSignal(hedra) {
-  const sig = hedra.signal;
-  const act = sig.action || {};
-  document.getElementById('hedraActionStatus').textContent = act.rebalance_required ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  document.getElementById('hedraActionStatus').className   = 'signal-badge ' + (act.rebalance_required ? 'action' : 'hold');
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — HEDRA PERFORMANCE  (uses shared renderPerf('hedra', …))
-// ════════════════════════════════════════════════════════
-
-// ════════════════════════════════════════════════════════
-// DATA LOADING
+// DATA LOADING — fetch every model's view-model JSON in parallel
 // ════════════════════════════════════════════════════════
 async function loadData() {
   try {
-    const [aegis, eidos, hedra] = await Promise.all([
-      fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
-      fetch('eidos.json?v=' + Date.now()).then(r => r.json()),
-      fetch('hedra.json?v='  + Date.now()).then(r => r.json()),
-    ]);
+    const loaded = await Promise.all(MODELS.map(async model => {
+      const data = await fetch(model.file + '?v=' + Date.now()).then(r => r.json());
+      return { model, data };
+    }));
 
-    // Normalize Aegis cum_returns keys from {y1,y3,y5} → {1yr,3yr,5yr}
-    if (aegis.cum_returns) {
-      Object.keys(aegis.cum_returns).forEach(k => {
-        const cr = aegis.cum_returns[k];
-        if (cr && cr.y1 !== undefined) {
-          cr['1yr'] = cr.y1; cr['3yr'] = cr.y3; cr['5yr'] = cr.y5;
-        }
-      });
-    }
+    renderCards(loaded);
 
-    // Store Hedra data globally so renderToday can access it
-    window._hedraData = hedra;
-
-    renderToday(aegis, eidos);
-    try { renderAegisSignal(aegis); } catch(e) { console.error('renderAegisSignal:', e); }
-    try { renderAegisPerf(aegis);   } catch(e) { console.error('renderAegisPerf:', e); }
-    try { renderAegisAlloc(aegis);  } catch(e) { console.error('renderAegisAlloc:', e); }
-    try { renderEidosSignal(eidos); } catch(e) { console.error('renderEidosSignal:', e); }
-    try { renderPerf('eidos', eidos);   } catch(e) { console.error('renderPerf eidos:', e); }
-    try { renderEidosAlloc(eidos); } catch(e) { console.error('renderEidosAlloc:', e); }
-    try { renderHedraSignal(hedra);   } catch(e) { console.error('renderHedraSignal:', e); }
-    try { renderPerf('hedra', hedra);     } catch(e) { console.error('renderPerf hedra:', e); }
+    loaded.forEach(({ model, data }) => {
+      try { renderModelSignal(model, data); } catch(e) { console.error('signal', model.key, e); }
+      try { renderPerf(model.key, data);    } catch(e) { console.error('perf',   model.key, e); }
+    });
   } catch(err) {
     console.error('Data load error:', err);
     const banner = document.getElementById('dataErrorBanner');
