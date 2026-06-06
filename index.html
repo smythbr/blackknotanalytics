@@ -32,6 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bk.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
+<script src="bk-auth.js"></script>
 </head>
 <body>
 
@@ -244,20 +245,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ════════════════════════════════════════════════════════════════
-// Supabase Authentication
-// ════════════════════════════════════════════════════════════════
-const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_J2Ik8meti23EXo_sNEX7bQ_dpYmZDgz';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
-  auth: {
-    persistSession:     true,
-    autoRefreshToken:   true,
-    detectSessionInUrl: true
-  }
-});
-
-// ── Session-aware nav ────────────────────────────────────────────
+// ── Session-aware nav (sb client comes from bk-auth.js) ──────────
 (async () => {
   try {
     const { data: { session } } = await sb.auth.getSession();

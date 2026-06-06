@@ -132,8 +132,7 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
 
 /* Eyebrow label (shared) */
-.section-eyebrow,
-.db-section-eyebrow {
+.section-eyebrow {
   font-family: var(--font-ui);
   font-size: var(--fs-sm); font-weight: 700;
   letter-spacing: 0.3em; text-transform: uppercase;
@@ -141,8 +140,7 @@ input, select, textarea, button { font-size: max(16px, 1em); }
   display: flex; align-items: center; gap: 10px;
   margin-bottom: 16px;
 }
-.section-eyebrow::before,
-.db-section-eyebrow::before {
+.section-eyebrow::before {
   content: ''; flex-shrink: 0;
   width: 24px; height: 1px; background: var(--red);
 }
@@ -154,10 +152,6 @@ input, select, textarea, button { font-size: max(16px, 1em); }
   color: var(--white); margin-bottom: 16px;
 }
 .section-title em { font-style: italic; color: var(--red); }
-.section-sub {
-  font-size: var(--fs-md); color: var(--light-grey);
-  line-height: 1.8; max-width: 640px; margin-bottom: 32px;
-}
 
 /* Dashboard page shell */
 .db-page { padding-top: var(--nav-h); }
@@ -487,16 +481,8 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 .signal-alloc-pct { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--white); }
 .signal-alloc-pct.zero { color: #444; }
 
-/* Placeholder / coming-soon card (scaffold for the next model) */
-.signal-card.is-placeholder { border-left-color: rgba(255,255,255,0.15); opacity: 0.75; }
-.signal-card.is-placeholder .signal-card-name { color: var(--grey); }
-.placeholder-body { display: flex; align-items: center; justify-content: center; min-height: 180px; text-align: center; }
-.placeholder-tag { font-family: var(--font-ui); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey); }
-.placeholder-note { font-size: var(--fs-xs); color: #555; letter-spacing: 0.08em; margin-top: 8px; }
-
 /* Model signal panel (model detail page) — status only, never weights */
 .signal-panel { background: #111; border: 1px solid rgba(255,255,255,0.12); padding: 24px 26px 22px; }
-.action-row { margin-top: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
 /* ─── 4.10 Tables — generic + performance ──────────────────────── */
 table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); }
@@ -512,13 +498,11 @@ td { padding: 11px 16px; font-size: var(--fs-md); border-bottom: 1px solid rgba(
 td:first-child { text-align: left; color: var(--light-grey); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: rgba(255,255,255,0.015); }
-.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* Table value utilities */
 .td-model { color: var(--white) !important; font-weight: 600; }
 .td-pos   { color: var(--green-pos) !important; font-weight: 600; }
 .td-neg   { color: var(--red-neg) !important; font-weight: 600; }
-.td-neu   { color: var(--yellow-neu); }
 .td-bench { color: var(--grey); }
 
 /* Performance table (dashboard) */
@@ -626,8 +610,6 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 ═══════════════════════════════════════════════════════════════ */
 .animate { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .animate.in { opacity: 1; transform: translateY(0); }
-.u-center { text-align: center; }
-.u-hidden { display: none !important; }
 
 
 /* ═══════════════════════════════════════════════════════════════
