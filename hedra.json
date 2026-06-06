@@ -1,9 +1,9 @@
 {
-  "schema": "blackknot.v2",
+  "schema": "blackknot.v3",
   "model": {
     "id": "hedra",
     "name": "HEDRA",
-    "badge": "Holding",
+    "state": "hold",
     "as_of": "2026-06-05"
   },
   "meta": {
@@ -17,190 +17,502 @@
     "fees": "gross of fees and transaction costs"
   },
   "card": {
-    "name": "HEDRA",
-    "badge": "Holding",
     "kpis": [
       {
         "label": "YTD",
         "value": 8.81,
-        "kind": "pct",
-        "tone": "pos"
+        "kind": "pct"
       },
       {
         "label": "ITD CAGR",
         "value": 14.16,
-        "kind": "pct",
-        "tone": "pos"
+        "kind": "pct"
       }
     ],
     "weights": [
       {
         "label": "A",
-        "pct": 60.0
+        "value": 60.0,
+        "kind": "pct_whole"
       },
       {
         "label": "B",
-        "pct": 0.0
+        "value": 0.0,
+        "kind": "pct_whole"
       },
       {
         "label": "C",
-        "pct": 0.0
+        "value": 0.0,
+        "kind": "pct_whole"
       },
       {
         "label": "D",
-        "pct": 40.0
+        "value": 40.0,
+        "kind": "pct_whole"
       }
     ]
   },
   "blocks": [
     {
-      "id": "signal",
       "type": "signal",
       "visible": true,
-      "date": "2026-06-05",
-      "weights": {
-        "A": {
-          "target_weight": 60.0
+      "weights": [
+        {
+          "label": "A",
+          "value": 60.0,
+          "kind": "pct_whole"
         },
-        "B": {
-          "target_weight": 0.0
+        {
+          "label": "B",
+          "value": 0.0,
+          "kind": "pct_whole"
         },
-        "C": {
-          "target_weight": 0.0
+        {
+          "label": "C",
+          "value": 0.0,
+          "kind": "pct_whole"
         },
-        "D": {
-          "target_weight": 40.0
+        {
+          "label": "D",
+          "value": 40.0,
+          "kind": "pct_whole"
         }
-      },
-      "action": {
-        "rebalance_required": false
-      }
+      ]
     },
     {
-      "id": "performance",
       "type": "performance",
       "visible": true,
-      "returns": {
-        "hedra": {
-          "2018": -7.62,
-          "2019": 12.89,
-          "2020": 43.01,
-          "2021": 11.66,
-          "2022": -3.27,
-          "2023": 12.02,
-          "2024": 22.41,
-          "2025": 26.62,
-          "ytd": 8.81
+      "tables": [
+        {
+          "id": "cumulative",
+          "title": "Cumulative Return",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Period",
+              "align": "left"
+            },
+            {
+              "key": "model",
+              "label": "HEDRA",
+              "align": "right",
+              "emphasis": "model"
+            },
+            {
+              "key": "bench",
+              "label": "SPY",
+              "align": "right",
+              "emphasis": "bench"
+            }
+          ],
+          "rows": [
+            {
+              "label": "YTD",
+              "model": {
+                "value": 8.81,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 8.45,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "1 Year",
+              "model": {
+                "value": 26.53,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 25.79,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "3 Year",
+              "model": {
+                "value": 82.73,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 79.45,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "5 Year",
+              "model": {
+                "value": 83.48,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 86.86,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Inception",
+              "model": {
+                "value": 204.34,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 214.01,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "CAGR (ITD)",
+              "model": {
+                "value": 14.16,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 9.82,
+                "kind": "pct_signed"
+              }
+            }
+          ]
         },
-        "spy_bh": {
-          "2018": -4.57,
-          "2019": 31.22,
-          "2020": 18.33,
-          "2021": 28.73,
-          "2022": -18.18,
-          "2023": 26.18,
-          "2024": 24.89,
-          "2025": 17.72,
-          "ytd": 8.45
-        }
-      },
-      "cum_returns": {
-        "hedra": {
-          "ytd": 8.81,
-          "1yr": 26.53,
-          "3yr": 82.73,
-          "5yr": 83.48,
-          "itd": 204.34,
-          "cagr_itd": 14.16
+        {
+          "id": "annual",
+          "title": "Annual Return",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Year",
+              "align": "left"
+            },
+            {
+              "key": "model",
+              "label": "HEDRA",
+              "align": "right",
+              "emphasis": "model"
+            },
+            {
+              "key": "bench",
+              "label": "SPY",
+              "align": "right",
+              "emphasis": "bench"
+            }
+          ],
+          "rows": [
+            {
+              "label": "2018",
+              "ytd": false,
+              "model": {
+                "value": -7.62,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -4.57,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2019",
+              "ytd": false,
+              "model": {
+                "value": 12.89,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 31.22,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2020",
+              "ytd": false,
+              "model": {
+                "value": 43.01,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 18.33,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2021",
+              "ytd": false,
+              "model": {
+                "value": 11.66,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 28.73,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2022",
+              "ytd": false,
+              "model": {
+                "value": -3.27,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -18.18,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2023",
+              "ytd": false,
+              "model": {
+                "value": 12.02,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 26.18,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2024",
+              "ytd": false,
+              "model": {
+                "value": 22.41,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 24.89,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2025",
+              "ytd": false,
+              "model": {
+                "value": 26.62,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 17.72,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "YTD",
+              "ytd": true,
+              "model": {
+                "value": 8.81,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 8.45,
+                "kind": "pct_signed"
+              }
+            }
+          ]
         },
-        "spy_bh": {
-          "ytd": 8.45,
-          "1yr": 25.79,
-          "3yr": 79.45,
-          "5yr": 86.86,
-          "itd": 214.01,
-          "cagr_itd": 9.82
+        {
+          "id": "risk",
+          "title": "Risk & Ratios",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Metric",
+              "align": "left"
+            },
+            {
+              "key": "model",
+              "label": "HEDRA",
+              "align": "right",
+              "emphasis": "model"
+            },
+            {
+              "key": "bench",
+              "label": "SPY",
+              "align": "right",
+              "emphasis": "bench"
+            }
+          ],
+          "rows": [
+            {
+              "label": "CAGR",
+              "model": {
+                "value": 14.16,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 9.82,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Volatility",
+              "model": {
+                "value": 10.15,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 15.94,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Sharpe",
+              "model": {
+                "value": 1.1062,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 0.558,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "Sortino",
+              "model": {
+                "value": 1.5699,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 0.7815,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "Calmar",
+              "model": {
+                "value": 3.0163,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 0.7663,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "MAR",
+              "model": {
+                "value": 1.1999,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 0.2912,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "Max Drawdown",
+              "model": {
+                "value": -11.8,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -33.72,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Avg Drawdown",
+              "model": {
+                "value": -4.09,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -5.88,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Beta",
+              "model": {
+                "value": 0.4794,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 1.0,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "Omega",
+              "model": {
+                "value": 1.2891,
+                "kind": "ratio"
+              },
+              "bench": {
+                "value": 1.1666,
+                "kind": "ratio"
+              }
+            },
+            {
+              "label": "Upside Capture",
+              "model": {
+                "value": 26.4,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 100.0,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "Downside Capture",
+              "model": {
+                "value": 38.8,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 100.0,
+                "kind": "pct_signed"
+              }
+            }
+          ]
         }
-      },
-      "risk": {
-        "hedra": {
-          "cagr": 14.16,
-          "volatility": 10.15,
-          "sharpe": 1.1062,
-          "sortino": 1.5699,
-          "calmar": 3.0163,
-          "mar": 1.1999,
-          "maxdd": -11.8,
-          "maxdd_start": "2020-02-18",
-          "maxdd_trough": "2020-03-19",
-          "maxdd_recovery": "2020-05-18",
-          "maxdd_episode_days": 30,
-          "maxdd_recovery_days": 60,
-          "maxdd_duration_days": 611,
-          "avg_drawdown": -4.09,
-          "beta": 0.4794,
-          "omega": 1.2891,
-          "upside_capture": 26.4,
-          "downside_capture": 38.8,
-          "capture_ratio": 68.0
-        },
-        "spy_bh": {
-          "cagr": 9.82,
-          "volatility": 15.94,
-          "sharpe": 0.558,
-          "sortino": 0.7815,
-          "calmar": 0.7663,
-          "mar": 0.2912,
-          "maxdd": -33.72,
-          "maxdd_start": "2020-02-19",
-          "maxdd_trough": "2020-03-23",
-          "maxdd_recovery": "2020-08-10",
-          "maxdd_episode_days": 33,
-          "maxdd_recovery_days": 140,
-          "maxdd_duration_days": 708,
-          "avg_drawdown": -5.88,
-          "beta": 1.0,
-          "omega": 1.1666,
-          "upside_capture": 100.0,
-          "downside_capture": 100.0,
-          "capture_ratio": 100.0
-        }
-      },
-      "annual_risk": {
-        "hedra": {
-          "ytd": {
-            "maxdd": -4.54
-          }
-        },
-        "spy_bh": {
-          "ytd": {
-            "maxdd": -8.88
-          }
-        }
-      }
+      ]
     },
     {
-      "id": "rebalancing",
+      "type": "allocation",
+      "visible": false
+    },
+    {
       "type": "rebalancing",
       "visible": true,
-      "averages": {
-        "total": 23.7
-      },
-      "annual": {
-        "ytd": {
-          "total": 9
-        }
-      },
-      "cumulative": {
-        "total": 200
+      "table": {
+        "id": "rebalancing",
+        "title": null,
+        "columns": [
+          {
+            "key": "label",
+            "label": "",
+            "align": "left"
+          },
+          {
+            "key": "value",
+            "label": "",
+            "align": "right",
+            "emphasis": "model"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Average / year",
+            "value": {
+              "value": 23.7,
+              "kind": "num"
+            }
+          },
+          {
+            "label": "Year to date",
+            "value": {
+              "value": 9,
+              "kind": "int"
+            }
+          },
+          {
+            "label": "Cumulative (ITD)",
+            "value": {
+              "value": 200,
+              "kind": "int"
+            }
+          }
+        ]
       }
-    },
-    {
-      "id": "allocation",
-      "type": "allocation",
-      "visible": false,
-      "columns": [],
-      "rows": []
     }
   ]
 }

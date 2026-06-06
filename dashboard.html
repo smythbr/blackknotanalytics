@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v4.1 (block-driven, bk.css-native) -->
+<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v5 (blackknot.v3 contract) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,7 +20,7 @@
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
   });
-  // ── AUTH GUARD (preserved exactly) ────────────────────────
+  // ── AUTH GUARD ────────────────────────────────────────────
   document.documentElement.style.visibility = 'hidden';
   (async () => {
     const { data:{ session } } = await sb.auth.getSession();
@@ -31,7 +31,7 @@
 
 <div class="db-wrap">
 
-<!-- ─── NAV (bk.css .db-nav) ─────────────────────────────── -->
+<!-- ─── NAV ─────────────────────────────────────────────── -->
 <nav class="db-nav" id="dbNav">
   <a href="index.html" class="db-nav-logo"><img src="logo.png" alt="BLACK KNOT ANALYTICS"></a>
   <div class="db-nav-right">
@@ -47,7 +47,7 @@
   </div>
 </nav>
 
-<!-- ─── MENU OVERLAY (bk.css .menu-overlay dropdown) ──────── -->
+<!-- ─── MENU OVERLAY ──────────────────────────────────────── -->
 <div class="menu-overlay" id="menuOverlay">
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
   <button onclick="navTo('aegis');toggleMenu();" id="menuAegis">AEGIS</button>
@@ -74,6 +74,20 @@
 </div>
 
 <script>
+/* ════════════════════════════════════════════════════════════════════════
+   Black Knot dashboard renderer — consumes the blackknot.v3 contract.
+
+   The contract is SELF-DESCRIBING: blocks declare their type + visibility;
+   tables declare their columns (with emphasis) + rows of {value, kind} cells.
+   This renderer FORMATS and DISPLAYS only — it performs no financial maths and
+   infers nothing from key names. Add a block type → add one renderer + register
+   it; add a metric → it flows through generically.
+
+   Division of labour: the back end computes + decides + masks; this layer owns
+   wording, colour, and layout. State (hold/action/pending) is semantic; the
+   words ("NO ACTION REQUIRED") live here, so copy changes never touch the JSON.
+════════════════════════════════════════════════════════════════════════ */
+
 // ── NAV ───────────────────────────────────────────────────
 function navTo(page) {
   document.querySelectorAll('.db-page-section').forEach(s => s.classList.remove('active'));
@@ -104,142 +118,141 @@ async function signOut() {
   window.location.replace('index.html');
 }
 
-// ── FORMAT HELPERS ────────────────────────────────────────
+// ── STATE → wording + style (front end owns the words) ────
+const STATE_LABEL = { hold: 'NO ACTION REQUIRED', action: 'ACTION REQUIRED', pending: 'PENDING' };
+const STATE_CLASS = { hold: 'hold', action: 'action', pending: 'pending' };
+const stateLabel = s => STATE_LABEL[s] || '—';
+const stateClass = s => STATE_CLASS[s] || 'hold';
+
+// ── CELL FORMATTING (one formatter per declared kind) ─────
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(d) { if (!d) return '—'; const p = d.split('-'); return `${parseInt(p[2])} ${MONTHS[parseInt(p[1])-1]} ${p[0]}`; }
-function fmtPct(v, signed) { if (v == null) return '—'; const s = signed && v >= 0 ? '+' : ''; return s + Number(v).toFixed(2) + '%'; }
-function fmtNum(v, dp) { if (v == null) return '—'; return Number(v).toFixed(dp == null ? 2 : dp); }
-function badgeClass(b) { b = (b || '').toLowerCase(); return /action/.test(b) ? 'action' : /pending/.test(b) ? 'pending' : 'hold'; }
-function valCls(v) { return v == null ? 'neu' : (v >= 0 ? 'pos' : 'neg'); }
-function tdRet(v) { return v == null ? 'td-bench' : (v >= 0 ? 'td-pos' : 'td-neg'); }
 
-// ── CARD (home grid) — bk.css .signal-card ────────────────
-function renderCard(data) {
-  const m = data.model, c = data.card || {};
-  const badge = c.badge || '—';
-  const kpis = (c.kpis || []).map(k =>
-    `<div class="signal-kpi"><div class="signal-kpi-label">${k.label}</div>
-      <div class="signal-kpi-val ${valCls(k.value)}">${fmtPct(k.value)}</div></div>`).join('');
-  const alloc = (c.weights || []).map(w =>
-    `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${w.label === 'Fixed Income' ? 'FI' : w.label}</div>
-      <div class="signal-alloc-pct ${w.pct === 0 ? 'zero' : ''}">${w.pct == null ? '—' : Math.round(w.pct) + '%'}</div></div>`).join('');
-  return `<div class="signal-card clickable" onclick="navTo('${m.id}')">
-    <div class="signal-card-header">
-      <div class="signal-card-name">${m.name}</div>
-      <span class="signal-badge ${badgeClass(badge)}">${badge}</span>
-    </div>
-    <div class="signal-kpis">${kpis}</div>
-    <div class="signal-alloc-label">Allocation</div>
-    <div class="signal-alloc-row">${alloc}</div>
-  </div>`;
+function fmtKind(value, kind) {
+  if (value == null) return '—';
+  const n = Number(value);
+  switch (kind) {
+    case 'pct':        return n.toFixed(2) + '%';
+    case 'pct_signed': return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+    case 'pct_whole':  return Math.round(n) + '%';
+    case 'ratio':      return n.toFixed(2);
+    case 'num':        return n.toFixed(1);
+    case 'int':        return String(value);
+    default:           return String(value);
+  }
+}
+const isPctKind = k => k === 'pct' || k === 'pct_signed' || k === 'pct_whole';
+const signClass = v => v == null ? 'neu' : (v >= 0 ? 'pos' : 'neg');
+
+// Cell colour class inside a table, from the column's emphasis + the cell kind.
+function cellClass(cell, col) {
+  const emph = col.emphasis;
+  if (emph === 'bench') return 'td-bench';
+  if (emph === 'model') {
+    if (isPctKind(cell.kind)) return cell.value == null ? 'td-bench' : (cell.value >= 0 ? 'td-pos' : 'td-neg');
+    return 'td-model';
+  }
+  return '';
 }
 
-// ── BLOCK RENDERERS (generic, dispatched by block.type) ───
+// ── TABLE ENGINE (renders any self-describing table) ──────
+function renderTable(t, opts) {
+  opts = opts || {};
+  const cols = t.columns || [];
+  const showHead = opts.head !== false && cols.some(c => c.label);
+  let thead = '';
+  if (showHead) {
+    thead = '<thead><tr>' + cols.map(c =>
+      `<th${c.emphasis === 'model' ? ' class="col-model"' : ''}>${c.label || ''}</th>`).join('') + '</tr></thead>';
+  }
+  const body = (t.rows || []).map(row => {
+    const tds = cols.map(c => {
+      const v = row[c.key];
+      if (c.key === 'label' || typeof v !== 'object' || v == null) {
+        return `<td>${v == null ? '—' : (v.value !== undefined ? fmtKind(v.value, v.kind) : v)}</td>`;
+      }
+      return `<td class="${cellClass(v, c)}">${fmtKind(v.value, v.kind)}</td>`;
+    }).join('');
+    return `<tr${row.ytd ? ' class="row-ytd"' : ''}>${tds}</tr>`;
+  }).join('');
+  const heading = t.title ? `<div class="perf-table-heading">${t.title}</div>` : '';
+  return `<div class="perf-table-block">${heading}
+    <div class="perf-table-wrap"><table class="perf-table">${thead}<tbody>${body}</tbody></table></div></div>`;
+}
+
+// Weight strip (signal block + card). `mapLabel` lets the card shorten labels.
+function renderWeights(weights, mapLabel) {
+  return (weights || []).map(w => {
+    const label = mapLabel ? mapLabel(w.label) : w.label;
+    const zero = w.value === 0 ? ' zero' : '';
+    return `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${label}</div>
+      <div class="signal-alloc-pct${zero}">${fmtKind(w.value, w.kind)}</div></div>`;
+  }).join('');
+}
+
+// ── BLOCK RENDERERS (registry, keyed by block.type) ───────
 function blkSignal(b, data) {
   let inner;
-  if (b.status === 'pending') {
-    inner = `<div class="signal-pending">${b.note || 'Signal not yet published.'}</div>`;
+  if (b.note) {
+    inner = `<div class="signal-pending">${b.note}</div>`;
   } else {
-    const w = b.weights || {};
-    const strip = Object.keys(w).map(k => {
-      const pct = (w[k] || {}).target_weight;
-      return `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${k}</div>
-        <div class="signal-alloc-pct ${pct === 0 ? 'zero' : ''}">${pct == null ? '—' : Math.round(pct) + '%'}</div></div>`;
-    }).join('');
-    const act = (b.action || {}).rebalance_required;
-    const statusLine = act ? `<div class="signal-status action">Action Required</div>` : '';
-    inner = `${statusLine}<div class="signal-alloc-row">${strip}</div>`;
+    const status = data.model.state === 'action'
+      ? `<div class="signal-status action">Action Required</div>` : '';
+    inner = `${status}<div class="signal-alloc-row">${renderWeights(b.weights)}</div>`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Signal</div>
     <div class="signal-panel">${inner}</div></div>`;
 }
 
-function perfBlock(heading, headLabel, modelId, mObj, sObj, rows, ratioKeys) {
-  const head = `<tr><th>${headLabel}</th><th class="col-model">${modelId.toUpperCase()}</th><th>SPY</th></tr>`;
-  const body = rows.map(([label, key]) => {
-    const isRatio = ratioKeys && ratioKeys.indexOf(key) !== -1;
-    const mv = mObj ? mObj[key] : null, sv = sObj ? sObj[key] : null;
-    const fmt = isRatio ? (v => fmtNum(v)) : (v => fmtPct(v, true));
-    const mc = isRatio ? 'td-model' : tdRet(mv);
-    return `<tr><td>${label}</td><td class="${mc}">${fmt(mv)}</td><td class="td-bench">${fmt(sv)}</td></tr>`;
-  }).join('');
-  return `<div class="perf-table-block">
-    <div class="perf-table-heading">${heading}</div>
-    <div class="perf-table-wrap"><table class="perf-table">
-      <thead>${head}</thead><tbody>${body}</tbody></table></div></div>`;
-}
-
 function blkPerformance(b, data) {
-  const id = data.model.id;
-  const cm = (b.cum_returns || {})[id], cs = (b.cum_returns || {}).spy_bh;
-  const rm = (b.risk || {})[id],        rs = (b.risk || {}).spy_bh;
-  const am = (b.returns || {})[id],     asb = (b.returns || {}).spy_bh;
-
-  let inner = '';
-  if (cm || rm || am) {
-    if (cm) inner += perfBlock('Cumulative Return', 'Period', id, cm, cs, [
-      ['YTD','ytd'], ['1 Year','1yr'], ['3 Year','3yr'], ['5 Year','5yr'],
-      ['Inception','itd'], ['CAGR (ITD)','cagr_itd'],
-    ]);
-    if (am) {
-      const years = Object.keys(am).filter(k => /^\d{4}$/.test(k)).sort();
-      const head = `<tr><th>Year</th><th class="col-model">${id.toUpperCase()}</th><th>SPY</th></tr>`;
-      const rowsArr = years.concat(am.ytd !== undefined ? ['ytd'] : []);
-      const body = rowsArr.map(y => {
-        const label = y === 'ytd' ? 'YTD' : y;
-        const mv = am[y], sv = asb ? asb[y] : null;
-        const rc = y === 'ytd' ? 'row-ytd' : '';
-        return `<tr class="${rc}"><td>${label}</td><td class="${tdRet(mv)}">${fmtPct(mv,true)}</td>
-          <td class="td-bench">${fmtPct(sv,true)}</td></tr>`;
-      }).join('');
-      inner += `<div class="perf-table-block"><div class="perf-table-heading">Annual Return</div>
-        <div class="perf-table-wrap"><table class="perf-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></div>`;
-    }
-    if (rm) inner += perfBlock('Risk &amp; Ratios', 'Metric', id, rm, rs, [
-      ['CAGR','cagr'], ['Volatility','volatility'], ['Sharpe','sharpe'], ['Sortino','sortino'],
-      ['Calmar','calmar'], ['MAR','mar'], ['Max Drawdown','maxdd'], ['Avg Drawdown','avg_drawdown'],
-      ['Beta','beta'], ['Omega','omega'], ['Upside Capture','upside_capture'], ['Downside Capture','downside_capture'],
-    ], ['sharpe','sortino','calmar','mar','beta','omega']);
+  let inner;
+  if (b.tables && b.tables.length) {
+    inner = b.tables.map(t => renderTable(t)).join('');
   } else {
-    inner = `<div class="signal-panel"><div class="signal-pending">Performance is published once the signal is live.</div></div>`;
+    inner = `<div class="signal-panel"><div class="signal-pending">${b.note || 'Performance is published once the signal is live.'}</div></div>`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Performance</div>${inner}</div>`;
 }
 
 function blkAllocation(b, data) {
-  const rows = b.rows || [];
-  let inner;
-  if (!rows.length) {
-    inner = `<div class="signal-panel"><div class="signal-pending">Allocation detail is published once the signal is live.</div></div>`;
-  } else {
-    const cols = b.columns || [];
-    const head = '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>';
-    const body = rows.map(r => '<tr>' + r.map(cell => `<td>${cell == null ? '—' : cell}</td>`).join('') + '</tr>').join('');
-    inner = `<div class="perf-table-wrap"><table class="perf-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
-  }
+  const inner = b.table
+    ? renderTable(b.table)
+    : `<div class="signal-panel"><div class="signal-pending">${b.note || 'Allocation detail is published once the signal is live.'}</div></div>`;
   return `<div class="db-block"><div class="db-eyebrow">Allocation</div>${inner}</div>`;
 }
 
 function blkRebalancing(b, data) {
-  const avg = (b.averages || {}).total, ytd = ((b.annual || {}).ytd || {}).total, cum = (b.cumulative || {}).total;
-  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
-    <div class="perf-table-wrap"><table class="perf-table"><tbody>
-      <tr><td>Average / year</td><td class="td-model">${avg == null ? '—' : fmtNum(avg,1)}</td></tr>
-      <tr><td>Year to date</td><td class="td-model">${ytd == null ? '—' : ytd}</td></tr>
-      <tr><td>Cumulative (ITD)</td><td class="td-model">${cum == null ? '—' : cum}</td></tr>
-    </tbody></table></div></div>`;
+  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table, { head: false })}</div>`;
 }
 
 const BLOCK_RENDERERS = {
   signal: blkSignal, performance: blkPerformance, allocation: blkAllocation, rebalancing: blkRebalancing,
 };
 
+// ── CARD (home grid) ──────────────────────────────────────
+const cardLabel = l => l === 'Fixed Income' ? 'FI' : l;   // card-only shortening
+function renderCard(data) {
+  const m = data.model, c = data.card || {};
+  const kpis = (c.kpis || []).map(k =>
+    `<div class="signal-kpi"><div class="signal-kpi-label">${k.label}</div>
+      <div class="signal-kpi-val ${signClass(k.value)}">${fmtKind(k.value, k.kind)}</div></div>`).join('');
+  return `<div class="signal-card clickable" onclick="navTo('${m.id}')">
+    <div class="signal-card-header">
+      <div class="signal-card-name">${m.name}</div>
+      <span class="signal-badge ${stateClass(m.state)}">${stateLabel(m.state)}</span>
+    </div>
+    <div class="signal-kpis">${kpis}</div>
+    <div class="signal-alloc-label">Allocation</div>
+    <div class="signal-alloc-row">${renderWeights(c.weights, cardLabel)}</div>
+  </div>`;
+}
+
 // ── MODEL PAGE (compose visible blocks generically) ───────
 function renderModelPage(data) {
   const m = data.model;
   const asOf = m.as_of ? `Updated as at market close · ${fmtDate(m.as_of)}` : 'Awaiting first published signal';
   let html = `<div class="db-eyebrow">Model</div>
-    <h1 class="db-title">${m.name}<span class="signal-badge ${badgeClass(m.badge)}">${m.badge || '—'}</span></h1>
+    <h1 class="db-title">${m.name}<span class="signal-badge ${stateClass(m.state)}">${stateLabel(m.state)}</span></h1>
     <div class="signal-date">${asOf}</div>`;
   (data.blocks || []).forEach(b => {
     if (!b.visible) return;
