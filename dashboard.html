@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v5.0
-     Architecture:
-       • One model live (Hedra); second model drops in via the MODELS registry.
-       • The JSON is a strict VIEW-MODEL: it contains only what this page renders.
-         No weights, no holdings, no internal state — nothing that isn't displayed.
-       • Hedra publishes exactly: Action status + performance. Never allocations.
--->
+<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v4.0 (block-driven) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,10 +10,142 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bk.css">
+<style>
+/* ─── DESIGN TOKENS (fallbacks; bk.css is authoritative when present) ───── */
+:root {
+  --card-bg:#0e0e0e; --card-border:#1d1d1d; --line:#1d1d1d;
+  --white:#f4f4f2; --grey:#8a8a86; --light-grey:#bdbdb8;
+  --green-pos:#5fb87a; --red-neg:#d2604f; --red:#d2604f; --yellow-neu:#c8a24a;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-ui:'Rajdhani',-apple-system,sans-serif;
+  --fs-base:1rem; --fs-md:1.25rem; --fs-sm:0.85rem; --fs-xs:0.72rem;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#0a0a0a; color:var(--white); font-family:var(--font-ui);
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+.db-wrap { min-height:100vh; display:flex; flex-direction:column; }
+
+/* ─── NAVIGATION ─────────────────────────────────────────── */
+.db-nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:max(18px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) 18px max(28px,env(safe-area-inset-left));
+  background:rgba(0,0,0,0.95); border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+}
+.db-nav.scrolled { box-shadow:0 1px 0 rgba(255,255,255,0.04); }
+.db-nav-logo img { height:40px; width:auto; display:block; }
+.db-nav-right { display:flex; align-items:center; gap:24px; }
+.db-nav-link {
+  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
+  letter-spacing:0.15em; text-transform:uppercase; text-decoration:none;
+  color:var(--grey); cursor:pointer; padding:6px 0; background:none; border:none;
+  transition:color 0.15s;
+}
+.db-nav-link:hover, .db-nav-link.active { color:var(--white); }
+.db-nav-signout {
+  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--red); cursor:pointer; background:none; border:none; transition:opacity 0.15s;
+}
+.db-nav-signout:hover { opacity:0.75; }
+.db-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px;
+  width:44px; height:44px; padding:10px; cursor:pointer; background:none; border:none; }
+.db-hamburger span { display:block; height:1.5px; background:var(--white); transition:all 0.3s ease; transform-origin:center; }
+.db-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.db-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.db-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+/* ─── MENU OVERLAY (mobile) ──────────────────────────────── */
+.db-menu-overlay {
+  position:fixed; inset:0; z-index:99; background:rgba(0,0,0,0.98);
+  display:none; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+}
+.db-menu-overlay.open { display:flex; }
+.db-menu-overlay button {
+  font-family:var(--font-ui); font-size:1.4rem; font-weight:600; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--grey); background:none; border:none; cursor:pointer;
+}
+.db-menu-overlay button.active { color:var(--white); }
+.db-menu-overlay .db-menu-signout { color:var(--red); }
+.menu-divider { width:48px; height:1px; background:var(--line); }
+
+/* ─── PAGE LAYOUT ────────────────────────────────────────── */
+.db-page { flex:1; padding:120px max(28px,env(safe-area-inset-right)) 80px max(28px,env(safe-area-inset-left)); max-width:1080px; margin:0 auto; width:100%; }
+.db-page-section { display:none; animation:fade 0.4s ease; }
+.db-page-section.active { display:block; }
+@keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+.page-head { margin-bottom:38px; }
+.page-head h1 { font-family:var(--font-display); font-weight:300; font-size:3rem; letter-spacing:0.04em; line-height:1; }
+.page-head .page-sub { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; }
+
+/* ─── BADGES ─────────────────────────────────────────────── */
+.badge { display:inline-block; font-size:var(--fs-xs); font-weight:600; letter-spacing:0.14em;
+  text-transform:uppercase; padding:4px 11px; border-radius:2px; border:1px solid var(--line); }
+.badge.hold    { color:var(--light-grey); border-color:var(--line); }
+.badge.action  { color:var(--yellow-neu); border-color:var(--yellow-neu); }
+.badge.pending { color:var(--grey); border-color:var(--line); }
+
+/* ─── CARD GRID (home / today) ───────────────────────────── */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.bk-card {
+  background:var(--card-bg); border:1px solid var(--card-border); border-radius:4px;
+  padding:26px 26px 22px; cursor:pointer; transition:border-color 0.2s, transform 0.2s;
+}
+.bk-card:hover { border-color:#333; transform:translateY(-2px); }
+.bk-card-top { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; }
+.bk-card-name { font-family:var(--font-display); font-weight:400; font-size:2rem; letter-spacing:0.05em; }
+.bk-card-kpis { display:flex; gap:32px; margin-bottom:22px; }
+.bk-kpi-label { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; }
+.bk-kpi-val { font-family:var(--font-display); font-size:1.7rem; font-weight:400; margin-top:3px; }
+.bk-strip { display:flex; gap:8px; flex-wrap:wrap; padding-top:18px; border-top:1px solid var(--line); }
+.bk-chip { font-size:var(--fs-xs); letter-spacing:0.08em; color:var(--light-grey); }
+.bk-chip b { color:var(--white); font-weight:600; margin-left:4px; }
+.bk-chip.zero { color:var(--grey); }
+
+/* ─── MODEL PAGE BLOCKS ──────────────────────────────────── */
+.block { background:var(--card-bg); border:1px solid var(--card-border); border-radius:4px; padding:28px; margin-bottom:22px; }
+.block-title { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:20px; }
+.block-note { color:var(--grey); font-size:var(--fs-base); line-height:1.6; }
+
+.sig-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+.sig-state { font-family:var(--font-display); font-size:1.6rem; font-weight:400; }
+.sig-state.action { color:var(--yellow-neu); }
+.sig-strip { display:flex; gap:26px; flex-wrap:wrap; }
+.sig-w-label { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.1em; text-transform:uppercase; }
+.sig-w-val { font-family:var(--font-display); font-size:1.5rem; margin-top:2px; }
+.sig-w-val.zero { color:var(--grey); }
+
+table.bk-tbl { width:100%; border-collapse:collapse; font-size:var(--fs-sm); }
+table.bk-tbl th, table.bk-tbl td { text-align:right; padding:9px 10px; border-bottom:1px solid var(--line); letter-spacing:0.04em; }
+table.bk-tbl th:first-child, table.bk-tbl td:first-child { text-align:left; color:var(--light-grey); }
+table.bk-tbl thead th { color:var(--grey); font-size:var(--fs-xs); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
+table.bk-tbl tbody tr:last-child td { border-bottom:none; }
+.perf-sub { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; margin:24px 0 10px; }
+.perf-sub:first-child { margin-top:0; }
+
+.pos { color:var(--green-pos); }
+.neg { color:var(--red-neg); }
+.neutral { color:var(--light-grey); }
+.muted { color:var(--grey); }
+
+.data-error-banner { display:none; background:rgba(210,96,79,0.08); border:1px solid var(--red-neg);
+  color:var(--red-neg); padding:14px 18px; border-radius:4px; font-size:var(--fs-sm); margin-bottom:24px; line-height:1.5; }
+.data-error-banner.visible { display:block; }
+
+@media (max-width:720px) {
+  .db-nav-right .db-nav-link, .db-nav-right .db-nav-signout { display:none; }
+  .db-hamburger { display:flex; }
+  .page-head h1 { font-size:2.3rem; }
+  .db-page { padding-top:100px; }
+}
+</style>
 </head>
 <body>
 
-<!-- ─── SUPABASE + AUTH GUARD ───────────────────────────────── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0"></script>
 <script>
   const SUPABASE_URL = 'https://lteeroxgbxbgvfqntfoo.supabase.co';
@@ -27,6 +153,7 @@
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
   });
+  // ── AUTH GUARD (preserved exactly) ────────────────────────
   document.documentElement.style.visibility = 'hidden';
   (async () => {
     const { data:{ session } } = await sb.auth.getSession();
@@ -39,413 +166,242 @@
 
 <!-- ─── NAV ─────────────────────────────────────────────── -->
 <nav class="db-nav" id="dbNav">
-  <a href="index.html" class="db-nav-logo">
-    <img src="logo.png" alt="BLACK KNOT ANALYTICS">
-  </a>
-  <div class="db-nav-right" id="dbNavRight">
+  <a href="index.html" class="db-nav-logo"><img src="logo.png" alt="BLACK KNOT ANALYTICS"></a>
+  <div class="db-nav-right">
     <a href="index.html" class="db-nav-link">Home</a>
     <button class="db-nav-link active" data-page="today" onclick="navTo('today')">Today's Signal</button>
-    <!-- model nav links injected here by JS (from MODELS registry) -->
+    <button class="db-nav-link"        data-page="aegis" onclick="navTo('aegis')">AEGIS</button>
+    <button class="db-nav-link"        data-page="eidos" onclick="navTo('eidos')">EIDOS</button>
+    <button class="db-nav-link"        data-page="hedra" onclick="navTo('hedra')">HEDRA</button>
     <button class="db-nav-signout" onclick="signOut()">Sign Out</button>
-    <button class="hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="db-hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ─── MENU OVERLAY (mobile) ─────────────────────────────── -->
-<div class="menu-overlay" id="dbMenuOverlay">
+<!-- ─── MENU OVERLAY ──────────────────────────────────────── -->
+<div class="db-menu-overlay" id="dbMenuOverlay">
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
-  <!-- model menu links injected here by JS -->
+  <button onclick="navTo('aegis');toggleMenu();" id="menuAegis">AEGIS</button>
+  <button onclick="navTo('eidos');toggleMenu();" id="menuEidos">EIDOS</button>
+  <button onclick="navTo('hedra');toggleMenu();" id="menuHedra">HEDRA</button>
   <div class="menu-divider"></div>
-  <button class="menu-accent" onclick="signOut()">Sign Out</button>
+  <button class="db-menu-signout" onclick="signOut()">Sign Out</button>
 </div>
 
 <main class="db-page">
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 1 — TODAY'S SIGNAL  (model cards generated from registry)
-════════════════════════════════════════════════════════ -->
-<div id="page-today" class="db-page-section active">
-<div class="db-inner">
-  <div class="db-eyebrow">Dashboard</div>
-  <div class="db-title">Today's Signal</div>
-  <div class="signal-date" id="signalDateLine">Updated as at market close &nbsp;·&nbsp; —</div>
-  <div class="data-error-banner" id="dataErrorBanner"></div>
-
-  <div class="signal-cards" id="signalCards">
-    <!-- model cards + placeholder injected by JS -->
-  </div>
-</div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════
-     PAGE 2 — HEDRA  (model detail page)
-     To add model #2: copy this whole block, change the four id
-     prefixes (hedra→<key>), the page id, the titles, then add a
-     registry entry + a nav button. The render layer is generic.
-════════════════════════════════════════════════════════ -->
-<div id="page-hedra" class="db-page-section">
-<div class="db-inner">
-
-  <div class="db-eyebrow">Signal</div>
-  <div class="db-title">HEDRA Signal</div>
-  <div class="db-sub">Hedra is a macro-aware, systematic market-regime model.</div>
-
-  <div class="signal-panel">
-    <div class="action-row">
-      <span id="hedraActionStatus" class="signal-badge hold">—</span>
-    </div>
-  </div>
-
-  <div class="db-rule"></div>
-
-  <div class="db-eyebrow">Performance</div>
-  <div class="db-title">Returns &amp; KPIs</div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Cumulative Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Period</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="hedraCumulBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Annual Returns</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Year</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="hedraAnnualBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Risk Metrics</div>
-    <div class="perf-table-note">All metrics since inception (2018-01-01) unless noted.</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">Hedra</th><th>SPY</th><th>Edge</th></tr></thead>
-        <tbody id="hedraRiskBody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="perf-table-block">
-    <div class="perf-table-heading">Operational Metrics</div>
-    <div class="perf-table-wrap">
-      <table class="perf-table">
-        <thead><tr><th>Metric</th><th class="col-model">Hedra</th></tr></thead>
-        <tbody id="hedraOpsBody"><tr><td colspan="2" class="loading">Loading…</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
-</div>
-
+  <section id="page-today" class="db-page-section active">
+    <div class="page-head"><h1>Today's Signal</h1><div class="page-sub" id="todayDate">Updated as at market close · —</div></div>
+    <div class="data-error-banner" id="dataErrorBanner"></div>
+    <div class="card-grid" id="cardGrid"></div>
+  </section>
+  <section id="page-aegis" class="db-page-section"><div id="page-aegis-body"></div></section>
+  <section id="page-eidos" class="db-page-section"><div id="page-eidos-body"></div></section>
+  <section id="page-hedra" class="db-page-section"><div id="page-hedra-body"></div></section>
 </main>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════════════════ -->
 <script>
-
-// ════════════════════════════════════════════════════════
-// MODEL REGISTRY — the only place models are declared.
-//   key   : the model's key inside its JSON (data.cum_returns[key] …)
-//           and the id-prefix used on its detail page (`${key}CumulBody`).
-//   file  : the published view-model JSON for this model.
-//   label : display name.
-//   page  : the page-section id (`page-${page}`) and nav data-page.
-// To add a model: add an entry here, copy its detail-page block in the
-// HTML above (changing id prefixes), and add a nav button. Nothing else.
-// ════════════════════════════════════════════════════════
-const MODELS = [
-  { key: 'hedra', file: 'hedra.json', label: 'Hedra', page: 'hedra' },
-];
-
-// ── Build nav + menu links from the registry ──────────────
-(function buildNav() {
-  const nav  = document.getElementById('dbNavRight');
-  const menu = document.getElementById('dbMenuOverlay');
-  const signoutBtn = nav.querySelector('.db-nav-signout');
-  const menuDivider = menu.querySelector('.menu-divider');
-  MODELS.forEach(m => {
-    const b = document.createElement('button');
-    b.className = 'db-nav-link';
-    b.setAttribute('data-page', m.page);
-    b.textContent = m.label.toUpperCase();
-    b.onclick = () => navTo(m.page);
-    nav.insertBefore(b, signoutBtn);
-
-    const mb = document.createElement('button');
-    mb.id = 'menu-' + m.page;
-    mb.textContent = m.label.toUpperCase();
-    mb.onclick = () => { navTo(m.page); toggleMenu(); };
-    menu.insertBefore(mb, menuDivider);
-  });
-})();
-
-// ── NAV ──────────────────────────────────────────────────
+// ── NAV ───────────────────────────────────────────────────
 function navTo(page) {
   document.querySelectorAll('.db-page-section').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('page-' + page);
-  if (target) target.classList.add('active');
-
+  document.getElementById('page-' + page).classList.add('active');
   document.querySelectorAll('.db-nav-link').forEach(l => l.classList.remove('active'));
   const btn = document.querySelector(`.db-nav-link[data-page="${page}"]`);
   if (btn) btn.classList.add('active');
-
-  document.querySelectorAll('.menu-overlay button').forEach(b => b.classList.remove('active'));
-  const menuId = page === 'today' ? 'menuToday' : 'menu-' + page;
-  const menuBtn = document.getElementById(menuId);
-  if (menuBtn) menuBtn.classList.add('active');
-
+  ['menuToday','menuAegis','menuEidos','menuHedra'].forEach(id => document.getElementById(id).classList.remove('active'));
+  const menuMap = { today:'menuToday', aegis:'menuAegis', eidos:'menuEidos', hedra:'menuHedra' };
+  if (menuMap[page]) document.getElementById(menuMap[page]).classList.add('active');
   window.scrollTo(0,0);
 }
-
 function toggleMenu() {
   document.getElementById('dbHamburger').classList.toggle('open');
   document.getElementById('dbMenuOverlay').classList.toggle('open');
 }
 document.addEventListener('click', e => {
-  const menu = document.getElementById('dbMenuOverlay');
-  const burger = document.getElementById('dbHamburger');
+  const menu = document.getElementById('dbMenuOverlay'), burger = document.getElementById('dbHamburger');
   if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
-    menu.classList.remove('open');
-    burger.classList.remove('open');
+    menu.classList.remove('open'); burger.classList.remove('open');
   }
 });
 window.addEventListener('scroll', () => {
   document.getElementById('dbNav').classList.toggle('scrolled', window.scrollY > 40);
 });
-
 async function signOut() {
   try { await sb.auth.signOut(); } catch(e) {}
   window.location.replace('index.html');
-  window.location.href = 'index.html';
 }
 
-// ── HELPERS ───────────────────────────────────────────────
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function fmtLongDate(d) {
-  const dt = new Date(d + 'T12:00:00');
-  return dt.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-}
-function fmtPct(v, dec=1, sign=false) {
-  if (v == null) return '—';
-  return (v >= 0 && sign ? '+' : '') + v.toFixed(dec) + '%';
-}
-function fmtNum(v, dec=3) {
-  if (v == null) return '—';
-  return v.toFixed(dec);
-}
-function pctCls(v) {
-  if (v > 0) return 'td-pos';
-  if (v < 0) return 'td-neg';
-  return '';
-}
-function edge(m, b, dec=1, isRatio=false) {
-  if (m == null || b == null) return { val:'—', cls:'' };
-  const diff = m - b;
-  const val = (diff >= 0 ? '+' : '') + diff.toFixed(dec) + (isRatio ? '' : 'pp');
-  return { val, cls: diff >= 0 ? 'td-pos' : 'td-neg' };
-}
-function row(cells, cls='') {
-  const tds = cells.map(cell => {
-    if (cell && typeof cell === 'object') return `<td class="${cell.cls||''}">${cell.v}</td>`;
-    return `<td>${cell ?? '—'}</td>`;
-  }).join('');
-  return `<tr class="${cls}">${tds}</tr>`;
-}
-function c(v, cls='') { return { v, cls }; }
+// ── FORMAT HELPERS ────────────────────────────────────────
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmtDate(d) { if (!d) return '—'; const p = d.split('-'); return `${parseInt(p[2])} ${MONTHS[parseInt(p[1])-1]} ${p[0]}`; }
+function toneCls(v) { return v == null ? 'neutral' : (v >= 0 ? 'pos' : 'neg'); }
+function fmtPct(v, signed) { if (v == null) return '—'; const s = signed && v >= 0 ? '+' : ''; return s + Number(v).toFixed(2) + '%'; }
+function fmtNum(v, dp) { if (v == null) return '—'; return Number(v).toFixed(dp == null ? 2 : dp); }
 
-// ════════════════════════════════════════════════════════
-// RENDER — TODAY'S SIGNAL  (status + performance only; no weights)
-// ════════════════════════════════════════════════════════
-function renderCards(loaded) {
-  const wrap = document.getElementById('signalCards');
-  let html = '';
+// ── CARD (home grid) ──────────────────────────────────────
+function renderCard(data) {
+  const m = data.model, c = data.card || {};
+  const badgeCls = (c.badge || '').toLowerCase().includes('action') ? 'action'
+                 : (c.badge || '').toLowerCase().includes('pending') ? 'pending' : 'hold';
+  const kpis = (c.kpis || []).map(k =>
+    `<div><div class="bk-kpi-label">${k.label}</div>
+     <div class="bk-kpi-val ${toneCls(k.value)}">${fmtPct(k.value)}</div></div>`).join('');
+  const strip = (c.weights || []).map(w =>
+    `<span class="bk-chip ${(w.pct === 0) ? 'zero' : ''}">${w.label}<b>${w.pct == null ? '—' : Number(w.pct).toFixed(0) + '%'}</b></span>`).join('');
+  return `<div class="bk-card" onclick="navTo('${m.id}')">
+    <div class="bk-card-top"><div class="bk-card-name">${m.name}</div>
+      <span class="badge ${badgeCls}">${c.badge || '—'}</span></div>
+    <div class="bk-card-kpis">${kpis}</div>
+    <div class="bk-strip">${strip}</div>
+  </div>`;
+}
 
-  loaded.forEach(({ model, data }) => {
-    const cr  = (data.cum_returns && data.cum_returns[model.key]) || {};
-    const act = (data.signal && data.signal.action) ? data.signal.action.rebalance_required : false;
-    const w   = (data.signal && data.signal.weights) || {};
-    const allocBlock = (label) => {
-      const v = w[label] && w[label].target_weight != null ? Math.round(w[label].target_weight) : null;
-      const txt = v == null ? '—' : (v === 0 ? '0%' : v + '%');
-      const zero = (v === 0) ? ' zero' : '';
-      return `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${label}</div><div class="signal-alloc-pct${zero}">${txt}</div></div>`;
-    };
-    const allocRow = (w.A || w.B || w.C || w.D)
-      ? `<div class="signal-alloc-label">Current Weights</div>
-         <div class="signal-alloc-row">${allocBlock('A')}${allocBlock('B')}${allocBlock('C')}${allocBlock('D')}</div>`
-      : '';
-    html += `
-      <div class="signal-card">
-        <div class="signal-card-header">
-          <span class="signal-card-name">${model.label.toUpperCase()}</span>
-          <span class="signal-badge ${act ? 'action' : 'hold'}">${act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED'}</span>
-        </div>
-        <div class="signal-kpis">
-          <div class="signal-kpi">
-            <div class="signal-kpi-label">YTD Return</div>
-            <div class="signal-kpi-val ${pctCls(cr.ytd)}">${fmtPct(cr.ytd, 2, true)}</div>
-          </div>
-          <div class="signal-kpi">
-            <div class="signal-kpi-label">ITD CAGR</div>
-            <div class="signal-kpi-val ${pctCls(cr.cagr_itd)}">${fmtPct(cr.cagr_itd, 2)}</div>
-          </div>
-        </div>
-        ${allocRow}
-      </div>`;
-  });
-
-  // Coming-soon placeholder for the next model
-  html += `
-    <div class="signal-card is-placeholder">
-      <div class="signal-card-header">
-        <span class="signal-card-name">New Model</span>
-        <span class="signal-badge hold">Coming Soon</span>
-      </div>
-      <div class="placeholder-body">
-        <div>
-          <div class="placeholder-tag">In Development</div>
-          <div class="placeholder-note">A new model will appear here.</div>
-        </div>
-      </div>
-    </div>`;
-
-  wrap.innerHTML = html;
-
-  // Date line — from the first model that published one
-  const dated = loaded.find(x => x.data.signal && x.data.signal.date);
-  if (dated) {
-    document.getElementById('signalDateLine').innerHTML =
-      `Updated as at market close &nbsp;·&nbsp; ${fmtLongDate(dated.data.signal.date)}`;
+// ── BLOCK RENDERERS (generic, dispatched by block.type) ───
+function blkSignal(b, data) {
+  if (b.status === 'pending') {
+    return `<div class="block"><div class="block-title">Signal</div>
+      <div class="block-note">${b.note || 'Signal not yet published.'}</div></div>`;
   }
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — MODEL SIGNAL  (action status on the detail page)
-// ════════════════════════════════════════════════════════
-function renderModelSignal(model, data) {
-  const act = (data.signal && data.signal.action) ? data.signal.action.rebalance_required : false;
-  const el = document.getElementById(model.key + 'ActionStatus');
-  if (!el) return;
-  el.textContent = act ? 'ACTION REQUIRED' : 'NO ACTION REQUIRED';
-  el.className   = 'signal-badge ' + (act ? 'action' : 'hold');
-}
-
-// ════════════════════════════════════════════════════════
-// RENDER — PERFORMANCE  (shared; reads the view-model schema)
-//   cum_returns[key]/.spy_bh, returns[key]/.spy_bh,
-//   risk[key]/.spy_bh, annual_risk, rebalancing
-// ════════════════════════════════════════════════════════
-function renderPerf(key, data) {
-  const ret = data.returns;
-  const r   = data.risk[key];
-  const rs  = data.risk.spy_bh;
-  const rb  = data.rebalancing;
-  const ar  = data.annual_risk || {};
-  const ytdMdd    = (ar[key]    && ar[key].ytd)    ? ar[key].ytd.maxdd    : null;
-  const spyYtdMdd = (ar.spy_bh  && ar.spy_bh.ytd)  ? ar.spy_bh.ytd.maxdd  : null;
-
-  // Cumulative
-  const cr = data.cum_returns;
-  let html = [
-    ['YTD',    cr[key].ytd,    cr.spy_bh.ytd,    true],
-    ['1 Year', cr[key]['1yr'], cr.spy_bh['1yr'], false],
-    ['3 Year', cr[key]['3yr'], cr.spy_bh['3yr'], false],
-    ['5 Year', cr[key]['5yr'], cr.spy_bh['5yr'], false],
-    ['ITD',    cr[key].itd,    cr.spy_bh.itd,    false],
-  ].map(([period, m, b, isYtd]) => {
-    const e = edge(m, b);
-    return row([period, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], isYtd?'row-ytd':'');
+  const w = b.weights || {};
+  const strip = Object.keys(w).map(k => {
+    const pct = (w[k] || {}).target_weight;
+    return `<div><div class="sig-w-label">${k}</div>
+      <div class="sig-w-val ${pct === 0 ? 'zero' : ''}">${pct == null ? '—' : Number(pct).toFixed(0) + '%'}</div></div>`;
   }).join('');
-  const cagrE = edge(cr[key].cagr_itd, cr.spy_bh.cagr_itd);
-  html += row(['ITD CAGR', c(fmtPct(cr[key].cagr_itd,2),'td-model '+pctCls(cr[key].cagr_itd)), c(fmtPct(cr.spy_bh.cagr_itd,2),pctCls(cr.spy_bh.cagr_itd)), c(cagrE.val,cagrE.cls)], 'row-divider');
-  document.getElementById(key+'CumulBody').innerHTML = html;
-
-  // Annual
-  const years = Object.keys(ret[key]).filter(k => k !== 'ytd').sort().reverse();
-  const yearOrder = ['ytd', ...years];
-  const curYear = new Date().getFullYear();
-  html = yearOrder.map(yr => {
-    const m = ret[key][yr], b = ret.spy_bh[yr];
-    if (m == null && b == null) return '';
-    const label = yr === 'ytd' ? (curYear + ' YTD') : yr;
-    const e = edge(m, b);
-    return row([label, c(fmtPct(m,1,true),'td-model '+pctCls(m)), c(fmtPct(b,1,true),pctCls(b)), c(e.val,e.cls)], yr==='ytd'?'row-ytd':'');
-  }).filter(Boolean).join('');
-  document.getElementById(key+'AnnualBody').innerHTML = html;
-
-  // Risk
-  const riskDefs = [
-    ['Sharpe Ratio',       r.sharpe,           rs.sharpe,    3, true],
-    ['Sortino Ratio',      r.sortino,          rs.sortino,   3, true],
-    ['Max Drawdown (ITD)', r.maxdd,            rs.maxdd,     2, false],
-    ['Max Drawdown (YTD)', ytdMdd,             spyYtdMdd,    2, false],
-    ['Calmar Ratio (t3y)', r.calmar,           rs.calmar,    3, true],
-    ['MAR',                r.mar,              rs.mar,       3, true],
-    ['Omega Ratio',        r.omega,            rs.omega,     3, true],
-    ['Upside Capture',     r.upside_capture,   null,         1, false],
-    ['Downside Capture',   r.downside_capture, null,         1, false],
-    ['Capture Ratio',      r.capture_ratio,    null,         1, false],
-  ];
-  html = riskDefs.map(([label, m, b, dec, isRatio]) => {
-    const isMdd = label.includes('Drawdown');
-    const isPct = isMdd || label.includes('Capture');
-    const mFmt  = isPct ? fmtPct(m, dec) : fmtNum(m, dec);
-    if (b == null) return row([label, c(mFmt,'td-model'), '—', '—']);
-    const bFmt  = isPct ? fmtPct(b, dec) : fmtNum(b, dec);
-    const e     = edge(m, b, dec, isRatio);
-    const eCls  = isMdd ? (m > b ? 'td-pos' : 'td-neg') : e.cls;
-    return row([label, c(mFmt,'td-model'), c(bFmt), c(e.val,eCls)]);
-  }).join('');
-  document.getElementById(key+'RiskBody').innerHTML = html;
-
-  // Ops
-  html = row(['Rebalances / yr (ITD)', c(fmtNum(rb.averages.total,1),'td-model')]) +
-         row(['Rebalances (YTD)',       c((rb.annual.ytd||{total:0}).total,'td-model')]) +
-         row(['Rebalances (ITD)',       c(rb.cumulative.total,'td-model')]);
-  document.getElementById(key+'OpsBody').innerHTML = html;
+  const act = (b.action || {}).rebalance_required;
+  const state = act ? `<div class="sig-state action">Action Required</div>` : `<div class="sig-state">Holding</div>`;
+  return `<div class="block"><div class="block-title">Current Signal</div>
+    <div class="sig-row"><div class="sig-strip">${strip}</div>${state}</div></div>`;
 }
 
-// ════════════════════════════════════════════════════════
-// DATA LOADING — fetch every model's view-model JSON in parallel
-// ════════════════════════════════════════════════════════
+function perfTable(headLabel, modelId, mObj, sObj, rows) {
+  const head = `<tr><th>${headLabel}</th><th>${modelId.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+  const body = rows.map(([label, key, kind]) => {
+    const mv = mObj ? mObj[key] : null, sv = sObj ? sObj[key] : null;
+    const f = kind === 'num' ? (v => fmtNum(v)) : (v => fmtPct(v, true));
+    return `<tr><td>${label}</td>
+      <td class="${kind==='num'?'neutral':toneCls(mv)}">${f(mv)}</td>
+      <td class="${kind==='num'?'muted':toneCls(sv)}">${f(sv)}</td></tr>`;
+  }).join('');
+  return `<table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+}
+
+function blkPerformance(b, data) {
+  const id = data.model.id;
+  const cm = (b.cum_returns || {})[id], cs = (b.cum_returns || {}).spy_bh;
+  const rm = (b.risk || {})[id],        rs = (b.risk || {}).spy_bh;
+  const am = (b.returns || {})[id],     asb = (b.returns || {}).spy_bh;
+
+  let html = `<div class="block"><div class="block-title">Performance</div>`;
+
+  if (cm) {
+    html += `<div class="perf-sub">Cumulative Return</div>` +
+      perfTable('Period', id, cm, cs, [
+        ['YTD','ytd'], ['1 Year','1yr'], ['3 Year','3yr'], ['5 Year','5yr'],
+        ['Inception','itd'], ['CAGR (ITD)','cagr_itd'],
+      ]);
+  }
+  if (am) {
+    const years = Object.keys(am).filter(k => /^\d{4}$/.test(k)).sort();
+    const head = `<tr><th>Year</th><th>${id.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+    const rowsArr = years.concat(am.ytd !== undefined ? ['ytd'] : []);
+    const body = rowsArr.map(y => {
+      const label = y === 'ytd' ? 'YTD' : y;
+      const mv = am[y], sv = asb ? asb[y] : null;
+      return `<tr><td>${label}</td><td class="${toneCls(mv)}">${fmtPct(mv,true)}</td>
+        <td class="${toneCls(sv)}">${fmtPct(sv,true)}</td></tr>`;
+    }).join('');
+    html += `<div class="perf-sub">Annual Return</div>
+      <table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  }
+  if (rm) {
+    html += `<div class="perf-sub">Risk &amp; Ratios</div>` +
+      perfTable('Metric', id, rm, rs, [
+        ['CAGR','cagr'], ['Volatility','volatility'], ['Sharpe','sharpe','num'],
+        ['Sortino','sortino','num'], ['Calmar','calmar','num'], ['MAR','mar','num'],
+        ['Max Drawdown','maxdd'], ['Avg Drawdown','avg_drawdown'],
+        ['Beta','beta','num'], ['Omega','omega','num'],
+        ['Upside Capture','upside_capture'], ['Downside Capture','downside_capture'],
+      ]);
+  }
+  html += `</div>`;
+  return html;
+}
+
+function blkAllocation(b, data) {
+  const rows = b.rows || [];
+  let html = `<div class="block"><div class="block-title">Allocation</div>`;
+  if (!rows.length) {
+    html += `<div class="block-note muted">Allocation detail is published once the signal is live.</div>`;
+  } else {
+    const cols = b.columns || [];
+    const head = '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>';
+    const body = rows.map(r => '<tr>' + r.map(cell =>
+      `<td>${cell == null ? '—' : cell}</td>`).join('') + '</tr>').join('');
+    html += `<table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  }
+  return html + `</div>`;
+}
+
+function blkRebalancing(b, data) {
+  const avg = (b.averages || {}).total, ytd = ((b.annual || {}).ytd || {}).total, cum = (b.cumulative || {}).total;
+  return `<div class="block"><div class="block-title">Rebalancing</div>
+    <table class="bk-tbl"><tbody>
+      <tr><td>Average / year</td><td>${avg == null ? '—' : fmtNum(avg,1)}</td></tr>
+      <tr><td>Year to date</td><td>${ytd == null ? '—' : ytd}</td></tr>
+      <tr><td>Cumulative (ITD)</td><td>${cum == null ? '—' : cum}</td></tr>
+    </tbody></table></div>`;
+}
+
+const BLOCK_RENDERERS = {
+  signal: blkSignal, performance: blkPerformance, allocation: blkAllocation, rebalancing: blkRebalancing,
+};
+
+// ── MODEL PAGE (compose visible blocks generically) ───────
+function renderModelPage(data) {
+  const m = data.model;
+  const badgeCls = (m.badge || '').toLowerCase().includes('action') ? 'action'
+                 : (m.badge || '').toLowerCase().includes('pending') ? 'pending' : 'hold';
+  const asOf = m.as_of ? `Updated as at market close · ${fmtDate(m.as_of)}` : 'Awaiting first published signal';
+  let html = `<div class="page-head">
+    <h1>${m.name} <span class="badge ${badgeCls}" style="vertical-align:middle;font-size:var(--fs-xs)">${m.badge || '—'}</span></h1>
+    <div class="page-sub">${asOf}</div></div>`;
+  (data.blocks || []).forEach(b => {
+    if (!b.visible) return;
+    const r = BLOCK_RENDERERS[b.type];
+    if (r) { try { html += r(b, data); } catch(e) { console.error('block', b.type, e); } }
+  });
+  document.getElementById('page-' + m.id + '-body').innerHTML = html;
+}
+
+// ── DATA LOADING ──────────────────────────────────────────
+const ORDER = ['hedra','aegis','eidos'];
 async function loadData() {
   try {
-    const loaded = await Promise.all(MODELS.map(async model => {
-      const data = await fetch(model.file + '?v=' + Date.now()).then(r => r.json());
-      return { model, data };
-    }));
+    const [hedra, aegis, eidos] = await Promise.all([
+      fetch('hedra.json?v=' + Date.now()).then(r => r.json()),
+      fetch('aegis.json?v=' + Date.now()).then(r => r.json()),
+      fetch('eidos.json?v=' + Date.now()).then(r => r.json()),
+    ]);
+    const byId = { hedra, aegis, eidos };
 
-    renderCards(loaded);
+    const asOf = (hedra.model && hedra.model.as_of) || null;
+    document.getElementById('todayDate').textContent = 'Updated as at market close · ' + fmtDate(asOf);
 
-    loaded.forEach(({ model, data }) => {
-      try { renderModelSignal(model, data); } catch(e) { console.error('signal', model.key, e); }
-      try { renderPerf(model.key, data);    } catch(e) { console.error('perf',   model.key, e); }
-    });
-  } catch(err) {
+    document.getElementById('cardGrid').innerHTML = ORDER.map(id => renderCard(byId[id])).join('');
+    ORDER.forEach(id => { try { renderModelPage(byId[id]); } catch(e) { console.error('page', id, e); } });
+  } catch (err) {
     console.error('Data load error:', err);
     const banner = document.getElementById('dataErrorBanner');
     if (banner) {
-      banner.textContent = 'Unable to load model data. Please try refreshing the page. '
-        + 'If the problem persists, data may not yet be published for today.';
+      banner.textContent = 'Unable to load model data. Please try refreshing. If the problem persists, data may not yet be published for today.';
       banner.classList.add('visible');
     }
   }
 }
-
 loadData();
-
 </script>
 </body>
 </html>

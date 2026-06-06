@@ -1,0 +1,85 @@
+{
+  "schema": "blackknot.v2",
+  "model": {
+    "id": "eidos",
+    "name": "EIDOS",
+    "badge": "Pending",
+    "as_of": null
+  },
+  "meta": {},
+  "card": {
+    "name": "EIDOS",
+    "badge": "Pending",
+    "kpis": [
+      {
+        "label": "YTD",
+        "value": null,
+        "kind": "pct",
+        "tone": "flat"
+      },
+      {
+        "label": "ITD CAGR",
+        "value": null,
+        "kind": "pct",
+        "tone": "flat"
+      }
+    ],
+    "weights": [
+      {
+        "label": "Equity",
+        "pct": null
+      },
+      {
+        "label": "Fixed Income",
+        "pct": null
+      },
+      {
+        "label": "Gold",
+        "pct": null
+      },
+      {
+        "label": "Cash",
+        "pct": null
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "signal",
+      "type": "signal",
+      "visible": true,
+      "status": "pending",
+      "note": "macro-regime signal not yet built"
+    },
+    {
+      "id": "performance",
+      "type": "performance",
+      "visible": false,
+      "returns": {},
+      "cum_returns": {},
+      "risk": {},
+      "annual_risk": {}
+    },
+    {
+      "id": "rebalancing",
+      "type": "rebalancing",
+      "visible": false
+    },
+    {
+      "id": "allocation",
+      "type": "allocation",
+      "visible": true,
+      "columns": [
+        "Date",
+        "State",
+        "Equity",
+        "Fixed Income",
+        "Gold",
+        "Cash",
+        "Days",
+        "Trigger"
+      ],
+      "rows": []
+    }
+  ]
+}

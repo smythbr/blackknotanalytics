@@ -1,4 +1,11 @@
 {
+  "schema": "blackknot.v2",
+  "model": {
+    "id": "hedra",
+    "name": "HEDRA",
+    "badge": "Holding",
+    "as_of": "2026-06-05"
+  },
   "meta": {
     "period_start": "2018-01-01",
     "period_end": "2026-06-05",
@@ -9,135 +16,191 @@
     "benchmark": "SPY total return (buy & hold)",
     "fees": "gross of fees and transaction costs"
   },
-  "signal": {
-    "date": "2026-06-05",
-    "weights": {
-      "A": {
-        "target_weight": 60.0
+  "card": {
+    "name": "HEDRA",
+    "badge": "Holding",
+    "kpis": [
+      {
+        "label": "YTD",
+        "value": 8.81,
+        "kind": "pct",
+        "tone": "pos"
       },
-      "B": {
-        "target_weight": 0.0
+      {
+        "label": "ITD CAGR",
+        "value": 14.16,
+        "kind": "pct",
+        "tone": "pos"
+      }
+    ],
+    "weights": [
+      {
+        "label": "A",
+        "pct": 60.0
       },
-      "C": {
-        "target_weight": 0.0
+      {
+        "label": "B",
+        "pct": 0.0
       },
-      "D": {
-        "target_weight": 40.0
+      {
+        "label": "C",
+        "pct": 0.0
+      },
+      {
+        "label": "D",
+        "pct": 40.0
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "signal",
+      "type": "signal",
+      "visible": true,
+      "date": "2026-06-05",
+      "weights": {
+        "A": {
+          "target_weight": 60.0
+        },
+        "B": {
+          "target_weight": 0.0
+        },
+        "C": {
+          "target_weight": 0.0
+        },
+        "D": {
+          "target_weight": 40.0
+        }
+      },
+      "action": {
+        "rebalance_required": false
       }
     },
-    "action": {
-      "rebalance_required": false
-    }
-  },
-  "returns": {
-    "hedra": {
-      "2018": -7.62,
-      "2019": 12.89,
-      "2020": 43.01,
-      "2021": 11.66,
-      "2022": -3.27,
-      "2023": 12.02,
-      "2024": 22.41,
-      "2025": 26.62,
-      "ytd": 8.81
-    },
-    "spy_bh": {
-      "2018": -4.57,
-      "2019": 31.22,
-      "2020": 18.33,
-      "2021": 28.73,
-      "2022": -18.18,
-      "2023": 26.18,
-      "2024": 24.89,
-      "2025": 17.72,
-      "ytd": 8.45
-    }
-  },
-  "cum_returns": {
-    "hedra": {
-      "ytd": 8.81,
-      "1yr": 26.53,
-      "3yr": 82.73,
-      "5yr": 83.48,
-      "itd": 204.34,
-      "cagr_itd": 14.16
-    },
-    "spy_bh": {
-      "ytd": 8.45,
-      "1yr": 25.79,
-      "3yr": 79.45,
-      "5yr": 86.86,
-      "itd": 214.01,
-      "cagr_itd": 9.82
-    }
-  },
-  "risk": {
-    "hedra": {
-      "cagr": 14.16,
-      "volatility": 10.15,
-      "sharpe": 1.1062,
-      "sortino": 1.5699,
-      "calmar": 3.0163,
-      "mar": 1.1999,
-      "maxdd": -11.8,
-      "maxdd_start": "2020-02-18",
-      "maxdd_trough": "2020-03-19",
-      "maxdd_recovery": "2020-05-18",
-      "maxdd_episode_days": 30,
-      "maxdd_recovery_days": 60,
-      "maxdd_duration_days": 611,
-      "avg_drawdown": -4.09,
-      "beta": 0.4794,
-      "omega": 1.2891,
-      "upside_capture": 26.4,
-      "downside_capture": 38.8,
-      "capture_ratio": 68.0
-    },
-    "spy_bh": {
-      "cagr": 9.82,
-      "volatility": 15.94,
-      "sharpe": 0.558,
-      "sortino": 0.7815,
-      "calmar": 0.7663,
-      "mar": 0.2912,
-      "maxdd": -33.72,
-      "maxdd_start": "2020-02-19",
-      "maxdd_trough": "2020-03-23",
-      "maxdd_recovery": "2020-08-10",
-      "maxdd_episode_days": 33,
-      "maxdd_recovery_days": 140,
-      "maxdd_duration_days": 708,
-      "avg_drawdown": -5.88,
-      "beta": 1.0,
-      "omega": 1.1666,
-      "upside_capture": 100.0,
-      "downside_capture": 100.0,
-      "capture_ratio": 100.0
-    }
-  },
-  "annual_risk": {
-    "hedra": {
-      "ytd": {
-        "maxdd": -4.54
+    {
+      "id": "performance",
+      "type": "performance",
+      "visible": true,
+      "returns": {
+        "hedra": {
+          "2018": -7.62,
+          "2019": 12.89,
+          "2020": 43.01,
+          "2021": 11.66,
+          "2022": -3.27,
+          "2023": 12.02,
+          "2024": 22.41,
+          "2025": 26.62,
+          "ytd": 8.81
+        },
+        "spy_bh": {
+          "2018": -4.57,
+          "2019": 31.22,
+          "2020": 18.33,
+          "2021": 28.73,
+          "2022": -18.18,
+          "2023": 26.18,
+          "2024": 24.89,
+          "2025": 17.72,
+          "ytd": 8.45
+        }
+      },
+      "cum_returns": {
+        "hedra": {
+          "ytd": 8.81,
+          "1yr": 26.53,
+          "3yr": 82.73,
+          "5yr": 83.48,
+          "itd": 204.34,
+          "cagr_itd": 14.16
+        },
+        "spy_bh": {
+          "ytd": 8.45,
+          "1yr": 25.79,
+          "3yr": 79.45,
+          "5yr": 86.86,
+          "itd": 214.01,
+          "cagr_itd": 9.82
+        }
+      },
+      "risk": {
+        "hedra": {
+          "cagr": 14.16,
+          "volatility": 10.15,
+          "sharpe": 1.1062,
+          "sortino": 1.5699,
+          "calmar": 3.0163,
+          "mar": 1.1999,
+          "maxdd": -11.8,
+          "maxdd_start": "2020-02-18",
+          "maxdd_trough": "2020-03-19",
+          "maxdd_recovery": "2020-05-18",
+          "maxdd_episode_days": 30,
+          "maxdd_recovery_days": 60,
+          "maxdd_duration_days": 611,
+          "avg_drawdown": -4.09,
+          "beta": 0.4794,
+          "omega": 1.2891,
+          "upside_capture": 26.4,
+          "downside_capture": 38.8,
+          "capture_ratio": 68.0
+        },
+        "spy_bh": {
+          "cagr": 9.82,
+          "volatility": 15.94,
+          "sharpe": 0.558,
+          "sortino": 0.7815,
+          "calmar": 0.7663,
+          "mar": 0.2912,
+          "maxdd": -33.72,
+          "maxdd_start": "2020-02-19",
+          "maxdd_trough": "2020-03-23",
+          "maxdd_recovery": "2020-08-10",
+          "maxdd_episode_days": 33,
+          "maxdd_recovery_days": 140,
+          "maxdd_duration_days": 708,
+          "avg_drawdown": -5.88,
+          "beta": 1.0,
+          "omega": 1.1666,
+          "upside_capture": 100.0,
+          "downside_capture": 100.0,
+          "capture_ratio": 100.0
+        }
+      },
+      "annual_risk": {
+        "hedra": {
+          "ytd": {
+            "maxdd": -4.54
+          }
+        },
+        "spy_bh": {
+          "ytd": {
+            "maxdd": -8.88
+          }
+        }
       }
     },
-    "spy_bh": {
-      "ytd": {
-        "maxdd": -8.88
+    {
+      "id": "rebalancing",
+      "type": "rebalancing",
+      "visible": true,
+      "averages": {
+        "total": 23.7
+      },
+      "annual": {
+        "ytd": {
+          "total": 9
+        }
+      },
+      "cumulative": {
+        "total": 200
       }
-    }
-  },
-  "rebalancing": {
-    "averages": {
-      "total": 23.7
     },
-    "annual": {
-      "ytd": {
-        "total": 9
-      }
-    },
-    "cumulative": {
-      "total": 200
+    {
+      "id": "allocation",
+      "type": "allocation",
+      "visible": false,
+      "columns": [],
+      "rows": []
     }
-  }
+  ]
 }
