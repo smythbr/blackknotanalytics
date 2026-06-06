@@ -1,148 +1,15 @@
 <!DOCTYPE html>
-<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v4.0 (block-driven) -->
+<!-- BLACK KNOT ANALYTICS — Dashboard | dashboard.html | v4.1 (block-driven, bk.css-native) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#000000">
 <title>BLACK KNOT ANALYTICS — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bk.css">
-<style>
-/* ─── DESIGN TOKENS (fallbacks; bk.css is authoritative when present) ───── */
-:root {
-  --card-bg:#0e0e0e; --card-border:#1d1d1d; --line:#1d1d1d;
-  --white:#f4f4f2; --grey:#8a8a86; --light-grey:#bdbdb8;
-  --green-pos:#5fb87a; --red-neg:#d2604f; --red:#d2604f; --yellow-neu:#c8a24a;
-  --font-display:'Cormorant Garamond',Georgia,serif;
-  --font-ui:'Rajdhani',-apple-system,sans-serif;
-  --fs-base:1rem; --fs-md:1.25rem; --fs-sm:0.85rem; --fs-xs:0.72rem;
-}
-* { box-sizing:border-box; margin:0; padding:0; }
-body {
-  background:#0a0a0a; color:var(--white); font-family:var(--font-ui);
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
-}
-.db-wrap { min-height:100vh; display:flex; flex-direction:column; }
-
-/* ─── NAVIGATION ─────────────────────────────────────────── */
-.db-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:max(18px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) 18px max(28px,env(safe-area-inset-left));
-  background:rgba(0,0,0,0.95); border-bottom:1px solid var(--line);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-}
-.db-nav.scrolled { box-shadow:0 1px 0 rgba(255,255,255,0.04); }
-.db-nav-logo img { height:40px; width:auto; display:block; }
-.db-nav-right { display:flex; align-items:center; gap:24px; }
-.db-nav-link {
-  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
-  letter-spacing:0.15em; text-transform:uppercase; text-decoration:none;
-  color:var(--grey); cursor:pointer; padding:6px 0; background:none; border:none;
-  transition:color 0.15s;
-}
-.db-nav-link:hover, .db-nav-link.active { color:var(--white); }
-.db-nav-signout {
-  font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:600;
-  letter-spacing:0.15em; text-transform:uppercase;
-  color:var(--red); cursor:pointer; background:none; border:none; transition:opacity 0.15s;
-}
-.db-nav-signout:hover { opacity:0.75; }
-.db-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px;
-  width:44px; height:44px; padding:10px; cursor:pointer; background:none; border:none; }
-.db-hamburger span { display:block; height:1.5px; background:var(--white); transition:all 0.3s ease; transform-origin:center; }
-.db-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
-.db-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-.db-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-
-/* ─── MENU OVERLAY (mobile) ──────────────────────────────── */
-.db-menu-overlay {
-  position:fixed; inset:0; z-index:99; background:rgba(0,0,0,0.98);
-  display:none; flex-direction:column; align-items:center; justify-content:center; gap:28px;
-}
-.db-menu-overlay.open { display:flex; }
-.db-menu-overlay button {
-  font-family:var(--font-ui); font-size:1.4rem; font-weight:600; letter-spacing:0.18em;
-  text-transform:uppercase; color:var(--grey); background:none; border:none; cursor:pointer;
-}
-.db-menu-overlay button.active { color:var(--white); }
-.db-menu-overlay .db-menu-signout { color:var(--red); }
-.menu-divider { width:48px; height:1px; background:var(--line); }
-
-/* ─── PAGE LAYOUT ────────────────────────────────────────── */
-.db-page { flex:1; padding:120px max(28px,env(safe-area-inset-right)) 80px max(28px,env(safe-area-inset-left)); max-width:1080px; margin:0 auto; width:100%; }
-.db-page-section { display:none; animation:fade 0.4s ease; }
-.db-page-section.active { display:block; }
-@keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
-
-.page-head { margin-bottom:38px; }
-.page-head h1 { font-family:var(--font-display); font-weight:300; font-size:3rem; letter-spacing:0.04em; line-height:1; }
-.page-head .page-sub { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; }
-
-/* ─── BADGES ─────────────────────────────────────────────── */
-.badge { display:inline-block; font-size:var(--fs-xs); font-weight:600; letter-spacing:0.14em;
-  text-transform:uppercase; padding:4px 11px; border-radius:2px; border:1px solid var(--line); }
-.badge.hold    { color:var(--light-grey); border-color:var(--line); }
-.badge.action  { color:var(--yellow-neu); border-color:var(--yellow-neu); }
-.badge.pending { color:var(--grey); border-color:var(--line); }
-
-/* ─── CARD GRID (home / today) ───────────────────────────── */
-.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-.bk-card {
-  background:var(--card-bg); border:1px solid var(--card-border); border-radius:4px;
-  padding:26px 26px 22px; cursor:pointer; transition:border-color 0.2s, transform 0.2s;
-}
-.bk-card:hover { border-color:#333; transform:translateY(-2px); }
-.bk-card-top { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; }
-.bk-card-name { font-family:var(--font-display); font-weight:400; font-size:2rem; letter-spacing:0.05em; }
-.bk-card-kpis { display:flex; gap:32px; margin-bottom:22px; }
-.bk-kpi-label { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; }
-.bk-kpi-val { font-family:var(--font-display); font-size:1.7rem; font-weight:400; margin-top:3px; }
-.bk-strip { display:flex; gap:8px; flex-wrap:wrap; padding-top:18px; border-top:1px solid var(--line); }
-.bk-chip { font-size:var(--fs-xs); letter-spacing:0.08em; color:var(--light-grey); }
-.bk-chip b { color:var(--white); font-weight:600; margin-left:4px; }
-.bk-chip.zero { color:var(--grey); }
-
-/* ─── MODEL PAGE BLOCKS ──────────────────────────────────── */
-.block { background:var(--card-bg); border:1px solid var(--card-border); border-radius:4px; padding:28px; margin-bottom:22px; }
-.block-title { font-size:var(--fs-sm); color:var(--grey); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:20px; }
-.block-note { color:var(--grey); font-size:var(--fs-base); line-height:1.6; }
-
-.sig-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; }
-.sig-state { font-family:var(--font-display); font-size:1.6rem; font-weight:400; }
-.sig-state.action { color:var(--yellow-neu); }
-.sig-strip { display:flex; gap:26px; flex-wrap:wrap; }
-.sig-w-label { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.1em; text-transform:uppercase; }
-.sig-w-val { font-family:var(--font-display); font-size:1.5rem; margin-top:2px; }
-.sig-w-val.zero { color:var(--grey); }
-
-table.bk-tbl { width:100%; border-collapse:collapse; font-size:var(--fs-sm); }
-table.bk-tbl th, table.bk-tbl td { text-align:right; padding:9px 10px; border-bottom:1px solid var(--line); letter-spacing:0.04em; }
-table.bk-tbl th:first-child, table.bk-tbl td:first-child { text-align:left; color:var(--light-grey); }
-table.bk-tbl thead th { color:var(--grey); font-size:var(--fs-xs); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
-table.bk-tbl tbody tr:last-child td { border-bottom:none; }
-.perf-sub { font-size:var(--fs-xs); color:var(--grey); letter-spacing:0.12em; text-transform:uppercase; margin:24px 0 10px; }
-.perf-sub:first-child { margin-top:0; }
-
-.pos { color:var(--green-pos); }
-.neg { color:var(--red-neg); }
-.neutral { color:var(--light-grey); }
-.muted { color:var(--grey); }
-
-.data-error-banner { display:none; background:rgba(210,96,79,0.08); border:1px solid var(--red-neg);
-  color:var(--red-neg); padding:14px 18px; border-radius:4px; font-size:var(--fs-sm); margin-bottom:24px; line-height:1.5; }
-.data-error-banner.visible { display:block; }
-
-@media (max-width:720px) {
-  .db-nav-right .db-nav-link, .db-nav-right .db-nav-signout { display:none; }
-  .db-hamburger { display:flex; }
-  .page-head h1 { font-size:2.3rem; }
-  .db-page { padding-top:100px; }
-}
-</style>
 </head>
 <body>
 
@@ -164,7 +31,7 @@ table.bk-tbl tbody tr:last-child td { border-bottom:none; }
 
 <div class="db-wrap">
 
-<!-- ─── NAV ─────────────────────────────────────────────── -->
+<!-- ─── NAV (bk.css .db-nav) ─────────────────────────────── -->
 <nav class="db-nav" id="dbNav">
   <a href="index.html" class="db-nav-logo"><img src="logo.png" alt="BLACK KNOT ANALYTICS"></a>
   <div class="db-nav-right">
@@ -174,31 +41,35 @@ table.bk-tbl tbody tr:last-child td { border-bottom:none; }
     <button class="db-nav-link"        data-page="eidos" onclick="navTo('eidos')">EIDOS</button>
     <button class="db-nav-link"        data-page="hedra" onclick="navTo('hedra')">HEDRA</button>
     <button class="db-nav-signout" onclick="signOut()">Sign Out</button>
-    <button class="db-hamburger" id="dbHamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ─── MENU OVERLAY ──────────────────────────────────────── -->
-<div class="db-menu-overlay" id="dbMenuOverlay">
+<!-- ─── MENU OVERLAY (bk.css .menu-overlay dropdown) ──────── -->
+<div class="menu-overlay" id="menuOverlay">
   <button onclick="navTo('today');toggleMenu();" class="active" id="menuToday">Today's Signal</button>
   <button onclick="navTo('aegis');toggleMenu();" id="menuAegis">AEGIS</button>
   <button onclick="navTo('eidos');toggleMenu();" id="menuEidos">EIDOS</button>
   <button onclick="navTo('hedra');toggleMenu();" id="menuHedra">HEDRA</button>
   <div class="menu-divider"></div>
-  <button class="db-menu-signout" onclick="signOut()">Sign Out</button>
+  <button class="menu-accent" onclick="signOut()">Sign Out</button>
 </div>
 
 <main class="db-page">
   <section id="page-today" class="db-page-section active">
-    <div class="page-head"><h1>Today's Signal</h1><div class="page-sub" id="todayDate">Updated as at market close · —</div></div>
-    <div class="data-error-banner" id="dataErrorBanner"></div>
-    <div class="card-grid" id="cardGrid"></div>
+    <div class="db-inner">
+      <div class="db-eyebrow">Dashboard</div>
+      <h1 class="db-title">Today's Signal</h1>
+      <div class="signal-date" id="todayDate">—</div>
+      <div class="data-error-banner" id="dataErrorBanner"></div>
+      <div class="signal-cards" id="cardGrid"></div>
+    </div>
   </section>
-  <section id="page-aegis" class="db-page-section"><div id="page-aegis-body"></div></section>
-  <section id="page-eidos" class="db-page-section"><div id="page-eidos-body"></div></section>
-  <section id="page-hedra" class="db-page-section"><div id="page-hedra-body"></div></section>
+  <section id="page-aegis" class="db-page-section"><div class="db-inner" id="page-aegis-body"></div></section>
+  <section id="page-eidos" class="db-page-section"><div class="db-inner" id="page-eidos-body"></div></section>
+  <section id="page-hedra" class="db-page-section"><div class="db-inner" id="page-hedra-body"></div></section>
 </main>
 </div>
 
@@ -216,11 +87,11 @@ function navTo(page) {
   window.scrollTo(0,0);
 }
 function toggleMenu() {
-  document.getElementById('dbHamburger').classList.toggle('open');
-  document.getElementById('dbMenuOverlay').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('menuOverlay').classList.toggle('open');
 }
 document.addEventListener('click', e => {
-  const menu = document.getElementById('dbMenuOverlay'), burger = document.getElementById('dbHamburger');
+  const menu = document.getElementById('menuOverlay'), burger = document.getElementById('hamburger');
   if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
     menu.classList.remove('open'); burger.classList.remove('open');
   }
@@ -236,56 +107,66 @@ async function signOut() {
 // ── FORMAT HELPERS ────────────────────────────────────────
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function fmtDate(d) { if (!d) return '—'; const p = d.split('-'); return `${parseInt(p[2])} ${MONTHS[parseInt(p[1])-1]} ${p[0]}`; }
-function toneCls(v) { return v == null ? 'neutral' : (v >= 0 ? 'pos' : 'neg'); }
 function fmtPct(v, signed) { if (v == null) return '—'; const s = signed && v >= 0 ? '+' : ''; return s + Number(v).toFixed(2) + '%'; }
 function fmtNum(v, dp) { if (v == null) return '—'; return Number(v).toFixed(dp == null ? 2 : dp); }
+function badgeClass(b) { b = (b || '').toLowerCase(); return /action/.test(b) ? 'action' : /pending/.test(b) ? 'pending' : 'hold'; }
+function valCls(v) { return v == null ? 'neu' : (v >= 0 ? 'pos' : 'neg'); }
+function tdRet(v) { return v == null ? 'td-bench' : (v >= 0 ? 'td-pos' : 'td-neg'); }
 
-// ── CARD (home grid) ──────────────────────────────────────
+// ── CARD (home grid) — bk.css .signal-card ────────────────
 function renderCard(data) {
   const m = data.model, c = data.card || {};
-  const badgeCls = (c.badge || '').toLowerCase().includes('action') ? 'action'
-                 : (c.badge || '').toLowerCase().includes('pending') ? 'pending' : 'hold';
+  const badge = c.badge || '—';
   const kpis = (c.kpis || []).map(k =>
-    `<div><div class="bk-kpi-label">${k.label}</div>
-     <div class="bk-kpi-val ${toneCls(k.value)}">${fmtPct(k.value)}</div></div>`).join('');
-  const strip = (c.weights || []).map(w =>
-    `<span class="bk-chip ${(w.pct === 0) ? 'zero' : ''}">${w.label}<b>${w.pct == null ? '—' : Number(w.pct).toFixed(0) + '%'}</b></span>`).join('');
-  return `<div class="bk-card" onclick="navTo('${m.id}')">
-    <div class="bk-card-top"><div class="bk-card-name">${m.name}</div>
-      <span class="badge ${badgeCls}">${c.badge || '—'}</span></div>
-    <div class="bk-card-kpis">${kpis}</div>
-    <div class="bk-strip">${strip}</div>
+    `<div class="signal-kpi"><div class="signal-kpi-label">${k.label}</div>
+      <div class="signal-kpi-val ${valCls(k.value)}">${fmtPct(k.value)}</div></div>`).join('');
+  const alloc = (c.weights || []).map(w =>
+    `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${w.label}</div>
+      <div class="signal-alloc-pct ${w.pct === 0 ? 'zero' : ''}">${w.pct == null ? '—' : Math.round(w.pct) + '%'}</div></div>`).join('');
+  return `<div class="signal-card clickable" onclick="navTo('${m.id}')">
+    <div class="signal-card-header">
+      <div class="signal-card-name">${m.name}</div>
+      <span class="signal-badge ${badgeClass(badge)}">${badge}</span>
+    </div>
+    <div class="signal-kpis">${kpis}</div>
+    <div class="signal-alloc-label">Allocation</div>
+    <div class="signal-alloc-row">${alloc}</div>
   </div>`;
 }
 
 // ── BLOCK RENDERERS (generic, dispatched by block.type) ───
 function blkSignal(b, data) {
+  let inner;
   if (b.status === 'pending') {
-    return `<div class="block"><div class="block-title">Signal</div>
-      <div class="block-note">${b.note || 'Signal not yet published.'}</div></div>`;
+    inner = `<div class="signal-pending">${b.note || 'Signal not yet published.'}</div>`;
+  } else {
+    const w = b.weights || {};
+    const strip = Object.keys(w).map(k => {
+      const pct = (w[k] || {}).target_weight;
+      return `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${k}</div>
+        <div class="signal-alloc-pct ${pct === 0 ? 'zero' : ''}">${pct == null ? '—' : Math.round(pct) + '%'}</div></div>`;
+    }).join('');
+    const act = (b.action || {}).rebalance_required;
+    inner = `<div class="signal-status ${act ? 'action' : ''}">${act ? 'Action Required' : 'Holding'}</div>
+      <div class="signal-alloc-row">${strip}</div>`;
   }
-  const w = b.weights || {};
-  const strip = Object.keys(w).map(k => {
-    const pct = (w[k] || {}).target_weight;
-    return `<div><div class="sig-w-label">${k}</div>
-      <div class="sig-w-val ${pct === 0 ? 'zero' : ''}">${pct == null ? '—' : Number(pct).toFixed(0) + '%'}</div></div>`;
-  }).join('');
-  const act = (b.action || {}).rebalance_required;
-  const state = act ? `<div class="sig-state action">Action Required</div>` : `<div class="sig-state">Holding</div>`;
-  return `<div class="block"><div class="block-title">Current Signal</div>
-    <div class="sig-row"><div class="sig-strip">${strip}</div>${state}</div></div>`;
+  return `<div class="db-block"><div class="db-eyebrow">Signal</div>
+    <div class="signal-panel">${inner}</div></div>`;
 }
 
-function perfTable(headLabel, modelId, mObj, sObj, rows) {
-  const head = `<tr><th>${headLabel}</th><th>${modelId.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
-  const body = rows.map(([label, key, kind]) => {
+function perfBlock(heading, headLabel, modelId, mObj, sObj, rows, ratioKeys) {
+  const head = `<tr><th>${headLabel}</th><th class="col-model">${modelId.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+  const body = rows.map(([label, key]) => {
+    const isRatio = ratioKeys && ratioKeys.indexOf(key) !== -1;
     const mv = mObj ? mObj[key] : null, sv = sObj ? sObj[key] : null;
-    const f = kind === 'num' ? (v => fmtNum(v)) : (v => fmtPct(v, true));
-    return `<tr><td>${label}</td>
-      <td class="${kind==='num'?'neutral':toneCls(mv)}">${f(mv)}</td>
-      <td class="${kind==='num'?'muted':toneCls(sv)}">${f(sv)}</td></tr>`;
+    const fmt = isRatio ? (v => fmtNum(v)) : (v => fmtPct(v, true));
+    const mc = isRatio ? 'td-model' : tdRet(mv);
+    return `<tr><td>${label}</td><td class="${mc}">${fmt(mv)}</td><td class="td-bench">${fmt(sv)}</td></tr>`;
   }).join('');
-  return `<table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  return `<div class="perf-table-block">
+    <div class="perf-table-heading">${heading}</div>
+    <div class="perf-table-wrap"><table class="perf-table">
+      <thead>${head}</thead><tbody>${body}</tbody></table></div></div>`;
 }
 
 function blkPerformance(b, data) {
@@ -294,65 +175,59 @@ function blkPerformance(b, data) {
   const rm = (b.risk || {})[id],        rs = (b.risk || {}).spy_bh;
   const am = (b.returns || {})[id],     asb = (b.returns || {}).spy_bh;
 
-  let html = `<div class="block"><div class="block-title">Performance</div>`;
-
-  if (cm) {
-    html += `<div class="perf-sub">Cumulative Return</div>` +
-      perfTable('Period', id, cm, cs, [
-        ['YTD','ytd'], ['1 Year','1yr'], ['3 Year','3yr'], ['5 Year','5yr'],
-        ['Inception','itd'], ['CAGR (ITD)','cagr_itd'],
-      ]);
+  let inner = '';
+  if (cm || rm || am) {
+    if (cm) inner += perfBlock('Cumulative Return', 'Period', id, cm, cs, [
+      ['YTD','ytd'], ['1 Year','1yr'], ['3 Year','3yr'], ['5 Year','5yr'],
+      ['Inception','itd'], ['CAGR (ITD)','cagr_itd'],
+    ]);
+    if (am) {
+      const years = Object.keys(am).filter(k => /^\d{4}$/.test(k)).sort();
+      const head = `<tr><th>Year</th><th class="col-model">${id.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
+      const rowsArr = years.concat(am.ytd !== undefined ? ['ytd'] : []);
+      const body = rowsArr.map(y => {
+        const label = y === 'ytd' ? 'YTD' : y;
+        const mv = am[y], sv = asb ? asb[y] : null;
+        const rc = y === 'ytd' ? 'row-ytd' : '';
+        return `<tr class="${rc}"><td>${label}</td><td class="${tdRet(mv)}">${fmtPct(mv,true)}</td>
+          <td class="td-bench">${fmtPct(sv,true)}</td></tr>`;
+      }).join('');
+      inner += `<div class="perf-table-block"><div class="perf-table-heading">Annual Return</div>
+        <div class="perf-table-wrap"><table class="perf-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></div>`;
+    }
+    if (rm) inner += perfBlock('Risk &amp; Ratios', 'Metric', id, rm, rs, [
+      ['CAGR','cagr'], ['Volatility','volatility'], ['Sharpe','sharpe'], ['Sortino','sortino'],
+      ['Calmar','calmar'], ['MAR','mar'], ['Max Drawdown','maxdd'], ['Avg Drawdown','avg_drawdown'],
+      ['Beta','beta'], ['Omega','omega'], ['Upside Capture','upside_capture'], ['Downside Capture','downside_capture'],
+    ], ['sharpe','sortino','calmar','mar','beta','omega']);
+  } else {
+    inner = `<div class="perf-table-note">Performance is published once the signal is live.</div>`;
   }
-  if (am) {
-    const years = Object.keys(am).filter(k => /^\d{4}$/.test(k)).sort();
-    const head = `<tr><th>Year</th><th>${id.toUpperCase()}</th><th>SPY B&amp;H</th></tr>`;
-    const rowsArr = years.concat(am.ytd !== undefined ? ['ytd'] : []);
-    const body = rowsArr.map(y => {
-      const label = y === 'ytd' ? 'YTD' : y;
-      const mv = am[y], sv = asb ? asb[y] : null;
-      return `<tr><td>${label}</td><td class="${toneCls(mv)}">${fmtPct(mv,true)}</td>
-        <td class="${toneCls(sv)}">${fmtPct(sv,true)}</td></tr>`;
-    }).join('');
-    html += `<div class="perf-sub">Annual Return</div>
-      <table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
-  }
-  if (rm) {
-    html += `<div class="perf-sub">Risk &amp; Ratios</div>` +
-      perfTable('Metric', id, rm, rs, [
-        ['CAGR','cagr'], ['Volatility','volatility'], ['Sharpe','sharpe','num'],
-        ['Sortino','sortino','num'], ['Calmar','calmar','num'], ['MAR','mar','num'],
-        ['Max Drawdown','maxdd'], ['Avg Drawdown','avg_drawdown'],
-        ['Beta','beta','num'], ['Omega','omega','num'],
-        ['Upside Capture','upside_capture'], ['Downside Capture','downside_capture'],
-      ]);
-  }
-  html += `</div>`;
-  return html;
+  return `<div class="db-block"><div class="db-eyebrow">Performance</div>${inner}</div>`;
 }
 
 function blkAllocation(b, data) {
   const rows = b.rows || [];
-  let html = `<div class="block"><div class="block-title">Allocation</div>`;
+  let inner;
   if (!rows.length) {
-    html += `<div class="block-note muted">Allocation detail is published once the signal is live.</div>`;
+    inner = `<div class="perf-table-note">Allocation detail is published once the signal is live.</div>`;
   } else {
     const cols = b.columns || [];
     const head = '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>';
-    const body = rows.map(r => '<tr>' + r.map(cell =>
-      `<td>${cell == null ? '—' : cell}</td>`).join('') + '</tr>').join('');
-    html += `<table class="bk-tbl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+    const body = rows.map(r => '<tr>' + r.map(cell => `<td>${cell == null ? '—' : cell}</td>`).join('') + '</tr>').join('');
+    inner = `<div class="perf-table-wrap"><table class="perf-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
   }
-  return html + `</div>`;
+  return `<div class="db-block"><div class="db-eyebrow">Allocation</div>${inner}</div>`;
 }
 
 function blkRebalancing(b, data) {
   const avg = (b.averages || {}).total, ytd = ((b.annual || {}).ytd || {}).total, cum = (b.cumulative || {}).total;
-  return `<div class="block"><div class="block-title">Rebalancing</div>
-    <table class="bk-tbl"><tbody>
-      <tr><td>Average / year</td><td>${avg == null ? '—' : fmtNum(avg,1)}</td></tr>
-      <tr><td>Year to date</td><td>${ytd == null ? '—' : ytd}</td></tr>
-      <tr><td>Cumulative (ITD)</td><td>${cum == null ? '—' : cum}</td></tr>
-    </tbody></table></div>`;
+  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
+    <div class="perf-table-wrap"><table class="perf-table"><tbody>
+      <tr><td>Average / year</td><td class="td-model">${avg == null ? '—' : fmtNum(avg,1)}</td></tr>
+      <tr><td>Year to date</td><td class="td-model">${ytd == null ? '—' : ytd}</td></tr>
+      <tr><td>Cumulative (ITD)</td><td class="td-model">${cum == null ? '—' : cum}</td></tr>
+    </tbody></table></div></div>`;
 }
 
 const BLOCK_RENDERERS = {
@@ -362,12 +237,10 @@ const BLOCK_RENDERERS = {
 // ── MODEL PAGE (compose visible blocks generically) ───────
 function renderModelPage(data) {
   const m = data.model;
-  const badgeCls = (m.badge || '').toLowerCase().includes('action') ? 'action'
-                 : (m.badge || '').toLowerCase().includes('pending') ? 'pending' : 'hold';
   const asOf = m.as_of ? `Updated as at market close · ${fmtDate(m.as_of)}` : 'Awaiting first published signal';
-  let html = `<div class="page-head">
-    <h1>${m.name} <span class="badge ${badgeCls}" style="vertical-align:middle;font-size:var(--fs-xs)">${m.badge || '—'}</span></h1>
-    <div class="page-sub">${asOf}</div></div>`;
+  let html = `<div class="db-eyebrow">Model</div>
+    <h1 class="db-title">${m.name}<span class="signal-badge ${badgeClass(m.badge)}">${m.badge || '—'}</span></h1>
+    <div class="signal-date">${asOf}</div>`;
   (data.blocks || []).forEach(b => {
     if (!b.visible) return;
     const r = BLOCK_RENDERERS[b.type];
@@ -386,10 +259,8 @@ async function loadData() {
       fetch('eidos.json?v=' + Date.now()).then(r => r.json()),
     ]);
     const byId = { hedra, aegis, eidos };
-
     const asOf = (hedra.model && hedra.model.as_of) || null;
     document.getElementById('todayDate').textContent = 'Updated as at market close · ' + fmtDate(asOf);
-
     document.getElementById('cardGrid').innerHTML = ORDER.map(id => renderCard(byId[id])).join('');
     ORDER.forEach(id => { try { renderModelPage(byId[id]); } catch(e) { console.error('page', id, e); } });
   } catch (err) {

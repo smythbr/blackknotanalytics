@@ -698,3 +698,32 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 
 /* Dashboard outer wrapper (app shell) */
 .db-wrap { min-height: 100vh; display: flex; flex-direction: column; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   7 — DASHBOARD BLOCK ADDITIONS (block-driven dashboard v4)
+   New, design-system-consistent rules for the block-rendered
+   dashboard. Reuses existing tokens; adds only what the block
+   model needs (a pending badge, a clickable model card, a title
+   badge, and a pending note alignment).
+═══════════════════════════════════════════════════════════════ */
+
+/* Pending badge — model whose signal isn't built yet */
+.signal-badge.pending { color: var(--grey); border-color: var(--line); background: transparent; }
+
+/* Clickable model card (home grid → model page) */
+.signal-card.clickable { cursor: pointer; transition: border-left-color 0.2s ease, transform 0.2s ease; }
+.signal-card.clickable:hover { border-left-color: var(--red); transform: translateY(-2px); }
+
+/* Badge sitting inline beside a model-page title */
+.db-title .signal-badge { font-size: var(--fs-xs); vertical-align: middle; margin-left: 14px; }
+
+/* Model-page signal panel: weight strip + status row spacing */
+.signal-panel .signal-alloc-row { margin-top: 18px; }
+.signal-panel .signal-status { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--white); }
+.signal-panel .signal-status.action { color: var(--yellow-neu); }
+.signal-panel .signal-pending { color: var(--light-grey); font-size: var(--fs-md); line-height: 1.7; }
+
+/* Section spacing between blocks on a model page */
+.db-block { margin-bottom: 48px; }
+.db-block:last-child { margin-bottom: 0; }

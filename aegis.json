@@ -6,7 +6,11 @@
     "badge": "Pending",
     "as_of": null
   },
-  "meta": {},
+  "meta": {
+    "inception": null,
+    "benchmark": "SPY total return (buy & hold)",
+    "note": "p-stress signal not yet built"
+  },
   "card": {
     "name": "AEGIS",
     "badge": "Pending",
@@ -15,13 +19,13 @@
         "label": "YTD",
         "value": null,
         "kind": "pct",
-        "tone": "flat"
+        "tone": "neutral"
       },
       {
         "label": "ITD CAGR",
         "value": null,
         "kind": "pct",
-        "tone": "flat"
+        "tone": "neutral"
       }
     ],
     "weights": [
@@ -54,32 +58,28 @@
     {
       "id": "performance",
       "type": "performance",
-      "visible": false,
+      "visible": true,
       "returns": {},
       "cum_returns": {},
       "risk": {},
       "annual_risk": {}
     },
     {
-      "id": "rebalancing",
-      "type": "rebalancing",
-      "visible": false
-    },
-    {
       "id": "allocation",
       "type": "allocation",
       "visible": true,
       "columns": [
-        "Date",
-        "State",
         "Equity",
         "Fixed Income",
         "Gold",
-        "Cash",
-        "Days",
-        "Trigger"
+        "Cash"
       ],
       "rows": []
+    },
+    {
+      "id": "rebalancing",
+      "type": "rebalancing",
+      "visible": false
     }
   ]
 }
