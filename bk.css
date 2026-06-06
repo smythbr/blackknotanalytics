@@ -479,6 +479,14 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 .signal-kpi-val.neg { color: var(--red-neg); }
 .signal-kpi-val.neu { color: var(--white); }
 
+/* Anonymised allocation display (A/B/C/D) on the model card */
+.signal-alloc-label { font-size: var(--fs-md); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); margin-bottom: 12px; }
+.signal-alloc-row { display: flex; gap: 8px; }
+.signal-alloc-block { flex: 1; text-align: center; padding: 14px 8px 12px; background: #0a0a0a; }
+.signal-alloc-ticker { font-size: var(--fs-md); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
+.signal-alloc-pct { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--white); }
+.signal-alloc-pct.zero { color: #444; }
+
 /* Placeholder / coming-soon card (scaffold for the next model) */
 .signal-card.is-placeholder { border-left-color: rgba(255,255,255,0.15); opacity: 0.75; }
 .signal-card.is-placeholder .signal-card-name { color: var(--grey); }

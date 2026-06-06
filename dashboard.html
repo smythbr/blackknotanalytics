@@ -275,6 +275,17 @@ function renderCards(loaded) {
   loaded.forEach(({ model, data }) => {
     const cr  = (data.cum_returns && data.cum_returns[model.key]) || {};
     const act = (data.signal && data.signal.action) ? data.signal.action.rebalance_required : false;
+    const w   = (data.signal && data.signal.weights) || {};
+    const allocBlock = (label) => {
+      const v = w[label] && w[label].target_weight != null ? Math.round(w[label].target_weight) : null;
+      const txt = v == null ? '—' : (v === 0 ? '0%' : v + '%');
+      const zero = (v === 0) ? ' zero' : '';
+      return `<div class="signal-alloc-block"><div class="signal-alloc-ticker">${label}</div><div class="signal-alloc-pct${zero}">${txt}</div></div>`;
+    };
+    const allocRow = (w.A || w.B || w.C || w.D)
+      ? `<div class="signal-alloc-label">Current Weights</div>
+         <div class="signal-alloc-row">${allocBlock('A')}${allocBlock('B')}${allocBlock('C')}${allocBlock('D')}</div>`
+      : '';
     html += `
       <div class="signal-card">
         <div class="signal-card-header">
@@ -291,6 +302,7 @@ function renderCards(loaded) {
             <div class="signal-kpi-val ${pctCls(cr.cagr_itd)}">${fmtPct(cr.cagr_itd, 2)}</div>
           </div>
         </div>
+        ${allocRow}
       </div>`;
   });
 
