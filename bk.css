@@ -727,3 +727,48 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 /* Section spacing between blocks on a model page */
 .db-block { margin-bottom: 48px; }
 .db-block:last-child { margin-bottom: 0; }
+
+/* ═══════════════════════════════════════════════════════════════
+   8 — ASSET ALLOCATION TABLE  ·  REFERENCE DESIGN (DORMANT)
+   ───────────────────────────────────────────────────────────────
+   Preserved from the original dashboard. NOT wired to any live page
+   yet — no current markup uses .alloc-table. Kept here, in the single
+   source of truth, as the reference for the future allocation block
+   (a model's rebalance-event history): scrollable body with sticky
+   headers, grouped/centered columns, and an .is-current row marking
+   the live portfolio. Activate by emitting an allocation table whose
+   markup uses these classes; until then it styles nothing.
+═══════════════════════════════════════════════════════════════ */
+.alloc-table-wrap { overflow-x:auto; max-height:480px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+.alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:520px; }
+.alloc-table thead tr { background:#0a0a0a; }
+.alloc-table thead th { position:sticky; top:0; z-index:2; background:#0a0a0a; }
+.alloc-table th {
+  font-size:var(--fs-sm); font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey); padding:12px 14px; text-align:right;
+  border-bottom:1px solid rgba(255,255,255,0.15); white-space:nowrap;
+}
+.alloc-table th:first-child, .alloc-table th.th-left { text-align:left; }
+.alloc-table th.th-center { text-align:center; }
+.alloc-table th.th-group  { text-align:center; color:var(--white); }
+.alloc-table td {
+  padding:8px 14px; font-size:var(--fs-base);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  color:var(--grey); text-align:right; white-space:nowrap;
+}
+.alloc-table td:first-child { text-align:left; color:var(--light-grey); }
+.alloc-table td.td-center { text-align:center; }
+.alloc-table td.td-left   { text-align:left; color:var(--light-grey); }
+.alloc-table tr:last-child td { border-bottom:none; }
+.alloc-table tr:hover td { background:rgba(255,255,255,0.015); }
+
+/* Current-state row — prepended to the allocation table, marks the live
+   portfolio. A subtle white left-border distinguishes it without breaking flow. */
+.alloc-table tr.is-current td {
+  background: rgba(255,255,255,0.025);
+  border-left: 2px solid var(--white);
+  color: var(--white);
+}
+.alloc-table tr.is-current td:not(:first-child) { border-left: none; }
+.alloc-table tr.is-current td.td-model,
+.alloc-table tr.is-current td:nth-child(1) { font-weight: 600; }
