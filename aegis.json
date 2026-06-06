@@ -1,9 +1,9 @@
 {
-  "schema": "blackknot.v2",
+  "schema": "blackknot.v3",
   "model": {
     "id": "aegis",
     "name": "AEGIS",
-    "badge": "Pending",
+    "state": "pending",
     "as_of": null
   },
   "meta": {
@@ -12,74 +12,62 @@
     "note": "p-stress signal not yet built"
   },
   "card": {
-    "name": "AEGIS",
-    "badge": "Pending",
     "kpis": [
       {
         "label": "YTD",
         "value": null,
-        "kind": "pct",
-        "tone": "neutral"
+        "kind": "pct"
       },
       {
         "label": "ITD CAGR",
         "value": null,
-        "kind": "pct",
-        "tone": "neutral"
+        "kind": "pct"
       }
     ],
     "weights": [
       {
         "label": "Equity",
-        "pct": null
+        "value": null,
+        "kind": "pct_whole"
       },
       {
         "label": "Fixed Income",
-        "pct": null
+        "value": null,
+        "kind": "pct_whole"
       },
       {
         "label": "Gold",
-        "pct": null
+        "value": null,
+        "kind": "pct_whole"
       },
       {
         "label": "Cash",
-        "pct": null
+        "value": null,
+        "kind": "pct_whole"
       }
     ]
   },
   "blocks": [
     {
-      "id": "signal",
       "type": "signal",
       "visible": true,
-      "status": "pending",
       "note": "p-stress signal not yet built"
     },
     {
-      "id": "performance",
       "type": "performance",
       "visible": true,
-      "returns": {},
-      "cum_returns": {},
-      "risk": {},
-      "annual_risk": {}
+      "tables": [],
+      "note": "Performance is published once the signal is live."
     },
     {
-      "id": "allocation",
       "type": "allocation",
       "visible": true,
-      "columns": [
-        "Equity",
-        "Fixed Income",
-        "Gold",
-        "Cash"
-      ],
-      "rows": []
+      "note": "Allocation detail is published once the signal is live."
     },
     {
-      "id": "rebalancing",
       "type": "rebalancing",
-      "visible": false
+      "visible": false,
+      "table": null
     }
   ]
 }
