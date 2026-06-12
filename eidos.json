@@ -198,86 +198,14 @@
           ],
           "rows": [
             {
-              "label": "2018",
-              "ytd": false,
+              "label": "YTD",
+              "ytd": true,
               "model": {
-                "value": -4.39,
+                "value": 5.1,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": -4.57,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2019",
-              "ytd": false,
-              "model": {
-                "value": 23.27,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": 31.22,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2020",
-              "ytd": false,
-              "model": {
-                "value": 28.54,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": 18.33,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2021",
-              "ytd": false,
-              "model": {
-                "value": 14.21,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": 28.73,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2022",
-              "ytd": false,
-              "model": {
-                "value": -4.94,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": -18.18,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2023",
-              "ytd": false,
-              "model": {
-                "value": 17.33,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": 26.18,
-                "kind": "pct_signed"
-              }
-            },
-            {
-              "label": "2024",
-              "ytd": false,
-              "model": {
-                "value": 30.51,
-                "kind": "pct_signed"
-              },
-              "bench": {
-                "value": 24.89,
+                "value": 8.48,
                 "kind": "pct_signed"
               }
             },
@@ -294,14 +222,86 @@
               }
             },
             {
-              "label": "YTD",
-              "ytd": true,
+              "label": "2024",
+              "ytd": false,
               "model": {
-                "value": 5.1,
+                "value": 30.51,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 8.48,
+                "value": 24.89,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2023",
+              "ytd": false,
+              "model": {
+                "value": 17.33,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 26.18,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2022",
+              "ytd": false,
+              "model": {
+                "value": -4.94,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -18.18,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2021",
+              "ytd": false,
+              "model": {
+                "value": 14.21,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 28.73,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2020",
+              "ytd": false,
+              "model": {
+                "value": 28.54,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 18.33,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2019",
+              "ytd": false,
+              "model": {
+                "value": 23.27,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": 31.22,
+                "kind": "pct_signed"
+              }
+            },
+            {
+              "label": "2018",
+              "ytd": false,
+              "model": {
+                "value": -4.39,
+                "kind": "pct_signed"
+              },
+              "bench": {
+                "value": -4.57,
                 "kind": "pct_signed"
               }
             }
