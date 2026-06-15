@@ -2228,7 +2228,7 @@
               "value": null,
               "kind": "int"
             },
-            "trigger": "Regime change",
+            "trigger": "Opening",
             "current": false,
             "Equity": {
               "value": 0,
@@ -2252,8 +2252,47 @@
     },
     {
       "type": "rebalancing",
-      "visible": false,
-      "table": null
+      "visible": true,
+      "table": {
+        "id": "rebalancing",
+        "title": "Operational Metrics",
+        "columns": [
+          {
+            "key": "metric",
+            "label": "Metric",
+            "align": "left"
+          },
+          {
+            "key": "val",
+            "label": "EIDOS",
+            "align": "right",
+            "emphasis": "model"
+          }
+        ],
+        "rows": [
+          {
+            "metric": "Rebalances / yr (ITD)",
+            "val": {
+              "value": 7.3,
+              "kind": "num"
+            }
+          },
+          {
+            "metric": "Rebalances (YTD)",
+            "val": {
+              "value": 4,
+              "kind": "int"
+            }
+          },
+          {
+            "metric": "Rebalances (ITD)",
+            "val": {
+              "value": 62,
+              "kind": "int"
+            }
+          }
+        ]
+      }
     }
   ]
 }

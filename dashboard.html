@@ -264,7 +264,8 @@ function blkAllocation(b, data) {
 }
 
 function blkRebalancing(b, data) {
-  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table, { head: false })}</div>`;
+  if (!b || !b.table) return '';
+  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table)}</div>`;
 }
 
 // Market View — compact, dashboard-native panel drawn from the market_view
