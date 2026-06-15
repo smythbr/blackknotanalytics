@@ -278,17 +278,30 @@ function blkRebalancing(b, data) {
 function mvFmtDate(d) { return fmtDate(d); }
 
 // Pure helper: the phase-plane SVG for a given index. Axes: INFLATION on x
-// (+right), GROWTH on y (+up). Risk side = sign of growth. Trail = 12 points
-// (current + 11 trailing); grey connecting line, each breadcrumb dot coloured by
-// its OWN risk side. Dynamic conviction ring = ||(g,i)|| nailed to the current
-// point (risk-coloured). Sigma scale = ticks on the +I (right) axis only.
+// (+right), GROWTH on y (+up). Risk side = sign of growth. Trail by mode:
+// month = 6 monthly points (T6M); day = last 5 weekday observations (T5D, a
+// trading-day view of the calendar-day emission). Grey connecting line, each
+// breadcrumb dot coloured by its OWN risk side. Dynamic conviction ring =
+// ||(g,i)|| nailed to the current point (risk-coloured). Sigma ticks on +I axis.
 function mvPlaneSVG(ser, idx, R) {
   const S = 400, C = 200, M = 34, K = (S / 2 - M) / R;
   const X = v => C + v * K, Y = v => C - v * K;   // x = inflation, y = growth
   const cur = ser[idx];
   const riskCol = p => (p.gd >= 0 ? '#4ade80' : '#f87171');
   const col = riskCol(cur);
-  const trail = ser.slice(Math.max(0, idx - 11), idx + 1);   // 12 = current + 11 back
+  // Trail: month mode = 6 monthly points (T6M); day mode = last 5 weekday
+  // observations (skip Sat/Sun forward-fills) ≈ one trading week.
+  let trail;
+  if (window.__mvMode === 'day') {
+    trail = [];
+    for (let i = idx; i >= 0 && trail.length < 5; i--) {
+      const wd = new Date(ser[i].date + 'T00:00:00').getUTCDay();
+      if (wd !== 0 && wd !== 6) trail.unshift(ser[i]);   // 0=Sun, 6=Sat
+    }
+    if (!trail.length) trail = [ser[idx]];
+  } else {
+    trail = ser.slice(Math.max(0, idx - 5), idx + 1);
+  }
   const conv = Math.hypot(cur.gd, cur.id);
   // Sigma ticks on the +I (right) half of the x-axis only.
   const ticks = [1, 2, 3].map(s =>
@@ -374,13 +387,19 @@ function blkMarketView(b, data) {
     return `<div class="db-block market-view-section"><div class="db-eyebrow">${b.title || 'Market View'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Market view is published once the signal is live.'}</div></div></div>`;
   }
-  // Monthly series for the scrubber (regime-age in months); fall back to daily.
-  const ser = (gil.series.month && gil.series.month.length) ? gil.series.month : gil.series.daily;
-  const unit = (gil.series.month && gil.series.month.length) ? 'mo' : 'd';
   const R = gil.scope_sigma || 4.4;
+  const hasMonth = !!(gil.series.month && gil.series.month.length);
+  const hasDay = !!(gil.series.daily && gil.series.daily.length);
+  // Stash both series + mode for the scrubber/toggle (single market_view on the page).
+  window.__mvMonth = gil.series.month || []; window.__mvDay = gil.series.daily || [];
+  window.__mvScope = R; window.__mvMode = hasMonth ? 'month' : 'day';
+  const ser = window.__mvMode === 'month' ? window.__mvMonth : window.__mvDay;
+  window.__mvSeries = ser; window.__mvUnit = window.__mvMode === 'month' ? 'mo' : 'd';
   const last = ser.length - 1;
-  // Stash for the scrubber (single market_view on the page — module global is fine).
-  window.__mvSeries = ser; window.__mvScope = R; window.__mvUnit = unit;
+  const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
+        <button id="mv-tog-month" class="mv-tog on" onclick="mvSetMode('month')">Month</button>
+        <button id="mv-tog-day" class="mv-tog" onclick="mvSetMode('day')">Day</button>
+      </div>` : '';
 
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
@@ -390,14 +409,31 @@ function blkMarketView(b, data) {
       <div class="mv-plane">
         <div id="mv-plane-box">${mvPlaneSVG(ser, last, R)}</div>
         <div class="mv-scrub">
-          <input type="range" min="0" max="${last}" value="${last}" step="1" oninput="mvScrub(this.value)" aria-label="Scrub through history">
+          ${toggle}
+          <input id="mv-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="mvScrub(this.value)" aria-label="Scrub through history">
           <div class="mv-scrub-date" id="mv-date">${mvFmtDate(ser[last].date)}</div>
         </div>
       </div>
       <div class="mv-lgauge"><div class="mv-stat-k mv-lgauge-cap">L · weather</div><div id="mv-lgauge-box">${mvLgauge(ser, last, R)}</div></div>
-      <div class="mv-readout" id="mv-readout-box">${mvReadout(ser, last, unit)}</div>
+      <div class="mv-readout" id="mv-readout-box">${mvReadout(ser, last, window.__mvUnit)}</div>
     </div>
   </div>`;
+}
+
+// Toggle Month/Day: swap the active series, rebuild the slider range, default to
+// the latest point, redraw everything. Helpers are series-agnostic so they just
+// take the newly-stashed series.
+function mvSetMode(mode) {
+  if (mode !== 'month' && mode !== 'day') return;
+  window.__mvMode = mode;
+  window.__mvSeries = mode === 'month' ? window.__mvMonth : window.__mvDay;
+  window.__mvUnit = mode === 'month' ? 'mo' : 'd';
+  const ser = window.__mvSeries; const last = ser.length - 1;
+  const sl = document.getElementById('mv-slider');
+  if (sl) { sl.max = last; sl.value = last; }
+  document.getElementById('mv-tog-month').classList.toggle('on', mode === 'month');
+  document.getElementById('mv-tog-day').classList.toggle('on', mode === 'day');
+  mvScrub(last);
 }
 
 const BLOCK_RENDERERS = {
