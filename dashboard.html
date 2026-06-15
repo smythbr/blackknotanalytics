@@ -279,29 +279,20 @@ function mvFmtDate(d) { return fmtDate(d); }
 
 // Pure helper: the phase-plane SVG for a given index. Axes: INFLATION on x
 // (+right), GROWTH on y (+up). Risk side = sign of growth. Trail by mode:
-// month = 6 monthly points (T6M); day = last 5 weekday observations (T5D, a
-// trading-day view of the calendar-day emission). Grey connecting line, each
-// breadcrumb dot coloured by its OWN risk side. Dynamic conviction ring =
-// ||(g,i)|| nailed to the current point (risk-coloured). Sigma ticks on +I axis.
+// month = 6 monthly points (T6M) showing the path; day = current dot only (no
+// breadcrumbs — daily points clump too tightly on the σ scale to read as a path).
+// Grey connecting line, each breadcrumb dot coloured by its OWN risk side. Dynamic
+// conviction ring = ||(g,i)|| nailed to the current point. Sigma ticks on +I axis.
 function mvPlaneSVG(ser, idx, R) {
   const S = 400, C = 200, M = 34, K = (S / 2 - M) / R;
   const X = v => C + v * K, Y = v => C - v * K;   // x = inflation, y = growth
   const cur = ser[idx];
   const riskCol = p => (p.gd >= 0 ? '#4ade80' : '#f87171');
   const col = riskCol(cur);
-  // Trail: month mode = 6 monthly points (T6M); day mode = last 5 weekday
-  // observations (skip Sat/Sun forward-fills) ≈ one trading week.
-  let trail;
-  if (window.__mvMode === 'day') {
-    trail = [];
-    for (let i = idx; i >= 0 && trail.length < 5; i--) {
-      const wd = new Date(ser[i].date + 'T00:00:00').getUTCDay();
-      if (wd !== 0 && wd !== 6) trail.unshift(ser[i]);   // 0=Sun, 6=Sat
-    }
-    if (!trail.length) trail = [ser[idx]];
-  } else {
-    trail = ser.slice(Math.max(0, idx - 5), idx + 1);
-  }
+  // Trail: month mode = 6 monthly points (T6M) showing the path. Day mode shows
+  // NO breadcrumbs — at daily resolution the points clump too tightly on the σ
+  // scale to read as a path, so only the current dot is drawn.
+  const trail = (window.__mvMode === 'day') ? [cur] : ser.slice(Math.max(0, idx - 5), idx + 1);
   const conv = Math.hypot(cur.gd, cur.id);
   // Sigma ticks on the +I (right) half of the x-axis only.
   const ticks = [1, 2, 3].map(s =>
