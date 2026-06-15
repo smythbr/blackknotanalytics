@@ -724,6 +724,13 @@ tr:hover td { background: rgba(255,255,255,0.015); }
    the live portfolio. Activate by emitting an allocation table whose
    markup uses these classes; until then it styles nothing.
 ═══════════════════════════════════════════════════════════════ */
+.regime-pill { display:inline-block; font-size:var(--fs-xs); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:3px 8px; border:1px solid; text-align:center; white-space:nowrap; }
+.regime-pill.sz-aegis { min-width:110px; }
+.regime-pill.sz-eidos { min-width:160px; }
+.regime-pill.r-on    { color:var(--green-pos); border-color:rgba(74,222,128,0.3); }
+.regime-pill.r-off   { color:var(--red-neg);   border-color:rgba(248,113,113,0.3); }
+.regime-pill.r-trans { color:var(--yellow-neu);border-color:rgba(251,191,36,0.3); }
+.regime-pill.r-arch  { color:var(--light-grey);border-color:rgba(200,200,196,0.3); }
 .alloc-table-wrap { overflow-x:auto; max-height:480px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
 .alloc-table { width:100%; border-collapse:collapse; font-size:var(--fs-base); min-width:520px; }
 .alloc-table thead tr { background:#0a0a0a; }

@@ -215,11 +215,52 @@ function blkPerformance(b, data) {
   return `<div class="db-block"><div class="db-eyebrow">Performance</div>${inner}</div>`;
 }
 
+// Regime pill — colour by the row's risk side (back end supplies w.risk).
+function regimePill(label, risk) {
+  const cls = risk === 'risk-on' ? 'r-on' : (risk === 'risk-off' ? 'r-off' : 'r-arch');
+  return `<span class="regime-pill sz-aegis ${cls}">${label || '—'}</span>`;
+}
+
+// Dedicated Asset-Allocation renderer (recovered original design): rebalance
+// ledger as the .alloc-table — Date · Regime pill · class weights · Days ·
+// Trigger, with the live "Now" row marked .is-current. Reads the self-describing
+// table but renders the pill/Days/Trigger specially (they are UI, not metrics).
 function blkAllocation(b, data) {
-  const inner = b.table
-    ? renderTable(b.table)
-    : `<div class="signal-panel"><div class="signal-pending">${b.note || 'Allocation detail is published once the signal is live.'}</div></div>`;
-  return `<div class="db-block"><div class="db-eyebrow">Allocation</div>${inner}</div>`;
+  const t = b.table;
+  if (!t) {
+    return `<div class="db-block"><div class="db-eyebrow">Portfolio</div>
+      <div class="db-title">Asset Allocation</div>
+      <div class="signal-panel"><div class="signal-pending">${b.note || 'Allocation detail is published once the signal is live.'}</div></div></div>`;
+  }
+  // Weight columns = the class columns (everything between Regime and Days).
+  const wcols = (t.columns || []).filter(c =>
+    !['date','regime','days','trigger'].includes(c.key));
+  const thead = '<thead><tr>'
+    + '<th class="th-left">Date</th>'
+    + '<th class="th-center">Regime</th>'
+    + wcols.map(c => `<th>${cardLabel(c.label)}</th>`).join('')
+    + '<th>Days</th><th class="th-left">Trigger</th>'
+    + '</tr></thead>';
+  const body = (t.rows || []).map(r => {
+    const cur = r.current ? ' class="is-current"' : '';
+    const wtds = wcols.map(c => {
+      const v = r[c.key] ? r[c.key].value : null;
+      const zero = (v === 0) ? ' style="color:#444"' : '';
+      return `<td${zero}>${v == null ? '—' : v + '%'}</td>`;
+    }).join('');
+    const days = (r.days && r.days.value != null) ? r.days.value : '—';
+    return `<tr${cur}>`
+      + `<td class="td-left">${r.date === 'Now' ? 'Now' : fmtDate(r.date)}</td>`
+      + `<td class="td-center">${regimePill(r.regime, r.risk)}</td>`
+      + wtds
+      + `<td>${days}</td>`
+      + `<td class="td-left">${r.trigger || '—'}</td>`
+      + `</tr>`;
+  }).join('');
+  return `<div class="db-block"><div class="db-eyebrow">Portfolio</div>
+    <div class="db-title">Asset Allocation</div>
+    <div class="db-sub">Historical portfolio states. One row per rebalancing event.</div>
+    <div class="alloc-table-wrap"><table class="alloc-table">${thead}<tbody>${body}</tbody></table></div></div>`;
 }
 
 function blkRebalancing(b, data) {
