@@ -475,8 +475,8 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 
 /* Anonymised allocation display (A/B/C/D) on the model card */
 .signal-alloc-label { font-size: var(--fs-md); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); margin-bottom: 12px; }
-.signal-alloc-row { display: flex; gap: 8px; }
-.signal-alloc-block { flex: 1; text-align: center; padding: 14px 8px 12px; background: #0a0a0a; }
+.signal-alloc-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.signal-alloc-block { flex: 1 1 calc(33.333% - 8px); min-width: 0; text-align: center; padding: 14px 8px 12px; background: #0a0a0a; }
 .signal-alloc-ticker { font-size: var(--fs-md); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
 .signal-alloc-pct { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--white); }
 .signal-alloc-pct.zero { color: #444; }
@@ -667,6 +667,8 @@ tr:hover td { background: rgba(255,255,255,0.015); }
   .perf-table th:nth-child(3), .perf-table td:nth-child(3) { width: 19%; }
   .perf-table th:nth-child(4), .perf-table td:nth-child(4) { width: 20%; }
   .perf-table-wrap { overflow-x: hidden; }
+
+  .signal-alloc-pct { font-size: 1.15rem; }
 }
 
 @media (max-width: 380px) {

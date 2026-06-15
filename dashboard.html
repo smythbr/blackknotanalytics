@@ -199,7 +199,7 @@ function blkSignal(b, data) {
   } else {
     const status = data.model.state === 'action'
       ? `<div class="signal-status action">Action Required</div>` : '';
-    inner = `${status}<div class="signal-alloc-row">${renderWeights(b.weights)}</div>`;
+    inner = `${status}<div class="signal-alloc-row">${renderWeights(b.weights, cardLabel)}</div>`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Signal</div>
     <div class="signal-panel">${inner}</div></div>`;
