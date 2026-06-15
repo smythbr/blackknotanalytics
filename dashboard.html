@@ -267,19 +267,82 @@ function blkRebalancing(b, data) {
   return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table, { head: false })}</div>`;
 }
 
-// Market View — embeds the standalone GIL phase-plane instrument (the rich
-// interactive SVG lives in aegis_gil_instrument.html; no draw logic duplicated
-// here). Desktop-only: bk.css hides .market-view-section below the breakpoint.
-// The cache-bust mirrors the JSON fetches so a fresh deploy isn't served stale.
+// Market View — compact, dashboard-native panel drawn from the market_view
+// block's GIL series. Phase plane (left) + readout (right), side by side, fits a
+// laptop screen at once. This is a deliberately LIGHTER view than the full
+// standalone instrument (no animation/scrubber) — the rich interactive instrument
+// remains the deep-dive artifact. Conviction = ||(g,i)||σ and regime age =
+// consecutive same-regime count are the SAME presentation derivations the
+// instrument uses (replicated, not re-invented). Colour by risk side (g>=0
+// risk-on green / g<0 risk-off red) to match the allocation pills.
+function mvFmtDate(d) { return fmtDate(d); }
 function blkMarketView(b, data) {
-  if (!b.embed) return '';
-  const src = b.embed + '?v=' + Date.now();
+  const gil = b.gil;
+  if (!gil || !gil.series) {
+    return `<div class="db-block market-view-section"><div class="db-eyebrow">${b.title || 'Market View'}</div>
+      <div class="signal-panel"><div class="signal-pending">${b.note || 'Market view is published once the signal is live.'}</div></div></div>`;
+  }
+  // Prefer the monthly series (smoother, regime-age in months); fall back to daily.
+  const ser = (gil.series.month && gil.series.month.length) ? gil.series.month : gil.series.daily;
+  const unit = (gil.series.month && gil.series.month.length) ? 'mo' : 'd';
+  const cur = ser[ser.length - 1];
+  const riskOn = cur.gd >= 0;
+  const col = riskOn ? '#4ade80' : '#f87171';     // green / red (allocation-pill palette)
+  // Regime age: walk back while regime label unchanged.
+  let age = 1;
+  for (let i = ser.length - 1; i > 0 && ser[i - 1].reg === ser[i].reg; i--) age++;
+  const conv = Math.hypot(cur.gd, cur.id);
+  // Short trail: last ~6 points.
+  const trail = ser.slice(-6);
+
+  // --- compact phase plane (400x360 viewBox) ---
+  const R = gil.scope_sigma || 4.4, S = 400, CX = 200, CY = 180, M = 30;
+  const K = (Math.min(S, 360) / 2 - M) / R;       // σ → px
+  const px = g => CX + g * K, py = i => CY - i * K;
+  const ringR = [1, 2, 3].map(s => `<circle cx="${CX}" cy="${CY}" r="${(s * K).toFixed(1)}" fill="none" stroke="rgba(255,255,255,0.07)" stroke-dasharray="2 4"/>`).join('');
+  const trailPts = trail.map(p => `${px(p.gd).toFixed(1)},${py(p.id).toFixed(1)}`).join(' ');
+  const trailDots = trail.slice(0, -1).map((p, k) =>
+    `<circle cx="${px(p.gd).toFixed(1)}" cy="${py(p.id).toFixed(1)}" r="2.5" fill="${col}" opacity="${(0.2 + 0.5 * k / trail.length).toFixed(2)}"/>`).join('');
+  const svg = `<svg viewBox="0 0 ${S} 360" style="width:100%;height:auto;">
+    <rect x="${CX}" y="0" width="${S - CX}" height="${CY}" fill="#4ade80" opacity="0.04"/>
+    <rect x="0" y="0" width="${CX}" height="${CY}" fill="#f87171" opacity="0.04"/>
+    <line x1="${CX}" y1="14" x2="${CX}" y2="346" stroke="rgba(255,255,255,0.15)"/>
+    <line x1="20" y1="${CY}" x2="${S - 20}" y2="${CY}" stroke="rgba(255,255,255,0.15)"/>
+    ${ringR}
+    <text x="${S - 26}" y="${CY - 6}" text-anchor="end" fill="#9C9C97" font-size="10" letter-spacing="0.12em">+G</text>
+    <text x="${CX + 6}" y="24" fill="#9C9C97" font-size="10" letter-spacing="0.12em">+I</text>
+    <text x="${S - 30}" y="38" text-anchor="end" fill="#4ade80" font-size="10.5" font-weight="600" letter-spacing="0.07em">REFLATION</text>
+    <text x="30" y="38" fill="#f87171" font-size="10.5" font-weight="600" letter-spacing="0.07em">STAGFLATION</text>
+    <text x="30" y="350" fill="#9C9C97" font-size="10.5" font-weight="600" letter-spacing="0.07em" opacity="0.45">DEFLATION</text>
+    <text x="${S - 30}" y="350" text-anchor="end" fill="#9C9C97" font-size="10.5" font-weight="600" letter-spacing="0.07em" opacity="0.45">GOLDILOCKS</text>
+    <polyline points="${trailPts}" fill="none" stroke="${col}" stroke-width="1.5" opacity="0.35"/>
+    ${trailDots}
+    <circle cx="${px(cur.gd).toFixed(1)}" cy="${py(cur.id).toFixed(1)}" r="7" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
+  </svg>`;
+
+  const stat = (label, val, color) =>
+    `<div class="mv-stat"><div class="mv-stat-k">${label}</div><div class="mv-stat-v"${color ? ` style="color:${color}"` : ''}>${val}</div></div>`;
+  const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
+
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
     <div class="db-sub">The macro phase plane driving the regime.</div>
-    <div class="market-view-frame">
-      <iframe src="${src}" title="AEGIS GIL phase-plane instrument" loading="lazy"></iframe>
+    <div class="mv-grid">
+      <div class="mv-plane">${svg}</div>
+      <div class="mv-readout">
+        <div class="mv-regime" style="border-left-color:${col}">
+          <div class="mv-stat-k">Regime</div>
+          <div class="mv-regime-name" style="color:${col}">${cur.reg}<span class="mv-regime-side"> · ${riskOn ? 'risk-on' : 'risk-off'}</span></div>
+        </div>
+        <div class="mv-stats">
+          ${stat('Growth', sig(cur.gd) + '<small>σ</small>')}
+          ${stat('Inflation', sig(cur.id) + '<small>σ</small>')}
+          ${stat('Liquidity', sig(cur.lpe) + '<small>σ</small>', '#7F77DD')}
+          ${stat('Conviction', conv.toFixed(2) + '<small>σ</small>')}
+        </div>
+        ${stat('Regime age', age + ' ' + unit)}
+      </div>
     </div>
   </div>`;
 }

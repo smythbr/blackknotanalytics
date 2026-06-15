@@ -723,13 +723,20 @@ tr:hover td { background: rgba(255,255,255,0.015); }
    the lean Signal → Performance flow. The iframe is self-contained (its own
    styles/SVG/JS); we only frame and size it here.
 ═══════════════════════════════════════════════════════════════ */
-.market-view-frame { width: 100%; max-width: 760px; margin-top: 18px; }
-.market-view-frame iframe {
-  width: 100%; height: 640px; border: 1px solid var(--line, rgba(255,255,255,0.08));
-  border-radius: 4px; background: var(--card-bg, #0D0D0D); display: block;
-}
+.mv-grid { display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap; margin-top: 18px; }
+.mv-plane { flex: 1.4; min-width: 300px; background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 16px; }
+.mv-readout { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 10px; }
+.mv-regime { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-left: 3px solid var(--grey); border-radius: 4px; padding: 12px 14px; }
+.mv-regime-name { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2; }
+.mv-regime-side { font-family: var(--font-body); font-size: 0.9rem; color: var(--grey); }
+.mv-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mv-stat { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 4px; padding: 11px 13px; }
+.mv-stat-k { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--grey); text-transform: uppercase; }
+.mv-stat-v { font-size: 1.3rem; color: var(--white); margin-top: 2px; }
+.mv-stat-v small { font-size: 0.8rem; color: var(--grey); margin-left: 1px; }
 @media (max-width: 768px) {
-  .market-view-section { display: none; }
+  .mv-grid { flex-direction: column; }
+  .mv-plane, .mv-readout { min-width: 0; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
