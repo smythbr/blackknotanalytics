@@ -669,6 +669,7 @@ tr:hover td { background: rgba(255,255,255,0.015); }
   .perf-table-wrap { overflow-x: hidden; }
 
   .signal-alloc-pct { font-size: 1.0rem; }
+  .signal-alloc-ticker { font-size: clamp(0.62rem, 2.8vw, 0.8125rem); letter-spacing: 0.04em; white-space: nowrap; }
 }
 
 @media (max-width: 380px) {
