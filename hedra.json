@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 9.92,
+        "value": 10.94,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 14.25,
+        "value": 14.38,
         "kind": "pct"
       }
     ],
@@ -109,66 +109,66 @@
             {
               "label": "YTD",
               "model": {
-                "value": 9.92,
+                "value": 10.94,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.07,
+                "value": 10.99,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "1 Year",
               "model": {
-                "value": 27.01,
+                "value": 28.19,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 25.67,
+                "value": 27.89,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "3 Year",
               "model": {
-                "value": 83.2,
+                "value": 84.91,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 76.31,
+                "value": 79.42,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "5 Year",
               "model": {
-                "value": 84.31,
+                "value": 86.03,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 86.75,
+                "value": 90.04,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Inception",
               "model": {
-                "value": 207.43,
+                "value": 210.3,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 215.8,
+                "value": 221.37,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 14.25,
+                "value": 14.38,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.84,
+                "value": 10.0,
                 "kind": "pct_signed"
               }
             }
@@ -201,11 +201,11 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 9.92,
+                "value": 10.94,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.07,
+                "value": 10.99,
                 "kind": "pct_signed"
               }
             },
@@ -333,18 +333,18 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 14.25,
+                "value": 14.38,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.84,
+                "value": 10.0,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Volatility",
               "model": {
-                "value": 10.15,
+                "value": 10.16,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -355,44 +355,44 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.1143,
+                "value": 1.1247,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5594,
+                "value": 0.5682,
                 "kind": "ratio"
               }
             },
             {
               "label": "Sortino",
               "model": {
-                "value": 1.5822,
+                "value": 1.5976,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7835,
+                "value": 0.7962,
                 "kind": "ratio"
               }
             },
             {
               "label": "Calmar",
               "model": {
-                "value": 3.0394,
+                "value": 3.091,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7417,
+                "value": 0.7661,
                 "kind": "ratio"
               }
             },
             {
               "label": "MAR",
               "model": {
-                "value": 1.2079,
+                "value": 1.2186,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2918,
+                "value": 0.2964,
                 "kind": "ratio"
               }
             },
@@ -410,7 +410,7 @@
             {
               "label": "Avg Drawdown",
               "model": {
-                "value": -4.09,
+                "value": -4.08,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -421,7 +421,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.4726,
+                "value": 0.4701,
                 "kind": "ratio"
               },
               "bench": {
@@ -432,11 +432,11 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.2912,
+                "value": 1.2935,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 1.167,
+                "value": 1.1692,
                 "kind": "ratio"
               }
             },
@@ -454,7 +454,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 37.9,
+                "value": 37.2,
                 "kind": "pct_signed"
               },
               "bench": {
