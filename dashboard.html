@@ -276,73 +276,98 @@ function blkRebalancing(b, data) {
 // instrument uses (replicated, not re-invented). Colour by risk side (g>=0
 // risk-on green / g<0 risk-off red) to match the allocation pills.
 function mvFmtDate(d) { return fmtDate(d); }
+
+// Pure helper: the phase-plane SVG for a given index. Axes: INFLATION on x
+// (+right), GROWTH on y (+up). Risk side is the sign of growth, so the tint is
+// top half = risk-on green, bottom = risk-off red (full width). Trail = ~6 pts.
+function mvPlaneSVG(ser, idx, R) {
+  const S = 400, C = 200, M = 34, K = (S / 2 - M) / R;
+  const X = v => C + v * K, Y = v => C - v * K;   // x = inflation, y = growth
+  const cur = ser[idx];
+  const riskOn = cur.gd >= 0, col = riskOn ? '#4ade80' : '#f87171';
+  const trail = ser.slice(Math.max(0, idx - 5), idx + 1);
+  const ringR = [1, 2, 3].map(s => `<circle cx="${C}" cy="${C}" r="${(s * K).toFixed(1)}" fill="none" stroke="rgba(255,255,255,0.14)" stroke-dasharray="2 4"/>`).join('');
+  const trailPts = trail.map(p => `${X(p.id).toFixed(1)},${Y(p.gd).toFixed(1)}`).join(' ');
+  const trailDots = trail.slice(0, -1).map((p, k) =>
+    `<circle cx="${X(p.id).toFixed(1)}" cy="${Y(p.gd).toFixed(1)}" r="3" fill="${col}" opacity="${(0.25 + 0.5 * k / trail.length).toFixed(2)}"/>`).join('');
+  return `<svg viewBox="0 0 ${S} ${S}" style="width:100%;height:auto;display:block;">
+    <rect x="0" y="0" width="${S}" height="${C}" fill="#4ade80" opacity="0.08"/>
+    <rect x="0" y="${C}" width="${S}" height="${S - C}" fill="#f87171" opacity="0.08"/>
+    <line x1="${C}" y1="16" x2="${C}" y2="${S - 16}" stroke="rgba(255,255,255,0.28)"/>
+    <line x1="16" y1="${C}" x2="${S - 16}" y2="${C}" stroke="rgba(255,255,255,0.28)"/>
+    ${ringR}
+    <text x="${C + 7}" y="28" fill="#C8C8C4" font-size="13" letter-spacing="0.1em">+G</text>
+    <text x="${S - 20}" y="${C - 8}" text-anchor="end" fill="#C8C8C4" font-size="13" letter-spacing="0.1em">+I</text>
+    <text x="${S - 26}" y="42" text-anchor="end" fill="#4ade80" font-size="13" font-weight="600" letter-spacing="0.06em">REFLATION</text>
+    <text x="26" y="42" fill="#4ade80" font-size="13" font-weight="600" letter-spacing="0.06em">GOLDILOCKS</text>
+    <text x="26" y="${S - 22}" fill="#f87171" font-size="13" font-weight="600" letter-spacing="0.06em">DEFLATION</text>
+    <text x="${S - 26}" y="${S - 22}" text-anchor="end" fill="#f87171" font-size="13" font-weight="600" letter-spacing="0.06em">STAGFLATION</text>
+    <polyline points="${trailPts}" fill="none" stroke="${col}" stroke-width="2" opacity="0.45"/>
+    ${trailDots}
+    <circle cx="${X(cur.id).toFixed(1)}" cy="${Y(cur.gd).toFixed(1)}" r="8" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
+  </svg>`;
+}
+
+// Pure helper: the readout column inner HTML for a given index.
+function mvReadout(ser, idx, unit) {
+  const cur = ser[idx];
+  const riskOn = cur.gd >= 0, col = riskOn ? '#4ade80' : '#f87171';
+  let age = 1;
+  for (let i = idx; i > 0 && ser[i - 1].reg === ser[i].reg; i--) age++;
+  const conv = Math.hypot(cur.gd, cur.id);
+  const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
+  const stat = (label, val, color) =>
+    `<div class="mv-stat"><div class="mv-stat-k">${label}</div><div class="mv-stat-v"${color ? ` style="color:${color}"` : ''}>${val}</div></div>`;
+  return `<div class="mv-regime" style="border-left-color:${col}">
+      <div class="mv-stat-k">Regime</div>
+      <div class="mv-regime-name" style="color:${col}">${cur.reg}<span class="mv-regime-side"> · ${riskOn ? 'risk-on' : 'risk-off'}</span></div>
+    </div>
+    <div class="mv-stats">
+      ${stat('Growth', sig(cur.gd) + '<small>σ</small>')}
+      ${stat('Inflation', sig(cur.id) + '<small>σ</small>')}
+      ${stat('Liquidity', sig(cur.lpe) + '<small>σ</small>', '#7F77DD')}
+      ${stat('Conviction', conv.toFixed(2) + '<small>σ</small>')}
+    </div>
+    ${stat('Regime age', age + ' ' + unit)}`;
+}
+
+// Global scrubber handler — called by the slider's oninput. Redraws the plane +
+// readout for the chosen index from the stashed series, and updates the date.
+function mvScrub(idx) {
+  idx = +idx;
+  const ser = window.__mvSeries; if (!ser) return;
+  document.getElementById('mv-plane-box').innerHTML = mvPlaneSVG(ser, idx, window.__mvScope);
+  document.getElementById('mv-readout-box').innerHTML = mvReadout(ser, idx, window.__mvUnit);
+  const lab = document.getElementById('mv-date'); if (lab) lab.textContent = mvFmtDate(ser[idx].date);
+}
+
 function blkMarketView(b, data) {
   const gil = b.gil;
   if (!gil || !gil.series) {
     return `<div class="db-block market-view-section"><div class="db-eyebrow">${b.title || 'Market View'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Market view is published once the signal is live.'}</div></div></div>`;
   }
-  // Prefer the monthly series (smoother, regime-age in months); fall back to daily.
+  // Monthly series for the scrubber (regime-age in months); fall back to daily.
   const ser = (gil.series.month && gil.series.month.length) ? gil.series.month : gil.series.daily;
   const unit = (gil.series.month && gil.series.month.length) ? 'mo' : 'd';
-  const cur = ser[ser.length - 1];
-  const riskOn = cur.gd >= 0;
-  const col = riskOn ? '#4ade80' : '#f87171';     // green / red (allocation-pill palette)
-  // Regime age: walk back while regime label unchanged.
-  let age = 1;
-  for (let i = ser.length - 1; i > 0 && ser[i - 1].reg === ser[i].reg; i--) age++;
-  const conv = Math.hypot(cur.gd, cur.id);
-  // Short trail: last ~6 points.
-  const trail = ser.slice(-6);
-
-  // --- compact phase plane (400x360 viewBox) ---
-  const R = gil.scope_sigma || 4.4, S = 400, CX = 200, CY = 180, M = 30;
-  const K = (Math.min(S, 360) / 2 - M) / R;       // σ → px
-  const px = g => CX + g * K, py = i => CY - i * K;
-  const ringR = [1, 2, 3].map(s => `<circle cx="${CX}" cy="${CY}" r="${(s * K).toFixed(1)}" fill="none" stroke="rgba(255,255,255,0.07)" stroke-dasharray="2 4"/>`).join('');
-  const trailPts = trail.map(p => `${px(p.gd).toFixed(1)},${py(p.id).toFixed(1)}`).join(' ');
-  const trailDots = trail.slice(0, -1).map((p, k) =>
-    `<circle cx="${px(p.gd).toFixed(1)}" cy="${py(p.id).toFixed(1)}" r="2.5" fill="${col}" opacity="${(0.2 + 0.5 * k / trail.length).toFixed(2)}"/>`).join('');
-  const svg = `<svg viewBox="0 0 ${S} 360" style="width:100%;height:auto;">
-    <rect x="${CX}" y="0" width="${S - CX}" height="${CY}" fill="#4ade80" opacity="0.04"/>
-    <rect x="0" y="0" width="${CX}" height="${CY}" fill="#f87171" opacity="0.04"/>
-    <line x1="${CX}" y1="14" x2="${CX}" y2="346" stroke="rgba(255,255,255,0.15)"/>
-    <line x1="20" y1="${CY}" x2="${S - 20}" y2="${CY}" stroke="rgba(255,255,255,0.15)"/>
-    ${ringR}
-    <text x="${S - 26}" y="${CY - 6}" text-anchor="end" fill="#9C9C97" font-size="10" letter-spacing="0.12em">+G</text>
-    <text x="${CX + 6}" y="24" fill="#9C9C97" font-size="10" letter-spacing="0.12em">+I</text>
-    <text x="${S - 30}" y="38" text-anchor="end" fill="#4ade80" font-size="10.5" font-weight="600" letter-spacing="0.07em">REFLATION</text>
-    <text x="30" y="38" fill="#f87171" font-size="10.5" font-weight="600" letter-spacing="0.07em">STAGFLATION</text>
-    <text x="30" y="350" fill="#9C9C97" font-size="10.5" font-weight="600" letter-spacing="0.07em" opacity="0.45">DEFLATION</text>
-    <text x="${S - 30}" y="350" text-anchor="end" fill="#9C9C97" font-size="10.5" font-weight="600" letter-spacing="0.07em" opacity="0.45">GOLDILOCKS</text>
-    <polyline points="${trailPts}" fill="none" stroke="${col}" stroke-width="1.5" opacity="0.35"/>
-    ${trailDots}
-    <circle cx="${px(cur.gd).toFixed(1)}" cy="${py(cur.id).toFixed(1)}" r="7" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
-  </svg>`;
-
-  const stat = (label, val, color) =>
-    `<div class="mv-stat"><div class="mv-stat-k">${label}</div><div class="mv-stat-v"${color ? ` style="color:${color}"` : ''}>${val}</div></div>`;
-  const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
+  const R = gil.scope_sigma || 4.4;
+  const last = ser.length - 1;
+  // Stash for the scrubber (single market_view on the page — module global is fine).
+  window.__mvSeries = ser; window.__mvScope = R; window.__mvUnit = unit;
 
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
     <div class="db-sub">The macro phase plane driving the regime.</div>
     <div class="mv-grid">
-      <div class="mv-plane">${svg}</div>
-      <div class="mv-readout">
-        <div class="mv-regime" style="border-left-color:${col}">
-          <div class="mv-stat-k">Regime</div>
-          <div class="mv-regime-name" style="color:${col}">${cur.reg}<span class="mv-regime-side"> · ${riskOn ? 'risk-on' : 'risk-off'}</span></div>
+      <div class="mv-plane">
+        <div id="mv-plane-box">${mvPlaneSVG(ser, last, R)}</div>
+        <div class="mv-scrub">
+          <input type="range" min="0" max="${last}" value="${last}" step="1" oninput="mvScrub(this.value)" aria-label="Scrub through history">
+          <div class="mv-scrub-date" id="mv-date">${mvFmtDate(ser[last].date)}</div>
         </div>
-        <div class="mv-stats">
-          ${stat('Growth', sig(cur.gd) + '<small>σ</small>')}
-          ${stat('Inflation', sig(cur.id) + '<small>σ</small>')}
-          ${stat('Liquidity', sig(cur.lpe) + '<small>σ</small>', '#7F77DD')}
-          ${stat('Conviction', conv.toFixed(2) + '<small>σ</small>')}
-        </div>
-        ${stat('Regime age', age + ' ' + unit)}
       </div>
+      <div class="mv-readout" id="mv-readout-box">${mvReadout(ser, last, unit)}</div>
     </div>
   </div>`;
 }

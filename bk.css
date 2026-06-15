@@ -723,17 +723,20 @@ tr:hover td { background: rgba(255,255,255,0.015); }
    the lean Signal → Performance flow. The iframe is self-contained (its own
    styles/SVG/JS); we only frame and size it here.
 ═══════════════════════════════════════════════════════════════ */
-.mv-grid { display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap; margin-top: 18px; }
+.mv-grid { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-top: 18px; }
 .mv-plane { flex: 1.4; min-width: 300px; background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 16px; }
+.mv-scrub { margin-top: 12px; }
+.mv-scrub input[type=range] { width: 100%; accent-color: #4ade80; cursor: pointer; }
+.mv-scrub-date { text-align: center; font-size: 0.95rem; color: #FFFFFF; margin-top: 8px; letter-spacing: 0.06em; }
 .mv-readout { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 10px; }
-.mv-regime { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-left: 3px solid var(--grey); border-radius: 4px; padding: 12px 14px; }
-.mv-regime-name { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2; }
-.mv-regime-side { font-family: var(--font-body); font-size: 0.9rem; color: var(--grey); }
+.mv-regime { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-left: 3px solid var(--grey); border-radius: 4px; padding: 14px 16px; }
+.mv-regime-name { font-family: var(--font-display); font-size: 2.1rem; line-height: 1.15; }
+.mv-regime-side { font-family: var(--font-body); font-size: 1rem; color: #C8C8C4; }
 .mv-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.mv-stat { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 4px; padding: 11px 13px; }
-.mv-stat-k { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--grey); text-transform: uppercase; }
-.mv-stat-v { font-size: 1.3rem; color: var(--white); margin-top: 2px; }
-.mv-stat-v small { font-size: 0.8rem; color: var(--grey); margin-left: 1px; }
+.mv-stat { background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 4px; padding: 13px 15px; }
+.mv-stat-k { font-size: 0.8rem; letter-spacing: 0.12em; color: #B0B0AC; text-transform: uppercase; }
+.mv-stat-v { font-size: 1.7rem; color: #FFFFFF; margin-top: 3px; }
+.mv-stat-v small { font-size: 0.95rem; color: #B0B0AC; margin-left: 1px; }
 @media (max-width: 768px) {
   .mv-grid { flex-direction: column; }
   .mv-plane, .mv-readout { min-width: 0; }
