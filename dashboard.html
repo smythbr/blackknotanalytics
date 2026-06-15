@@ -267,8 +267,26 @@ function blkRebalancing(b, data) {
   return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table, { head: false })}</div>`;
 }
 
+// Market View — embeds the standalone GIL phase-plane instrument (the rich
+// interactive SVG lives in aegis_gil_instrument.html; no draw logic duplicated
+// here). Desktop-only: bk.css hides .market-view-section below the breakpoint.
+// The cache-bust mirrors the JSON fetches so a fresh deploy isn't served stale.
+function blkMarketView(b, data) {
+  if (!b.embed) return '';
+  const src = b.embed + '?v=' + Date.now();
+  return `<div class="db-block market-view-section">
+    <div class="db-eyebrow">${b.title || 'Market View'}</div>
+    <div class="db-title">Growth · Inflation · Liquidity</div>
+    <div class="db-sub">The macro phase plane driving the regime.</div>
+    <div class="market-view-frame">
+      <iframe src="${src}" title="AEGIS GIL phase-plane instrument" loading="lazy"></iframe>
+    </div>
+  </div>`;
+}
+
 const BLOCK_RENDERERS = {
-  signal: blkSignal, performance: blkPerformance, allocation: blkAllocation, rebalancing: blkRebalancing,
+  signal: blkSignal, performance: blkPerformance, allocation: blkAllocation,
+  rebalancing: blkRebalancing, market_view: blkMarketView,
 };
 
 // ── CARD (home grid) ──────────────────────────────────────

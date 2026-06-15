@@ -715,6 +715,24 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .db-block:last-child { margin-bottom: 0; }
 
 /* ═══════════════════════════════════════════════════════════════
+   8a — MARKET VIEW  ·  GIL phase-plane instrument embed (Aegis)
+   ───────────────────────────────────────────────────────────────
+   Desktop-only section: embeds the standalone aegis_gil_instrument.html
+   (the rich interactive phase plane). Hidden below the tablet breakpoint —
+   the instrument is too large/interaction-heavy for a phone, so mobile keeps
+   the lean Signal → Performance flow. The iframe is self-contained (its own
+   styles/SVG/JS); we only frame and size it here.
+═══════════════════════════════════════════════════════════════ */
+.market-view-frame { width: 100%; max-width: 760px; margin-top: 18px; }
+.market-view-frame iframe {
+  width: 100%; height: 640px; border: 1px solid var(--line, rgba(255,255,255,0.08));
+  border-radius: 4px; background: var(--card-bg, #0D0D0D); display: block;
+}
+@media (max-width: 768px) {
+  .market-view-section { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    8 — ASSET ALLOCATION TABLE  ·  REFERENCE DESIGN (DORMANT)
    ───────────────────────────────────────────────────────────────
    Preserved from the original dashboard. NOT wired to any live page
