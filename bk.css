@@ -730,6 +730,11 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .mv-tog { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #B0B0AC; background: transparent; border: 1px solid var(--line, rgba(255,255,255,0.12)); border-radius: 4px; padding: 4px 14px; cursor: pointer; }
 .mv-tog.on { color: #0D0D0D; background: #4ade80; border-color: #4ade80; font-weight: 600; }
 .mv-scrub input[type=range] { width: 100%; accent-color: #4ade80; cursor: pointer; }
+.mv-scrub-row { display: flex; align-items: center; gap: 8px; }
+.mv-scrub-row input[type=range] { flex: 1 1 0; width: auto; min-width: 0; }
+.mv-step { font-family: var(--font-body); font-size: 0.8rem; line-height: 1; color: #B0B0AC; background: transparent; border: 1px solid var(--line, rgba(255,255,255,0.12)); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.mv-step:hover:not(:disabled) { color: #0D0D0D; background: #4ade80; border-color: #4ade80; }
+.mv-step:disabled { opacity: 0.35; cursor: default; }
 .mv-scrub-date { text-align: center; font-size: 0.95rem; color: #FFFFFF; margin-top: 8px; letter-spacing: 0.06em; }
 .mv-readout { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 10px; }
 .mv-lgauge { display: flex; flex-direction: column; align-items: center; background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 14px 8px; }

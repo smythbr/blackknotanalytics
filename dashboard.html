@@ -371,6 +371,18 @@ function mvScrub(idx) {
   document.getElementById('mv-readout-box').innerHTML = mvReadout(ser, idx, window.__mvUnit);
   const lg = document.getElementById('mv-lgauge-box'); if (lg) lg.innerHTML = mvLgauge(ser, idx, window.__mvScope);
   const lab = document.getElementById('mv-date'); if (lab) lab.textContent = mvFmtDate(ser[idx].date);
+  const sl = document.getElementById('mv-slider');
+  const prev = document.getElementById('mv-prev'), next = document.getElementById('mv-next');
+  if (sl && prev && next) { prev.disabled = idx <= 0; next.disabled = idx >= +sl.max; }
+}
+
+// Step the scrubber one index (= one date in the active Month/Day resolution).
+// Leaves the slider itself untouched — just nudges its value and redraws.
+function mvStep(delta) {
+  const sl = document.getElementById('mv-slider'); if (!sl) return;
+  const v = Math.min(+sl.max, Math.max(0, (+sl.value) + delta));
+  sl.value = v;
+  mvScrub(v);
 }
 
 function blkMarketView(b, data) {
@@ -402,7 +414,11 @@ function blkMarketView(b, data) {
         <div id="mv-plane-box">${mvPlaneSVG(ser, last, R)}</div>
         <div class="mv-scrub">
           ${toggle}
-          <input id="mv-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="mvScrub(this.value)" aria-label="Scrub through history">
+          <div class="mv-scrub-row">
+            <button type="button" id="mv-prev" class="mv-step" onclick="mvStep(-1)" aria-label="Previous date">&#9664;</button>
+            <input id="mv-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="mvScrub(this.value)" aria-label="Scrub through history">
+            <button type="button" id="mv-next" class="mv-step" onclick="mvStep(1)" aria-label="Next date" disabled>&#9654;</button>
+          </div>
           <div class="mv-scrub-date" id="mv-date">${mvFmtDate(ser[last].date)}</div>
         </div>
       </div>
