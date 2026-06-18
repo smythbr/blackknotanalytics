@@ -4,11 +4,11 @@
     "id": "hedra",
     "name": "HEDRA",
     "state": "hold",
-    "as_of": "2026-06-16"
+    "as_of": "2026-06-17"
   },
   "meta": {
     "period_start": "2018-01-01",
-    "period_end": "2026-06-16",
+    "period_end": "2026-06-17",
     "inception": "2018-01-01",
     "return_basis": "daily simple total return, geometrically linked",
     "annualisation": "252 trading days (x-root-252 for risk)",
@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 10.64,
+        "value": 9.98,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 14.34,
+        "value": 14.25,
         "kind": "pct"
       }
     ],
@@ -109,66 +109,66 @@
             {
               "label": "YTD",
               "model": {
-                "value": 10.64,
+                "value": 9.98,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 10.33,
+                "value": 8.95,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "1 Year",
               "model": {
-                "value": 27.85,
+                "value": 26.52,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 27.12,
+                "value": 24.35,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "3 Year",
               "model": {
-                "value": 82.62,
+                "value": 81.34,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 76.17,
+                "value": 74.56,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "5 Year",
               "model": {
-                "value": 85.81,
+                "value": 86.37,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 89.26,
+                "value": 87.94,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Inception",
               "model": {
-                "value": 209.47,
+                "value": 207.61,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 219.45,
+                "value": 215.46,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 14.34,
+                "value": 14.25,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.94,
+                "value": 9.82,
                 "kind": "pct_signed"
               }
             }
@@ -201,11 +201,11 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 10.64,
+                "value": 9.98,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 10.33,
+                "value": 8.95,
                 "kind": "pct_signed"
               }
             },
@@ -333,11 +333,11 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 14.34,
+                "value": 14.25,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.94,
+                "value": 9.82,
                 "kind": "pct_signed"
               }
             },
@@ -355,44 +355,44 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.121,
+                "value": 1.1134,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5649,
+                "value": 0.5583,
                 "kind": "ratio"
               }
             },
             {
               "label": "Sortino",
               "model": {
-                "value": 1.5923,
+                "value": 1.5813,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7915,
+                "value": 0.782,
                 "kind": "ratio"
               }
             },
             {
               "label": "Calmar",
               "model": {
-                "value": 3.0217,
+                "value": 2.983,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7405,
+                "value": 0.7278,
                 "kind": "ratio"
               }
             },
             {
               "label": "MAR",
               "model": {
-                "value": 1.2149,
+                "value": 1.2073,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2947,
+                "value": 0.2913,
                 "kind": "ratio"
               }
             },
@@ -421,7 +421,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.4708,
+                "value": 0.4724,
                 "kind": "ratio"
               },
               "bench": {
@@ -432,11 +432,11 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.2926,
+                "value": 1.2907,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 1.1683,
+                "value": 1.1665,
                 "kind": "ratio"
               }
             },
@@ -454,7 +454,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 37.4,
+                "value": 37.8,
                 "kind": "pct_signed"
               },
               "bench": {
