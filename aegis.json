@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 4.06,
+        "value": 3.97,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 18.06,
+        "value": 18.05,
         "kind": "pct"
       }
     ],
@@ -1782,9 +1782,9 @@
             },
             {
               "date": "2026-06-18",
-              "gd": 0.5609,
-              "id": 0.5867,
-              "lpe": 1.2753,
+              "gd": 0.5468,
+              "id": 0.5866,
+              "lpe": 1.2978,
               "reg": "Reflation"
             }
           ],
@@ -46388,128 +46388,128 @@
             },
             {
               "date": "2026-06-01",
-              "gd": 0.4704,
+              "gd": 0.4707,
               "id": 1.2167,
-              "lpe": 0.939,
+              "lpe": 0.9383,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-02",
-              "gd": 0.5747,
+              "gd": 0.575,
               "id": 1.171,
-              "lpe": 0.9499,
+              "lpe": 0.9493,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-03",
-              "gd": 0.3837,
+              "gd": 0.384,
               "id": 1.2553,
-              "lpe": 1.0108,
+              "lpe": 1.0101,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-04",
-              "gd": 0.4724,
+              "gd": 0.4728,
               "id": 1.0894,
-              "lpe": 0.9983,
+              "lpe": 0.9976,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-05",
-              "gd": -0.0772,
-              "id": 1.2187,
-              "lpe": 1.1323,
+              "gd": -0.0769,
+              "id": 1.2188,
+              "lpe": 1.1313,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-06",
-              "gd": -0.0776,
+              "gd": -0.0773,
               "id": 1.2198,
-              "lpe": 1.1303,
+              "lpe": 1.1293,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-07",
-              "gd": -0.0626,
+              "gd": -0.0623,
               "id": 1.2209,
-              "lpe": 1.1282,
+              "lpe": 1.1273,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-08",
-              "gd": -0.087,
+              "gd": -0.0867,
               "id": 1.24,
-              "lpe": 1.1536,
+              "lpe": 1.1526,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-09",
-              "gd": -0.1335,
+              "gd": -0.1332,
               "id": 1.0774,
-              "lpe": 1.2224,
+              "lpe": 1.2213,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-10",
-              "gd": -0.3136,
+              "gd": -0.3132,
               "id": 1.143,
-              "lpe": 1.2997,
+              "lpe": 1.2983,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-11",
-              "gd": -0.0213,
+              "gd": -0.021,
               "id": 0.7772,
-              "lpe": 1.3174,
+              "lpe": 1.316,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-12",
-              "gd": 0.2838,
+              "gd": 0.2841,
               "id": 0.8318,
-              "lpe": 1.191,
+              "lpe": 1.1899,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-13",
-              "gd": 0.2892,
+              "gd": 0.2895,
               "id": 0.8328,
-              "lpe": 1.194,
+              "lpe": 1.1928,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-14",
-              "gd": 0.2974,
+              "gd": 0.2977,
               "id": 0.8338,
-              "lpe": 1.1915,
+              "lpe": 1.1903,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-15",
-              "gd": 0.5605,
+              "gd": 0.5608,
               "id": 0.7929,
-              "lpe": 1.0936,
+              "lpe": 1.0927,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-16",
-              "gd": 0.5388,
+              "gd": 0.5391,
               "id": 0.5932,
-              "lpe": 1.0922,
+              "lpe": 1.0913,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-17",
-              "gd": 0.4201,
+              "gd": 0.4204,
               "id": 0.6655,
-              "lpe": 1.1022,
+              "lpe": 1.1013,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-18",
-              "gd": 0.5609,
-              "id": 0.5867,
-              "lpe": 1.2753,
+              "gd": 0.5468,
+              "id": 0.5866,
+              "lpe": 1.2978,
               "reg": "Reflation"
             }
           ]
@@ -46546,66 +46546,66 @@
             {
               "label": "YTD",
               "model": {
-                "value": 4.06,
+                "value": 3.97,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.8,
+                "value": 10.09,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "1 Year",
               "model": {
-                "value": 14.81,
+                "value": 14.72,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 26.4,
+                "value": 26.73,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "3 Year",
               "model": {
-                "value": 79.26,
+                "value": 79.11,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 75.92,
+                "value": 76.38,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "5 Year",
               "model": {
-                "value": 116.42,
+                "value": 116.24,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 89.47,
+                "value": 89.96,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Inception",
               "model": {
-                "value": 306.13,
+                "value": 305.79,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 217.92,
+                "value": 218.74,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 18.06,
+                "value": 18.05,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.89,
+                "value": 9.91,
                 "kind": "pct_signed"
               }
             }
@@ -46638,11 +46638,11 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 4.06,
+                "value": 3.97,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.8,
+                "value": 10.09,
                 "kind": "pct_signed"
               }
             },
@@ -46770,11 +46770,11 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 18.06,
+                "value": 18.05,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.89,
+                "value": 9.91,
                 "kind": "pct_signed"
               }
             },
@@ -46792,44 +46792,44 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.3757,
+                "value": 1.3748,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5047,
+                "value": 0.506,
                 "kind": "ratio"
               }
             },
             {
               "label": "Sortino",
               "model": {
-                "value": 1.9874,
+                "value": 1.986,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7071,
+                "value": 0.7089,
                 "kind": "ratio"
               }
             },
             {
               "label": "Calmar",
               "model": {
-                "value": 2.9389,
+                "value": 2.9343,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7386,
+                "value": 0.7422,
                 "kind": "ratio"
               }
             },
             {
               "label": "MAR",
               "model": {
-                "value": 1.3694,
+                "value": 1.3685,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2933,
+                "value": 0.2939,
                 "kind": "ratio"
               }
             },
@@ -46858,7 +46858,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.5383,
+                "value": 0.5367,
                 "kind": "ratio"
               },
               "bench": {
@@ -46869,11 +46869,11 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3383,
+                "value": 1.3381,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 1.1675,
+                "value": 1.1678,
                 "kind": "ratio"
               }
             },
@@ -46891,7 +46891,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 40.0,
+                "value": 40.1,
                 "kind": "pct_signed"
               },
               "bench": {
