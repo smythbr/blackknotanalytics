@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 3.97,
+        "value": 1.45,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 18.05,
+        "value": 16.82,
         "kind": "pct"
       }
     ],
@@ -1782,9 +1782,9 @@
             },
             {
               "date": "2026-06-18",
-              "gd": 0.5468,
-              "id": 0.5866,
-              "lpe": 1.2978,
+              "gd": 0.5514,
+              "id": 0.5848,
+              "lpe": 1.2607,
               "reg": "Reflation"
             }
           ],
@@ -46388,128 +46388,128 @@
             },
             {
               "date": "2026-06-01",
-              "gd": 0.4707,
+              "gd": 0.4706,
               "id": 1.2167,
-              "lpe": 0.9383,
+              "lpe": 0.9393,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-02",
-              "gd": 0.575,
+              "gd": 0.5749,
               "id": 1.171,
-              "lpe": 0.9493,
+              "lpe": 0.9502,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-03",
-              "gd": 0.384,
+              "gd": 0.3839,
               "id": 1.2553,
-              "lpe": 1.0101,
+              "lpe": 1.0112,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-04",
-              "gd": 0.4728,
+              "gd": 0.4727,
               "id": 1.0894,
-              "lpe": 0.9976,
+              "lpe": 0.9986,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-05",
               "gd": -0.0769,
-              "id": 1.2188,
-              "lpe": 1.1313,
+              "id": 1.2187,
+              "lpe": 1.1328,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-06",
               "gd": -0.0773,
               "id": 1.2198,
-              "lpe": 1.1293,
+              "lpe": 1.1308,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-07",
-              "gd": -0.0623,
+              "gd": -0.0624,
               "id": 1.2209,
-              "lpe": 1.1273,
+              "lpe": 1.1288,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-08",
               "gd": -0.0867,
               "id": 1.24,
-              "lpe": 1.1526,
+              "lpe": 1.1541,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-09",
               "gd": -0.1332,
               "id": 1.0774,
-              "lpe": 1.2213,
+              "lpe": 1.2231,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-10",
-              "gd": -0.3132,
-              "id": 1.143,
-              "lpe": 1.2983,
+              "gd": -0.3133,
+              "id": 1.1429,
+              "lpe": 1.3005,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-11",
-              "gd": -0.021,
+              "gd": -0.0211,
               "id": 0.7772,
-              "lpe": 1.316,
+              "lpe": 1.3183,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-12",
-              "gd": 0.2841,
+              "gd": 0.284,
               "id": 0.8318,
-              "lpe": 1.1899,
+              "lpe": 1.1916,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-13",
-              "gd": 0.2895,
+              "gd": 0.2894,
               "id": 0.8328,
-              "lpe": 1.1928,
+              "lpe": 1.1946,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-14",
-              "gd": 0.2977,
+              "gd": 0.2976,
               "id": 0.8338,
-              "lpe": 1.1903,
+              "lpe": 1.1921,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-15",
-              "gd": 0.5608,
+              "gd": 0.5606,
               "id": 0.7929,
-              "lpe": 1.0927,
+              "lpe": 1.0941,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-16",
-              "gd": 0.5391,
+              "gd": 0.5389,
               "id": 0.5932,
-              "lpe": 1.0913,
+              "lpe": 1.0927,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-17",
-              "gd": 0.4204,
+              "gd": 0.4202,
               "id": 0.6655,
-              "lpe": 1.1013,
+              "lpe": 1.1026,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-18",
-              "gd": 0.5468,
-              "id": 0.5866,
-              "lpe": 1.2978,
+              "gd": 0.5514,
+              "id": 0.5848,
+              "lpe": 1.2607,
               "reg": "Reflation"
             }
           ]
@@ -46546,7 +46546,7 @@
             {
               "label": "YTD",
               "model": {
-                "value": 3.97,
+                "value": 1.45,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46557,7 +46557,7 @@
             {
               "label": "1 Year",
               "model": {
-                "value": 14.72,
+                "value": 11.83,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46568,7 +46568,7 @@
             {
               "label": "3 Year",
               "model": {
-                "value": 79.11,
+                "value": 65.53,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46579,7 +46579,7 @@
             {
               "label": "5 Year",
               "model": {
-                "value": 116.24,
+                "value": 101.68,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46590,7 +46590,7 @@
             {
               "label": "Inception",
               "model": {
-                "value": 305.79,
+                "value": 271.39,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46601,7 +46601,7 @@
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 18.05,
+                "value": 16.82,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46638,7 +46638,7 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 3.97,
+                "value": 1.45,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46650,7 +46650,7 @@
               "label": "2025",
               "ytd": false,
               "model": {
-                "value": 15.87,
+                "value": 15.76,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46662,7 +46662,7 @@
               "label": "2024",
               "ytd": false,
               "model": {
-                "value": 38.79,
+                "value": 32.12,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46674,7 +46674,7 @@
               "label": "2023",
               "ytd": false,
               "model": {
-                "value": 25.97,
+                "value": 25.45,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46686,7 +46686,7 @@
               "label": "2022",
               "ytd": false,
               "model": {
-                "value": -6.63,
+                "value": -5.77,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46710,7 +46710,7 @@
               "label": "2020",
               "ytd": false,
               "model": {
-                "value": 32.64,
+                "value": 29.28,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46722,7 +46722,7 @@
               "label": "2019",
               "ytd": false,
               "model": {
-                "value": 32.3,
+                "value": 33.06,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46734,7 +46734,7 @@
               "label": "2018",
               "ytd": false,
               "model": {
-                "value": -3.69,
+                "value": -3.59,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46770,7 +46770,7 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 18.05,
+                "value": 16.82,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46781,7 +46781,7 @@
             {
               "label": "Volatility",
               "model": {
-                "value": 10.67,
+                "value": 10.78,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46792,7 +46792,7 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.3748,
+                "value": 1.2654,
                 "kind": "ratio"
               },
               "bench": {
@@ -46803,7 +46803,7 @@
             {
               "label": "Sortino",
               "model": {
-                "value": 1.986,
+                "value": 1.8189,
                 "kind": "ratio"
               },
               "bench": {
@@ -46814,7 +46814,7 @@
             {
               "label": "Calmar",
               "model": {
-                "value": 2.9343,
+                "value": 2.1925,
                 "kind": "ratio"
               },
               "bench": {
@@ -46825,7 +46825,7 @@
             {
               "label": "MAR",
               "model": {
-                "value": 1.3685,
+                "value": 1.2751,
                 "kind": "ratio"
               },
               "bench": {
@@ -46847,7 +46847,7 @@
             {
               "label": "Avg Drawdown",
               "model": {
-                "value": -2.44,
+                "value": -2.54,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46858,7 +46858,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.5367,
+                "value": 0.5071,
                 "kind": "ratio"
               },
               "bench": {
@@ -46869,7 +46869,7 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3381,
+                "value": 1.3119,
                 "kind": "ratio"
               },
               "bench": {
@@ -46880,7 +46880,7 @@
             {
               "label": "Upside Capture",
               "model": {
-                "value": 38.5,
+                "value": 36.2,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46891,7 +46891,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 40.1,
+                "value": 43.5,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -47153,7 +47153,7 @@
             "regime": "Stagflation",
             "risk": "risk-off",
             "days": {
-              "value": 35,
+              "value": 2,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47180,11 +47180,259 @@
             }
           },
           {
-            "date": "2026-02-05",
+            "date": "2026-03-10",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-03-06",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 32,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-02-02",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-29",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-27",
             "regime": "Goldilocks",
             "risk": "risk-on",
             "days": {
-              "value": 34,
+              "value": 7,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-20",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 5,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-15",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-14",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2026-01-13",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 11,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47215,7 +47463,7 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 87,
+              "value": 38,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47242,11 +47490,166 @@
             }
           },
           {
-            "date": "2025-10-07",
+            "date": "2025-11-25",
             "regime": "Goldilocks",
             "risk": "risk-on",
             "days": {
-              "value": 35,
+              "value": 5,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2025-11-20",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 3,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2025-11-17",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 7,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2025-11-10",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2025-11-06",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 36,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2025-10-01",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 29,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47401,7 +47804,69 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 140,
+              "value": 120,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-12-02",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 7,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-11-25",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 13,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47432,7 +47897,131 @@
             "regime": "Stagflation",
             "risk": "risk-off",
             "days": {
-              "value": 70,
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-11-08",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-11-06",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-11-04",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 3,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-11-01",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 59,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47494,7 +48083,7 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 50,
+              "value": 1,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47521,11 +48110,166 @@
             }
           },
           {
+            "date": "2024-07-22",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-07-18",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 8,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-07-10",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 37,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
             "date": "2024-06-03",
             "regime": "Stagflation",
             "risk": "risk-off",
             "days": {
-              "value": 74,
+              "value": 32,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-05-02",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2024-05-01",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 41,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47649,7 +48393,69 @@
             "regime": "Stagflation",
             "risk": "risk-off",
             "days": {
-              "value": 343,
+              "value": 14,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2023-10-05",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2023-10-03",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 327,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47742,7 +48548,69 @@
             "regime": "Reflation",
             "risk": "risk-on",
             "days": {
-              "value": 310,
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2022-09-06",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2022-09-02",
+            "regime": "Reflation",
+            "risk": "risk-on",
+            "days": {
+              "value": 305,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47866,7 +48734,69 @@
             "regime": "Goldilocks",
             "risk": "risk-on",
             "days": {
-              "value": 54,
+              "value": 40,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-10-15",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 6,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-10-09",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 8,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47959,7 +48889,131 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 143,
+              "value": 10,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-02-11",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-02-07",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-02-06",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 3,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2020-02-03",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 125,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -47990,7 +49044,193 @@
             "regime": "Goldilocks",
             "risk": "risk-on",
             "days": {
-              "value": 123,
+              "value": 60,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-08-02",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-08-01",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 31,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-07-01",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 4,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-06-27",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-06-25",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 5,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-06-20",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 20,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -48021,7 +49261,69 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 119,
+              "value": 17,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-05-14",
+            "regime": "Goldilocks",
+            "risk": "risk-on",
+            "days": {
+              "value": 1,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 60,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 10,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 0,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2019-05-13",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 101,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -48083,7 +49385,69 @@
             "regime": "Deflation",
             "risk": "risk-off",
             "days": {
-              "value": 186,
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 10,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2018-12-26",
+            "regime": "Stagflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 2,
+              "kind": "int"
+            },
+            "trigger": "Regime change",
+            "current": false,
+            "Equity": {
+              "value": 30,
+              "kind": "pct_whole"
+            },
+            "Fixed Income": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Gold": {
+              "value": 15,
+              "kind": "pct_whole"
+            },
+            "Crypto": {
+              "value": 0,
+              "kind": "pct_whole"
+            },
+            "Cash": {
+              "value": 55,
+              "kind": "pct_whole"
+            }
+          },
+          {
+            "date": "2018-12-24",
+            "regime": "Deflation",
+            "risk": "risk-off",
+            "days": {
+              "value": 182,
               "kind": "int"
             },
             "trigger": "Regime change",
@@ -48259,21 +49623,21 @@
           {
             "metric": "Rebalances / yr (ITD)",
             "val": {
-              "value": 4.6,
+              "value": 9.8,
               "kind": "num"
             }
           },
           {
             "metric": "Rebalances (YTD)",
             "val": {
-              "value": 8,
+              "value": 16,
               "kind": "int"
             }
           },
           {
             "metric": "Rebalances (ITD)",
             "val": {
-              "value": 39,
+              "value": 83,
               "kind": "int"
             }
           }
