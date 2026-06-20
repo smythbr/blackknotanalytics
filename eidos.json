@@ -124,7 +124,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 26.73,
+                "value": 26.75,
                 "kind": "pct_signed"
               }
             },
@@ -146,7 +146,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 89.96,
+                "value": 92.56,
                 "kind": "pct_signed"
               }
             },
@@ -359,7 +359,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.506,
+                "value": 0.5057,
                 "kind": "ratio"
               }
             },
@@ -370,7 +370,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7089,
+                "value": 0.7085,
                 "kind": "ratio"
               }
             },
@@ -392,7 +392,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2939,
+                "value": 0.2938,
                 "kind": "ratio"
               }
             },

@@ -124,7 +124,7 @@
         },
         "counts": {
           "month": 237,
-          "daily": 6389
+          "daily": 6390
         },
         "series": {
           "month": [
@@ -1781,10 +1781,10 @@
               "reg": "Reflation"
             },
             {
-              "date": "2026-06-18",
-              "gd": 0.5514,
-              "id": 0.5848,
-              "lpe": 1.2607,
+              "date": "2026-06-19",
+              "gd": 0.5405,
+              "id": 0.5849,
+              "lpe": 1.3281,
               "reg": "Reflation"
             }
           ],
@@ -46511,6 +46511,13 @@
               "id": 0.5848,
               "lpe": 1.2607,
               "reg": "Reflation"
+            },
+            {
+              "date": "2026-06-19",
+              "gd": 0.5405,
+              "id": 0.5849,
+              "lpe": 1.3281,
+              "reg": "Reflation"
             }
           ]
         }
@@ -46561,7 +46568,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 26.73,
+                "value": 26.75,
                 "kind": "pct_signed"
               }
             },
@@ -46583,7 +46590,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 89.96,
+                "value": 92.56,
                 "kind": "pct_signed"
               }
             },
@@ -46796,7 +46803,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.506,
+                "value": 0.5057,
                 "kind": "ratio"
               }
             },
@@ -46807,7 +46814,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7089,
+                "value": 0.7085,
                 "kind": "ratio"
               }
             },
@@ -46829,7 +46836,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2939,
+                "value": 0.2938,
                 "kind": "ratio"
               }
             },
