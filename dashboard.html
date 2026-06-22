@@ -193,27 +193,25 @@ function renderWeights(weights, mapLabel) {
 
 function renderDecomp(decomp, mapLabel) {
   const serif = "'Cormorant Garamond',Georgia,serif";
-  const cell = "padding:13px 0;text-align:center;background:#0c0c0c;border:1px solid #1c1c1c;";
-  const head = decomp.map(d => `<div style="text-align:center;color:#8a8a8a;font-size:12px;font-weight:500;letter-spacing:0.14em;padding-bottom:5px;">${(mapLabel?mapLabel(d.label):d.label).toUpperCase()}</div>`).join('');
-  const rl = (txt, op) => `<div style="display:flex;align-items:center;gap:5px;color:#8a8a8a;font-size:11px;font-weight:500;letter-spacing:0.1em;">${op?`<span style="color:#6a6a6a;font-size:15px;font-family:${serif};">${op}</span>`:''}${txt}</div>`;
+  const head = decomp.map(d => `<div style="text-align:center;color:#8a8a8a;font-size:12px;font-weight:600;letter-spacing:0.14em;padding-bottom:4px;">${(mapLabel?mapLabel(d.label):d.label).toUpperCase()}</div>`).join('');
+  const rl = (txt, op) => `<div style="display:flex;align-items:center;gap:5px;color:#7a7a7a;font-size:11px;font-weight:500;letter-spacing:0.1em;">${op?`<span style="color:#6a6a6a;font-size:15px;font-family:${serif};">${op}</span>`:''}${txt}</div>`;
   const bookRow = decomp.map(d =>
-    `<div style="${cell}font-family:${serif};font-size:23px;color:${d.book===0?'#4a4a4a':'#e8e8e8'};">${d.book}%</div>`).join('');
+    `<div style="text-align:center;padding:8px 0;font-family:${serif};font-size:25px;color:${d.book===0?'#4a4a4a':'#e8e8e8'};">${d.book}%</div>`).join('');
   const vamsRow = decomp.map(d => {
     if (d.scalar === null || d.scalar === undefined)
-      return `<div style="${cell}"><div style="font-family:${serif};font-size:20px;color:#6a6a6a;">&mdash;</div><div style="color:#5c5c5c;font-size:10px;letter-spacing:0.1em;margin-top:1px;">SWEEP</div></div>`;
+      return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:22px;color:#6a6a6a;line-height:1.1;">&mdash;</div><div style="color:#5c5c5c;font-size:10px;letter-spacing:0.1em;">SWEEP</div></div>`;
     const full = d.scalar >= 0.999, half = d.scalar > 0.001 && d.scalar < 0.999;
     const c = full ? '#4ade80' : (half ? '#e0a93f' : '#e2564f');
     const tc = full ? '#3f8a55' : (half ? '#8a6a2f' : '#9a4a45');
-    const bd = full ? '#1f3a26' : (half ? '#3a321f' : '#3a1f1f');
-    const tag = full ? 'HELD' : (half ? 'HALF' : 'CUT');
-    return `<div style="padding:9px 0;text-align:center;background:#0c0c0c;border:1px solid ${bd};"><div style="font-family:${serif};font-size:20px;color:${c};">${d.scalar.toFixed(1)}&times;</div><div style="color:${tc};font-size:10px;letter-spacing:0.1em;margin-top:1px;">${tag}</div></div>`;
+    const tag = full ? 'HELD' : 'SCALED';
+    return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:22px;color:${c};line-height:1.1;">${d.scalar.toFixed(1)}&times;</div><div style="color:${tc};font-size:10px;letter-spacing:0.1em;">${tag}</div></div>`;
   }).join('');
   const netRow = decomp.map(d => {
     const on = d.net !== 0;
-    return `<div style="padding:13px 0;text-align:center;background:${on?'#101814':'#0c0c0c'};border:1px solid #1c1c1c;border-top:2px solid ${on?'#4ade80':'#2a2a2a'};font-family:${serif};font-size:25px;color:${on?'#ffffff':'#4a4a4a'};">${d.net}%</div>`;
+    return `<div style="padding:16px 0;text-align:center;background:${on?'#101814':'#0c0c0c'};border:1px solid #1c1c1c;border-top:2px solid ${on?'#4ade80':'#2a2a2a'};font-family:${serif};font-size:32px;color:${on?'#ffffff':'#4a4a4a'};">${d.net}%</div>`;
   }).join('');
-  const cols = `96px repeat(${decomp.length},1fr)`;
-  return `<div style="display:grid;grid-template-columns:${cols};gap:7px;align-items:stretch;margin-top:6px;">
+  const cols = `90px repeat(${decomp.length},1fr)`;
+  return `<div style="display:grid;grid-template-columns:${cols};gap:10px;align-items:center;margin-top:6px;">
       <div></div>${head}
       ${rl('Book')}${bookRow}
       ${rl('VAMS','&times;')}${vamsRow}
