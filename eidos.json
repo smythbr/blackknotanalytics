@@ -91,6 +91,7 @@
     },
     {
       "type": "phase_plane",
+      "visible": true,
       "title": "Market View",
       "phase_plane": {
         "schema": "blackknot.eidos.phase.v1",
@@ -38474,6 +38475,7 @@
     },
     {
       "type": "contribution",
+      "visible": true,
       "title": "Factor Contribution",
       "contribution": {
         "schema": "blackknot.eidos.contribution.v1",
