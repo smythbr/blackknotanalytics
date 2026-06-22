@@ -87,6 +87,38 @@
           "value": 15.0,
           "kind": "pct_whole"
         }
+      ],
+      "decomp": [
+        {
+          "label": "Equity",
+          "book": 85.0,
+          "scalar": 1.0,
+          "net": 85.0
+        },
+        {
+          "label": "Gold",
+          "book": 5.0,
+          "scalar": 0.0,
+          "net": 0.0
+        },
+        {
+          "label": "Fixed Income",
+          "book": 0.0,
+          "scalar": 1.0,
+          "net": 0.0
+        },
+        {
+          "label": "Crypto",
+          "book": 10.0,
+          "scalar": 0.0,
+          "net": 0.0
+        },
+        {
+          "label": "Cash",
+          "book": 0.0,
+          "scalar": null,
+          "net": 15.0
+        }
       ]
     },
     {

@@ -191,6 +191,36 @@ function renderWeights(weights, mapLabel) {
   }).join('');
 }
 
+function renderDecomp(decomp, mapLabel) {
+  const serif = "'Cormorant Garamond',Georgia,serif";
+  const cell = "padding:13px 0;text-align:center;background:#0c0c0c;border:1px solid #1c1c1c;";
+  const head = decomp.map(d => `<div style="text-align:center;color:#8a8a8a;font-size:12px;font-weight:500;letter-spacing:0.14em;padding-bottom:5px;">${(mapLabel?mapLabel(d.label):d.label).toUpperCase()}</div>`).join('');
+  const rl = (txt, op) => `<div style="display:flex;align-items:center;gap:5px;color:#8a8a8a;font-size:11px;font-weight:500;letter-spacing:0.1em;">${op?`<span style="color:#6a6a6a;font-size:15px;font-family:${serif};">${op}</span>`:''}${txt}</div>`;
+  const bookRow = decomp.map(d =>
+    `<div style="${cell}font-family:${serif};font-size:23px;color:${d.book===0?'#4a4a4a':'#e8e8e8'};">${d.book}%</div>`).join('');
+  const vamsRow = decomp.map(d => {
+    if (d.scalar === null || d.scalar === undefined)
+      return `<div style="${cell}"><div style="font-family:${serif};font-size:20px;color:#6a6a6a;">&mdash;</div><div style="color:#5c5c5c;font-size:10px;letter-spacing:0.1em;margin-top:1px;">SWEEP</div></div>`;
+    const full = d.scalar >= 0.999, half = d.scalar > 0.001 && d.scalar < 0.999;
+    const c = full ? '#4ade80' : (half ? '#e0a93f' : '#e2564f');
+    const tc = full ? '#3f8a55' : (half ? '#8a6a2f' : '#9a4a45');
+    const bd = full ? '#1f3a26' : (half ? '#3a321f' : '#3a1f1f');
+    const tag = full ? 'HELD' : (half ? 'HALF' : 'CUT');
+    return `<div style="padding:9px 0;text-align:center;background:#0c0c0c;border:1px solid ${bd};"><div style="font-family:${serif};font-size:20px;color:${c};">${d.scalar.toFixed(1)}&times;</div><div style="color:${tc};font-size:10px;letter-spacing:0.1em;margin-top:1px;">${tag}</div></div>`;
+  }).join('');
+  const netRow = decomp.map(d => {
+    const on = d.net !== 0;
+    return `<div style="padding:13px 0;text-align:center;background:${on?'#101814':'#0c0c0c'};border:1px solid #1c1c1c;border-top:2px solid ${on?'#4ade80':'#2a2a2a'};font-family:${serif};font-size:25px;color:${on?'#ffffff':'#4a4a4a'};">${d.net}%</div>`;
+  }).join('');
+  const cols = `96px repeat(${decomp.length},1fr)`;
+  return `<div style="display:grid;grid-template-columns:${cols};gap:7px;align-items:stretch;margin-top:6px;">
+      <div></div>${head}
+      ${rl('Book')}${bookRow}
+      ${rl('VAMS','&times;')}${vamsRow}
+      ${rl('Net','=')}${netRow}
+    </div>`;
+}
+
 // ── BLOCK RENDERERS (registry, keyed by block.type) ───────
 function blkSignal(b, data) {
   let inner;
@@ -199,7 +229,10 @@ function blkSignal(b, data) {
   } else {
     const status = data.model.state === 'action'
       ? `<div class="signal-status action">Action Required</div>` : '';
-    inner = `${status}<div class="signal-alloc-row">${renderWeights(b.weights, cardLabel)}</div>`;
+    const body = (b.decomp && b.decomp.length)
+      ? renderDecomp(b.decomp, cardLabel)
+      : `<div class="signal-alloc-row">${renderWeights(b.weights, cardLabel)}</div>`;
+    inner = `${status}${body}`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Signal</div>
     <div class="signal-panel">${inner}</div></div>`;
@@ -296,7 +329,8 @@ function phasePlaneSVG(ser, idx, R, F) {
   const gv = p => p[F.g], iv = p => p[F.i];
   const riskCol = p => (gv(p) >= 0 ? '#4ade80' : '#f87171');
   const col = riskCol(cur);
-  const trail = (window.__mvMode === 'day') ? [cur] : ser.slice(Math.max(0, idx - 5), idx + 1);
+  const dayMode = (F.conv ? window.__eidMode : window.__mvMode) === 'day';
+  const trail = dayMode ? [cur] : ser.slice(Math.max(0, idx - 5), idx + 1);
   const conv = (F.conv && cur[F.conv] != null) ? cur[F.conv] : Math.hypot(gv(cur), iv(cur));
   // Sigma ticks on the +I (right) half of the x-axis only.
   const ticks = [1, 2, 3].map(s =>
@@ -521,7 +555,7 @@ function blkPhasePlane(b, data) {
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
-    <div class="db-sub">The macro phase plane driving the regime — continuous vote-margin factors, scrubbable through history.</div>
+    <div class="db-sub">The macro phase plane driving the regime.</div>
     <div class="mv-grid">
       <div class="mv-plane">
         <div id="eid-plane-box">${phasePlaneSVG(ser, last, R, EIDOS_F)}</div>
