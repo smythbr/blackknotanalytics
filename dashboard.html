@@ -284,24 +284,27 @@ function mvFmtDate(d) { return fmtDate(d); }
 // breadcrumbs — daily points clump too tightly on the σ scale to read as a path).
 // Grey connecting line, each breadcrumb dot coloured by its OWN risk side. Dynamic
 // conviction ring = ||(g,i)|| nailed to the current point. Sigma ticks on +I axis.
-function mvPlaneSVG(ser, idx, R) {
+// Shared phase-plane drawer. F maps the frame's field names → g/i (and optional
+// conv) so AEGIS (gd/id) and EIDOS (g/i) share ONE drawing function — no per-model
+// duplication, no shape-sniffing. F = {g:'gd', i:'id', conv:null} for Aegis;
+// {g:'g', i:'i', conv:'conv'} for Eidos (Eidos persists conviction; Aegis derives it).
+function phasePlaneSVG(ser, idx, R, F) {
+  F = F || { g: 'gd', i: 'id', conv: null };
   const S = 400, C = 200, M = 34, K = (S / 2 - M) / R;
   const X = v => C + v * K, Y = v => C - v * K;   // x = inflation, y = growth
   const cur = ser[idx];
-  const riskCol = p => (p.gd >= 0 ? '#4ade80' : '#f87171');
+  const gv = p => p[F.g], iv = p => p[F.i];
+  const riskCol = p => (gv(p) >= 0 ? '#4ade80' : '#f87171');
   const col = riskCol(cur);
-  // Trail: month mode = 6 monthly points (T6M) showing the path. Day mode shows
-  // NO breadcrumbs — at daily resolution the points clump too tightly on the σ
-  // scale to read as a path, so only the current dot is drawn.
   const trail = (window.__mvMode === 'day') ? [cur] : ser.slice(Math.max(0, idx - 5), idx + 1);
-  const conv = Math.hypot(cur.gd, cur.id);
+  const conv = (F.conv && cur[F.conv] != null) ? cur[F.conv] : Math.hypot(gv(cur), iv(cur));
   // Sigma ticks on the +I (right) half of the x-axis only.
   const ticks = [1, 2, 3].map(s =>
     `<line x1="${X(s).toFixed(1)}" y1="${C - 4}" x2="${X(s).toFixed(1)}" y2="${C + 4}" stroke="#9C9C97"/>` +
     `<text x="${X(s).toFixed(1)}" y="${C + 17}" text-anchor="middle" fill="#9C9C97" font-size="10" letter-spacing="0.04em">${s}σ</text>`).join('');
-  const trailPts = trail.map(p => `${X(p.id).toFixed(1)},${Y(p.gd).toFixed(1)}`).join(' ');
+  const trailPts = trail.map(p => `${X(iv(p)).toFixed(1)},${Y(gv(p)).toFixed(1)}`).join(' ');
   const trailDots = trail.slice(0, -1).map(p =>
-    `<circle cx="${X(p.id).toFixed(1)}" cy="${Y(p.gd).toFixed(1)}" r="3" fill="${riskCol(p)}" opacity="0.75"/>`).join('');
+    `<circle cx="${X(iv(p)).toFixed(1)}" cy="${Y(gv(p)).toFixed(1)}" r="3" fill="${riskCol(p)}" opacity="0.75"/>`).join('');
   return `<svg viewBox="0 0 ${S} ${S}" style="width:100%;height:auto;display:block;">
     <rect x="0" y="0" width="${S}" height="${C}" fill="#4ade80" opacity="0.08"/>
     <rect x="0" y="${C}" width="${S}" height="${S - C}" fill="#f87171" opacity="0.08"/>
@@ -317,16 +320,20 @@ function mvPlaneSVG(ser, idx, R) {
     <circle cx="${C}" cy="${C}" r="${(conv * K).toFixed(1)}" fill="none" stroke="${col}" stroke-width="1.5" opacity="0.55" stroke-dasharray="3 3"/>
     <polyline points="${trailPts}" fill="none" stroke="#9C9C97" stroke-width="1.5" opacity="0.5"/>
     ${trailDots}
-    <circle cx="${X(cur.id).toFixed(1)}" cy="${Y(cur.gd).toFixed(1)}" r="8" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
+    <circle cx="${X(iv(cur)).toFixed(1)}" cy="${Y(gv(cur)).toFixed(1)}" r="8" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
   </svg>`;
 }
 
+// Back-compat shim: Aegis callers used mvPlaneSVG(ser, idx, R) with gd/id fields.
+function mvPlaneSVG(ser, idx, R) { return phasePlaneSVG(ser, idx, R, { g: 'gd', i: 'id', conv: null }); }
+
 // Pure helper: vertical liquidity gauge (blue), to the right of the plane.
 // Centre = zero, fill up for loose (+), down for tight (−). Updates on scrub.
-function mvLgauge(ser, idx, R) {
+function phaseLgauge(ser, idx, R, lkey) {
+  lkey = lkey || 'lpe';
   const H = 400, W = 56, cx = W / 2, cy = H / 2, M = 30;
   const K = (H / 2 - M) / R;
-  const l = ser[idx].lpe;
+  const l = ser[idx][lkey];
   const y = cy - Math.max(-R, Math.min(R, l)) * K;
   const barTop = Math.min(cy, y), barH = Math.abs(y - cy);
   return `<svg viewBox="0 0 ${W} ${H}" style="height:100%;width:${W}px;display:block;">
@@ -338,6 +345,7 @@ function mvLgauge(ser, idx, R) {
     <text x="${cx}" y="${H - 10}" text-anchor="middle" fill="#9C9C97" font-size="10" letter-spacing="0.08em">tight −</text>
   </svg>`;
 }
+function mvLgauge(ser, idx, R) { return phaseLgauge(ser, idx, R, 'lpe'); }
 
 // Pure helper: the readout column inner HTML for a given index.
 function mvReadout(ser, idx, unit) {
@@ -444,9 +452,142 @@ function mvSetMode(mode) {
   mvScrub(last);
 }
 
+
+// ── EIDOS phase-plane renderer (own block type; reuses the shared plane/gauge) ──
+// Eidos's phase_plane block carries continuous vote-margin factors g/i/l with
+// persisted conviction + distance-to-flip. Same look as the Aegis plane (shared
+// phasePlaneSVG / phaseLgauge), but its own renderer because it's its own block
+// type and data contract (no shape-sniffing inside one renderer).
+const EIDOS_F = { g: 'g', i: 'i', conv: 'conv' };
+function eidReadout(ser, idx) {
+  const cur = ser[idx];
+  const riskOn = cur.g >= 0, col = riskOn ? '#4ade80' : '#f87171';
+  let age = 1; for (let i = idx; i > 0 && ser[i-1].reg === ser[i].reg; i--) age++;
+  const unit = window.__mvUnit;
+  const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
+  const stat = (k, v, c) => `<div class="mv-stat"><div class="mv-stat-k">${k}</div><div class="mv-stat-v"${c?` style="color:${c}"`:''}>${v}</div></div>`;
+  return `<div class="mv-regime" style="border-left-color:${col}">
+      <div class="mv-stat-k">Regime</div>
+      <div class="mv-regime-name" style="color:${col}">${cur.reg}<span class="mv-regime-side"> · ${riskOn?'risk-on':'risk-off'}</span></div>
+    </div>
+    <div class="mv-stats">
+      ${stat('Growth', sig(cur.g) + '<small>σ</small>')}
+      ${stat('Inflation', sig(cur.i) + '<small>σ</small>')}
+      ${stat('Liquidity', sig(cur.l) + '<small>σ</small>', '#7F77DD')}
+      ${stat('Conviction', cur.conv.toFixed(2) + '<small>σ</small>')}
+      ${stat('G→flip', cur.gflip.toFixed(2) + '<small>σ</small>')}
+      ${stat('I→flip', cur.iflip.toFixed(2) + '<small>σ</small>')}
+    </div>
+    ${stat('Regime age', age + ' ' + unit)}`;
+}
+function eidScrub(idx) {
+  idx = +idx; const ser = window.__mvSeries; if (!ser) return;
+  document.getElementById('mv-plane-box').innerHTML = phasePlaneSVG(ser, idx, window.__mvScope, EIDOS_F);
+  document.getElementById('mv-readout-box').innerHTML = eidReadout(ser, idx);
+  const lg = document.getElementById('mv-lgauge-box'); if (lg) lg.innerHTML = phaseLgauge(ser, idx, window.__mvScope, 'l');
+  const lab = document.getElementById('mv-date'); if (lab) lab.textContent = fmtDate(ser[idx].date);
+  const sl = document.getElementById('mv-slider'), prev = document.getElementById('mv-prev'), next = document.getElementById('mv-next');
+  if (sl && prev && next) { prev.disabled = idx <= 0; next.disabled = idx >= +sl.max; }
+}
+function eidStep(d) { const sl = document.getElementById('mv-slider'); if (!sl) return; const v = Math.min(+sl.max, Math.max(0, (+sl.value)+d)); sl.value = v; eidScrub(v); }
+function eidSetMode(mode) {
+  if (mode !== 'month' && mode !== 'day') return;
+  window.__mvMode = mode;
+  window.__mvSeries = mode === 'month' ? window.__mvMonth : window.__mvDay;
+  window.__mvUnit = mode === 'month' ? 'mo' : 'd';
+  const ser = window.__mvSeries, last = ser.length - 1;
+  const sl = document.getElementById('mv-slider'); if (sl) { sl.max = last; sl.value = last; }
+  document.getElementById('mv-tog-month').classList.toggle('on', mode === 'month');
+  document.getElementById('mv-tog-day').classList.toggle('on', mode === 'day');
+  eidScrub(last);
+}
+function blkPhasePlane(b, data) {
+  const pp = b.phase_plane;
+  if (!pp || !pp.series) {
+    return `<div class="db-block market-view-section"><div class="db-eyebrow">${b.title || 'Market View'}</div>
+      <div class="signal-panel"><div class="signal-pending">${b.note || 'Market view is published once the signal is live.'}</div></div></div>`;
+  }
+  const R = 4.4;
+  const hasMonth = !!(pp.series.month && pp.series.month.length);
+  const hasDay = !!(pp.series.daily && pp.series.daily.length);
+  window.__mvMonth = pp.series.month || []; window.__mvDay = pp.series.daily || [];
+  window.__mvScope = R; window.__mvMode = hasMonth ? 'month' : 'day';
+  const ser = window.__mvMode === 'month' ? window.__mvMonth : window.__mvDay;
+  window.__mvSeries = ser; window.__mvUnit = window.__mvMode === 'month' ? 'mo' : 'd';
+  const last = ser.length - 1;
+  const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
+        <button id="mv-tog-month" class="mv-tog on" onclick="eidSetMode('month')">Month</button>
+        <button id="mv-tog-day" class="mv-tog" onclick="eidSetMode('day')">Day</button></div>` : '';
+  return `<div class="db-block market-view-section">
+    <div class="db-eyebrow">${b.title || 'Market View'}</div>
+    <div class="db-title">Growth · Inflation · Liquidity</div>
+    <div class="db-sub">The macro phase plane driving the regime — continuous vote-margin factors, scrubbable through history.</div>
+    <div class="mv-grid">
+      <div class="mv-plane">
+        <div id="mv-plane-box">${phasePlaneSVG(ser, last, R, EIDOS_F)}</div>
+        <div class="mv-scrub">${toggle}
+          <div class="mv-scrub-row">
+            <button type="button" id="mv-prev" class="mv-step" onclick="eidStep(-1)" aria-label="Previous date">&#9664;</button>
+            <input id="mv-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="eidScrub(this.value)" aria-label="Scrub through history">
+            <button type="button" id="mv-next" class="mv-step" onclick="eidStep(1)" aria-label="Next date" disabled>&#9654;</button>
+          </div>
+          <div class="mv-scrub-date" id="mv-date">${fmtDate(ser[last].date)}</div>
+        </div>
+      </div>
+      <div class="mv-lgauge"><div class="mv-stat-k mv-lgauge-cap">L · weather</div><div id="mv-lgauge-box">${phaseLgauge(ser, last, R, 'l')}</div></div>
+      <div class="mv-readout" id="mv-readout-box">${eidReadout(ser, last)}</div>
+    </div>
+  </div>`;
+}
+
+// ── EIDOS factor-contribution renderer (own block type) ──
+// The two-axis decomposition: each sensor-group's signed push to growth and to
+// inflation, with dissent flags. Sits below the phase plane.
+function contribCol(factor, d) {
+  const net = d.net, netCol = net >= 0 ? '#4ade80' : '#f87171';
+  const maxAbs = Math.max.apply(null, d.bars.map(x => Math.abs(x.value)).concat([0.01]));
+  const rows = d.bars.map(x => {
+    const w = (Math.abs(x.value) / maxAbs * 50).toFixed(1);
+    const pos = x.value >= 0, col = pos ? '#4ade80' : '#f87171';
+    const fill = pos ? `left:50%;width:${w}%;background:${col};` : `right:50%;width:${w}%;background:${col};`;
+    const dis = x.dissent ? '<span class="mv-dissent-dot" title="dissenting"></span>' : '';
+    const sign = x.value >= 0 ? '+' : '';
+    return `<div class="mv-bar-row">
+        <div class="mv-bar-label">${x.group.replace('_',' ')}${dis}</div>
+        <div class="mv-bar-track"><div class="mv-bar-mid"></div><div class="mv-bar-fill" style="${fill}"></div></div>
+        <div class="mv-bar-val">${sign}${x.value.toFixed(2)}</div>
+      </div>`;
+  }).join('');
+  const dissenters = d.bars.filter(x => x.dissent).map(x => x.group.replace('_',' '));
+  const foot = dissenters.length
+    ? `<div class="mv-contrib-foot"><span class="dis">●</span> dissenting: ${dissenters.join(', ')} — voting against the net ${factor} call (early-warning)</div>`
+    : `<div class="mv-contrib-foot">no dissent — all groups aligned with the net call</div>`;
+  return `<div class="mv-contrib-col">
+    <div class="mv-contrib-head"><span class="mv-contrib-axis">${factor} contribution</span>
+      <span class="mv-contrib-net" style="color:${netCol}">${net>=0?'+':''}${net.toFixed(2)}</span></div>
+    <div class="mv-contrib-sub">net vote-margin · bars = each group's signed push</div>
+    ${rows}${foot}</div>`;
+}
+function blkContribution(b, data) {
+  const c = b.contribution;
+  if (!c || !c.latest) {
+    return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
+      <div class="signal-panel"><div class="signal-pending">${b.note || 'Factor detail is published once the signal is live.'}</div></div></div>`;
+  }
+  return `<div class="db-block">
+    <div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
+    <div class="mv-contrib">
+      ${contribCol('growth', c.latest.growth)}
+      ${contribCol('inflation', c.latest.inflation)}
+    </div>
+    <div class="mv-legend">Bars are each sensor-group's signed push to that axis's vote-margin; they sum to the net shown. Green = pushing the factor positive, coral = negative. A <span style="color:#E24B4A">●</span> flags a group voting against the net call — the minority that can lead the next flip.</div>
+  </div>`;
+}
+
 const BLOCK_RENDERERS = {
   signal: blkSignal, performance: blkPerformance, allocation: blkAllocation,
   rebalancing: blkRebalancing, market_view: blkMarketView,
+  phase_plane: blkPhasePlane, contribution: blkContribution,
 };
 
 // ── CARD (home grid) ──────────────────────────────────────

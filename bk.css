@@ -804,3 +804,24 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .alloc-table tr.is-current td:not(:first-child) { border-left: none; }
 .alloc-table tr.is-current td.td-model,
 .alloc-table tr.is-current td:nth-child(1) { font-weight: 600; }
+
+/* ── EIDOS factor-contribution tables (the two-axis decomposition below the
+   phase plane). Matches the .mv-* market-view look. ─────────────────────── */
+.mv-contrib { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 18px; }
+.mv-contrib-col { flex: 1; min-width: 280px; background: var(--card-bg, #0D0D0D);
+  border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 18px 20px; }
+.mv-contrib-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.mv-contrib-axis { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #B0B0AC; }
+.mv-contrib-net { font-family: var(--font-display); font-size: 1.5rem; }
+.mv-contrib-sub { font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); margin-bottom: 14px; letter-spacing: 0.04em; }
+.mv-bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 10px; margin: 9px 0; }
+.mv-bar-label { font-size: 0.82rem; color: var(--light-grey, #C8C8C4); text-align: right; letter-spacing: 0.04em; }
+.mv-bar-track { position: relative; height: 16px; background: rgba(255,255,255,0.04); border-radius: 3px; }
+.mv-bar-mid { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: rgba(255,255,255,0.2); }
+.mv-bar-fill { position: absolute; top: 2px; height: 12px; border-radius: 2px; }
+.mv-bar-val { font-size: 0.82rem; color: var(--grey, #9C9C97); font-variant-numeric: tabular-nums; }
+.mv-dissent-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #E24B4A; margin-left: 5px; vertical-align: middle; }
+.mv-contrib-foot { margin-top: 12px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.6; }
+.mv-contrib-foot .dis { color: #E24B4A; }
+.mv-legend { margin-top: 18px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.7; }
+@media (max-width: 680px) { .mv-contrib-col { min-width: 0; } }
