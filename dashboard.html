@@ -482,23 +482,23 @@ function eidReadout(ser, idx) {
 }
 function eidScrub(idx) {
   idx = +idx; const ser = window.__mvSeries; if (!ser) return;
-  document.getElementById('mv-plane-box').innerHTML = phasePlaneSVG(ser, idx, window.__mvScope, EIDOS_F);
-  document.getElementById('mv-readout-box').innerHTML = eidReadout(ser, idx);
-  const lg = document.getElementById('mv-lgauge-box'); if (lg) lg.innerHTML = phaseLgauge(ser, idx, window.__mvScope, 'l');
-  const lab = document.getElementById('mv-date'); if (lab) lab.textContent = fmtDate(ser[idx].date);
-  const sl = document.getElementById('mv-slider'), prev = document.getElementById('mv-prev'), next = document.getElementById('mv-next');
+  document.getElementById('eid-plane-box').innerHTML = phasePlaneSVG(ser, idx, window.__mvScope, EIDOS_F);
+  document.getElementById('eid-readout-box').innerHTML = eidReadout(ser, idx);
+  const lg = document.getElementById('eid-lgauge-box'); if (lg) lg.innerHTML = phaseLgauge(ser, idx, window.__mvScope, 'l');
+  const lab = document.getElementById('eid-date'); if (lab) lab.textContent = fmtDate(ser[idx].date);
+  const sl = document.getElementById('eid-slider'), prev = document.getElementById('eid-prev'), next = document.getElementById('eid-next');
   if (sl && prev && next) { prev.disabled = idx <= 0; next.disabled = idx >= +sl.max; }
 }
-function eidStep(d) { const sl = document.getElementById('mv-slider'); if (!sl) return; const v = Math.min(+sl.max, Math.max(0, (+sl.value)+d)); sl.value = v; eidScrub(v); }
+function eidStep(d) { const sl = document.getElementById('eid-slider'); if (!sl) return; const v = Math.min(+sl.max, Math.max(0, (+sl.value)+d)); sl.value = v; eidScrub(v); }
 function eidSetMode(mode) {
   if (mode !== 'month' && mode !== 'day') return;
   window.__mvMode = mode;
   window.__mvSeries = mode === 'month' ? window.__mvMonth : window.__mvDay;
   window.__mvUnit = mode === 'month' ? 'mo' : 'd';
   const ser = window.__mvSeries, last = ser.length - 1;
-  const sl = document.getElementById('mv-slider'); if (sl) { sl.max = last; sl.value = last; }
-  document.getElementById('mv-tog-month').classList.toggle('on', mode === 'month');
-  document.getElementById('mv-tog-day').classList.toggle('on', mode === 'day');
+  const sl = document.getElementById('eid-slider'); if (sl) { sl.max = last; sl.value = last; }
+  document.getElementById('eid-tog-month').classList.toggle('on', mode === 'month');
+  document.getElementById('eid-tog-day').classList.toggle('on', mode === 'day');
   eidScrub(last);
 }
 function blkPhasePlane(b, data) {
@@ -516,26 +516,26 @@ function blkPhasePlane(b, data) {
   window.__mvSeries = ser; window.__mvUnit = window.__mvMode === 'month' ? 'mo' : 'd';
   const last = ser.length - 1;
   const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
-        <button id="mv-tog-month" class="mv-tog on" onclick="eidSetMode('month')">Month</button>
-        <button id="mv-tog-day" class="mv-tog" onclick="eidSetMode('day')">Day</button></div>` : '';
+        <button id="eid-tog-month" class="mv-tog on" onclick="eidSetMode('month')">Month</button>
+        <button id="eid-tog-day" class="mv-tog" onclick="eidSetMode('day')">Day</button></div>` : '';
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
     <div class="db-sub">The macro phase plane driving the regime — continuous vote-margin factors, scrubbable through history.</div>
     <div class="mv-grid">
       <div class="mv-plane">
-        <div id="mv-plane-box">${phasePlaneSVG(ser, last, R, EIDOS_F)}</div>
+        <div id="eid-plane-box">${phasePlaneSVG(ser, last, R, EIDOS_F)}</div>
         <div class="mv-scrub">${toggle}
           <div class="mv-scrub-row">
-            <button type="button" id="mv-prev" class="mv-step" onclick="eidStep(-1)" aria-label="Previous date">&#9664;</button>
-            <input id="mv-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="eidScrub(this.value)" aria-label="Scrub through history">
-            <button type="button" id="mv-next" class="mv-step" onclick="eidStep(1)" aria-label="Next date" disabled>&#9654;</button>
+            <button type="button" id="eid-prev" class="mv-step" onclick="eidStep(-1)" aria-label="Previous date">&#9664;</button>
+            <input id="eid-slider" type="range" min="0" max="${last}" value="${last}" step="1" oninput="eidScrub(this.value)" aria-label="Scrub through history">
+            <button type="button" id="eid-next" class="mv-step" onclick="eidStep(1)" aria-label="Next date" disabled>&#9654;</button>
           </div>
-          <div class="mv-scrub-date" id="mv-date">${fmtDate(ser[last].date)}</div>
+          <div class="mv-scrub-date" id="eid-date">${fmtDate(ser[last].date)}</div>
         </div>
       </div>
-      <div class="mv-lgauge"><div class="mv-stat-k mv-lgauge-cap">L · weather</div><div id="mv-lgauge-box">${phaseLgauge(ser, last, R, 'l')}</div></div>
-      <div class="mv-readout" id="mv-readout-box">${eidReadout(ser, last)}</div>
+      <div class="mv-lgauge"><div class="mv-stat-k mv-lgauge-cap">L · weather</div><div id="eid-lgauge-box">${phaseLgauge(ser, last, R, 'l')}</div></div>
+      <div class="mv-readout" id="eid-readout-box">${eidReadout(ser, last)}</div>
     </div>
   </div>`;
 }
