@@ -124,7 +124,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 26.75,
+                "value": 27.05,
                 "kind": "pct_signed"
               }
             },
@@ -135,7 +135,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 76.38,
+                "value": 77.3,
                 "kind": "pct_signed"
               }
             },
@@ -168,7 +168,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.91,
+                "value": 9.9,
                 "kind": "pct_signed"
               }
             }
@@ -337,7 +337,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.91,
+                "value": 9.9,
                 "kind": "pct_signed"
               }
             },
@@ -359,7 +359,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5631,
+                "value": 0.5629,
                 "kind": "ratio"
               }
             },
@@ -370,7 +370,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.789,
+                "value": 0.7887,
                 "kind": "ratio"
               }
             },
@@ -381,7 +381,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7422,
+                "value": 0.7494,
                 "kind": "ratio"
               }
             },
@@ -392,7 +392,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2938,
+                "value": 0.2936,
                 "kind": "ratio"
               }
             },
@@ -414,14 +414,14 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": -5.86,
+                "value": -5.85,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Beta",
               "model": {
-                "value": 0.4702,
+                "value": 0.4699,
                 "kind": "ratio"
               },
               "bench": {

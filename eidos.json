@@ -123,7 +123,7 @@
         },
         "counts": {
           "month": 102,
-          "daily": 3093
+          "daily": 3094
         },
         "series": {
           "month": [
@@ -1340,7 +1340,7 @@
               "reg": "Reflation"
             },
             {
-              "date": "2026-06-20",
+              "date": "2026-06-21",
               "g": 0.4684,
               "i": -0.6161,
               "l": 0.0,
@@ -38468,6 +38468,18 @@
               "gpct": 28.3,
               "ipct": 59.5,
               "reg": "Goldilocks"
+            },
+            {
+              "date": "2026-06-21",
+              "g": 0.4684,
+              "i": -0.6161,
+              "l": 0.0,
+              "conv": 0.774,
+              "gflip": 0.9684,
+              "iflip": 1.1161,
+              "gpct": 28.3,
+              "ipct": 59.5,
+              "reg": "Goldilocks"
             }
           ]
         }
@@ -38481,7 +38493,7 @@
         "schema": "blackknot.eidos.contribution.v1",
         "source": "daily-vote_2026-06-21",
         "units": "raw factor units (vote sum). Group bars sum to 'net', which equals the classifier's raw factor exactly. The phase_plane block scales the SAME factor by causal-\u03c3, so net/\u03c3 == phase g|i.",
-        "as_of": "2026-06-20",
+        "as_of": "2026-06-21",
         "latest": {
           "growth": {
             "net": 3.5158,
@@ -38576,7 +38588,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 26.75,
+                "value": 27.05,
                 "kind": "pct_signed"
               }
             },
@@ -38587,7 +38599,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 76.38,
+                "value": 77.3,
                 "kind": "pct_signed"
               }
             },
@@ -38811,7 +38823,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5054,
+                "value": 0.5051,
                 "kind": "ratio"
               }
             },
@@ -38822,7 +38834,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7081,
+                "value": 0.7077,
                 "kind": "ratio"
               }
             },
@@ -38833,7 +38845,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7422,
+                "value": 0.7494,
                 "kind": "ratio"
               }
             },
@@ -38844,7 +38856,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2937,
+                "value": 0.2936,
                 "kind": "ratio"
               }
             },
@@ -38873,7 +38885,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.621,
+                "value": 0.6217,
                 "kind": "ratio"
               },
               "bench": {
