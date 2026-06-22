@@ -463,7 +463,7 @@ function eidReadout(ser, idx) {
   const cur = ser[idx];
   const riskOn = cur.g >= 0, col = riskOn ? '#4ade80' : '#f87171';
   let age = 1; for (let i = idx; i > 0 && ser[i-1].reg === ser[i].reg; i--) age++;
-  const unit = window.__mvUnit;
+  const unit = window.__eidUnit;
   const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
   const stat = (k, v, c) => `<div class="mv-stat"><div class="mv-stat-k">${k}</div><div class="mv-stat-v"${c?` style="color:${c}"`:''}>${v}</div></div>`;
   return `<div class="mv-regime" style="border-left-color:${col}">
@@ -481,10 +481,10 @@ function eidReadout(ser, idx) {
     ${stat('Regime age', age + ' ' + unit)}`;
 }
 function eidScrub(idx) {
-  idx = +idx; const ser = window.__mvSeries; if (!ser) return;
-  document.getElementById('eid-plane-box').innerHTML = phasePlaneSVG(ser, idx, window.__mvScope, EIDOS_F);
+  idx = +idx; const ser = window.__eidSeries; if (!ser) return;
+  document.getElementById('eid-plane-box').innerHTML = phasePlaneSVG(ser, idx, window.__eidScope, EIDOS_F);
   document.getElementById('eid-readout-box').innerHTML = eidReadout(ser, idx);
-  const lg = document.getElementById('eid-lgauge-box'); if (lg) lg.innerHTML = phaseLgauge(ser, idx, window.__mvScope, 'l');
+  const lg = document.getElementById('eid-lgauge-box'); if (lg) lg.innerHTML = phaseLgauge(ser, idx, window.__eidScope, 'l');
   const lab = document.getElementById('eid-date'); if (lab) lab.textContent = fmtDate(ser[idx].date);
   const sl = document.getElementById('eid-slider'), prev = document.getElementById('eid-prev'), next = document.getElementById('eid-next');
   if (sl && prev && next) { prev.disabled = idx <= 0; next.disabled = idx >= +sl.max; }
@@ -492,10 +492,10 @@ function eidScrub(idx) {
 function eidStep(d) { const sl = document.getElementById('eid-slider'); if (!sl) return; const v = Math.min(+sl.max, Math.max(0, (+sl.value)+d)); sl.value = v; eidScrub(v); }
 function eidSetMode(mode) {
   if (mode !== 'month' && mode !== 'day') return;
-  window.__mvMode = mode;
-  window.__mvSeries = mode === 'month' ? window.__mvMonth : window.__mvDay;
-  window.__mvUnit = mode === 'month' ? 'mo' : 'd';
-  const ser = window.__mvSeries, last = ser.length - 1;
+  window.__eidMode = mode;
+  window.__eidSeries = mode === 'month' ? window.__eidMonth : window.__eidDay;
+  window.__eidUnit = mode === 'month' ? 'mo' : 'd';
+  const ser = window.__eidSeries, last = ser.length - 1;
   const sl = document.getElementById('eid-slider'); if (sl) { sl.max = last; sl.value = last; }
   document.getElementById('eid-tog-month').classList.toggle('on', mode === 'month');
   document.getElementById('eid-tog-day').classList.toggle('on', mode === 'day');
@@ -510,10 +510,10 @@ function blkPhasePlane(b, data) {
   const R = 4.4;
   const hasMonth = !!(pp.series.month && pp.series.month.length);
   const hasDay = !!(pp.series.daily && pp.series.daily.length);
-  window.__mvMonth = pp.series.month || []; window.__mvDay = pp.series.daily || [];
-  window.__mvScope = R; window.__mvMode = hasMonth ? 'month' : 'day';
-  const ser = window.__mvMode === 'month' ? window.__mvMonth : window.__mvDay;
-  window.__mvSeries = ser; window.__mvUnit = window.__mvMode === 'month' ? 'mo' : 'd';
+  window.__eidMonth = pp.series.month || []; window.__eidDay = pp.series.daily || [];
+  window.__eidScope = R; window.__eidMode = hasMonth ? 'month' : 'day';
+  const ser = window.__eidMode === 'month' ? window.__eidMonth : window.__eidDay;
+  window.__eidSeries = ser; window.__eidUnit = window.__eidMode === 'month' ? 'mo' : 'd';
   const last = ser.length - 1;
   const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
         <button id="eid-tog-month" class="mv-tog on" onclick="eidSetMode('month')">Month</button>
