@@ -38588,6 +38588,46 @@
       }
     },
     {
+      "type": "vams_flip",
+      "visible": true,
+      "title": "VAMS \u00b7 Distance & Direction",
+      "sleeves": [
+        {
+          "label": "Equity",
+          "z": 1.53,
+          "line_half": -1.0,
+          "line_full": 0.0,
+          "state": 1.0,
+          "dz": -0.07,
+          "cand": 1.0,
+          "cnt": 0,
+          "need": null
+        },
+        {
+          "label": "Gold",
+          "z": -1.8,
+          "line_half": -1.0,
+          "line_full": 1.0,
+          "state": 0.0,
+          "dz": 0.25,
+          "cand": 0.0,
+          "cnt": 0,
+          "need": null
+        },
+        {
+          "label": "Crypto",
+          "z": -1.38,
+          "line_half": -1.0,
+          "line_full": 0.0,
+          "state": 0.0,
+          "dz": 0.19,
+          "cand": 0.0,
+          "cnt": 0,
+          "need": null
+        }
+      ]
+    },
+    {
       "type": "performance",
       "visible": true,
       "tables": [
