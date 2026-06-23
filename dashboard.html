@@ -603,11 +603,12 @@ function contribCol(factor, d) {
 function blkContribution(b, data) {
   const c = b.contribution;
   if (!c || !c.latest) {
-    return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
+    return `<div class="db-block" style="margin-top:-8px;">
+      <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Factor detail is published once the signal is live.'}</div></div></div>`;
   }
-  return `<div class="db-block">
-    <div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
+  return `<div class="db-block" style="margin-top:-8px;">
+    <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
     <div class="mv-contrib">
       ${contribCol('growth', c.latest.growth)}
       ${contribCol('inflation', c.latest.inflation)}
@@ -620,8 +621,113 @@ const BLOCK_RENDERERS = {
   signal: blkSignal, performance: blkPerformance, allocation: blkAllocation,
   rebalancing: blkRebalancing, market_view: blkMarketView,
   phase_plane: blkPhasePlane, contribution: blkContribution,
-  vams_flip: blkVamsFlip,
+  vams_flip: blkVamsFlip, regime_prox: blkRegimeProx,
 };
+
+function blkRegimeProx(b, data) {
+  if (!b.left || !b.right || !b.components) {
+    return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
+      <div class="signal-panel"><div class="signal-pending">${b.note || 'Regime detail is published once the signal is live.'}</div></div></div>`;
+  }
+  const serif = "'Cormorant Garamond',Georgia,serif";
+  const riskOn = b.risk === 'risk-on';
+  const pill = riskOn ? 'border:1px solid #2f6b46;color:#4ade80;' : 'border:1px solid #6a3030;color:#e2564f;';
+  // combined bar: zones 30/40/30; dot leans by b.lean (-1..+1 → 30%..70%), center 50%
+  const dotPos = Math.max(31, Math.min(69, 50 + (b.lean || 0) * 20));
+  const drift = b.drift || 0;
+  const driftRight = drift > 0.02, driftLeft = drift < -0.02;
+  const aLen = Math.min(8, Math.max(3, Math.abs(drift) * 12));
+  let arrow = '';
+  if (driftRight || driftLeft) {
+    const sx = driftRight ? dotPos + 1.5 : dotPos - 1.5 - aLen;
+    const hx = driftRight ? sx + aLen : sx;
+    const rot = driftRight ? '45deg' : '225deg';
+    arrow = `<div style="position:absolute;left:${sx}%;width:${aLen}%;top:50%;height:3px;background:#e6b450;transform:translateY(-50%);z-index:3;"></div>
+      <div style="position:absolute;left:${hx}%;top:50%;width:9px;height:9px;border-top:3px solid #e6b450;border-right:3px solid #e6b450;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
+  }
+  const leftRiskOn = ['Goldilocks','Reflation'].includes(b.left.name);
+  const rightRiskOn = ['Goldilocks','Reflation'].includes(b.right.name);
+  const lcol = leftRiskOn ? '#3f8a55' : '#c25048', rcol = rightRiskOn ? '#3f8a55' : '#c25048';
+  const lzone = leftRiskOn ? 'rgba(74,222,128,0.10)' : 'rgba(226,86,79,0.12)';
+  const rzone = rightRiskOn ? 'rgba(74,222,128,0.10)' : 'rgba(226,86,79,0.14)';
+
+  const combined = `<div style="position:relative;height:46px;background:#0e0e0e;border:1px solid #262626;overflow:hidden;">
+      <div style="position:absolute;left:0;width:30%;top:0;bottom:0;background:${lzone};"></div>
+      <div style="position:absolute;left:30%;width:40%;top:0;bottom:0;background:rgba(74,222,128,0.22);"></div>
+      <div style="position:absolute;left:70%;width:30%;top:0;bottom:0;background:${rzone};"></div>
+      <div style="position:absolute;left:30%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
+      <div style="position:absolute;left:70%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
+      ${arrow}
+      <div style="position:absolute;left:${dotPos}%;top:50%;width:17px;height:17px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 11px rgba(74,222,128,0.95);z-index:4;"></div>
+    </div>
+    <div style="position:relative;height:42px;margin-top:8px;">
+      <div style="position:absolute;left:15%;top:0;transform:translateX(-50%);text-align:center;">
+        <div style="color:${lcol};font-size:13px;font-weight:700;letter-spacing:0.1em;">${b.left.name.toUpperCase()}</div>
+        <div style="color:#6a6a6a;font-size:10px;margin-top:2px;">flip: ${b.left.flip}</div>
+        <div style="color:#9a9a9a;font-size:11px;font-weight:600;margin-top:3px;">${b.left.dist.toFixed(2)}&sigma; away</div>
+      </div>
+      <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);text-align:center;">
+        <div style="color:#e8e8e8;font-family:${serif};font-size:19px;line-height:1;">${b.regime}</div>
+        <div style="color:#4ade80;font-size:9.5px;letter-spacing:0.14em;margin-top:3px;">CURRENT</div>
+      </div>
+      <div style="position:absolute;left:85%;top:0;transform:translateX(-50%);text-align:center;">
+        <div style="color:${rcol};font-size:13px;font-weight:700;letter-spacing:0.1em;">${b.right.name.toUpperCase()}</div>
+        <div style="color:#6a6a6a;font-size:10px;margin-top:2px;">flip: ${b.right.flip}</div>
+        <div style="color:#9a9a9a;font-size:11px;font-weight:600;margin-top:3px;">${b.right.dist.toFixed(2)}&sigma; away</div>
+      </div>
+    </div>`;
+
+  const Z = 3.0, zpc = z => Math.max(3, Math.min(97, (z / (2 * Z) + 0.5) * 100));
+  const comps = b.components.map(c => {
+    const heldPos = c.held_sign >= 0;
+    const bandPc = (c.band / (2 * Z * c.std === 0 ? 1 : 1));
+    // map factor & band to bar using factor/std in z-like units: pos = (val/std)/(2Z)+0.5
+    const vp = zpc(c.factor / c.std), bp = c.band / c.std;
+    const loEdge = zpc(-bp), hiEdge = zpc(bp);
+    const dzv = c.dz / c.std;
+    const rising = dzv > 0.02, falling = dzv < -0.02;
+    const alen = Math.min(8, Math.max(2.5, Math.abs(dzv) * 11));
+    let arr = '';
+    if (rising || falling) {
+      const sx = rising ? vp + 1.3 : vp - 1.3 - alen, hx = rising ? sx + alen : sx, rot = rising ? '45deg':'225deg';
+      arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
+        <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
+    }
+    // live flip edge = opposite of held sign; label it with flip_name
+    const liveLeft = !heldPos;   // held- → flips on +? no: held- flips at +edge(right). held+ flips at -edge(left)
+    const leftLabel = heldPos ? `<span style="color:#c25048;">&rarr; ${c.flip_name}</span>` : `<span style="color:#6a6a6a;">&minus; confirmed</span>`;
+    const rightLabel = heldPos ? `<span style="color:#6a6a6a;">+ confirmed</span>` : `<span style="color:#3f8a55;">&rarr; ${c.flip_name}</span>`;
+    return `<div style="margin-bottom:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
+        <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${c.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '&minus; held'}</span></span>
+        <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:#4ade80;font-family:${serif};font-size:16px;">${c.factor >= 0 ? '+' : '\u2212'}${Math.abs(c.factor).toFixed(2)}</span></span>
+      </div>
+      <div style="position:relative;height:24px;background:#0e0e0e;border:1px solid #232323;overflow:hidden;">
+        <div style="position:absolute;left:0;width:${loEdge}%;top:0;bottom:0;background:rgba(226,86,79,0.12);"></div>
+        <div style="position:absolute;left:${hiEdge}%;right:0;top:0;bottom:0;background:rgba(74,222,128,0.14);"></div>
+        <div style="position:absolute;left:${loEdge}%;top:0;bottom:0;width:2px;background:${heldPos?'#e6b450':'#3a3a3a'};transform:translateX(-1px);z-index:2;"></div>
+        <div style="position:absolute;left:${hiEdge}%;top:0;bottom:0;width:2px;background:${heldPos?'#3a3a3a':'#e6b450'};transform:translateX(-1px);z-index:2;"></div>
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#2a2a2a;"></div>
+        ${arr}
+        <div style="position:absolute;left:${vp}%;top:50%;width:14px;height:14px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(74,222,128,0.9);z-index:4;"></div>
+      </div>
+      <div style="position:relative;height:14px;margin-top:3px;font-size:10px;font-weight:600;">
+        <span style="position:absolute;left:${loEdge}%;transform:translateX(-50%);">${leftLabel}</span>
+        <span style="position:absolute;left:${hiEdge}%;transform:translateX(-50%);">${rightLabel}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
+    <div style="display:flex;align-items:center;gap:14px;margin:-2px 0 18px;">
+      <span style="${pill}font-size:11px;font-weight:600;letter-spacing:0.16em;padding:4px 12px;">${b.regime.toUpperCase()} · ${b.risk.toUpperCase()}</span>
+      <span style="color:#8a8a8a;font-size:12px;letter-spacing:0.03em;">Position = proximity · arrow = 10-session drift · flips on cross (no confirm delay)</span>
+    </div>
+    ${combined}
+    <div style="border-top:1px solid #1c1c1c;margin:22px 0 16px;"></div>
+    <div style="color:#6a6a6a;font-size:10.5px;letter-spacing:0.16em;margin-bottom:16px;">COMPONENTS</div>
+    ${comps}</div>`;
+}
 
 // ── VAMS distance / direction / confirm panel (own block type) ──
 // z-axis window [-3,+3] → [0,100%]; clamp + flag if a sleeve pegs the edge.
