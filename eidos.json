@@ -122,93 +122,6 @@
       ]
     },
     {
-      "type": "regime_prox",
-      "visible": true,
-      "title": "Market Regime",
-      "regime": "Goldilocks",
-      "risk": "risk-on",
-      "left": {
-        "name": "Reflation",
-        "dist": 1.12,
-        "flip": "inflation +"
-      },
-      "right": {
-        "name": "Deflation",
-        "dist": 0.97,
-        "flip": "growth -"
-      },
-      "lean": 0.072,
-      "drift": 0.822,
-      "plane": {
-        "gx": 0.468,
-        "iy": -0.616,
-        "dgx": 0.0,
-        "diy": -0.822
-      },
-      "components": [
-        {
-          "label": "Growth",
-          "factor": 3.52,
-          "band": 3.75,
-          "std": 7.51,
-          "held_sign": 1,
-          "dz": 0.0,
-          "flip_name": "Deflation",
-          "flip_side": "left"
-        },
-        {
-          "label": "Inflation",
-          "factor": -3.0,
-          "band": 2.43,
-          "std": 4.87,
-          "held_sign": -1,
-          "dz": -4.0,
-          "flip_name": "Reflation",
-          "flip_side": "left"
-        }
-      ]
-    },
-    {
-      "type": "vams_flip",
-      "visible": true,
-      "title": "Asset Class VAMS",
-      "sleeves": [
-        {
-          "label": "Equity",
-          "z": 1.53,
-          "line_half": -1.0,
-          "line_full": 0.0,
-          "state": 1.0,
-          "dz": -0.07,
-          "cand": 1.0,
-          "cnt": 0,
-          "need": null
-        },
-        {
-          "label": "Gold",
-          "z": -1.8,
-          "line_half": -1.0,
-          "line_full": 1.0,
-          "state": 0.0,
-          "dz": 0.25,
-          "cand": 0.0,
-          "cnt": 0,
-          "need": null
-        },
-        {
-          "label": "Crypto",
-          "z": -1.38,
-          "line_half": -1.0,
-          "line_full": 0.0,
-          "state": 0.0,
-          "dz": 0.19,
-          "cand": 0.0,
-          "cnt": 0,
-          "need": null
-        }
-      ]
-    },
-    {
       "type": "phase_plane",
       "visible": true,
       "title": "Market View",
@@ -38672,7 +38585,69 @@
             ]
           }
         }
-      }
+      },
+      "bands": [
+        {
+          "label": "Growth",
+          "factor": 3.52,
+          "band": 3.75,
+          "std": 7.51,
+          "held_sign": 1,
+          "dz": 0.0,
+          "flip_name": "Deflation",
+          "flip_side": "left"
+        },
+        {
+          "label": "Inflation",
+          "factor": -3.0,
+          "band": 2.43,
+          "std": 4.87,
+          "held_sign": -1,
+          "dz": -4.0,
+          "flip_name": "Reflation",
+          "flip_side": "left"
+        }
+      ]
+    },
+    {
+      "type": "vams_flip",
+      "visible": true,
+      "title": "Asset Class VAMS",
+      "sleeves": [
+        {
+          "label": "Equity",
+          "z": 1.53,
+          "line_half": -1.0,
+          "line_full": 0.0,
+          "state": 1.0,
+          "dz": -0.07,
+          "cand": 1.0,
+          "cnt": 0,
+          "need": null
+        },
+        {
+          "label": "Gold",
+          "z": -1.8,
+          "line_half": -1.0,
+          "line_full": 1.0,
+          "state": 0.0,
+          "dz": 0.25,
+          "cand": 0.0,
+          "cnt": 0,
+          "need": null
+        },
+        {
+          "label": "Crypto",
+          "z": -1.38,
+          "line_half": -1.0,
+          "line_full": 0.0,
+          "state": 0.0,
+          "dz": 0.19,
+          "cand": 0.0,
+          "cnt": 0,
+          "need": null
+        }
+      ]
     },
     {
       "type": "performance",

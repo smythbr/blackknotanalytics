@@ -337,6 +337,23 @@ function phasePlaneSVG(ser, idx, R, F) {
   const trailPts = trail.map(p => `${X(iv(p)).toFixed(1)},${Y(gv(p)).toFixed(1)}`).join(' ');
   const trailDots = trail.slice(0, -1).map(p =>
     `<circle cx="${X(iv(p)).toFixed(1)}" cy="${Y(gv(p)).toFixed(1)}" r="3" fill="${riskCol(p)}" opacity="0.75"/>`).join('');
+  // White drift arrowhead at the leading end of the trail (direction = where the
+  // macro has been heading over the trail span). Measurement, not forecast. Only
+  // when a real multi-point trail exists.
+  let driftHead = '';
+  if (trail.length >= 2) {
+    const prev = trail[trail.length - 2];
+    const x2 = X(iv(cur)), y2 = Y(gv(cur));
+    const dx = x2 - X(iv(prev)), dy = y2 - Y(gv(prev));
+    const mag = Math.hypot(dx, dy);
+    if (mag > 2) {
+      const ux = dx / mag, uy = dy / mag, hl = 12, hw = 5.5;
+      const bx = x2 - ux * hl, by = y2 - uy * hl, perpx = -uy, perpy = ux;
+      const p1x = (bx + perpx * hw).toFixed(1), p1y = (by + perpy * hw).toFixed(1);
+      const p2x = (bx - perpx * hw).toFixed(1), p2y = (by - perpy * hw).toFixed(1);
+      driftHead = `<polygon points="${x2.toFixed(1)},${y2.toFixed(1)} ${p1x},${p1y} ${p2x},${p2y}" fill="#FFFFFF"/>`;
+    }
+  }
   return `<svg viewBox="0 0 ${S} ${S}" style="width:100%;height:auto;display:block;">
     <rect x="0" y="0" width="${S}" height="${C}" fill="#4ade80" opacity="0.08"/>
     <rect x="0" y="${C}" width="${S}" height="${S - C}" fill="#f87171" opacity="0.08"/>
@@ -353,6 +370,7 @@ function phasePlaneSVG(ser, idx, R, F) {
     <polyline points="${trailPts}" fill="none" stroke="#9C9C97" stroke-width="1.5" opacity="0.5"/>
     ${trailDots}
     <circle cx="${X(iv(cur)).toFixed(1)}" cy="${Y(gv(cur)).toFixed(1)}" r="8" fill="${col}" stroke="#0D0D0D" stroke-width="1.5"/>
+    ${driftHead}
   </svg>`;
 }
 
@@ -607,8 +625,51 @@ function blkContribution(b, data) {
       <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Factor detail is published once the signal is live.'}</div></div></div>`;
   }
+  let bands = '';
+  if (b.bands && b.bands.length) {
+    const serif = "'Cormorant Garamond',Georgia,serif";
+    const Z = 3.0, zpc = z => Math.max(3, Math.min(97, (z / (2 * Z) + 0.5) * 100));
+    const rows = b.bands.map(cc => {
+      const heldPos = cc.held_sign >= 0;
+      const vp = zpc(cc.factor / cc.std), bp = cc.band / cc.std;
+      const loEdge = zpc(-bp), hiEdge = zpc(bp);
+      const dzv = cc.dz / cc.std, rising = dzv > 0.02, falling = dzv < -0.02;
+      const alen = Math.min(8, Math.max(2.5, Math.abs(dzv) * 11));
+      let arr = '';
+      if (rising || falling) {
+        const sx = rising ? vp + 1.3 : vp - 1.3 - alen, hx = rising ? sx + alen : sx, rot = rising ? '45deg' : '225deg';
+        arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
+          <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
+      }
+      const leftLabel = heldPos ? `<span style="color:#c25048;">&rarr; ${cc.flip_name}</span>` : `<span style="color:#6a6a6a;">&minus; confirmed</span>`;
+      const rightLabel = heldPos ? `<span style="color:#6a6a6a;">+ confirmed</span>` : `<span style="color:#3f8a55;">&rarr; ${cc.flip_name}</span>`;
+      return `<div style="margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
+          <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '&minus; held'}</span></span>
+          <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:#4ade80;font-family:${serif};font-size:16px;">${cc.factor >= 0 ? '+' : '\u2212'}${Math.abs(cc.factor).toFixed(2)}</span></span>
+        </div>
+        <div style="position:relative;height:24px;background:#0e0e0e;border:1px solid #232323;overflow:hidden;">
+          <div style="position:absolute;left:0;width:${loEdge}%;top:0;bottom:0;background:rgba(226,86,79,0.12);"></div>
+          <div style="position:absolute;left:${hiEdge}%;right:0;top:0;bottom:0;background:rgba(74,222,128,0.14);"></div>
+          <div style="position:absolute;left:${loEdge}%;top:0;bottom:0;width:2px;background:${heldPos ? '#e6b450' : '#3a3a3a'};transform:translateX(-1px);z-index:2;"></div>
+          <div style="position:absolute;left:${hiEdge}%;top:0;bottom:0;width:2px;background:${heldPos ? '#3a3a3a' : '#e6b450'};transform:translateX(-1px);z-index:2;"></div>
+          <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#2a2a2a;"></div>
+          ${arr}
+          <div style="position:absolute;left:${vp}%;top:50%;width:14px;height:14px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(74,222,128,0.9);z-index:4;"></div>
+        </div>
+        <div style="position:relative;height:14px;margin-top:3px;font-size:10px;font-weight:600;">
+          <span style="position:absolute;left:${loEdge}%;transform:translateX(-50%);">${leftLabel}</span>
+          <span style="position:absolute;left:${hiEdge}%;transform:translateX(-50%);">${rightLabel}</span>
+        </div>
+      </div>`;
+    }).join('');
+    bands = `<div style="margin-top:22px;">
+      <div style="color:#6a6a6a;font-size:10.5px;letter-spacing:0.16em;margin-bottom:16px;">AXIS DEADBANDS &middot; held sign holds until the factor crosses the opposite edge</div>
+      ${rows}</div>`;
+  }
   return `<div class="db-block" style="margin-top:-8px;">
     <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
+    ${bands}
     <div class="mv-contrib">
       ${contribCol('growth', c.latest.growth)}
       ${contribCol('inflation', c.latest.inflation)}
@@ -621,117 +682,9 @@ const BLOCK_RENDERERS = {
   signal: blkSignal, performance: blkPerformance, allocation: blkAllocation,
   rebalancing: blkRebalancing, market_view: blkMarketView,
   phase_plane: blkPhasePlane, contribution: blkContribution,
-  vams_flip: blkVamsFlip, regime_prox: blkRegimeProx,
+  vams_flip: blkVamsFlip,
 };
 
-function blkRegimeProx(b, data) {
-  if (!b.plane || !b.components) {
-    return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
-      <div class="signal-panel"><div class="signal-pending">${b.note || 'Regime detail is published once the signal is live.'}</div></div></div>`;
-  }
-  const serif = "'Cormorant Garamond',Georgia,serif";
-  const riskOn = b.risk === 'risk-on';
-  const pill = riskOn ? 'border:1px solid #2f6b46;color:#4ade80;' : 'border:1px solid #6a3030;color:#e2564f;';
-  const dotCol = riskOn ? '#4ade80' : '#f87171';
-
-  // ── quadrant plane ──  x = inflation (+right), y = growth (+up). σ scale.
-  const S = 560, C = 280, CY = 210, M = 40, R = 3.0;     // R σ to edge
-  const K = (240) / R;                                    // px per σ (240px half-width usable)
-  const X = v => C + v * K, Y = v => CY - v * K;
-  const gx = b.plane.gx, iy = b.plane.iy, dgx = b.plane.dgx, diy = b.plane.diy;
-  const px = X(iy), py = Y(gx);
-  // drift arrow: direction = (diy, -dgx) in screen space; length ∝ speed (clamped)
-  const speed = Math.hypot(dgx, diy);
-  let arrowSVG = '';
-  if (speed > 0.02) {
-    const ux = diy / speed, uy = -dgx / speed;            // unit dir in screen coords
-    const shaft = Math.min(70, Math.max(16, speed * 90)); // px, longer = faster (clamped)
-    const ex = px + ux * shaft, ey = py + uy * shaft;
-    const hl = 11, hw = 5, bxx = ex - ux * hl, byy = ey - uy * hl;
-    const perpx = -uy, perpy = ux;
-    const a1x = (bxx + perpx * hw).toFixed(1), a1y = (byy + perpy * hw).toFixed(1);
-    const a2x = (bxx - perpx * hw).toFixed(1), a2y = (byy - perpy * hw).toFixed(1);
-    arrowSVG = `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="#FFFFFF" stroke-width="2.5"/>
-      <polygon points="${ex.toFixed(1)},${ey.toFixed(1)} ${a1x},${a1y} ${a2x},${a2y}" fill="#FFFFFF"/>`;
-  }
-  const ring1 = (1 * K).toFixed(1), ring2 = (2 * K).toFixed(1);
-  const plane = `<svg viewBox="0 0 ${S} 420" width="100%" style="max-width:520px;display:block;margin:0 auto 6px;">
-    <rect x="${M}" y="30" width="240" height="180" fill="rgba(74,222,128,0.16)"/>
-    <rect x="${C}" y="30" width="240" height="180" fill="rgba(74,222,128,0.07)"/>
-    <rect x="${M}" y="${CY}" width="240" height="180" fill="rgba(226,86,79,0.14)"/>
-    <rect x="${C}" y="${CY}" width="240" height="180" fill="rgba(226,86,79,0.07)"/>
-    <line x1="${C}" y1="30" x2="${C}" y2="390" stroke="#3a3a3a" stroke-width="1.5"/>
-    <line x1="${M}" y1="${CY}" x2="520" y2="${CY}" stroke="#3a3a3a" stroke-width="1.5"/>
-    <text x="${C+8}" y="44" fill="#7a7a7a" font-size="12">+G</text>
-    <text x="500" y="${CY+16}" fill="#7a7a7a" font-size="12">+I</text>
-    <text x="46" y="${CY+16}" fill="#7a7a7a" font-size="12">&#8722;I</text>
-    <text x="${C+8}" y="384" fill="#7a7a7a" font-size="12">&#8722;G</text>
-    <circle cx="${C}" cy="${CY}" r="${ring1}" fill="none" stroke="#2c2c2c" stroke-width="1" stroke-dasharray="3 4"/>
-    <circle cx="${C}" cy="${CY}" r="${ring2}" fill="none" stroke="#2c2c2c" stroke-width="1" stroke-dasharray="3 4"/>
-    <text x="${(C+ +ring1+6).toFixed(0)}" y="${CY-4}" fill="#5a5a5a" font-size="10">1&#963;</text>
-    <text x="${(C+ +ring2+6).toFixed(0)}" y="${CY-4}" fill="#5a5a5a" font-size="10">2&#963;</text>
-    <text x="56" y="56" fill="#4ade80" font-size="15" font-weight="700" letter-spacing="1.5">GOLDILOCKS</text>
-    <text x="412" y="56" fill="#3f8a55" font-size="15" font-weight="700" letter-spacing="1.5">REFLATION</text>
-    <text x="56" y="376" fill="#c25048" font-size="15" font-weight="700" letter-spacing="1.5">DEFLATION</text>
-    <text x="388" y="376" fill="#a8443d" font-size="15" font-weight="700" letter-spacing="1.5">STAGFLATION</text>
-    ${arrowSVG}
-    <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="17" fill="none" stroke="${dotCol}" stroke-width="1.5" opacity="0.35"/>
-    <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="10" fill="${dotCol}" stroke="#000" stroke-width="2"/>
-  </svg>`;
-
-  const readout = `<div style="display:flex;justify-content:center;gap:26px;margin:4px 0 8px;color:#9a9a9a;font-size:12px;">
-    <span>growth <span style="color:${dotCol};font-family:${serif};font-size:15px;">${gx>=0?'+':'\u2212'}${Math.abs(gx).toFixed(2)}&sigma;</span></span>
-    <span>inflation <span style="color:${dotCol};font-family:${serif};font-size:15px;">${iy>=0?'+':'\u2212'}${Math.abs(iy).toFixed(2)}&sigma;</span></span>
-  </div>`;
-
-  // ── component bars ──
-  const Z = 3.0, zpc = z => Math.max(3, Math.min(97, (z / (2 * Z) + 0.5) * 100));
-  const comps = b.components.map(c => {
-    const heldPos = c.held_sign >= 0;
-    const vp = zpc(c.factor / c.std), bp = c.band / c.std;
-    const loEdge = zpc(-bp), hiEdge = zpc(bp);
-    const dzv = c.dz / c.std;
-    const rising = dzv > 0.02, falling = dzv < -0.02;
-    const alen = Math.min(8, Math.max(2.5, Math.abs(dzv) * 11));
-    let arr = '';
-    if (rising || falling) {
-      const sx = rising ? vp + 1.3 : vp - 1.3 - alen, hx = rising ? sx + alen : sx, rot = rising ? '45deg':'225deg';
-      arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
-        <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
-    }
-    const leftLabel = heldPos ? `<span style="color:#c25048;">&rarr; ${c.flip_name}</span>` : `<span style="color:#6a6a6a;">&minus; confirmed</span>`;
-    const rightLabel = heldPos ? `<span style="color:#6a6a6a;">+ confirmed</span>` : `<span style="color:#3f8a55;">&rarr; ${c.flip_name}</span>`;
-    return `<div style="margin-bottom:18px;">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
-        <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${c.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '&minus; held'}</span></span>
-        <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:#4ade80;font-family:${serif};font-size:16px;">${c.factor >= 0 ? '+' : '\u2212'}${Math.abs(c.factor).toFixed(2)}</span></span>
-      </div>
-      <div style="position:relative;height:24px;background:#0e0e0e;border:1px solid #232323;overflow:hidden;">
-        <div style="position:absolute;left:0;width:${loEdge}%;top:0;bottom:0;background:rgba(226,86,79,0.12);"></div>
-        <div style="position:absolute;left:${hiEdge}%;right:0;top:0;bottom:0;background:rgba(74,222,128,0.14);"></div>
-        <div style="position:absolute;left:${loEdge}%;top:0;bottom:0;width:2px;background:${heldPos?'#e6b450':'#3a3a3a'};transform:translateX(-1px);z-index:2;"></div>
-        <div style="position:absolute;left:${hiEdge}%;top:0;bottom:0;width:2px;background:${heldPos?'#3a3a3a':'#e6b450'};transform:translateX(-1px);z-index:2;"></div>
-        <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#2a2a2a;"></div>
-        ${arr}
-        <div style="position:absolute;left:${vp}%;top:50%;width:14px;height:14px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(74,222,128,0.9);z-index:4;"></div>
-      </div>
-      <div style="position:relative;height:14px;margin-top:3px;font-size:10px;font-weight:600;">
-        <span style="position:absolute;left:${loEdge}%;transform:translateX(-50%);">${leftLabel}</span>
-        <span style="position:absolute;left:${hiEdge}%;transform:translateX(-50%);">${rightLabel}</span>
-      </div>
-    </div>`;
-  }).join('');
-
-  return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
-    <div style="display:flex;align-items:center;gap:14px;margin:-2px 0 18px;">
-      <span style="${pill}font-size:11px;font-weight:600;letter-spacing:0.16em;padding:4px 12px;">${b.regime.toUpperCase()} &middot; ${b.risk.toUpperCase()}</span>
-    </div>
-    ${plane}
-    ${readout}
-    <div style="border-top:1px solid #1c1c1c;margin:18px 0 16px;"></div>
-    <div style="color:#6a6a6a;font-size:10.5px;letter-spacing:0.16em;margin-bottom:16px;">COMPONENTS</div>
-    ${comps}</div>`;
-}
 // ── VAMS distance / direction / confirm panel (own block type) ──
 // z-axis window [-3,+3] → [0,100%]; clamp + flag if a sleeve pegs the edge.
 function blkVamsFlip(b, data) {
