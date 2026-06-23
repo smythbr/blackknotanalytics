@@ -625,63 +625,68 @@ const BLOCK_RENDERERS = {
 };
 
 function blkRegimeProx(b, data) {
-  if (!b.left || !b.right || !b.components) {
+  if (!b.plane || !b.components) {
     return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Regime detail is published once the signal is live.'}</div></div></div>`;
   }
   const serif = "'Cormorant Garamond',Georgia,serif";
   const riskOn = b.risk === 'risk-on';
   const pill = riskOn ? 'border:1px solid #2f6b46;color:#4ade80;' : 'border:1px solid #6a3030;color:#e2564f;';
-  // combined bar: zones 30/40/30; dot leans by b.lean (-1..+1 → 30%..70%), center 50%
-  const dotPos = Math.max(31, Math.min(69, 50 + (b.lean || 0) * 20));
-  const drift = b.drift || 0;
-  const driftRight = drift > 0.02, driftLeft = drift < -0.02;
-  const aLen = Math.min(8, Math.max(3, Math.abs(drift) * 12));
-  let arrow = '';
-  if (driftRight || driftLeft) {
-    const sx = driftRight ? dotPos + 1.5 : dotPos - 1.5 - aLen;
-    const hx = driftRight ? sx + aLen : sx;
-    const rot = driftRight ? '45deg' : '225deg';
-    arrow = `<div style="position:absolute;left:${sx}%;width:${aLen}%;top:50%;height:3px;background:#e6b450;transform:translateY(-50%);z-index:3;"></div>
-      <div style="position:absolute;left:${hx}%;top:50%;width:9px;height:9px;border-top:3px solid #e6b450;border-right:3px solid #e6b450;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
+  const dotCol = riskOn ? '#4ade80' : '#f87171';
+
+  // ── quadrant plane ──  x = inflation (+right), y = growth (+up). σ scale.
+  const S = 560, C = 280, CY = 210, M = 40, R = 3.0;     // R σ to edge
+  const K = (240) / R;                                    // px per σ (240px half-width usable)
+  const X = v => C + v * K, Y = v => CY - v * K;
+  const gx = b.plane.gx, iy = b.plane.iy, dgx = b.plane.dgx, diy = b.plane.diy;
+  const px = X(iy), py = Y(gx);
+  // drift arrow: direction = (diy, -dgx) in screen space; length ∝ speed (clamped)
+  const speed = Math.hypot(dgx, diy);
+  let arrowSVG = '';
+  if (speed > 0.02) {
+    const ux = diy / speed, uy = -dgx / speed;            // unit dir in screen coords
+    const shaft = Math.min(70, Math.max(16, speed * 90)); // px, longer = faster (clamped)
+    const ex = px + ux * shaft, ey = py + uy * shaft;
+    const hl = 11, hw = 5, bxx = ex - ux * hl, byy = ey - uy * hl;
+    const perpx = -uy, perpy = ux;
+    const a1x = (bxx + perpx * hw).toFixed(1), a1y = (byy + perpy * hw).toFixed(1);
+    const a2x = (bxx - perpx * hw).toFixed(1), a2y = (byy - perpy * hw).toFixed(1);
+    arrowSVG = `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="#FFFFFF" stroke-width="2.5"/>
+      <polygon points="${ex.toFixed(1)},${ey.toFixed(1)} ${a1x},${a1y} ${a2x},${a2y}" fill="#FFFFFF"/>`;
   }
-  const leftRiskOn = ['Goldilocks','Reflation'].includes(b.left.name);
-  const rightRiskOn = ['Goldilocks','Reflation'].includes(b.right.name);
-  const lcol = leftRiskOn ? '#3f8a55' : '#c25048', rcol = rightRiskOn ? '#3f8a55' : '#c25048';
-  const lzone = leftRiskOn ? 'rgba(74,222,128,0.10)' : 'rgba(226,86,79,0.12)';
-  const rzone = rightRiskOn ? 'rgba(74,222,128,0.10)' : 'rgba(226,86,79,0.14)';
+  const ring1 = (1 * K).toFixed(1), ring2 = (2 * K).toFixed(1);
+  const plane = `<svg viewBox="0 0 ${S} 420" width="100%" style="max-width:520px;display:block;margin:0 auto 6px;">
+    <rect x="${M}" y="30" width="240" height="180" fill="rgba(74,222,128,0.16)"/>
+    <rect x="${C}" y="30" width="240" height="180" fill="rgba(74,222,128,0.07)"/>
+    <rect x="${M}" y="${CY}" width="240" height="180" fill="rgba(226,86,79,0.14)"/>
+    <rect x="${C}" y="${CY}" width="240" height="180" fill="rgba(226,86,79,0.07)"/>
+    <line x1="${C}" y1="30" x2="${C}" y2="390" stroke="#3a3a3a" stroke-width="1.5"/>
+    <line x1="${M}" y1="${CY}" x2="520" y2="${CY}" stroke="#3a3a3a" stroke-width="1.5"/>
+    <text x="${C+8}" y="44" fill="#7a7a7a" font-size="12">+G</text>
+    <text x="500" y="${CY+16}" fill="#7a7a7a" font-size="12">+I</text>
+    <text x="46" y="${CY+16}" fill="#7a7a7a" font-size="12">&#8722;I</text>
+    <text x="${C+8}" y="384" fill="#7a7a7a" font-size="12">&#8722;G</text>
+    <circle cx="${C}" cy="${CY}" r="${ring1}" fill="none" stroke="#2c2c2c" stroke-width="1" stroke-dasharray="3 4"/>
+    <circle cx="${C}" cy="${CY}" r="${ring2}" fill="none" stroke="#2c2c2c" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="${(C+ +ring1+6).toFixed(0)}" y="${CY-4}" fill="#5a5a5a" font-size="10">1&#963;</text>
+    <text x="${(C+ +ring2+6).toFixed(0)}" y="${CY-4}" fill="#5a5a5a" font-size="10">2&#963;</text>
+    <text x="56" y="56" fill="#4ade80" font-size="15" font-weight="700" letter-spacing="1.5">GOLDILOCKS</text>
+    <text x="412" y="56" fill="#3f8a55" font-size="15" font-weight="700" letter-spacing="1.5">REFLATION</text>
+    <text x="56" y="376" fill="#c25048" font-size="15" font-weight="700" letter-spacing="1.5">DEFLATION</text>
+    <text x="388" y="376" fill="#a8443d" font-size="15" font-weight="700" letter-spacing="1.5">STAGFLATION</text>
+    ${arrowSVG}
+    <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="10" fill="${dotCol}" stroke="#000" stroke-width="2"/>
+  </svg>`;
 
-  const combined = `<div style="position:relative;height:46px;background:#0e0e0e;border:1px solid #262626;overflow:hidden;">
-      <div style="position:absolute;left:0;width:30%;top:0;bottom:0;background:${lzone};"></div>
-      <div style="position:absolute;left:30%;width:40%;top:0;bottom:0;background:rgba(74,222,128,0.22);"></div>
-      <div style="position:absolute;left:70%;width:30%;top:0;bottom:0;background:${rzone};"></div>
-      <div style="position:absolute;left:30%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
-      <div style="position:absolute;left:70%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
-      ${arrow}
-      <div style="position:absolute;left:${dotPos}%;top:50%;width:17px;height:17px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 11px rgba(74,222,128,0.95);z-index:4;"></div>
-    </div>
-    <div style="position:relative;height:42px;margin-top:8px;">
-      <div style="position:absolute;left:15%;top:0;transform:translateX(-50%);text-align:center;">
-        <div style="color:${lcol};font-size:13px;font-weight:700;letter-spacing:0.1em;">${b.left.name.toUpperCase()}</div>
-        <div style="color:#6a6a6a;font-size:10px;margin-top:2px;">flip: ${b.left.flip}</div>
-        <div style="color:#9a9a9a;font-size:11px;font-weight:600;margin-top:3px;">${b.left.dist.toFixed(2)}&sigma; away</div>
-      </div>
-      <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);text-align:center;">
-        <div style="color:#e8e8e8;font-family:${serif};font-size:19px;line-height:1;">${b.regime}</div>
-        <div style="color:#4ade80;font-size:9.5px;letter-spacing:0.14em;margin-top:3px;">CURRENT</div>
-      </div>
-      <div style="position:absolute;left:85%;top:0;transform:translateX(-50%);text-align:center;">
-        <div style="color:${rcol};font-size:13px;font-weight:700;letter-spacing:0.1em;">${b.right.name.toUpperCase()}</div>
-        <div style="color:#6a6a6a;font-size:10px;margin-top:2px;">flip: ${b.right.flip}</div>
-        <div style="color:#9a9a9a;font-size:11px;font-weight:600;margin-top:3px;">${b.right.dist.toFixed(2)}&sigma; away</div>
-      </div>
-    </div>`;
+  const readout = `<div style="display:flex;justify-content:center;gap:26px;margin:4px 0 8px;color:#9a9a9a;font-size:12px;">
+    <span>growth <span style="color:${dotCol};font-family:${serif};font-size:15px;">${gx>=0?'+':'\u2212'}${Math.abs(gx).toFixed(2)}&sigma;</span></span>
+    <span>inflation <span style="color:${dotCol};font-family:${serif};font-size:15px;">${iy>=0?'+':'\u2212'}${Math.abs(iy).toFixed(2)}&sigma;</span></span>
+  </div>`;
 
+  // ── component bars ──
   const Z = 3.0, zpc = z => Math.max(3, Math.min(97, (z / (2 * Z) + 0.5) * 100));
   const comps = b.components.map(c => {
     const heldPos = c.held_sign >= 0;
-    const bandPc = (c.band / (2 * Z * c.std === 0 ? 1 : 1));
-    // map factor & band to bar using factor/std in z-like units: pos = (val/std)/(2Z)+0.5
     const vp = zpc(c.factor / c.std), bp = c.band / c.std;
     const loEdge = zpc(-bp), hiEdge = zpc(bp);
     const dzv = c.dz / c.std;
@@ -693,8 +698,6 @@ function blkRegimeProx(b, data) {
       arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
         <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
     }
-    // live flip edge = opposite of held sign; label it with flip_name
-    const liveLeft = !heldPos;   // held- → flips on +? no: held- flips at +edge(right). held+ flips at -edge(left)
     const leftLabel = heldPos ? `<span style="color:#c25048;">&rarr; ${c.flip_name}</span>` : `<span style="color:#6a6a6a;">&minus; confirmed</span>`;
     const rightLabel = heldPos ? `<span style="color:#6a6a6a;">+ confirmed</span>` : `<span style="color:#3f8a55;">&rarr; ${c.flip_name}</span>`;
     return `<div style="margin-bottom:18px;">
@@ -720,15 +723,14 @@ function blkRegimeProx(b, data) {
 
   return `<div class="db-block"><div class="db-eyebrow">${b.title || 'Market Regime'}</div>
     <div style="display:flex;align-items:center;gap:14px;margin:-2px 0 18px;">
-      <span style="${pill}font-size:11px;font-weight:600;letter-spacing:0.16em;padding:4px 12px;">${b.regime.toUpperCase()} · ${b.risk.toUpperCase()}</span>
-      <span style="color:#8a8a8a;font-size:12px;letter-spacing:0.03em;">Position = proximity · arrow = 10-session drift · flips on cross (no confirm delay)</span>
+      <span style="${pill}font-size:11px;font-weight:600;letter-spacing:0.16em;padding:4px 12px;">${b.regime.toUpperCase()} &middot; ${b.risk.toUpperCase()}</span>
     </div>
-    ${combined}
-    <div style="border-top:1px solid #1c1c1c;margin:22px 0 16px;"></div>
+    ${plane}
+    ${readout}
+    <div style="border-top:1px solid #1c1c1c;margin:18px 0 16px;"></div>
     <div style="color:#6a6a6a;font-size:10.5px;letter-spacing:0.16em;margin-bottom:16px;">COMPONENTS</div>
     ${comps}</div>`;
 }
-
 // ── VAMS distance / direction / confirm panel (own block type) ──
 // z-axis window [-3,+3] → [0,100%]; clamp + flag if a sleeve pegs the edge.
 function blkVamsFlip(b, data) {

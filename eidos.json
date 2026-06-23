@@ -139,6 +139,12 @@
       },
       "lean": 0.072,
       "drift": 0.822,
+      "plane": {
+        "gx": 0.468,
+        "iy": -0.616,
+        "dgx": 0.0,
+        "diy": -0.822
+      },
       "components": [
         {
           "label": "Growth",
