@@ -296,28 +296,43 @@ function blkAllocation(b, data) {
 
 function blkRebalancing(b, data) {
   if (!b || !b.table) return '';
-  const sp = b.table.split;
+  const sp = b.table.split, ro = b.table.roro;
   if (sp) {
-    const serif = "'Cormorant Garamond',Georgia,serif";
-    const col = (title, d, last) => `<div style="${last ? '' : 'border-right:1px solid #1c1c1c;'}padding:0 26px;">
-      <div style="color:#9a9a9a;font-size:11px;font-weight:700;letter-spacing:0.18em;margin-bottom:16px;">${title}</div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #161616;">
-        <span style="color:#8a8a8a;font-size:12.5px;">Regime</span>
-        <span style="color:#cfcfcf;font-family:${serif};font-size:20px;">${d.regime}</span></div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #161616;">
-        <span style="color:#8a8a8a;font-size:12.5px;">VAMS</span>
-        <span style="color:#cfcfcf;font-family:${serif};font-size:20px;">${d.vams}</span></div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0 0;">
-        <span style="color:#4ade80;font-size:12.5px;font-weight:600;letter-spacing:0.06em;">Total</span>
-        <span style="color:#4ade80;font-family:${serif};font-size:24px;">${d.total}</span></div>
-    </div>`;
+    // Three-column period block; rows = [label,value] pairs, last row is the Total.
+    const col = (title, rows, last) => {
+      const body = rows.map((r, k) => {
+        const isTotal = k === rows.length - 1;
+        const lblCol = isTotal ? '#4ade80' : 'var(--grey, #9C9C97)';
+        const valCol = isTotal ? '#4ade80' : 'var(--white, #fff)';
+        const valSz = isTotal ? '1.05rem' : 'var(--fs-md, 0.9375rem)';
+        const valWt = isTotal ? '600' : '600';
+        const pad = isTotal ? 'padding:11px 0 0;' : 'padding:9px 0;border-bottom:1px solid #161616;';
+        const lblWt = isTotal ? 'font-weight:600;letter-spacing:0.06em;' : '';
+        return `<div style="display:flex;justify-content:space-between;align-items:baseline;${pad}">
+          <span style="color:${lblCol};font-size:var(--fs-md,0.9375rem);${lblWt}">${r[0]}</span>
+          <span style="color:${valCol};font-size:${valSz};font-weight:${valWt};font-variant-numeric:tabular-nums;">${r[1]}</span></div>`;
+      }).join('');
+      return `<div style="${last ? '' : 'border-right:1px solid #1c1c1c;'}padding:0 26px;">
+        <div style="color:#9a9a9a;font-size:11px;font-weight:700;letter-spacing:0.18em;margin-bottom:16px;">${title}</div>
+        ${body}</div>`;
+    };
+    const grid = (mk) => `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+        ${col('YTD', mk('ytd'), false)}
+        ${col('ITD', mk('itd'), false)}
+        ${col('AVERAGE / YR', mk('yr'), true)}</div>`;
+
+    const rebalGrid = grid(p => [['Regime', sp[p].regime], ['VAMS', sp[p].vams], ['Total', sp[p].total]]);
+    let roBlock = '';
+    if (ro) {
+      const roGrid = grid(p => [['To risk-off', ro[p].off], ['To risk-on', ro[p].on], ['Total', ro[p].total]]);
+      roBlock = `<div class="db-block"><div class="db-eyebrow">Risk-On / Risk-Off</div>
+        <div class="db-title" style="font-size:15px;margin-bottom:6px;">RORO Flips</div>
+        <div style="color:#8a8a8a;font-size:12.5px;margin-bottom:20px;">Rebalances that crossed the risk-on / risk-off boundary</div>
+        ${roGrid}</div>`;
+    }
     return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
       <div class="db-title" style="font-size:15px;margin-bottom:20px;">Operational Metrics</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
-        ${col('YTD', sp.ytd, false)}
-        ${col('ITD', sp.itd, false)}
-        ${col('AVERAGE / YR', sp.yr, true)}
-      </div></div>`;
+      ${rebalGrid}</div>${roBlock}`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table)}</div>`;
 }
