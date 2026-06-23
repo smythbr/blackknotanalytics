@@ -44688,7 +44688,24 @@
               "kind": "int"
             }
           }
-        ]
+        ],
+        "split": {
+          "ytd": {
+            "regime": 2,
+            "vams": 4,
+            "total": 6
+          },
+          "itd": {
+            "regime": 58,
+            "vams": 119,
+            "total": 177
+          },
+          "yr": {
+            "regime": 6.8,
+            "vams": 14.1,
+            "total": 20.9
+          }
+        }
       }
     }
   ]

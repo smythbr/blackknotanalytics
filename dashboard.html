@@ -296,6 +296,29 @@ function blkAllocation(b, data) {
 
 function blkRebalancing(b, data) {
   if (!b || !b.table) return '';
+  const sp = b.table.split;
+  if (sp) {
+    const serif = "'Cormorant Garamond',Georgia,serif";
+    const col = (title, d, last) => `<div style="${last ? '' : 'border-right:1px solid #1c1c1c;'}padding:0 26px;">
+      <div style="color:#9a9a9a;font-size:11px;font-weight:700;letter-spacing:0.18em;margin-bottom:16px;">${title}</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #161616;">
+        <span style="color:#8a8a8a;font-size:12.5px;">Regime</span>
+        <span style="color:#cfcfcf;font-family:${serif};font-size:20px;">${d.regime}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #161616;">
+        <span style="color:#8a8a8a;font-size:12.5px;">VAMS</span>
+        <span style="color:#cfcfcf;font-family:${serif};font-size:20px;">${d.vams}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0 0;">
+        <span style="color:#4ade80;font-size:12.5px;font-weight:600;letter-spacing:0.06em;">Total</span>
+        <span style="color:#4ade80;font-family:${serif};font-size:24px;">${d.total}</span></div>
+    </div>`;
+    return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
+      <div class="db-title" style="font-size:15px;margin-bottom:20px;">Operational Metrics</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+        ${col('YTD', sp.ytd, false)}
+        ${col('ITD', sp.itd, false)}
+        ${col('AVERAGE / YR', sp.yr, true)}
+      </div></div>`;
+  }
   return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table)}</div>`;
 }
 
