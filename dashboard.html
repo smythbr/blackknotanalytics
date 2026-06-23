@@ -636,58 +636,54 @@ function blkVamsFlip(b, data) {
   const rows = sl.map(s => {
     const held = s.state >= 0.999;
     const dot = held ? '#4ade80' : '#e2564f';
-    const glow = held ? 'rgba(74,222,128,0.9)' : 'rgba(226,86,79,0.9)';
+    const glow = held ? 'rgba(74,222,128,0.95)' : 'rgba(226,86,79,0.95)';
     const zP = zpc(s.z), halfP = zpc(s.line_half), fullP = zpc(s.line_full);
     const stTag = held ? 'HELD · 1.0&times;' : (s.state > 0.001 ? 'HALF · 0.5&times;' : 'SCALED · 0.0&times;');
-    const stCol = held ? '#4ade80' : (s.state > 0.001 ? '#e0a93f' : '#e2564f');
-    // zone fill: from the nearer boundary toward the dot, colored by state
-    const fillCol = held ? 'linear-gradient(90deg,rgba(74,222,128,0.30),rgba(74,222,128,0.55))'
-                         : 'linear-gradient(90deg,rgba(226,86,79,0.55),rgba(226,86,79,0.30))';
-    const anchorP = held ? fullP : zP, fillL = Math.min(anchorP, zP), fillW = Math.abs((held ? zP - fullP : halfP - zP));
+    const stCol = held ? '#4ade80' : (s.state > 0.001 ? '#e6b450' : '#e2564f');
+    const fillCol = held ? 'linear-gradient(90deg,rgba(74,222,128,0.35),rgba(74,222,128,0.62))'
+                         : 'linear-gradient(90deg,rgba(226,86,79,0.62),rgba(226,86,79,0.35))';
     const zoneL = held ? fullP : zP, zoneW = held ? Math.max(0, zP - fullP) : Math.max(0, halfP - zP);
-    // direction arrow: from the dot in the sign of dz; length scales with |dz|
     const rising = s.dz > 0.03, falling = s.dz < -0.03;
     const arrowLen = Math.min(9, Math.max(2.5, Math.abs(s.dz) * 11));
     let arrow = '';
     if (rising || falling) {
-      const aCol = held ? '#4ade80' : '#e0a93f';
-      const shaftL = rising ? zP + 1.3 : zP - 1.3 - arrowLen;
+      const aCol = held ? '#4ade80' : '#e6b450';
+      const shaftL = rising ? zP + 1.4 : zP - 1.4 - arrowLen;
       const headL = rising ? shaftL + arrowLen : shaftL;
       const rot = rising ? '45deg' : '225deg';
-      arrow = `<div style="position:absolute;left:${shaftL}%;width:${arrowLen}%;top:50%;height:2px;background:${aCol};transform:translateY(-50%);z-index:3;"></div>
-               <div style="position:absolute;left:${headL}%;top:50%;width:7px;height:7px;border-top:2px solid ${aCol};border-right:2px solid ${aCol};transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
+      arrow = `<div style="position:absolute;left:${shaftL}%;width:${arrowLen}%;top:50%;height:3px;background:${aCol};transform:translateY(-50%);z-index:3;"></div>
+               <div style="position:absolute;left:${headL}%;top:50%;width:9px;height:9px;border-top:3px solid ${aCol};border-right:3px solid ${aCol};transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
     }
-    // confirm counter side-panel
     let counter;
     if (s.need == null || s.cand === s.state) {
-      counter = `<div style="text-align:center;border:1px solid #1c1c1c;background:#0a0a0a;padding:8px 0;">
-        <div style="color:#5a5a5a;font-size:10px;letter-spacing:0.12em;margin-bottom:3px;">NO FLIP PENDING</div>
-        <div style="font-family:${serif};font-size:22px;color:#4a4a4a;">&mdash;</div>
-        <div style="color:#3f8a55;font-size:9px;letter-spacing:0.08em;margin-top:2px;">${held ? 'stable held' : 'stable'}</div></div>`;
+      counter = `<div style="text-align:center;border:1px solid #2a2a2a;background:#0d0d0d;padding:11px 0;">
+        <div style="color:#9a9a9a;font-size:12px;font-weight:600;letter-spacing:0.12em;margin-bottom:5px;">NO FLIP PENDING</div>
+        <div style="font-family:${serif};font-size:26px;color:#6a6a6a;">&mdash;</div>
+        <div style="color:${held ? '#5cb87a' : '#8a8a8a'};font-size:11px;letter-spacing:0.08em;margin-top:4px;">${held ? 'stable held' : 'stable'}</div></div>`;
     } else {
       const up = s.cand > s.state;
       const tgt = s.cand >= 0.999 ? '1.0&times;' : (s.cand > 0.001 ? '0.5&times;' : '0.0&times;');
       const lbl = up ? `RESTORE &rarr; ${tgt}` : `CUT &rarr; ${tgt}`;
       const pct = Math.round(100 * s.cnt / s.need);
-      counter = `<div style="text-align:center;border:1px solid #5a4a1f;background:#161204;padding:8px 0;">
-        <div style="color:#b5963a;font-size:10px;letter-spacing:0.12em;margin-bottom:3px;">${lbl}</div>
-        <div style="font-family:${serif};font-size:22px;color:#e0a93f;line-height:1;"><b>${s.cnt}</b><span style="color:#7a6a3a;font-size:15px;">/${s.need}</span></div>
-        <div style="height:3px;background:#2a2410;margin:5px 10px 0;"><div style="width:${pct}%;height:100%;background:#e0a93f;"></div></div></div>`;
+      counter = `<div style="text-align:center;border:1px solid #6a571f;background:#1a1505;padding:11px 0;">
+        <div style="color:#e6b450;font-size:12px;font-weight:600;letter-spacing:0.12em;margin-bottom:5px;">${lbl}</div>
+        <div style="font-family:${serif};font-size:28px;color:#f0c060;line-height:1;"><b>${s.cnt}</b><span style="color:#9a824a;font-size:18px;">/${s.need}</span></div>
+        <div style="height:4px;background:#2e280f;margin:7px 12px 0;"><div style="width:${pct}%;height:100%;background:#e6b450;"></div></div></div>`;
     }
-    return `<div style="display:grid;grid-template-columns:1fr 132px;gap:18px;align-items:center;margin-bottom:22px;">
+    return `<div style="display:grid;grid-template-columns:1fr 150px;gap:22px;align-items:center;margin-bottom:28px;">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
-          <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:11px;margin-left:6px;">${stTag}</span></span>
-          <span style="color:#8a8a8a;font-size:12px;">z <span style="color:${stCol};font-family:${serif};font-size:16px;">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;">
+          <span style="color:#e8e8e8;font-size:15px;font-weight:700;letter-spacing:0.1em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:12.5px;font-weight:600;margin-left:8px;">${stTag}</span></span>
+          <span style="color:#b0b0b0;font-size:13px;">z <span style="color:${stCol};font-family:${serif};font-size:19px;">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
         </div>
-        <div style="position:relative;height:26px;background:#0c0c0c;border:1px solid #1c1c1c;">
+        <div style="position:relative;height:32px;background:#0e0e0e;border:1px solid #262626;">
           <div style="position:absolute;left:${zoneL}%;width:${zoneW}%;top:0;bottom:0;background:${fillCol};"></div>
-          <div style="position:absolute;left:${halfP}%;top:0;bottom:0;width:2px;background:#e0a93f;transform:translateX(-1px);z-index:2;"></div>
-          <div style="position:absolute;left:${fullP}%;top:0;bottom:0;width:2px;background:#d8d8d8;transform:translateX(-1px);z-index:2;"></div>
+          <div style="position:absolute;left:${halfP}%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
+          <div style="position:absolute;left:${fullP}%;top:0;bottom:0;width:2px;background:#f0f0f0;transform:translateX(-1px);z-index:2;"></div>
           ${arrow}
-          <div style="position:absolute;left:${zP}%;top:50%;width:13px;height:13px;background:${dot};border:2px solid #0c0c0c;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px ${glow};z-index:4;"></div>
+          <div style="position:absolute;left:${zP}%;top:50%;width:16px;height:16px;background:${dot};border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px ${glow};z-index:4;"></div>
         </div>
-        <div style="position:relative;height:13px;margin-top:1px;font-size:9px;color:#6a6a6a;">
+        <div style="position:relative;height:15px;margin-top:3px;font-size:11px;color:#9a9a9a;font-weight:600;">
           <span style="position:absolute;left:${halfP}%;transform:translateX(-50%);">0.5&times;</span>
           <span style="position:absolute;left:${fullP}%;transform:translateX(-50%);">1.0&times;</span>
         </div>
@@ -696,7 +692,7 @@ function blkVamsFlip(b, data) {
     </div>`;
   }).join('');
   return `<div class="db-block"><div class="db-eyebrow">${b.title || 'VAMS · Distance & Direction'}</div>
-    <div style="color:#5c5c5c;font-size:11px;letter-spacing:0.04em;margin:-4px 0 18px;">Active sleeves · z vs each sleeve's two ladder steps · arrow = ${b.drift_window || 10}-session drift · confirm = days toward a pending flip</div>
+    <div style="color:#8a8a8a;font-size:12.5px;letter-spacing:0.03em;margin:-2px 0 22px;">Active sleeves · z vs each sleeve's two ladder steps · arrow = ${b.drift_window || 10}-session drift · confirm = days toward a pending flip</div>
     ${rows}</div>`;
 }
 
