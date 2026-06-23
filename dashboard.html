@@ -345,15 +345,20 @@ function phasePlaneSVG(ser, idx, R, F) {
   let driftHead = '';
   if (dayMode && idx >= 1) {
     const prev = ser[Math.max(0, idx - 10)];
-    const x2 = X(iv(cur)), y2 = Y(gv(cur));
-    const dx = x2 - X(iv(prev)), dy = y2 - Y(gv(prev));
+    const cx = X(iv(cur)), cy = Y(gv(cur));
+    const dx = cx - X(iv(prev)), dy = cy - Y(gv(prev));
     const mag = Math.hypot(dx, dy);
     if (mag > 2) {
-      const ux = dx / mag, uy = dy / mag, hl = 12, hw = 5.5;
-      const bx = x2 - ux * hl, by = y2 - uy * hl, perpx = -uy, perpy = ux;
+      const ux = dx / mag, uy = dy / mag;
+      const shaftLen = 30, hl = 11, hw = 5.5;     // shaft from dot edge outward
+      const start = 9;                             // start just past the dot radius
+      const sx = cx + ux * start, sy = cy + uy * start;       // shaft start (dot edge)
+      const ex = cx + ux * (start + shaftLen), ey = cy + uy * (start + shaftLen); // tip
+      const bx = ex - ux * hl, by = ey - uy * hl, perpx = -uy, perpy = ux;
       const p1x = (bx + perpx * hw).toFixed(1), p1y = (by + perpy * hw).toFixed(1);
       const p2x = (bx - perpx * hw).toFixed(1), p2y = (by - perpy * hw).toFixed(1);
-      driftHead = `<polygon points="${x2.toFixed(1)},${y2.toFixed(1)} ${p1x},${p1y} ${p2x},${p2y}" fill="#FFFFFF"/>`;
+      driftHead = `<line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="#FFFFFF" stroke-width="2.5"/>
+        <polygon points="${ex.toFixed(1)},${ey.toFixed(1)} ${p1x},${p1y} ${p2x},${p2y}" fill="#FFFFFF"/>`;
     }
   }
   return `<svg viewBox="0 0 ${S} ${S}" style="width:100%;height:auto;display:block;">
@@ -568,8 +573,8 @@ function blkPhasePlane(b, data) {
   window.__eidSeries = ser; window.__eidUnit = window.__eidMode === 'month' ? 'mo' : 'd';
   const last = ser.length - 1;
   const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
-        <button id="eid-tog-month" class="mv-tog" onclick="eidSetMode('month')">Month</button>
-        <button id="eid-tog-day" class="mv-tog on" onclick="eidSetMode('day')">Day</button></div>` : '';
+        <button id="eid-tog-day" class="mv-tog on" onclick="eidSetMode('day')">Day</button>
+        <button id="eid-tog-month" class="mv-tog" onclick="eidSetMode('month')">Month</button></div>` : '';
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
