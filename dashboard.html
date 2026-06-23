@@ -648,8 +648,12 @@ function blkContribution(b, data) {
         arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
           <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
       }
-      const leftLabel = heldPos ? `<span style="color:#c25048;">&rarr; ${cc.flip_name}</span>` : `<span style="color:#6a6a6a;">&minus; confirmed</span>`;
-      const rightLabel = heldPos ? `<span style="color:#6a6a6a;">+ confirmed</span>` : `<span style="color:#3f8a55;">&rarr; ${cc.flip_name}</span>`;
+      const cleared = Math.abs(cc.factor) >= cc.band;   // factor past its own band edge?
+      const sameSignLbl = heldPos
+        ? `<span style="color:#6a6a6a;">+ ${cleared ? 'confirmed' : 'held'}</span>`
+        : `<span style="color:#6a6a6a;">&minus; ${cleared ? 'confirmed' : 'held'}</span>`;
+      const leftLabel  = heldPos ? `<span style="color:#c25048;">&rarr; ${cc.flip_name}</span>` : sameSignLbl;
+      const rightLabel = heldPos ? sameSignLbl : `<span style="color:#3f8a55;">&rarr; ${cc.flip_name}</span>`;
       return `<div style="margin-bottom:20px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
           <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '&minus; held'}</span></span>
@@ -681,7 +685,6 @@ function blkContribution(b, data) {
       ${contribCol('growth', c.latest.growth)}
       ${contribCol('inflation', c.latest.inflation)}
     </div>
-    <div class="mv-legend">Bars are each sensor-group's signed push to that axis's vote-margin; they sum to the net shown. Green = pushing the factor positive, coral = negative. A <span style="color:#E24B4A">●</span> flags a group voting against the net call — the minority that can lead the next flip.</div>
   </div>`;
 }
 
