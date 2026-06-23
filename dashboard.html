@@ -337,12 +337,14 @@ function phasePlaneSVG(ser, idx, R, F) {
   const trailPts = trail.map(p => `${X(iv(p)).toFixed(1)},${Y(gv(p)).toFixed(1)}`).join(' ');
   const trailDots = trail.slice(0, -1).map(p =>
     `<circle cx="${X(iv(p)).toFixed(1)}" cy="${Y(gv(p)).toFixed(1)}" r="3" fill="${riskCol(p)}" opacity="0.75"/>`).join('');
-  // White drift arrowhead at the leading end of the trail (direction = where the
-  // macro has been heading over the trail span). Measurement, not forecast. Only
-  // when a real multi-point trail exists.
+  // White drift arrowhead — ONLY in day mode (short-term drift). The day-mode plane
+  // shows just the current dot (no trail line); the arrow's direction is the recent
+  // 10-session drift (cur vs 10 sessions back), matching the VAMS/component-bar drift
+  // window so the whole dashboard reads one "10-session drift" language. Robust to
+  // flat/frozen daily patches (a 1-day delta is often zero). Measurement, not forecast.
   let driftHead = '';
-  if (trail.length >= 2) {
-    const prev = trail[trail.length - 2];
+  if (dayMode && idx >= 1) {
+    const prev = ser[Math.max(0, idx - 10)];
     const x2 = X(iv(cur)), y2 = Y(gv(cur));
     const dx = x2 - X(iv(prev)), dy = y2 - Y(gv(prev));
     const mag = Math.hypot(dx, dy);
@@ -561,13 +563,13 @@ function blkPhasePlane(b, data) {
   const hasMonth = !!(pp.series.month && pp.series.month.length);
   const hasDay = !!(pp.series.daily && pp.series.daily.length);
   window.__eidMonth = pp.series.month || []; window.__eidDay = pp.series.daily || [];
-  window.__eidScope = R; window.__eidMode = hasMonth ? 'month' : 'day';
+  window.__eidScope = R; window.__eidMode = hasDay ? 'day' : 'month';
   const ser = window.__eidMode === 'month' ? window.__eidMonth : window.__eidDay;
   window.__eidSeries = ser; window.__eidUnit = window.__eidMode === 'month' ? 'mo' : 'd';
   const last = ser.length - 1;
   const toggle = (hasMonth && hasDay) ? `<div class="mv-toggle">
-        <button id="eid-tog-month" class="mv-tog on" onclick="eidSetMode('month')">Month</button>
-        <button id="eid-tog-day" class="mv-tog" onclick="eidSetMode('day')">Day</button></div>` : '';
+        <button id="eid-tog-month" class="mv-tog" onclick="eidSetMode('month')">Month</button>
+        <button id="eid-tog-day" class="mv-tog on" onclick="eidSetMode('day')">Day</button></div>` : '';
   return `<div class="db-block market-view-section">
     <div class="db-eyebrow">${b.title || 'Market View'}</div>
     <div class="db-title">Growth · Inflation · Liquidity</div>
