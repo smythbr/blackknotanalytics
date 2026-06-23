@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 1.75,
+        "value": 1.86,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 17.35,
+        "value": 17.36,
         "kind": "pct"
       }
     ],
@@ -1782,9 +1782,9 @@
             },
             {
               "date": "2026-06-22",
-              "gd": 0.5573,
-              "id": 0.376,
-              "lpe": 1.3983,
+              "gd": 0.6,
+              "id": 0.3493,
+              "lpe": 1.4214,
               "reg": "Reflation"
             }
           ],
@@ -46388,156 +46388,156 @@
             },
             {
               "date": "2026-06-01",
-              "gd": 0.4922,
-              "id": 1.1082,
-              "lpe": 0.9902,
+              "gd": 0.4923,
+              "id": 1.108,
+              "lpe": 0.9877,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-02",
-              "gd": 0.6225,
-              "id": 1.0698,
-              "lpe": 1.0017,
+              "gd": 0.6228,
+              "id": 1.0695,
+              "lpe": 0.9992,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-03",
               "gd": 0.4534,
-              "id": 1.1442,
-              "lpe": 1.0657,
+              "id": 1.144,
+              "lpe": 1.0629,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-04",
-              "gd": 0.5365,
-              "id": 0.9752,
-              "lpe": 1.0502,
+              "gd": 0.5366,
+              "id": 0.9751,
+              "lpe": 1.0474,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-05",
-              "gd": 0.0071,
-              "id": 1.067,
-              "lpe": 1.195,
+              "gd": 0.0073,
+              "id": 1.0669,
+              "lpe": 1.1916,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-06",
-              "gd": 0.0071,
-              "id": 1.0677,
-              "lpe": 1.1927,
+              "gd": 0.0073,
+              "id": 1.0676,
+              "lpe": 1.1893,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-07",
-              "gd": 0.0071,
-              "id": 1.0685,
-              "lpe": 1.1905,
+              "gd": 0.0073,
+              "id": 1.0684,
+              "lpe": 1.1871,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-08",
-              "gd": -0.0172,
-              "id": 1.0877,
-              "lpe": 1.2145,
+              "gd": -0.0169,
+              "id": 1.0876,
+              "lpe": 1.2109,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-09",
-              "gd": -0.0481,
+              "gd": -0.0478,
               "id": 0.9248,
-              "lpe": 1.2889,
+              "lpe": 1.285,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-10",
-              "gd": -0.23,
+              "gd": -0.2297,
               "id": 0.9869,
-              "lpe": 1.3643,
+              "lpe": 1.36,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-11",
-              "gd": 0.0436,
-              "id": 0.6443,
-              "lpe": 1.3846,
+              "gd": 0.044,
+              "id": 0.6444,
+              "lpe": 1.3802,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-12",
-              "gd": 0.3547,
-              "id": 0.6824,
-              "lpe": 1.2523,
+              "gd": 0.3551,
+              "id": 0.6825,
+              "lpe": 1.2486,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-13",
-              "gd": 0.3548,
-              "id": 0.6831,
-              "lpe": 1.255,
+              "gd": 0.3552,
+              "id": 0.6832,
+              "lpe": 1.2513,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-14",
-              "gd": 0.3553,
-              "id": 0.6839,
-              "lpe": 1.2523,
+              "gd": 0.3558,
+              "id": 0.684,
+              "lpe": 1.2485,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-15",
-              "gd": 0.6122,
-              "id": 0.6359,
-              "lpe": 1.1512,
+              "gd": 0.6125,
+              "id": 0.6361,
+              "lpe": 1.148,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-16",
-              "gd": 0.601,
-              "id": 0.445,
-              "lpe": 1.1529,
+              "gd": 0.6014,
+              "id": 0.4453,
+              "lpe": 1.1496,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-17",
-              "gd": 0.4848,
-              "id": 0.5116,
-              "lpe": 1.1706,
+              "gd": 0.4852,
+              "id": 0.5119,
+              "lpe": 1.1675,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-18",
-              "gd": 0.656,
-              "id": 0.3835,
-              "lpe": 1.3381,
+              "gd": 0.6564,
+              "id": 0.3838,
+              "lpe": 1.3343,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-19",
-              "gd": 0.6137,
-              "id": 0.383,
-              "lpe": 1.4079,
+              "gd": 0.614,
+              "id": 0.3834,
+              "lpe": 1.4037,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-20",
-              "gd": 0.6137,
-              "id": 0.3836,
-              "lpe": 1.4047,
+              "gd": 0.614,
+              "id": 0.3839,
+              "lpe": 1.4005,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-21",
-              "gd": 0.6138,
-              "id": 0.3842,
-              "lpe": 1.4015,
+              "gd": 0.6141,
+              "id": 0.3845,
+              "lpe": 1.3974,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-22",
-              "gd": 0.5573,
-              "id": 0.376,
-              "lpe": 1.3983,
+              "gd": 0.6,
+              "id": 0.3493,
+              "lpe": 1.4214,
               "reg": "Reflation"
             }
           ]
@@ -46574,7 +46574,7 @@
             {
               "label": "YTD",
               "model": {
-                "value": 1.75,
+                "value": 1.86,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46585,7 +46585,7 @@
             {
               "label": "1 Year",
               "model": {
-                "value": 13.46,
+                "value": 13.59,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46596,7 +46596,7 @@
             {
               "label": "3 Year",
               "model": {
-                "value": 67.14,
+                "value": 67.33,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46607,7 +46607,7 @@
             {
               "label": "5 Year",
               "model": {
-                "value": 104.44,
+                "value": 104.67,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46618,7 +46618,7 @@
             {
               "label": "Inception",
               "model": {
-                "value": 286.11,
+                "value": 286.55,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46629,7 +46629,7 @@
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 17.35,
+                "value": 17.36,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46666,7 +46666,7 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 1.75,
+                "value": 1.86,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46798,7 +46798,7 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 17.35,
+                "value": 17.36,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46820,7 +46820,7 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.304,
+                "value": 1.3053,
                 "kind": "ratio"
               },
               "bench": {
@@ -46831,7 +46831,7 @@
             {
               "label": "Sortino",
               "model": {
-                "value": 1.8814,
+                "value": 1.8833,
                 "kind": "ratio"
               },
               "bench": {
@@ -46842,7 +46842,7 @@
             {
               "label": "Calmar",
               "model": {
-                "value": 2.0595,
+                "value": 2.0645,
                 "kind": "ratio"
               },
               "bench": {
@@ -46853,7 +46853,7 @@
             {
               "label": "MAR",
               "model": {
-                "value": 1.3315,
+                "value": 1.3327,
                 "kind": "ratio"
               },
               "bench": {
@@ -46886,7 +46886,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.5135,
+                "value": 0.5129,
                 "kind": "ratio"
               },
               "bench": {
@@ -46897,7 +46897,7 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3211,
+                "value": 1.3215,
                 "kind": "ratio"
               },
               "bench": {
@@ -46919,7 +46919,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 43.0,
+                "value": 42.9,
                 "kind": "pct_signed"
               },
               "bench": {
