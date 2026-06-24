@@ -38605,7 +38605,7 @@
           "band": 3.75,
           "std": 7.5,
           "held_sign": 1,
-          "dz": -2.0,
+          "dz": -1.28,
           "flip_name": "Deflation",
           "flip_side": "left"
         },
@@ -38643,7 +38643,7 @@
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": -0.02,
+          "dz": -0.22,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -38654,7 +38654,7 @@
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.1,
+          "dz": 0.18,
           "cand": 0.0,
           "cnt": 0,
           "need": null
