@@ -321,7 +321,13 @@ function blkRebalancing(b, data) {
         ${col('ITD', mk('itd'), false)}
         ${col('AVERAGE / YR', mk('yr'), true)}</div>`;
 
-    const rebalGrid = grid(p => [['Regime', sp[p].regime], ['VAMS', sp[p].vams], ['Total', sp[p].total]]);
+    // Row keys/labels: models may anonymise (Hedra emits macro/trend); default
+    // to regime/vams for Eidos/Aegis.
+    const ka = (sp.keys && sp.keys.a) || 'regime';
+    const kb = (sp.keys && sp.keys.b) || 'vams';
+    const la = (sp.labels && sp.labels.a) || 'Regime';
+    const lb = (sp.labels && sp.labels.b) || 'VAMS';
+    const rebalGrid = grid(p => [[la, sp[p][ka]], [lb, sp[p][kb]], ['Total', sp[p].total]]);
     let roBlock = '';
     if (ro) {
       const roGrid = grid(p => [['To risk-off', ro[p].off], ['To risk-on', ro[p].on], ['Total', ro[p].total]]);
