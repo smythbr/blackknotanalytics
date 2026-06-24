@@ -309,11 +309,11 @@ function blkRebalancing(b, data) {
         const pad = isTotal ? 'padding:11px 0 0;' : 'padding:9px 0;border-bottom:1px solid #161616;';
         const lblWt = isTotal ? 'font-weight:600;letter-spacing:0.06em;' : '';
         return `<div style="display:flex;justify-content:space-between;align-items:baseline;${pad}">
-          <span style="color:${lblCol};font-size:var(--fs-md,0.9375rem);${lblWt}">${r[0]}</span>
+          <span style="color:${lblCol};font-size:clamp(11.5px,3.3vw,15px);${lblWt}white-space:nowrap;">${r[0]}</span>
           <span style="color:${valCol};font-size:${valSz};font-weight:${valWt};font-variant-numeric:tabular-nums;">${r[1]}</span></div>`;
       }).join('');
-      return `<div style="${last ? '' : 'border-right:1px solid #1c1c1c;'}padding:0 26px;">
-        <div style="color:#9a9a9a;font-size:11px;font-weight:700;letter-spacing:0.18em;margin-bottom:16px;">${title}</div>
+      return `<div style="${last ? '' : 'border-right:1px solid #1c1c1c;'}padding:0 clamp(7px,2.8vw,26px);min-width:0;">
+        <div style="color:#9a9a9a;font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:clamp(0.05em,1.2vw,0.18em);margin-bottom:16px;white-space:nowrap;">${title}</div>
         ${body}</div>`;
     };
     const grid = (mk) => `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
