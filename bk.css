@@ -751,6 +751,10 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 @media (max-width: 768px) {
   .mv-grid { flex-direction: column; }
   .mv-plane, .mv-readout { min-width: 0; }
+  /* The vertical liquidity gauge is a fixed-width SVG; stacked full-width it
+     becomes a tall near-empty column. Liquidity already shows as a stat card
+     in the readout, so hide the redundant gauge on phones. */
+  .mv-lgauge { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════

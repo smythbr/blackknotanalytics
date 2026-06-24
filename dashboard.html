@@ -193,25 +193,25 @@ function renderWeights(weights, mapLabel) {
 
 function renderDecomp(decomp, mapLabel) {
   const serif = "'Cormorant Garamond',Georgia,serif";
-  const head = decomp.map(d => `<div style="text-align:center;color:#8a8a8a;font-size:12px;font-weight:600;letter-spacing:0.14em;padding-bottom:4px;">${(mapLabel?mapLabel(d.label):d.label).toUpperCase()}</div>`).join('');
+  const head = decomp.map(d => `<div style="text-align:center;color:#8a8a8a;font-size:clamp(9px,2.6vw,12px);font-weight:600;letter-spacing:0.1em;padding-bottom:4px;">${(mapLabel?mapLabel(d.label):d.label).toUpperCase()}</div>`).join('');
   const rl = (txt, op) => `<div style="display:flex;align-items:center;gap:5px;color:#7a7a7a;font-size:11px;font-weight:500;letter-spacing:0.1em;">${op?`<span style="color:#6a6a6a;font-size:15px;font-family:${serif};">${op}</span>`:''}${txt}</div>`;
   const bookRow = decomp.map(d =>
-    `<div style="text-align:center;padding:8px 0;font-family:${serif};font-size:25px;color:${d.book===0?'#4a4a4a':'#e8e8e8'};">${d.book}%</div>`).join('');
+    `<div style="text-align:center;padding:8px 0;font-family:${serif};font-size:clamp(15px,4.4vw,25px);color:${d.book===0?'#4a4a4a':'#e8e8e8'};">${d.book}%</div>`).join('');
   const vamsRow = decomp.map(d => {
     if (d.scalar === null || d.scalar === undefined)
-      return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:22px;color:#6a6a6a;line-height:1.1;">&mdash;</div><div style="color:#5c5c5c;font-size:10px;letter-spacing:0.1em;">SWEEP</div></div>`;
+      return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:clamp(14px,4vw,22px);color:#6a6a6a;line-height:1.1;">&mdash;</div><div style="color:#5c5c5c;font-size:10px;letter-spacing:0.1em;">SWEEP</div></div>`;
     const full = d.scalar >= 0.999, half = d.scalar > 0.001 && d.scalar < 0.999;
     const c = full ? '#4ade80' : (half ? '#e0a93f' : '#e2564f');
     const tc = full ? '#3f8a55' : (half ? '#8a6a2f' : '#9a4a45');
     const tag = full ? 'HELD' : 'SCALED';
-    return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:22px;color:${c};line-height:1.1;">${d.scalar.toFixed(1)}&times;</div><div style="color:${tc};font-size:10px;letter-spacing:0.1em;">${tag}</div></div>`;
+    return `<div style="text-align:center;padding:6px 0;"><div style="font-family:${serif};font-size:clamp(14px,4vw,22px);color:${c};line-height:1.1;">${d.scalar.toFixed(1)}&times;</div><div style="color:${tc};font-size:10px;letter-spacing:0.1em;">${tag}</div></div>`;
   }).join('');
   const netRow = decomp.map(d => {
     const on = d.net !== 0;
-    return `<div style="padding:16px 0;text-align:center;background:${on?'#101814':'#0c0c0c'};border:1px solid #1c1c1c;border-top:2px solid ${on?'#4ade80':'#2a2a2a'};font-family:${serif};font-size:32px;color:${on?'#ffffff':'#4a4a4a'};">${d.net}%</div>`;
+    return `<div style="padding:16px 0;text-align:center;background:${on?'#101814':'#0c0c0c'};border:1px solid #1c1c1c;border-top:2px solid ${on?'#4ade80':'#2a2a2a'};font-family:${serif};font-size:clamp(18px,5.2vw,32px);color:${on?'#ffffff':'#4a4a4a'};">${d.net}%</div>`;
   }).join('');
-  const cols = `90px repeat(${decomp.length},1fr)`;
-  return `<div style="display:grid;grid-template-columns:${cols};gap:10px;align-items:center;margin-top:6px;">
+  const cols = `clamp(46px,13vw,90px) repeat(${decomp.length},minmax(0,1fr))`;
+  return `<div style="display:grid;grid-template-columns:${cols};gap:clamp(4px,1.6vw,10px);align-items:center;margin-top:6px;">
       <div></div>${head}
       ${rl('Book')}${bookRow}
       ${rl('VAMS','&times;')}${vamsRow}
@@ -789,8 +789,8 @@ function blkVamsFlip(b, data) {
     return `<div style="display:grid;grid-template-columns:1fr 150px;gap:22px;align-items:center;margin-bottom:28px;">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;">
-          <span style="color:#e8e8e8;font-size:15px;font-weight:700;letter-spacing:0.1em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:12.5px;font-weight:600;margin-left:8px;">${stTag}</span></span>
-          <span style="color:#b0b0b0;font-size:13px;">z <span style="color:${stCol};font-family:${serif};font-size:19px;">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
+          <span style="color:#e8e8e8;font-size:clamp(12px,3.8vw,15px);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:clamp(10px,3vw,12.5px);font-weight:600;margin-left:clamp(4px,1.5vw,8px);">${stTag}</span></span>
+          <span style="color:#b0b0b0;font-size:clamp(11px,3.2vw,13px);white-space:nowrap;">z <span style="color:${stCol};font-family:${serif};font-size:clamp(15px,4.8vw,19px);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
         </div>
         <div style="position:relative;height:32px;background:#0e0e0e;border:1px solid #262626;">
           <div style="position:absolute;left:${zoneL}%;width:${zoneW}%;top:0;bottom:0;background:${fillCol};"></div>
