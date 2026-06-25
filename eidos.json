@@ -127,7 +127,7 @@
       "title": "Market View",
       "phase_plane": {
         "schema": "blackknot.eidos.phase.v1",
-        "source": "daily-vote_2026-06-24",
+        "source": "daily-vote_2026-06-25",
         "axes": {
           "x": "inflation",
           "y": "growth",
@@ -38559,7 +38559,7 @@
       "title": "Factor Contribution",
       "contribution": {
         "schema": "blackknot.eidos.contribution.v1",
-        "source": "daily-vote_2026-06-24",
+        "source": "daily-vote_2026-06-25",
         "units": "raw factor units (vote sum). Group bars sum to 'net', which equals the classifier's raw factor exactly. The phase_plane block scales the SAME factor by causal-\u03c3, so net/\u03c3 == phase g|i.",
         "as_of": "2026-06-24",
         "latest": {
@@ -38651,11 +38651,11 @@
         },
         {
           "label": "Gold",
-          "z": -2.42,
+          "z": -2.43,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": -0.33,
+          "dz": -0.34,
           "cand": 0.0,
           "cnt": 0,
           "need": null
