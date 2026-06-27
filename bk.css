@@ -715,13 +715,13 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .db-block:last-child { margin-bottom: 0; }
 
 /* ═══════════════════════════════════════════════════════════════
-   8a — MARKET VIEW  ·  GIL phase-plane instrument embed (Aegis)
+   8a — MARKET VIEW  ·  GIL phase-plane (Aegis)
    ───────────────────────────────────────────────────────────────
-   Desktop-only section: embeds the standalone aegis_gil_instrument.html
-   (the rich interactive phase plane). Hidden below the tablet breakpoint —
-   the instrument is too large/interaction-heavy for a phone, so mobile keeps
-   the lean Signal → Performance flow. The iframe is self-contained (its own
-   styles/SVG/JS); we only frame and size it here.
+   Desktop-only section: renders the phase plane NATIVELY from the aegis.json
+   market_view block (no iframe — the standalone instrument HTML is retired).
+   Hidden below the tablet breakpoint — too large/interaction-heavy for a phone,
+   so mobile keeps the lean Signal → Performance flow. Styles the native grid,
+   plane panel, scrubber, and toggle controls below.
 ═══════════════════════════════════════════════════════════════ */
 .mv-grid { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-top: 18px; }
 .mv-plane { flex: 1.4; min-width: 300px; background: var(--card-bg, #0D0D0D); border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 16px; }

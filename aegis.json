@@ -90,10 +90,20 @@
       ]
     },
     {
+      "type": "changes",
+      "visible": true,
+      "events": [
+        {
+          "kind": "regime",
+          "from": "Reflation",
+          "to": "Goldilocks"
+        }
+      ]
+    },
+    {
       "type": "market_view",
       "visible": true,
       "title": "Market View",
-      "embed": "aegis_gil_instrument.html",
       "desktop_only": true,
       "gil": {
         "schema": "blackknot.aegis.gil.v1",

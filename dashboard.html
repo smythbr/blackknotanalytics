@@ -236,6 +236,50 @@ function blkSignal(b, data) {
     <div class="signal-panel">${inner}</div></div>`;
 }
 
+// ── Change events (REGIME / ASSET VAMS lines vs last committed state) ──────────
+// Published for owned models (Eidos/Aegis); Hedra's block is visible:false and is
+// skipped by the dispatch loop, so nothing IP-sensitive ever renders. Colours
+// match the model convention: regimes G/R = green (risk-on), S/D/Inflation = red;
+// VAMS scalars Bullish = green, Neutral = amber, Bearish = red. No events ⇒ the
+// block renders nothing (an empty, quiet day).
+const RISKON_REGIMES = { Goldilocks: 1, Reflation: 1 };
+const SCALAR_LABEL = { 1: 'Bullish', 0.5: 'Neutral', 0: 'Bearish' };
+function regimeColor(r) { return RISKON_REGIMES[r] ? '#4ade80' : '#e2564f'; }
+function scalarColor(s) { return s >= 0.999 ? '#4ade80' : (s > 0.001 ? '#e6b450' : '#e2564f'); }
+function scalarText(s, label) {
+  const word = label || SCALAR_LABEL[s] || '—';
+  return `${word} (${Number(s).toFixed(1)})`;
+}
+function blkChanges(b, data) {
+  const events = b.events || [];
+  if (!events.length) return '';                 // quiet day → render nothing
+  const action = data.model.state === 'action';
+  const bar = action ? '#cc1010' : 'rgba(255,255,255,0.18)';
+  const lines = events.map(ev => {
+    let label, mid;
+    if (ev.kind === 'regime') {
+      label = 'Regime Change';
+      mid = `<span style="color:${regimeColor(ev.from)}">${ev.from}</span>`
+          + `<span style="color:#6f6f69;margin:0 7px">&rarr;</span>`
+          + `<span style="color:${regimeColor(ev.to)}">${ev.to}</span>`;
+    } else if (ev.kind === 'vams') {
+      label = 'Asset VAMS Change';
+      const sleeve = `<span style="color:#9c9c97">${ev.sleeve}</span>`
+                   + `<span style="color:#6f6f69;margin:0 8px">&middot;</span>`;
+      mid = sleeve
+          + `<span style="color:${scalarColor(ev.from)}">${scalarText(ev.from, ev.from_label)}</span>`
+          + `<span style="color:#6f6f69;margin:0 7px">&rarr;</span>`
+          + `<span style="color:${scalarColor(ev.to)}">${scalarText(ev.to, ev.to_label)}</span>`;
+    } else { return ''; }
+    return `<div class="change-line" style="border-left:2px solid ${bar};padding:3px 0 3px 12px;margin:6px 0;
+      font-size:clamp(11px,2.7vw,13px);letter-spacing:0.04em;">
+      <span style="color:#8a8a84;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85em">${label}</span>
+      <span style="margin-left:10px">${mid}</span></div>`;
+  }).join('');
+  return `<div class="db-block"><div class="db-eyebrow">Changes</div>
+    <div class="signal-panel">${lines}</div></div>`;
+}
+
 function blkPerformance(b, data) {
   let inner;
   if (b.tables && b.tables.length) {
@@ -733,8 +777,8 @@ function blkContribution(b, data) {
 }
 
 const BLOCK_RENDERERS = {
-  signal: blkSignal, performance: blkPerformance, allocation: blkAllocation,
-  rebalancing: blkRebalancing, market_view: blkMarketView,
+  signal: blkSignal, changes: blkChanges, performance: blkPerformance,
+  allocation: blkAllocation, rebalancing: blkRebalancing, market_view: blkMarketView,
   phase_plane: blkPhasePlane, contribution: blkContribution,
   vams_flip: blkVamsFlip,
 };

@@ -80,6 +80,10 @@
       ]
     },
     {
+      "type": "changes",
+      "visible": false
+    },
+    {
       "type": "performance",
       "visible": true,
       "tables": [
