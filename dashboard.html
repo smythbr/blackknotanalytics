@@ -922,7 +922,7 @@ function blkHealth(b, data) {
     border-left:3px solid ${igCol};padding:13px 18px;margin-bottom:16px;">
     <span style="width:8px;height:8px;border-radius:50%;background:${igCol};flex:none;"></span>
     <span style="font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${GREY};flex:1;">Integrity floor</span>
-    <span style="font-size:clamp(11px,2.7vw,13px);color:${SOFT};">data · reads · relationships ${ig.level==='green'?'intact':ig.level}</span></div>`;
+    <span style="font-size:clamp(11px,2.7vw,13px);color:${SOFT};">data · reads ${ig.level==='green'?'valid':ig.level}</span></div>`;
 
   // severity ladder
   const steps = ['TRUST','LOOK','ACT','SERIOUS'], lbl = {TRUST:'Trust',LOOK:'Look',ACT:'Act',SERIOUS:'Serious'};

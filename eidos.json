@@ -44883,15 +44883,11 @@
           }
         ],
         "integrity": {
-          "level": "amber",
+          "level": "green",
           "items": [
             {
               "node": "data_quality",
               "level": "green"
-            },
-            {
-              "node": "relationships",
-              "level": "amber"
             },
             {
               "node": "sensor_reads",
