@@ -250,9 +250,16 @@ function scalarText(s, label) {
   const word = label || SCALAR_LABEL[s] || '—';
   return `${word} (${Number(s).toFixed(1)})`;
 }
-function blkChanges(b, data) {
+// Change lines (REGIME / ASSET VAMS) — returned as inline rows for the header
+// block, NOT a standalone section. Reads the `changes` block from data.blocks.
+// Hedra's changes block is visible:false → returns '' (suppressed). No events
+// (quiet day) → returns ''. Colours: regimes G/R green, S/D red; VAMS Bullish
+// green, Neutral amber, Bearish red. Accent bar red on action, grey otherwise.
+function changeLinesFor(data) {
+  const b = (data.blocks || []).find(x => x.type === 'changes');
+  if (!b || !b.visible) return '';               // missing or Hedra-suppressed
   const events = b.events || [];
-  if (!events.length) return '';                 // quiet day → render nothing
+  if (!events.length) return '';                 // quiet day
   const action = data.model.state === 'action';
   const bar = action ? '#cc1010' : 'rgba(255,255,255,0.18)';
   const lines = events.map(ev => {
@@ -276,8 +283,7 @@ function blkChanges(b, data) {
       <span style="color:#8a8a84;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85em">${label}</span>
       <span style="margin-left:10px">${mid}</span></div>`;
   }).join('');
-  return `<div class="db-block"><div class="db-eyebrow">Changes</div>
-    <div class="signal-panel">${lines}</div></div>`;
+  return `<div class="change-lines" style="margin:14px 0 4px;">${lines}</div>`;
 }
 
 function blkPerformance(b, data) {
@@ -777,7 +783,7 @@ function blkContribution(b, data) {
 }
 
 const BLOCK_RENDERERS = {
-  signal: blkSignal, changes: blkChanges, performance: blkPerformance,
+  signal: blkSignal, performance: blkPerformance,
   allocation: blkAllocation, rebalancing: blkRebalancing, market_view: blkMarketView,
   phase_plane: blkPhasePlane, contribution: blkContribution,
   vams_flip: blkVamsFlip,
@@ -877,8 +883,13 @@ function renderCard(data) {
 function renderModelPage(data) {
   const m = data.model;
   const asOf = m.as_of ? `Updated as at market close · ${fmtDate(m.as_of)}` : 'Awaiting first published signal';
-  let html = `<div class="db-eyebrow">Model</div>
+  // Change lines (REGIME / ASSET VAMS) ride in the header block, between the
+  // badge and the date. Sourced from the `changes` block; Hedra's is
+  // visible:false so changeLinesFor() returns '' and nothing shows.
+  const changeLines = changeLinesFor(data);
+  let html = `<div class="db-eyebrow">Today's Signal</div>
     <h1 class="db-title">${m.name}<span class="signal-badge ${stateClass(m.state)}">${stateLabel(m.state)}</span></h1>
+    ${changeLines}
     <div class="signal-date">${asOf}</div>`;
   (data.blocks || []).forEach(b => {
     if (!b.visible) return;
