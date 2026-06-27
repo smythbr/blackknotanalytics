@@ -44776,6 +44776,192 @@
           }
         }
       }
+    },
+    {
+      "type": "health",
+      "visible": true,
+      "title": "System Health",
+      "health": {
+        "schema": "blackknot.health.v1",
+        "app": "eidos",
+        "date": "2026-06-26",
+        "severity": "TRUST",
+        "n_lit": 0,
+        "lit": [],
+        "weighted_confluence": 0.0,
+        "footprints": [
+          {
+            "key": "speed_shock",
+            "label": "Speed shock",
+            "tail": "left",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.066,
+            "ci": [
+              0.043,
+              0.093
+            ]
+          },
+          {
+            "key": "vol_disagree",
+            "label": "Volatility disagreement",
+            "tail": "left",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.066,
+            "ci": [
+              0.052,
+              0.083
+            ]
+          },
+          {
+            "key": "session_gap",
+            "label": "Session gap",
+            "tail": "left",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.051,
+            "ci": [
+              0.006,
+              0.138
+            ]
+          },
+          {
+            "key": "whipsaw",
+            "label": "Whipsaw",
+            "tail": "left",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.041,
+            "ci": [
+              0.035,
+              0.048
+            ]
+          },
+          {
+            "key": "restore_lag",
+            "label": "Restore lag",
+            "tail": "right",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.149,
+            "ci": [
+              0.132,
+              0.167
+            ]
+          },
+          {
+            "key": "over_defensive",
+            "label": "Over-defensive",
+            "tail": "right",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.108,
+            "ci": [
+              0.086,
+              0.132
+            ]
+          },
+          {
+            "key": "sleeve_miss",
+            "label": "Sleeve miss",
+            "tail": "right",
+            "lit": false,
+            "confidence": "firm",
+            "run_len": 0,
+            "hit_rate": 0.126,
+            "ci": [
+              0.086,
+              0.172
+            ]
+          }
+        ],
+        "integrity": {
+          "level": "amber",
+          "items": [
+            {
+              "node": "data_quality",
+              "level": "green"
+            },
+            {
+              "node": "relationships",
+              "level": "amber"
+            },
+            {
+              "node": "sensor_reads",
+              "level": "green"
+            }
+          ]
+        },
+        "immediate": [
+          "stress-line: -29% on a quiet book"
+        ],
+        "scores": {
+          "speed_shock": 0.6128049620838849,
+          "vol_disagree": 0.796067081439745,
+          "session_gap": 0.2892549446747861,
+          "whipsaw": 0.34782608695652173,
+          "restore_lag": 0.0,
+          "over_defensive": 0.0,
+          "sleeve_miss": 0.0
+        },
+        "thresholds": {
+          "speed_shock": 1.1,
+          "vol_disagree": 1.1,
+          "session_gap": 1.1,
+          "whipsaw": 1.1,
+          "restore_lag": 1.1,
+          "over_defensive": 1.1,
+          "sleeve_miss": 1.1
+        },
+        "source": "eidos_health.v1",
+        "performance": {
+          "itd": {
+            "unit": "cagr",
+            "value": 0.1564,
+            "ci95": [
+              0.08393285108499515,
+              0.2377910565527359
+            ],
+            "likely": [
+              0.12944907576962536,
+              0.183925176562267
+            ],
+            "p_gt0": 1.0,
+            "p_gt10": 0.93375,
+            "years": 8.5
+          },
+          "ytd": {
+            "unit": "absolute",
+            "value": 0.038641360414468195,
+            "ci95": [
+              -0.10697801901431808,
+              0.1439375397242524
+            ],
+            "likely": [
+              -0.02887403818224188,
+              0.05536284566680871
+            ],
+            "months": 5.8
+          }
+        },
+        "stress_replay": {
+          "2020 COVID": -0.2862,
+          "2022 rates": -0.2053,
+          "2018-Q4": -0.1625
+        },
+        "recovery_replay": {
+          "2020 snapback": 0.0569,
+          "2023 rally": 0.0756,
+          "2019 melt-up": 0.0381
+        }
+      }
     }
   ]
 }

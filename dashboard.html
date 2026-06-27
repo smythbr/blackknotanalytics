@@ -787,6 +787,7 @@ const BLOCK_RENDERERS = {
   allocation: blkAllocation, rebalancing: blkRebalancing, market_view: blkMarketView,
   phase_plane: blkPhasePlane, contribution: blkContribution,
   vams_flip: blkVamsFlip,
+  health: blkHealth,
 };
 
 // ── VAMS distance / direction / confirm panel (own block type) ──
@@ -860,6 +861,135 @@ function blkVamsFlip(b, data) {
   return `<div class="db-block"><div class="db-eyebrow">${b.title || 'VAMS · Distance & Direction'}</div>
     ${rows}</div>`;
 }
+
+// ── SYSTEM HEALTH (diagnostic suite — bottom section) ──────
+function blkHealth(b, data) {
+  const h = b.health;
+  if (!h) {
+    return `<div class="db-block"><div class="db-eyebrow">System Health</div>
+      <div class="db-title" style="font-size:15px;margin-bottom:6px;">Diagnostic Suite</div>
+      <div style="color:#8a8a8a;font-size:12.5px;">Health is published once the signal is live.</div></div>`;
+  }
+  const serif = "'Cormorant Garamond',Georgia,serif";
+  const GREEN = '#4ade80', AMBER = '#e6b450', RED = '#e2564f', GREY = '#9C9C97', SOFT = '#C8C8C4';
+  const sevColor = { TRUST: GREEN, LOOK: AMBER, ACT: '#d87830', SERIOUS: RED };
+  const sevWord  = { TRUST: 'healthy', LOOK: 'watch', ACT: 'act', SERIOUS: 'at risk' };
+  const verdictMsg = {
+    TRUST: 'Performing as designed · trust the model',
+    LOOK:  'A footprint is showing · take a look',
+    ACT:   'Footprints agree · review the exposure',
+    SERIOUS: 'Serious risk · do not blindly follow',
+  };
+  const sc = sevColor[h.severity] || GREEN;
+
+  // section header — RORO grammar
+  let html = `<div class="db-block"><div class="db-eyebrow">System Health</div>
+    <div class="db-title" style="font-size:15px;margin-bottom:6px;">Diagnostic Suite</div>
+    <div style="color:#8a8a8a;font-size:12.5px;margin-bottom:20px;">Whether following the model is currently safe — on both tails</div>`;
+
+  // verdict strip
+  html += `<div style="display:flex;align-items:center;gap:14px;background:#0D0D0D;
+    border:1px solid rgba(204,16,16,0.18);border-left:3px solid ${sc};padding:16px 18px;margin-bottom:14px;">
+    <span style="width:15px;height:15px;border-radius:50%;background:${sc};flex:none;box-shadow:0 0 0 5px ${sc}26;"></span>
+    <div style="flex:1;min-width:0;">
+      <div style="font-family:${serif};font-size:clamp(1.4rem,4.2vw,1.8rem);font-weight:300;line-height:1.1;">Eidos is <em style="font-style:italic;color:${sc};">${sevWord[h.severity]||''}</em></div>
+      <div style="font-size:clamp(11px,2.7vw,13.5px);color:${GREY};">${verdictMsg[h.severity]||''}</div></div>
+    <span style="font-size:11px;color:${GREY};white-space:nowrap;">${h.date||''}</span></div>`;
+
+  // performance bars
+  html += healthBars(h.performance, serif, GREEN, GREY, SOFT);
+
+  // two tails (two columns, RORO divider idiom)
+  const left  = (h.footprints || []).filter(f => f.tail === 'left');
+  const right = (h.footprints || []).filter(f => f.tail === 'right');
+  const fpRow = f => `<div style="display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #161616;">
+      <span style="width:7px;height:7px;border-radius:50%;background:${f.lit?RED:GREEN};flex:none;"></span>
+      <span style="font-size:clamp(11.5px,3vw,14px);color:${SOFT};flex:1;min-width:0;">${f.label}</span>
+      <span style="font-size:clamp(9px,2.4vw,11px);color:${GREY};white-space:nowrap;">${f.confidence}</span></div>`;
+  const tailCol = (title, fps, rep, cap, isMiss, last) =>
+    `<div style="${last?'':'border-right:1px solid #1c1c1c;'}padding:0 clamp(7px,2.8vw,22px);min-width:0;">
+      <div style="color:#9a9a9a;font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:clamp(0.05em,1.2vw,0.18em);text-transform:uppercase;margin-bottom:14px;white-space:nowrap;">${title}</div>
+      ${fps.map(fpRow).join('')}
+      ${replayLine(rep, cap, GREY, SOFT, isMiss)}</div>`;
+  html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:18px;background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);padding:18px 4px;">
+    ${tailCol('Downside · the hit', left, h.stress_replay, 'if a shock repeats', false, false)}
+    ${tailCol('Upside · the miss', right, h.recovery_replay, 'upside missed if defensive', true, true)}</div>`;
+
+  // integrity floor
+  const ig = h.integrity || { level: 'green' };
+  const igCol = ig.level === 'red' ? RED : (ig.level === 'amber' ? AMBER : GREEN);
+  html += `<div style="display:flex;align-items:center;gap:12px;background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);
+    border-left:3px solid ${igCol};padding:13px 18px;margin-bottom:16px;">
+    <span style="width:8px;height:8px;border-radius:50%;background:${igCol};flex:none;"></span>
+    <span style="font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${GREY};flex:1;">Integrity floor</span>
+    <span style="font-size:clamp(11px,2.7vw,13px);color:${SOFT};">data · reads · relationships ${ig.level==='green'?'intact':ig.level}</span></div>`;
+
+  // severity ladder
+  const steps = ['TRUST','LOOK','ACT','SERIOUS'], lbl = {TRUST:'Trust',LOOK:'Look',ACT:'Act',SERIOUS:'Serious'};
+  html += `<div style="display:flex;gap:6px;align-items:stretch;">` +
+    steps.map(s => {
+      const on = s === h.severity, col = sevColor[s];
+      return `<span style="flex:1;text-align:center;padding:9px 2px;font-size:clamp(10px,2.6vw,12.5px);${on?'font-weight:700;':''}
+        letter-spacing:0.08em;text-transform:uppercase;color:${on?col:GREY};
+        border:1px solid ${on?col+'59':'rgba(255,255,255,0.08)'};background:${on?col+'14':'transparent'};">${lbl[s]}</span>`;
+    }).join('') + `</div>`;
+
+  html += `</div>`;
+  return html;
+}
+
+function replayLine(rep, caption, grey, soft, isMiss) {
+  if (!rep || !Object.keys(rep).length) return '';
+  const parts = Object.entries(rep).map(([k, v]) =>
+    `${k} ${isMiss?'\u2212':''}${Math.abs(v*100).toFixed(0)}${isMiss?'pp':'%'}`).join(' · ');
+  return `<div style="margin-top:11px;padding-top:9px;border-top:1px solid #1c1c1c;">
+    <div style="font-size:clamp(9px,2.3vw,11px);color:${grey};margin-bottom:3px;">${caption}</div>
+    <div style="font-size:clamp(10px,2.6vw,12.5px);color:${soft};">${parts}</div></div>`;
+}
+
+function healthBars(perf, serif, green, grey, soft) {
+  if (!perf) return '';
+  const bar = (cfg) => {
+    const pos = v => Math.max(0, Math.min(100, (v - cfg.axisLo) / (cfg.axisHi - cfg.axisLo) * 100));
+    const ci = cfg.ci95, lk = cfg.likely;
+    const ciL = pos(ci[0]), ciW = pos(ci[1]) - pos(ci[0]);
+    const lkL = pos(lk[0]), lkW = pos(lk[1]) - pos(lk[0]);
+    const ptP = pos(cfg.value);
+    const ticks = [ci[0], lk[0], lk[1], ci[1]];
+    const tickEls = ticks.map((t,i) => `<div style="position:absolute;top:18px;left:${pos(t)}%;width:1px;height:20px;background:${i===0||i===3?'rgba(74,222,128,0.55)':green};"></div>
+      <div style="position:absolute;top:46px;left:${pos(t)}%;transform:translateX(-50%);font-size:clamp(9px,2.3vw,12px);color:${i===0||i===3?grey:soft};white-space:nowrap;">${cfg.fmt(t)}</div>`).join('');
+    const zeroEl = (cfg.axisLo < 0) ? `<div style="position:absolute;top:24px;left:${pos(0)}%;width:1px;height:6px;background:${grey};"></div>
+      <div style="position:absolute;top:33px;left:${pos(0)}%;transform:translateX(-50%);font-size:9px;color:${grey};">0</div>` : '';
+    return `<div style="position:relative;height:58px;">
+      <div style="position:absolute;top:24px;left:0;right:0;height:6px;border-radius:3px;background:rgba(255,255,255,0.07);"></div>
+      ${zeroEl}
+      <div style="position:absolute;top:22px;left:${ciL}%;width:${ciW}%;height:10px;border-radius:5px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);"></div>
+      <div style="position:absolute;top:19px;left:${lkL}%;width:${lkW}%;height:16px;border-radius:8px;background:${green};opacity:0.88;"></div>
+      <div style="position:absolute;top:10px;left:${ptP}%;width:2px;height:34px;background:#fff;"></div>
+      ${tickEls}
+      <div style="position:absolute;top:0;left:0;font-size:clamp(9px,2.2vw,11.5px);color:${grey};">${cfg.fmt(cfg.axisLo)}</div>
+      <div style="position:absolute;top:0;right:0;font-size:clamp(9px,2.2vw,11.5px);color:${grey};">${cfg.fmt(cfg.axisHi)}</div></div>`;
+  };
+  const itd = perf.itd, ytd = perf.ytd;
+  const pctF = v => (v*100).toFixed(0) + '%';
+  const pctS = v => (v>=0?'+':'\u2212') + Math.abs(v*100).toFixed(0) + '%';
+  const card = (eyebrow, unit, big, cfg, foot, accent) =>
+    `<div style="background:#0D0D0D;border:1px solid ${accent};padding:20px clamp(14px,3.5vw,24px);margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;">
+        <span style="font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:${grey};">${eyebrow}</span>
+        <span style="font-size:clamp(10px,2.4vw,12px);color:${grey};">${unit}</span></div>
+      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:22px;">
+        <span style="font-family:${serif};font-size:clamp(1.3rem,4vw,1.5rem);font-weight:400;color:${green};">${big}</span></div>
+      ${bar(cfg)}
+      <div style="font-size:clamp(10px,2.4vw,12px);color:${soft};margin-top:6px;">${foot}</div></div>`;
+  return card('Inception–to–date', 'annualized', (itd.value*100).toFixed(2)+'% CAGR',
+              { value: itd.value, ci95: itd.ci95, likely: itd.likely, axisLo: 0, axisHi: 0.30, fmt: pctF },
+              'solid = likely range · outlined = 95% confidence', 'rgba(204,16,16,0.18)')
+       + card('Year–to–date', 'absolute', (ytd.value>=0?'+':'')+(ytd.value*100).toFixed(1)+'% return',
+              { value: ytd.value, ci95: ytd.ci95, likely: ytd.likely, axisLo: -0.12, axisHi: 0.18, fmt: pctS },
+              'wide band = a few months can’t pin a number yet · read lightly', 'rgba(255,255,255,0.08)');
+}
+
 
 // ── CARD (home grid) ──────────────────────────────────────
 const cardLabel = l => l === 'Fixed Income' ? 'FI' : l;   // card-only shortening
