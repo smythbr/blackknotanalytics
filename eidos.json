@@ -44895,9 +44895,7 @@
             }
           ]
         },
-        "immediate": [
-          "stress-line: -29% on a quiet book"
-        ],
+        "immediate": [],
         "scores": {
           "speed_shock": 0.6128049620838849,
           "vol_disagree": 0.796067081439745,
