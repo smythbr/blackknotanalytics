@@ -982,12 +982,19 @@ function healthBars(perf, serif, green, grey, soft) {
         <span style="font-family:${serif};font-size:clamp(1.3rem,4vw,1.5rem);font-weight:400;color:${green};">${big}</span></div>
       ${bar(cfg)}
       <div style="font-size:clamp(10px,2.4vw,12px);color:${soft};margin-top:6px;">${foot}</div></div>`;
+  // YTD caption is dynamic by ELAPSED months of the calendar year (resets every
+  // Jan via ytd.months → 0), so it reads correctly in perpetuity — never stale.
+  const ym = (ytd.months != null) ? ytd.months : 5;
+  const ytdFoot = ym <= 3 ? 'early days — read lightly'
+                : ym <= 6 ? 'still early — read directionally'
+                : ym <= 9 ? 'most of the year is in'
+                :           'year nearly complete';
   return card('Inception–to–date', 'annualized', (itd.value*100).toFixed(2)+'% CAGR',
               { value: itd.value, ci95: itd.ci95, likely: itd.likely, axisLo: 0, axisHi: 0.30, fmt: pctF },
               'solid = likely range · outlined = 95% confidence', 'rgba(204,16,16,0.18)')
        + card('Year–to–date', 'absolute', (ytd.value>=0?'+':'')+(ytd.value*100).toFixed(1)+'% return',
               { value: ytd.value, ci95: ytd.ci95, likely: ytd.likely, axisLo: -0.12, axisHi: 0.18, fmt: pctS },
-              'wide band = a few months can’t pin a number yet · read lightly', 'rgba(255,255,255,0.08)');
+              ytdFoot, 'rgba(255,255,255,0.08)');
 }
 
 
