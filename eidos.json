@@ -44939,6 +44939,22 @@
           "2020 snapback": 0.0569,
           "2023 rally": 0.0756,
           "2019 melt-up": 0.0381
+        },
+        "developing": {
+          "left": {
+            "state": "building",
+            "gap": 0.53,
+            "slope": 0.33,
+            "label": "Pressure vs defense",
+            "note": "risk-off pressure relative to how far the book has de-risked"
+          },
+          "right": {
+            "state": "steady",
+            "gap": 0.0,
+            "slope": 0.0,
+            "label": "Recovery vs re-engagement",
+            "note": "market repair relative to how far the book has re-engaged"
+          }
         }
       }
     }
