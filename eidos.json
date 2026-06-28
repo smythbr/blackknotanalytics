@@ -44797,49 +44797,36 @@
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.066,
+            "hit_rate": 0.095,
             "ci": [
-              0.043,
-              0.093
+              0.053,
+              0.146
             ]
           },
           {
-            "key": "vol_disagree",
-            "label": "Volatility disagreement",
+            "key": "vol_surge",
+            "label": "Volatility surge",
             "tail": "left",
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.066,
+            "hit_rate": 0.11,
             "ci": [
-              0.052,
-              0.083
+              0.086,
+              0.136
             ]
           },
           {
-            "key": "session_gap",
-            "label": "Session gap",
+            "key": "vix_accel",
+            "label": "Volatility acceleration",
             "tail": "left",
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.051,
+            "hit_rate": 0.094,
             "ci": [
-              0.006,
-              0.138
-            ]
-          },
-          {
-            "key": "whipsaw",
-            "label": "Whipsaw",
-            "tail": "left",
-            "lit": false,
-            "confidence": "firm",
-            "run_len": 0,
-            "hit_rate": 0.041,
-            "ci": [
-              0.035,
-              0.048
+              0.051,
+              0.147
             ]
           },
           {
@@ -44849,10 +44836,10 @@
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.149,
+            "hit_rate": 0.129,
             "ci": [
-              0.132,
-              0.167
+              0.114,
+              0.144
             ]
           },
           {
@@ -44862,10 +44849,10 @@
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.108,
+            "hit_rate": 0.136,
             "ci": [
-              0.086,
-              0.132
+              0.113,
+              0.16
             ]
           },
           {
@@ -44875,10 +44862,10 @@
             "lit": false,
             "confidence": "firm",
             "run_len": 0,
-            "hit_rate": 0.126,
+            "hit_rate": 0.139,
             "ci": [
-              0.086,
-              0.172
+              0.118,
+              0.161
             ]
           }
         ],
@@ -44897,22 +44884,20 @@
         },
         "immediate": [],
         "scores": {
-          "speed_shock": 0.6128049620838849,
-          "vol_disagree": 0.796067081439745,
-          "session_gap": 0.2892549446747861,
-          "whipsaw": 0.34782608695652173,
+          "speed_shock": 0.007231373616869652,
+          "vol_surge": 0.559376518801066,
+          "vix_accel": 0.12256099241677698,
           "restore_lag": 0.0,
           "over_defensive": 0.0,
           "sleeve_miss": 0.0
         },
         "thresholds": {
-          "speed_shock": 1.1,
-          "vol_disagree": 1.1,
-          "session_gap": 1.1,
-          "whipsaw": 1.1,
-          "restore_lag": 1.1,
-          "over_defensive": 1.1,
-          "sleeve_miss": 1.1
+          "speed_shock": 0.0152,
+          "vol_surge": 1.6751986644407344,
+          "vix_accel": 0.26885,
+          "restore_lag": 1.0111092408685407,
+          "over_defensive": 0.9949748743718594,
+          "sleeve_miss": 1.0095430884904568
         },
         "source": "eidos_health.v1",
         "performance": {
