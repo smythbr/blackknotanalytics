@@ -128,7 +128,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 21.4,
+                "value": 20.46,
                 "kind": "pct_signed"
               }
             },
@@ -139,7 +139,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 74.67,
+                "value": 75.39,
                 "kind": "pct_signed"
               }
             },
@@ -363,7 +363,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.5496,
+                "value": 0.5495,
                 "kind": "ratio"
               }
             },
@@ -374,7 +374,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7697,
+                "value": 0.7695,
                 "kind": "ratio"
               }
             },
@@ -385,7 +385,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7286,
+                "value": 0.7343,
                 "kind": "ratio"
               }
             },
@@ -396,7 +396,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2868,
+                "value": 0.2867,
                 "kind": "ratio"
               }
             },
@@ -425,7 +425,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.4726,
+                "value": 0.4716,
                 "kind": "ratio"
               },
               "bench": {

@@ -131,7 +131,7 @@
       "title": "Market View",
       "phase_plane": {
         "schema": "blackknot.eidos.phase.v1",
-        "source": "daily-vote_2026-06-26",
+        "source": "daily-vote_2026-06-27",
         "axes": {
           "x": "inflation",
           "y": "growth",
@@ -159,7 +159,7 @@
         },
         "counts": {
           "month": 102,
-          "daily": 3099
+          "daily": 3100
         },
         "series": {
           "month": [
@@ -1376,14 +1376,14 @@
               "reg": "Reflation"
             },
             {
-              "date": "2026-06-26",
-              "g": 0.1544,
+              "date": "2026-06-27",
+              "g": -0.1126,
               "i": -1.027,
-              "l": -0.3529,
-              "conv": 1.0385,
-              "gflip": 0.6544,
+              "l": -0.7058,
+              "conv": 1.0331,
+              "gflip": 0.3874,
               "iflip": 1.527,
-              "gpct": 9.8,
+              "gpct": 7.0,
               "ipct": 74.1,
               "reg": "Goldilocks"
             }
@@ -38576,6 +38576,18 @@
               "gpct": 9.8,
               "ipct": 74.1,
               "reg": "Goldilocks"
+            },
+            {
+              "date": "2026-06-27",
+              "g": -0.1126,
+              "i": -1.027,
+              "l": -0.7058,
+              "conv": 1.0331,
+              "gflip": 0.3874,
+              "iflip": 1.527,
+              "gpct": 7.0,
+              "ipct": 74.1,
+              "reg": "Goldilocks"
             }
           ]
         }
@@ -38587,32 +38599,32 @@
       "title": "Factor Contribution",
       "contribution": {
         "schema": "blackknot.eidos.contribution.v1",
-        "source": "daily-vote_2026-06-26",
+        "source": "daily-vote_2026-06-27",
         "units": "raw factor units (vote sum). Group bars sum to 'net', which equals the classifier's raw factor exactly. The phase_plane block scales the SAME factor by causal-\u03c3, so net/\u03c3 == phase g|i.",
-        "as_of": "2026-06-26",
+        "as_of": "2026-06-27",
         "latest": {
           "growth": {
-            "net": 1.1564,
+            "net": -0.8436,
             "bars": [
+              {
+                "group": "liquidity",
+                "value": -4.0,
+                "dissent": false
+              },
               {
                 "group": "equities",
                 "value": 2.1564,
-                "dissent": false
+                "dissent": true
               },
               {
                 "group": "curve",
                 "value": 2.0,
-                "dissent": false
-              },
-              {
-                "group": "liquidity",
-                "value": -2.0,
                 "dissent": true
               },
               {
                 "group": "real_yield",
                 "value": -1.0,
-                "dissent": true
+                "dissent": false
               }
             ]
           },
@@ -38641,7 +38653,7 @@
       "bands": [
         {
           "label": "Growth",
-          "factor": 1.16,
+          "factor": -0.84,
           "band": 3.75,
           "std": 7.49,
           "held_sign": 1,
@@ -38668,7 +38680,7 @@
       "sleeves": [
         {
           "label": "Equity",
-          "z": 1.11,
+          "z": 1.1,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 1.0,
@@ -38679,22 +38691,22 @@
         },
         {
           "label": "Gold",
-          "z": -1.89,
+          "z": -1.94,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": 0.75,
+          "dz": 0.66,
           "cand": 0.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Crypto",
-          "z": -1.82,
+          "z": -1.79,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.23,
+          "dz": -0.21,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -38746,7 +38758,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 21.4,
+                "value": 20.46,
                 "kind": "pct_signed"
               }
             },
@@ -38757,7 +38769,7 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 74.67,
+                "value": 75.39,
                 "kind": "pct_signed"
               }
             },
@@ -38981,7 +38993,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.4919,
+                "value": 0.4916,
                 "kind": "ratio"
               }
             },
@@ -38992,7 +39004,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.6889,
+                "value": 0.6885,
                 "kind": "ratio"
               }
             },
@@ -39003,7 +39015,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7286,
+                "value": 0.7343,
                 "kind": "ratio"
               }
             },
@@ -39014,7 +39026,7 @@
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2868,
+                "value": 0.2867,
                 "kind": "ratio"
               }
             },
@@ -39043,7 +39055,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.4598,
+                "value": 0.4594,
                 "kind": "ratio"
               },
               "bench": {
