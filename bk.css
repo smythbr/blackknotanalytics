@@ -818,12 +818,12 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .mv-contrib-axis { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #B0B0AC; }
 .mv-contrib-net { font-family: var(--font-display); font-size: 1.5rem; }
 .mv-contrib-sub { font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); margin-bottom: 14px; letter-spacing: 0.04em; }
-.mv-bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 10px; margin: 9px 0; }
+.mv-bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 10px; margin: 11px 0; }
 .mv-bar-label { font-size: 0.82rem; color: var(--light-grey, #C8C8C4); text-align: right; letter-spacing: 0.04em; }
-.mv-bar-track { position: relative; height: 16px; background: rgba(255,255,255,0.04); border-radius: 3px; }
-.mv-bar-mid { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: rgba(255,255,255,0.2); }
-.mv-bar-fill { position: absolute; top: 2px; height: 12px; border-radius: 2px; }
-.mv-bar-val { font-size: 0.82rem; color: var(--grey, #9C9C97); font-variant-numeric: tabular-nums; }
+.mv-bar-track { position: relative; height: var(--bk-rail-h, 12px); background: rgba(255,255,255,0.05); border-radius: calc(var(--bk-rail-h, 12px) / 2); }
+.mv-bar-mid { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: rgba(255,255,255,0.22); }
+.mv-bar-fill { position: absolute; top: 0; height: var(--bk-rail-h, 12px); border-radius: 2px; }
+.mv-bar-val { font-size: 0.82rem; color: var(--grey, #9C9C97); font-variant-numeric: tabular-nums; text-align: right; }
 .mv-dissent-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #E24B4A; margin-left: 5px; vertical-align: middle; }
 .mv-contrib-foot { margin-top: 12px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.6; }
 .mv-contrib-foot .dis { color: #E24B4A; }
@@ -840,3 +840,57 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .hs-lab{font-size:0.95rem;color:var(--light-grey);letter-spacing:0.04em;}
 .hs-tick{font-size:0.72rem;color:var(--grey);}
 @media (max-width:480px){.hs-row{grid-template-columns:60px 1fr;gap:8px;}.hs-lab{font-size:0.85rem;}.hs-card{padding:14px 14px;}}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   10 — BK BAR PRIMITIVES  ·  one bar/marker grammar (unify-on-dot)
+   ───────────────────────────────────────────────────────────────
+   Shared atoms used by every horizontal-bar panel on a model page
+   (Model Health, Asset-Class VAMS, Factor deadbands). ONE rail, ONE
+   set of bright fills, ONE glowing-dot marker, ONE reference-line
+   vocabulary, ONE tick + value-label treatment — so the whole page
+   speaks a single visual language instead of three. Geometry is laid
+   out by bkBar() in dashboard.html; colour is data-driven (state).
+═══════════════════════════════════════════════════════════════ */
+:root{ --bk-rail-h:12px; --bk-dot:13px; }
+.bk-cell{ position:relative; }
+.bk-trackwrap{ position:absolute; left:0; right:0; }
+.bk-track{ position:relative; height:var(--bk-rail-h); }
+.bk-rail{ position:absolute; inset:0; border-radius:calc(var(--bk-rail-h)/2);
+  background:rgba(255,255,255,0.05); overflow:hidden; }
+.bk-zone{ position:absolute; top:0; bottom:0; }
+.bk-ref{ position:absolute; top:-3px; height:calc(var(--bk-rail-h) + 6px);
+  width:2px; transform:translateX(-1px); z-index:2; }
+.bk-ref.amber  { background:var(--yellow-neu); }
+.bk-ref.anchor { background:#f0f0f0; }
+.bk-ref.median { background:#ffffff; }
+.bk-ref.soft   { background:var(--grey); width:1.5px; }
+.bk-ref.center { background:rgba(255,255,255,0.22); width:1px; }
+.bk-dot{ position:absolute; top:50%; width:var(--bk-dot); height:var(--bk-dot);
+  border-radius:50%; border:2px solid #0D0D0D; transform:translate(-50%,-50%); z-index:4; }
+.bk-arr-shaft{ position:absolute; top:50%; height:2px; transform:translateY(-50%); z-index:3; }
+.bk-arr-head { position:absolute; top:50%; width:7px; height:7px;
+  border-top:2px solid; border-right:2px solid; z-index:3; }
+.bk-val{ position:absolute; transform:translateX(-50%); white-space:nowrap;
+  font-variant-numeric:tabular-nums; line-height:1; }
+.bk-val.above{ font-size:0.9rem; font-weight:600; }
+.bk-val.below{ font-size:0.72rem; font-weight:500; }
+.bk-ticks{ position:absolute; left:0; right:0; height:14px; }
+.bk-tick{ position:absolute; transform:translateX(-50%); white-space:nowrap;
+  font-size:0.72rem; color:var(--grey); font-variant-numeric:tabular-nums; }
+
+/* Asset-Class VAMS row: bar (left) + flip-counter card (right). Stacks on phones. */
+.vf-row{ display:grid; grid-template-columns:1fr 150px; gap:22px; align-items:center; margin-bottom:26px; }
+.vf-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:11px; }
+.vf-counter{ text-align:center; border:1px solid #2a2a2a; background:#0d0d0d; padding:11px 0; border-radius:6px; }
+.vf-counter.pending{ border-color:#6a571f; background:#1a1505; }
+
+@media (max-width:560px){
+  .vf-row{ grid-template-columns:1fr; gap:14px; }
+  .vf-counter{ max-width:200px; }
+}
+@media (max-width:480px){
+  :root{ --bk-rail-h:11px; --bk-dot:12px; }
+  .bk-val.above{ font-size:0.82rem; }
+  .bk-tick, .bk-val.below{ font-size:0.66rem; }
+}

@@ -219,6 +219,56 @@ function renderDecomp(decomp, mapLabel) {
     </div>`;
 }
 
+// ── BK BAR PRIMITIVES — one bar/marker grammar for every panel ──
+// Atoms (bright zone fill, reference line, glowing dot, drift arrow, value
+// label, tick) share fixed geometry + type; colour is data-driven. bkBar()
+// lays out a standard bar "cell" from a config, so Model Health, Asset-Class
+// VAMS and the Factor deadbands all render through ONE path — same rail, same
+// glowing-dot marker, same reference lines, same tick/label spacing.
+const BK = {
+  G:'#4ade80', Y:'#fbbf24', R:'#f87171', GREY:'#9C9C97', SOFT:'#C8C8C4', WHITE:'#fff',
+  STATE: { success:'#4ade80', warning:'#fbbf24', danger:'#f87171' },
+  // Bright (active state region) · Medium (context zone) · Soft (background range)
+  FILL: { g:'rgba(74,222,128,0.55)',  y:'rgba(251,191,36,0.55)',  r:'rgba(248,113,113,0.55)',
+          gM:'rgba(74,222,128,0.32)', yM:'rgba(251,191,36,0.32)', rM:'rgba(248,113,113,0.32)',
+          gS:'rgba(74,222,128,0.16)', yS:'rgba(251,191,36,0.18)', rS:'rgba(248,113,113,0.16)' },
+};
+function bkArrow(l, dir, color) {
+  const len = 5.5, sx = dir > 0 ? l + 1.4 : l - 1.4 - len, hx = dir > 0 ? sx + len : sx;
+  const rot = dir > 0 ? '45deg' : '225deg';
+  return `<div class="bk-arr-shaft" style="left:${sx}%;width:${len}%;background:${color};"></div>`
+       + `<div class="bk-arr-head" style="left:${hx}%;border-color:${color};transform:translate(-50%,-50%) rotate(${rot});"></div>`;
+}
+// Lay out one bar cell. Vertical bands are fixed so every bar aligns:
+//   valsAbove (top 0) · rail (railTop) · valsBelow (railTop+18) · ticks (tickTop)
+// Value-label x is clamped to [4,96]% so a marker at an edge never clips off.
+function bkBar(cfg) {
+  const railTop = cfg.railTop != null ? cfg.railTop : 18;
+  const belowTop = railTop + 18, tickTop = cfg.tickTop != null ? cfg.tickTop : belowTop;
+  const lx = v => Math.max(4, Math.min(96, v));
+  const zones = (cfg.zones || []).map(z =>
+    `<div class="bk-zone" style="left:${z.l}%;width:${z.w}%;background:${BK.FILL[z.k] || z.k};"></div>`).join('');
+  const refs = (cfg.refs || []).map(r => `<div class="bk-ref ${r.k}" style="left:${r.l}%;"></div>`).join('');
+  const arrow = cfg.arrow ? bkArrow(cfg.arrow.l, cfg.arrow.dir, cfg.arrow.color) : '';
+  const dots = (cfg.dots || []).map(d => {
+    const glow = d.soft ? 'none' : `0 0 9px ${d.glow || d.color}`;
+    const sz = d.r ? `width:${d.r}px;height:${d.r}px;` : '';
+    return `<div class="bk-dot" style="left:${d.l}%;background:${d.color};box-shadow:${glow};${sz}"></div>`;
+  }).join('');
+  const va = (cfg.valsAbove || []).map(v =>
+    `<div class="bk-val above" style="left:${lx(v.l)}%;top:0;color:${v.color || BK.WHITE};">${v.t}</div>`).join('');
+  const vb = (cfg.valsBelow || []).map(v =>
+    `<div class="bk-val below" style="left:${lx(v.l)}%;top:${belowTop}px;color:${v.color || BK.GREY};">${v.t}</div>`).join('');
+  const ticks = (cfg.ticks && cfg.ticks.length)
+    ? `<div class="bk-ticks" style="top:${tickTop}px;">` +
+        cfg.ticks.map(t => `<span class="bk-tick" style="left:${lx(t.l)}%;color:${t.c || 'var(--grey)'};">${t.t}</span>`).join('') +
+      `</div>` : '';
+  const h = cfg.h != null ? cfg.h : (Math.max(tickTop, belowTop) + 16);
+  return `<div class="bk-cell" style="height:${h}px;">${va}
+    <div class="bk-trackwrap" style="top:${railTop}px;"><div class="bk-track"><div class="bk-rail">${zones}</div>${refs}${arrow}${dots}</div></div>
+    ${vb}${ticks}</div>`;
+}
+
 // ── BLOCK RENDERERS (registry, keyed by block.type) ───────
 function blkSignal(b, data) {
   let inner;
@@ -735,37 +785,28 @@ function blkContribution(b, data) {
       const vp = zpc(cc.factor / cc.std), bp = cc.band / cc.std;
       const loEdge = zpc(-bp), hiEdge = zpc(bp);
       const dzv = cc.dz / cc.std, rising = dzv > 0.02, falling = dzv < -0.02;
-      const alen = Math.min(8, Math.max(2.5, Math.abs(dzv) * 11));
-      let arr = '';
-      if (rising || falling) {
-        const sx = rising ? vp + 1.3 : vp - 1.3 - alen, hx = rising ? sx + alen : sx, rot = rising ? '45deg' : '225deg';
-        arr = `<div style="position:absolute;left:${sx}%;width:${alen}%;top:50%;height:2px;background:#4ade80;transform:translateY(-50%);z-index:3;"></div>
-          <div style="position:absolute;left:${hx}%;top:50%;width:8px;height:8px;border-top:2px solid #4ade80;border-right:2px solid #4ade80;transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
-      }
+      const dotCol = cc.factor >= 0 ? '#4ade80' : '#f87171';
       const cleared = Math.abs(cc.factor) >= cc.band;   // factor past its own band edge?
       const sameSignLbl = heldPos
-        ? `<span style="color:#6a6a6a;">+ ${cleared ? 'confirmed' : 'held'}</span>`
-        : `<span style="color:#6a6a6a;">&minus; ${cleared ? 'confirmed' : 'held'}</span>`;
-      const leftLabel  = heldPos ? `<span style="color:#c25048;">&rarr; ${cc.flip_name}</span>` : sameSignLbl;
-      const rightLabel = heldPos ? sameSignLbl : `<span style="color:#3f8a55;">&rarr; ${cc.flip_name}</span>`;
-      return `<div style="margin-bottom:20px;">
+        ? `<span style="color:#8a8a86;">+ ${cleared ? 'confirmed' : 'held'}</span>`
+        : `<span style="color:#8a8a86;">\u2212 ${cleared ? 'confirmed' : 'held'}</span>`;
+      const leftLabel  = heldPos ? `<span style="color:#f87171;">\u2192 ${cc.flip_name}</span>` : sameSignLbl;
+      const rightLabel = heldPos ? sameSignLbl : `<span style="color:#4ade80;">\u2192 ${cc.flip_name}</span>`;
+      return `<div style="margin-bottom:18px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
-          <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '&minus; held'}</span></span>
-          <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:#4ade80;font-family:${serif};font-size:16px;">${cc.factor >= 0 ? '+' : '\u2212'}${Math.abs(cc.factor).toFixed(2)}</span></span>
+          <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '\u2212 held'}</span></span>
+          <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:${dotCol};font-family:${serif};font-size:16px;">${cc.factor >= 0 ? '+' : '\u2212'}${Math.abs(cc.factor).toFixed(2)}</span></span>
         </div>
-        <div style="position:relative;height:24px;background:#0e0e0e;border:1px solid #232323;overflow:hidden;">
-          <div style="position:absolute;left:0;width:${loEdge}%;top:0;bottom:0;background:rgba(226,86,79,0.12);"></div>
-          <div style="position:absolute;left:${hiEdge}%;right:0;top:0;bottom:0;background:rgba(74,222,128,0.14);"></div>
-          <div style="position:absolute;left:${loEdge}%;top:0;bottom:0;width:2px;background:${heldPos ? '#e6b450' : '#3a3a3a'};transform:translateX(-1px);z-index:2;"></div>
-          <div style="position:absolute;left:${hiEdge}%;top:0;bottom:0;width:2px;background:${heldPos ? '#3a3a3a' : '#e6b450'};transform:translateX(-1px);z-index:2;"></div>
-          <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#2a2a2a;"></div>
-          ${arr}
-          <div style="position:absolute;left:${vp}%;top:50%;width:14px;height:14px;background:#4ade80;border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(74,222,128,0.9);z-index:4;"></div>
-        </div>
-        <div style="position:relative;height:14px;margin-top:3px;font-size:10px;font-weight:600;">
-          <span style="position:absolute;left:${loEdge}%;transform:translateX(-50%);">${leftLabel}</span>
-          <span style="position:absolute;left:${hiEdge}%;transform:translateX(-50%);">${rightLabel}</span>
-        </div>
+        ${bkBar({ railTop: 6, h: 26,
+          zones: [{ l: 0, w: loEdge, k: 'rS' }, { l: hiEdge, w: 100 - hiEdge, k: 'gS' }],
+          refs:  [{ l: 50, k: 'center' },
+                  { l: loEdge, k: heldPos ? 'amber' : 'center' },
+                  { l: hiEdge, k: heldPos ? 'center' : 'amber' }],
+          arrow: (rising || falling) ? { l: vp, dir: rising ? 1 : -1, color: dotCol } : null,
+          dots:  [{ l: vp, color: dotCol }],
+        })}
+        <div style="display:flex;justify-content:space-between;margin-top:3px;font-size:clamp(9px,2.6vw,10.5px);font-weight:600;">
+          <span>${leftLabel}</span><span>${rightLabel}</span></div>
       </div>`;
     }).join('');
     bands = `<div style="margin-top:22px;">
@@ -801,29 +842,18 @@ function blkVamsFlip(b, data) {
   const serif = "'Cormorant Garamond',Georgia,serif";
   const Z = 3.0, zpc = z => Math.max(2, Math.min(98, (z + Z) / (2 * Z) * 100));
   const rows = sl.map(s => {
-    const held = s.state >= 0.999;
-    const dot = held ? '#4ade80' : '#e2564f';
-    const glow = held ? 'rgba(74,222,128,0.95)' : 'rgba(226,86,79,0.95)';
+    const held = s.state >= 0.999, half = s.state > 0.001 && !held;
     const zP = zpc(s.z), halfP = zpc(s.line_half), fullP = zpc(s.line_full);
-    const stTag = held ? 'HELD · 1.0&times;' : (s.state > 0.001 ? 'HALF · 0.5&times;' : 'SCALED · 0.0&times;');
-    const stCol = held ? '#4ade80' : (s.state > 0.001 ? '#e6b450' : '#e2564f');
-    const fillCol = held ? 'linear-gradient(90deg,rgba(74,222,128,0.35),rgba(74,222,128,0.62))'
-                         : 'linear-gradient(90deg,rgba(226,86,79,0.62),rgba(226,86,79,0.35))';
-    const zoneL = held ? fullP : zP, zoneW = held ? Math.max(0, zP - fullP) : Math.max(0, halfP - zP);
+    const stTag = held ? 'HELD · 1.0&times;' : (half ? 'HALF · 0.5&times;' : 'SCALED · 0.0&times;');
+    const stCol = held ? '#4ade80' : (half ? '#fbbf24' : '#f87171');
+    // Bright fill spans from the threshold the sleeve leans on to its dot.
+    const fillK = held ? 'g' : (half ? 'y' : 'r');
+    const fillA = held ? fullP : halfP;
+    const zoneL = Math.min(fillA, zP), zoneW = Math.abs(zP - fillA);
     const rising = s.dz > 0.03, falling = s.dz < -0.03;
-    const arrowLen = Math.min(9, Math.max(2.5, Math.abs(s.dz) * 11));
-    let arrow = '';
-    if (rising || falling) {
-      const aCol = held ? '#4ade80' : '#e6b450';
-      const shaftL = rising ? zP + 1.4 : zP - 1.4 - arrowLen;
-      const headL = rising ? shaftL + arrowLen : shaftL;
-      const rot = rising ? '45deg' : '225deg';
-      arrow = `<div style="position:absolute;left:${shaftL}%;width:${arrowLen}%;top:50%;height:3px;background:${aCol};transform:translateY(-50%);z-index:3;"></div>
-               <div style="position:absolute;left:${headL}%;top:50%;width:9px;height:9px;border-top:3px solid ${aCol};border-right:3px solid ${aCol};transform:translate(-50%,-50%) rotate(${rot});z-index:3;"></div>`;
-    }
     let counter;
     if (s.need == null || s.cand === s.state) {
-      counter = `<div style="text-align:center;border:1px solid #2a2a2a;background:#0d0d0d;padding:11px 0;">
+      counter = `<div class="vf-counter">
         <div style="color:#9a9a9a;font-size:12px;font-weight:600;letter-spacing:0.12em;margin-bottom:5px;">NO FLIP PENDING</div>
         <div style="font-family:${serif};font-size:26px;color:#6a6a6a;">&mdash;</div>
         <div style="color:${held ? '#5cb87a' : '#8a8a8a'};font-size:11px;letter-spacing:0.08em;margin-top:4px;">${held ? 'stable held' : 'stable'}</div></div>`;
@@ -832,28 +862,24 @@ function blkVamsFlip(b, data) {
       const tgt = s.cand >= 0.999 ? '1.0&times;' : (s.cand > 0.001 ? '0.5&times;' : '0.0&times;');
       const lbl = up ? `RESTORE &rarr; ${tgt}` : `CUT &rarr; ${tgt}`;
       const pct = Math.round(100 * s.cnt / s.need);
-      counter = `<div style="text-align:center;border:1px solid #6a571f;background:#1a1505;padding:11px 0;">
+      counter = `<div class="vf-counter pending">
         <div style="color:#e6b450;font-size:12px;font-weight:600;letter-spacing:0.12em;margin-bottom:5px;">${lbl}</div>
         <div style="font-family:${serif};font-size:28px;color:#f0c060;line-height:1;"><b>${s.cnt}</b><span style="color:#9a824a;font-size:18px;">/${s.need}</span></div>
-        <div style="height:4px;background:#2e280f;margin:7px 12px 0;"><div style="width:${pct}%;height:100%;background:#e6b450;"></div></div></div>`;
+        <div style="height:4px;background:#2e280f;margin:7px 12px 0;border-radius:2px;"><div style="width:${pct}%;height:100%;background:#e6b450;border-radius:2px;"></div></div></div>`;
     }
-    return `<div style="display:grid;grid-template-columns:1fr 150px;gap:22px;align-items:center;margin-bottom:28px;">
+    return `<div class="vf-row">
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;">
+        <div class="vf-head">
           <span style="color:#e8e8e8;font-size:clamp(12px,3.8vw,15px);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:clamp(10px,3vw,12.5px);font-weight:600;margin-left:clamp(4px,1.5vw,8px);">${stTag}</span></span>
           <span style="color:#b0b0b0;font-size:clamp(11px,3.2vw,13px);white-space:nowrap;">z <span style="color:${stCol};font-family:${serif};font-size:clamp(15px,4.8vw,19px);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
         </div>
-        <div style="position:relative;height:32px;background:#0e0e0e;border:1px solid #262626;">
-          <div style="position:absolute;left:${zoneL}%;width:${zoneW}%;top:0;bottom:0;background:${fillCol};"></div>
-          <div style="position:absolute;left:${halfP}%;top:0;bottom:0;width:2px;background:#e6b450;transform:translateX(-1px);z-index:2;"></div>
-          <div style="position:absolute;left:${fullP}%;top:0;bottom:0;width:2px;background:#f0f0f0;transform:translateX(-1px);z-index:2;"></div>
-          ${arrow}
-          <div style="position:absolute;left:${zP}%;top:50%;width:16px;height:16px;background:${dot};border:2px solid #0e0e0e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px ${glow};z-index:4;"></div>
-        </div>
-        <div style="position:relative;height:15px;margin-top:3px;font-size:11px;color:#9a9a9a;font-weight:600;">
-          <span style="position:absolute;left:${halfP}%;transform:translateX(-50%);">0.5&times;</span>
-          <span style="position:absolute;left:${fullP}%;transform:translateX(-50%);">1.0&times;</span>
-        </div>
+        ${bkBar({ railTop: 4, h: 40, tickTop: 24,
+          zones: [{ l: zoneL, w: zoneW, k: fillK }],
+          refs:  [{ l: halfP, k: 'amber' }, { l: fullP, k: 'anchor' }],
+          arrow: (rising || falling) ? { l: zP, dir: rising ? 1 : -1, color: stCol } : null,
+          dots:  [{ l: zP, color: stCol }],
+          ticks: [{ l: halfP, t: '0.5&times;' }, { l: fullP, t: '1.0&times;' }],
+        })}
       </div>
       ${counter}
     </div>`;
@@ -879,53 +905,56 @@ function blkHealth(b, data) {
   const clamp = (v, lo, hi) => Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100));
   const sgn = v => (v >= 0 ? '+' : '') + v;
 
-  // ── RETURN — deviation bars on one shared scale, value above the line ──
+  // ── RETURN — deviation bars on one shared scale, value above the dot ──
+  // Context zones (amber = approaching-floor, green = within) sit soft on the
+  // rail; the glowing dot at the current return is the marker. Ticks render
+  // once as a shared axis row beneath all four horizons.
   const ax = h.deviation.axis, cx = v => clamp(v, ax[0], ax[1]);
   const devRows = h.deviation.rows.map(d => {
     const band = d.p95 - d.p5, ytop = d.p5 + 0.15 * band, c = COL[d.state] || GREEN;
     const bL = cx(d.p5), bR = cx(d.p95), yR = cx(ytop), medX = cx(d.med), curX = cx(d.cur);
-    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>
-      <div style="position:relative;height:34px;">
-        <div style="position:absolute;top:23px;left:${yR}%;width:${bR - yR}%;height:8px;border-radius:0 3px 3px 0;background:rgba(74,222,128,0.22);border:1px solid rgba(74,222,128,0.4);box-sizing:border-box;"></div>
-        <div style="position:absolute;top:23px;left:${bL}%;width:${yR - bL}%;height:8px;background:rgba(251,191,36,0.4);border:1px solid rgba(251,191,36,0.6);box-sizing:border-box;"></div>
-        <div style="position:absolute;top:21px;left:${medX}%;width:1.5px;height:12px;background:${GREY};"></div>
-        <div style="position:absolute;top:15px;left:${curX}%;width:3px;height:18px;background:${c};transform:translateX(-1.5px);border-radius:1px;"></div>
-        <div style="position:absolute;top:0;left:${curX}%;transform:translateX(-50%);font-size:0.9rem;font-weight:600;color:${c};white-space:nowrap;">${sgn(d.cur.toFixed(1))}%</div>
-      </div></div>`;
+    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>${bkBar({
+      railTop: 16, h: 34,
+      zones: [{ l: bL, w: yR - bL, k: 'yM' }, { l: yR, w: bR - yR, k: 'gS' }],
+      refs:  [{ l: medX, k: 'soft' }],
+      dots:  [{ l: curX, color: c }],
+      valsAbove: [{ l: curX, color: c, t: sgn(d.cur.toFixed(1)) + '%' }],
+    })}</div>`;
   }).join('');
-  const devAxis = `<div class="hs-row"><span></span><div style="position:relative;height:14px;">`
-    + h.deviation.ticks.map(t => `<span class="hs-tick" style="position:absolute;left:${cx(t)}%;transform:translateX(-50%);">+${t}%</span>`).join('')
-    + `</div></div>`;
+  const devAxis = `<div class="hs-row"><span></span>${bkBar({
+    railTop: 0, h: 16, tickTop: 0,
+    ticks: h.deviation.ticks.map(t => ({ l: cx(t), t: '+' + t + '%' })),
+  })}</div>`;
 
   // ── DRAWDOWN — depth & duration thermometers (green/yellow/red zones) ──
   const ddBar = (d, name) => {
     const c = COL[d.state] || GREEN;
-    const tk = d.ticks.map((t, i) => `<span class="hs-tick" style="position:absolute;left:${i / (d.ticks.length - 1) * 100}%;transform:translateX(-50%);">${t}</span>`).join('');
-    return `<div class="hs-row"><span class="hs-lab">${name}</span>
-      <div style="position:relative;height:42px;">
-        <div style="position:absolute;top:21px;left:0;width:${d.green}%;height:8px;border-radius:3px 0 0 3px;background:rgba(74,222,128,0.30);"></div>
-        <div style="position:absolute;top:21px;left:${d.green}%;width:${d.yellow - d.green}%;height:8px;background:rgba(251,191,36,0.32);"></div>
-        <div style="position:absolute;top:21px;left:${d.yellow}%;right:0;height:8px;border-radius:0 3px 3px 0;background:rgba(248,113,113,0.32);"></div>
-        <div style="position:absolute;top:15px;left:${d.pos}%;width:3px;height:20px;background:${c};transform:translateX(-1.5px);border-radius:1px;"></div>
-        <div style="position:absolute;top:0;left:${d.pos}%;transform:translateX(-50%);font-size:0.9rem;font-weight:600;color:${c};white-space:nowrap;">${d.label}</div>
-        <div style="position:absolute;top:33px;left:0;right:0;height:10px;">${tk}</div>
-      </div></div>`;
+    return `<div class="hs-row"><span class="hs-lab">${name}</span>${bkBar({
+      railTop: 18, h: 48, tickTop: 34,
+      zones: [{ l: 0, w: d.green, k: 'gM' }, { l: d.green, w: d.yellow - d.green, k: 'yM' },
+              { l: d.yellow, w: 100 - d.yellow, k: 'rM' }],
+      dots:  [{ l: d.pos, color: c }],
+      valsAbove: [{ l: d.pos, color: c, t: d.label }],
+      ticks: d.ticks.map((t, i) => ({ l: i / (d.ticks.length - 1) * 100, t })),
+    })}</div>`;
   };
 
   // ── RETURN CONFIDENCE — living forward fans (range bars) ──
+  // Soft p5–p95 range + BRIGHT p25–p75 inter-quartile, white median reference
+  // with its value above, neutral "now" dot with its value below. Median value
+  // sits above the rail and "now" below it, so the two never collide.
   const rcRows = h.confidence.rows.map(d => {
     const x = v => clamp(v, d.lo, d.hi);
-    const tk = d.ticks.map(t => `<span class="hs-tick" style="position:absolute;left:${x(t)}%;transform:translateX(-50%);">${sgn(t)}%</span>`).join('');
-    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>
-      <div style="position:relative;height:48px;">
-        <div style="position:absolute;top:26px;left:${x(d.p5)}%;width:${x(d.p95) - x(d.p5)}%;height:8px;border-radius:4px;background:rgba(74,222,128,0.15);"></div>
-        <div style="position:absolute;top:24px;left:${x(d.p25)}%;width:${x(d.p75) - x(d.p25)}%;height:12px;border-radius:3px;background:rgba(74,222,128,0.45);border:1px solid rgba(74,222,128,0.6);box-sizing:border-box;"></div>
-        <div style="position:absolute;top:20px;left:${x(d.med)}%;width:2px;height:20px;background:${WHITE};transform:translateX(-1px);"></div>
-        <div style="position:absolute;top:4px;left:${x(d.med)}%;transform:translateX(-50%);font-size:0.95rem;font-weight:600;color:${GREEN};white-space:nowrap;">${sgn(d.med)}%</div>
-        <div style="position:absolute;top:24px;left:${x(d.now)}%;width:2px;height:12px;background:${GREY};transform:translateX(-1px);"></div>
-        <div style="position:absolute;top:38px;left:${x(d.now)}%;transform:translateX(-50%);font-size:0.66rem;color:${GREY};white-space:nowrap;">now ${sgn(d.now)}%</div>
-        <div style="position:absolute;top:40px;left:0;right:0;height:10px;">${tk}</div>
-      </div></div>`;
+    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>${bkBar({
+      railTop: 20, h: 70, tickTop: 52,
+      zones: [{ l: x(d.p5), w: x(d.p95) - x(d.p5), k: 'gS' },
+              { l: x(d.p25), w: x(d.p75) - x(d.p25), k: 'g' }],
+      refs:  [{ l: x(d.med), k: 'median' }],
+      dots:  [{ l: x(d.now), color: GREY, soft: true }],
+      valsAbove: [{ l: x(d.med), color: GREEN, t: sgn(d.med) + '%' }],
+      valsBelow: [{ l: x(d.now), color: GREY, t: 'now ' + sgn(d.now) + '%' }],
+      ticks: d.ticks.map(t => ({ l: x(t), t: sgn(t) + '%' })),
+    })}</div>`;
   }).join('');
 
   // ── MONITORING — two-tail watch, plain language ──
