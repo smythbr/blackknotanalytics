@@ -4,11 +4,11 @@
     "id": "eidos",
     "name": "EIDOS",
     "state": "hold",
-    "as_of": "2026-06-26"
+    "as_of": "2026-06-29"
   },
   "meta": {
     "period_start": "2018-01-01",
-    "period_end": "2026-06-26",
+    "period_end": "2026-06-29",
     "inception": "2018-01-01",
     "return_basis": "daily simple total return, geometrically linked",
     "annualisation": "252 trading days (x-root-252 for risk)",
@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 3.86,
+        "value": 5.32,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 15.64,
+        "value": 15.82,
         "kind": "pct"
       }
     ],
@@ -131,7 +131,7 @@
       "title": "Market View",
       "phase_plane": {
         "schema": "blackknot.eidos.phase.v1",
-        "source": "daily-vote_2026-06-27",
+        "source": "daily-vote_2026-06-29",
         "axes": {
           "x": "inflation",
           "y": "growth",
@@ -159,7 +159,7 @@
         },
         "counts": {
           "month": 102,
-          "daily": 3100
+          "daily": 3102
         },
         "series": {
           "month": [
@@ -1376,14 +1376,14 @@
               "reg": "Reflation"
             },
             {
-              "date": "2026-06-27",
-              "g": -0.1126,
+              "date": "2026-06-29",
+              "g": 0.1544,
               "i": -1.027,
-              "l": -0.7058,
-              "conv": 1.0331,
-              "gflip": 0.3874,
+              "l": -0.3529,
+              "conv": 1.0385,
+              "gflip": 0.6544,
               "iflip": 1.527,
-              "gpct": 7.0,
+              "gpct": 9.8,
               "ipct": 74.1,
               "reg": "Goldilocks"
             }
@@ -38588,6 +38588,30 @@
               "gpct": 7.0,
               "ipct": 74.1,
               "reg": "Goldilocks"
+            },
+            {
+              "date": "2026-06-28",
+              "g": -0.1126,
+              "i": -1.027,
+              "l": -0.7058,
+              "conv": 1.0331,
+              "gflip": 0.3874,
+              "iflip": 1.527,
+              "gpct": 7.0,
+              "ipct": 74.1,
+              "reg": "Goldilocks"
+            },
+            {
+              "date": "2026-06-29",
+              "g": 0.1544,
+              "i": -1.027,
+              "l": -0.3529,
+              "conv": 1.0385,
+              "gflip": 0.6544,
+              "iflip": 1.527,
+              "gpct": 9.8,
+              "ipct": 74.1,
+              "reg": "Goldilocks"
             }
           ]
         }
@@ -38599,32 +38623,32 @@
       "title": "Factor Contribution",
       "contribution": {
         "schema": "blackknot.eidos.contribution.v1",
-        "source": "daily-vote_2026-06-27",
+        "source": "daily-vote_2026-06-29",
         "units": "raw factor units (vote sum). Group bars sum to 'net', which equals the classifier's raw factor exactly. The phase_plane block scales the SAME factor by causal-\u03c3, so net/\u03c3 == phase g|i.",
-        "as_of": "2026-06-27",
+        "as_of": "2026-06-29",
         "latest": {
           "growth": {
-            "net": -0.8436,
+            "net": 1.1564,
             "bars": [
-              {
-                "group": "liquidity",
-                "value": -4.0,
-                "dissent": false
-              },
               {
                 "group": "equities",
                 "value": 2.1564,
-                "dissent": true
+                "dissent": false
               },
               {
                 "group": "curve",
                 "value": 2.0,
+                "dissent": false
+              },
+              {
+                "group": "liquidity",
+                "value": -2.0,
                 "dissent": true
               },
               {
                 "group": "real_yield",
                 "value": -1.0,
-                "dissent": false
+                "dissent": true
               }
             ]
           },
@@ -38653,11 +38677,11 @@
       "bands": [
         {
           "label": "Growth",
-          "factor": -0.84,
+          "factor": 1.16,
           "band": 3.75,
           "std": 7.49,
           "held_sign": 1,
-          "dz": -1.28,
+          "dz": -2.36,
           "flip_name": "Deflation",
           "flip_side": "left"
         },
@@ -38667,7 +38691,7 @@
           "band": 2.43,
           "std": 4.87,
           "held_sign": -1,
-          "dz": -4.0,
+          "dz": -6.0,
           "flip_name": "Reflation",
           "flip_side": "left"
         }
@@ -38680,33 +38704,33 @@
       "sleeves": [
         {
           "label": "Equity",
-          "z": 1.1,
+          "z": 1.34,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 1.0,
-          "dz": -0.39,
+          "dz": -0.26,
           "cand": 1.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Gold",
-          "z": -1.94,
+          "z": -1.87,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": 0.66,
+          "dz": 0.19,
           "cand": 0.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Crypto",
-          "z": -1.79,
+          "z": -1.81,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.21,
+          "dz": -0.23,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -38743,66 +38767,66 @@
             {
               "label": "YTD",
               "model": {
-                "value": 3.86,
+                "value": 5.32,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 7.47,
+                "value": 9.24,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "1 Year",
               "model": {
-                "value": 20.43,
+                "value": 21.44,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 20.46,
+                "value": 21.84,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "3 Year",
               "model": {
-                "value": 75.96,
+                "value": 77.69,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 75.39,
+                "value": 76.25,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "5 Year",
               "model": {
-                "value": 82.31,
+                "value": 84.63,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 82.83,
+                "value": 85.47,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Inception",
               "model": {
-                "value": 241.92,
+                "value": 246.71,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 211.17,
+                "value": 216.29,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 15.64,
+                "value": 15.82,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.67,
+                "value": 9.81,
                 "kind": "pct_signed"
               }
             }
@@ -38835,11 +38859,11 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 3.86,
+                "value": 5.32,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 7.47,
+                "value": 9.24,
                 "kind": "pct_signed"
               }
             },
@@ -38967,11 +38991,11 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 15.64,
+                "value": 15.82,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.67,
+                "value": 9.81,
                 "kind": "pct_signed"
               }
             },
@@ -38989,44 +39013,44 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.2601,
+                "value": 1.275,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.4916,
+                "value": 0.4995,
                 "kind": "ratio"
               }
             },
             {
               "label": "Sortino",
               "model": {
-                "value": 1.7854,
+                "value": 1.8084,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.6885,
+                "value": 0.6998,
                 "kind": "ratio"
               }
             },
             {
               "label": "Calmar",
               "model": {
-                "value": 3.3258,
+                "value": 3.3991,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7343,
+                "value": 0.7412,
                 "kind": "ratio"
               }
             },
             {
               "label": "MAR",
               "model": {
-                "value": 1.7112,
+                "value": 1.7312,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2867,
+                "value": 0.2908,
                 "kind": "ratio"
               }
             },
@@ -39048,14 +39072,14 @@
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": -5.85,
+                "value": -5.84,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Beta",
               "model": {
-                "value": 0.4594,
+                "value": 0.4494,
                 "kind": "ratio"
               },
               "bench": {
@@ -39066,11 +39090,11 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3247,
+                "value": 1.3283,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 1.1642,
+                "value": 1.1663,
                 "kind": "ratio"
               }
             },
@@ -39088,7 +39112,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 37.4,
+                "value": 36.3,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -44782,8 +44806,8 @@
             "total": 28
           },
           "yr": {
-            "off": 1.7,
-            "on": 1.7,
+            "off": 1.6,
+            "on": 1.6,
             "total": 3.3
           }
         }
@@ -44796,7 +44820,7 @@
       "health": {
         "schema": "blackknot.health.v1",
         "app": "eidos",
-        "date": "2026-06-26",
+        "date": "2026-06-29",
         "severity": "TRUST",
         "n_lit": 0,
         "lit": [],
@@ -44811,8 +44835,8 @@
             "run_len": 0,
             "hit_rate": 0.095,
             "ci": [
-              0.048,
-              0.142
+              0.053,
+              0.146
             ]
           },
           {
@@ -44824,8 +44848,8 @@
             "run_len": 0,
             "hit_rate": 0.11,
             "ci": [
-              0.085,
-              0.135
+              0.086,
+              0.136
             ]
           },
           {
@@ -44837,8 +44861,8 @@
             "run_len": 0,
             "hit_rate": 0.094,
             "ci": [
-              0.045,
-              0.142
+              0.051,
+              0.147
             ]
           },
           {
@@ -44850,7 +44874,7 @@
             "run_len": 0,
             "hit_rate": 0.129,
             "ci": [
-              0.113,
+              0.114,
               0.144
             ]
           },
@@ -44863,8 +44887,8 @@
             "run_len": 0,
             "hit_rate": 0.136,
             "ci": [
-              0.112,
-              0.159
+              0.113,
+              0.16
             ]
           },
           {
@@ -44876,8 +44900,8 @@
             "run_len": 0,
             "hit_rate": 0.139,
             "ci": [
-              0.117,
-              0.16
+              0.118,
+              0.161
             ]
           }
         ],
@@ -44896,9 +44920,9 @@
         },
         "immediate": [],
         "scores": {
-          "speed_shock": 0.007231373616869652,
-          "vol_surge": 0.5593765188010672,
-          "vix_accel": 0.12256099241677698,
+          "speed_shock": 0.0,
+          "vol_surge": 0.8258342710999418,
+          "vix_accel": 0.02141197437397735,
           "restore_lag": 0.0,
           "over_defensive": 0.0,
           "sleeve_miss": 0.0
@@ -44917,27 +44941,27 @@
             "unit": "cagr",
             "value": 0.1564,
             "ci95": [
-              0.08393285108499515,
-              0.2377910565527359
+              0.08335705536332676,
+              0.23838863984104572
             ],
             "likely": [
-              0.12944907576962536,
-              0.183925176562267
+              0.1292132104009748,
+              0.18288449642064927
             ],
             "p_gt0": 1.0,
-            "p_gt10": 0.93375,
+            "p_gt10": 0.935,
             "years": 8.5
           },
           "ytd": {
             "unit": "absolute",
-            "value": 0.038641360414468195,
+            "value": 0.05320311925168619,
             "ci95": [
-              -0.10697801901431808,
-              0.1439375397242524
+              -0.09121071105638857,
+              0.16097274845161436
             ],
             "likely": [
-              -0.02887403818224188,
-              0.05536284566680871
+              -0.013992021333936594,
+              0.07025854277730631
             ],
             "months": 5.8
           }
@@ -44954,9 +44978,9 @@
         },
         "developing": {
           "left": {
-            "state": "building",
-            "gap": 0.53,
-            "slope": 0.33,
+            "state": "easing",
+            "gap": 0.45,
+            "slope": -0.09,
             "label": "Pressure vs defense",
             "note": "risk-off pressure relative to how far the book has de-risked"
           },
@@ -44970,7 +44994,7 @@
         },
         "suite": {
           "schema": "blackknot.health_suite.v2",
-          "date": "2026-06-26",
+          "date": "2026-06-29",
           "verdict": "healthy",
           "components": {
             "returns": "healthy",
@@ -44986,8 +45010,8 @@
                 "med": 14.9,
                 "p95": 44.2,
                 "max": 68.3,
-                "cur": 20.4,
-                "drift": -1.8,
+                "cur": 21.5,
+                "drift": 0.5,
                 "zone": "healthy"
               },
               {
@@ -44995,11 +45019,11 @@
                 "min": -0.9,
                 "p5": 2.8,
                 "p25": 9.8,
-                "med": 14.6,
+                "med": 14.7,
                 "p95": 32.4,
                 "max": 42.0,
-                "cur": 17.9,
-                "drift": -9.2,
+                "cur": 18.6,
+                "drift": -9.1,
                 "zone": "healthy"
               },
               {
@@ -45010,8 +45034,8 @@
                 "med": 14.4,
                 "p95": 27.3,
                 "max": 30.8,
-                "cur": 20.7,
-                "drift": -0.3,
+                "cur": 21.1,
+                "drift": -0.2,
                 "zone": "healthy"
               },
               {
@@ -45022,8 +45046,8 @@
                 "med": 16.9,
                 "p95": 27.1,
                 "max": 28.4,
-                "cur": 13.2,
-                "drift": -2.3,
+                "cur": 13.3,
+                "drift": -2.0,
                 "zone": "healthy"
               },
               {
@@ -45046,8 +45070,8 @@
                 "med": 17.9,
                 "p95": 20.4,
                 "max": 21.3,
-                "cur": 19.4,
-                "drift": -1.2,
+                "cur": 19.6,
+                "drift": -0.9,
                 "zone": "healthy"
               },
               {
@@ -45058,15 +45082,15 @@
                 "med": 15.7,
                 "p95": 17.2,
                 "max": 17.4,
-                "cur": 15.9,
-                "drift": -0.4,
+                "cur": 16.0,
+                "drift": -0.3,
                 "zone": "healthy"
               }
             ]
           },
           "drawdown": {
             "depth": {
-              "now": -4.1,
+              "now": -2.8,
               "trough": -6.2,
               "worst": -9.1,
               "caution": -6.5,
@@ -45158,13 +45182,13 @@
                   "v": -3.62
                 },
                 {
-                  "o": 149,
-                  "v": -4.12
+                  "o": 152,
+                  "v": -2.78
                 }
               ]
             },
             "duration": {
-              "now_days": 149,
+              "now_days": 152,
               "worst_days": 554,
               "caution_days": 400
             }
@@ -45175,19 +45199,19 @@
                 "h": "Next 10 yrs",
                 "p5": 10.3,
                 "p25": 13.5,
-                "med": 16.1,
+                "med": 16.0,
                 "p75": 18.6,
                 "p95": 22.4,
-                "now": 15.9
+                "now": 16.0
               },
               {
                 "h": "This year",
-                "p5": 2.1,
-                "p25": 6.3,
-                "med": 10.9,
-                "p75": 17.0,
-                "p95": 30.5,
-                "now": 3.9
+                "p5": 3.5,
+                "p25": 7.8,
+                "med": 12.4,
+                "p75": 18.6,
+                "p95": 32.3,
+                "now": 5.3
               }
             ]
           }
