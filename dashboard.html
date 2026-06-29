@@ -551,7 +551,9 @@ function mvLgauge(ser, idx, R) { return phaseLgauge(ser, idx, R, 'lpe'); }
 // Pure helper: the readout column inner HTML for a given index.
 function mvReadout(ser, idx, unit) {
   const cur = ser[idx];
-  const riskOn = cur.gd >= 0, col = riskOn ? '#4ade80' : '#f87171';
+  // Risk side / colour follow the COMMITTED regime (deadband-held), not the raw
+  // growth sign — the dot can sit in another quadrant while the regime still holds.
+  const riskOn = !!RISKON_REGIMES[cur.reg], col = riskOn ? '#4ade80' : '#f87171';
   let age = 1;
   for (let i = idx; i > 0 && ser[i - 1].reg === ser[i].reg; i--) age++;
   const conv = Math.hypot(cur.gd, cur.id);
@@ -662,7 +664,9 @@ function mvSetMode(mode) {
 const EIDOS_F = { g: 'g', i: 'i', conv: 'conv' };
 function eidReadout(ser, idx) {
   const cur = ser[idx];
-  const riskOn = cur.g >= 0, col = riskOn ? '#4ade80' : '#f87171';
+  // Risk side / colour follow the COMMITTED regime (deadband-held), not the raw
+  // growth sign — the dot can sit in another quadrant while the regime still holds.
+  const riskOn = !!RISKON_REGIMES[cur.reg], col = riskOn ? '#4ade80' : '#f87171';
   let age = 1; for (let i = idx; i > 0 && ser[i-1].reg === ser[i].reg; i--) age++;
   const unit = window.__eidUnit;
   const sig = v => (v >= 0 ? '+' : '') + v.toFixed(2);
