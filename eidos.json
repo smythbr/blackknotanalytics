@@ -44904,9 +44904,9 @@
           "sleeve_miss": 0.0
         },
         "thresholds": {
-          "speed_shock": 0.0152,
+          "speed_shock": 0.015183183183183182,
           "vol_surge": 1.6751986644407344,
-          "vix_accel": 0.26885,
+          "vix_accel": 0.2547,
           "restore_lag": 1.0111092408685407,
           "over_defensive": 0.9949748743718594,
           "sleeve_miss": 1.0095430884904568
@@ -44966,6 +44966,139 @@
             "slope": 0.0,
             "label": "Recovery vs re-engagement",
             "note": "market repair relative to how far the book has re-engaged"
+          }
+        },
+        "suite": {
+          "schema": "blackknot.health_suite.v1",
+          "date": "2026-06-26",
+          "deviation": {
+            "axis": [
+              -5,
+              45
+            ],
+            "ticks": [
+              0,
+              10,
+              20,
+              30,
+              40
+            ],
+            "rows": [
+              {
+                "h": "1 year",
+                "cur": 20.4,
+                "p5": -0.6,
+                "med": 14.9,
+                "p95": 44.2,
+                "state": "success"
+              },
+              {
+                "h": "3 year",
+                "cur": 20.7,
+                "p5": 7.2,
+                "med": 14.4,
+                "p95": 27.3,
+                "state": "success"
+              },
+              {
+                "h": "5 year",
+                "cur": 13.2,
+                "p5": 9.0,
+                "med": 16.9,
+                "p95": 27.1,
+                "state": "success"
+              },
+              {
+                "h": "Lifetime",
+                "cur": 15.9,
+                "p5": 14.9,
+                "med": 17.9,
+                "p95": 20.4,
+                "state": "success"
+              }
+            ]
+          },
+          "drawdown": {
+            "depth": {
+              "label": "\u22124.1%",
+              "cur": -4.1,
+              "pos": 45,
+              "green": 56,
+              "yellow": 80,
+              "worst": -9.1,
+              "ticks": [
+                "0",
+                "\u22123%",
+                "\u22126%",
+                "\u22129%"
+              ],
+              "state": "success"
+            },
+            "duration": {
+              "label": "149d",
+              "cur": 149,
+              "pos": 27,
+              "green": 6,
+              "yellow": 54,
+              "worst": 555,
+              "ticks": [
+                "0",
+                "185d",
+                "370d",
+                "555d"
+              ],
+              "state": "warning"
+            }
+          },
+          "confidence": {
+            "rows": [
+              {
+                "h": "Next 10 yrs",
+                "lo": 0,
+                "hi": 26,
+                "p5": 10.3,
+                "p25": 13.5,
+                "med": 16.1,
+                "p75": 18.6,
+                "p95": 22.4,
+                "now": 15.9,
+                "ticks": [
+                  0,
+                  8,
+                  16,
+                  24
+                ]
+              },
+              {
+                "h": "This year",
+                "lo": -5,
+                "hi": 25,
+                "p5": 2.1,
+                "p25": 6.3,
+                "med": 10.9,
+                "p75": 17.0,
+                "p95": 30.5,
+                "now": 3.9,
+                "ticks": [
+                  -5,
+                  0,
+                  10,
+                  20
+                ]
+              }
+            ]
+          },
+          "monitoring": {
+            "downside": {
+              "state": "warning",
+              "head": "a patient dip, protection intact",
+              "sub": "shallow but 5 months underwater; the fast cut is armed, credit calm"
+            },
+            "upside": {
+              "state": "success",
+              "head": "fully invested, not missing out",
+              "sub": "85% equity, so no rally is passing you by"
+            }
           }
         }
       }

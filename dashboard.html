@@ -862,103 +862,90 @@ function blkVamsFlip(b, data) {
     ${rows}</div>`;
 }
 
-// ── SYSTEM HEALTH (diagnostic suite — bottom section) ──────
+// ── MODEL HEALTH (suite — bottom section) ──────────────────
+// Renders eidos.json → blocks[health].health.suite. Pure function: computes
+// every bar position here and returns positioned HTML (no post-render script).
+// Colour/word for each element comes from the block's `state` field (decided in
+// eidos_health_suite.py); this only lays it out.
 function blkHealth(b, data) {
-  const h = b.health;
+  const h = b.health && b.health.suite;
+  const GREEN = '#4ade80', YELLOW = '#fbbf24', RED = '#f87171',
+        GREY = '#9C9C97', SOFT = '#C8C8C4', WHITE = '#fff';
+  const COL = { success: GREEN, warning: YELLOW, danger: RED };
   if (!h) {
-    return `<div class="db-block"><div class="db-eyebrow">System Health</div>
-      <div class="db-title" style="font-size:15px;margin-bottom:6px;">Diagnostic Suite</div>
-      <div style="color:#8a8a8a;font-size:12.5px;">Health is published once the signal is live.</div></div>`;
+    return `<div class="db-block"><div class="db-eyebrow">Model Health</div>
+      <div class="hs-card"><div style="color:#8a8a8a;font-size:12.5px;">Health is published once the signal is live.</div></div></div>`;
   }
-  const serif = "'Cormorant Garamond',Georgia,serif";
-  const GREEN = '#4ade80', AMBER = '#e6b450', RED = '#e2564f', GREY = '#9C9C97', SOFT = '#C8C8C4';
-  const sevColor = { TRUST: GREEN, LOOK: AMBER, ACT: '#d87830', SERIOUS: RED };
-  const sevWord  = { TRUST: 'healthy', LOOK: 'watch', ACT: 'act', SERIOUS: 'at risk' };
-  const verdictMsg = {
-    TRUST: 'Performing as designed · trust the model',
-    LOOK:  'A footprint is showing · take a look',
-    ACT:   'Footprints agree · review the exposure',
-    SERIOUS: 'Serious risk · do not blindly follow',
-  };
-  const sc = sevColor[h.severity] || GREEN;
+  const clamp = (v, lo, hi) => Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100));
+  const sgn = v => (v >= 0 ? '+' : '') + v;
 
-  // section header — RORO grammar
-  let html = `<div class="db-block"><div class="db-eyebrow">System Health</div>
-    <div class="db-title" style="font-size:15px;margin-bottom:6px;">Diagnostic Suite</div>
-    <div style="color:#8a8a8a;font-size:12.5px;margin-bottom:20px;">Whether following the model is currently safe — on both tails</div>`;
-
-  // verdict strip
-  html += `<div style="display:flex;align-items:center;gap:14px;background:#0D0D0D;
-    border:1px solid rgba(204,16,16,0.18);border-left:3px solid ${sc};padding:16px 18px;margin-bottom:14px;">
-    <span style="width:15px;height:15px;border-radius:50%;background:${sc};flex:none;box-shadow:0 0 0 5px ${sc}26;"></span>
-    <div style="flex:1;min-width:0;">
-      <div style="font-family:${serif};font-size:clamp(1.4rem,4.2vw,1.8rem);font-weight:300;line-height:1.1;">Eidos is <em style="font-style:italic;color:${sc};">${sevWord[h.severity]||''}</em></div>
-      <div style="font-size:clamp(11px,2.7vw,13.5px);color:${GREY};">${verdictMsg[h.severity]||''}</div></div>
-    <span style="font-size:11px;color:${GREY};white-space:nowrap;">${h.date||''}</span></div>`;
-
-  // performance bars
-  html += healthBars(h.performance, serif, GREEN, GREY, SOFT);
-
-  // developing conditions (ADDITIVE early-investigate layer — trajectory, not verdict;
-  // never affects severity). building = go look; easing = resolving; steady = nothing.
-  if (h.developing) {
-    const arrow = {building:'▲', elevated:'■', easing:'▼', steady:'–'};
-    const dcol  = {building:AMBER, elevated:AMBER, easing:GREEN, steady:GREY};
-    const dword = {building:'building', elevated:'elevated', easing:'easing', steady:'steady'};
-    const dc = (side, head) => {
-      const st = side.state || 'steady';
-      return `<div style="flex:1;padding:0 clamp(7px,2.8vw,20px);min-width:0;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
-          <span style="color:${dcol[st]};font-size:13px;">${arrow[st]}</span>
-          <span style="font-size:clamp(11px,2.9vw,13.5px);color:${SOFT};flex:1;">${head}</span>
-          <span style="font-size:clamp(9px,2.4vw,11px);color:${dcol[st]};text-transform:uppercase;letter-spacing:0.08em;">${dword[st]}</span></div>
-        <div style="font-size:clamp(9px,2.3vw,11px);color:${GREY};padding-left:21px;">${side.note||''}</div></div>`;
-    };
-    html += `<div style="background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);padding:14px 4px;margin-bottom:14px;">
-      <div style="font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${GREY};padding:0 clamp(7px,2.8vw,20px);margin-bottom:12px;">Developing conditions <span style="font-weight:400;letter-spacing:0.04em;text-transform:none;color:#6f6f69;">· early signal to investigate, not a verdict</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-        ${dc(h.developing.left,  'Toward the hit')}
-        ${dc(h.developing.right, 'Toward the miss')}
+  // ── RETURN — deviation bars on one shared scale, value above the line ──
+  const ax = h.deviation.axis, cx = v => clamp(v, ax[0], ax[1]);
+  const devRows = h.deviation.rows.map(d => {
+    const band = d.p95 - d.p5, ytop = d.p5 + 0.15 * band, c = COL[d.state] || GREEN;
+    const bL = cx(d.p5), bR = cx(d.p95), yR = cx(ytop), medX = cx(d.med), curX = cx(d.cur);
+    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>
+      <div style="position:relative;height:34px;">
+        <div style="position:absolute;top:23px;left:${yR}%;width:${bR - yR}%;height:8px;border-radius:0 3px 3px 0;background:rgba(74,222,128,0.22);border:1px solid rgba(74,222,128,0.4);box-sizing:border-box;"></div>
+        <div style="position:absolute;top:23px;left:${bL}%;width:${yR - bL}%;height:8px;background:rgba(251,191,36,0.4);border:1px solid rgba(251,191,36,0.6);box-sizing:border-box;"></div>
+        <div style="position:absolute;top:21px;left:${medX}%;width:1.5px;height:12px;background:${GREY};"></div>
+        <div style="position:absolute;top:15px;left:${curX}%;width:3px;height:18px;background:${c};transform:translateX(-1.5px);border-radius:1px;"></div>
+        <div style="position:absolute;top:0;left:${curX}%;transform:translateX(-50%);font-size:0.9rem;font-weight:600;color:${c};white-space:nowrap;">${sgn(d.cur.toFixed(1))}%</div>
       </div></div>`;
-  }
+  }).join('');
+  const devAxis = `<div class="hs-row"><span></span><div style="position:relative;height:14px;">`
+    + h.deviation.ticks.map(t => `<span class="hs-tick" style="position:absolute;left:${cx(t)}%;transform:translateX(-50%);">+${t}%</span>`).join('')
+    + `</div></div>`;
 
-  // two tails (two columns, RORO divider idiom)
-  const left  = (h.footprints || []).filter(f => f.tail === 'left');
-  const right = (h.footprints || []).filter(f => f.tail === 'right');
-  const fpRow = f => `<div style="display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #161616;">
-      <span style="width:7px;height:7px;border-radius:50%;background:${f.lit?RED:GREEN};flex:none;"></span>
-      <span style="font-size:clamp(11.5px,3vw,14px);color:${SOFT};flex:1;min-width:0;">${f.label}</span>
-      <span style="font-size:clamp(9px,2.4vw,11px);color:${GREY};white-space:nowrap;">${f.confidence}</span></div>`;
-  const tailCol = (title, fps, rep, cap, isMiss, last) =>
-    `<div style="${last?'':'border-right:1px solid #1c1c1c;'}padding:0 clamp(7px,2.8vw,22px);min-width:0;">
-      <div style="color:#9a9a9a;font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:clamp(0.05em,1.2vw,0.18em);text-transform:uppercase;margin-bottom:14px;white-space:nowrap;">${title}</div>
-      ${fps.map(fpRow).join('')}
-      ${replayLine(rep, cap, GREY, SOFT, isMiss)}</div>`;
-  html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:18px;background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);padding:18px 4px;">
-    ${tailCol('Downside · the hit', left, h.stress_replay, 'if a shock repeats', false, false)}
-    ${tailCol('Upside · the miss', right, h.recovery_replay, 'upside missed if defensive', true, true)}</div>`;
+  // ── DRAWDOWN — depth & duration thermometers (green/yellow/red zones) ──
+  const ddBar = (d, name) => {
+    const c = COL[d.state] || GREEN;
+    const tk = d.ticks.map((t, i) => `<span class="hs-tick" style="position:absolute;left:${i / (d.ticks.length - 1) * 100}%;transform:translateX(-50%);">${t}</span>`).join('');
+    return `<div class="hs-row"><span class="hs-lab">${name}</span>
+      <div style="position:relative;height:42px;">
+        <div style="position:absolute;top:21px;left:0;width:${d.green}%;height:8px;border-radius:3px 0 0 3px;background:rgba(74,222,128,0.30);"></div>
+        <div style="position:absolute;top:21px;left:${d.green}%;width:${d.yellow - d.green}%;height:8px;background:rgba(251,191,36,0.32);"></div>
+        <div style="position:absolute;top:21px;left:${d.yellow}%;right:0;height:8px;border-radius:0 3px 3px 0;background:rgba(248,113,113,0.32);"></div>
+        <div style="position:absolute;top:15px;left:${d.pos}%;width:3px;height:20px;background:${c};transform:translateX(-1.5px);border-radius:1px;"></div>
+        <div style="position:absolute;top:0;left:${d.pos}%;transform:translateX(-50%);font-size:0.9rem;font-weight:600;color:${c};white-space:nowrap;">${d.label}</div>
+        <div style="position:absolute;top:33px;left:0;right:0;height:10px;">${tk}</div>
+      </div></div>`;
+  };
 
-  // integrity floor
-  const ig = h.integrity || { level: 'green' };
-  const igCol = ig.level === 'red' ? RED : (ig.level === 'amber' ? AMBER : GREEN);
-  html += `<div style="display:flex;align-items:center;gap:12px;background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);
-    border-left:3px solid ${igCol};padding:13px 18px;margin-bottom:16px;">
-    <span style="width:8px;height:8px;border-radius:50%;background:${igCol};flex:none;"></span>
-    <span style="font-size:clamp(9px,2.5vw,11px);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${GREY};flex:1;">Integrity floor</span>
-    <span style="font-size:clamp(11px,2.7vw,13px);color:${SOFT};">data · reads ${ig.level==='green'?'valid':ig.level}</span></div>`;
+  // ── RETURN CONFIDENCE — living forward fans (range bars) ──
+  const rcRows = h.confidence.rows.map(d => {
+    const x = v => clamp(v, d.lo, d.hi);
+    const tk = d.ticks.map(t => `<span class="hs-tick" style="position:absolute;left:${x(t)}%;transform:translateX(-50%);">${sgn(t)}%</span>`).join('');
+    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>
+      <div style="position:relative;height:48px;">
+        <div style="position:absolute;top:26px;left:${x(d.p5)}%;width:${x(d.p95) - x(d.p5)}%;height:8px;border-radius:4px;background:rgba(74,222,128,0.15);"></div>
+        <div style="position:absolute;top:24px;left:${x(d.p25)}%;width:${x(d.p75) - x(d.p25)}%;height:12px;border-radius:3px;background:rgba(74,222,128,0.45);border:1px solid rgba(74,222,128,0.6);box-sizing:border-box;"></div>
+        <div style="position:absolute;top:20px;left:${x(d.med)}%;width:2px;height:20px;background:${WHITE};transform:translateX(-1px);"></div>
+        <div style="position:absolute;top:4px;left:${x(d.med)}%;transform:translateX(-50%);font-size:0.95rem;font-weight:600;color:${GREEN};white-space:nowrap;">${sgn(d.med)}%</div>
+        <div style="position:absolute;top:24px;left:${x(d.now)}%;width:2px;height:12px;background:${GREY};transform:translateX(-1px);"></div>
+        <div style="position:absolute;top:38px;left:${x(d.now)}%;transform:translateX(-50%);font-size:0.66rem;color:${GREY};white-space:nowrap;">now ${sgn(d.now)}%</div>
+        <div style="position:absolute;top:40px;left:0;right:0;height:10px;">${tk}</div>
+      </div></div>`;
+  }).join('');
 
-  // severity ladder
-  const steps = ['TRUST','LOOK','ACT','SERIOUS'], lbl = {TRUST:'Trust',LOOK:'Look',ACT:'Act',SERIOUS:'Serious'};
-  html += `<div style="display:flex;gap:6px;align-items:stretch;">` +
-    steps.map(s => {
-      const on = s === h.severity, col = sevColor[s];
-      return `<span style="flex:1;text-align:center;padding:9px 2px;font-size:clamp(10px,2.6vw,12.5px);${on?'font-weight:700;':''}
-        letter-spacing:0.08em;text-transform:uppercase;color:${on?col:GREY};
-        border:1px solid ${on?col+'59':'rgba(255,255,255,0.08)'};background:${on?col+'14':'transparent'};">${lbl[s]}</span>`;
-    }).join('') + `</div>`;
+  // ── MONITORING — two-tail watch, plain language ──
+  const mon = [['downside', 'Downside', 'ti-arrow-down-circle'], ['upside', 'Upside', 'ti-arrow-up-circle']]
+    .map(([k, cap, ic], i) => {
+      const m = h.monitoring[k], c = COL[m.state] || GREEN;
+      return `<div style="display:flex;align-items:flex-start;gap:10px;${i === 0 ? 'margin-bottom:11px;' : ''}">
+        <i class="ti ${ic}" style="font-size:18px;color:${c};margin-top:1px;" aria-hidden="true"></i>
+        <div><span style="font-size:0.95rem;color:${WHITE};">${cap} — ${m.head}</span>
+        <div style="font-size:0.82rem;color:${GREY};margin-top:2px;">${m.sub}</div></div></div>`;
+    }).join('');
 
-  html += `</div>`;
-  return html;
+  return `<div class="db-block"><div class="db-eyebrow">Model Health</div>
+    <div class="hs-card">
+      <div class="hs-h">Return</div>${devRows}${devAxis}
+      <div class="hs-h" style="margin-top:20px;">Drawdown</div>${ddBar(h.drawdown.depth, 'Depth')}${ddBar(h.drawdown.duration, 'Duration')}
+    </div>
+    <div class="hs-card"><div class="hs-h">Return Confidence</div>${rcRows}</div>
+    <div class="hs-card"><div class="hs-h">Monitoring</div>${mon}</div>
+  </div>`;
 }
 
 function replayLine(rep, caption, grey, soft, isMiss) {

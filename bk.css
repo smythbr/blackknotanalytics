@@ -829,3 +829,14 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .mv-contrib-foot .dis { color: #E24B4A; }
 .mv-legend { margin-top: 18px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.7; }
 @media (max-width: 680px) { .mv-contrib-col { min-width: 0; } }
+
+
+/* ═══ 9 — MODEL HEALTH SUITE (eidos health block) ═══
+   Cards + bar rows for the deviation / drawdown / return-confidence / monitoring
+   suite rendered by blkHealth. Reuses tokens; adds only the suite grid. */
+.hs-card{background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);border-left:3px solid var(--red);border-radius:6px;padding:18px 20px;margin-bottom:14px;}
+.hs-h{font-family:var(--font-ui);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(204,16,16,0.3);}
+.hs-row{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center;padding:5px 0;}
+.hs-lab{font-size:0.95rem;color:var(--light-grey);letter-spacing:0.04em;}
+.hs-tick{font-size:0.72rem;color:var(--grey);}
+@media (max-width:480px){.hs-row{grid-template-columns:60px 1fr;gap:8px;}.hs-lab{font-size:0.85rem;}.hs-card{padding:14px 14px;}}
