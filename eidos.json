@@ -44811,8 +44811,8 @@
             "run_len": 0,
             "hit_rate": 0.095,
             "ci": [
-              0.053,
-              0.146
+              0.048,
+              0.142
             ]
           },
           {
@@ -44824,8 +44824,8 @@
             "run_len": 0,
             "hit_rate": 0.11,
             "ci": [
-              0.086,
-              0.136
+              0.085,
+              0.135
             ]
           },
           {
@@ -44837,8 +44837,8 @@
             "run_len": 0,
             "hit_rate": 0.094,
             "ci": [
-              0.051,
-              0.147
+              0.045,
+              0.142
             ]
           },
           {
@@ -44850,7 +44850,7 @@
             "run_len": 0,
             "hit_rate": 0.129,
             "ci": [
-              0.114,
+              0.113,
               0.144
             ]
           },
@@ -44863,8 +44863,8 @@
             "run_len": 0,
             "hit_rate": 0.136,
             "ci": [
-              0.113,
-              0.16
+              0.112,
+              0.159
             ]
           },
           {
@@ -44876,8 +44876,8 @@
             "run_len": 0,
             "hit_rate": 0.139,
             "ci": [
-              0.118,
-              0.161
+              0.117,
+              0.16
             ]
           }
         ],
@@ -44897,7 +44897,7 @@
         "immediate": [],
         "scores": {
           "speed_shock": 0.007231373616869652,
-          "vol_surge": 0.559376518801066,
+          "vol_surge": 0.5593765188010672,
           "vix_accel": 0.12256099241677698,
           "restore_lag": 0.0,
           "over_defensive": 0.0,
@@ -44969,136 +44969,227 @@
           }
         },
         "suite": {
-          "schema": "blackknot.health_suite.v1",
+          "schema": "blackknot.health_suite.v2",
           "date": "2026-06-26",
-          "deviation": {
-            "axis": [
-              -5,
-              45
-            ],
-            "ticks": [
-              0,
-              10,
-              20,
-              30,
-              40
-            ],
+          "verdict": "healthy",
+          "components": {
+            "returns": "healthy",
+            "drawdown": "healthy"
+          },
+          "ladder": {
             "rows": [
               {
                 "h": "1 year",
-                "cur": 20.4,
+                "min": -7.0,
                 "p5": -0.6,
+                "p25": 7.4,
                 "med": 14.9,
                 "p95": 44.2,
-                "state": "success"
+                "max": 68.3,
+                "cur": 20.4,
+                "drift": -1.8,
+                "zone": "healthy"
+              },
+              {
+                "h": "2 year",
+                "min": -0.9,
+                "p5": 2.8,
+                "p25": 9.8,
+                "med": 14.6,
+                "p95": 32.4,
+                "max": 42.0,
+                "cur": 17.9,
+                "drift": -9.2,
+                "zone": "healthy"
               },
               {
                 "h": "3 year",
-                "cur": 20.7,
+                "min": 4.6,
                 "p5": 7.2,
+                "p25": 10.7,
                 "med": 14.4,
                 "p95": 27.3,
-                "state": "success"
+                "max": 30.8,
+                "cur": 20.7,
+                "drift": -0.3,
+                "zone": "healthy"
               },
               {
                 "h": "5 year",
-                "cur": 13.2,
+                "min": 7.9,
                 "p5": 9.0,
+                "p25": 12.6,
                 "med": 16.9,
                 "p95": 27.1,
-                "state": "success"
+                "max": 28.4,
+                "cur": 13.2,
+                "drift": -2.3,
+                "zone": "healthy"
+              },
+              {
+                "h": "7 year",
+                "min": 9.4,
+                "p5": 10.8,
+                "p25": 16.0,
+                "med": 18.3,
+                "p95": 22.4,
+                "max": 23.0,
+                "cur": 16.4,
+                "drift": -2.4,
+                "zone": "healthy"
+              },
+              {
+                "h": "10 year",
+                "min": 14.3,
+                "p5": 14.9,
+                "p25": 16.7,
+                "med": 17.9,
+                "p95": 20.4,
+                "max": 21.3,
+                "cur": 19.4,
+                "drift": -1.2,
+                "zone": "healthy"
               },
               {
                 "h": "Lifetime",
+                "min": 14.5,
+                "p5": 14.7,
+                "p25": 15.2,
+                "med": 15.7,
+                "p95": 17.2,
+                "max": 17.4,
                 "cur": 15.9,
-                "p5": 14.9,
-                "med": 17.9,
-                "p95": 20.4,
-                "state": "success"
+                "drift": -0.4,
+                "zone": "healthy"
               }
             ]
           },
           "drawdown": {
             "depth": {
-              "label": "\u22124.1%",
-              "cur": -4.1,
-              "pos": 45,
-              "green": 56,
-              "yellow": 80,
+              "now": -4.1,
+              "trough": -6.2,
               "worst": -9.1,
-              "ticks": [
-                "0",
-                "\u22123%",
-                "\u22126%",
-                "\u22129%"
-              ],
-              "state": "success"
+              "caution": -6.5,
+              "alert": -7.0,
+              "peak": "2026-01-28",
+              "path": [
+                {
+                  "o": 0,
+                  "v": 0.0
+                },
+                {
+                  "o": 7,
+                  "v": -3.19
+                },
+                {
+                  "o": 14,
+                  "v": -1.78
+                },
+                {
+                  "o": 22,
+                  "v": -2.95
+                },
+                {
+                  "o": 29,
+                  "v": -1.35
+                },
+                {
+                  "o": 36,
+                  "v": -2.78
+                },
+                {
+                  "o": 43,
+                  "v": -3.83
+                },
+                {
+                  "o": 50,
+                  "v": -5.44
+                },
+                {
+                  "o": 57,
+                  "v": -6.25
+                },
+                {
+                  "o": 64,
+                  "v": -5.17
+                },
+                {
+                  "o": 72,
+                  "v": -4.86
+                },
+                {
+                  "o": 79,
+                  "v": -4.51
+                },
+                {
+                  "o": 86,
+                  "v": -4.66
+                },
+                {
+                  "o": 93,
+                  "v": -4.4
+                },
+                {
+                  "o": 100,
+                  "v": -3.21
+                },
+                {
+                  "o": 107,
+                  "v": -3.05
+                },
+                {
+                  "o": 114,
+                  "v": -2.47
+                },
+                {
+                  "o": 124,
+                  "v": -1.35
+                },
+                {
+                  "o": 131,
+                  "v": -2.96
+                },
+                {
+                  "o": 138,
+                  "v": -1.6
+                },
+                {
+                  "o": 146,
+                  "v": -3.62
+                },
+                {
+                  "o": 149,
+                  "v": -4.12
+                }
+              ]
             },
             "duration": {
-              "label": "149d",
-              "cur": 149,
-              "pos": 27,
-              "green": 6,
-              "yellow": 54,
-              "worst": 555,
-              "ticks": [
-                "0",
-                "185d",
-                "370d",
-                "555d"
-              ],
-              "state": "warning"
+              "now_days": 149,
+              "worst_days": 554,
+              "caution_days": 400
             }
           },
           "confidence": {
             "rows": [
               {
                 "h": "Next 10 yrs",
-                "lo": 0,
-                "hi": 26,
                 "p5": 10.3,
                 "p25": 13.5,
                 "med": 16.1,
                 "p75": 18.6,
                 "p95": 22.4,
-                "now": 15.9,
-                "ticks": [
-                  0,
-                  8,
-                  16,
-                  24
-                ]
+                "now": 15.9
               },
               {
                 "h": "This year",
-                "lo": -5,
-                "hi": 25,
                 "p5": 2.1,
                 "p25": 6.3,
                 "med": 10.9,
                 "p75": 17.0,
                 "p95": 30.5,
-                "now": 3.9,
-                "ticks": [
-                  -5,
-                  0,
-                  10,
-                  20
-                ]
+                "now": 3.9
               }
             ]
-          },
-          "monitoring": {
-            "downside": {
-              "state": "warning",
-              "head": "a patient dip, protection intact",
-              "sub": "shallow but 5 months underwater; the fast cut is armed, credit calm"
-            },
-            "upside": {
-              "state": "success",
-              "head": "fully invested, not missing out",
-              "sub": "85% equity, so no rally is passing you by"
-            }
           }
         }
       }

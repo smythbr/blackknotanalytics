@@ -465,6 +465,15 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 .signal-badge { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border: 1px solid; }
 .signal-badge.hold   { color: var(--green-pos);  border-color: rgba(74,222,128,0.35);  background: rgba(74,222,128,0.06); }
 .signal-badge.action { color: var(--yellow-neu); border-color: rgba(251,191,36,0.35); background: rgba(251,191,36,0.08); }
+/* Model Health verdict variants (same chip, three states) */
+.signal-badge.healthy { color: var(--green-pos);  border-color: rgba(74,222,128,0.40);  background: rgba(74,222,128,0.07); }
+.signal-badge.caution { color: var(--yellow-neu); border-color: rgba(251,191,36,0.40);  background: rgba(251,191,36,0.09); }
+.signal-badge.alert   { color: var(--red-neg);    border-color: rgba(248,113,113,0.45); background: rgba(248,113,113,0.10); }
+/* Model Health pill row — verdict + Returns/Drawdown component dots */
+.hs-pill-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+.hs-dot-chip { display: inline-flex; align-items: center; gap: 7px; font-size: var(--fs-md); color: #C8C8C4; letter-spacing: 0.02em; }
+.hs-dot      { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.hs-pill-sub { margin-left: auto; font-size: var(--fs-sm); color: var(--grey); letter-spacing: 0.14em; text-transform: uppercase; }
 .signal-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
 .signal-kpi { background: #0a0a0a; padding: 16px 18px; }
 .signal-kpi-label { font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }

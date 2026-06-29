@@ -893,87 +893,109 @@ function blkVamsFlip(b, data) {
 // every bar position here and returns positioned HTML (no post-render script).
 // Colour/word for each element comes from the block's `state` field (decided in
 // eidos_health_suite.py); this only lays it out.
+// ── MODEL HEALTH (suite v2) ────────────────────────────────────────────────
+// Reads eidos.json → blocks[health].health.suite (blackknot.health_suite.v2).
+// Renders: the overall verdict pill (signal-badge) + Returns/Drawdown dots, then
+// one self-contained SVG with three cards — RETURN ladder (7 horizons), DRAWDOWN
+// (instantaneous depth curve + reversed duration bar), RETURN CONFIDENCE (two
+// forward fans). Colour/word for the verdict and per-horizon zones are decided
+// in eidos_health_suite.py; this only lays them out.
 function blkHealth(b, data) {
-  const h = b.health && b.health.suite;
-  const GREEN = '#4ade80', YELLOW = '#fbbf24', RED = '#f87171',
-        GREY = '#9C9C97', SOFT = '#C8C8C4', WHITE = '#fff';
-  const COL = { success: GREEN, warning: YELLOW, danger: RED };
-  if (!h) {
+  const s = b.health && b.health.suite;
+  if (!s || !s.ladder) {
     return `<div class="db-block"><div class="db-eyebrow">Model Health</div>
       <div class="hs-card"><div style="color:#8a8a8a;font-size:12.5px;">Health is published once the signal is live.</div></div></div>`;
   }
-  const clamp = (v, lo, hi) => Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100));
-  const sgn = v => (v >= 0 ? '+' : '') + v;
+  const G='#4ade80', Y='#fbbf24', R='#f87171', GR='#9C9C97', SO='#C8C8C4', WH='#fff', RED='#CC1010';
+  const ZC = { healthy: G, caution: Y, alert: R };
+  const sgn = x => (x >= 0 ? '+' : '') + (+x).toFixed(1);
+  const P = [];
+  const t = (x,y,txt,fill,fs,anc='start',w,ls)=>P.push(`<text x="${(+x).toFixed(0)}" y="${(+y).toFixed(0)}" fill="${fill}" font-size="${fs}" text-anchor="${anc}"${w?` font-weight="${w}"`:''}${ls?` letter-spacing="${ls}"`:''}>${txt}</text>`);
+  const rect=(x,y,wd,ht,fill,op,rx)=>P.push(`<rect x="${(+x).toFixed(1)}" y="${(+y).toFixed(1)}" width="${(+wd).toFixed(1)}" height="${(+ht).toFixed(1)}"${rx?` rx="${rx}"`:''} fill="${fill}"${op!=null?` fill-opacity="${op}"`:''}/>`);
+  const line=(x1,y1,x2,y2,st,dash,op)=>P.push(`<line x1="${(+x1).toFixed(1)}" y1="${(+y1).toFixed(1)}" x2="${(+x2).toFixed(1)}" y2="${(+y2).toFixed(1)}" stroke="${st}"${dash?` stroke-dasharray="${dash}"`:''}${op!=null?` opacity="${op}"`:''}/>`);
+  const dot=(cx,cy,col,r)=>P.push(`<circle cx="${(+cx).toFixed(1)}" cy="${(+cy).toFixed(1)}" r="${r+8}" fill="${col}" fill-opacity="0.22"/><circle cx="${(+cx).toFixed(1)}" cy="${(+cy).toFixed(1)}" r="${r+2}" fill="${col}" fill-opacity="0.4"/><circle cx="${(+cx).toFixed(1)}" cy="${(+cy).toFixed(1)}" r="${r}" fill="${col}" stroke="#0D0D0D" stroke-width="2"/>`);
+  const X0=290, X1=1010, Wd=X1-X0;
+  let y = 0;
+  const card=(h,title)=>{ rect(40,y,1040,h,'#0D0D0D',null,8); rect(40,y,4,h,RED); t(70,y+34,title,WH,15,'start',700,4); line(70,y+48,1050,y+48,'#2a1a1a'); };
 
-  // ── RETURN — deviation bars on one shared scale, value above the dot ──
-  // Context zones (amber = approaching-floor, green = within) sit soft on the
-  // rail; the glowing dot at the current return is the marker. Ticks render
-  // once as a shared axis row beneath all four horizons.
-  const ax = h.deviation.axis, cx = v => clamp(v, ax[0], ax[1]);
-  const devRows = h.deviation.rows.map(d => {
-    const band = d.p95 - d.p5, ytop = d.p5 + 0.15 * band, c = COL[d.state] || GREEN;
-    const bL = cx(d.p5), bR = cx(d.p95), yR = cx(ytop), medX = cx(d.med), curX = cx(d.cur);
-    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>${bkBar({
-      railTop: 16, h: 34,
-      zones: [{ l: bL, w: yR - bL, k: 'yM' }, { l: yR, w: bR - yR, k: 'gS' }],
-      refs:  [{ l: medX, k: 'soft' }],
-      dots:  [{ l: curX, color: c }],
-      valsAbove: [{ l: curX, color: c, t: sgn(d.cur.toFixed(1)) + '%' }],
-    })}</div>`;
-  }).join('');
-  const devAxis = `<div class="hs-row"><span></span>${bkBar({
-    railTop: 0, h: 16, tickTop: 0,
-    ticks: h.deviation.ticks.map(t => ({ l: cx(t), t: '+' + t + '%' })),
-  })}</div>`;
+  // ── RETURN ladder ──
+  const L = s.ladder.rows;
+  const rcard = 90 + L.length*78; card(rcard,'RETURN');
+  L.forEach((d,i)=>{
+    const by = y+90+i*78, bh=20, rng=(d.max-d.min)||1, xp=v=>X0+(v-d.min)/rng*Wd, c=ZC[d.zone]||G;
+    t(70,by+15,d.h,SO,22);
+    rect(xp(d.min),by,xp(d.p5)-xp(d.min),bh,R,0.55,10);
+    rect(xp(d.p5),by,xp(d.p25)-xp(d.p5),bh,Y,0.55);
+    rect(xp(d.p25),by,xp(d.max)-xp(d.p25),bh,G,0.5,10);
+    [d.p5,d.p25].forEach(v=>rect(xp(v)-1,by-4,2,bh+8,'#f0f0f0'));
+    rect(xp(d.med)-0.75,by-2,1.5,bh+4,GR); rect(xp(d.p95)-0.75,by-2,1.5,bh+4,GR);
+    t(xp(d.min)-7,by+15,sgn(d.min),'#8a8a86',15,'end'); t(xp(d.max)+7,by+15,sgn(d.max),'#8a8a86',15,'start');
+    if(Math.abs(d.drift)>=0.7){ const ln=Math.min(55,Math.abs(d.drift)*7), cxp=xp(d.cur);
+      if(d.drift<0){ const sx=cxp-13-ln; rect(sx,by+bh/2-1.5,ln,3,SO); P.push(`<polygon points="${sx.toFixed(1)},${(by+bh/2).toFixed(1)} ${(sx+10).toFixed(1)},${(by+bh/2-6).toFixed(1)} ${(sx+10).toFixed(1)},${(by+bh/2+6).toFixed(1)}" fill="${SO}"/>`); } }
+    dot(xp(d.cur),by+bh/2,c,7);
+    t(Math.min(990,Math.max(310,xp(d.cur))),by-9,sgn(d.cur)+'%',c,21,'middle',700);
+    const b2=by+bh+22;
+    t(xp(d.p5),b2,sgn(d.p5),R,15,'middle',600); t(xp(d.p25),b2,sgn(d.p25),Y,15,'middle',600);
+    t(xp(d.med),b2,'med '+sgn(d.med),GR,14,'middle'); t(xp(d.p95),b2,'p95 '+sgn(d.p95),GR,14,'middle');
+  });
+  y += rcard + 24;
 
-  // ── DRAWDOWN — depth & duration thermometers (green/yellow/red zones) ──
-  const ddBar = (d, name) => {
-    const c = COL[d.state] || GREEN;
-    return `<div class="hs-row"><span class="hs-lab">${name}</span>${bkBar({
-      railTop: 18, h: 48, tickTop: 34,
-      zones: [{ l: 0, w: d.green, k: 'gM' }, { l: d.green, w: d.yellow - d.green, k: 'yM' },
-              { l: d.yellow, w: 100 - d.yellow, k: 'rM' }],
-      dots:  [{ l: d.pos, color: c }],
-      valsAbove: [{ l: d.pos, color: c, t: d.label }],
-      ticks: d.ticks.map((t, i) => ({ l: i / (d.ticks.length - 1) * 100, t })),
-    })}</div>`;
-  };
+  // ── DRAWDOWN — instantaneous depth curve + reversed duration bar ──
+  const dd=s.drawdown.depth, du=s.drawdown.duration;
+  const dcard=470; card(dcard,'DRAWDOWN');
+  const dy0=y+78, axBot=Math.min(dd.worst*1.06,-9.4), pxp=210/Math.abs(axBot), yp=v=>dy0+(-v)*pxp;
+  rect(X0,yp(0),Wd,yp(dd.caution)-yp(0),G,0.10);
+  rect(X0,yp(dd.caution),Wd,yp(dd.alert)-yp(dd.caution),Y,0.16);
+  rect(X0,yp(dd.alert),Wd,yp(dd.worst)-yp(dd.alert),R,0.14);
+  [0,-3,-6,-9].forEach(g=>{ if(g>=axBot){ line(X0,yp(g),X1,yp(g),'#222'); t(X0-12,yp(g)+5,g+'%',GR,16,'end'); }});
+  line(X0,yp(dd.caution),X1,yp(dd.caution),Y,'4 4',0.6); t(X0+8,yp(dd.caution)-5,'caution '+dd.caution+'%',Y,13);
+  line(X0,yp(dd.alert),X1,yp(dd.alert),R,'4 4',0.6); t(X0+8,yp(dd.alert)-5,'alert '+dd.alert+'%',R,13);
+  t(X1,yp(dd.worst)+18,'worst '+dd.worst+'%',R,13,'end');
+  const dur=Math.max(du.now_days,1), xpd=o=>X0+o/dur*Wd;
+  P.push(`<polyline points="${dd.path.map(p=>xpd(p.o).toFixed(1)+','+yp(p.v).toFixed(1)).join(' ')}" fill="none" stroke="#f0f0f0" stroke-width="2.5" stroke-linejoin="round"/>`);
+  const tro=dd.path.reduce((a,p)=>p.v<a.v?p:a,dd.path[0]);
+  P.push(`<circle cx="${xpd(tro.o).toFixed(1)}" cy="${yp(tro.v).toFixed(1)}" r="6" fill="${G}" stroke="#0D0D0D" stroke-width="2"/>`);
+  t(xpd(tro.o),yp(tro.v)+24,'trough '+sgn(dd.trough)+'%',GR,15,'middle',600);
+  dot(X1,yp(dd.now),G,6); t(998,yp(dd.now)-10,sgn(dd.now)+'% now',G,18,'end',700);
+  const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], pk=new Date(dd.peak+'T00:00:00');
+  for(let o=0;o<=dur;o+=Math.max(1,Math.round(dur/5))){ const dt=new Date(pk.getTime()+o*864e5); t(xpd(o),dy0+225,MON[dt.getMonth()],GR,16,'middle'); }
+  // duration bar (reversed: 0d right/green, worst left/red)
+  const duy=y+360; t(70,duy+4,'DURATION UNDERWATER',GR,15,'start',null,2);
+  const W=du.worst_days, rdx=d=>X1-d/W*Wd, bby=duy+14, cau=du.caution_days;
+  rect(rdx(cau),bby,X1-rdx(cau),22,G,0.5,11);
+  rect(rdx(W*0.9),bby,rdx(cau)-rdx(W*0.9),22,Y,0.5);
+  rect(X0,bby,rdx(W*0.9)-X0,22,R,0.5,11);
+  line(rdx(cau),bby-4,rdx(cau),bby+26,'#0D0D0D');
+  P.push(`<circle cx="${rdx(du.now_days).toFixed(1)}" cy="${bby+11}" r="9" fill="${G}" stroke="#0D0D0D" stroke-width="2"/>`);
+  t(rdx(du.now_days),bby-8,du.now_days+'d',G,17,'middle',700);
+  t(X0-8,bby+16,W+'d worst','#8a8a86',14,'end'); t(X1+8,bby+16,'0d','#8a8a86',14,'start');
+  t(rdx(cau),bby+40,'caution · '+cau+'d',Y,13,'middle');
+  y += dcard + 24;
 
-  // ── RETURN CONFIDENCE — living forward fans (range bars) ──
-  // Soft p5–p95 range + BRIGHT p25–p75 inter-quartile, white median reference
-  // with its value above, neutral "now" dot with its value below. Median value
-  // sits above the rail and "now" below it, so the two never collide.
-  const rcRows = h.confidence.rows.map(d => {
-    const x = v => clamp(v, d.lo, d.hi);
-    return `<div class="hs-row"><span class="hs-lab">${d.h}</span>${bkBar({
-      railTop: 20, h: 70, tickTop: 52,
-      zones: [{ l: x(d.p5), w: x(d.p95) - x(d.p5), k: 'gS' },
-              { l: x(d.p25), w: x(d.p75) - x(d.p25), k: 'g' }],
-      refs:  [{ l: x(d.med), k: 'median' }],
-      dots:  [{ l: x(d.now), color: GREY, soft: true }],
-      valsAbove: [{ l: x(d.med), color: GREEN, t: sgn(d.med) + '%' }],
-      valsBelow: [{ l: x(d.now), color: GREY, t: 'now ' + sgn(d.now) + '%' }],
-      ticks: d.ticks.map(t => ({ l: x(t), t: sgn(t) + '%' })),
-    })}</div>`;
-  }).join('');
+  // ── RETURN CONFIDENCE — two forward fans ──
+  const F=s.confidence.rows, ccard=95+F.length*105; card(ccard,'RETURN CONFIDENCE');
+  F.forEach((d,i)=>{
+    const fy=y+95+i*105, lo=d.p5, hi=d.p95, fxp=v=>X0+(v-lo)/((hi-lo)||1)*Wd, by=fy, bh=20, bc=by+bh/2;
+    t(70,bc+6,d.h,SO,22);
+    rect(fxp(d.p5),by,Wd,bh,G,0.18,10);
+    rect(fxp(d.p25),by,fxp(d.p75)-fxp(d.p25),bh,G,0.55);
+    [[d.p25,sgn(d.p25)],[d.med,'med '+sgn(d.med)],[d.p75,sgn(d.p75)]].forEach(([v,lab])=>{ rect(fxp(v)-0.75,by-4,1.5,bh+8,GR); t(fxp(v),by+bh+22,lab,GR,15,'middle'); });
+    t(fxp(d.p5)-8,bc+6,sgn(d.p5),'#8a8a86',15,'end'); t(fxp(d.p95)+8,bc+6,sgn(d.p95),'#8a8a86',15,'start');
+    dot(fxp(d.now),bc,G,7); t(fxp(d.now),by-10,sgn(d.now)+'%',G,21,'middle',700);
+  });
+  y += ccard;
 
-  // ── MONITORING — two-tail watch, plain language ──
-  const mon = [['downside', 'Downside', 'ti-arrow-down-circle'], ['upside', 'Upside', 'ti-arrow-up-circle']]
-    .map(([k, cap, ic], i) => {
-      const m = h.monitoring[k], c = COL[m.state] || GREEN;
-      return `<div style="display:flex;align-items:flex-start;gap:10px;${i === 0 ? 'margin-bottom:11px;' : ''}">
-        <i class="ti ${ic}" style="font-size:18px;color:${c};margin-top:1px;" aria-hidden="true"></i>
-        <div><span style="font-size:0.95rem;color:${WHITE};">${cap} — ${m.head}</span>
-        <div style="font-size:0.82rem;color:${GREY};margin-top:2px;">${m.sub}</div></div></div>`;
-    }).join('');
-
+  // ── pill (HTML, signal-badge) + Returns/Drawdown dots ──
+  const v=s.verdict, comp=s.components||{};
+  const sub = v==='healthy'?'autopilot' : v==='caution'?'follow closely' : 'look hard';
+  const chip = (st,lab) => `<span class="hs-dot-chip"><span class="hs-dot" style="background:${ZC[st]||G}"></span>${lab}</span>`;
   return `<div class="db-block"><div class="db-eyebrow">Model Health</div>
-    <div class="hs-card">
-      <div class="hs-h">Return</div>${devRows}${devAxis}
-      <div class="hs-h" style="margin-top:20px;">Drawdown</div>${ddBar(h.drawdown.depth, 'Depth')}${ddBar(h.drawdown.duration, 'Duration')}
+    <div class="hs-pill-row">
+      <span class="signal-badge ${v}">${v.toUpperCase()}</span>
+      ${chip(comp.returns,'Returns')}${chip(comp.drawdown,'Drawdown')}
+      <span class="hs-pill-sub">${sub}</span>
     </div>
-    <div class="hs-card"><div class="hs-h">Return Confidence</div>${rcRows}</div>
-    <div class="hs-card"><div class="hs-h">Monitoring</div>${mon}</div>
+    <svg viewBox="0 0 1120 ${y}" width="100%" font-family="'Rajdhani','Segoe UI',sans-serif" role="img" aria-label="Model Health: ${v}">${P.join('')}</svg>
   </div>`;
 }
 
