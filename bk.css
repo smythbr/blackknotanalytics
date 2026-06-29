@@ -837,7 +837,12 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .mv-contrib-foot { margin-top: 12px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.6; }
 .mv-contrib-foot .dis { color: #E24B4A; }
 .mv-legend { margin-top: 18px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.7; }
-@media (max-width: 680px) { .mv-contrib-col { min-width: 0; } }
+/* Phone: stack the growth + inflation contribution boxes vertically (one after
+   the other) rather than squishing them side-by-side; full-width, zoom for detail. */
+@media (max-width: 680px) {
+  .mv-contrib { flex-direction: column; gap: 14px; }
+  .mv-contrib-col { min-width: 0; width: 100%; }
+}
 
 
 /* ═══ 9 — MODEL HEALTH SUITE (eidos health block) ═══
