@@ -135,7 +135,7 @@
             {
               "label": "3 Year",
               "model": {
-                "value": 81.35,
+                "value": 81.24,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -146,7 +146,7 @@
             {
               "label": "5 Year",
               "model": {
-                "value": 88.02,
+                "value": 87.92,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -157,7 +157,7 @@
             {
               "label": "Inception",
               "model": {
-                "value": 207.77,
+                "value": 207.59,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -229,7 +229,7 @@
               "label": "2024",
               "ytd": false,
               "model": {
-                "value": 22.41,
+                "value": 22.35,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -359,7 +359,7 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.1092,
+                "value": 1.1085,
                 "kind": "ratio"
               },
               "bench": {
@@ -370,7 +370,7 @@
             {
               "label": "Sortino",
               "model": {
-                "value": 1.5747,
+                "value": 1.5738,
                 "kind": "ratio"
               },
               "bench": {
@@ -381,7 +381,7 @@
             {
               "label": "Calmar",
               "model": {
-                "value": 2.9831,
+                "value": 2.98,
                 "kind": "ratio"
               },
               "bench": {
@@ -392,7 +392,7 @@
             {
               "label": "MAR",
               "model": {
-                "value": 1.2037,
+                "value": 1.2031,
                 "kind": "ratio"
               },
               "bench": {
@@ -436,7 +436,7 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.2897,
+                "value": 1.2896,
                 "kind": "ratio"
               },
               "bench": {
