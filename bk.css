@@ -160,8 +160,8 @@ input, select, textarea, button { font-size: max(16px, 1em); }
 .db-inner { max-width: 1100px; margin: 0 auto; padding: 56px var(--page-gutter) 96px; }
 .db-eyebrow {
   font-family: var(--font-ui);
-  font-size: var(--fs-sm); font-weight: 700;
-  letter-spacing: 0.28em; text-transform: uppercase;
+  font-size: var(--t1-kicker); font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--red); margin-bottom: 12px;
   display: flex; align-items: center; gap: 10px;
 }
@@ -824,15 +824,15 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .mv-contrib-col { flex: 1; min-width: 280px; background: var(--card-bg, #0D0D0D);
   border: 1px solid var(--line, rgba(255,255,255,0.08)); border-radius: 6px; padding: 18px 20px; }
 .mv-contrib-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
-.mv-contrib-axis { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #B0B0AC; }
+.mv-contrib-axis { font-size: var(--t1-kicker); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B0B0AC; }
 .mv-contrib-net { font-family: var(--font-display); font-size: 1.5rem; }
 .mv-contrib-sub { font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); margin-bottom: 14px; letter-spacing: 0.04em; }
-.mv-bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 10px; margin: 11px 0; }
-.mv-bar-label { font-size: 0.82rem; color: var(--light-grey, #C8C8C4); text-align: right; letter-spacing: 0.04em; }
+.mv-bar-row { display: grid; grid-template-columns: 96px 1fr 52px; align-items: center; gap: 10px; margin: 10px 0; }
+.mv-bar-label { font-size: var(--t4-tick); color: var(--light-grey, #C8C8C4); text-align: right; letter-spacing: 0.04em; }
 .mv-bar-track { position: relative; height: var(--bk-rail-h, 12px); background: rgba(255,255,255,0.05); border-radius: calc(var(--bk-rail-h, 12px) / 2); }
 .mv-bar-mid { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: rgba(255,255,255,0.22); }
 .mv-bar-fill { position: absolute; top: 0; height: var(--bk-rail-h, 12px); border-radius: 2px; }
-.mv-bar-val { font-size: 0.82rem; color: var(--grey, #9C9C97); font-variant-numeric: tabular-nums; text-align: right; }
+.mv-bar-val { font-size: var(--t4-tick); color: var(--grey, #9C9C97); font-variant-numeric: tabular-nums; text-align: right; }
 .mv-dissent-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #E24B4A; margin-left: 5px; vertical-align: middle; }
 .mv-contrib-foot { margin-top: 12px; font-size: var(--fs-xs, 0.8rem); color: var(--grey, #9C9C97); line-height: 1.6; }
 .mv-contrib-foot .dis { color: #E24B4A; }
@@ -866,7 +866,18 @@ tr:hover td { background: rgba(255,255,255,0.015); }
    speaks a single visual language instead of three. Geometry is laid
    out by bkBar() in dashboard.html; colour is data-driven (state).
 ═══════════════════════════════════════════════════════════════ */
-:root{ --bk-rail-h:12px; --bk-dot:13px; }
+:root{
+  /* ── Dashboard bar + label STANDARD (panels only; phase plane excluded).
+     ONE scale across EIDOS / AEGIS / HEDRA: T1 kicker · T2 row label ·
+     T3 value · T4 tick/threshold · T5 caption. Bars: 20px rail, 16px dot.
+     Every size is a clamp() (≥11px floor) so it stays iPhone-12 readable. ── */
+  --bk-rail-h:20px; --bk-dot:16px; --bk-row-gap:16px;
+  --t1-kicker:clamp(13px,3vw,15px);
+  --t2-label: clamp(15px,4vw,20px);
+  --t3-value: clamp(16px,4.5vw,21px);
+  --t4-tick:  clamp(12px,3vw,15px);
+  --t5-cap:   clamp(11px,2.6vw,13px);
+}
 .bk-cell{ position:relative; }
 .bk-trackwrap{ position:absolute; left:0; right:0; }
 .bk-track{ position:relative; height:var(--bk-rail-h); }
@@ -887,32 +898,25 @@ tr:hover td { background: rgba(255,255,255,0.015); }
   border-top:2px solid; border-right:2px solid; z-index:3; }
 .bk-val{ position:absolute; transform:translateX(-50%); white-space:nowrap;
   font-variant-numeric:tabular-nums; line-height:1; }
-.bk-val.above{ font-size:0.9rem; font-weight:600; }
-.bk-val.below{ font-size:0.72rem; font-weight:500; }
+.bk-val.above{ font-size:var(--t3-value); font-weight:700; }
+.bk-val.below{ font-size:var(--t5-cap); font-weight:500; }
 .bk-ticks{ position:absolute; left:0; right:0; height:14px; }
 .bk-tick{ position:absolute; transform:translateX(-50%); white-space:nowrap;
-  font-size:0.72rem; color:var(--grey); font-variant-numeric:tabular-nums; }
+  font-size:var(--t4-tick); color:var(--grey); font-variant-numeric:tabular-nums; }
 
 /* Asset-Class VAMS row: bar (left) + flip-counter card (right). Stacks on phones. */
-.vf-row{ display:grid; grid-template-columns:1fr 150px; gap:22px; align-items:center; margin-bottom:26px; }
-.vf-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:11px; }
+/* Asset-Class VAMS rows now inherit the global 20px rail / 16px dot and the
+   standard tick font; row separation uses the shared --bk-row-gap token (the
+   rows were over-separated at 26px). .vf-block is kept as a harmless wrapper. */
+.vf-row{ display:grid; grid-template-columns:1fr 150px; gap:22px; align-items:center; margin-bottom:var(--bk-row-gap); }
+.vf-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px; }
 .vf-counter{ text-align:center; border:1px solid #2a2a2a; background:#0d0d0d; padding:11px 0; border-radius:6px; }
 .vf-counter.pending{ border-color:#6a571f; background:#1a1505; }
-
-/* ASSET CLASS VAMS — heavier bar + larger type, sized to match the RETURN
-   ladder. Scoped to .vf-block so other bkBar panels keep their 12px rail.
-   Applies to every .vf-row, so the Fixed Income / TLT sleeve inherits it
-   automatically when it appears (e.g. in the Deflation regime). */
-.vf-block{ --bk-rail-h:20px; --bk-dot:16px; }
-.vf-block .bk-tick{ font-size:clamp(12px,3.2vw,15px); }
 
 @media (max-width:560px){
   .vf-row{ grid-template-columns:1fr; gap:14px; }
   .vf-counter{ max-width:200px; }
-  .vf-block{ --bk-rail-h:15px; --bk-dot:14px; }
 }
 @media (max-width:480px){
-  :root{ --bk-rail-h:11px; --bk-dot:12px; }
-  .bk-val.above{ font-size:0.82rem; }
-  .bk-tick, .bk-val.below{ font-size:0.66rem; }
+  :root{ --bk-rail-h:16px; --bk-dot:14px; }   /* bars stay substantial on iPhone-12; fonts handled by the clamp() tokens */
 }

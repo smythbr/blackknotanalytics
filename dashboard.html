@@ -432,12 +432,12 @@ function blkRebalancing(b, data) {
     if (ro) {
       const roGrid = grid(p => [['To risk-off', ro[p].off], ['To risk-on', ro[p].on], ['Total', ro[p].total]]);
       roBlock = `<div class="db-block"><div class="db-eyebrow">Risk-On / Risk-Off</div>
-        <div class="db-title" style="font-size:15px;margin-bottom:6px;">RORO Flips</div>
+        <div class="db-eyebrow">RORO Flips</div>
         <div style="color:#8a8a8a;font-size:12.5px;margin-bottom:20px;">Rebalances that crossed the risk-on / risk-off boundary</div>
         ${roGrid}</div>`;
     }
     return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
-      <div class="db-title" style="font-size:15px;margin-bottom:20px;">Operational Metrics</div>
+      <div class="db-eyebrow">Operational Metrics</div>
       ${rebalGrid}</div>${roBlock}`;
   }
   return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table)}</div>`;
@@ -777,7 +777,7 @@ function blkContribution(b, data) {
   const c = b.contribution;
   if (!c || !c.latest) {
     return `<div class="db-block" style="margin-top:-8px;">
-      <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
+      <div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
       <div class="signal-panel"><div class="signal-pending">${b.note || 'Factor detail is published once the signal is live.'}</div></div></div>`;
   }
   let bands = '';
@@ -798,10 +798,10 @@ function blkContribution(b, data) {
       const rightLabel = heldPos ? sameSignLbl : `<span style="color:#4ade80;">\u2192 ${cc.flip_name}</span>`;
       return `<div style="margin-bottom:18px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;">
-          <span style="color:#cfcfcf;font-size:13px;font-weight:600;letter-spacing:0.1em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:11px;margin-left:6px;">${heldPos ? '+ held' : '\u2212 held'}</span></span>
-          <span style="color:#9a9a9a;font-size:12px;">factor <span style="color:${dotCol};font-family:${serif};font-size:16px;">${cc.factor >= 0 ? '+' : '\u2212'}${Math.abs(cc.factor).toFixed(2)}</span></span>
+          <span style="color:#cfcfcf;font-size:var(--t2-label);font-weight:700;letter-spacing:0.08em;">${cc.label.toUpperCase()} <span style="color:#4ade80;font-size:var(--t5-cap);margin-left:6px;">${heldPos ? '+ held' : '\u2212 held'}</span></span>
+          <span style="color:#9a9a9a;font-size:var(--t5-cap);">factor <span style="color:${dotCol};font-weight:700;font-size:var(--t3-value);">${cc.factor >= 0 ? '+' : '\u2212'}${Math.abs(cc.factor).toFixed(2)}</span></span>
         </div>
-        ${bkBar({ railTop: 6, h: 26,
+        ${bkBar({ railTop: 7, h: 36,
           zones: [{ l: 0, w: loEdge, k: 'rS' }, { l: hiEdge, w: 100 - hiEdge, k: 'gS' }],
           refs:  [{ l: 50, k: 'center' },
                   { l: loEdge, k: heldPos ? 'amber' : 'center' },
@@ -809,16 +809,16 @@ function blkContribution(b, data) {
           arrow: (rising || falling) ? { l: vp, dir: rising ? 1 : -1, color: dotCol } : null,
           dots:  [{ l: vp, color: dotCol }],
         })}
-        <div style="display:flex;justify-content:space-between;margin-top:3px;font-size:clamp(9px,2.6vw,10.5px);font-weight:600;">
+        <div style="display:flex;justify-content:space-between;margin-top:5px;font-size:var(--t5-cap);font-weight:600;">
           <span>${leftLabel}</span><span>${rightLabel}</span></div>
       </div>`;
     }).join('');
     bands = `<div style="margin-top:22px;">
-      <div style="color:#6a6a6a;font-size:10.5px;letter-spacing:0.16em;margin-bottom:16px;">AXIS DEADBANDS &middot; held sign holds until the factor crosses the opposite edge</div>
+      <div style="color:#6a6a6a;font-size:var(--t5-cap);letter-spacing:0.16em;margin-bottom:16px;">AXIS DEADBANDS &middot; held sign holds until the factor crosses the opposite edge</div>
       ${rows}</div>`;
   }
   return `<div class="db-block" style="margin-top:-8px;">
-    <div class="db-title" style="font-size:15px;margin-bottom:10px;">${b.title || 'Factor Contribution'}</div>
+    <div class="db-eyebrow">${b.title || 'Factor Contribution'}</div>
     ${bands}
     <div class="mv-contrib">
       ${contribCol('growth', c.latest.growth)}
@@ -874,8 +874,8 @@ function blkVamsFlip(b, data) {
     return `<div class="vf-row">
       <div>
         <div class="vf-head">
-          <span style="color:#e8e8e8;font-size:clamp(13px,4vw,21px);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:clamp(11px,3.2vw,14px);font-weight:600;margin-left:clamp(4px,1.5vw,8px);">${stTag}</span></span>
-          <span style="color:#b0b0b0;font-size:clamp(12px,3.4vw,15px);white-space:nowrap;">z <span style="color:${stCol};font-family:${serif};font-size:clamp(17px,5vw,23px);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
+          <span style="color:#e8e8e8;font-size:var(--t2-label);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:var(--t5-cap);font-weight:600;margin-left:8px;">${stTag}</span></span>
+          <span style="color:#b0b0b0;font-size:var(--t5-cap);white-space:nowrap;">z <span style="color:${stCol};font-weight:700;font-size:var(--t3-value);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
         </div>
         ${bkBar({ railTop: 6, h: 50, tickTop: 34,
           zones: [{ l: zoneL, w: zoneW, k: fillK }],
@@ -966,11 +966,11 @@ function blkHealth(b, data) {
   // duration bar (reversed: 0d right/green, worst left/red)
   const duy=y+360; t(70,duy+4,'DURATION UNDERWATER',GR,15,'start',null,2);
   const W=du.worst_days, rdx=d=>X1-d/W*Wd, bby=duy+14, cau=du.caution_days;
-  rect(rdx(cau),bby,X1-rdx(cau),22,G,0.5,11);
-  rect(rdx(W*0.9),bby,rdx(cau)-rdx(W*0.9),22,Y,0.5);
-  rect(X0,bby,rdx(W*0.9)-X0,22,R,0.5,11);
-  line(rdx(cau),bby-4,rdx(cau),bby+26,'#0D0D0D');
-  P.push(`<circle cx="${rdx(du.now_days).toFixed(1)}" cy="${bby+11}" r="9" fill="${G}" stroke="#0D0D0D" stroke-width="2"/>`);
+  rect(rdx(cau),bby,X1-rdx(cau),20,G,0.5,10);
+  rect(rdx(W*0.9),bby,rdx(cau)-rdx(W*0.9),20,Y,0.5);
+  rect(X0,bby,rdx(W*0.9)-X0,20,R,0.5,10);
+  line(rdx(cau),bby-4,rdx(cau),bby+24,'#0D0D0D');
+  P.push(`<circle cx="${rdx(du.now_days).toFixed(1)}" cy="${bby+10}" r="8" fill="${G}" stroke="#0D0D0D" stroke-width="2"/>`);
   t(rdx(du.now_days),bby-8,du.now_days+'d',G,17,'middle',700);
   t(X0-8,bby+16,W+'d worst','#8a8a86',14,'end'); t(X1+8,bby+16,'0d','#8a8a86',14,'start');
   t(rdx(cau),bby+40,'caution · '+cau+'d',Y,13,'middle');
