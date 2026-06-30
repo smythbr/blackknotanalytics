@@ -1377,13 +1377,13 @@
             },
             {
               "date": "2026-06-29",
-              "g": 0.1544,
+              "g": 0.2023,
               "i": -1.027,
               "l": -0.3529,
-              "conv": 1.0385,
-              "gflip": 0.6544,
+              "conv": 1.0467,
+              "gflip": 0.7023,
               "iflip": 1.527,
-              "gpct": 9.8,
+              "gpct": 12.7,
               "ipct": 74.1,
               "reg": "Goldilocks"
             }
@@ -38603,13 +38603,13 @@
             },
             {
               "date": "2026-06-29",
-              "g": 0.1544,
+              "g": 0.2023,
               "i": -1.027,
               "l": -0.3529,
-              "conv": 1.0385,
-              "gflip": 0.6544,
+              "conv": 1.0467,
+              "gflip": 0.7023,
               "iflip": 1.527,
-              "gpct": 9.8,
+              "gpct": 12.7,
               "ipct": 74.1,
               "reg": "Goldilocks"
             }
@@ -38628,11 +38628,11 @@
         "as_of": "2026-06-29",
         "latest": {
           "growth": {
-            "net": 1.1564,
+            "net": 1.5158,
             "bars": [
               {
                 "group": "equities",
-                "value": 2.1564,
+                "value": 2.5158,
                 "dissent": false
               },
               {
@@ -38677,11 +38677,11 @@
       "bands": [
         {
           "label": "Growth",
-          "factor": 1.16,
+          "factor": 1.52,
           "band": 3.75,
           "std": 7.49,
           "held_sign": 1,
-          "dz": -2.36,
+          "dz": -2.0,
           "flip_name": "Deflation",
           "flip_side": "left"
         },
@@ -38715,22 +38715,22 @@
         },
         {
           "label": "Gold",
-          "z": -1.87,
+          "z": -2.23,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": 0.19,
+          "dz": -0.17,
           "cand": 0.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Crypto",
-          "z": -1.81,
+          "z": -1.72,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.23,
+          "dz": -0.15,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -44930,7 +44930,7 @@
         "thresholds": {
           "speed_shock": 0.015183183183183182,
           "vol_surge": 1.6751986644407344,
-          "vix_accel": 0.2547,
+          "vix_accel": 0.25461616589081676,
           "restore_lag": 1.0111092408685407,
           "over_defensive": 0.9949748743718594,
           "sleeve_miss": 1.0095430884904568
