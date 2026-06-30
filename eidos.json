@@ -38715,11 +38715,11 @@
         },
         {
           "label": "Gold",
-          "z": -2.24,
+          "z": -2.22,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": -0.19,
+          "dz": -0.16,
           "cand": 0.0,
           "cnt": 0,
           "need": null
