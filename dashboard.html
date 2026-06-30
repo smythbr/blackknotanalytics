@@ -431,16 +431,14 @@ function blkRebalancing(b, data) {
     let roBlock = '';
     if (ro) {
       const roGrid = grid(p => [['To risk-off', ro[p].off], ['To risk-on', ro[p].on], ['Total', ro[p].total]]);
-      roBlock = `<div class="db-block"><div class="db-eyebrow">Risk-On / Risk-Off</div>
-        <div class="db-eyebrow">RORO Flips</div>
+      roBlock = `<div class="db-block"><div class="db-eyebrow">Risk-On / Risk-Off Flips</div>
         <div style="color:#8a8a8a;font-size:12.5px;margin-bottom:20px;">Rebalances that crossed the risk-on / risk-off boundary</div>
         ${roGrid}</div>`;
     }
-    return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>
-      <div class="db-eyebrow">Operational Metrics</div>
+    return `<div class="db-block"><div class="db-eyebrow">Operational Metrics</div>
       ${rebalGrid}</div>${roBlock}`;
   }
-  return `<div class="db-block"><div class="db-eyebrow">Rebalancing</div>${renderTable(b.table)}</div>`;
+  return `<div class="db-block"><div class="db-eyebrow">Operational Metrics</div>${renderTable(b.table)}</div>`;
 }
 
 // Market View — compact, dashboard-native panel drawn from the market_view
