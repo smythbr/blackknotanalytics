@@ -874,10 +874,10 @@ function blkVamsFlip(b, data) {
     return `<div class="vf-row">
       <div>
         <div class="vf-head">
-          <span style="color:#e8e8e8;font-size:clamp(12px,3.8vw,15px);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:clamp(10px,3vw,12.5px);font-weight:600;margin-left:clamp(4px,1.5vw,8px);">${stTag}</span></span>
-          <span style="color:#b0b0b0;font-size:clamp(11px,3.2vw,13px);white-space:nowrap;">z <span style="color:${stCol};font-family:${serif};font-size:clamp(15px,4.8vw,19px);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
+          <span style="color:#e8e8e8;font-size:clamp(13px,4vw,21px);font-weight:700;letter-spacing:0.08em;">${cardLabel(s.label).toUpperCase()} <span style="color:${stCol};font-size:clamp(11px,3.2vw,14px);font-weight:600;margin-left:clamp(4px,1.5vw,8px);">${stTag}</span></span>
+          <span style="color:#b0b0b0;font-size:clamp(12px,3.4vw,15px);white-space:nowrap;">z <span style="color:${stCol};font-family:${serif};font-size:clamp(17px,5vw,23px);">${s.z >= 0 ? '+' : '\u2212'}${Math.abs(s.z).toFixed(2)}</span></span>
         </div>
-        ${bkBar({ railTop: 4, h: 40, tickTop: 24,
+        ${bkBar({ railTop: 6, h: 50, tickTop: 34,
           zones: [{ l: zoneL, w: zoneW, k: fillK }],
           refs:  [{ l: halfP, k: 'amber' }, { l: fullP, k: 'anchor' }],
           arrow: (rising || falling) ? { l: zP, dir: rising ? 1 : -1, color: stCol } : null,
@@ -888,7 +888,7 @@ function blkVamsFlip(b, data) {
       ${counter}
     </div>`;
   }).join('');
-  return `<div class="db-block"><div class="db-eyebrow">${b.title || 'VAMS · Distance & Direction'}</div>
+  return `<div class="db-block vf-block"><div class="db-eyebrow">${b.title || 'VAMS · Distance & Direction'}</div>
     ${rows}</div>`;
 }
 

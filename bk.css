@@ -899,9 +899,17 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .vf-counter{ text-align:center; border:1px solid #2a2a2a; background:#0d0d0d; padding:11px 0; border-radius:6px; }
 .vf-counter.pending{ border-color:#6a571f; background:#1a1505; }
 
+/* ASSET CLASS VAMS — heavier bar + larger type, sized to match the RETURN
+   ladder. Scoped to .vf-block so other bkBar panels keep their 12px rail.
+   Applies to every .vf-row, so the Fixed Income / TLT sleeve inherits it
+   automatically when it appears (e.g. in the Deflation regime). */
+.vf-block{ --bk-rail-h:20px; --bk-dot:16px; }
+.vf-block .bk-tick{ font-size:clamp(12px,3.2vw,15px); }
+
 @media (max-width:560px){
   .vf-row{ grid-template-columns:1fr; gap:14px; }
   .vf-counter{ max-width:200px; }
+  .vf-block{ --bk-rail-h:15px; --bk-dot:14px; }
 }
 @media (max-width:480px){
   :root{ --bk-rail-h:11px; --bk-dot:12px; }
