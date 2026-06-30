@@ -4,11 +4,11 @@
     "id": "eidos",
     "name": "EIDOS",
     "state": "hold",
-    "as_of": "2026-06-29"
+    "as_of": "2026-06-30"
   },
   "meta": {
     "period_start": "2018-01-01",
-    "period_end": "2026-06-29",
+    "period_end": "2026-06-30",
     "inception": "2018-01-01",
     "return_basis": "daily simple total return, geometrically linked",
     "annualisation": "252 trading days (x-root-252 for risk)",
@@ -20,12 +20,12 @@
     "kpis": [
       {
         "label": "YTD",
-        "value": 5.32,
+        "value": 6.02,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 15.82,
+        "value": 15.91,
         "kind": "pct"
       }
     ],
@@ -159,7 +159,7 @@
         },
         "counts": {
           "month": 102,
-          "daily": 3102
+          "daily": 3103
         },
         "series": {
           "month": [
@@ -1376,7 +1376,7 @@
               "reg": "Reflation"
             },
             {
-              "date": "2026-06-29",
+              "date": "2026-06-30",
               "g": 0.2023,
               "i": -1.027,
               "l": -0.3529,
@@ -38612,6 +38612,18 @@
               "gpct": 12.7,
               "ipct": 74.1,
               "reg": "Goldilocks"
+            },
+            {
+              "date": "2026-06-30",
+              "g": 0.2023,
+              "i": -1.027,
+              "l": -0.3529,
+              "conv": 1.0467,
+              "gflip": 0.7023,
+              "iflip": 1.527,
+              "gpct": 12.7,
+              "ipct": 74.1,
+              "reg": "Goldilocks"
             }
           ]
         }
@@ -38625,7 +38637,7 @@
         "schema": "blackknot.eidos.contribution.v1",
         "source": "daily-vote_2026-06-30",
         "units": "raw factor units (vote sum). Group bars sum to 'net', which equals the classifier's raw factor exactly. The phase_plane block scales the SAME factor by causal-\u03c3, so net/\u03c3 == phase g|i.",
-        "as_of": "2026-06-29",
+        "as_of": "2026-06-30",
         "latest": {
           "growth": {
             "net": 1.5158,
@@ -38681,7 +38693,7 @@
           "band": 3.75,
           "std": 7.49,
           "held_sign": 1,
-          "dz": -2.0,
+          "dz": -6.0,
           "flip_name": "Deflation",
           "flip_side": "left"
         },
@@ -38704,44 +38716,44 @@
       "sleeves": [
         {
           "label": "Equity",
-          "z": 1.34,
+          "z": 1.5,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 1.0,
-          "dz": -0.26,
+          "dz": -0.43,
           "cand": 1.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Gold",
-          "z": -2.07,
+          "z": -2.02,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": -0.01,
+          "dz": -0.55,
           "cand": 0.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Fixed Income",
-          "z": 1.18,
+          "z": 0.31,
           "line_half": -1.0,
           "line_full": -0.5,
           "state": 1.0,
-          "dz": 1.43,
+          "dz": 0.58,
           "cand": 1.0,
           "cnt": 0,
           "need": null
         },
         {
           "label": "Crypto",
-          "z": -1.73,
+          "z": -1.71,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.16,
+          "dz": -0.52,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -38778,66 +38790,66 @@
             {
               "label": "YTD",
               "model": {
-                "value": 5.32,
+                "value": 6.02,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.24,
+                "value": 10.09,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "1 Year",
               "model": {
-                "value": 21.44,
+                "value": 22.25,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 21.84,
+                "value": 22.79,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "3 Year",
               "model": {
-                "value": 77.69,
+                "value": 78.06,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 76.25,
+                "value": 76.93,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "5 Year",
               "model": {
-                "value": 84.63,
+                "value": 86.08,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 85.47,
+                "value": 86.81,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "Inception",
               "model": {
-                "value": 246.71,
+                "value": 249.01,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 216.29,
+                "value": 218.75,
                 "kind": "pct_signed"
               }
             },
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 15.82,
+                "value": 15.91,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.81,
+                "value": 9.87,
                 "kind": "pct_signed"
               }
             }
@@ -38870,11 +38882,11 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 5.32,
+                "value": 6.02,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.24,
+                "value": 10.09,
                 "kind": "pct_signed"
               }
             },
@@ -39002,11 +39014,11 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 15.82,
+                "value": 15.91,
                 "kind": "pct_signed"
               },
               "bench": {
-                "value": 9.81,
+                "value": 9.87,
                 "kind": "pct_signed"
               }
             },
@@ -39024,44 +39036,44 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.275,
+                "value": 1.2822,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.4995,
+                "value": 0.5033,
                 "kind": "ratio"
               }
             },
             {
               "label": "Sortino",
               "model": {
-                "value": 1.8084,
+                "value": 1.8191,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.6998,
+                "value": 0.7052,
                 "kind": "ratio"
               }
             },
             {
               "label": "Calmar",
               "model": {
-                "value": 3.3991,
+                "value": 3.4127,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.7412,
+                "value": 0.7465,
                 "kind": "ratio"
               }
             },
             {
               "label": "MAR",
               "model": {
-                "value": 1.7312,
+                "value": 1.7402,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 0.2908,
+                "value": 0.2928,
                 "kind": "ratio"
               }
             },
@@ -39090,7 +39102,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.4494,
+                "value": 0.446,
                 "kind": "ratio"
               },
               "bench": {
@@ -39101,11 +39113,11 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3283,
+                "value": 1.33,
                 "kind": "ratio"
               },
               "bench": {
-                "value": 1.1663,
+                "value": 1.1673,
                 "kind": "ratio"
               }
             },
@@ -39123,7 +39135,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 36.3,
+                "value": 35.8,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -44769,7 +44781,7 @@
           {
             "metric": "Rebalances / yr (ITD)",
             "val": {
-              "value": 20.9,
+              "value": 20.8,
               "kind": "num"
             }
           },
@@ -44802,7 +44814,7 @@
           "yr": {
             "regime": 6.8,
             "vams": 14.0,
-            "total": 20.9
+            "total": 20.8
           }
         },
         "roro": {
@@ -44831,7 +44843,7 @@
       "health": {
         "schema": "blackknot.health.v1",
         "app": "eidos",
-        "date": "2026-06-29",
+        "date": "2026-06-30",
         "severity": "TRUST",
         "n_lit": 0,
         "lit": [],
@@ -44932,8 +44944,8 @@
         "immediate": [],
         "scores": {
           "speed_shock": 0.0,
-          "vol_surge": 0.8258342710999418,
-          "vix_accel": 0.02141197437397735,
+          "vol_surge": 0.8730329690622115,
+          "vix_accel": 0.0,
           "restore_lag": 0.0,
           "over_defensive": 0.0,
           "sleeve_miss": 0.0
@@ -44952,29 +44964,29 @@
             "unit": "cagr",
             "value": 0.1564,
             "ci95": [
-              0.08335705536332676,
-              0.23838863984104572
+              0.08472600204947107,
+              0.23599943803873338
             ],
             "likely": [
-              0.1292132104009748,
-              0.18288449642064927
+              0.12940536900004365,
+              0.1814020387076494
             ],
             "p_gt0": 1.0,
-            "p_gt10": 0.935,
+            "p_gt10": 0.93,
             "years": 8.5
           },
           "ytd": {
             "unit": "absolute",
-            "value": 0.05320311925168619,
+            "value": 0.06017403987677028,
             "ci95": [
-              -0.09121071105638857,
-              0.16097274845161436
+              -0.08667622628492322,
+              0.16639893807824874
             ],
             "likely": [
-              -0.013992021333936594,
-              0.07025854277730631
+              -0.008923795375874177,
+              0.07716034685742762
             ],
-            "months": 5.8
+            "months": 5.9
           }
         },
         "stress_replay": {
@@ -44989,9 +45001,9 @@
         },
         "developing": {
           "left": {
-            "state": "easing",
-            "gap": 0.45,
-            "slope": -0.09,
+            "state": "elevated",
+            "gap": 0.22,
+            "slope": 0.02,
             "label": "Pressure vs defense",
             "note": "risk-off pressure relative to how far the book has de-risked"
           },
@@ -45005,7 +45017,7 @@
         },
         "suite": {
           "schema": "blackknot.health_suite.v2",
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "verdict": "healthy",
           "components": {
             "returns": "healthy",
@@ -45021,8 +45033,8 @@
                 "med": 14.9,
                 "p95": 44.2,
                 "max": 68.3,
-                "cur": 21.5,
-                "drift": 0.5,
+                "cur": 22.2,
+                "drift": 1.0,
                 "zone": "healthy"
               },
               {
@@ -45031,10 +45043,10 @@
                 "p5": 2.8,
                 "p25": 9.8,
                 "med": 14.7,
-                "p95": 32.4,
+                "p95": 32.3,
                 "max": 42.0,
-                "cur": 18.6,
-                "drift": -9.1,
+                "cur": 19.0,
+                "drift": -8.4,
                 "zone": "healthy"
               },
               {
@@ -45045,8 +45057,8 @@
                 "med": 14.4,
                 "p95": 27.3,
                 "max": 30.8,
-                "cur": 21.1,
-                "drift": -0.2,
+                "cur": 21.6,
+                "drift": -0.0,
                 "zone": "healthy"
               },
               {
@@ -45057,7 +45069,7 @@
                 "med": 16.9,
                 "p95": 27.1,
                 "max": 28.4,
-                "cur": 13.3,
+                "cur": 13.4,
                 "drift": -2.0,
                 "zone": "healthy"
               },
@@ -45070,7 +45082,7 @@
                 "p95": 22.4,
                 "max": 23.0,
                 "cur": 16.4,
-                "drift": -2.4,
+                "drift": -2.3,
                 "zone": "healthy"
               },
               {
@@ -45081,8 +45093,8 @@
                 "med": 17.9,
                 "p95": 20.4,
                 "max": 21.3,
-                "cur": 19.6,
-                "drift": -0.9,
+                "cur": 19.7,
+                "drift": -1.0,
                 "zone": "healthy"
               },
               {
@@ -45101,7 +45113,7 @@
           },
           "drawdown": {
             "depth": {
-              "now": -2.8,
+              "now": -2.1,
               "trough": -6.2,
               "worst": -9.1,
               "caution": -6.5,
@@ -45193,13 +45205,13 @@
                   "v": -3.62
                 },
                 {
-                  "o": 152,
-                  "v": -2.78
+                  "o": 153,
+                  "v": -2.14
                 }
               ]
             },
             "duration": {
-              "now_days": 152,
+              "now_days": 153,
               "worst_days": 554,
               "caution_days": 400
             }
@@ -45208,21 +45220,21 @@
             "rows": [
               {
                 "h": "Next 10 yrs",
-                "p5": 10.3,
-                "p25": 13.5,
+                "p5": 10.4,
+                "p25": 13.6,
                 "med": 16.0,
-                "p75": 18.6,
+                "p75": 18.5,
                 "p95": 22.4,
                 "now": 16.0
               },
               {
                 "h": "This year",
-                "p5": 3.5,
-                "p25": 7.8,
-                "med": 12.4,
-                "p75": 18.6,
-                "p95": 32.3,
-                "now": 5.3
+                "p5": 4.2,
+                "p25": 8.5,
+                "med": 13.0,
+                "p75": 19.2,
+                "p95": 33.0,
+                "now": 6.0
               }
             ]
           }
