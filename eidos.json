@@ -19,6 +19,11 @@
   "card": {
     "kpis": [
       {
+        "label": "Daily",
+        "value": 0.66,
+        "kind": "pct"
+      },
+      {
         "label": "YTD",
         "value": 6.02,
         "kind": "pct"
@@ -38727,11 +38732,11 @@
         },
         {
           "label": "Gold",
-          "z": -2.02,
+          "z": -2.12,
           "line_half": -1.0,
           "line_full": 1.0,
           "state": 0.0,
-          "dz": -0.55,
+          "dz": -0.64,
           "cand": 0.0,
           "cnt": 0,
           "need": null
@@ -38749,11 +38754,11 @@
         },
         {
           "label": "Crypto",
-          "z": -1.71,
+          "z": -1.91,
           "line_half": -1.0,
           "line_full": 0.0,
           "state": 0.0,
-          "dz": -0.52,
+          "dz": -0.72,
           "cand": 0.0,
           "cnt": 0,
           "need": null

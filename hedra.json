@@ -19,6 +19,11 @@
   "card": {
     "kpis": [
       {
+        "label": "Daily",
+        "value": 0.44,
+        "kind": "pct"
+      },
+      {
         "label": "YTD",
         "value": 10.52,
         "kind": "pct"

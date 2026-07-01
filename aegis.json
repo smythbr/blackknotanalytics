@@ -19,13 +19,18 @@
   "card": {
     "kpis": [
       {
+        "label": "Daily",
+        "value": 0.19,
+        "kind": "pct"
+      },
+      {
         "label": "YTD",
-        "value": 0.16,
+        "value": -0.1,
         "kind": "pct"
       },
       {
         "label": "ITD CAGR",
-        "value": 17.08,
+        "value": 17.04,
         "kind": "pct"
       }
     ],
@@ -1792,9 +1797,9 @@
             },
             {
               "date": "2026-06-30",
-              "gd": 0.3829,
-              "id": 0.0138,
-              "lpe": 1.5497,
+              "gd": 0.3894,
+              "id": 0.0807,
+              "lpe": 1.5523,
               "reg": "Reflation"
             }
           ],
@@ -46398,212 +46403,212 @@
             },
             {
               "date": "2026-06-01",
-              "gd": 0.4963,
-              "id": 1.1076,
-              "lpe": 0.9834,
+              "gd": 0.4964,
+              "id": 1.1081,
+              "lpe": 0.9828,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-02",
               "gd": 0.6273,
-              "id": 1.0691,
-              "lpe": 0.995,
+              "id": 1.0695,
+              "lpe": 0.9944,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-03",
               "gd": 0.4577,
-              "id": 1.1435,
-              "lpe": 1.0578,
+              "id": 1.1439,
+              "lpe": 1.0572,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-04",
               "gd": 0.5413,
-              "id": 0.975,
-              "lpe": 1.0428,
+              "id": 0.9753,
+              "lpe": 1.0423,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-05",
               "gd": 0.012,
-              "id": 1.0675,
-              "lpe": 1.1846,
+              "id": 1.0678,
+              "lpe": 1.184,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-06",
               "gd": 0.012,
-              "id": 1.0683,
-              "lpe": 1.1824,
+              "id": 1.0685,
+              "lpe": 1.1818,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-07",
               "gd": 0.012,
-              "id": 1.069,
-              "lpe": 1.1802,
+              "id": 1.0693,
+              "lpe": 1.1796,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-08",
               "gd": -0.0124,
-              "id": 1.0881,
-              "lpe": 1.2039,
+              "id": 1.0883,
+              "lpe": 1.2033,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-09",
-              "gd": -0.0431,
-              "id": 0.9257,
-              "lpe": 1.2765,
+              "gd": -0.043,
+              "id": 0.9258,
+              "lpe": 1.2759,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-10",
-              "gd": -0.2254,
-              "id": 0.9876,
-              "lpe": 1.35,
+              "gd": -0.2253,
+              "id": 0.9878,
+              "lpe": 1.3492,
               "reg": "Stagflation"
             },
             {
               "date": "2026-06-11",
               "gd": 0.0486,
               "id": 0.6454,
-              "lpe": 1.37,
+              "lpe": 1.3691,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-12",
               "gd": 0.3609,
               "id": 0.6838,
-              "lpe": 1.2406,
+              "lpe": 1.2398,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-13",
               "gd": 0.3611,
-              "id": 0.6845,
-              "lpe": 1.2433,
+              "id": 0.6846,
+              "lpe": 1.2425,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-14",
               "gd": 0.3616,
               "id": 0.6853,
-              "lpe": 1.2406,
+              "lpe": 1.2398,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-15",
               "gd": 0.619,
-              "id": 0.6376,
-              "lpe": 1.1415,
+              "id": 0.6377,
+              "lpe": 1.1409,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-16",
               "gd": 0.6083,
               "id": 0.4471,
-              "lpe": 1.1432,
+              "lpe": 1.1426,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-17",
-              "gd": 0.4927,
-              "id": 0.5141,
-              "lpe": 1.1616,
+              "gd": 0.4928,
+              "id": 0.514,
+              "lpe": 1.161,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-18",
               "gd": 0.6641,
-              "id": 0.3863,
-              "lpe": 1.3261,
+              "id": 0.3861,
+              "lpe": 1.3254,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-19",
-              "gd": 0.6214,
-              "id": 0.3858,
-              "lpe": 1.3948,
+              "gd": 0.6215,
+              "id": 0.3856,
+              "lpe": 1.3941,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-20",
               "gd": 0.6215,
-              "id": 0.3864,
-              "lpe": 1.3917,
+              "id": 0.3862,
+              "lpe": 1.3909,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-21",
-              "gd": 0.6215,
-              "id": 0.387,
-              "lpe": 1.3886,
+              "gd": 0.6216,
+              "id": 0.3868,
+              "lpe": 1.3878,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-22",
-              "gd": 0.601,
-              "id": 0.4531,
-              "lpe": 1.3924,
+              "gd": 0.6011,
+              "id": 0.4528,
+              "lpe": 1.3916,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-23",
-              "gd": 0.3096,
-              "id": 0.2847,
-              "lpe": 1.4604,
+              "gd": 0.3098,
+              "id": 0.2844,
+              "lpe": 1.4597,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-24",
-              "gd": 0.2371,
-              "id": -0.0653,
-              "lpe": 1.599,
+              "gd": 0.2373,
+              "id": -0.0658,
+              "lpe": 1.5981,
               "reg": "Goldilocks"
             },
             {
               "date": "2026-06-25",
-              "gd": 0.3206,
-              "id": 0.0582,
-              "lpe": 1.5759,
+              "gd": 0.3208,
+              "id": 0.0578,
+              "lpe": 1.5752,
               "reg": "Reflation"
             },
             {
               "date": "2026-06-26",
-              "gd": 0.2189,
-              "id": -0.071,
-              "lpe": 1.53,
+              "gd": 0.2191,
+              "id": -0.0714,
+              "lpe": 1.5293,
               "reg": "Goldilocks"
             },
             {
               "date": "2026-06-27",
-              "gd": 0.2189,
-              "id": -0.071,
-              "lpe": 1.5252,
+              "gd": 0.2191,
+              "id": -0.0715,
+              "lpe": 1.5245,
               "reg": "Goldilocks"
             },
             {
               "date": "2026-06-28",
-              "gd": 0.219,
-              "id": -0.0711,
-              "lpe": 1.5205,
+              "gd": 0.2192,
+              "id": -0.0716,
+              "lpe": 1.5198,
               "reg": "Goldilocks"
             },
             {
               "date": "2026-06-29",
-              "gd": 0.3039,
-              "id": -0.016,
-              "lpe": 1.5547,
+              "gd": 0.3041,
+              "id": -0.0164,
+              "lpe": 1.5539,
               "reg": "Goldilocks"
             },
             {
               "date": "2026-06-30",
-              "gd": 0.3829,
-              "id": 0.0138,
-              "lpe": 1.5497,
+              "gd": 0.3894,
+              "id": 0.0807,
+              "lpe": 1.5523,
               "reg": "Reflation"
             }
           ]
@@ -46640,7 +46645,7 @@
             {
               "label": "YTD",
               "model": {
-                "value": 0.16,
+                "value": -0.1,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46651,7 +46656,7 @@
             {
               "label": "1 Year",
               "model": {
-                "value": 9.97,
+                "value": 9.69,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46662,7 +46667,7 @@
             {
               "label": "3 Year",
               "model": {
-                "value": 64.23,
+                "value": 63.8,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46673,7 +46678,7 @@
             {
               "label": "5 Year",
               "model": {
-                "value": 100.66,
+                "value": 100.13,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46684,7 +46689,7 @@
             {
               "label": "Inception",
               "model": {
-                "value": 280.08,
+                "value": 279.09,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46695,7 +46700,7 @@
             {
               "label": "CAGR (ITD)",
               "model": {
-                "value": 17.08,
+                "value": 17.04,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46732,7 +46737,7 @@
               "label": "YTD",
               "ytd": true,
               "model": {
-                "value": 0.16,
+                "value": -0.1,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46864,7 +46869,7 @@
             {
               "label": "CAGR",
               "model": {
-                "value": 17.08,
+                "value": 17.04,
                 "kind": "pct_signed"
               },
               "bench": {
@@ -46886,7 +46891,7 @@
             {
               "label": "Sharpe",
               "model": {
-                "value": 1.2812,
+                "value": 1.2784,
                 "kind": "ratio"
               },
               "bench": {
@@ -46897,7 +46902,7 @@
             {
               "label": "Sortino",
               "model": {
-                "value": 1.845,
+                "value": 1.8409,
                 "kind": "ratio"
               },
               "bench": {
@@ -46908,7 +46913,7 @@
             {
               "label": "Calmar",
               "model": {
-                "value": 1.9831,
+                "value": 1.9717,
                 "kind": "ratio"
               },
               "bench": {
@@ -46919,7 +46924,7 @@
             {
               "label": "MAR",
               "model": {
-                "value": 1.3107,
+                "value": 1.3079,
                 "kind": "ratio"
               },
               "bench": {
@@ -46952,7 +46957,7 @@
             {
               "label": "Beta",
               "model": {
-                "value": 0.5198,
+                "value": 0.5211,
                 "kind": "ratio"
               },
               "bench": {
@@ -46963,7 +46968,7 @@
             {
               "label": "Omega",
               "model": {
-                "value": 1.3156,
+                "value": 1.315,
                 "kind": "ratio"
               },
               "bench": {
@@ -46985,7 +46990,7 @@
             {
               "label": "Downside Capture",
               "model": {
-                "value": 44.4,
+                "value": 44.6,
                 "kind": "pct_signed"
               },
               "bench": {
